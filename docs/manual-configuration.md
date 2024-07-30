@@ -28,4 +28,4 @@ The default log path is `/var/log/*`. Update the path in the `otel.yml` file.
 
 ## Limitations
 
-For more on limitations for the Elastic distribution Refer to the [limitations] documentation for more on
+For information on limitations for the Elastic distribution of the OpenTelemetry Collector, refer to the [limitations] documentation.
