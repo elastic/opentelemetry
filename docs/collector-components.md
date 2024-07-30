@@ -11,10 +11,12 @@ The OpenTelemetry Collector uses the following components to receive, process, a
 The default configurations of the Elastic Distribution of the OpenTelemetry Collector follows these flows.
 
 **MacOS and Linux logs and host metrics:**
-![Diagram of the logs and metrics OpenTelemetry flow](docs/images/infrastructure-elastic-otel-flow.png)
+
+![Diagram of the logs and metrics OpenTelemetry flow](images/infrastructure-elastic-otel-flow.png)
 
 **Kubernetes logs and host metrics:**
-![Diagram of Kubernetes logs and metrics OpenTelemetry flow](docs/images/kubernetes-elastic-otel-flow.png)
+
+![Diagram of Kubernetes logs and metrics OpenTelemetry flow](images/kubernetes-elastic-otel-flow.png)
 
 Refer to the following tables for more information on the components supported by the Elastic distribution of the OpenTelemetry Collector.
 Follow the links for OpenTelemetry documentation with more configuration details for each component.
