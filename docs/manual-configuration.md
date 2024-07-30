@@ -1,8 +1,5 @@
 # Manually configure the collector
 Collecting logs and host metrics with the Elastic Distribution of the OpenTelemetry Collector without using the [guided onboarding](docs/guided-onboarding.md) requires some manual configuration.
-Refer to the section that aligns with your system to manually configure the collector.
-
-### MacOS and Linux
 
 To manually configure the Elastic Distribution of the OpenTelemetry Collector, gather the following information:
 
@@ -28,9 +25,6 @@ The following steps guide you through manually configuring the Elastic OpenTelem
 
 Logs are collected from setup onward, so you won't see logs that occurred before starting the collector.
 The default log path is `/var/log/*`. Update the path in the `otel.yml` file.
-
-## Kubernetes
-<!--  might need some input here, not sure how/if a user would need to create a whole manifest or if we would want to recommend that. -->
 
 ## Limitations
 

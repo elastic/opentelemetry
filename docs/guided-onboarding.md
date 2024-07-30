@@ -14,12 +14,16 @@ The onboarding has the following requirements and limitations:
 
 Follow these steps to collect logs and metrics using the Elastic OpenTelemetry collector
 
-1. <DocLink slug="/serverless/observability/create-an-observability-project">Create a new ((observability)) project</DocLink>, or open an existing one.
-1. In your ((observability)) project, go to **Add Data**.
-1. Select **Collect and analyze logs**, and then select **Elastic OpenTelemetry Collector**.
-1. Select the appropriate platform, and copy the command that's shown.
-1. Open a terminal on your host, and run the command to download and configure the OpenTelemetry collector (or download the manifest for Kubernetes).
-1. Copy the command under Step 2, and run it in your terminal to start the OpenTelemetry collector.
+1. Open an [Elastic Cloud](cloud.elastic.co) deployment or serverless Observability project.
+1. To open the guided onboarding:
+   1. For a serverless Observability project, go to **Add Data**.
+   1. From Kibana, go to **Observability** → **Add Data**.
+1. Select **Collect and analyze logs**, and then select **OpenTelemetry**.
+1. Select the appropriate platform, and copy the command or download the Kubernetes manifest.
+1. **For MacOS and Linux**, open a terminal on your host, and run the command to download and configure the OpenTelemetry collector.
+1. Copy the command under Step 2:
+   1. **For MacOS and Linux**, run the command in your terminal to start the OpenTelemetry collector.
+   1. **For Kubernetes**, run the command from the directory where you downloaded the manifest to install the collector on every node of your cluster.
 
 Logs are collected from setup onward, so you won't see logs that occurred before starting the collector.
 The default log path is `/var/log/*`. To update the path, modify the `otel.yml`.
