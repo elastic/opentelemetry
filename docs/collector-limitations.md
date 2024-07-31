@@ -1,6 +1,6 @@
 # Elastic OpenTelemetry Collector limitations
 
-The Elastic Distribution of the OpenTelemetry Collector has the following limitations:
+The Elastic Distribution for the OpenTelemetry Collector has the following limitations:
 
 - `host.network.*` metrics aren't present from OpenTelemetry side.
 - `process.state` isn't present in the OpenTelemetry host metric. It's set to a dummy value of **Unknown** in the **State** column of the host processes table.
