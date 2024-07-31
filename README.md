@@ -20,8 +20,14 @@ These pages detail the components and configuration of the Elastic distribution 
 - [Manual configurations](docs/manual-configuration.md): Manually configure the Elastic OpenTelemetry Collector to send data to Elastic Observability.
 - [Limitations](docs/collector-limitations.md): Current limitations of the Elastic OpenTelemetry Collector.
 
-## Configure Elastic distributions of OpenTelemetry programming languages
-<!-- Colleen can fill in these links? -->
+## Collect application data with Elastic Distributions for OpenTelemetry 
+
+Elastic offers several distributions that extend [OpenTelemetry language SDKs](https://opentelemetry.io/docs/languages/). The following languages are currently supported:
+
+* [Java](https://github.com/elastic/elastic-otel-java)
+* [.NET](https://github.com/elastic/elastic-otel-dotnet)
+* [Node.js](https://github.com/elastic/elastic-otel-node)
+* [Python](https://github.com/elastic/elastic-otel-python)
 
 ## Configure a custom or contrib collector for Elastic
 
