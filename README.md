@@ -3,9 +3,9 @@
 [OpenTelemetry](https://opentelemetry.io/docs/) is a vendor- and tool-neutral observability framework for collecting, processing, and exporting telemetry data.
 You can send your telemetry data to Elastic Observability using OpenTelemetry the following ways:
 
-- Use the Elastic distribution of the [OpenTelemetry Collector](https://github.com/open-telemetry/opentelemetry-collector) to collect and send logs and host metrics to [Elastic Cloud](https://cloud.elastic.co/).
-- Use Elastic distributions of OpenTelemetry Java, .NET, Node.js, and Python to instrument your applications and send logs, traces, and metrics to [Elastic Cloud](https://cloud.elastic.co/).
-- Configure a custom collector or contrib distribution of the OpenTelemetry Collector to collect logs and metrics and send them to Elastic Observability.
+- Use the Elastic Distribution for the [OpenTelemetry Collector](https://github.com/open-telemetry/opentelemetry-collector) to collect and send logs and host metrics to [Elastic Cloud](https://cloud.elastic.co/).
+- Use Elastic Distributions for OpenTelemetry Java, .NET, Node.js, and Python to instrument your applications and send logs, traces, and metrics to [Elastic Cloud](https://cloud.elastic.co/).
+- Configure a custom collector or contrib Distribution for the OpenTelemetry Collector to collect logs and metrics and send them to Elastic Observability.
 
 This diagram provides a quick overview on how the the different components work together. Refer to the [components](docs/collector-components.md) for a more in-depth look.
 

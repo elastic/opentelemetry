@@ -1,5 +1,5 @@
 # Manually configure the collector
-Collecting logs and host metrics with the Elastic Distribution of the OpenTelemetry Collector without using the [guided onboarding](docs/guided-onboarding.md) requires some manual configuration.
+Collecting logs and host metrics with the Elastic Distribution for the OpenTelemetry Collector without using the [guided onboarding](docs/guided-onboarding.md) requires some manual configuration.
 
 ## Before you begin
 The onboarding has the following requirements and limitations:
@@ -7,11 +7,11 @@ The onboarding has the following requirements and limitations:
 - The **Admin** role or higher is required to onboard system logs and metrics. To learn more, refer to <DocLink slug="/serverless/general/assign-user-roles" />.
 - Root privileges on the host are required to run the OpenTelemetry collector used in this quickstart.
 - The collector only work on Kubernetes, Linux, and MacOS systems.
-- Refer to [Elastic OpenTelemetry Collector limitations](collector-limitations.md) for known limitations when using Elastic distribution of the OpenTelemetry collector.
+- Refer to [Elastic OpenTelemetry Collector limitations](collector-limitations.md) for known limitations when using the Elastic Distribution for the OpenTelemetry collector.
 
 ## Collect your logs and metrics
 
-To manually configure the Elastic Distribution of the OpenTelemetry Collector, gather the following information:
+To manually configure the collector, gather the following information:
 
 - **Your Elasticsearch endpoint**: From the help menu in Kibana or your serverless Observability project, select **Connection details** and copy the **Elasticsearch endpoint**.
 - **API key**:
@@ -35,7 +35,3 @@ The following steps guide you through manually configuring the Elastic OpenTelem
 
 Logs are collected from setup onward, so you won't see logs that occurred before starting the collector.
 The default log path is `/var/log/*`. Update the path in the `otel.yml` file.
-
-## Limitations
-
-For information on limitations for the Elastic distribution of the OpenTelemetry Collector, refer to the [limitations] documentation.

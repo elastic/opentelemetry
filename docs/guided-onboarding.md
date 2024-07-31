@@ -8,7 +8,7 @@ The onboarding has the following requirements and limitations:
 - The **Admin** role or higher is required to onboard system logs and metrics. To learn more, refer to <DocLink slug="/serverless/general/assign-user-roles" />.
 - Root privileges on the host are required to run the OpenTelemetry collector used in this quickstart.
 - The collector only work on Kubernetes, Linux, and MacOS systems.
-- Refer to [Elastic OpenTelemetry Collector limitations](collector-limitations.md) for known limitations when using Elastic distribution of the OpenTelemetry collector.
+- Refer to [Elastic OpenTelemetry Collector limitations](collector-limitations.md) for known limitations when using Elastic Distribution for the OpenTelemetry collector.
 
 ## Collect your logs and metrics
 

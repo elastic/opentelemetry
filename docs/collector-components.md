@@ -7,7 +7,7 @@ The OpenTelemetry Collector uses the following components to receive, process, a
 - [Exporters](collector-components.md#exporters): send data to the backends or destinations.
 - [Extensions](collector-components.md#extensions): provide additional functionalities and capabilities.
 
-The default configurations of the Elastic Distribution of the OpenTelemetry Collector follows these flows.
+The default configurations of the Elastic Distribution for the OpenTelemetry Collector follows these flows.
 
 **MacOS and Linux logs and host metrics:**
 
@@ -17,9 +17,9 @@ The default configurations of the Elastic Distribution of the OpenTelemetry Coll
 
 ![Diagram of Kubernetes logs and metrics OpenTelemetry flow](images/kubernetes-elastic-otel-flow.png)
 
-Refer to the following tables for more information on the components supported by the Elastic distribution of the OpenTelemetry Collector.
+Refer to the following tables for more information on the components supported by the Elastic Distribution for the OpenTelemetry Collector.
 Follow the links for OpenTelemetry documentation with more configuration details for each component.
-To set up the Elastic distribution of the OpenTelemetry collector, go to the [guided onboarding](docs/guided-onboarding.md) or [manual configuration](docs/manual-configuration.md) to get started.
+To set up the collector, go to the [guided onboarding](docs/guided-onboarding.md) or [manual configuration](docs/manual-configuration.md) to get started.
 
 ## Receivers
 
