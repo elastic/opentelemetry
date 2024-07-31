@@ -11,14 +11,14 @@ This diagram provides a quick overview on how the the different components work 
 
 ![Diagram of the OpenTelemetry flow](docs/images/elastic-otel-overview.png)
 
-## Get started with the Elastic distribution of the OpenTelemetry Collector
+## Get started with the Elastic Distribution for OpenTelemetry Collector
 
-These pages detail the components and configuration of the Elastic distribution of the OpenTelemetry collector.
+These pages detail the components and configuration of the Elastic Distribution for OpenTelemetry Collector ("the collector").
 
-- [Components](docs/collector-components.md): Details on the components used to receive, process, and export telemetry data.
-- [Guided onboarding](docs/guided-onboarding.md): Use the guided onboarding in Kibana or a serverless Observability project to send data using the Elastic OpenTelemetry Collector.
-- [Manual configurations](docs/manual-configuration.md): Manually configure the Elastic OpenTelemetry Collector to send data to Elastic Observability.
-- [Limitations](docs/collector-limitations.md): Current limitations of the Elastic OpenTelemetry Collector.
+- [Components](docs/collector-components.md): Get details on the components used to receive, process, and export telemetry data.
+- [Guided onboarding](docs/guided-onboarding.md): Use the guided onboarding in Kibana or a serverless Observability project to send data using the collector.
+- [Manual configurations](docs/manual-configuration.md): Manually configure the collector to send data to Elastic Observability.
+- [Limitations](docs/collector-limitations.md): Understand the current limitations of the collector.
 
 ## Collect application data with Elastic Distributions for OpenTelemetry 
 
