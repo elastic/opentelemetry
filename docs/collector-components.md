@@ -9,13 +9,54 @@ The OpenTelemetry Collector uses the following components to receive, process, a
 
 The default configurations of the Elastic Distribution for the OpenTelemetry Collector follows these flows.
 
-**MacOS and Linux logs and host metrics:**
+**MacOS and Linux Host metrics:**
 
-![Diagram of the logs and metrics OpenTelemetry flow](images/infrastructure-elastic-otel-flow.png)
+```mermaid
+flowchart LR
+    one["`Host metrics receiver`"]
+    two["`Elastic infra metrics processor`"]
+    three["`Attributes processor (dataset)`"]
+    four["`Resource processor (process)`"]
+    five["`Elasticsearch exporter`"]
+    one --> two --> three --> four --> five
+```
 
-**Kubernetes logs and host metrics:**
+**MacOS and Linux Logs**
 
-![Diagram of Kubernetes logs and metrics OpenTelemetry flow](images/kubernetes-elastic-otel-flow.png)
+```mermaid
+flowchart LR
+    one["`File log receiver`"]
+    two["`Resource detection processor"]
+    three["`Elasticsearch exporter`"]
+    one --> two --> three
+```
+
+**Kubernetes metrics**
+
+```mermaid
+flowchart LR
+    one["`Kubelet stats and host metrics receivers`"]
+    two["`Kubernetes attributes processor"]
+    three["`Elastic infra metrics processor`"]
+    four["`Resource detection processors (EKS, GCP, K8s)`"]
+    five["`Resource processors (K8s, cloud)`"]
+    six["`Attributes processor (dataset)"]
+    seven["`Resource processor`"]
+    eight["`Elasticsearch exporter`"]
+    one --> two --> three --> four --> five --> six --> seven --> eight
+```
+
+**Kubernetes logs**
+```mermaid
+flowchart LR
+    one["`File log receiver`"]
+    two["`Kubernetes attributes processor"]]
+    three["`Resource detection processors (system, EKS, GCP)`"]
+    four["`Resource processors (K8s, cloud)`"]
+    five["`Attributes processor (k8s_logs_dataset)"]
+    six["`Elasticsearch and debug exporters`"]
+    one --> two --> three --> four --> five --> six
+```
 
 Refer to the following tables for more information on the components supported by the Elastic Distribution for the OpenTelemetry Collector.
 Follow the links for OpenTelemetry documentation with more configuration details for each component.
