@@ -19,6 +19,12 @@ flowchart LR
     four["`Resource processor (process)`"]
     five["`Elasticsearch exporter`"]
     one --> two --> three --> four --> five
+
+    style one fill: #e6f9f7,stroke:#333,stroke-width:1px
+    style two fill: ##f8e9e9,stroke:#333,stroke-width:1px
+    style three fill: ##f8e9e9,stroke:#333,stroke-width:1px
+    style four fill: ##f8e9e9,stroke:#333,stroke-width:1px
+    style five fill:#e6f9f7,stroke:#333,stroke-width:1px
 ```
 
 **MacOS and Linux Logs**
@@ -26,9 +32,13 @@ flowchart LR
 ```mermaid
 flowchart LR
     one["`File log receiver`"]
-    two["`Resource detection processor"]
+    two["`Resource detection processor`"]
     three["`Elasticsearch exporter`"]
     one --> two --> three
+
+    style one fill: #e6f9f7,stroke:#333,stroke-width:1px
+    style two fill: ##f8e9e9,stroke:#333,stroke-width:1px
+    style three fill:#e6f9f7,stroke:#333,stroke-width:1px
 ```
 
 **Kubernetes metrics**
@@ -36,26 +46,42 @@ flowchart LR
 ```mermaid
 flowchart LR
     one["`Kubelet stats and host metrics receivers`"]
-    two["`Kubernetes attributes processor"]
+    two["`Kubernetes attributes processor`"]
     three["`Elastic infra metrics processor`"]
     four["`Resource detection processors (EKS, GCP, K8s)`"]
     five["`Resource processors (K8s, cloud)`"]
-    six["`Attributes processor (dataset)"]
+    six["`Attributes processor (dataset)`"]
     seven["`Resource processor`"]
     eight["`Elasticsearch exporter`"]
     one --> two --> three --> four --> five --> six --> seven --> eight
+
+    style one fill: #e6f9f7,stroke:#333,stroke-width:1px
+    style two fill: ##f8e9e9,stroke:#333,stroke-width:1px
+    style three fill: ##f8e9e9,stroke:#333,stroke-width:1px
+    style four fill: ##f8e9e9,stroke:#333,stroke-width:1px
+    style five fill: ##f8e9e9,stroke:#333,stroke-width:1px
+    style six fill: ##f8e9e9,stroke:#333,stroke-width:1px
+    style seven fill: ##f8e9e9,stroke:#333,stroke-width:1px
+    style eight fill:#e6f9f7,stroke:#333,stroke-width:1px
 ```
 
 **Kubernetes logs**
 ```mermaid
 flowchart LR
     one["`File log receiver`"]
-    two["`Kubernetes attributes processor"]]
+    two["`Kubernetes attributes processor`"]
     three["`Resource detection processors (system, EKS, GCP)`"]
     four["`Resource processors (K8s, cloud)`"]
-    five["`Attributes processor (k8s_logs_dataset)"]
+    five["`Attributes processor (k8s_logs_dataset)`"]
     six["`Elasticsearch and debug exporters`"]
     one --> two --> three --> four --> five --> six
+
+    style one fill: #e6f9f7,stroke:#333,stroke-width:1px
+    style two fill: ##f8e9e9,stroke:#333,stroke-width:1px
+    style three fill: ##f8e9e9,stroke:#333,stroke-width:1px
+    style four fill: ##f8e9e9,stroke:#333,stroke-width:1px
+    style five fill: ##f8e9e9,stroke:#333,stroke-width:1px
+    style six fill: #e6f9f7,stroke:#333,stroke-width:1px
 ```
 
 Refer to the following tables for more information on the components supported by the Elastic Distribution for the OpenTelemetry Collector.
