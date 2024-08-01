@@ -2,10 +2,10 @@
 
 The OpenTelemetry Collector uses the following components to receive, process, and export telemetry data:
 
-- [Receivers](collector-components.md#receivers): collect telemetry from your host.
-- [Processors](collector-components.md#processors): modify or transform telemetry data before sending it to the exporters.
-- [Exporters](collector-components.md#exporters): send data to the backends or destinations.
-- [Extensions](collector-components.md#extensions): provide additional functionalities and capabilities.
+- [Receivers](collector-components.md#receivers): Collect telemetry from your host.
+- [Processors](collector-components.md#processors): Modify or transform telemetry data before sending it to the exporters.
+- [Exporters](collector-components.md#exporters): Send data to the backends or destinations.
+- [Extensions](collector-components.md#extensions): Provide additional functionalities and capabilities.
 
 The default configurations of the Elastic Distribution for the OpenTelemetry Collector follows these flows.
 
@@ -19,7 +19,7 @@ The default configurations of the Elastic Distribution for the OpenTelemetry Col
 
 Refer to the following tables for more information on the components supported by the Elastic Distribution for the OpenTelemetry Collector.
 Follow the links for OpenTelemetry documentation with more configuration details for each component.
-To set up the collector, go to the [guided onboarding](docs/guided-onboarding.md) or [manual configuration](docs/manual-configuration.md) to get started.
+To set up the collector, go to the [guided onboarding](guided-onboarding.md) or [manual configuration](manual-configuration.md) to get started.
 
 ## Receivers
 

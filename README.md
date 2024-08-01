@@ -3,11 +3,11 @@
 [OpenTelemetry](https://opentelemetry.io/docs/) is a vendor- and tool-neutral observability framework for collecting, processing, and exporting telemetry data.
 You can send your telemetry data to Elastic Observability using OpenTelemetry the following ways:
 
-- Use the Elastic Distribution for the [OpenTelemetry Collector](https://github.com/open-telemetry/opentelemetry-collector) to collect and send logs and host metrics to [Elastic Cloud](https://cloud.elastic.co/).
-- Use Elastic Distributions for OpenTelemetry Java, .NET, Node.js, and Python to instrument your applications and send logs, traces, and metrics to [Elastic Cloud](https://cloud.elastic.co/).
-- Configure a custom collector or contrib Distribution for the OpenTelemetry Collector to collect logs and metrics and send them to Elastic Observability.
+- Use the **Elastic Distribution for OpenTelemetry Collector**, an extension of the [OpenTelemetry Collector](https://github.com/open-telemetry/opentelemetry-collector), to collect and send logs and host metrics to [Elastic Cloud](https://cloud.elastic.co/).
+- Use the **Elastic Distributions for OpenTelemetry**, extensions of select [OpenTelemetry language SDKs](https://opentelemetry.io/docs/languages/), to instrument your applications and send logs, traces, and metrics to [Elastic Cloud](https://cloud.elastic.co/). The following languages are currently supported: Java, .NET, Node.js, and Python.
+- Configure your own [custom collector](https://opentelemetry.io/docs/collector/custom-collector/) or the ["contrib" distribution](https://github.com/open-telemetry/opentelemetry-collector-contrib) to collect logs and metrics and send them to Elastic Observability.
 
-This diagram provides a quick overview on how the the different components work together. Refer to the [components](docs/collector-components.md) for a more in-depth look.
+This diagram provides a quick overview on how the different components work together. Refer to the [components](docs/collector-components.md) for a more in-depth look.
 
 ![Diagram of the OpenTelemetry flow](docs/images/elastic-otel-overview.png)
 
@@ -20,7 +20,7 @@ These pages detail the components and configuration of the Elastic Distribution 
 - [Manual configurations](docs/manual-configuration.md): Manually configure the collector to send data to Elastic Observability.
 - [Limitations](docs/collector-limitations.md): Understand the current limitations of the collector.
 
-## Collect application data with Elastic Distributions for OpenTelemetry 
+## Collect application data with Elastic Distributions for OpenTelemetry
 
 Elastic offers several distributions that extend [OpenTelemetry language SDKs](https://opentelemetry.io/docs/languages/). The following languages are currently supported:
 
