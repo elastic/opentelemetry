@@ -1,12 +1,12 @@
 # Manually configure the collector
-Collecting logs and host metrics with the Elastic Distribution for the OpenTelemetry Collector without using the [guided onboarding](docs/guided-onboarding.md) requires some manual configuration.
+Collecting logs and host metrics with the Elastic Distribution for the OpenTelemetry Collector without using the [guided onboarding](guided-onboarding.md) requires some manual configuration.
 
 ## Before you begin
 The onboarding has the following requirements and limitations:
 
-- The **Admin** role or higher is required to onboard system logs and metrics. To learn more, refer to <DocLink slug="/serverless/general/assign-user-roles" />.
+- The **Admin** role or higher is required to onboard system logs and metrics. To learn more, refer to [Assign user roles and privileges](https://www.elastic.co/docs/current/serverless/general/assign-user-roles).
 - Root privileges on the host are required to run the OpenTelemetry collector used in this quickstart.
-- The collector only work on Kubernetes, Linux, and MacOS systems.
+- The collector only works on Kubernetes, Linux, and MacOS systems.
 - Refer to [Elastic OpenTelemetry Collector limitations](collector-limitations.md) for known limitations when using the Elastic Distribution for the OpenTelemetry collector.
 
 ## Collect your logs and metrics
