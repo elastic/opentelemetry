@@ -1,4 +1,4 @@
-# Elastic OpenTelemetry Collector components
+# Elastic Distribution for OpenTelemetry Collector components
 
 The OpenTelemetry Collector uses the following components to receive, process, and export telemetry data:
 
@@ -7,7 +7,7 @@ The OpenTelemetry Collector uses the following components to receive, process, a
 - [Exporters](collector-components.md#exporters): Send data to the backends or destinations.
 - [Extensions](collector-components.md#extensions): Provide additional functionalities and capabilities.
 
-The default configurations of the Elastic Distribution for the OpenTelemetry Collector follows these flows.
+The default configurations of the Elastic OTel Collector follows these flows.
 
 **MacOS and Linux Host metrics:**
 
@@ -65,7 +65,7 @@ flowchart LR
     style eight fill:#e6f9f7,stroke:#333,stroke-width:1px
 ```
 
-**Kubernetes logs**
+**Kubernetes, MacOS, and Linux logs**
 ```mermaid
 flowchart LR
     one["`File log receiver`"]
@@ -84,7 +84,7 @@ flowchart LR
     style six fill: #e6f9f7,stroke:#333,stroke-width:1px
 ```
 
-Refer to the following tables for more information on the components supported by the Elastic Distribution for the OpenTelemetry Collector.
+Refer to the following tables for more information on the components included in the Elastic Distribution for the OpenTelemetry Collector.
 Follow the links for OpenTelemetry documentation with more configuration details for each component.
 To set up the collector, go to the [guided onboarding](guided-onboarding.md) or [manual configuration](manual-configuration.md) to get started.
 
@@ -104,7 +104,6 @@ To set up the collector, go to the [guided onboarding](guided-onboarding.md) or 
 
 | Component  | Description |
 |---|---|
-| [`elasticinframetricsprocessor`](https://github.com/elastic/opentelemetry-collector-components/blob/processor/elasticinframetricsprocessor/v0.7.1/processor/elasticinframetricsprocessor/README.md)  | Processes infrastructure metrics to enhance and convert them for Elasticsearch. |
 | [`attributesprocessor`](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/processor/attributesprocessor/v0.105.0/processor/attributesprocessor/README.md) | Modifies telemetry data attributes. |
 | [`filterprocessor`](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/processor/filterprocessor/v0.105.0/processor/filterprocessor/README.md) | Filters telemetry data to include or exclude specific data points. |
 | [`k8sattributesprocessor`](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/processor/k8sattributesprocessor/v0.105.0/processor/k8sattributesprocessor/README.md) | Enhances telemetry data with Kubernetes-specific metadata. |
