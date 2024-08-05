@@ -1,5 +1,5 @@
 # Manually configure the Elastic Distribution for OpenTelemetry Collector
-Collecting logs and host metrics with the Elastic OTel Collector without using the [guided onboarding](guided-onboarding.md) requires some manual configuration.
+Collecting logs and host metrics with the Elastic Distribution for OpenTelemetry Collector without using the [guided onboarding](guided-onboarding.md) requires some manual configuration.
 
 ## Before you begin
 The Elastic OTel collector has the following requirements and limitations:

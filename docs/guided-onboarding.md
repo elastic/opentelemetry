@@ -1,6 +1,6 @@
 # Collect logs and metrics using the guided onboarding
-The guided onboarding in Kibana or in a serverless Observability project walks you through collecting logs and metrics using the Elastic OTel Collector.
-For manual configuration, refer to [Manually configure the Elastic OTel Collector](manual-configuration.md).
+The guided onboarding in Kibana or in a serverless Observability project walks you through collecting logs and metrics using the Elastic Distribution for OpenTelemetry Collector.
+To configure the Elastic OTel Collector manually, refer to the [manual configuration](manual-configuration.md) docs.
 
 ## Before you begin
 The onboarding has the following requirements and limitations:
@@ -12,14 +12,14 @@ The onboarding has the following requirements and limitations:
 
 ## Collect your logs and metrics
 
-Follow these steps to collect logs and metrics using the Elastic OTel collector
+Follow these steps to collect logs and metrics using the Elastic OTel collector:
 
 1. Open an [Elastic Cloud](cloud.elastic.co) deployment or a serverless Observability project.
 1. To open the guided onboarding, either:
    1. In an Elastic Cloud deployment, open Kibana, and go to **Observability** → **Add Data**.
    1. In a serverless Observability project, go to **Add Data**.
 1. Select **Collect and analyze logs**, and then select **OpenTelemetry**.
-1. Select the appropriate platform:
+1. Select the appropriate platform, and complete the following:
    1. For **MacOS and Linux**, copy the command, open a terminal on your host, and run the command to download and configure the OpenTelemetry collector.
    1. For **Kubernetes**, download the manifest.
 1. Copy the command under Step 2:
