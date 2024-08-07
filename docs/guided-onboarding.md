@@ -8,7 +8,6 @@ The onboarding has the following requirements and limitations:
 - The **Admin** role or higher is required to onboard system logs and metrics. To learn more, refer to [Assign user roles and privileges](https://www.elastic.co/docs/current/serverless/general/assign-user-roles).
 - Root privileges on the host are required to run the OpenTelemetry collector used in this quickstart.
 - The EDOT Collector only works on Kubernetes, Linux, and MacOS systems.
-- Refer to [Elastic OpenTelemetry Collector limitations](collector-limitations.md) for known limitations when using the EDOT Collector.
 
 ## Collect your logs and metrics
 
@@ -30,3 +29,6 @@ Logs are collected from setup onward, so you won't see logs that occurred before
 The default log path is `/var/log/*`. To update the path, modify `otel.yml`.
 
 Under **Visualize your data**, you'll see links to **Logs Explorer** to view your logs and **Hosts** to view your host metrics.
+
+## Limitations
+Refer to [Elastic OpenTelemetry Collector limitations](collector-limitations.md) for known limitations when using the EDOT Collector.
