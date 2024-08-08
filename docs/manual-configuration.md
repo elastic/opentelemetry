@@ -2,7 +2,7 @@
 Collecting logs and host metrics with the Elastic Distribution for OpenTelemetry (EDOT) Collector without using the [guided onboarding](guided-onboarding.md) requires some manual configuration.
 
 ## Before you begin
-The EDOT Collector has the following requirements and limitations:
+The EDOT Collector has the following requirements:
 
 - The **Admin** role or higher is required to onboard system logs and metrics. To learn more, refer to [Assign user roles and privileges](https://www.elastic.co/docs/current/serverless/general/assign-user-roles).
 - Root privileges on the host are required to run the OpenTelemetry collector used in this quickstart.
