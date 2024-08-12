@@ -1,5 +1,5 @@
 # Collect logs and metrics using the guided onboarding
-The guided onboarding in Kibana or in a serverless Observability project walks you through collecting logs and metrics using the Elastic Distribution for OpenTelemetry (EDOT) Collector.
+The guided onboarding in Kibana or in a serverless Observability project walks you through collecting logs and metrics using the Elastic Distribution of OpenTelemetry (EDOT) Collector.
 To configure the EDOT Collector manually, refer to the [manual configuration](manual-configuration.md) docs.
 
 ## Before you begin

@@ -1,11 +1,11 @@
-# Elastic Distributions for OpenTelemetry
+# Elastic Distributions of OpenTelemetry
 
 [OpenTelemetry](https://opentelemetry.io/docs/) is a vendor-neutral observability framework for collecting, processing, and exporting telemetry data.
-The Elastic Distribution for OpenTelemetry (EDOT) Collector is a supported, drop-in replacement distribution of the [OpenTelemetry Collector](https://github.com/open-telemetry/opentelemetry-collector) made up of mostly upstream components.
+The Elastic Distribution of OpenTelemetry (EDOT) Collector is a supported, drop-in replacement distribution of the [OpenTelemetry Collector](https://github.com/open-telemetry/opentelemetry-collector) made up of mostly upstream components.
 You can use OpenTelemetry to send your telemetry data to Elastic Observability the following ways:
 
 - Collect and send logs and host metrics to [Elastic Cloud](https://cloud.elastic.co/) using the EDOT Collector.
-- Instrument your applications and send logs, traces, and metrics to [Elastic Cloud](https://cloud.elastic.co/) using the Elastic Distributions for select [OpenTelemetry language SDKs](https://opentelemetry.io/docs/languages/). Currently, Elastic provides distributions for the following language SDKs: Java, .NET, Node.js, and Python.
+- Instrument your applications and send logs, traces, and metrics to [Elastic Cloud](https://cloud.elastic.co/) using the Elastic Distributions of select [OpenTelemetry language SDKs](https://opentelemetry.io/docs/languages/). Currently, Elastic provides distributions for the following language SDKs: Java, .NET, Node.js, and Python.
 - Build and configure a [custom collector](https://opentelemetry.io/docs/collector/custom-collector/) or extend the [OpenTelemetry Collector Contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib) distribution to collect logs and metrics and send them to Elastic Observability.
 
 This diagram provides a quick overview of how the different components work together. Refer to the [components](docs/collector-components.md) for a more in-depth look.

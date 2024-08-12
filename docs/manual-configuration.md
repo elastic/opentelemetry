@@ -1,5 +1,5 @@
-# Manually configure the Elastic Distribution for OpenTelemetry Collector
-Collecting logs and host metrics with the Elastic Distribution for OpenTelemetry (EDOT) Collector without using the [guided onboarding](guided-onboarding.md) requires some manual configuration.
+# Manually configure the Elastic Distribution of OpenTelemetry Collector
+Collecting logs and host metrics with the Elastic Distribution of OpenTelemetry (EDOT) Collector without using the [guided onboarding](guided-onboarding.md) requires some manual configuration.
 
 ## Before you begin
 The EDOT Collector has the following requirements:
@@ -24,7 +24,7 @@ Then manually configure the EDOT Collector to collect logs and metrics on a MacO
 1. Copy the content of the `platformlogs_hostmetrics.yml` file.
 1. From the Elastic Agent base directory, open the `otel.yml` file, and replace the content with the copied content from `platformlogs_hostmetrics.yml`.
 1. Find and update the following settings in the configuration:
-    - `file_storage.directory`: Set to the directory where you want to store you OpenTelemetry data. <!-- do we want to recommend a specific folder for this? -->
+    - `file_storage.directory`: Set to the directory where you want to store you OpenTelemetry data.
     - `elasticsearch.endpoint`: Set to your Elasticsearch endpoint you copied earlier.
     - `elasticsearch.api_key`: Set to the API key you created earlier.
 1. Run the OpenTelemetry collector with the following command:

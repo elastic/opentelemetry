@@ -1,4 +1,4 @@
-# Elastic Distribution for OpenTelemetry Collector components
+# Elastic Distribution of OpenTelemetry Collector components
 
 The OpenTelemetry Collector uses the following components to receive, process, and export telemetry data:
 
@@ -7,7 +7,7 @@ The OpenTelemetry Collector uses the following components to receive, process, a
 - [Exporters](collector-components.md#exporters): Send data to the backends or destinations.
 - [Extensions](collector-components.md#extensions): Provide additional functionalities and capabilities.
 
-The default configurations of the Elastic Distribution for the OpenTelemetry (EDOT) Collector follows these flows:
+The default configurations of the Elastic Distribution of the OpenTelemetry (EDOT) Collector follows these flows:
 
 **MacOS and Linux Host metrics:**
 
