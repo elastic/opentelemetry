@@ -1,5 +1,5 @@
 # Collect logs and metrics using the guided onboarding
-The guided onboarding in Kibana or in a serverless Observability project walks you through collecting logs and metrics using the Elastic Distribution of OpenTelemetry (EDOT) Collector.
+The guided onboarding in Elasticsearch Service or a serverless Observability project walks you through collecting logs and metrics using the Elastic Distribution of OpenTelemetry (EDOT) Collector.
 To configure the EDOT Collector manually, refer to the [manual configuration](manual-configuration.md) docs.
 
 ## Before you begin
@@ -7,7 +7,7 @@ The onboarding has the following requirements:
 
 - The **Admin** role or higher is required to onboard system logs and metrics. To learn more, refer to [Assign user roles and privileges](https://www.elastic.co/docs/current/serverless/general/assign-user-roles).
 - Root privileges on the host are required to run the OpenTelemetry collector used in this quickstart.
-- The EDOT Collector only works on Kubernetes, Linux, and MacOS systems.
+- The guided onboarding provides out-of-the-box deployment and configurations for Kubernetes, Linux, and MacOS systems.
 
 ## Collect your logs and metrics
 

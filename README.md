@@ -1,8 +1,10 @@
 # Elastic Distributions of OpenTelemetry
 
 [OpenTelemetry](https://opentelemetry.io/docs/) is a vendor-neutral observability framework for collecting, processing, and exporting telemetry data.
-The Elastic Distribution of OpenTelemetry (EDOT) Collector is a supported, drop-in replacement distribution of the [OpenTelemetry Collector](https://github.com/open-telemetry/opentelemetry-collector) made up of mostly upstream components.
-You can use OpenTelemetry to send your telemetry data to Elastic Observability the following ways:
+
+The Elastic Distributions of OpenTelemetry (EDOT) are composed of OpenTelemetry (OTel) project components, [OpenTelemetry Collector](https://github.com/open-telemetry/opentelemetry-collector), and language SDKs, which provide users with the necessary capabilities and out-of-the-box configurations, enabling quick and effortless infrastructure and application monitoring.
+
+You can use OpenTelemetry to send your telemetry data to Elastic Observability in the following ways:
 
 - Collect and send logs and host metrics to [Elastic Cloud](https://cloud.elastic.co/) using the EDOT Collector.
 - Instrument your applications and send logs, traces, and metrics to [Elastic Cloud](https://cloud.elastic.co/) using the Elastic Distributions of select [OpenTelemetry language SDKs](https://opentelemetry.io/docs/languages/). Currently, Elastic provides distributions for the following language SDKs: Java, .NET, Node.js, and Python.
@@ -17,7 +19,7 @@ This diagram provides a quick overview of how the different components work toge
 These pages detail the components and how to configure the EDOT Collector.
 
 - [Components](docs/collector-components.md): Get details on the components used to receive, process, and export telemetry data.
-- [Guided onboarding](docs/guided-onboarding.md): Use the guided onboarding in Kibana or in a serverless Observability project to send data using the EDOT Collector.
+- [Guided onboarding](docs/guided-onboarding.md): Use the guided onboarding in Elasticsearch Service or a serverless Observability project to send data using the EDOT Collector.
 - [Manual configurations](docs/manual-configuration.md): Manually configure the EDOT Collector to send data to Elastic Observability.
 - [Limitations](docs/collector-limitations.md): Understand the current limitations of the EDOT Collector.
 

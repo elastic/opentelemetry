@@ -1,5 +1,5 @@
 # Manually configure the Elastic Distribution of OpenTelemetry Collector
-Collecting logs and host metrics with the Elastic Distribution of OpenTelemetry (EDOT) Collector without using the [guided onboarding](guided-onboarding.md) requires some manual configuration.
+Collecting logs and host metrics with the Elastic Distribution of OpenTelemetry (EDOT) Collector without using the [guided onboarding](guided-onboarding.md) requires completing some manual steps.
 
 ## Before you begin
 The EDOT Collector has the following requirements:
@@ -12,9 +12,9 @@ The EDOT Collector has the following requirements:
 
 To manually configure the EDOT Collector, gather the following information:
 
-- **Your Elasticsearch endpoint**: From the help menu in Kibana or your serverless Observability project, select **Connection details** and copy the **Elasticsearch endpoint**.
+- **Your Elasticsearch endpoint**: From the help menu in Elastic Cloud or your serverless Observability project, select **Connection details** and copy the **Elasticsearch endpoint**.
 - **API key**:
-   - **Kibana:** From the help menu, select **Connection details** and select **Create and manage API keys**. From the **API keys** page, select **Create API key**. Give your API key a name, select **Create API key**, and copy the new API key.
+   - **Elasticsearch Service:** From the help menu, select **Connection details** and select **Create and manage API keys**. From the **API keys** page, select **Create API key**. Give your API key a name, select **Create API key**, and copy the new API key.
    - **Serverless:** From the help menu, select **Connection details** and select the **API key** tab. Give your API key a name, select **Create API key**, and copy the new API key.
 
 Then manually configure the EDOT Collector to collect logs and metrics on a MacOS or Linux system:
@@ -27,7 +27,7 @@ Then manually configure the EDOT Collector to collect logs and metrics on a MacO
     - `file_storage.directory`: Set to the directory where you want to store you OpenTelemetry data.
     - `elasticsearch.endpoint`: Set to your Elasticsearch endpoint you copied earlier.
     - `elasticsearch.api_key`: Set to the API key you created earlier.
-1. Run the OpenTelemetry collector with the following command:
+1. Run the EDOT collector with the following command:
    ```console
    ./elastic-agent otel --config otel.yml
    ```
@@ -37,4 +37,4 @@ The default log path is `/var/log/*`. Update the path in the `otel.yml` file.
 
 ## Limitations
 
-Refer to [Elastic OpenTelemetry Collector limitations](collector-limitations.md) for known limitations when using the Elastic Distribution for the OpenTelemetry collector.
+Refer to [Elastic OpenTelemetry Collector limitations](collector-limitations.md) for known limitations when using the Elastic Distribution of the OpenTelemetry collector.
