@@ -13,7 +13,7 @@ The onboarding has the following requirements:
 
 Follow these steps to collect logs and metrics using the EDOT Collector:
 
-1. Open an [Elastic Cloud](cloud.elastic.co) deployment or a serverless Observability project.
+1. Open an [Elastic Cloud](https://cloud.elastic.co) deployment or a serverless Observability project.
 1. To open the guided onboarding, either:
    1. In an Elastic Cloud deployment, open Kibana, and go to **Observability** → **Add Data**.
    1. In a serverless Observability project, go to **Add Data**.
