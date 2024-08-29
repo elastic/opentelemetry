@@ -9,80 +9,21 @@ The OpenTelemetry Collector uses the following components to receive, process, a
 
 The default configurations of the Elastic Distribution of the OpenTelemetry (EDOT) Collector follows these flows:
 
-**MacOS and Linux Host metrics:**
+**MacOS and Linux host metrics**
 
-```mermaid
-flowchart LR
-    one["`Host metrics receiver`"]
-    two["`Elastic infra metrics processor`"]
-    three["`Attributes processor (dataset)`"]
-    four["`Resource processor (process)`"]
-    five["`Elasticsearch exporter`"]
-    one --> two --> three --> four --> five
+![Flow for MacOS and Linux Host metrics](images/macos-and-linux-host-metrics.png)
 
-    style one fill: #e6f9f7,stroke:#333,stroke-width:1px
-    style two fill: ##f8e9e9,stroke:#333,stroke-width:1px
-    style three fill: ##f8e9e9,stroke:#333,stroke-width:1px
-    style four fill: ##f8e9e9,stroke:#333,stroke-width:1px
-    style five fill:#e6f9f7,stroke:#333,stroke-width:1px
-```
+**MacOS and Linux logs**
 
-**MacOS and Linux Logs**
-
-```mermaid
-flowchart LR
-    one["`File log receiver`"]
-    two["`Resource detection processor`"]
-    three["`Elasticsearch exporter`"]
-    one --> two --> three
-
-    style one fill: #e6f9f7,stroke:#333,stroke-width:1px
-    style two fill: ##f8e9e9,stroke:#333,stroke-width:1px
-    style three fill:#e6f9f7,stroke:#333,stroke-width:1px
-```
+![Flow for MacOS and Linux logs](images/macos-and-linux-logs.png)
 
 **Kubernetes metrics**
 
-```mermaid
-flowchart LR
-    one["`Kubelet stats and host metrics receivers`"]
-    two["`Kubernetes attributes processor`"]
-    three["`Elastic infra metrics processor`"]
-    four["`Resource detection processors (EKS, GCP, K8s)`"]
-    five["`Resource processors (K8s, cloud)`"]
-    six["`Attributes processor (dataset)`"]
-    seven["`Resource processor`"]
-    eight["`Elasticsearch exporter`"]
-    one --> two --> three --> four --> five --> six --> seven --> eight
-
-    style one fill: #e6f9f7,stroke:#333,stroke-width:1px
-    style two fill: ##f8e9e9,stroke:#333,stroke-width:1px
-    style three fill: ##f8e9e9,stroke:#333,stroke-width:1px
-    style four fill: ##f8e9e9,stroke:#333,stroke-width:1px
-    style five fill: ##f8e9e9,stroke:#333,stroke-width:1px
-    style six fill: ##f8e9e9,stroke:#333,stroke-width:1px
-    style seven fill: ##f8e9e9,stroke:#333,stroke-width:1px
-    style eight fill:#e6f9f7,stroke:#333,stroke-width:1px
-```
+![Flow for Kubernetes metrics](images/kubernetes-metrics.png)
 
 **Kubernetes, MacOS, and Linux logs**
-```mermaid
-flowchart LR
-    one["`File log receiver`"]
-    two["`Kubernetes attributes processor`"]
-    three["`Resource detection processors (system, EKS, GCP)`"]
-    four["`Resource processors (K8s, cloud)`"]
-    five["`Attributes processor (k8s_logs_dataset)`"]
-    six["`Elasticsearch and debug exporters`"]
-    one --> two --> three --> four --> five --> six
 
-    style one fill: #e6f9f7,stroke:#333,stroke-width:1px
-    style two fill: ##f8e9e9,stroke:#333,stroke-width:1px
-    style three fill: ##f8e9e9,stroke:#333,stroke-width:1px
-    style four fill: ##f8e9e9,stroke:#333,stroke-width:1px
-    style five fill: ##f8e9e9,stroke:#333,stroke-width:1px
-    style six fill: #e6f9f7,stroke:#333,stroke-width:1px
-```
+![Flow for Kubernetes, MacOS, and Linux logs](images/kubernetes-macos-and-linux-logs.png)
 
 Refer to the following tables for more information on the components included in the EDOT Collector.
 Follow the links for OpenTelemetry documentation with more configuration details for each component.
