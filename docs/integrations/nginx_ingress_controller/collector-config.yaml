@@ -1,0 +1,55 @@
+receivers:
+  filelog:
+    include_file_path: true
+    include: [/tmp/var/log/pods/*/*/*.log]
+    operators:
+      - id: container-parser
+        type: container
+
+processors:
+  transform/parse_nginx_ingress/log:
+    log_statements:
+      - context: log
+        conditions:
+            #     # ^([0-9a-fA-F:.]+): Matches the remote address (IPv4 or IPv6 format).
+            #     # [^ ]+: Matches the remote user (including the hyphen for missing user).
+            #     # .*[0-9a-fA-F]+$: Ensures the log line ends with a hexadecimal string (request ID).
+          - IsMatch(body, "^([0-9a-fA-F:.]+) - [^ ]+ .*[0-9a-fA-F]+$")
+        statements:
+          # Log format: https://github.com/kubernetes/ingress-nginx/blob/nginx-0.30.0/docs/user-guide/nginx-configuration/log-format.md
+          # Based on https://github.com/elastic/integrations/blob/main/packages/nginx_ingress_controller/data_stream/access/elasticsearch/ingest_pipeline/default.yml
+          - merge_maps(attributes, ExtractGrokPatterns(body, "(%{NGINX_HOST} )?\"?(?:%{NGINX_ADDRESS_LIST:nginx_ingress_controller.access.remote_ip_list}|%{NOTSPACE:source.address}) - (-|%{DATA:user.name}) \\[%{HTTPDATE:nginx_ingress_controller.access.time}\\] \"%{DATA:nginx_ingress_controller.access.info}\" %{NUMBER:http.response.status_code:long} %{NUMBER:http.response.body.bytes:long} \"(-|%{DATA:http.request.referrer})\" \"(-|%{DATA:user_agent.original})\" %{NUMBER:http.request.bytes:long} %{NUMBER:http.request.time:double} \\[%{DATA:nginx_ingress_controller.access.upstream.name}\\] \\[%{DATA:nginx_ingress_controller.access.upstream.alternative_name}\\] (%{UPSTREAM_ADDRESS_LIST:nginx_ingress_controller.access.upstream_address_list}|-) (%{UPSTREAM_RESPONSE_LENGTH_LIST:nginx_ingress_controller.access.upstream.response.length_list}|-) (%{UPSTREAM_RESPONSE_TIME_LIST:nginx_ingress_controller.access.upstream.response.time_list}|-) (%{UPSTREAM_RESPONSE_STATUS_CODE_LIST:nginx_ingress_controller.access.upstream.response.status_code_list}|-) %{GREEDYDATA:http.request.id}", true, ["NGINX_HOST=(?:%{IP:destination.ip}|%{NGINX_NOTSEPARATOR:destination.domain})(:%{NUMBER:destination.port})?", "NGINX_NOTSEPARATOR=[^\t ,:]+", "NGINX_ADDRESS_LIST=(?:%{IP}|%{WORD}) (\"?,?\\s*(?:%{IP}|%{WORD}))*", "UPSTREAM_ADDRESS_LIST=(?:%{IP}(:%{NUMBER})?)(\"?,?\\s*(?:%{IP}(:%{NUMBER})?))*", "UPSTREAM_RESPONSE_LENGTH_LIST=(?:%{NUMBER})(\"?,?\\s*(?:%{NUMBER}))*", "UPSTREAM_RESPONSE_TIME_LIST=(?:%{NUMBER})(\"?,?\\s*(?:%{NUMBER}))*", "UPSTREAM_RESPONSE_STATUS_CODE_LIST=(?:%{NUMBER})(\"?,?\\s*(?:%{NUMBER}))*"]), "upsert")
+
+
+          - merge_maps(attributes, ExtractGrokPatterns(attributes["nginx_ingress_controller.access.info"], "%{WORD:http.request.method} %{DATA:url.original} HTTP/%{NUMBER:http.version}", true), "upsert")
+          - delete_key(attributes, "nginx_ingress_controller.access.info")
+
+          # Extra URL parsing
+          - merge_maps(attributes, URL(attributes["url.original"]), "upsert")
+          - set(attributes["url.domain"], attributes["destination.domain"])
+
+          # Extract UserAgent
+          - merge_maps(attributes, UserAgent(attributes["user_agent.original"]), "upsert")
+
+          # set protocol name
+          - set(attributes["network.protocol.name"], "http")
+          # LogRecord event: https://github.com/open-telemetry/semantic-conventions/pull/982
+          - set(attributes["event.name"], "nginx.ingress.controller.access")
+
+
+  # geoip:
+  #   providers:
+  #     context: record
+  #     maxmind:
+  #       database_path: /tmp/GeoLite2-City.mmdb
+
+exporters:
+  debug:
+    verbosity: detailed
+
+service:
+  pipelines:
+    logs:
+      receivers: [filelog]
+      processors: [transform/parse_nginx_ingress/log]
+      exporters: [debug]
