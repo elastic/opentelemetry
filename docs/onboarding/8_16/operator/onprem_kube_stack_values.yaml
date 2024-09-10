@@ -2,9 +2,10 @@ opentelemetry-operator:
   admissionWebhooks:
     certManager:
       enabled: false
-  autoGenerateCert:
-    enabled: true
-    recreate: true
+
+autoGenerateCert:
+  enabled: true
+  recreate: true
 
 crds:
   create: true
