@@ -1,13 +1,14 @@
 receivers:
   filelog:
     include_file_path: true
-    include: [/tmp/var/log/pods/*/*/*.log]
+    include: [/var/log/pods/*/*/*.log]
     operators:
       - id: container-parser
         type: container
 
 processors:
   transform/parse_nginx_ingress/log:
+    error_mode: ignore
     log_statements:
       - context: log
         conditions:
@@ -32,7 +33,7 @@ processors:
           - set(attributes["network.protocol.name"], "http")
 
           # tmp
-          - set(attributes["data_stream.dataset"], "nginx_ingress")
+          - set(attributes["data_stream.dataset"], "nginx_ingress_controller.access")
 
           # LogRecord event: https://github.com/open-telemetry/semantic-conventions/pull/982
           - set(attributes["event.name"], "nginx.ingress.controller.access")
@@ -76,20 +77,39 @@ processors:
           - set(attributes["upstream.response.status_code"], Split(attributes["upstream.response.status_code_list"], ","))
           - delete_key(attributes, "upstream.response.status_code_list")
 
+  # TODO: add other detectors
+  resourcedetection/system:
+    detectors: ["system"]
+    system:
+      hostname_sources: [ "os" ]
+      resource_attributes:
+        host.name:
+          enabled: true
+        host.id:
+          enabled: false
+        host.arch:
+          enabled: true
 
   # geoip:
+  #   context: record
   #   providers:
-  #     context: record
   #     maxmind:
   #       database_path: /tmp/GeoLite2-City.mmdb
 
 exporters:
+  elasticsearch:
+    endpoints:
+    - YOUR_ELASTICSEARCH_ENDPOINT
+    api_key: YOUR_ELASTICSEARCH_API_KEY
+    logs_dynamic_index:
+      enabled: true
   debug:
-    verbosity: detailed
 
 service:
   pipelines:
     logs:
       receivers: [filelog]
-      processors: [transform/parse_nginx_ingress/log]
-      exporters: [debug]
+      processors: [transform/parse_nginx_ingress/log, resourcedetection/system]
+      # Uncomment the following line if geoip is configured
+      # processors: [transform/parse_nginx_ingress/log, geoip, resourcedetection/system]
+      exporters: [debug, elasticsearch]
