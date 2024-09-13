@@ -257,7 +257,7 @@ collectors:
           start_at: end
           exclude:
           # exlude collector logs
-          - /var/log/pods/default_otel-daemonset-opentelemetry-collector-agent*_*/opentelemetry-collector/*.log
+          - /var/log/pods/opentelemetry-operator-system_opentelemetry-kube-stack*/*/*.log
           include:
           - /var/log/pods/*/*/*.log
           include_file_name: false
