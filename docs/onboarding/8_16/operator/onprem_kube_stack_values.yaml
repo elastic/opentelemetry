@@ -1,4 +1,7 @@
 opentelemetry-operator:
+  manager:
+    extraArgs:
+      - --enable-go-instrumentation
   admissionWebhooks:
     certManager:
       enabled: false
@@ -400,3 +403,5 @@ instrumentation:
     argument: "1.0"
   java:
     image: ghcr.io/open-telemetry/opentelemetry-operator/autoinstrumentation-java:2.5.0
+  go:
+    image: ghcr.io/open-telemetry/opentelemetry-go-instrumentation/autoinstrumentation-go:latest
