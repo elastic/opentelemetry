@@ -25,12 +25,13 @@ These pages detail the components and how to configure the EDOT Collector.
 
 ## Collect application data using the EDOT language SDKs
 
-Elastic offers several Distributions that extend [OpenTelemetry language SDKs](https://opentelemetry.io/docs/languages/). The following languages are currently supported:
+Elastic offers several Distributions that extend [OpenTelemetry language SDKs](https://opentelemetry.io/docs/languages/). The following languages are currently available:
 
 * [Java](https://github.com/elastic/elastic-otel-java)
 * [.NET](https://github.com/elastic/elastic-otel-dotnet)
 * [Node.js](https://github.com/elastic/elastic-otel-node)
 * [Python](https://github.com/elastic/elastic-otel-python)
+* [PHP](https://github.com/elastic/elastic-otel-php/)
 
 ## Configure a custom collector or the OpenTelemetry Collector Contrib distribution
 
