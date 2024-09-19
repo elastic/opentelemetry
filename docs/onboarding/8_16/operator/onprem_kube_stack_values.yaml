@@ -32,10 +32,6 @@ defaultCRConfig:
         secretKeyRef:
           name: elastic-secret-otel
           key: elastic_api_key
-    - name: K8S_NODE_NAME
-      valueFrom:
-        fieldRef:
-          fieldPath: spec.nodeName
 collectors:
   cluster:
     config:
@@ -268,7 +264,7 @@ collectors:
                 enabled: true
         k8sattributes:
           filter:
-            node_from_env_var: K8S_NODE_NAME
+            node_from_env_var: OTEL_K8S_NODE_NAME
           passthrough: false
           pod_association:
             - sources:
@@ -389,8 +385,8 @@ collectors:
         kubeletstats:
           auth_type: serviceAccount
           collection_interval: 20s
-          endpoint: ${env:K8S_NODE_NAME}:10250
-          node: '${env:K8S_NODE_NAME}'
+          endpoint: ${env:OTEL_K8S_NODE_NAME}:10250
+          node: '${env:OTEL_K8S_NODE_NAME}'
           # Required to work for all CSPs without an issue
           insecure_skip_verify: true
           k8s_api_config:
@@ -423,25 +419,64 @@ collectors:
       service:
         pipelines:
           logs/node:
-            receivers: [filelog]
-            processors: [batch, k8sattributes, resourcedetection/system, resourcedetection/eks, resourcedetection/gcp, resourcedetection/aks, resource/k8s, resource/cloud, attributes/k8s_logs_dataset]
-            exporters: [debug, elasticsearch]
+            receivers:
+             -  filelog
+            processors:
+              - batch
+              - k8sattributes
+              - resourcedetection/system
+              - resourcedetection/eks
+              - resourcedetection/gcp
+              - resourcedetection/aks
+              - resource/k8s
+              - resource/cloud
+              - attributes/k8s_logs_dataset
+            exporters:
+              - debug
+              - elasticsearch
           metrics/node:
-            receivers: [hostmetrics, kubeletstats]
-            processors: [elasticinframetrics, batch, k8sattributes, resourcedetection/system, resourcedetection/eks, resourcedetection/gcp, resourcedetection/aks, resource/k8s, resource/cloud, attributes/dataset, resource/process]
-            exporters: [debug, elasticsearch]
+            receivers:
+              - hostmetrics
+              - kubeletstats
+            processors:
+              - elasticinframetrics
+              - batch
+              - k8sattributes
+              - resourcedetection/system
+              - resourcedetection/eks
+              - resourcedetection/gcp
+              - resourcedetection/aks
+              - resource/k8s
+              - resource/cloud
+              - attributes/dataset
+              - resource/process
+            exporters:
+              - debug
+              - elasticsearch
           metrics/apm:
-            receivers: [otlp]
-            processors: [batch]
-            exporters: [debug, elasticsearch]
+            receivers:
+              - otlp
+            processors:
+              - batch
+            exporters:
+              - debug
+              - elasticsearch
           logs/apm:
-            receivers: [otlp]
-            processors: [batch]
-            exporters: [debug, elasticsearch]
+            receivers:
+              - otlp
+            processors:
+              - batch
+            exporters:
+              - debug
+              - elasticsearch
           traces/apm:
-            receivers: [otlp]
-            processors: [batch]
-            exporters: [debug, elasticsearch]
+            receivers:
+              - otlp
+            processors:
+              - batch
+            exporters:
+              - debug
+              - elasticsearch
 
 instrumentation:
   enabled: true
