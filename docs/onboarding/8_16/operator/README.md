@@ -42,8 +42,12 @@ Depending on the deployment model (i.e. self-managed, ESS, serverless), differen
 
 All signals including logs, metrics, traces/APM go through the collector directly into Elasticsearch using the ES exporter, a collector's processor pipeline will be used to replace the APM server functionality.
 
+1. Create the `opentelemetry-operator-system` Kubernetes namespace:
+```
+$ kubectl create namespace opentelemetry-operator-system
+```
 
-1. Create a secret in Kubernetes with the following command.
+2. Create a secret in Kubernetes with the following command.
    ```
    kubectl create -n opentelemetry-operator-system secret generic elastic-secret-otel \
      --from-literal=elastic_endpoint='YOUR_ELASTICSEARCH_ENDPOINT' \
@@ -53,7 +57,7 @@ All signals including logs, metrics, traces/APM go through the collector directl
    - `YOUR_ELASTICSEARCH_ENDPOINT`: your Elasticsearch endpoint (*with* `https://` prefix example: `https://1234567.us-west2.gcp.elastic-cloud.com:443`).
    - `YOUR_ELASTICSEARCH_API_KEY`: your Elasticsearch API Key
 
-2. Execute the following commands to deploy the Helm Chart.
+3. Execute the following commands to deploy the Helm Chart.
 
 ```
 $ helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm-charts
