@@ -33,7 +33,16 @@ defaultCRConfig:
           name: elastic-secret-otel
           key: elastic_api_key
 
-# clusterName: kind
+clusterRole:
+  rules:
+    - apiGroups: [ "" ]
+      resources: ["configmaps"]
+      verbs: ["get"]
+
+# `clusterName` specifies the name of the kubernetes cluster
+# It set the 'k8s.cluster.name' field, should be used for kubernetes environments, where cluster name can not be detected using resourcedetection
+# Cluster Name is detected automatically for EKS/GKE/AKS
+# clusterName: myClusterName
 collectors:
   cluster:
     config:
@@ -221,11 +230,6 @@ collectors:
             - key: service.name
               from_attribute: app.label.component
               action: insert
-        attributes/k8s_logs_dataset:
-          actions:
-            - key: data_stream.dataset
-              value: "kubernetes.container_logs"
-              action: upsert
         attributes/dataset:
           actions:
             - key: event.dataset
@@ -447,7 +451,6 @@ collectors:
               - resourcedetection/aks
               - resource/k8s
               - resource/cloud
-              - attributes/k8s_logs_dataset
             exporters:
               - debug
               - elasticsearch/otel
@@ -463,8 +466,6 @@ collectors:
               - resourcedetection/aks
               - resource/k8s
               - resource/cloud
-              - attributes/dataset
-              - resource/process
             exporters:
               - debug
               - elasticsearch/otel
