@@ -38,7 +38,7 @@ The Helm Chart is configured to enable zero-code instrumentation using the [Oper
 
 Depending on the deployment model (i.e. self-managed, ESS, serverless), different configuration will be needed.
 
-### On-Prem deployment
+### Installation
 
 All signals including logs, metrics, traces/APM go through the collector directly into Elasticsearch using the ES exporter, a collector's processor pipeline will be used to replace the APM server functionality.
 
@@ -62,7 +62,7 @@ $ kubectl create namespace opentelemetry-operator-system
 ```
 $ helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm-charts
 $ helm repo update
-$ helm install --namespace opentelemetry-operator-system opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack --values ./onprem_kube_stack_values.yaml
+$ helm install --namespace opentelemetry-operator-system opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack --values ./values.yaml --version 0.2.1
 ```
 
 ## Limitations
