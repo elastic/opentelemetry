@@ -39,11 +39,11 @@ The Helm Chart is configured to enable zero-code instrumentation using the [Oper
 
 Auto-instrumentation is enabled by adding the corresponding annotation to the deployment (or namespace to auto-instrument all pods in the namespace)
 
-\```
+```yaml
 metadata:
   annotations:
     instrumentation.opentelemetry.io/inject-<LANGUAGE>: "opentelemetry-operator-system/elastic-instrumentation"
-\```
+```
 
 where <LANGUAGE> is one of: `go` , `java`, `nodejs`, `python`, `dotnet`
 
