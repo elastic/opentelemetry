@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: go-test-app
+  namespace: banana
+  annotations:
+    instrumentation.opentelemetry.io/inject-go: "opentelemetry-operator-system/elastic-instrumentation"
+    instrumentation.opentelemetry.io/otel-go-auto-target-exe: "/usr/src/app/productcatalogservice"
+    sidecar.opentelemetry.io/inject: "true"
+  labels:
+    app: go-test-app
+spec:
+  shareProcessNamespace: true
+  containers:
+    - image: ghcr.io/open-telemetry/opentelemetry-operator/e2e-test-app-golang:main
+      imagePullPolicy: Always
+      name: go-test-app
+      env:
+      - name: OTEL_LOG_LEVEL
+        value: "debug"
+      - name: AGENT_HAS_STARTED_IF_YOU_SEE
+        value: "no idea"
+      securityContext:
+        runAsUser: 0
+        privileged: true

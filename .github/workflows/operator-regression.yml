@@ -1,0 +1,68 @@
+name: Regression Testing Operator Integration
+
+on:
+  workflow_dispatch:
+
+env:
+  AGENT_TESTS: python nodejs java
+  #go dotnet --- both pending
+
+jobs:
+  integration-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Create Kind cluster and local Docker registry
+        run:
+           bash test/operator/kind-with-registry.sh
+
+      - name: Create Test Images
+        run: |
+           for t in ${AGENT_TESTS[@]}
+           do
+             echo "Creating image for $t"
+             docker build -t $t-test-app test/operator/$t
+             docker tag $t-test-app localhost:5001/registry/$t-test-app
+             docker push localhost:5001/registry/$t-test-app
+           done
+
+      - name: Set up Helm
+        uses: azure/setup-helm@v4
+        with:
+          version: v3.11.2
+
+      - name: Install Operator Skeleton
+        run: |
+          kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.15.3/cert-manager.yaml
+          bash test/operator/wait_for_pod_start.sh cert-manager cert-manager- 1/1 3
+          helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm-charts
+          helm repo update
+          helm install opentelemetry-operator --namespace opentelemetry-operator-system open-telemetry/opentelemetry-operator --create-namespace --set manager.collectorImage.repository="docker.elastic.co/beats/elastic-agent:8.15.0-SNAPSHOT",manager.extraArgs={"--enable-go-instrumentation=true"}
+          bash test/operator/wait_for_pod_start.sh opentelemetry-operator-system opentelemetry-operator 2/2 1
+          kubectl get pods -A
+
+      - name: Add Namespaces And Instrumentation Skeleton
+        run: |
+          kubectl create namespace banana
+          kubectl create -f test/operator/elastic-instrumentation.yml
+
+      - name: Start And Test Collector Skeleton
+        run: |
+          echo "Nothing here yet"
+
+      - name: Start Test Images
+        run: |
+          for t in ${AGENT_TESTS[@]}
+          do
+            if [ "x$t" = "xgo" ]; then   CONTAINER_READY="2/2"; else   CONTAINER_READY="1/1"; fi
+            AGENT_START_GREP=`grep -A1 AGENT_HAS_STARTED_IF_YOU_SEE test/operator/$t/test-app.yaml | perl -ne '/value:\s*"(.*)"/ && print "$1\n"'`
+            echo "Starting pod for $t"
+            kubectl create -f test/operator/$t/test-app.yaml
+            bash test/operator/wait_for_pod_start.sh banana $t-test-app $CONTAINER_READY 1
+            bash test/operator/wait_for_agent_start.sh banana $t-test-app "$AGENT_START_GREP"
+            kubectl delete -f test/operator/$t/test-app.yaml
+          done

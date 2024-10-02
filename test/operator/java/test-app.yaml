@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: java-test-app
+  namespace: banana
+  annotations:
+    instrumentation.opentelemetry.io/inject-java: "opentelemetry-operator-system/elastic-instrumentation"
+  labels:
+    app: java-test-app
+spec:
+  containers:
+    - image: localhost:5001/registry/java-test-app
+      imagePullPolicy: Always
+      name: java-test-app
+      env:
+      - name: OTEL_JAVAAGENT_DEBUG
+        value: "true"
+      - name: AGENT_HAS_STARTED_IF_YOU_SEE
+        value: "javaagent.tooling.VersionLogger - opentelemetry-javaagent"
