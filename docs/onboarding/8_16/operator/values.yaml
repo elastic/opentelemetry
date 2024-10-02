@@ -513,6 +513,7 @@ collectors:
               - elasticsearch/apm
 
 instrumentation:
+  name: elastic-instrumentation
   enabled: true
   exporter:
     endpoint: http://opentelemetry-kube-stack-daemon-collector:4318
