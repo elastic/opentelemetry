@@ -524,6 +524,12 @@ instrumentation:
     type: parentbased_traceidratio
     argument: "1.0"
   java:
-    image: ghcr.io/open-telemetry/opentelemetry-operator/autoinstrumentation-java:2.5.0
+    image: docker.elastic.co/observability/elastic-otel-javaagent:1.0.0
+  nodejs:
+    image: docker.elastic.co/observability/elastic-otel-node:edge
+  dotnet:
+    image: docker.elastic.co/observability/elastic-otel-dotnet:edge
+  python:
+    image: docker.elastic.co/observability/elastic-otel-python:edge
   go:
-    image: ghcr.io/open-telemetry/opentelemetry-go-instrumentation/autoinstrumentation-go:latest
+    image: ghcr.io/open-telemetry/opentelemetry-go-instrumentation/autoinstrumentation-go:v0.14.0-alpha
