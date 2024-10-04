@@ -517,7 +517,7 @@ instrumentation:
   name: elastic-instrumentation
   enabled: true
   exporter:
-    endpoint: http://opentelemetry-kube-stack-daemon-collector:4318
+    endpoint: http://opentelemetry-kube-stack-daemon-collector.opentelemetry-operator-system.svc.cluster.local:4318
   propagators:
     - tracecontext
     - baggage
