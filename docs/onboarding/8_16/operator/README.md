@@ -47,12 +47,22 @@ metadata:
 
 where <LANGUAGE> is one of: `go` , `java`, `nodejs`, `python`, `dotnet`
 
-
-## Configuration
+## Elastic Stack Configuration
 
 Depending on the deployment model (i.e. self-managed, ESS, serverless), different configuration will be needed.
 
-### Installation
+### Pre-requisites
+
+Before installing the operator follow these actions:
+
+1. Create an API Key.
+
+2. Install the following integrations in Kibana:
+  - `System`
+  - `Kubernetes`
+  - `Kubernetes OpenTelemetry Assets`
+
+## Operator Installation
 
 All signals including logs, metrics, traces/APM go through the collector directly into Elasticsearch using the ES exporter, a collector's processor pipeline will be used to replace the APM server functionality.
 
