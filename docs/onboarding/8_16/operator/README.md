@@ -52,6 +52,16 @@ where <LANGUAGE> is one of: `go` , `java`, `nodejs`, `python`, `dotnet`
 
 Depending on the deployment model (i.e. self-managed, ESS, serverless), different configuration will be needed.
 
+### Pre-requisites
+
+Before installing the operator follow these actions:
+
+1. Create an API Key
+
+2. Install the integration `Kubernetes OpenTelemetry Assets` in Kibana.
+
+3. Ensure you have `cluster-admin` privileges in your Kubernetes cluster.
+
 ### Installation
 
 All signals including logs, metrics, traces/APM go through the collector directly into Elasticsearch using the ES exporter, a collector's processor pipeline will be used to replace the APM server functionality.
