@@ -85,6 +85,9 @@ collectors:
             - key: service.name
               from_attribute: app.label.component
               action: insert
+            - key: service.name
+              from_attribute: k8s.container.name
+              action: insert
             - tag_name: app.label.version
               key: app.kubernetes.io/version
               from: pod
@@ -118,9 +121,6 @@ collectors:
               - tag_name: app.label.component
                 key: app.kubernetes.io/component
                 from: pod
-              - key: service.name
-                from_attribute: k8s.container.name
-                action: insert
               - tag_name: app.label.version
                 key: app.kubernetes.io/version
                 from: pod
