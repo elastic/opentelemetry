@@ -88,8 +88,8 @@ collectors:
             - key: service.name
               from_attribute: k8s.container.name
               action: insert
-            - tag_name: app.label.version
-              key: app.kubernetes.io/version
+            - key: service.version
+              from_attribute: app.label.version
               from: pod
         k8sattributes:
           passthrough: false
