@@ -88,9 +88,13 @@ collectors:
             - key: service.name
               from_attribute: k8s.container.name
               action: insert
+            - key: app.label.component
+              action: delete
             - key: service.version
               from_attribute: app.label.version
-              from: pod
+              action: insert
+            - key: app.label.version
+              action: delete
         k8sattributes:
           passthrough: false
           pod_association:
@@ -244,9 +248,13 @@ collectors:
             - key: service.name
               from_attribute: k8s.container.name
               action: insert
+            - key: app.label.component
+              action: delete
             - key: service.version
               from_attribute: app.label.version
               action: insert
+            - key: app.label.version
+              action: delete
         attributes/dataset:
           actions:
             - key: event.dataset
