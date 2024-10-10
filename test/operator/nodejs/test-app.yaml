@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nodejs-test-app
+  namespace: banana
+  annotations:
+    instrumentation.opentelemetry.io/inject-nodejs: "opentelemetry-operator-system/elastic-instrumentation"
+  labels:
+    app: nodejs-test-app
+spec:
+  containers:
+    - image: localhost:5001/registry/nodejs-test-app
+      imagePullPolicy: Always
+      name: nodejs-test-app
+      env:
+      - name: OTEL_LOG_LEVEL
+        value: "debug"
+      - name: AGENT_HAS_STARTED_IF_YOU_SEE
+        value: "@opentelemetry/instrumentation-http Applying instrumentation patch for nodejs core module"
