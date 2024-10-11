@@ -67,7 +67,7 @@ Events:
   Normal  Started    5m1s  kubelet            Started container example-otel-app
 ```
 
-5a. check your pod logs - look for agent output eg
+5.(a) check your pod logs - look for agent output eg
 ```
 $ kubectl logs example-otel-app -n banana
 ...
@@ -75,4 +75,6 @@ $ kubectl logs example-otel-app -n banana
 ...
 ```
 
-5b if there is no obvious agent log output, restart the pod with agent log level set to debug 
+5.(b) if there is no obvious agent log output, restart the pod with agent log level set to debug and look for agent debug output. Setting the agent to debug is different for the different language agents.
+- Java: add/set environment variable OTEL_JAVAAGENT_DEBUG set to true
+
