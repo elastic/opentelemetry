@@ -76,5 +76,10 @@ $ kubectl logs example-otel-app -n banana
 ```
 
 5.(b) if there is no obvious agent log output, restart the pod with agent log level set to debug and look for agent debug output. Setting the agent to debug is different for the different language agents.
+- All langs: add/set environment variable OTEL_LOG_LEVEL set to debug, eg
+```
+      env:
+      - name: OTEL_LOG_LEVEL
+        value: "debug"
+```
 - Java: add/set environment variable OTEL_JAVAAGENT_DEBUG set to true
-
