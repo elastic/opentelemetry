@@ -85,6 +85,16 @@ collectors:
             - key: service.name
               from_attribute: app.label.component
               action: insert
+            - key: service.name
+              from_attribute: k8s.container.name
+              action: insert
+            - key: app.label.component
+              action: delete
+            - key: service.version
+              from_attribute: app.label.version
+              action: insert
+            - key: app.label.version
+              action: delete
         k8sattributes:
           passthrough: false
           pod_association:
@@ -113,6 +123,9 @@ collectors:
             labels:
               - tag_name: app.label.component
                 key: app.kubernetes.io/component
+                from: pod
+              - tag_name: app.label.version
+                key: app.kubernetes.io/version
                 from: pod
       receivers:
         k8s_cluster:
@@ -205,6 +218,7 @@ collectors:
         elasticinframetrics:
           add_system_metrics: true
           add_k8s_metrics: true
+          drop_original: true
         resourcedetection/eks:
           detectors: [env, eks]
           timeout: 15s
@@ -230,6 +244,16 @@ collectors:
             - key: service.name
               from_attribute: app.label.component
               action: insert
+            - key: service.name
+              from_attribute: k8s.container.name
+              action: insert
+            - key: app.label.component
+              action: delete
+            - key: service.version
+              from_attribute: app.label.version
+              action: insert
+            - key: app.label.version
+              action: delete
         attributes/dataset:
           actions:
             - key: event.dataset
@@ -313,6 +337,9 @@ collectors:
             labels:
               - tag_name: app.label.component
                 key: app.kubernetes.io/component
+                from: pod
+              - tag_name: app.label.version
+                key: app.kubernetes.io/version
                 from: pod
       receivers:
         otlp:
