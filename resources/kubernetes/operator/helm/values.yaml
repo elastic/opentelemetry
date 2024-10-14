@@ -83,12 +83,12 @@ collectors:
         resource/k8s:
           attributes:
             - key: service.name
-              from_attribute: app.label.component
+              from_attribute: app.label.name
               action: insert
             - key: service.name
               from_attribute: k8s.container.name
               action: insert
-            - key: app.label.component
+            - key: app.label.name
               action: delete
             - key: service.version
               from_attribute: app.label.version
@@ -121,8 +121,8 @@ collectors:
               - "k8s.pod.uid"
               - "k8s.pod.start_time"
             labels:
-              - tag_name: app.label.component
-                key: app.kubernetes.io/component
+              - tag_name: app.label.name
+                key: app.kubernetes.io/name
                 from: pod
               - tag_name: app.label.version
                 key: app.kubernetes.io/version
@@ -242,12 +242,12 @@ collectors:
         resource/k8s:
           attributes:
             - key: service.name
-              from_attribute: app.label.component
+              from_attribute: app.label.name
               action: insert
             - key: service.name
               from_attribute: k8s.container.name
               action: insert
-            - key: app.label.component
+            - key: app.label.name
               action: delete
             - key: service.version
               from_attribute: app.label.version
@@ -335,8 +335,8 @@ collectors:
               - "k8s.pod.uid"
               - "k8s.pod.start_time"
             labels:
-              - tag_name: app.label.component
-                key: app.kubernetes.io/component
+              - tag_name: app.label.name
+                key: app.kubernetes.io/name
                 from: pod
               - tag_name: app.label.version
                 key: app.kubernetes.io/version
