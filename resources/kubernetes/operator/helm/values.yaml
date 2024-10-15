@@ -378,8 +378,14 @@ collectors:
           endpoints:
           - ${env:ELASTIC_ENDPOINT}
           api_key: ${env:ELASTIC_API_KEY}
+          metrics_dynamic_index:
+            enabled: true
           logs_dynamic_index:
             enabled: true
+          traces_dynamic_index:
+            enabled: true
+          flush:
+            interval: 10s
           # tls:
           #   insecure_skip_verify: true
           mapping:
