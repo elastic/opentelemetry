@@ -374,14 +374,6 @@ collectors:
       exporters:
         debug:
           verbosity: basic
-        elasticsearch/apm:
-          endpoints:
-          - ${env:ELASTIC_ENDPOINT}
-          api_key: ${env:ELASTIC_API_KEY}
-          logs_dynamic_index:
-            enabled: true
-          mapping:
-            mode: ecs
         elasticsearch/otel:
           endpoints:
           - ${env:ELASTIC_ENDPOINT}
