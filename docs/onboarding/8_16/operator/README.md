@@ -11,6 +11,18 @@ This guide describes how to:
 - Elastic Stack in version 8.16.0 or higher (self-managed, ESS, or Serverless).
 - Kubernetes x.y (TBD)
 
+## Compatibility Matrix
+
+The minimum supported version of the Elastic Stack for the OpenTelemetry based monitoring on Kubernetes is `8.16.0`. Different stack releases will support certain versions of the kube-stack Helm Chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-kube-stack).
+
+This is the current list of supported versions:
+
+| Stack Version | Helm Chart Version |    Values file     |
+|---------------|--------------------|--------------------|
+| 8.16.0        | 0.2.2              | values-0.2.2.yaml  |
+
+When installing the release, use the right `--version` and `-f values-x.y.z.yaml` parameters.
+
 ## Components description
 
 ### OpenTelemetry Operator
