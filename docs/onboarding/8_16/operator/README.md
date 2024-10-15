@@ -6,6 +6,17 @@ This guide describes how to:
 - Use the EDOT Collector to send Kubernetes logs, metrics, and application traces to an Elasticsearch cluster.
 - Use the operator for applications [auto-instrumentation](https://opentelemetry.io/docs/kubernetes/operator/automatic/) in all supported languages.
 
+## Table of Contents
+
+- [Prerequisites](#prerequisites)
+- [Compatibility Matrix](#compatibility-matrix)
+- [Components description](#components-description)
+- [Deploying components using Kibana Onboarding UX](#deploying-components-using-kibana-onboarding-ux)
+- [Manual deployment of all components](#manual-deployment-of-all-components)
+- [Installation verification](#installation-verification)
+- [Customizing installation](#customizing-installation)
+- [Limitations](#limitations)
+
 ## Prerequisites
 
 - Elastic Stack in version 8.16.0 or higher (self-managed, ESS, or Serverless).
@@ -92,7 +103,7 @@ Notes:
 - If the `elastic_endpoint` showed by the UI is not valid for your environment, replace it with the right Elasticsearch endpoint.
 - The displayed `elastic_api_key` belongs to an API key created automatically when the onboarding flow is opened.
 
-## Manual Deployment of all components
+## Manual deployment of all components
 
 ### Elastic Stack preparations
 
