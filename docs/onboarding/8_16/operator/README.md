@@ -93,11 +93,11 @@ where <LANGUAGE> is one of: `go` , `java`, `nodejs`, `python`, `dotnet`
 
 ## Deploying components using Kibana Onboarding UX
 
-The recommended way to deploy all the components is to follow the Kibana Onboarding UX. To do that:
+The recommended method for deploying all components is to usethe Kibana Onboarding UX. To do this:
 
-1. Go to Kibana --> **Observability** --> **Add data**
-2. Select **Kubernetes**, then **Kubernetes monitoring with EDOT Collector**.
-3. Follow the instructions within the page to install the OpenTelemetry Operator with the Helm Chart and the provided values.yaml.
+1. Navigate in Kibana to **Observability** --> **Add data**
+2. Select **Kubernetes**, then choose **Kubernetes monitoring with EDOT Collector**.
+3. Follow the on-screen instructions to install the OpenTelemetry Operator using the Helm Chart and the provided `values.yaml`.
 
 Notes:
 - If the `elastic_endpoint` showed by the UI is not valid for your environment, replace it with the right Elasticsearch endpoint.
