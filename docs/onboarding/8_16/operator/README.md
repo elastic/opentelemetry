@@ -1,19 +1,63 @@
-# Kubernetes Onboarding 8.16
+# Get started with OpenTelemetry for Kubernetes Observability
 
-This guide will help you get up and running with Kubernetes by walking through the setup and integration of key components, starting with the [OpenTelemetry Operator](https://github.com/open-telemetry/opentelemetry-operator/). The OpenTelemetry Operator is an implementation of a [Kubernetes Operator](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/).
+This guide describes how to:
 
-The operator manages:
+- Install the [OpenTelemetry Operator](https://github.com/open-telemetry/opentelemetry-operator/) using the [kube-stack Helm Chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-kube-stack).
+- Use the EDOT Collector to send Kubernetes logs, metrics, and application traces to an Elasticsearch cluster.
+- Use the operator for applications [auto-instrumentation](https://opentelemetry.io/docs/kubernetes/operator/automatic/) in all supported languages.
 
-- [OpenTelemetry Collector](https://github.com/open-telemetry/opentelemetry-collector)
-- [auto-instrumentation](https://opentelemetry.io/docs/concepts/instrumentation/automatic/) of the workloads using OpenTelemetry instrumentation libraries
+## Table of Contents
 
-## OpenTelemetry Operator
+- [Prerequisites](#prerequisites)
+- [Compatibility Matrix](#compatibility-matrix)
+- [Components description](#components-description)
+- [Deploying components using Kibana Onboarding UX](#deploying-components-using-kibana-onboarding-ux)
+- [Manual deployment of all components](#manual-deployment-of-all-components)
+- [Installation verification](#installation-verification)
+- [Instrumenting applications](#instrumenting-applications)
+- [Limitations](#limitations)
 
-The [kube-stack Helm Chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-kube-stack) will be utilized to manage the installation of the Operator's Custom Resource Definitions (CRDs) alongside the configuration of a suite of collectors, which will instrument various components of the Kubernetes environment to enable comprehensive observability and monitoring.
+## Prerequisites
 
-### Daemonset collectors
+- Elastic Stack (self-managed or [Elastic Cloud](https://www.elastic.co/cloud)) version 8.16.0 or higher, or an [Elasticsearch serverless](https://www.elastic.co/docs/current/serverless/elasticsearch/get-started) project.
+
+- A Kubernetes version supported by the OpenTelemetry Operator (refer to the operator's [compatibility matrix](https://github.com/open-telemetry/opentelemetry-operator?#compatibility-matrix) for more details).
+
+## Compatibility Matrix
+
+The minimum supported version of the Elastic Stack for OpenTelemetry-based monitoring on Kubernetes is `8.16.0`. Different Elastic Stack releases support specific versions of the [kube-stack Helm Chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-kube-stack).
+
+The following is the current list of supported versions:
+
+| Stack Version | Helm Chart Version |    Values file     |
+|---------------|--------------------|--------------------|
+| Serverless    | 0.3.0              | values.yaml  |
+| 8.16.0        | 0.3.0              | values.yaml  |
+
+When [installing the release](#manual-deployment-of-all-components), ensure you use the right `--version` and `-f <values-file>` parameters. Values files are available in the [resources directory](/resources/kubernetes/operator/helm).
+
+## Components description
+
+### OpenTelemetry Operator
+
+The OpenTelemetry Operator is a [Kubernetes Operator](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/) implementation designed to manage OpenTelemetry resources in a Kubernetes environment. It defines and oversees the following Custom Resource Definitions (CRDs):
+
+- [OpenTelemetry Collectors](https://github.com/open-telemetry/opentelemetry-collector): Agents responsible for receiving, processing and exporting telemetry data such as logs, metrics, and traces.
+- [Instrumentation](https://opentelemetry.io/docs/kubernetes/operator/automatic): Used for the atomatic instrumentation of workloads by leveraging OpenTelemetry instrumentation libraries.
+
+All signals including logs, metrics, traces are processed by the collectors and sent directly to Elasticsearch via the ES exporter. A collector's processor pipeline replaces the traditional APM server functionality for handling application traces.
+
+### Kube-stack Helm Chart
+
+The [kube-stack Helm Chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-kube-stack) is used to manage the installation of the operator (including its CRDs) and to configure a suite of collectors, which instrument various Kubernetes components to enable comprehensive observability and monitoring.
+
+The chart is installed with a provided default `values.yaml` file that can be customized when needed.
+
+### DaemonSet collectors
 
 The OpenTelemetry components deployed within the DaemonSet collectors are responsible for observing specific signals from each node. To ensure complete data collection, these components must be deployed on every node in the cluster. Failing to do so will result in partial and potentially incomplete data.
+
+The DaemonSet collectors handle the following data:
 
 - Host Metrics: Collects host metrics (hostmetrics receiver) specific to each node.
 - Kubernetes Metrics: Captures metrics related to the Kubernetes infrastructure on each node.
@@ -23,6 +67,8 @@ The OpenTelemetry components deployed within the DaemonSet collectors are respon
 ### Deployment collector
 
 The OpenTelemetry components deployed within a Deployment collector focus on gathering data at the cluster level rather than at individual nodes. Unlike DaemonSet collectors, which need to be deployed on every node, a Deployment collector operates as a standalone instance.
+
+The Deployment collector handles the following data:
 
 - Kubernetes Events: Monitors and collects events occurring across the entire Kubernetes cluster.
 - Cluster Metrics: Captures metrics that provide insights into the overall health and performance of the Kubernetes cluster.
@@ -37,24 +83,36 @@ The Helm Chart is configured to enable zero-code instrumentation using the [Oper
 - Python
 - .NET
 
-Auto-instrumentation is enabled by adding the corresponding annotation to the deployment (or namespace to auto-instrument all pods in the namespace)
+## Deploying components using Kibana Onboarding UX
 
-```yaml
-metadata:
-  annotations:
-    instrumentation.opentelemetry.io/inject-<LANGUAGE>: "opentelemetry-operator-system/elastic-instrumentation"
-```
+The preferred method for deploying all components is through the Kibana Onboarding UX. Follow these steps:
 
-where <LANGUAGE> is one of: `go` , `java`, `nodejs`, `python`, `dotnet`
+1. Navigate in Kibana to **Observability** --> **Add data**
+2. Select **Kubernetes**, then choose **Kubernetes monitoring with EDOT Collector**.
+3. Follow the on-screen instructions to install the OpenTelemetry Operator using the Helm Chart and the provided `values.yaml`.
 
+Notes:
+- If the `elastic_endpoint` showed by the UI is not valid for your environment, replace it with the correct Elasticsearch endpoint.
+- The displayed `elastic_api_key` corresponds to an API key that is automatically generated when the onboarding process is initiated.
 
-## Configuration
+## Manual deployment of all components
 
-Depending on the deployment model (i.e. self-managed, ESS, serverless), different configuration will be needed.
+### Elastic Stack preparations
 
-### Installation
+Before installing the operator follow these actions:
 
-All signals including logs, metrics, traces/APM go through the collector directly into Elasticsearch using the ES exporter, a collector's processor pipeline will be used to replace the APM server functionality.
+1. Create an [API Key](https://www.elastic.co/guide/en/kibana/current/api-keys.html), and make note of its value.
+(TBD: details of API key permissions).
+
+2. Install the following integrations in Kibana:
+  - `System`
+  - `Kubernetes`
+  - `Kubernetes OpenTelemetry Assets`
+
+Notes:
+- When using the [Kibana onboarding UX](#deploying-components-using-kibana-onboarding-ux), the previous actions are automatically handled by Kibana.
+
+### Operator Installation
 
 1. Create the `opentelemetry-operator-system` Kubernetes namespace:
 ```
@@ -78,6 +136,42 @@ $ helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-he
 $ helm repo update
 $ helm upgrade --install --namespace opentelemetry-operator-system opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack --values ./resources/kubernetes/operator/helm/values.yaml --version 0.3.0
 ```
+
+## Installation verification:
+
+Regardless of the installation method followed, perform the following checks to verify that everything is running properly:
+
+1. **Check Pods Status**
+   - Ensure the following components are running without errors:
+     - **Operator Pod**
+     - **DaemonSet Collector Pod**
+     - **Deployment Collector Pod**
+
+2. **Validate Instrumentation Object**
+   - Confirm that the **Instrumentation object** is deployed and configured with a valid **endpoint**.
+
+3. **Kibana Dashboard Check**
+   - Verify that the **[OTEL][Metrics Kubernetes] Cluster Overview** dashboard in **Kibana** is displaying data correctly.
+
+4. **Log Data Availability in Kibana**
+   - In **Kibana Discovery**, confirm the availability of data under the `__logs-*__` data view.
+
+5. **Metrics Data Availability in Kibana**
+   - In **Kibana Discovery**, ensure data is available under the `__metrics-*__` data view.
+
+## Instrumenting Applications
+
+To enable auto-instrumentation, add the corresponding annotation to the pods of existing deployments (`spec.template.metadata.annotations`), or to the desired namespace (to auto-instrument all pods in the namespace):
+
+```yaml
+metadata:
+  annotations:
+    instrumentation.opentelemetry.io/inject-<LANGUAGE>: "opentelemetry-operator-system/elastic-instrumentation"
+```
+
+where <LANGUAGE> is one of: `go` , `java`, `nodejs`, `python`, `dotnet`
+
+For detailed instructions and examples on how to instrument applications in Kubernetes using the OpenTelemetry Operator, refer to this guide (TBD-add link and document).
 
 ## Limitations
 
