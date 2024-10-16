@@ -19,8 +19,8 @@ This guide describes how to:
 
 ## Prerequisites
 
-- Elastic Stack in version 8.16.0 or higher (self-managed, ESS, or Serverless).
-- Kubernetes x.y (TBD)
+- Elastic Stack (self-managed or [Elastic Cloud](https://www.elastic.co/cloud)) version 8.16.0 or higher, or an [Elasticsearch serverless](https://www.elastic.co/docs/current/serverless/elasticsearch/get-started) project.
+- A Kubernetes version supported by the OpenTelemetry Operator (refer to the [compatibility matrix](https://github.com/open-telemetry/opentelemetry-operator?#compatibility-matrix) for more details).
 
 ## Compatibility Matrix
 
@@ -30,9 +30,11 @@ This is the current list of supported versions:
 
 | Stack Version | Helm Chart Version |    Values file     |
 |---------------|--------------------|--------------------|
-| 8.16.0        | 0.2.2              | values-0.2.2.yaml  |
+| Serverless    | 0.3.0              | values-0.3.0.yaml  |
+| 8.16.0        | 0.3.0              | values-0.3.0.yaml  |
 
 When installing the release, use the right `--version` and `-f values-x.y.z.yaml` parameters.
+(TBD: clarify the final naming of the values files)
 
 ## Components description
 
