@@ -33,7 +33,7 @@ This is the current list of supported versions:
 | Serverless    | 0.3.0              | values-0.3.0.yaml  |
 | 8.16.0        | 0.3.0              | values-0.3.0.yaml  |
 
-When installing the release, use the right `--version` and `-f values-x.y.z.yaml` parameters.
+When [installing the release](#manual-deployment-of-all-components), ensure you use the right `--version` and `-f values-x.y.z.yaml` parameters.
 (TBD: clarify the final naming of the values files)
 
 ## Components description
