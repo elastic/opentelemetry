@@ -68,7 +68,7 @@ The DaemonSet collectors handle the following data:
 
 The OpenTelemetry components deployed within a Deployment collector focus on gathering data at the cluster level rather than at individual nodes. Unlike DaemonSet collectors, which need to be deployed on every node, a Deployment collector operates as a standalone instance.
 
-The deployment collector handles the following data:
+The Deployment collector handles the following data:
 
 - Kubernetes Events: Monitors and collects events occurring across the entire Kubernetes cluster.
 - Cluster Metrics: Captures metrics that provide insights into the overall health and performance of the Kubernetes cluster.
