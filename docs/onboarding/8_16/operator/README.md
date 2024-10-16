@@ -43,7 +43,7 @@ When [installing the release](#manual-deployment-of-all-components), ensure you 
 The OpenTelemetry Operator is an implementation of a [Kubernetes Operator](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/). It defines and manages the following Custom Resource Definitions (CRDs)
 
 - [OpenTelemetry Collector](https://github.com/open-telemetry/opentelemetry-collector).
-- [auto-instrumentation](https://opentelemetry.io/docs/concepts/instrumentation/automatic/) of the workloads using OpenTelemetry instrumentation libraries.
+- [Auto-instrumentation](https://opentelemetry.io/docs/concepts/instrumentation/automatic/) of the workloads using OpenTelemetry instrumentation libraries.
 
 All signals including logs, metrics, traces/APM go through the collectors directly into Elasticsearch using the ES exporter. A collector's processor pipeline will be used to replace the APM server functionality for application traces.
 
