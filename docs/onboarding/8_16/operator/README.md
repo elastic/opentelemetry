@@ -20,21 +20,21 @@ This guide describes how to:
 ## Prerequisites
 
 - Elastic Stack (self-managed or [Elastic Cloud](https://www.elastic.co/cloud)) version 8.16.0 or higher, or an [Elasticsearch serverless](https://www.elastic.co/docs/current/serverless/elasticsearch/get-started) project.
-- A Kubernetes version supported by the OpenTelemetry Operator (refer to the [compatibility matrix](https://github.com/open-telemetry/opentelemetry-operator?#compatibility-matrix) for more details).
+
+- A Kubernetes version supported by the OpenTelemetry Operator (refer to the operator's [compatibility matrix](https://github.com/open-telemetry/opentelemetry-operator?#compatibility-matrix) for more details).
 
 ## Compatibility Matrix
 
-The minimum supported version of the Elastic Stack for the OpenTelemetry based monitoring on Kubernetes is `8.16.0`. Different stack releases will support certain versions of the kube-stack Helm Chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-kube-stack).
+The minimum supported version of the Elastic Stack for OpenTelemetry-based monitoring on Kubernetes is `8.16.0`. Different Elastic Stack releases support specific versions of the [kube-stack Helm Chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-kube-stack).
 
-This is the current list of supported versions:
+The following is the current list of supported versions:
 
 | Stack Version | Helm Chart Version |    Values file     |
 |---------------|--------------------|--------------------|
-| Serverless    | 0.3.0              | values-0.3.0.yaml  |
-| 8.16.0        | 0.3.0              | values-0.3.0.yaml  |
+| Serverless    | 0.3.0              | values.yaml  |
+| 8.16.0        | 0.3.0              | values.yaml  |
 
-When [installing the release](#manual-deployment-of-all-components), ensure you use the right `--version` and `-f values-x.y.z.yaml` parameters.
-(TBD: clarify the final naming of the values files)
+When [installing the release](#manual-deployment-of-all-components), ensure you use the right `--version` and `-f <values-file>` parameters. Values files are available in the [resources directory](/resources/kubernetes/operator/helm).
 
 ## Components description
 
