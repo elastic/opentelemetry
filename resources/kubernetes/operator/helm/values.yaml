@@ -371,6 +371,53 @@ collectors:
                   default_value: service_destination
               sum:
                 value: Int(AdjustedCount())
+      # event.success_count is populated using 2 metric definition with different conditions
+      # and value for the histogram bucket based on event outcome. Both metric definition
+      # are created using same name and attribute and will result in a single histogram.
+      # We use mapping hint of aggregate_metric_double, so, only the sum and the count
+      # values are required and the actual histogram bucket is ignored.
+      - name: event.success_count
+        description: Success count as a metric for service transaction
+        include_resource_attributes:
+          - key: service.name
+          - key: deployment.environment # service.environment
+          - key: telemetry.sdk.language # service.language.name
+          - key: agent.name # set via elastictraceprocessor
+        attributes:
+          - key: transaction.root
+          - key: transaction.type
+          - key: metricset.name
+            default_value: service_transaction
+          - key: elasticsearch.mapping.hints
+            default_value: [aggregate_metric_double]
+        conditions:
+          - attributes["event.outcome"] != nil and attributes["event.outcome"] == "success"
+        unit: us
+        histogram:
+          buckets: [1]
+          count: Int(AdjustedCount())
+          value: Int(AdjustedCount())
+      - name: event.success_count
+        description: Success count as a metric for service transaction
+        include_resource_attributes:
+          - key: service.name
+          - key: deployment.environment # service.environment
+          - key: telemetry.sdk.language # service.language.name
+          - key: agent.name # set via elastictraceprocessor
+        attributes:
+          - key: transaction.root
+          - key: transaction.type
+          - key: metricset.name
+            default_value: service_transaction
+          - key: elasticsearch.mapping.hints
+            default_value: [aggregate_metric_double]
+        conditions:
+          - attributes["event.outcome"] != nil and attributes["event.outcome"] != "success"
+        unit: us
+        histogram:
+          buckets: [0]
+          count: Int(AdjustedCount())
+          value: Double(0)
       exporters:
         debug:
           verbosity: basic
