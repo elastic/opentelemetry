@@ -53,11 +53,11 @@ The [kube-stack Helm Chart](https://github.com/open-telemetry/opentelemetry-helm
 
 The chart is installed with a provided default `values.yaml` file that can be customized when needed.
 
-### Daemonset collectors
+### DaemonSet collectors
 
 The OpenTelemetry components deployed within the DaemonSet collectors are responsible for observing specific signals from each node. To ensure complete data collection, these components must be deployed on every node in the cluster. Failing to do so will result in partial and potentially incomplete data.
 
-The Daemonset collectors handle the following data:
+The DaemonSet collectors handle the following data:
 
 - Host Metrics: Collects host metrics (hostmetrics receiver) specific to each node.
 - Kubernetes Metrics: Captures metrics related to the Kubernetes infrastructure on each node.
