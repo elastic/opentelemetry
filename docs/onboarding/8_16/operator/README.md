@@ -95,15 +95,15 @@ where <LANGUAGE> is one of: `go` , `java`, `nodejs`, `python`, `dotnet`
 
 ## Deploying components using Kibana Onboarding UX
 
-The recommended method for deploying all components is to usethe Kibana Onboarding UX. To do this:
+The preferred method for deploying all components is through the Kibana Onboarding UX. Follow these steps:
 
 1. Navigate in Kibana to **Observability** --> **Add data**
 2. Select **Kubernetes**, then choose **Kubernetes monitoring with EDOT Collector**.
 3. Follow the on-screen instructions to install the OpenTelemetry Operator using the Helm Chart and the provided `values.yaml`.
 
 Notes:
-- If the `elastic_endpoint` showed by the UI is not valid for your environment, replace it with the right Elasticsearch endpoint.
-- The displayed `elastic_api_key` belongs to an API key created automatically when the onboarding flow is opened.
+- If the `elastic_endpoint` showed by the UI is not valid for your environment, replace it with the correct Elasticsearch endpoint.
+- The displayed `elastic_api_key` corresponds to an API key that is automatically generated when the onboarding process is initiated.
 
 ## Manual deployment of all components
 
@@ -111,7 +111,8 @@ Notes:
 
 Before installing the operator follow these actions:
 
-1. Create an [API Key](https://www.elastic.co/guide/en/kibana/current/api-keys.html), and make note of its value (TBD: details of API key permissions).
+1. Create an [API Key](https://www.elastic.co/guide/en/kibana/current/api-keys.html), and make note of its value.
+(TBD: details of API key permissions).
 
 2. Install the following integrations in Kibana:
   - `System`
@@ -119,7 +120,7 @@ Before installing the operator follow these actions:
   - `Kubernetes OpenTelemetry Assets`
 
 Notes:
-- When `Kibana onboarding UX` is used, the previous actions are automatically performed by Kibana.
+- When using the [Kibana onboarding UX](#deploying-components-using-kibana-onboarding-ux), the previous actions are automatically handled by Kibana.
 
 ### Operator Installation
 
