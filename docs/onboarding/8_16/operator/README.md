@@ -14,7 +14,7 @@ This guide describes how to:
 - [Deploying components using Kibana Onboarding UX](#deploying-components-using-kibana-onboarding-ux)
 - [Manual deployment of all components](#manual-deployment-of-all-components)
 - [Installation verification](#installation-verification)
-- [Customizing installation](#customizing-installation)
+- [Instrumenting applications](#instrumenting-applications)
 - [Limitations](#limitations)
 
 ## Prerequisites
@@ -83,16 +83,6 @@ The Helm Chart is configured to enable zero-code instrumentation using the [Oper
 - Python
 - .NET
 
-To enable auto-instrumentation, add the corresponding annotation to the pods of existing deployments (`spec.template.metadata.annotations`), or to the desired namespace (to auto-instrument all pods in the namespace):
-
-```yaml
-metadata:
-  annotations:
-    instrumentation.opentelemetry.io/inject-<LANGUAGE>: "opentelemetry-operator-system/elastic-instrumentation"
-```
-
-where <LANGUAGE> is one of: `go` , `java`, `nodejs`, `python`, `dotnet`
-
 ## Deploying components using Kibana Onboarding UX
 
 The preferred method for deploying all components is through the Kibana Onboarding UX. Follow these steps:
@@ -147,15 +137,41 @@ $ helm repo update
 $ helm upgrade --install --namespace opentelemetry-operator-system opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack --values ./resources/kubernetes/operator/helm/values.yaml --version 0.3.0
 ```
 
-## Installation verification
+## Installation verification:
 
-Perform the following steps to verify that all components are healthy:
-(TBD)
+Regardless of the installation method followed, perform the following checks to verify that everything is running properly:
 
-## Customizing installation
+1. **Check Pods Status**
+   - Ensure the following components are running without errors:
+     - **Operator Pod**
+     - **DaemonSet Collector Pod**
+     - **Deployment Collector Pod**
 
-(TBD - share use cases that might require customization)
-If provided `values.yaml` is not valid you can update it and point it on `helm install` command.
+2. **Validate Instrumentation Object**
+   - Confirm that the **Instrumentation object** is deployed and configured with a valid **endpoint**.
+
+3. **Kibana Dashboard Check**
+   - Verify that the **[OTEL][Metrics Kubernetes] Cluster Overview** dashboard in **Kibana** is displaying data correctly.
+
+4. **Log Data Availability in Kibana**
+   - In **Kibana Discovery**, confirm the availability of data under the `__logs-*__` data view.
+
+5. **Metrics Data Availability in Kibana**
+   - In **Kibana Discovery**, ensure data is available under the `__metrics-*__` data view.
+
+## Instrumenting Applications
+
+To enable auto-instrumentation, add the corresponding annotation to the pods of existing deployments (`spec.template.metadata.annotations`), or to the desired namespace (to auto-instrument all pods in the namespace):
+
+```yaml
+metadata:
+  annotations:
+    instrumentation.opentelemetry.io/inject-<LANGUAGE>: "opentelemetry-operator-system/elastic-instrumentation"
+```
+
+where <LANGUAGE> is one of: `go` , `java`, `nodejs`, `python`, `dotnet`
+
+For detailed instructions and examples on how to instrument applications in Kubernetes using the OpenTelemetry Operator, refer to this guide (TBD-add link and document).
 
 ## Limitations
 
