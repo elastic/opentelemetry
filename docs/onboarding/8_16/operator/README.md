@@ -49,7 +49,7 @@ All signals including logs, metrics, traces are processed by the collectors and 
 
 ### Kube-stack Helm Chart
 
-The [kube-stack Helm Chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-kube-stack) will be utilized to manage the installation of the operator (including its CRDs) and configure a suite of collectors, which will instrument various Kubernetes components to enable comprehensive observability and monitoring.
+The [kube-stack Helm Chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-kube-stack) is used to manage the installation of the operator (including its CRDs) and to configure a suite of collectors, which instrument various Kubernetes components to enable comprehensive observability and monitoring.
 
 The chart is installed with a provided default `values.yaml` file that can be customized when needed.
 
