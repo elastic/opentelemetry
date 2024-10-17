@@ -1,7 +1,5 @@
 # Instrumenting applications with EDOT on Kubernetes
 
-This section provides guidance and examples for applications instrumentation in a Kubernetes environment for all the supported languages.
-
 Elastic Distribution of OpenTelemetry (EDOT) extends [OpenTelemetry language SDKs](https://opentelemetry.io/docs/languages/) for multiple languages:
 
 * [EDOT Java](https://github.com/elastic/elastic-otel-java)
@@ -9,6 +7,8 @@ Elastic Distribution of OpenTelemetry (EDOT) extends [OpenTelemetry language SDK
 * [EDOT Node.js](https://github.com/elastic/elastic-otel-node)
 * [EDOT Python](https://github.com/elastic/elastic-otel-python)
 * [EDOT PHP](https://github.com/elastic/elastic-otel-php/)
+
+This section provides guidance and examples for applications instrumentation in a Kubernetes environment for all supported languages.
 
 In Kubernetes environments with the OpenTelemetry Operator, [**automatic (or zero-code) instrumentation**](https://opentelemetry.io/docs/kubernetes/operator/automatic/) simplifies the process by automatically injecting and configuring instrumentation libraries into the targeted Pods.
 
@@ -84,9 +84,11 @@ spec:
       ...        
 ```
 
-where <LANGUAGE> is one of: `go` , `java`, `nodejs`, `python`, `dotnet`
+where `<LANGUAGE>` is one of: `go` , `java`, `nodejs`, `python`, `dotnet`
 
 If you followed the proposed installation of the Operator with the provided `values.yaml`, the previous value (`"opentelemetry-operator-system/elastic-instrumentation"`) should be the right one in the environment.
+
+In case you have multiple Instrumentation objects with different settings or images, ensure you use the desired one in your annotations.
 
 The possible values for the annotation are documented [here](https://opentelemetry.io/docs/kubernetes/operator/automatic/#add-annotations-to-existing-deployments):
 
@@ -100,7 +102,7 @@ The possible values for the annotation are documented [here](https://opentelemet
 
 ### Namespace based annotations example
 
-The following example creates a namespace with an annotation to instrument all pods of the namespace with the `java` SDK.
+The following example creates a namespace with an annotation to instrument all pods of the namespace with `java` libraries.
 
 ```
 kubectl create namespace java-apps
@@ -116,7 +118,7 @@ kubectl run otel-test -n java-apps --env OTEL_INSTRUMENTATION_METHODS_INCLUDE="t
 
 You can apply configuration at two different levels:
 - At Pod/container level, by using OTEL related environment variables.
-- At `Instrumentation` object level.
+- At `Instrumentation` object level, for example to configure different settings per language.
 
 Use cases:
 - Change the library to be injected.
