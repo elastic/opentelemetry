@@ -8,7 +8,7 @@ opentelemetry-kube-stack-opentelemetry-operator-7b8684cfbdbv4hj   2/2     Runnin
 ...
 ```
 
-2. Check the instrumentation has been installed, eg
+2. Check the `Instrumentation` object has been deployed, eg
 ```
 $ kubectl describe Instrumentation -n opentelemetry-operator-system
 Name:         elastic-instrumentation
