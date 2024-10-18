@@ -153,6 +153,9 @@ Use cases:
 
 
 ## Manual instrumentation
+(TBD, in-progress)
 
-The manual instrumentation 
-(TBD)Also your application containers should be prepared for OTEL.
+The manual instrumentation...
+Configuration requirements (does every language has its own requirements)?
+Exporter destination? HTTP vs OTLP? does each EDOT SDK support different protocols?
+
