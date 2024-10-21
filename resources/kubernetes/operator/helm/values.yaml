@@ -77,11 +77,11 @@ collectors:
         resourcedetection/gcp:
           detectors: [env, gcp] # Detects resources from environment variables and GCP (Google Cloud Platform).
           timeout: 2s
-          override: false
+          override: true
         resourcedetection/aks:
           detectors: [env, aks] # Detects resources from environment variables and AKS (Azure Kubernetes Service).
           timeout: 2s
-          override: false
+          override: true
           aks:
             resource_attributes:
               k8s.cluster.name:
@@ -472,7 +472,7 @@ collectors:
         # [Batch Processor](https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor/batchprocessor)
         batch: {}
         # [Elastic Trace Processor](https://github.com/elastic/opentelemetry-collector-components/tree/main/processor/elastictraceprocessor)
-        elastictrace: # The processor enriches traces with elastic specific requirements.
+        elastictrace: {} # The processor enriches traces with elastic specific requirements.
         # [LSM Interval Processor](https://github.com/elastic/opentelemetry-collector-components/tree/main/processor/lsmintervalprocessor)
         lsminterval:
           intervals:
@@ -508,11 +508,11 @@ collectors:
         resourcedetection/gcp:
           detectors: [env, gcp] # Detects resources from environment variables and GCP (Google Cloud Platform).
           timeout: 2s
-          override: false
+          override: true
         resourcedetection/aks:
           detectors: [env, aks] # Detects resources from environment variables and AKS (Azure Kubernetes Service).
           timeout: 2s
-          override: false
+          override: true
           aks:
             resource_attributes:
               k8s.cluster.name:
