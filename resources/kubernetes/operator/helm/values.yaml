@@ -89,23 +89,24 @@ collectors:
         # [Resource Processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/resourceprocessor)
         resource/k8s: # Resource attributes tailored for services within Kubernetes.
           attributes:
-            - key: service.name
+            - key: service.name # Set the service.name resource attribute based on the well-known app.kubernetes.io/name label
               from_attribute: app.label.name
               action: insert
-            - key: service.name
+            - key: service.name # Set the service.name resource attribute based on the k8s.container.name attribute
               from_attribute: k8s.container.name
               action: insert
-            - key: app.label.name
+            - key: app.label.name # Delete app.label.name attribute previously used for service.name
               action: delete
-            - key: service.version
+            - key: service.version # Set the service.version resource attribute based on the well-known app.kubernetes.io/version label
               from_attribute: app.label.version
               action: insert
-            - key: app.label.version
+            - key: app.label.version # Delete app.label.version attribute previously used for service.version
               action: delete
         # [K8s Attributes Processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/k8sattributesprocessor)
         k8sattributes:
           passthrough: false # Annotates resources with the pod IP and does not try to extract any other metadata.
           pod_association:
+            # Below association takes a look at the k8s.pod.ip and k8s.pod.uid resource attributes or connection's context, and tries to match it with the pod having the same attribute.
             - sources:
                 - from: resource_attribute
                   name: k8s.pod.ip
@@ -556,18 +557,18 @@ collectors:
         # [Resource Processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/resourceprocessor)
         resource/k8s: # Resource attributes tailored for services within Kubernetes.
           attributes:
-            - key: service.name
+            - key: service.name # Set the service.name resource attribute based on the well-known app.kubernetes.io/name label
               from_attribute: app.label.name
               action: insert
-            - key: service.name
+            - key: service.name # Set the service.name resource attribute based on the k8s.container.name attribute
               from_attribute: k8s.container.name
               action: insert
-            - key: app.label.name
+            - key: app.label.name # Delete app.label.name attribute previously used for service.name
               action: delete
-            - key: service.version
+            - key: service.version # Set the service.version resource attribute based on the well-known app.kubernetes.io/version label
               from_attribute: app.label.version
               action: insert
-            - key: app.label.version
+            - key: app.label.version # Delete app.label.version attribute previously used for service.version
               action: delete
         resource/cloud:
           attributes:
@@ -589,9 +590,11 @@ collectors:
         # [K8s Attributes Processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/k8sattributesprocessor)
         k8sattributes:
           filter:
+            # Only retrieve pods running on the same node as the collector
             node_from_env_var: OTEL_K8S_NODE_NAME
           passthrough: false
           pod_association:
+            # Below association takes a look at the k8s.pod.ip and k8s.pod.uid resource attributes or connection's context, and tries to match it with the pod having the same attribute.
             - sources:
                 - from: resource_attribute
                   name: k8s.pod.ip
@@ -647,7 +650,7 @@ collectors:
         # [Hostmetrics Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver)
         hostmetrics:
           collection_interval: 10s
-          root_path: /hostfs
+          root_path: /hostfs # Mounted node's root file system
           scrapers:
             cpu:
               metrics:
