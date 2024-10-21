@@ -4,8 +4,7 @@ opentelemetry-operator:
       - --enable-go-instrumentation
   admissionWebhooks:
     certManager:
-      enabled: false # Disable cert-manager for managing admission webhook certificates.
-                     # For production environments, it is recommended to use cert-manager for better security and scalability.
+      enabled: false # For production environments, it is recommended to use cert-manager for better security and scalability.
                      # Refer to: https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-operator#tls-certificate-requirement
 
 
@@ -21,7 +20,8 @@ defaultCRConfig:
     repository: "docker.elastic.co/beats/elastic-agent"
     tag: "8.16.0-SNAPSHOT"
   targetAllocator:
-    enabled: false # Enable/disable the Operator's Target allocator to decouple the service discovery and metric collection functions of Prometheus. If enabled, per-node allocation strategy must be used with this deployment. Refer to: https://github.com/open-telemetry/opentelemetry-operator/tree/main/cmd/otel-allocator
+    enabled: false # Enable/disable the Operator's Target allocator.
+                   # Refer to: https://github.com/open-telemetry/opentelemetry-operator/tree/main/cmd/otel-allocator
   env:
     - name: ELASTIC_AGENT_OTEL
       value: '"true"'
@@ -47,6 +47,8 @@ clusterRole:
 # Cluster Name is detected automatically for EKS/GKE/AKS
 # clusterName: myClusterName
 collectors:
+  #  Cluster is a K8s deployment EDOT collector focused on gathering telemetry
+  #  at the cluster level (Kubernetes Events and cluster metrics).
   cluster:
     config:
       exporters:
@@ -192,6 +194,9 @@ collectors:
             exporters:
             - debug
             - elasticsearch/otel
+
+  #  Daemon is a K8s daemonset EDOT collector focused on gathering telemetry at
+  #  node level and expose an OTLP endpoint for data ingestion.
   daemon:
     presets:
       logsCollection:
@@ -201,7 +206,7 @@ collectors:
     securityContext: # Run the daemon as the root user and group for proper metrics collection.
       runAsUser: 0
       runAsGroup: 0
-    scrape_configs_file: "" # Remove this configuration option to collect Prometheus metrics from applications on the same node that have the prometheus.io/scrape=true annotation, kubernetes node metrics, and cadvisor metrics. Refer to: https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-kube-stack#scrape_configs_file-details
+    scrape_configs_file: "" # Refer to: https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-kube-stack#scrape_configs_file-details
     config:
       connectors:
         # [Signal To Metrics Connector](https://github.com/elastic/opentelemetry-collector-components/tree/main/connector/signaltometricsconnector)
