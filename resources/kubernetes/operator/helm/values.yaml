@@ -818,10 +818,10 @@ instrumentation:
   java:
     image: docker.elastic.co/observability/elastic-otel-javaagent:1.0.0
   nodejs:
-    image: docker.elastic.co/observability/elastic-otel-node:edge
+    image: docker.elastic.co/observability/elastic-otel-node:0.4.1
   dotnet:
     image: docker.elastic.co/observability/elastic-otel-dotnet:edge
   python:
-    image: docker.elastic.co/observability/elastic-otel-python:edge
+    image: docker.elastic.co/observability/elastic-otel-python:0.3.0
   go:
     image: ghcr.io/open-telemetry/opentelemetry-go-instrumentation/autoinstrumentation-go:v0.14.0-alpha
