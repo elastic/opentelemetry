@@ -447,7 +447,7 @@ collectors:
             mode: ecs
       processors:
         batch: {}
-        elastictrace:
+        elastictrace: {}
         lsminterval:
           intervals:
             - duration: 1m
