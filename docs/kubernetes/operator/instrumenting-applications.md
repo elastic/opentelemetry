@@ -51,13 +51,7 @@ Before starting with application auto-instrumentation, ensure the following prer
 
 ## Auto-instrumentation basics
 
-Zero-code instrumenation is handled by the operator through `Instrumenation` objects.
-
-The process is common to all supported languages, and it follows the usual OTel Operator steps for [auto-instrumentation injection](https://github.com/open-telemetry/opentelemetry-operator#opentelemetry-auto-instrumentation-injection):
-
-  1. Install the OTel Operator into a k8s cluster.
-  2. Create a `kind: Instrumentation` object with the appropriate config.
-  3. Deploy a pod or deployment with the appropriate annotation.
+Zero-code instrumenation is handled by the operator through `Instrumenation` objects, and it follows the usual OTel Operator steps for [auto-instrumentation injection](https://github.com/open-telemetry/opentelemetry-operator#opentelemetry-auto-instrumentation-injection).
 
 If you followed the [getting started guide](./README.md) to install the operator, there should be an `Instrumentation` object with name `elastic-instrumentation` in namespace `opentelemetry-operator-system`. The `Instrumentation` object stores important parameters:
 
@@ -141,15 +135,19 @@ You can apply OTEL specific configuration to your applications at two different 
 - At Pod/container level, by using OTEL related environment variables.
 - At `Instrumentation` object level, for example configuring different settings per language.
 
+Use cases:
+- Change the library to be injected.
+- Change the exporter endpoint.
+- Apply certain logging level settings (OTEL_LOG_LEVEL).
+
+### Manual creation of Instrumentation objects
+
 Consider also the creation of different `Instrumentation` objects for different purposes, such as:
 
 - Different configuration options for certain languages.
 - Trying out different versions of the SDKs.
 
-Use cases:
-- Change the library to be injected.
-- Change the exporter endpoint.
-- Apply certain logging level settings (OTEL_LOG_LEVEL).
+(TBD: add instructions and references about Instrumentation objects)
 
 
 ## Manual instrumentation
