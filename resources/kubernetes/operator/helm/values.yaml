@@ -57,9 +57,9 @@ collectors:
           verbosity: basic # Options: basic, detailed. Choose verbosity level for debug logs.
          # [Elasticsearch exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/elasticsearchexporter/README.md)
         elasticsearch/otel:
-          endpoints:
-          - ${env:ELASTIC_ENDPOINT}  # API key for Elasticsearch authentication.
-          api_key: ${env:ELASTIC_API_KEY} # List of Elasticsearch endpoints.
+          endpoints: # List of Elasticsearch endpoints.
+          - ${env:ELASTIC_ENDPOINT}
+          api_key: ${env:ELASTIC_API_KEY} # API key for Elasticsearch authentication.
           logs_dynamic_index:
             enabled: true
           # tls:
