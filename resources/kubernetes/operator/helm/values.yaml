@@ -1,3 +1,6 @@
+# For detailed configuration options, refer to the official OpenTelemetry Helm chart:
+# https://github.com/open-telemetry/opentelemetry-helm-charts/blob/main/charts/opentelemetry-kube-stack/values.yaml
+
 opentelemetry-operator:
   manager:
     extraArgs:
@@ -848,6 +851,8 @@ collectors:
               - debug
               - elasticsearch/otel
 
+# For more details on OpenTelemetry's zero-code instrumentation, see:
+# https://opentelemetry.io/docs/concepts/instrumentation/zero-code/
 instrumentation:
   name: elastic-instrumentation
   enabled: true # Enable/disable auto-instrumentation.
