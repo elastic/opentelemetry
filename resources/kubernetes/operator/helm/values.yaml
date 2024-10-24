@@ -95,6 +95,11 @@ collectors:
               action: insert
             - key: app.label.version
               action: delete
+        resource/hostname:
+          attributes:
+            - key: host.name
+              from_attribute: k8s.node.name
+              action: upsert
         k8sattributes:
           passthrough: false
           pod_association:
@@ -161,6 +166,7 @@ collectors:
             - resourcedetection/gcp
             - resourcedetection/aks
             - resource/k8s
+            - resource/hostname
             receivers:
             - k8s_cluster
           logs:
@@ -170,6 +176,7 @@ collectors:
             - resourcedetection/eks
             - resourcedetection/gcp
             - resourcedetection/aks
+            - resource/hostname
             exporters:
             - debug
             - elasticsearch/otel
@@ -504,6 +511,11 @@ collectors:
               action: insert
             - key: app.label.version
               action: delete
+        resource/hostname:
+          attributes:
+            - key: host.name
+              from_attribute: k8s.node.name
+              action: upsert
         attributes/dataset:
           actions:
             - key: event.dataset
@@ -727,6 +739,7 @@ collectors:
               - resourcedetection/gcp
               - resourcedetection/aks
               - resource/k8s
+              - resource/hostname
               - resource/cloud
             exporters:
               - debug
@@ -742,6 +755,7 @@ collectors:
               - resourcedetection/gcp
               - resourcedetection/aks
               - resource/k8s
+              - resource/hostname
               - resource/cloud
             exporters:
               - debug
@@ -759,6 +773,7 @@ collectors:
               - resourcedetection/gcp
               - resourcedetection/aks
               - resource/k8s
+              - resource/hostname
               - resource/cloud
               - attributes/dataset
               - resource/process
@@ -770,6 +785,7 @@ collectors:
               - otlp
             processors:
               - batch
+              - resource/hostname
             exporters:
               - debug
               - signaltometrics
@@ -779,6 +795,7 @@ collectors:
               - otlp
             processors:
               - batch
+              - resource/hostname
             exporters:
               - debug
               - signaltometrics
@@ -789,6 +806,7 @@ collectors:
             processors:
               - batch
               - elastictrace
+              - resource/hostname
             exporters:
               - debug
               - signaltometrics
