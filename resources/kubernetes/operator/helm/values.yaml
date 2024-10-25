@@ -53,6 +53,14 @@ collectors:
   #  Cluster is a K8s deployment EDOT collector focused on gathering telemetry
   #  at the cluster level (Kubernetes Events and cluster metrics).
   cluster:
+    # Configure the pods resources to control CPU and memory usage.
+    # resources:
+    #   limits:
+    #     cpu: 100m
+    #     memory: 500Mi
+    #   requests:
+    #     cpu: 100m
+    #     memory: 500Mi
     config:
       exporters:
         # [Debug exporter](https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/debugexporter/README.md)
@@ -209,6 +217,14 @@ collectors:
   #  Daemon is a K8s daemonset EDOT collector focused on gathering telemetry at
   #  node level and expose an OTLP endpoint for data ingestion.
   daemon:
+    # Configure the pods resources to control CPU and memory usage.
+    resources:
+      limits:
+        cpu: 100m
+        memory: 500Mi
+      requests:
+        cpu: 100m
+        memory: 500Mi
     presets:
       logsCollection:
         enabled: true # Enable/disable the collection of node's logs.
