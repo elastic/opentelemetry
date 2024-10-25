@@ -108,6 +108,11 @@ collectors:
               action: insert
             - key: app.label.version # Delete app.label.version attribute previously used for service.version
               action: delete
+        resource/hostname:
+          attributes:
+            - key: host.name
+              from_attribute: k8s.node.name
+              action: upsert
         # [K8s Attributes Processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/k8sattributesprocessor)
         k8sattributes:
           passthrough: false # Annotates resources with the pod IP and does not try to extract any other metadata.
@@ -186,6 +191,7 @@ collectors:
             - resourcedetection/gcp
             - resourcedetection/aks
             - resource/k8s
+            - resource/hostname
             receivers:
             - k8s_cluster
           logs:
@@ -195,6 +201,7 @@ collectors:
             - resourcedetection/eks
             - resourcedetection/gcp
             - resourcedetection/aks
+            - resource/hostname
             exporters:
             - debug
             - elasticsearch/otel
@@ -526,6 +533,11 @@ collectors:
             resource_attributes:
               k8s.cluster.name:
                 enabled: true
+        resource/hostname:
+          attributes:
+            - key: host.name
+              from_attribute: k8s.node.name
+              action: upsert
         resourcedetection/system:
           detectors: ["system", "ec2"] # Detects resources from the system and EC2 instances.
           system:
@@ -775,6 +787,7 @@ collectors:
               - resourcedetection/gcp
               - resourcedetection/aks
               - resource/k8s
+              - resource/hostname
               - resource/cloud
             exporters:
               - debug
@@ -790,6 +803,7 @@ collectors:
               - resourcedetection/gcp
               - resourcedetection/aks
               - resource/k8s
+              - resource/hostname
               - resource/cloud
             exporters:
               - debug
@@ -807,6 +821,7 @@ collectors:
               - resourcedetection/gcp
               - resourcedetection/aks
               - resource/k8s
+              - resource/hostname
               - resource/cloud
               - attributes/dataset
               - resource/process
@@ -818,6 +833,7 @@ collectors:
               - otlp
             processors:
               - batch
+              - resource/hostname
             exporters:
               - debug
               - signaltometrics
@@ -827,6 +843,7 @@ collectors:
               - otlp
             processors:
               - batch
+              - resource/hostname
             exporters:
               - debug
               - signaltometrics
@@ -837,6 +854,7 @@ collectors:
             processors:
               - batch
               - elastictrace
+              - resource/hostname
             exporters:
               - debug
               - signaltometrics
