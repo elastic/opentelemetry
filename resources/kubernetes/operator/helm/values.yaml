@@ -1,5 +1,4 @@
-# For detailed configuration options, refer to the official OpenTelemetry Helm chart:
-# https://github.com/open-telemetry/opentelemetry-helm-charts/blob/main/charts/opentelemetry-kube-stack/values.yaml
+# For advanced configuration options, refer to the [official OpenTelemetry Helm chart](https://github.com/open-telemetry/opentelemetry-helm-charts/blob/main/charts/opentelemetry-kube-stack/values.yaml)
 
 opentelemetry-operator:
   manager:
@@ -7,8 +6,7 @@ opentelemetry-operator:
       - --enable-go-instrumentation
   admissionWebhooks:
     certManager:
-      enabled: false # For production environments, it is recommended to use cert-manager for better security and scalability.
-                     # Refer to: https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-operator#tls-certificate-requirement
+      enabled: false # For production environments, it is [recommended to use cert-manager for better security and scalability](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-operator#tls-certificate-requirement).
 
 
 autoGenerateCert:
@@ -47,8 +45,9 @@ clusterRole:
 
 # `clusterName` specifies the name of the kubernetes cluster
 # It set the 'k8s.cluster.name' field, should be used for kubernetes environments, where cluster name can not be detected using resourcedetection
-# Cluster Name is detected automatically for EKS/GKE/AKS
+# Cluster Name is automatically detected for EKS/GKE/AKS, add the below value when cluster name is not available.
 # clusterName: myClusterName
+
 collectors:
   #  Cluster is a K8s deployment EDOT collector focused on gathering telemetry
   #  at the cluster level (Kubernetes Events and cluster metrics).
@@ -215,7 +214,8 @@ collectors:
             - elasticsearch/otel
 
   #  Daemon is a K8s daemonset EDOT collector focused on gathering telemetry at
-  #  node level and expose an OTLP endpoint for data ingestion.
+  #  node level and exposing an OTLP endpoint for data ingestion.
+  #  Auto-instrumentation SDKs will use this endpoint.
   daemon:
     # Configure the pods resources to control CPU and memory usage.
     resources:
@@ -233,7 +233,7 @@ collectors:
     securityContext: # Run the daemon as the root user and group for proper metrics collection.
       runAsUser: 0
       runAsGroup: 0
-    scrape_configs_file: "" # Refer to: https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-kube-stack#scrape_configs_file-details
+    scrape_configs_file: "" # [Prometheus metrics](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-kube-stack#scrape_configs_file-details)
     config:
       connectors:
         # [Signal To Metrics Connector](https://github.com/elastic/opentelemetry-collector-components/tree/main/connector/signaltometricsconnector)
@@ -891,7 +891,7 @@ instrumentation:
   name: elastic-instrumentation
   enabled: true # Enable/disable auto-instrumentation.
   exporter:
-    endpoint: http://opentelemetry-kube-stack-daemon-collector.opentelemetry-operator-system.svc.cluster.local:4318 # The OpenTelemetry Collector endpoint where telemetry data will be exported.
+    endpoint: http://opentelemetry-kube-stack-daemon-collector.opentelemetry-operator-system.svc.cluster.local:4318 # The daemonset OpenTelemetry Collector endpoint where telemetry data will be exported.
   propagators:
     - tracecontext # W3C TraceContext propagator for distributed tracing.
     - baggage # Baggage propagator to include baggage information in trace context.
