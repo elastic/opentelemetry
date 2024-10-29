@@ -44,7 +44,7 @@ clusterRole:
       verbs: ["get"]
 
 # `clusterName` specifies the name of the Kubernetes cluster. It sets the 'k8s.cluster.name' field.
-# Cluster Name is automatically detected for EKS/GKE/AKS, add the below value when cluster name is not available.
+# Cluster Name is automatically detected for EKS/GKE/AKS. Add the below value in environments where cluster name cannot be detected.
 # clusterName: myClusterName
 
 collectors:
