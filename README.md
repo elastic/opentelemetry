@@ -28,7 +28,7 @@ These pages detail the components and how to configure the EDOT Collector.
 - [Kubernetes guided onboarding](docs/kubernetes/operator/README.md): Use the guided onboarding to send Kubernetes logs, metrics, and application traces to Elasticsearch using the [OpenTelemetry Operator](https://github.com/open-telemetry/opentelemetry-operator/) to orchestrate the EDOT Collectors and EDOT SDK instances you will need.
 - [Instrumenting applications](docs/kubernetes/operator/instrumenting-applications.md) on Kubernetes: Collect application data using EDOT language SDKs.
 
-## Collect application data using the EDOT language SDKs
+## Collect application data using EDOT language SDKs
 
 Elastic offers several Distributions that extend [OpenTelemetry language SDKs](https://opentelemetry.io/docs/languages/). The following languages are currently available:
 
