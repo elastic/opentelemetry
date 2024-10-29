@@ -10,7 +10,7 @@ Elastic Distributions of OpenTelemetry (EDOT) SDKs cover multiple languages:
 
 This section provides guidance and examples for applications instrumentation in a Kubernetes environment for all supported languages.
 
-In Kubernetes environments with the OpenTelemetry Operator, [**automatic (or zero-code) instrumentation**](https://opentelemetry.io/docs/kubernetes/operator/automatic/) simplifies the process by automatically injecting and configuring instrumentation libraries into the targeted Pods.
+In Kubernetes environments with the OpenTelemetry Operator, [**automatic (or zero-code) instrumentation**](https://opentelemetry.io/docs/kubernetes/operator/automatic/) simplifies the process by injecting and configuring instrumentation libraries into the targeted Pods.
 
 On the other hand, **manual instrumentation** with OpenTelemetry involves adding specific OpenTelemetry SDKs and APIs directly into your application’s code. This approach provides more granular control over what and how data is captured, allowing you to customize trace spans, metrics, and logging based on your application’s logic.
 
