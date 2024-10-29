@@ -1,6 +1,6 @@
-# Instrumenting applications with EDOT on Kubernetes
+# Instrumenting applications with EDOT SDKs on Kubernetes
 
-Elastic Distribution of OpenTelemetry (EDOT) extends [OpenTelemetry language SDKs](https://opentelemetry.io/docs/languages/) for multiple languages:
+Elastic Distributions of OpenTelemetry (EDOT) SDKs cover multiple languages:
 
 * [EDOT Java](https://github.com/elastic/elastic-otel-java)
 * [EDOT .NET](https://github.com/elastic/elastic-otel-dotnet)
@@ -27,7 +27,7 @@ On the other hand, **manual instrumentation** with OpenTelemetry involves adding
 
 The following table illustrates the different languages supported by OpenTelemetry (OTel) and the Elastic Stack, the type of SDK/API used for instrumentation (either zero-code or source code dependencies), and the corresponding deployment types (on-premises, ESS, or serverless) for each language.
 
-| Language   | OTel SDK/API Type                                       | Deployment Type Support             |
+| Language   | OTel SDK/API Type                                       | Deployment Model Support             |
 |------------|---------------------------------------------------------|-------------------------------------|
 | Java       | EDOT Java - **zero-code instrumentation**               | All deployment types                |
 | Node.js    | EDOT Node.js - **zero-code instrumentation**            | All deployment types                |
@@ -51,18 +51,26 @@ Before starting with application auto-instrumentation, ensure the following prer
 
 ## Auto-instrumentation basics
 
-Zero-code instrumenation is handled by the operator through `Instrumenation` objects, and it follows the usual OTel Operator steps for [auto-instrumentation injection](https://github.com/open-telemetry/opentelemetry-operator#opentelemetry-auto-instrumentation-injection).
+Zero-code instrumentation is handled by the operator through `Instrumentation` objects, used to automatically inject the necessary SDKs and configuration into application workloads.
 
-If you followed the [getting started guide](./README.md) to install the operator, there should be an `Instrumentation` object with name `elastic-instrumentation` in namespace `opentelemetry-operator-system`. The `Instrumentation` object stores important parameters:
+If you followed the [getting started guide](./README.md) to install the operator, there should be an `Instrumentation` object with name `elastic-instrumentation` in namespace `opentelemetry-operator-system`:
 
-- The **exporter endpoint**: It represents the destination for the traces, in this case the HTTP receiver configured in the EDOT DaemonSet Collector. That endpoint has to be reachable by the Pods being instrumented.
+```bash
+kubectl get instrumentation -A
+NAMESPACE                       NAME                      AGE     ENDPOINT                                                                                                SAMPLER                    SAMPLER ARG
+opentelemetry-operator-system   elastic-instrumentation   5d20h   http://opentelemetry-kube-stack-daemon-collector.opentelemetry-operator-system.svc.cluster.local:4318   parentbased_traceidratio   1.0
+```
+
+The `Instrumentation` object stores important parameters:
+
+- The **exporter endpoint** represents the destination for the traces, in this case the HTTP receiver configured in the EDOT DaemonSet Collector. That endpoint has to be reachable by the Pods being instrumented.
 
 ```yaml
   exporter:
     endpoint: http://opentelemetry-kube-stack-daemon-collector.opentelemetry-operator-system.svc.cluster.local:4318
 ```
 
-- The **images** for the different languages: Used by the Operator to inject the right libraries into the Pods.
+- Language-specific **images** used by the operator to inject the appropriate library into each Pod.
 
 ```yaml
   dotnet:
@@ -77,7 +85,7 @@ If you followed the [getting started guide](./README.md) to install the operator
 
 ## Configuring auto-instrumentation
 
-To enable auto-instrumentation, add the corresponding annotation to the pods of existing deployments (`spec.template.metadata.annotations`), or to the desired namespace (to auto-instrument all pods in the namespace):
+To enable auto-instrumentation, add the corresponding language annotation to the **Pods** template (`spec.template.metadata.annotations`) in your Deployment or relevant workload object (StatefulSet, Job, CronJob, etc.).
 
 ```yaml
 apiVersion: apps/v1
@@ -101,23 +109,38 @@ spec:
 where `<LANGUAGE>` is one of: `go` , `java`, `nodejs`, `python`, `dotnet`
 
 > [!NOTE]
-> Ensure you add the annotations at Pod level and not directly at the workload `spec` level (Deployment, Job, etc.)
-> After adding annotations to Pods or Namespaces, the applications must be restarted for the instrumentation injection to take effect.
+> Ensure you add the annotations at Pod level and not directly at the workload `spec` level (Deployment, Job, etc.).
+> Ensure the annotation value must points to an existing `Instrumentation` object.
 
-If you followed the proposed installation of the Operator using the provided `values.yaml`, the previous value (`"opentelemetry-operator-system/elastic-instrumentation"`) should be correct for the environment.
+Alternatively, you can enable auto-instrumentation by adding the annotation at the **namespace level**. This approach automatically applies instrumentation to all Pods within the specified namespace.
 
-In case you have multiple Instrumentation objects with different settings or images, ensure you point your pods to the the desired `Instrumentation` objects in the annotations.
+```yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: mynamespace
+  annotations:
+    instrumentation.opentelemetry.io/inject-<LANGUAGE>: "opentelemetry-operator-system/elastic-instrumentation"
+```
 
-The possible values for the annotation are documented in the [Operator documentation](https://opentelemetry.io/docs/kubernetes/operator/automatic/#add-annotations-to-existing-deployments). For reference purposes, the values are:
+After adding annotations to Pods or Namespaces, the applications must be restarted for the instrumentation injection to take effect:
+
+```bash
+kubectl rollout restart deployment/my-deployment
+```
+
+In case you have multiple Instrumentation objects with different settings or images, ensure you point your Pods to the the desired `Instrumentation` objects in the annotations.
+
+The possible values for the annotation are detailed in the [Operator documentation](https://opentelemetry.io/docs/kubernetes/operator/automatic/#add-annotations-to-existing-deployments). For reference purposes, the values are:
 
 - `"true"`: to inject Instrumentation resource with default name from the current namespace.
-- `"my-instrumentation"`: to inject Instrumentation CR instance with name `"my-instrumentation"` in the current namespace.
-- `"my-other-namespace/my-instrumentation"`: to inject Instrumentation CR instance with name `"my-instrumentation"` from another namespace `"my-other-namespace"`.
+- `"my-instrumentation"`: to inject Instrumentation instance with name `"my-instrumentation"` in the current namespace.
+- `"my-other-namespace/my-instrumentation"`: to inject Instrumentation instance with name `"my-instrumentation"` from another namespace `"my-other-namespace"`.
 - `"false"`: do not inject.
 
 ### Namespace based annotations example
 
-The following example creates a namespace with an annotation to instrument all pods of the namespace with `java` libraries.
+The following example creates a namespace with an annotation to instrument all Pods of the namespace with `java` libraries.
 
 ```
 kubectl create namespace java-apps
