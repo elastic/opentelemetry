@@ -43,8 +43,7 @@ clusterRole:
       resources: ["configmaps"]
       verbs: ["get"]
 
-# `clusterName` specifies the name of the kubernetes cluster
-# It set the 'k8s.cluster.name' field, should be used for kubernetes environments, where cluster name can not be detected using resourcedetection
+# `clusterName` specifies the name of the Kubernetes cluster. It sets the 'k8s.cluster.name' field.
 # Cluster Name is automatically detected for EKS/GKE/AKS, add the below value when cluster name is not available.
 # clusterName: myClusterName
 
