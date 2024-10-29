@@ -7,6 +7,9 @@ env:
   AGENT_TESTS: python nodejs java
   #go dotnet --- both pending
 
+permissions:
+  contents: read
+
 jobs:
   integration-test:
     runs-on: ubuntu-latest
