@@ -106,7 +106,7 @@ spec:
       ...        
 ```
 
-where `<LANGUAGE>` is one of: `go` , `java`, `nodejs`, `python`, `dotnet`
+where ``<LANGUAGE>`` is one of: `go` , `java`, `nodejs`, `python`, `dotnet`
 
 > [!NOTE]
 > Ensure you add the annotations at Pod level and not directly at the workload `spec` level (Deployment, Job, etc.).
@@ -163,7 +163,7 @@ Use cases:
 - Change the exporter endpoint.
 - Apply certain logging level settings (OTEL_LOG_LEVEL).
 
-### Manual creation of Instrumentation objects
+### Adding extra Instrumentation objects
 
 Consider also the creation of different `Instrumentation` objects for different purposes, such as:
 
