@@ -21,7 +21,7 @@ This guide describes how to:
 
 - Elastic Stack (self-managed or [Elastic Cloud](https://www.elastic.co/cloud)) version 8.16.0 or higher, or an [Elasticsearch serverless](https://www.elastic.co/docs/current/serverless/elasticsearch/get-started) project.
 
-- A Kubernetes version supported by the OpenTelemetry Operator (refer to the operator's [compatibility matrix](https://github.com/open-telemetry/opentelemetry-operator?#compatibility-matrix) for more details).
+- A Kubernetes version supported by the OpenTelemetry Operator (refer to the operator's [compatibility matrix](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/compatibility.md#compatibility-matrix) for more details).
 
 ## Compatibility Matrix
 
@@ -169,9 +169,11 @@ metadata:
     instrumentation.opentelemetry.io/inject-<LANGUAGE>: "opentelemetry-operator-system/elastic-instrumentation"
 ```
 
-where <LANGUAGE> is one of: `go` , `java`, `nodejs`, `python`, `dotnet`
+where ``<LANGUAGE>`` is one of: `go` , `java`, `nodejs`, `python`, `dotnet`
 
-For detailed instructions and examples on how to instrument applications in Kubernetes using the OpenTelemetry Operator, refer to this guide (TBD-add link and document).
+For detailed instructions and examples on how to instrument applications in Kubernetes using the OpenTelemetry Operator, refer to [Instrumenting applications](/docs/kubernetes/operator/instrumenting-applications.md).
+
+For troubleshooing details and verification steps, refer to [Troubleshooting auto-instrumentation](/docs/kubernetes/operator/troubleshoot-auto-instrumentation.md).
 
 ## Limitations
 
