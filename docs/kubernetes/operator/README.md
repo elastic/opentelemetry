@@ -213,7 +213,7 @@ helm upgrade --install --namespace opentelemetry-operator-system opentelemetry-k
               enabled: true  # Change from `false` to `true`
         ```
 
-      - **Remove the generation of a self-signed certificate**
+      - **Remove the generation of a self-signed certificate.**
 
         ```yaml
         # Remove the following lines:
