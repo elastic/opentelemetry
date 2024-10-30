@@ -202,25 +202,25 @@ helm upgrade --install --namespace opentelemetry-operator-system opentelemetry-k
 
 * If you prefer to keep an updated copy of the `values.yaml` file:
 
-  1. **Download (or copy) and update** the `values.yaml` file with the following changes:
+  1. **Update** the `values.yaml` file with the following changes:
 
-    - **Enable cert-manager integration for admission webhooks.**
+      - **Enable cert-manager integration for admission webhooks.**
 
-      ```yaml
-      opentelemetry-operator:
-        admissionWebhooks:
-          certManager:
-            enabled: true  # Change from `false` to `true`
-      ```
+        ```yaml
+        opentelemetry-operator:
+          admissionWebhooks:
+            certManager:
+              enabled: true  # Change from `false` to `true`
+        ```
 
-    - **Remove auto-generated certificate settings.**
+      - **Remove auto-generated certificate settings.**
 
-      ```yaml
-      # Remove the following lines:
-      autoGenerateCert:
-        enabled: true
-        recreate: true
-      ```
+        ```yaml
+        # Remove the following lines:
+        autoGenerateCert:
+          enabled: true
+          recreate: true
+        ```
 
   2. Run the installation (or upgrade) command pointing to the updated file. For example, assuming that the updated file has been saved as `values_cert-manager.yaml`:
 
