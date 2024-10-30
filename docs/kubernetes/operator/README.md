@@ -203,23 +203,23 @@ Option 2) If you prefer to keep an updated copy of the used `values.yaml`:
 
 - **Download (or copy) and update** the `values.yaml` file with the following changes:
 
-  - Enable cert-manager integration for admission webhooks:
+  - **Enable cert-manager integration for admission webhooks.**
 
-  ```yaml
-  opentelemetry-operator:
-    admissionWebhooks:
-      certManager:
-        enabled: true  # Change from `false` to `true`
-  ```
+    ```yaml
+    opentelemetry-operator:
+      admissionWebhooks:
+        certManager:
+          enabled: true  # Change from `false` to `true`
+    ```
 
-  - **Remove auto-generated certificate settings** if they’re no longer needed with cert-manager enabled:
+  - **Remove auto-generated certificate settings.**
 
-  ```yaml
-  # Remove the following lines:
-  autoGenerateCert:
-    enabled: true
-    recreate: true
-  ```
+    ```yaml
+    # Remove the following lines:
+    autoGenerateCert:
+      enabled: true
+      recreate: true
+    ```
 
 Afterwards just run the installation / upgrade command pointing to the updated file (assuming for example that the update file has been saved as `values_cert-manager.yaml`):
 
