@@ -93,7 +93,7 @@ The preferred method for deploying all components is through Kibana Onboarding U
 2. Select **Kubernetes**, then choose **Kubernetes monitoring with EDOT Collector**.
 3. Follow the on-screen instructions to install the OpenTelemetry Operator using the Helm Chart and the provided `values.yaml`.
 
-Regarding the commands suggested by Kibana UI:
+Notes on installing the OpenTelemetry Operator:
 - If the `elastic_endpoint` showed by the UI is not valid for your environment, replace it with the correct Elasticsearch endpoint.
 - The displayed `elastic_api_key` corresponds to an API key created by Kibana when the onboarding process is initiated.
 
