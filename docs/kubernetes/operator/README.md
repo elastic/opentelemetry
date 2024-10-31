@@ -94,7 +94,7 @@ The preferred method for deploying all components is through Kibana Onboarding U
 3. Follow the on-screen instructions to install the OpenTelemetry Operator using the Helm Chart and the provided `values.yaml`.
 
 Notes on installing the OpenTelemetry Operator:
-- If the `elastic_endpoint` showed by the UI is not valid for your environment, replace it with the correct Elasticsearch endpoint.
+- Make sure the `elastic_endpoint` shown in the installation command is valid for your environment. If not, replace it with the correct Elasticsearch endpoint.
 - The displayed `elastic_api_key` corresponds to an API key created by Kibana when the onboarding process is initiated.
 
 > [!NOTE]
