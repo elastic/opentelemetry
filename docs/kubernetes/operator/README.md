@@ -200,7 +200,7 @@ helm upgrade --install --namespace opentelemetry-operator-system opentelemetry-k
 --set opentelemetry-operator.admissionWebhooks.certManager.enabled=true --set opentelemetry-operator.admissionWebhooks.autoGenerateCert=null
 ```
 
-* If you prefer to keep an updated copy of the `values.yaml` file:
+* Keep an updated copy of the `values.yaml` file by following these steps:
 
   1. **Update** the `values.yaml` file with the following changes:
 
