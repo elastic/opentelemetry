@@ -47,7 +47,7 @@ The OpenTelemetry Operator is a [Kubernetes Operator](https://kubernetes.io/docs
 - [OpenTelemetry Collectors](https://github.com/open-telemetry/opentelemetry-collector): Agents responsible for receiving, processing, and exporting telemetry data such as logs, metrics, and traces.
 - [Instrumentation](https://opentelemetry.io/docs/kubernetes/operator/automatic): Leverages OpenTelemetry instrumentation libraries to automatically instrument workloads.
 
-All signals including logs, metrics, traces are processed by the collectors and sent directly to Elasticsearch via the ES exporter. A collector's processor pipeline replaces the traditional APM server functionality for handling application traces.
+All signals including logs, metrics, and traces are processed by the collectors and sent directly to Elasticsearch using the ES exporter. A collector's processor pipeline replaces the traditional APM server functionality for handling application traces.
 
 ### Kube-stack Helm Chart
 
