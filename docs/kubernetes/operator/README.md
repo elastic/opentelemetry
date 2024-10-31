@@ -99,7 +99,7 @@ Notes on installing the OpenTelemetry Operator:
 
 > [!NOTE]
 > The default installation deploys an OpenTelemetry Operator with a self-signed TLS certificate.
-> If you prefer to use publicly trusted certificates with automatic generation and renewal functionality, refer to [cert-manager integrated installation](#cert-manager) for indications about how to customize the `values.yaml` file before running the `helm install` command.
+> To automatically generate and renew publicly trusted certificates, refer to [cert-manager integrated installation](#cert-manager) for instructions on customizing the `values.yaml` file before running the `helm install` command.
 
 ## Manual deployment of all components
 
