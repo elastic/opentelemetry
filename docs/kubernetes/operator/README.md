@@ -192,7 +192,7 @@ Integrating the operator with [cert-manager](https://cert-manager.io/) enables a
 
 Follow any of the following options to install the OpenTelemetry Operator Helm Chart integrated with `cert-manager`:
 
-* Directly adding to the installation command the options `--set opentelemetry-operator.admissionWebhooks.certManager.enabled=true --set opentelemetry-operator.autoGenerateCert=null`, like:
+* Directly add these options to the installation command `--set opentelemetry-operator.admissionWebhooks.certManager.enabled=true --set opentelemetry-operator.autoGenerateCert=null`. For example:
 
 ```bash
 helm upgrade --install --namespace opentelemetry-operator-system opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack \
