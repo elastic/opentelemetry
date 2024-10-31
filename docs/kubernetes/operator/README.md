@@ -95,7 +95,7 @@ The preferred method for deploying all components is through Kibana Onboarding U
 
 Notes on installing the OpenTelemetry Operator:
 - Make sure the `elastic_endpoint` shown in the installation command is valid for your environment. If not, replace it with the correct Elasticsearch endpoint.
-- The displayed `elastic_api_key` corresponds to an API key created by Kibana when the onboarding process is initiated.
+- The `elastic_api_key` shown in the installation command corresponds to an API key created by Kibana when the onboarding process is initiated.
 
 > [!NOTE]
 > The default installation deploys an OpenTelemetry Operator with a self-signed TLS certificate.
