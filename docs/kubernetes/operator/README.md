@@ -89,7 +89,7 @@ The Helm Chart is configured to enable zero-code instrumentation using the [Oper
 
 The preferred method for deploying all components is through Kibana Onboarding UX. Follow these steps:
 
-1. Navigate in Kibana to **Observability** --> **Add data**
+1. In Kibana, navigate to **Observability** → **Add data**.
 2. Select **Kubernetes**, then choose **Kubernetes monitoring with EDOT Collector**.
 3. Follow the on-screen instructions to install the OpenTelemetry Operator using the Helm Chart and the provided `values.yaml`.
 
