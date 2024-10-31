@@ -23,7 +23,7 @@ This guide describes how to:
 
 - A Kubernetes version supported by the OpenTelemetry Operator (refer to the operator's [compatibility matrix](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/compatibility.md#compatibility-matrix) for more details).
 
-- If you opt for automatic certificates generation and renewal on the OpenTelemetry Operator, [cert-manager](https://cert-manager.io/docs/installation/) should be installed in the Kubernetes cluster. The operator default installation uses a self-signed certificate and **doesn't require** cert-manager to be installed.
+- If you opt for automatic certificate generation and renewal on the OpenTelemetry Operator, you need to install [cert-manager](https://cert-manager.io/docs/installation/) in the Kubernetes cluster. By default, the operator installation uses a self-signed certificate and **doesn't require** cert-manager.
 
 ## Compatibility Matrix
 
