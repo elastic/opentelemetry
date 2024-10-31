@@ -186,7 +186,7 @@ For troubleshooing details and verification steps, refer to [Troubleshooting aut
 
 ## Cert-manager integrated installation
 
-In Kubernetes, in order for the API server to communicate with the webhook component (created by the operator), the webhook requires a TLS certificate that the API server is configured to trust. The default provided configuration sets the Helm Chart to auto generate the required certificate as a self-signed certificate with an expiration policy of 365 days. These certificates **won't be renewed** if the Helm Chart's release is not manually updated. For production environments, it is highly recommended to use a certificate manger like [cert-manager](https://cert-manager.io/docs/installation/).
+In Kubernetes, for the API server to communicate with the webhook component (created by the operator), the webhook requires a TLS certificate that the API server is configured to trust. The default provided configuration sets the Helm Chart to auto generate the required certificate as a self-signed certificate with an expiration policy of 365 days. These certificates **won't be renewed** if the Helm Chart's release is not manually updated. For production environments, we highly recommend using a certificate manager like [cert-manager](https://cert-manager.io/docs/installation/).
 
 Integrating the operator with [cert-manager](https://cert-manager.io/) enables automatic generation and renewal of publicly trusted TLS certificates. This section assumes that cert-manager and its CRDs are already installed in your Kubernetes environment. If that's not the case, refer to the [cert-manager installation guide](https://cert-manager.io/docs/installation/) before continuing.
 
