@@ -85,7 +85,7 @@ The Helm Chart is configured to enable zero-code instrumentation using the [Oper
 - Python
 - .NET
 
-## Deploying components using Kibana Onboarding UX
+## Deploy components using the guided onboarding
 
 The preferred method for deploying all components is through Kibana Onboarding UX. Follow these steps:
 
