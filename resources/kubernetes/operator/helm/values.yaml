@@ -23,19 +23,6 @@ defaultCRConfig:
   targetAllocator:
     enabled: false # Enable/disable the Operator's Target allocator.
                    # Refer to: https://github.com/open-telemetry/opentelemetry-operator/tree/main/cmd/otel-allocator
-  env:
-    - name: ELASTIC_AGENT_OTEL
-      value: '"true"'
-    - name: ELASTIC_ENDPOINT
-      valueFrom:
-        secretKeyRef:
-          name: elastic-secret-otel
-          key: elastic_endpoint
-    - name: ELASTIC_API_KEY
-      valueFrom:
-        secretKeyRef:
-          name: elastic-secret-otel
-          key: elastic_api_key
 
 clusterRole:
   rules:
@@ -59,6 +46,19 @@ collectors:
     #   requests:
     #     cpu: 100m
     #     memory: 500Mi
+    env:
+      - name: ELASTIC_AGENT_OTEL
+        value: '"true"'
+      - name: ELASTIC_ENDPOINT
+        valueFrom:
+          secretKeyRef:
+            name: elastic-secret-otel
+            key: elastic_endpoint
+      - name: ELASTIC_API_KEY
+        valueFrom:
+          secretKeyRef:
+            name: elastic-secret-otel
+            key: elastic_api_key
     config:
       exporters:
         # [Debug exporter](https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/debugexporter/README.md)
@@ -219,11 +219,33 @@ collectors:
     # Configure the pods resources to control CPU and memory usage.
     resources:
       limits:
-        cpu: 100m
-        memory: 500Mi
+        cpu: 1500m
+        memory: 1500Mi
       requests:
         cpu: 100m
         memory: 500Mi
+    env:
+      # Work around for open /mounts error: https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/35990
+      - name: HOST_PROC_MOUNTINFO
+        value: ""
+      - name: ELASTIC_AGENT_OTEL
+        value: '"true"'
+      - name: ELASTIC_ENDPOINT
+        valueFrom:
+          secretKeyRef:
+            name: elastic-secret-otel
+            key: elastic_endpoint
+      - name: ELASTIC_API_KEY
+        valueFrom:
+          secretKeyRef:
+            name: elastic-secret-otel
+            key: elastic_api_key
+      - name: GOMAXPROCS
+        valueFrom:
+          resourceFieldRef:
+            resource: limits.cpu
+      - name: GOMEMLIMIT
+        value: "1025MiB"
     presets:
       logsCollection:
         enabled: true # Enable/disable the collection of node's logs.
