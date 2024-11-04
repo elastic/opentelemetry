@@ -179,7 +179,7 @@ where ``<LANGUAGE>`` is one of: `go` , `java`, `nodejs`, `python`, `dotnet`
 
 For detailed instructions and examples on how to instrument applications in Kubernetes using the OpenTelemetry Operator, refer to [Instrumenting applications](/docs/kubernetes/operator/instrumenting-applications.md).
 
-For troubleshooing details and verification steps, refer to [Troubleshooting auto-instrumentation](/docs/kubernetes/operator/troubleshoot-auto-instrumentation.md).
+For troubleshooting details and verification steps, refer to [Troubleshooting auto-instrumentation](/docs/kubernetes/operator/troubleshoot-auto-instrumentation.md).
 
 <!-- Do not change this anchor name as it's used by Kibana OTel+k8s Onboarding UX -->
 <a name="cert-manager"></a>
