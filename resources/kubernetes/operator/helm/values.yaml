@@ -225,6 +225,9 @@ collectors:
         cpu: 100m
         memory: 500Mi
     env:
+      # Work around for open /mounts error: https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/35990
+      - name: HOST_PROC_MOUNTINFO
+        value: ""
       - name: ELASTIC_AGENT_OTEL
         value: '"true"'
       - name: ELASTIC_ENDPOINT
