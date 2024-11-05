@@ -87,7 +87,7 @@ The Helm Chart is configured to enable zero-code instrumentation using the [Oper
 
 ## Deploy components using the guided onboarding
 
-The preferred method for deploying all components is through Kibana Onboarding UX. Follow these steps:
+The guided onboarding simplifies deploying your Kubernetes components by setting up an [API Key](https://www.elastic.co/guide/en/kibana/current/api-keys.html) and the needed [Integrations](https://www.elastic.co/docs/current/en/integrations) in the background. Follow these steps to use the guided onboarding:
 
 1. In Kibana, navigate to **Observability** → **Add data**.
 2. Select **Kubernetes**, then choose **Kubernetes monitoring with EDOT Collector**.
