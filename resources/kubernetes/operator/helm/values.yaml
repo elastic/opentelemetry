@@ -682,6 +682,21 @@ collectors:
               - tag_name: app.label.version
                 key: app.kubernetes.io/version
                 from: pod
+        k8sattributes/ecs:
+          filter:
+            # Only retrieve pods running on the same node as the collector
+            node_from_env_var: OTEL_K8S_NODE_NAME
+          passthrough: false
+          pod_association:
+            # Below association takes a look at the k8s.pod.ip and k8s.pod.uid resource attributes or connection's context, and tries to match it with the pod having the same attribute.
+            - sources:
+                - from: resource_attribute
+                  name: k8s.pod.ip
+            - sources:
+                - from: resource_attribute
+                  name: k8s.pod.uid
+            - sources:
+                - from: connection
       receivers:
         # [OTLP Receiver](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver)
         otlp:
@@ -852,7 +867,7 @@ collectors:
             processors:
               - elasticinframetrics
               - batch
-              - k8sattributes
+              - k8sattributes/ecs
               - resourcedetection/system
               - resourcedetection/eks
               - resourcedetection/gcp
