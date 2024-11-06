@@ -15,13 +15,15 @@ This guide describes how to:
 - [Manual deployment of all components](#manual-deployment-of-all-components)
 - [Installation verification](#installation-verification)
 - [Instrumenting applications](#instrumenting-applications)
-- [Limitations](#limitations)
+- [Cert-manager integrated installation](#cert-manager)
 
 ## Prerequisites
 
 - Elastic Stack (self-managed or [Elastic Cloud](https://www.elastic.co/cloud)) version 8.16.0 or higher, or an [Elasticsearch serverless](https://www.elastic.co/docs/current/serverless/elasticsearch/get-started) project.
 
 - A Kubernetes version supported by the OpenTelemetry Operator (refer to the operator's [compatibility matrix](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/compatibility.md#compatibility-matrix) for more details).
+
+- If you opt for automatic certificate generation and renewal on the OpenTelemetry Operator, you need to install [cert-manager](https://cert-manager.io/docs/installation/) in the Kubernetes cluster. By default, the operator installation uses a self-signed certificate and **doesn't require** cert-manager.
 
 ## Compatibility Matrix
 
@@ -42,10 +44,10 @@ When [installing the release](#manual-deployment-of-all-components), ensure you 
 
 The OpenTelemetry Operator is a [Kubernetes Operator](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/) implementation designed to manage OpenTelemetry resources in a Kubernetes environment. It defines and oversees the following Custom Resource Definitions (CRDs):
 
-- [OpenTelemetry Collectors](https://github.com/open-telemetry/opentelemetry-collector): Agents responsible for receiving, processing and exporting telemetry data such as logs, metrics, and traces.
-- [Instrumentation](https://opentelemetry.io/docs/kubernetes/operator/automatic): Used for the atomatic instrumentation of workloads by leveraging OpenTelemetry instrumentation libraries.
+- [OpenTelemetry Collectors](https://github.com/open-telemetry/opentelemetry-collector): Agents responsible for receiving, processing, and exporting telemetry data such as logs, metrics, and traces.
+- [Instrumentation](https://opentelemetry.io/docs/kubernetes/operator/automatic): Leverages OpenTelemetry instrumentation libraries to automatically instrument workloads.
 
-All signals including logs, metrics, traces are processed by the collectors and sent directly to Elasticsearch via the ES exporter. A collector's processor pipeline replaces the traditional APM server functionality for handling application traces.
+All signals including logs, metrics, and traces are processed by the collectors and sent directly to Elasticsearch using the ES exporter. A collector's processor pipeline replaces the traditional APM server functionality for handling application traces.
 
 ### Kube-stack Helm Chart
 
@@ -83,17 +85,21 @@ The Helm Chart is configured to enable zero-code instrumentation using the [Oper
 - Python
 - .NET
 
-## Deploying components using Kibana Onboarding UX
+## Deploy components using the guided onboarding
 
-The preferred method for deploying all components is through the Kibana Onboarding UX. Follow these steps:
+The guided onboarding simplifies deploying your Kubernetes components by setting up an [API Key](https://www.elastic.co/guide/en/kibana/current/api-keys.html) and the needed [Integrations](https://www.elastic.co/docs/current/en/integrations) in the background. Follow these steps to use the guided onboarding:
 
-1. Navigate in Kibana to **Observability** --> **Add data**
+1. In Kibana, navigate to **Observability** → **Add data**.
 2. Select **Kubernetes**, then choose **Kubernetes monitoring with EDOT Collector**.
 3. Follow the on-screen instructions to install the OpenTelemetry Operator using the Helm Chart and the provided `values.yaml`.
 
-Notes:
-- If the `elastic_endpoint` showed by the UI is not valid for your environment, replace it with the correct Elasticsearch endpoint.
-- The displayed `elastic_api_key` corresponds to an API key that is automatically generated when the onboarding process is initiated.
+Notes on installing the OpenTelemetry Operator:
+- Make sure the `elastic_endpoint` shown in the installation command is valid for your environment. If not, replace it with the correct Elasticsearch endpoint.
+- The `elastic_api_key` shown in the installation command corresponds to an API key created by Kibana when the onboarding process is initiated.
+
+> [!NOTE]
+> The default installation deploys an OpenTelemetry Operator with a self-signed TLS certificate.
+> To automatically generate and renew publicly trusted certificates, refer to [cert-manager integrated installation](#cert-manager) for instructions on customizing the `values.yaml` file before running the `helm install` command.
 
 ## Manual deployment of all components
 
@@ -173,28 +179,52 @@ where ``<LANGUAGE>`` is one of: `go` , `java`, `nodejs`, `python`, `dotnet`
 
 For detailed instructions and examples on how to instrument applications in Kubernetes using the OpenTelemetry Operator, refer to [Instrumenting applications](/docs/kubernetes/operator/instrumenting-applications.md).
 
-For troubleshooing details and verification steps, refer to [Troubleshooting auto-instrumentation](/docs/kubernetes/operator/troubleshoot-auto-instrumentation.md).
+For troubleshooting details and verification steps, refer to [Troubleshooting auto-instrumentation](/docs/kubernetes/operator/troubleshoot-auto-instrumentation.md).
 
-## Limitations
+<!-- Do not change this anchor name as it's used by Kibana OTel+k8s Onboarding UX -->
+<a name="cert-manager"></a>
 
-### Cert manager
+## Cert-manager integrated installation
 
-In Kubernetes, in order for the API server to communicate with the webhook component (created by the Operator), the webhook requires a TLS certificate that the API server is configured to trust. The previous provided configurations sets the Helm Chart to auto generate the required TLS certificates with an expiration policy of 365 days. These certificates **won't be renewed** if the Helm Chart's release is not manually updated. For production environments, it is highly recommended to use a certificate manger like [cert-manager](https://cert-manager.io/docs/installation/).
+In Kubernetes, for the API server to communicate with the webhook component (created by the operator), the webhook requires a TLS certificate that the API server is configured to trust. The default provided configuration sets the Helm Chart to auto generate the required certificate as a self-signed certificate with an expiration policy of 365 days. These certificates **won't be renewed** if the Helm Chart's release is not manually updated. For production environments, we highly recommend using a certificate manager like [cert-manager](https://cert-manager.io/docs/installation/).
 
-If `cert-manager` CRDs are already present in your Kubernetes environment, you can configure the Operator to use them with the following modifications in the values file:
+Integrating the operator with [cert-manager](https://cert-manager.io/) enables automatic generation and renewal of publicly trusted TLS certificates. This section assumes that cert-manager and its CRDs are already installed in your Kubernetes environment. If that's not the case, refer to the [cert-manager installation guide](https://cert-manager.io/docs/installation/) before continuing.
 
+Follow any of the following options to install the OpenTelemetry Operator Helm Chart integrated with `cert-manager`:
 
-```diff
-opentelemetry-operator:
-  manager:
-    extraArgs:
-      - --enable-go-instrumentation
-  admissionWebhooks:
-    certManager:
--      enabled: false
-+      enabled: true
+* Add `--set opentelemetry-operator.admissionWebhooks.certManager.enabled=true --set opentelemetry-operator.autoGenerateCert=null` to the installation command. For example:
 
--autoGenerateCert:
--  enabled: true
--  recreate: true
+```bash
+helm upgrade --install --namespace opentelemetry-operator-system opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack \
+--values ./resources/kubernetes/operator/helm/values.yaml --version 0.3.3 \
+--set opentelemetry-operator.admissionWebhooks.certManager.enabled=true --set opentelemetry-operator.admissionWebhooks.autoGenerateCert=null
 ```
+
+* Keep an updated copy of the `values.yaml` file by following these steps:
+
+  1. **Update** the `values.yaml` file with the following changes:
+
+      - **Enable cert-manager integration for admission webhooks.**
+
+        ```yaml
+        opentelemetry-operator:
+          admissionWebhooks:
+            certManager:
+              enabled: true  # Change from `false` to `true`
+        ```
+
+      - **Remove the generation of a self-signed certificate.**
+
+        ```yaml
+        # Remove the following lines:
+        autoGenerateCert:
+          enabled: true
+          recreate: true
+        ```
+
+  2. Run the installation (or upgrade) command pointing to the updated file. For example, assuming that the updated file has been saved as `values_cert-manager.yaml`:
+
+    ```bash
+    helm upgrade --install --namespace opentelemetry-operator-system opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack \
+    --values ./resources/kubernetes/operator/helm/values_cert-manager.yaml --version 0.3.0
+    ```
