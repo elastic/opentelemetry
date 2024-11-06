@@ -697,6 +697,13 @@ collectors:
                   name: k8s.pod.uid
             - sources:
                 - from: connection
+          extract:
+            metadata:
+              - "k8s.replicaset.name"
+              - "k8s.statefulset.name"
+              - "k8s.daemonset.name"
+              - "k8s.cronjob.name"
+              - "k8s.job.name"
       receivers:
         # [OTLP Receiver](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver)
         otlp:
