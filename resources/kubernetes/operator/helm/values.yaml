@@ -8,10 +8,9 @@ opentelemetry-operator:
     certManager:
       enabled: false # For production environments, it is [recommended to use cert-manager for better security and scalability](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-operator#tls-certificate-requirement).
 
-
-autoGenerateCert:
-  enabled: true # Enable/disable automatic certificate generation. Set to false if manually managing certificates.
-  recreate: true # Force certificate regeneration on updates. Only applicable if autoGenerateCert.enabled is true.
+    autoGenerateCert:
+      enabled: true # Enable/disable automatic certificate generation. Set to false if manually managing certificates.
+      recreate: true # Force certificate regeneration on updates. Only applicable if autoGenerateCert.enabled is true.
 
 crds:
   create: true # Install the OpenTelemetry Operator CRDs.
