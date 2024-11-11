@@ -216,6 +216,15 @@ The provided `values.yaml` contains comments that explain nearly all available p
 
 The following table lists common parameters that might be relevant for your use case:
 
+<style>
+table th:first-of-type {
+    width: 20%;
+}
+table th:nth-of-type(2) {
+    width: 80%;
+}
+</style>
+
 | `values.yaml` parameter          |     Description      |
 |----------------------------------|----------------------|
 | `clusterName`                    | Sets the `k8s.cluster.name` field in all collected data. The cluster name is automatically detected for `EKS/GKE/AKS` clusters, but it might be useful for other environments. When monitoring multiple Kubernetes clusters, ensure that the cluster name is properly set in all your environments.<br><br>Refer to the [resourcedetection processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/resourcedetectionprocessor/README.md#cluster-name) for more details about cluster name detection. |
