@@ -220,14 +220,13 @@ The following table lists common parameters that might be relevant for your use 
 | `collectors.cluster.resources`   | Configures CPU and memory requests and limits applied to the `Deployment` EDOT Collector responsible for cluster-level metrics.<br>This setting follows the standard [Kubernetes resources syntax](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits) for specifying requests and limits. |
 | `collectors.daemon.resources`    | Configures CPU and memory requests and limits applied to the `DaemonSet` EDOT Collector responsible for node-level metrics and application traces.<br>This setting follows the standard [Kubernetes resources syntax](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits) for specifying requests and limits. |
 | `certManager.enabled`    | Defaults to `false`.<br>Refer to [cert-manager integrated installation](#cert-manager) for more details. |
-| `instrumentation.<language>.image`    | Container image used for `zero-code` provisioning. Refer to [instrumenting applications](./intrumenting-applications.md) for more details. |
-| `instrumentation.exporter.endpoint`    | Exporter endpoint for the EDOT SDK agent. Refer to [instrumenting applications](./intrumenting-applications.md) for more details. |
-| `exporters.debug.verbosity` | Verbosity level for debug logs of the [Elasticsearch exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/elasticsearchexporter/README.md) of the collectors.<br>Defaults to `basic`. Can be any of `basic`, `detailed`.<br>Applicable to `collectors.daemon.config.exporters.debug.verbosity` and `collectors.cluster.config.exporters.debug.verbosity` |
 
 > [!NOTE]
 > The `namespace` of the installation cannot be changed and must be set to `opentelemetry-operator-system` during the helm chart installation.
 
-For more details of all existing parameters, the provided `values.yaml` includes comments and is largely self-explanatory.
+For more information on all available parameters and their meaning, refer to:
+* The the provided `values.yaml`, which includes the default settings for the EDOT installation.
+* The official OpenTelemetry `kube-stack` Helm chart [values file](https://github.com/open-telemetry/opentelemetry-helm-charts/blob/main/charts/opentelemetry-kube-stack/values.yaml), with explanations of all parameters.
 
 <!-- Do not change this anchor name as it's used by Kibana OTel+k8s Onboarding UX -->
 <a name="cert-manager"></a>
