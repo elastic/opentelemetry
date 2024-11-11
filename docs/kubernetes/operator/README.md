@@ -224,8 +224,7 @@ The following table lists common parameters that might be relevant for your use 
 | `certManager.enabled`    | Defaults to `false`.<br>Refer to [cert-manager integrated installation](#cert-manager) for more details. |
 | `instrumentation.<language>.image`    | Container image used for `zero-code` provisioning. Refer to [instrumenting applications](./intrumenting-applications.md) for more details. |
 | `instrumentation.exporter.endpoint`    | Exporter endpoint for the EDOT SDK agent. Refer to [instrumenting applications](./intrumenting-applications.md) for more details. |
-| `collectors.cluster.config.exporters.debug.verbosity`<br>and<br> `collectors.daemon.config.exporters.debug.verbosity` | Verbosity level for debug logs of the [Elasticsearch exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/elasticsearchexporter/README.md) of the collectors.<br>Defaults to `basic`. Can be any of `basic`, `detailed`. |
-
+| `exporters.debug.verbosity` | Verbosity level for debug logs of the [Elasticsearch exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/elasticsearchexporter/README.md) of the collectors.<br>Defaults to `basic`. Can be any of `basic`, `detailed`.<br>Applicable to `collectors.daemon.config.exporters.debug.verbosity` and `collectors.cluster.config.exporters.debug.verbosity` |
 
 > [!NOTE]
 > The `namespace` cannot be updated and it must be set to `opentelemetry-operator-system` during the helm chart installation.
