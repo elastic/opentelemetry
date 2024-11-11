@@ -15,6 +15,7 @@ This guide describes how to:
 - [Manual deployment of all components](#manual-deployment-of-all-components)
 - [Installation verification](#installation-verification)
 - [Instrumenting applications](#instrumenting-applications)
+- [Upgrades](#operator-upgrade)
 - [Customizing configuration](#custom-configuration)
 - [Cert-manager integrated installation](#cert-manager)
 
@@ -182,19 +183,50 @@ For detailed instructions and examples on how to instrument applications in Kube
 
 For troubleshooting details and verification steps, refer to [Troubleshooting auto-instrumentation](/docs/kubernetes/operator/troubleshoot-auto-instrumentation.md).
 
-<a name="custom-configuration"></a>
+<a name="operator-upgrade"></a>
+
+## Upgrades
+
+> [!NOTE]
+> Before upgrading or changing the release configuration refer to [compatibility matrix](#compatibility-matrix) for the list of supported versions and [customizing configuration](#custom-config) for a list of supported configurable parameters.
+
+To upgrade an installed release, run:
+
+```bash
+helm repo update open-telemetry # to fetch new versions (if available)
+helm search repo open-telemetry/opentelemetry-kube-stack --versions # to list available versions
+helm upgrade --namespace opentelemetry-operator-system opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack \
+ --values <updated_values_file> --version <updated_version>
+```
+
+When upgrading a release (even when there's no real change to apply), helm will generate a new self-signed certificate when [cert-manager integration](#cert-manager) is disabled.
+
+<a name="custom-config"></a>
 
 ## Customizing configuration
 
-To customize installation parameters change the configuration settings provided in the `values.yaml` file that is used during the installation, or override those settings directly during helm install or upgrade command.
+To customize the installation parameters, change the configuration settings provided in `values.yaml` file, or override those settings using `--set` during the installation.
 
-The provided `values.file` includes comments and explanations of the majority of the settings. In general, the most common use cases that require customization are:
+To update an installed release, run a `helm upgrade` with the updated `values.yaml` file. Depending on the changes, some Pods may need to be restarted for the updates to take effect. Refer to [upgrades](#operator-upgrade) for a command example.
 
-### Set clusterName
+The provided `values.file` contains comments that explain nearly all available parameters.
 
-This parameter 
+### Configurable parameters
 
+The following shows a list of common parameters that might be relevant for your use case:
 
+* `clusterName`: It sets the `k8s.cluster.name` field in all collected data. Cluster name is automatically detected for `EKS/GKE/AKS` environments, but it might be useful for other type of clusters.
+
+  When monitoring multiple Kubernetes clusters, it is important to ensure that `k8s.cluster.name` is properly set in all the data.
+
+  Refer to [resourcedetection](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/resourcedetectionprocessor/README.md#cluster-name) processor for extra details about cluster name detection.
+
+* `collectors.cluster.resources`: Configures CPU and memory requests and limits applied to the `Deployment` EDOT Collector responsible for cluster-level metrics. This setting follows the standard [Kubernetes resources syntax](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits) for specifying requests and limits.
+
+* `collectors.daemon.resources`: Configures CPU and memory requests and limits applied to the `DaemonSet` EDOT Collector responsible for node-level metrics and application traces. It uses [standard kubernetes syntax](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits).
+
+> [!NOTE]
+> The `namespace` cannot be updated and it must be set to `opentelemetry-operator-system` during the helm chart installation.
 
 <!-- Do not change this anchor name as it's used by Kibana OTel+k8s Onboarding UX -->
 <a name="cert-manager"></a>
