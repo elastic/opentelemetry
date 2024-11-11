@@ -193,13 +193,14 @@ For troubleshooting details and verification steps, refer to [Troubleshooting au
 To upgrade an installed release, run:
 
 ```bash
-helm repo update open-telemetry # to fetch new versions (if available)
-helm search repo open-telemetry/opentelemetry-kube-stack --versions # to list available versions
+helm repo update open-telemetry # update information of available charts locally
+helm search repo open-telemetry/opentelemetry-kube-stack --versions # list available versions of the chart
+
 helm upgrade --namespace opentelemetry-operator-system opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack \
  --values <updated_values_file> --version <updated_version>
 ```
 
-When upgrading a release (even when there's no real change to apply), helm will generate a new self-signed certificate when [cert-manager integration](#cert-manager) is disabled.
+If [cert-manager integration](#cert-manager) is disabled, helm will generate a new self-signed TLS certificate with every update, even if there are no actual changes to apply.
 
 <a name="custom-config"></a>
 
@@ -209,9 +210,17 @@ To customize the installation parameters, change the configuration settings prov
 
 To update an installed release, run a `helm upgrade` with the updated `values.yaml` file. Depending on the changes, some Pods may need to be restarted for the updates to take effect. Refer to [upgrades](#operator-upgrade) for a command example.
 
-The provided `values.file` contains comments that explain nearly all available parameters.
+The provided `values.yaml` contains comments that explain nearly all available parameters.
 
 ### Configurable parameters
+
+The following table lists common parameters that might be relevant for your use case:
+
+| Parameter                        |     Description      |
+|----------------------------------|----------------------|
+| `clusterName`                    | Sets the `k8s.cluster.name` field in all collected data. The cluster name is automatically detected for `EKS/GKE/AKS` environments, but it might be useful for other types of clusters. When monitoring multiple Kubernetes clusters, ensure that `k8s.cluster.name` is properly set in all data.<br><br>Refer to the [resourcedetection processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/resourcedetectionprocessor/README.md#cluster-name) for more details about cluster name detection. |
+| `collectors.cluster.resources`   | Configures CPU and memory requests and limits applied to the `Deployment` EDOT Collector responsible for cluster-level metrics. This setting follows the standard [Kubernetes resources syntax](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits) for specifying requests and limits. |
+| `collectors.daemon.resources`    | Configures CPU and memory requests and limits applied to the `DaemonSet` EDOT Collector responsible for node-level metrics and application traces. It uses [standard Kubernetes syntax](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits). |
 
 The following shows a list of common parameters that might be relevant for your use case:
 
