@@ -188,7 +188,7 @@ For troubleshooting details and verification steps, refer to [Troubleshooting au
 ## Upgrades
 
 > [!NOTE]
-> Before upgrading or changing the release configuration refer to [compatibility matrix](#compatibility-matrix) for the list of supported versions and [customizing configuration](#custom-configuration) for a list of supported configurable parameters.
+> Before upgrading or updating the release configuration refer to [compatibility matrix](#compatibility-matrix) for the list of supported versions and [customizing configuration](#custom-configuration) for a list of supported configurable parameters.
 
 To upgrade an installed release, run:
 
@@ -206,11 +206,9 @@ If [cert-manager integration](#cert-manager) is disabled, helm will generate a n
 
 ## Customizing configuration
 
-To customize the installation parameters, change the configuration values provided in `values.yaml` file, or override them using `--set` during the installation.
+To customize the installation parameters, change the configuration values provided in `values.yaml` file, or override them using `--set parameter=value` during the installation.
 
 To update an installed release, run a `helm upgrade` with the updated `values.yaml` file. Depending on the changes, some Pods may need to be restarted for the updates to take effect. Refer to [upgrades](#operator-upgrade) for a command example.
-
-The provided `values.yaml` contains comments that explain nearly all available parameters.
 
 ### Configurable parameters
 
@@ -227,7 +225,9 @@ The following table lists common parameters that might be relevant for your use 
 | `exporters.debug.verbosity` | Verbosity level for debug logs of the [Elasticsearch exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/elasticsearchexporter/README.md) of the collectors.<br>Defaults to `basic`. Can be any of `basic`, `detailed`.<br>Applicable to `collectors.daemon.config.exporters.debug.verbosity` and `collectors.cluster.config.exporters.debug.verbosity` |
 
 > [!NOTE]
-> The `namespace` cannot be updated and it must be set to `opentelemetry-operator-system` during the helm chart installation.
+> The `namespace` of the installation cannot be changed and must be set to `opentelemetry-operator-system` during the helm chart installation.
+
+For more details of all existing parameters, the provided `values.yaml` includes comments and is largely self-explanatory.
 
 <!-- Do not change this anchor name as it's used by Kibana OTel+k8s Onboarding UX -->
 <a name="cert-manager"></a>
