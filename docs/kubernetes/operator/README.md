@@ -206,7 +206,7 @@ If [cert-manager integration](#cert-manager) is disabled, helm will generate a n
 
 ## Customizing configuration
 
-To customize the installation parameters, change the configuration settings provided in `values.yaml` file, or override those settings using `--set` during the installation.
+To customize the installation parameters, change the configuration values provided in `values.yaml` file, or override them using `--set` during the installation.
 
 To update an installed release, run a `helm upgrade` with the updated `values.yaml` file. Depending on the changes, some Pods may need to be restarted for the updates to take effect. Refer to [upgrades](#operator-upgrade) for a command example.
 
@@ -216,23 +216,11 @@ The provided `values.yaml` contains comments that explain nearly all available p
 
 The following table lists common parameters that might be relevant for your use case:
 
-| Parameter                        |     Description      |
+| `values.yaml` parameter          |     Description      |
 |----------------------------------|----------------------|
 | `clusterName`                    | Sets the `k8s.cluster.name` field in all collected data. The cluster name is automatically detected for `EKS/GKE/AKS` environments, but it might be useful for other types of clusters. When monitoring multiple Kubernetes clusters, ensure that `k8s.cluster.name` is properly set in all data.<br><br>Refer to the [resourcedetection processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/resourcedetectionprocessor/README.md#cluster-name) for more details about cluster name detection. |
 | `collectors.cluster.resources`   | Configures CPU and memory requests and limits applied to the `Deployment` EDOT Collector responsible for cluster-level metrics. This setting follows the standard [Kubernetes resources syntax](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits) for specifying requests and limits. |
 | `collectors.daemon.resources`    | Configures CPU and memory requests and limits applied to the `DaemonSet` EDOT Collector responsible for node-level metrics and application traces. It uses [standard Kubernetes syntax](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits). |
-
-The following shows a list of common parameters that might be relevant for your use case:
-
-* `clusterName`: It sets the `k8s.cluster.name` field in all collected data. Cluster name is automatically detected for `EKS/GKE/AKS` environments, but it might be useful for other type of clusters.
-
-  When monitoring multiple Kubernetes clusters, it is important to ensure that `k8s.cluster.name` is properly set in all the data.
-
-  Refer to [resourcedetection](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/resourcedetectionprocessor/README.md#cluster-name) processor for extra details about cluster name detection.
-
-* `collectors.cluster.resources`: Configures CPU and memory requests and limits applied to the `Deployment` EDOT Collector responsible for cluster-level metrics. This setting follows the standard [Kubernetes resources syntax](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits) for specifying requests and limits.
-
-* `collectors.daemon.resources`: Configures CPU and memory requests and limits applied to the `DaemonSet` EDOT Collector responsible for node-level metrics and application traces. It uses [standard kubernetes syntax](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits).
 
 > [!NOTE]
 > The `namespace` cannot be updated and it must be set to `opentelemetry-operator-system` during the helm chart installation.
