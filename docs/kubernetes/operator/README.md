@@ -188,7 +188,7 @@ For troubleshooting details and verification steps, refer to [Troubleshooting au
 ## Upgrades
 
 > [!NOTE]
-> Before upgrading or changing the release configuration refer to [compatibility matrix](#compatibility-matrix) for the list of supported versions and [customizing configuration](#custom-config) for a list of supported configurable parameters.
+> Before upgrading or changing the release configuration refer to [compatibility matrix](#compatibility-matrix) for the list of supported versions and [customizing configuration](#custom-configuration) for a list of supported configurable parameters.
 
 To upgrade an installed release, run:
 
@@ -202,7 +202,7 @@ helm upgrade --namespace opentelemetry-operator-system opentelemetry-kube-stack 
 
 If [cert-manager integration](#cert-manager) is disabled, helm will generate a new self-signed TLS certificate with every update, even if there are no actual changes to apply.
 
-<a name="custom-config"></a>
+<a name="custom-configuration"></a>
 
 ## Customizing configuration
 
