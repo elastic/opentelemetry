@@ -225,7 +225,7 @@ The following table lists common parameters that might be relevant for your use 
 > The `namespace` of the installation cannot be changed and must be set to `opentelemetry-operator-system` during the helm chart installation.
 
 For more information on all available parameters and their meaning, refer to:
-* The the provided `values.yaml`, which includes the default settings for the EDOT installation.
+* The provided `values.yaml`, which includes the default settings for the EDOT installation.
 * The official OpenTelemetry `kube-stack` Helm chart [values file](https://github.com/open-telemetry/opentelemetry-helm-charts/blob/main/charts/opentelemetry-kube-stack/values.yaml), with explanations of all parameters.
 
 <!-- Do not change this anchor name as it's used by Kibana OTel+k8s Onboarding UX -->
