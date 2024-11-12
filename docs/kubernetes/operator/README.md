@@ -200,7 +200,7 @@ helm upgrade --namespace opentelemetry-operator-system opentelemetry-kube-stack 
  --values <updated_values_file> --version <updated_version>
 ```
 
-If [cert-manager integration](#cert-manager) is disabled, helm will generate a new self-signed TLS certificate with every update, even if there are no actual changes to apply.
+If [cert-manager integration](#cert-manager) is disabled, Helm generates a new self-signed TLS certificate with every update, even if there are no actual changes to apply.
 
 <a name="custom-configuration"></a>
 
