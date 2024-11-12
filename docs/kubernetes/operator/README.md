@@ -35,8 +35,8 @@ The following is the current list of supported versions:
 
 | Stack Version | Helm Chart Version |    Values file     |
 |---------------|--------------------|--------------------|
-| Serverless    | 0.3.0              | values.yaml  |
-| 8.16.0        | 0.3.0              | values.yaml  |
+| Serverless    | 0.3.3              | [values.yaml](https://github.com/elastic/opentelemetry/blob/8.16/resources/kubernetes/operator/helm/values.yaml)  |
+| 8.16.0        | 0.3.3              | [values.yaml](https://github.com/elastic/opentelemetry/blob/8.16/resources/kubernetes/operator/helm/values.yaml)  |
 
 When [installing the release](#manual-deployment-of-all-components), ensure you use the right `--version` and `-f <values-file>` parameters. Values files are available in the [resources directory](/resources/kubernetes/operator/helm).
 
@@ -123,12 +123,12 @@ Notes:
 ### Operator Installation
 
 1. Create the `opentelemetry-operator-system` Kubernetes namespace:
-```
+```bash
 $ kubectl create namespace opentelemetry-operator-system
 ```
 
 2. Create a secret in Kubernetes with the following command.
-   ```
+   ```bash
    kubectl create -n opentelemetry-operator-system secret generic elastic-secret-otel \
      --from-literal=elastic_endpoint='YOUR_ELASTICSEARCH_ENDPOINT' \
      --from-literal=elastic_api_key='YOUR_ELASTICSEARCH_API_KEY'
@@ -137,12 +137,12 @@ $ kubectl create namespace opentelemetry-operator-system
    - `YOUR_ELASTICSEARCH_ENDPOINT`: your Elasticsearch endpoint (*with* `https://` prefix example: `https://1234567.us-west2.gcp.elastic-cloud.com:443`).
    - `YOUR_ELASTICSEARCH_API_KEY`: your Elasticsearch API Key
 
-3. Execute the following commands to deploy the Helm Chart.
+3. Execute the following commands to deploy the Helm Chart (using the `values.yaml` file available in this repository).
 
-```
-$ helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm-charts
-$ helm repo update
-$ helm upgrade --install --namespace opentelemetry-operator-system opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack --values ./resources/kubernetes/operator/helm/values.yaml --version 0.3.0
+```bash
+helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm-charts
+helm repo update
+helm upgrade --install --namespace opentelemetry-operator-system opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack --values ./resources/kubernetes/operator/helm/values.yaml --version 0.3.3
 ```
 
 ## Installation verification:
@@ -190,14 +190,15 @@ For troubleshooting details and verification steps, refer to [Troubleshooting au
 > [!NOTE]
 > Before upgrading or updating the release configuration refer to [compatibility matrix](#compatibility-matrix) for a list of supported versions and [customizing configuration](#custom-configuration) for a list of supported configurable parameters.
 
-To upgrade an installed release, run:
+To upgrade an installed release, run a `helm upgrade` command providing the desired chart version and using the correct `values.yaml` for your environment. For example:
 
 ```bash
 helm repo update open-telemetry # update information of available charts locally
 helm search repo open-telemetry/opentelemetry-kube-stack --versions # list available versions of the chart
 
 helm upgrade --namespace opentelemetry-operator-system opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack \
- --values <updated_values_file> --version <updated_version>
+--values 'https://raw.githubusercontent.com/elastic/opentelemetry/refs/heads/8.16/resources/kubernetes/operator/helm/values.yaml' \
+--version 0.3.3
 ```
 
 If [cert-manager integration](#cert-manager) is disabled, Helm generates a new self-signed TLS certificate with every update, even if there are no actual changes to apply.
@@ -218,11 +219,8 @@ The following table lists common parameters that might be relevant for your use 
 |----------------------------------|----------------------|
 | `clusterName`                    | Sets the `k8s.cluster.name` field in all collected data. The cluster name is automatically detected for `EKS/GKE/AKS` clusters, but it might be useful for other environments. When monitoring multiple Kubernetes clusters, ensure that the cluster name is properly set in all your environments.<br><br>Refer to the [resourcedetection processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/resourcedetectionprocessor/README.md#cluster-name) for more details about cluster name detection. |
 | `collectors.cluster.resources`   | Configures `CPU` and `memory` `requests` and `limits` applied to the `Deployment` EDOT Collector responsible for cluster-level metrics.<br>This setting follows the standard [Kubernetes resources syntax](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits) for specifying requests and limits. |
-| `collectors.daemon.resources`    | Configures CPU and memory requests and limits applied to the `DaemonSet` EDOT Collector responsible for node-level metrics and application traces.<br>This setting follows the standard [Kubernetes resources syntax](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits) for specifying requests and limits. |
+| `collectors.daemon.resources`    | Configures `CPU` and `memory` `requests` and `limits` applied to the `DaemonSet` EDOT Collector responsible for node-level metrics and application traces.<br>This setting follows the standard [Kubernetes resources syntax](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits) for specifying requests and limits. |
 | `certManager.enabled`    | Defaults to `false`.<br>Refer to [cert-manager integrated installation](#cert-manager) for more details. |
-
-> [!NOTE]
-> The `namespace` of the installation cannot be changed and must be set to `opentelemetry-operator-system` during the helm chart installation.
 
 For more information on all available parameters and their meaning, refer to:
 * The provided `values.yaml`, which includes the default settings for the EDOT installation.
@@ -273,5 +271,5 @@ helm upgrade --install --namespace opentelemetry-operator-system opentelemetry-k
 
     ```bash
     helm upgrade --install --namespace opentelemetry-operator-system opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack \
-    --values ./resources/kubernetes/operator/helm/values_cert-manager.yaml --version 0.3.0
+    --values ./resources/kubernetes/operator/helm/values_cert-manager.yaml --version 0.3.3
     ```
