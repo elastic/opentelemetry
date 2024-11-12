@@ -15,7 +15,7 @@ This guide describes how to:
 - [Manual deployment of all components](#manual-deployment-of-all-components)
 - [Installation verification](#installation-verification)
 - [Instrumenting applications](#instrumenting-applications)
-- [Upgrades](#operator-upgrade)
+- [Upgrade](#operator-upgrade)
 - [Customizing configuration](#custom-configuration)
 - [Cert-manager integrated installation](#cert-manager)
 
