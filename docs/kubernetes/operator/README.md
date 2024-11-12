@@ -188,7 +188,7 @@ For troubleshooting details and verification steps, refer to [Troubleshooting au
 ## Upgrade
 
 > [!NOTE]
-> Before upgrading or updating the release configuration refer to [compatibility matrix](#compatibility-matrix) for the list of supported versions and [customizing configuration](#custom-configuration) for a list of supported configurable parameters.
+> Before upgrading or updating the release configuration refer to [compatibility matrix](#compatibility-matrix) for a list of supported versions and [customizing configuration](#custom-configuration) for a list of supported configurable parameters.
 
 To upgrade an installed release, run:
 
