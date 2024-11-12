@@ -110,9 +110,9 @@ where ``<LANGUAGE>`` is one of: `go` , `java`, `nodejs`, `python`, `dotnet`
 
 > [!NOTE]
 > Ensure you add the annotations at Pod level and not directly at the workload `spec` level (Deployment, Job, etc.).
-> Ensure the annotation value must points to an existing `Instrumentation` object.
+> Ensure the annotation value points to an existing `Instrumentation` object.
 
-Alternatively, you can enable auto-instrumentation by adding the annotation at the **namespace level**. This approach automatically applies instrumentation to all Pods within the specified namespace.
+Alternatively, you can enable auto-instrumentation by adding the annotation at **namespace level**. This approach automatically applies instrumentation to all Pods within the specified namespace.
 
 ```yaml
 apiVersion: v1
@@ -133,10 +133,17 @@ In case you have multiple Instrumentation objects with different settings or ima
 
 The possible values for the annotation are detailed in the [Operator documentation](https://opentelemetry.io/docs/kubernetes/operator/automatic/#add-annotations-to-existing-deployments). For reference purposes, the values are:
 
-- `"true"`: to inject Instrumentation resource with default name from the current namespace.
+- `"true"`: to inject Instrumentation instance with `default` name from the current namespace.
 - `"my-instrumentation"`: to inject Instrumentation instance with name `"my-instrumentation"` in the current namespace.
 - `"my-other-namespace/my-instrumentation"`: to inject Instrumentation instance with name `"my-instrumentation"` from another namespace `"my-other-namespace"`.
 - `"false"`: do not inject.
+
+For extra details and examples of all supported languages, refer to:
+
+- [Java example](./instrumenting-java.md)
+- [Python example](./instrumenting-python.md)
+- [Dotnet example](./instrumenting-dotnet.md)
+- [Go example](./instrumenting-go.md)
 
 ### Namespace based annotations example
 
