@@ -145,7 +145,7 @@ Notes:
     - At this repository main branch ([main values.yaml](https://raw.githubusercontent.com/elastic/opentelemetry/refs/heads/main/resources/kubernetes/operator/helm/values.yaml)). This includes the latest configuration settings but might not be fully tested.
     - (**recommended**) At different release named branches, for example the [8.16 released values.yaml](https://raw.githubusercontent.com/elastic/opentelemetry/refs/heads/8.16/resources/kubernetes/operator/helm/values.yaml). Check [compatibility matrix](#compatibility-matrix) for a complete list of available manifests.
 
-4. Run the following commands to deploy the Helm Chart, using the appropriate values file.
+4. Run the following commands to deploy the Helm Chart, using the appropriate values file:
 
     ```bash
     helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm-charts
