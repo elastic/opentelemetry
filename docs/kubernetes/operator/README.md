@@ -123,27 +123,37 @@ Notes:
 ### Operator Installation
 
 1. Create the `opentelemetry-operator-system` Kubernetes namespace:
-```bash
-$ kubectl create namespace opentelemetry-operator-system
-```
 
-2. Create a secret in Kubernetes with the following command.
+    ```bash
+    $ kubectl create namespace opentelemetry-operator-system
+    ```
+
+2. Create a secret in the created namespace with the following command:
+
    ```bash
    kubectl create -n opentelemetry-operator-system secret generic elastic-secret-otel \
      --from-literal=elastic_endpoint='YOUR_ELASTICSEARCH_ENDPOINT' \
      --from-literal=elastic_api_key='YOUR_ELASTICSEARCH_API_KEY'
    ```
+
    Don't forget to replace
-   - `YOUR_ELASTICSEARCH_ENDPOINT`: your Elasticsearch endpoint (*with* `https://` prefix example: `https://1234567.us-west2.gcp.elastic-cloud.com:443`).
-   - `YOUR_ELASTICSEARCH_API_KEY`: your Elasticsearch API Key
+   - `YOUR_ELASTICSEARCH_ENDPOINT`: Elasticsearch endpoint (**with `https://` prefix**). For example: `https://1234567.us-west2.gcp.elastic-cloud.com:443`.
+   - `YOUR_ELASTICSEARCH_API_KEY`: Elasticsearch API Key created in the previous step.
 
-3. Execute the following commands to deploy the Helm Chart (using the `values.yaml` file available in this repository).
+3. If you have to [customize the configuration](#custom-configuration), make a copy of the `values.yaml` file and adapt it to your needs. The values file is available:
 
-```bash
-helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm-charts
-helm repo update
-helm upgrade --install --namespace opentelemetry-operator-system opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack --values ./resources/kubernetes/operator/helm/values.yaml --version 0.3.3
-```
+    - At this repository main branch ([main values.yaml](https://raw.githubusercontent.com/elastic/opentelemetry/refs/heads/main/resources/kubernetes/operator/helm/values.yaml)). This includes the latest configuration settings but might not be fully tested.
+    - (**recommended**) At different release named branches, for example the [8.16 released values.yaml](https://raw.githubusercontent.com/elastic/opentelemetry/refs/heads/8.16/resources/kubernetes/operator/helm/values.yaml). Check [compatibility matrix](#compatibility-matrix) for a complete list of available manifests.
+
+4. Run the following commands to deploy the Helm Chart, using the appropriate values file.
+
+    ```bash
+    helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm-charts
+    helm repo update
+    helm upgrade --install --namespace opentelemetry-operator-system opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack \
+          --values 'https://raw.githubusercontent.com/elastic/opentelemetry/refs/heads/8.16/resources/kubernetes/operator/helm/values.yaml' \
+          --version 0.3.3
+    ```
 
 ## Installation verification:
 
