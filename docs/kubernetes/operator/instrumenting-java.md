@@ -166,17 +166,17 @@ Auto-instrumentation steps:
   Ensure the environment variable `OTEL_EXPORTER_OTLP_ENDPOINT` points to a valid endpoint and there's network communication between the Pod and the endpoint.
 
 4. Confirm data is flowing through in **Kibana**:
-(PENDING - with some screenshots)
-<!--
-(TBD - pending to finalize and add some screenshots)
-  - Open Observability -> Applications -> Service Inventory
-  - Check traces are displaying in APM UIs, check some of the tabs.
+<!--> Should we add some screenshots here? <-->
 
-  - Application logs? Not provided by OTel but by the daemonset collector
+  - Open Observability -> Applications -> Service Inventory, and determine if:
+    - The application appears in the list of services.
+    - The application shows transactions and metrics.
+  
+  - For application logs, open **Kibana Discovery** and filter for your pods log, with any of:
+    - `k8s.deployment.name: "java-app"`
+    - `k8s.pod.name: java-app*`
 
-Traces from the auto-instrumented applications are available in the APM section.
-APM UI displays all relevant traces, including service names, spans, and overall trace completeness.
--->
+  Note that the application logs are not provided by the instrumentation library, but by the DaemonSet collector deployed as part of the [operator installation](./README.md)
 
 ## Troubleshooting
 
