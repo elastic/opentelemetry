@@ -35,8 +35,8 @@ The following is the current list of supported versions:
 
 | Stack Version | Helm Chart Version |    Values file     |
 |---------------|--------------------|--------------------|
-| Serverless    | 0.3.3              | [values.yaml](https://github.com/elastic/opentelemetry/blob/8.16/resources/kubernetes/operator/helm/values.yaml)  |
-| 8.16.0        | 0.3.3              | [values.yaml](https://github.com/elastic/opentelemetry/blob/8.16/resources/kubernetes/operator/helm/values.yaml)  |
+| Serverless    | 0.3.3              | [values.yaml](https://raw.githubusercontent.com/elastic/opentelemetry/refs/heads/8.16/resources/kubernetes/operator/helm/values.yaml)  |
+| 8.16.0        | 0.3.3              | [values.yaml](https://raw.githubusercontent.com/elastic/opentelemetry/refs/heads/8.16/resources/kubernetes/operator/helm/values.yaml)  |
 
 When [installing the release](#manual-deployment-of-all-components), ensure you use the right `--version` and `-f <values-file>` parameters. Values files are available in the [resources directory](/resources/kubernetes/operator/helm).
 
