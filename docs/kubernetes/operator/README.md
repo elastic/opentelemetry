@@ -2,7 +2,7 @@
 
 This guide describes how to:
 
-- Install the [OpenTelemetry Operator](https://github.com/open-telemetry/opentelemetry-operator/) using the [kube-stack Helm Chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-kube-stack).
+- Install the [OpenTelemetry Operator](https://github.com/open-telemetry/opentelemetry-operator/) using the [kube-stack Helm chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-kube-stack).
 - Use the EDOT Collector to send Kubernetes logs, metrics, and application traces to an Elasticsearch cluster.
 - Use the operator for applications [auto-instrumentation](https://opentelemetry.io/docs/kubernetes/operator/automatic/) in all supported languages.
 
@@ -29,11 +29,11 @@ This guide describes how to:
 
 ## Compatibility Matrix
 
-The minimum supported version of the Elastic Stack for OpenTelemetry-based monitoring on Kubernetes is `8.16.0`. Different Elastic Stack releases support specific versions of the [kube-stack Helm Chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-kube-stack).
+The minimum supported version of the Elastic Stack for OpenTelemetry-based monitoring on Kubernetes is `8.16.0`. Different Elastic Stack releases support specific versions of the [kube-stack Helm chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-kube-stack).
 
 The following is the current list of supported versions:
 
-| Stack Version | Helm Chart Version |    Values file     |
+| Stack Version | Helm chart Version |    Values file     |
 |---------------|--------------------|--------------------|
 | Serverless    | 0.3.3              | [values.yaml](https://raw.githubusercontent.com/elastic/opentelemetry/refs/heads/8.16/resources/kubernetes/operator/helm/values.yaml)  |
 | 8.16.0        | 0.3.3              | [values.yaml](https://raw.githubusercontent.com/elastic/opentelemetry/refs/heads/8.16/resources/kubernetes/operator/helm/values.yaml)  |
@@ -53,7 +53,7 @@ All signals including logs, metrics, and traces are processed by the collectors 
 
 ### Kube-stack Helm Chart
 
-The [kube-stack Helm Chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-kube-stack) is used to manage the installation of the operator (including its CRDs) and to configure a suite of collectors, which instrument various Kubernetes components to enable comprehensive observability and monitoring.
+The [kube-stack Helm chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-kube-stack) is used to manage the installation of the operator (including its CRDs) and to configure a suite of collectors, which instrument various Kubernetes components to enable comprehensive observability and monitoring.
 
 The chart is installed with a provided default `values.yaml` file that can be customized when needed.
 
@@ -79,7 +79,7 @@ The Deployment collector handles the following data:
 
 ### Auto-instrumentation
 
-The Helm Chart is configured to enable zero-code instrumentation using the [Operator's Instrumentation resource](https://github.com/open-telemetry/opentelemetry-operator/?tab=readme-ov-file#opentelemetry-auto-instrumentation-injection) for the following programming languages:
+The Helm chart is configured to enable zero-code instrumentation using the [Operator's Instrumentation resource](https://github.com/open-telemetry/opentelemetry-operator/?tab=readme-ov-file#opentelemetry-auto-instrumentation-injection) for the following programming languages:
 
 - Go
 - Java
@@ -93,7 +93,7 @@ The guided onboarding simplifies deploying your Kubernetes components by setting
 
 1. In Kibana, navigate to **Observability** → **Add data**.
 2. Select **Kubernetes**, then choose **Kubernetes monitoring with EDOT Collector**.
-3. Follow the on-screen instructions to install the OpenTelemetry Operator using the Helm Chart and the provided `values.yaml`.
+3. Follow the on-screen instructions to install the OpenTelemetry Operator using the Helm chart and the provided `values.yaml`.
 
 Notes on installing the OpenTelemetry Operator:
 - Make sure the `elastic_endpoint` shown in the installation command is valid for your environment. If not, replace it with the correct Elasticsearch endpoint.
@@ -145,7 +145,7 @@ Notes:
     - At this repository main branch ([main values.yaml](https://raw.githubusercontent.com/elastic/opentelemetry/refs/heads/main/resources/kubernetes/operator/helm/values.yaml)). This includes the latest configuration settings but might not be fully tested.
     - (**recommended**) At different release named branches, for example the [8.16 released values.yaml](https://raw.githubusercontent.com/elastic/opentelemetry/refs/heads/8.16/resources/kubernetes/operator/helm/values.yaml). Check [compatibility matrix](#compatibility-matrix) for a complete list of available manifests.
 
-4. Run the following commands to deploy the Helm Chart, using the appropriate values file:
+4. Run the following commands to deploy the `opentelemetry-kube-stack` Helm chart, using the appropriate values file:
 
     ```bash
     helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm-charts
@@ -241,11 +241,11 @@ For more information on all available parameters and their meaning, refer to:
 
 ## Cert-manager integrated installation
 
-In Kubernetes, for the API server to communicate with the webhook component (created by the operator), the webhook requires a TLS certificate that the API server is configured to trust. The default provided configuration sets the Helm Chart to auto generate the required certificate as a self-signed certificate with an expiration policy of 365 days. These certificates **won't be renewed** if the Helm Chart's release is not manually updated. For production environments, we highly recommend using a certificate manager like [cert-manager](https://cert-manager.io/docs/installation/).
+In Kubernetes, for the API server to communicate with the webhook component (created by the operator), the webhook requires a TLS certificate that the API server is configured to trust. The default provided configuration sets the Helm chart to auto generate the required certificate as a self-signed certificate with an expiration policy of 365 days. These certificates **won't be renewed** if the Helm chart's release is not manually updated. For production environments, we highly recommend using a certificate manager like [cert-manager](https://cert-manager.io/docs/installation/).
 
 Integrating the operator with [cert-manager](https://cert-manager.io/) enables automatic generation and renewal of the TLS certificate. This section assumes that cert-manager and its CRDs are already installed in your Kubernetes environment. If that's not the case, refer to the [cert-manager installation guide](https://cert-manager.io/docs/installation/) before continuing.
 
-Follow any of the following options to install the OpenTelemetry Operator Helm Chart integrated with `cert-manager`:
+Follow any of the following options to install the `opentelemetry-kube-stack` Helm chart integrated with `cert-manager`:
 
 * Add `--set opentelemetry-operator.admissionWebhooks.certManager.enabled=true --set opentelemetry-operator.admissionWebhooks.autoGenerateCert=null` to the installation command. For example:
 
