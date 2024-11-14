@@ -8,7 +8,7 @@ MATCHES=$(sed -n '/```/,/```/p' $FILE_GUIDE | perl -pe 's/^\s*//; s/\s*\\\s*\n/ 
 if [ $MATCHES -eq 1 ]
 then
   echo "Executing '$EXECUTION_LINE'"
-  $($EXECUTION_LINE)
+  eval "$EXECUTION_LINE"
 else
   echo "Couldn't find '$EXECUTION_LINE' in '$FILE_GUIDE' so aborting"
   exit 1
