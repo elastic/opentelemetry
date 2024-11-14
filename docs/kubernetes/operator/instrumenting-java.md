@@ -25,7 +25,7 @@ NAME                      AGE    ENDPOINT
 elastic-instrumentation   107s   http://opentelemetry-kube-stack-daemon-collector.opentelemetry-operator-system.svc.cluster.local:4318
 ```
 
-Auto-instrumentation steps:
+Example auto-instrumentation steps:
 
 1. Create a `java` namespace and run a deployment named `java-app`:
 
