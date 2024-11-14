@@ -166,7 +166,6 @@ Example auto-instrumentation steps:
   Ensure the environment variable `OTEL_EXPORTER_OTLP_ENDPOINT` points to a valid endpoint and there's network communication between the Pod and the endpoint.
 
 4. Confirm data is flowing through in **Kibana**:
-<!--> Should we add some screenshots here? <-->
 
   - Open Observability -> Applications -> Service Inventory, and determine if:
     - The application appears in the list of services.
