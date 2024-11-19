@@ -140,10 +140,7 @@ Notes:
    - `YOUR_ELASTICSEARCH_ENDPOINT`: Elasticsearch endpoint (**with `https://` prefix**). For example: `https://1234567.us-west2.gcp.elastic-cloud.com:443`.
    - `YOUR_ELASTICSEARCH_API_KEY`: Elasticsearch API Key created in the previous step.
 
-3. If you have to [customize the configuration](#custom-configuration), make a copy of the `values.yaml` file and adapt it to your needs. The values file is available:
-
-    - At this repository main branch ([main values.yaml](https://raw.githubusercontent.com/elastic/opentelemetry/refs/heads/main/resources/kubernetes/operator/helm/values.yaml)). This includes the latest configuration settings but might not be fully tested.
-    - (**recommended**) At different release named branches, for example the [8.16 released values.yaml](https://raw.githubusercontent.com/elastic/opentelemetry/refs/heads/8.16/resources/kubernetes/operator/helm/values.yaml). Check [compatibility matrix](#compatibility-matrix) for a complete list of available manifests.
+3. If you need to [customize the configuration](#custom-configuration), make a copy of the `values.yaml` file and adapt it to your needs. Refer to the [compatibility matrix](#compatibility-matrix) for a complete list of available manifests in the `release branches`, such as the [8.16 values file](https://raw.githubusercontent.com/elastic/opentelemetry/refs/heads/8.16/resources/kubernetes/operator/helm/values.yaml). 
 
 4. Run the following commands to deploy the `opentelemetry-kube-stack` Helm chart, using the appropriate values file:
 
