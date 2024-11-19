@@ -2,7 +2,7 @@
 
 This guide describes how to:
 
-- Install the [OpenTelemetry Operator](https://github.com/open-telemetry/opentelemetry-operator/) using the [kube-stack Helm Chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-kube-stack).
+- Install the [OpenTelemetry Operator](https://github.com/open-telemetry/opentelemetry-operator/) using the [kube-stack Helm chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-kube-stack).
 - Use the EDOT Collector to send Kubernetes logs, metrics, and application traces to an Elasticsearch cluster.
 - Use the operator for applications [auto-instrumentation](https://opentelemetry.io/docs/kubernetes/operator/automatic/) in all supported languages.
 
@@ -15,6 +15,8 @@ This guide describes how to:
 - [Manual deployment of all components](#manual-deployment-of-all-components)
 - [Installation verification](#installation-verification)
 - [Instrumenting applications](#instrumenting-applications)
+- [Upgrade](#operator-upgrade)
+- [Customizing configuration](#custom-configuration)
 - [Cert-manager integrated installation](#cert-manager)
 
 ## Prerequisites
@@ -27,14 +29,14 @@ This guide describes how to:
 
 ## Compatibility Matrix
 
-The minimum supported version of the Elastic Stack for OpenTelemetry-based monitoring on Kubernetes is `8.16.0`. Different Elastic Stack releases support specific versions of the [kube-stack Helm Chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-kube-stack).
+The minimum supported version of the Elastic Stack for OpenTelemetry-based monitoring on Kubernetes is `8.16.0`. Different Elastic Stack releases support specific versions of the [kube-stack Helm chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-kube-stack).
 
 The following is the current list of supported versions:
 
-| Stack Version | Helm Chart Version |    Values file     |
+| Stack Version | Helm chart Version |    Values file     |
 |---------------|--------------------|--------------------|
-| Serverless    | 0.3.0              | values.yaml  |
-| 8.16.0        | 0.3.0              | values.yaml  |
+| Serverless    | 0.3.3              | [values.yaml](https://raw.githubusercontent.com/elastic/opentelemetry/refs/heads/8.16/resources/kubernetes/operator/helm/values.yaml)  |
+| 8.16.0        | 0.3.3              | [values.yaml](https://raw.githubusercontent.com/elastic/opentelemetry/refs/heads/8.16/resources/kubernetes/operator/helm/values.yaml)  |
 
 When [installing the release](#manual-deployment-of-all-components), ensure you use the right `--version` and `-f <values-file>` parameters. Values files are available in the [resources directory](/resources/kubernetes/operator/helm).
 
@@ -51,7 +53,7 @@ All signals including logs, metrics, and traces are processed by the collectors 
 
 ### Kube-stack Helm Chart
 
-The [kube-stack Helm Chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-kube-stack) is used to manage the installation of the operator (including its CRDs) and to configure a suite of collectors, which instrument various Kubernetes components to enable comprehensive observability and monitoring.
+The [kube-stack Helm chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-kube-stack) is used to manage the installation of the operator (including its CRDs) and to configure a suite of collectors, which instrument various Kubernetes components to enable comprehensive observability and monitoring.
 
 The chart is installed with a provided default `values.yaml` file that can be customized when needed.
 
@@ -77,7 +79,7 @@ The Deployment collector handles the following data:
 
 ### Auto-instrumentation
 
-The Helm Chart is configured to enable zero-code instrumentation using the [Operator's Instrumentation resource](https://github.com/open-telemetry/opentelemetry-operator/?tab=readme-ov-file#opentelemetry-auto-instrumentation-injection) for the following programming languages:
+The Helm chart is configured to enable zero-code instrumentation using the [Operator's Instrumentation resource](https://github.com/open-telemetry/opentelemetry-operator/?tab=readme-ov-file#opentelemetry-auto-instrumentation-injection) for the following programming languages:
 
 - Go
 - Java
@@ -91,7 +93,7 @@ The guided onboarding simplifies deploying your Kubernetes components by setting
 
 1. In Kibana, navigate to **Observability** → **Add data**.
 2. Select **Kubernetes**, then choose **Kubernetes monitoring with EDOT Collector**.
-3. Follow the on-screen instructions to install the OpenTelemetry Operator using the Helm Chart and the provided `values.yaml`.
+3. Follow the on-screen instructions to install the OpenTelemetry Operator using the Helm chart and the provided `values.yaml`.
 
 Notes on installing the OpenTelemetry Operator:
 - Make sure the `elastic_endpoint` shown in the installation command is valid for your environment. If not, replace it with the correct Elasticsearch endpoint.
@@ -99,7 +101,7 @@ Notes on installing the OpenTelemetry Operator:
 
 > [!NOTE]
 > The default installation deploys an OpenTelemetry Operator with a self-signed TLS certificate.
-> To automatically generate and renew publicly trusted certificates, refer to [cert-manager integrated installation](#cert-manager) for instructions on customizing the `values.yaml` file before running the `helm install` command.
+> To automatically generate and renew certificates, refer to [cert-manager integrated installation](#cert-manager) for instructions on customizing the `values.yaml` file before running the `helm install` command.
 
 ## Manual deployment of all components
 
@@ -121,27 +123,34 @@ Notes:
 ### Operator Installation
 
 1. Create the `opentelemetry-operator-system` Kubernetes namespace:
-```
-$ kubectl create namespace opentelemetry-operator-system
-```
 
-2. Create a secret in Kubernetes with the following command.
-   ```
+    ```bash
+    $ kubectl create namespace opentelemetry-operator-system
+    ```
+
+2. Create a secret in the created namespace with the following command:
+
+   ```bash
    kubectl create -n opentelemetry-operator-system secret generic elastic-secret-otel \
      --from-literal=elastic_endpoint='YOUR_ELASTICSEARCH_ENDPOINT' \
      --from-literal=elastic_api_key='YOUR_ELASTICSEARCH_API_KEY'
    ```
+
    Don't forget to replace
-   - `YOUR_ELASTICSEARCH_ENDPOINT`: your Elasticsearch endpoint (*with* `https://` prefix example: `https://1234567.us-west2.gcp.elastic-cloud.com:443`).
-   - `YOUR_ELASTICSEARCH_API_KEY`: your Elasticsearch API Key
+   - `YOUR_ELASTICSEARCH_ENDPOINT`: Elasticsearch endpoint (**with `https://` prefix**). For example: `https://1234567.us-west2.gcp.elastic-cloud.com:443`.
+   - `YOUR_ELASTICSEARCH_API_KEY`: Elasticsearch API Key created in the previous step.
 
-3. Execute the following commands to deploy the Helm Chart.
+3. If you need to [customize the configuration](#custom-configuration), make a copy of the `values.yaml` file and adapt it to your needs. Refer to the [compatibility matrix](#compatibility-matrix) for a complete list of available manifests in the `release branches`, such as the [8.16 values file](https://raw.githubusercontent.com/elastic/opentelemetry/refs/heads/8.16/resources/kubernetes/operator/helm/values.yaml). 
 
-```
-$ helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm-charts
-$ helm repo update
-$ helm upgrade --install --namespace opentelemetry-operator-system opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack --values ./resources/kubernetes/operator/helm/values.yaml --version 0.3.0
-```
+4. Run the following commands to deploy the `opentelemetry-kube-stack` Helm chart, using the appropriate values file:
+
+    ```bash
+    helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm-charts
+    helm repo update
+    helm upgrade --install --namespace opentelemetry-operator-system opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack \
+          --values 'https://raw.githubusercontent.com/elastic/opentelemetry/refs/heads/8.16/resources/kubernetes/operator/helm/values.yaml' \
+          --version 0.3.3
+    ```
 
 ## Installation verification:
 
@@ -181,18 +190,61 @@ For detailed instructions and examples on how to instrument applications in Kube
 
 For troubleshooting details and verification steps, refer to [Troubleshooting auto-instrumentation](/docs/kubernetes/operator/troubleshoot-auto-instrumentation.md).
 
+<a name="operator-upgrade"></a>
+
+## Upgrade
+
+> [!NOTE]
+> Before upgrading or updating the release configuration refer to [compatibility matrix](#compatibility-matrix) for a list of supported versions and [customizing configuration](#custom-configuration) for a list of supported configurable parameters.
+
+To upgrade an installed release, run a `helm upgrade` command providing the desired chart version and using the correct `values.yaml` for your environment. For example:
+
+```bash
+helm repo update open-telemetry # update information of available charts locally
+helm search repo open-telemetry/opentelemetry-kube-stack --versions # list available versions of the chart
+
+helm upgrade --namespace opentelemetry-operator-system opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack \
+--values 'https://raw.githubusercontent.com/elastic/opentelemetry/refs/heads/8.16/resources/kubernetes/operator/helm/values.yaml' \
+--version 0.3.3
+```
+
+If [cert-manager integration](#cert-manager) is disabled, Helm generates a new self-signed TLS certificate with every update, even if there are no actual changes to apply.
+
+<a name="custom-configuration"></a>
+
+## Customizing configuration
+
+To customize the installation parameters, change the configuration values provided in `values.yaml` file, or override them using `--set parameter=value` during the installation.
+
+To update an installed release, run a `helm upgrade` with the updated `values.yaml` file. Depending on the changes, some Pods may need to be restarted for the updates to take effect. Refer to [upgrades](#operator-upgrade) for a command example.
+
+### Configurable parameters
+
+The following table lists common parameters that might be relevant for your use case:
+
+| `values.yaml` parameter          |     Description      |
+|----------------------------------|----------------------|
+| `clusterName`                    | Sets the `k8s.cluster.name` field in all collected data. The cluster name is automatically detected for `EKS/GKE/AKS` clusters, but it might be useful for other environments. When monitoring multiple Kubernetes clusters, ensure that the cluster name is properly set in all your environments.<br><br>Refer to the [resourcedetection processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/resourcedetectionprocessor/README.md#cluster-name) for more details about cluster name detection. |
+| `collectors.cluster.resources`   | Configures `CPU` and `memory` `requests` and `limits` applied to the `Deployment` EDOT Collector responsible for cluster-level metrics.<br>This setting follows the standard [Kubernetes resources syntax](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits) for specifying requests and limits. |
+| `collectors.daemon.resources`    | Configures `CPU` and `memory` `requests` and `limits` applied to the `DaemonSet` EDOT Collector responsible for node-level metrics and application traces.<br>This setting follows the standard [Kubernetes resources syntax](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits) for specifying requests and limits. |
+| `certManager.enabled`    | Defaults to `false`.<br>Refer to [cert-manager integrated installation](#cert-manager) for more details. |
+
+For more information on all available parameters and their meaning, refer to:
+* The provided `values.yaml`, which includes the default settings for the EDOT installation.
+* The official OpenTelemetry `kube-stack` Helm chart [values file](https://github.com/open-telemetry/opentelemetry-helm-charts/blob/main/charts/opentelemetry-kube-stack/values.yaml), with explanations of all parameters.
+
 <!-- Do not change this anchor name as it's used by Kibana OTel+k8s Onboarding UX -->
 <a name="cert-manager"></a>
 
 ## Cert-manager integrated installation
 
-In Kubernetes, for the API server to communicate with the webhook component (created by the operator), the webhook requires a TLS certificate that the API server is configured to trust. The default provided configuration sets the Helm Chart to auto generate the required certificate as a self-signed certificate with an expiration policy of 365 days. These certificates **won't be renewed** if the Helm Chart's release is not manually updated. For production environments, we highly recommend using a certificate manager like [cert-manager](https://cert-manager.io/docs/installation/).
+In Kubernetes, for the API server to communicate with the webhook component (created by the operator), the webhook requires a TLS certificate that the API server is configured to trust. The default provided configuration sets the Helm chart to auto generate the required certificate as a self-signed certificate with an expiration policy of 365 days. These certificates **won't be renewed** if the Helm chart's release is not manually updated. For production environments, we highly recommend using a certificate manager like [cert-manager](https://cert-manager.io/docs/installation/).
 
-Integrating the operator with [cert-manager](https://cert-manager.io/) enables automatic generation and renewal of publicly trusted TLS certificates. This section assumes that cert-manager and its CRDs are already installed in your Kubernetes environment. If that's not the case, refer to the [cert-manager installation guide](https://cert-manager.io/docs/installation/) before continuing.
+Integrating the operator with [cert-manager](https://cert-manager.io/) enables automatic generation and renewal of the TLS certificate. This section assumes that cert-manager and its CRDs are already installed in your Kubernetes environment. If that's not the case, refer to the [cert-manager installation guide](https://cert-manager.io/docs/installation/) before continuing.
 
-Follow any of the following options to install the OpenTelemetry Operator Helm Chart integrated with `cert-manager`:
+Follow any of the following options to install the `opentelemetry-kube-stack` Helm chart integrated with `cert-manager`:
 
-* Add `--set opentelemetry-operator.admissionWebhooks.certManager.enabled=true --set opentelemetry-operator.autoGenerateCert=null` to the installation command. For example:
+* Add `--set opentelemetry-operator.admissionWebhooks.certManager.enabled=true --set opentelemetry-operator.admissionWebhooks.autoGenerateCert=null` to the installation command. For example:
 
 ```bash
 helm upgrade --install --namespace opentelemetry-operator-system opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack \
@@ -217,14 +269,14 @@ helm upgrade --install --namespace opentelemetry-operator-system opentelemetry-k
 
         ```yaml
         # Remove the following lines:
-        autoGenerateCert:
-          enabled: true
-          recreate: true
+            autoGenerateCert:
+              enabled: true
+              recreate: true
         ```
 
   2. Run the installation (or upgrade) command pointing to the updated file. For example, assuming that the updated file has been saved as `values_cert-manager.yaml`:
 
     ```bash
     helm upgrade --install --namespace opentelemetry-operator-system opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack \
-    --values ./resources/kubernetes/operator/helm/values_cert-manager.yaml --version 0.3.0
+    --values ./resources/kubernetes/operator/helm/values_cert-manager.yaml --version 0.3.3
     ```
