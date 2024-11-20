@@ -80,7 +80,7 @@ The `Instrumentation` object stores important parameters:
   nodejs:
     image: docker.elastic.co/observability/elastic-otel-node:0.4.1
   python:
-    image: docker.elastic.co/observability/elastic-otel-python:0.3.0
+    image: docker.elastic.co/observability/elastic-otel-python:0.4.1
 ```
 
 ## Configuring auto-instrumentation
