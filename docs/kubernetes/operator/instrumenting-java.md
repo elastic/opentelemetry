@@ -64,7 +64,7 @@ Example auto-instrumentation steps:
   - Add an annotation at namespace level:
 
     ```bash
-    kubectl annotate namespace java instrumentation.opentelemetry.io/inject-java=instrumentation.opentelemetry.io/inject-java
+    kubectl annotate namespace java instrumentation.opentelemetry.io/inject-java=opentelemetry-operator-system/elastic-instrumentation
     ```
 
   - Alternatively, edit the `java-app` deployment to include the annotation under `spec.template.metadata.annotations`:
@@ -77,7 +77,7 @@ Example auto-instrumentation steps:
           labels:
             app: java-app
           annotations:
-            instrumentation.opentelemetry.io/inject-java: instrumentation.opentelemetry.io/inject-java
+            instrumentation.opentelemetry.io/inject-java: opentelemetry-operator-system/elastic-instrumentation
     ...
     ```
 
