@@ -42,7 +42,7 @@ jobs:
         run: |
           bash test/operator/match_and_execute.sh "kubectl create namespace opentelemetry-operator-system"
           bash test/operator/match_and_execute.sh "helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm-charts"
-          bash test/operator/match_and_execute.sh "helm repo update"
+          helm repo update
           bash test/operator/match_and_execute.sh "helm upgrade --install --namespace opentelemetry-operator-system opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack --values ./resources/kubernetes/operator/helm/values.yaml --version 0.3.0"
           bash test/operator/wait_for_pod_start.sh opentelemetry-operator-system opentelemetry-operator 2/2 1
           kubectl get pods -A
