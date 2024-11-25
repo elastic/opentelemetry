@@ -66,7 +66,7 @@ Example auto-instrumentation steps:
 
 3. Verify the auto-instrumentation resources are injected in the Pod:
 
-<!-- FROM HERE WE HAVE TO REVIEW EVERYTHING
+**FROM HERE ONWARDS WE HAVE TO REVIEW EVERYTHING**
 
   Node.js apps are instrumented by the OpenTelemetry Operator with the following actions:
   (TBD - REVIEW)
@@ -109,7 +109,6 @@ PENDING
     ```
 
   Ensure the environment variable `OTEL_EXPORTER_OTLP_ENDPOINT` points to a valid endpoint and there's network communication between the Pod and the endpoint.
--->
 
 4. Confirm data is flowing through in **Kibana**:
 
