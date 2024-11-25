@@ -4,7 +4,11 @@ This document focuses on instrumenting Java applications on Kubernetes, using th
 
 For general knowledge about the EDOT Java SDK, refer to the [getting started guide](https://github.com/elastic/elastic-otel-java/blob/main/docs/get-started.md).
 
-For general information about instrumenting applications on kubernetes, refer to [instrumenting applications](./instrumenting-applications.md)
+For general information about instrumenting applications on kubernetes, refer to [instrumenting applications](./instrumenting-applications.md).
+
+## Java agent extensions consideration
+
+The operator supports configuration that installs [Java agent extensions](https://opentelemetry.io/docs/zero-code/java/agent/extensions/) in `Instrumentation` objects. The extension needs to be available in an image. Refer to [using extensions with the OpenTelemetry Java agent](https://www.elastic.co/observability-labs/blog/using-the-otel-operator-for-injecting-elastic-agents#using-an-extension-with-the-opentelemetry-java-agent) for an example of adding an extension to an agent.
 
 ## Guided example to instrument a Java app with EDOT Java SDK on Kubernetes
 
