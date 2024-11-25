@@ -2,7 +2,7 @@
 
 This document focuses on instrumenting Node.js applications on Kubernetes, using the OpenTelemetry Operator, EDOT Collectors and the [EDOT Node.js](https://github.com/elastic/elastic-otel-node) SDK.
 
-For general knowledge about the EDOT Node.js SDK, refer to the [getting started guide](https://github.com/elastic/elastic-otel-node/blob/main/docs/get-started.md).
+For general knowledge about the EDOT Node.js SDK, refer to the [getting started guide](https://github.com/elastic/elastic-otel-node/blob/main/packages/opentelemetry-node/docs/get-started.md).
 
 For general information about instrumenting applications on kubernetes, refer to [instrumenting applications](./instrumenting-applications.md).
 
