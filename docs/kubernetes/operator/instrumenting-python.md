@@ -1,6 +1,6 @@
 # Instrumenting Python applications with EDOT SDKs on Kubernetes
 
-This document focuses on instrumenting Python applications on Kubernetes, using [Elastic Distribution of OpenTelemetry Python (EDOT Python)](https://github.com/elastic/elastic-otel-python) together with the OpenTelemetry Operator and EDOT Collectors described in the [getting started](./README.md) guide.
+This document focuses on instrumenting Python applications on Kubernetes, using [Elastic Distribution of OpenTelemetry Python (EDOT Python)](https://github.com/elastic/elastic-otel-python) together with the OpenTelemetry Operator and the EDOT Collectors described in the [getting started](./README.md) guide.
 
 - For general knowledge about the EDOT Python SDK, refer to the [EDOT Python docs](https://github.com/elastic/elastic-otel-python/blob/main/docs/get-started.md).
 
