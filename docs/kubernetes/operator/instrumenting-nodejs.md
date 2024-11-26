@@ -38,7 +38,7 @@ elastic-instrumentation   107s   http://opentelemetry-kube-stack-daemon-collecto
 
 2. Enable auto-instrumentation of the Node.js application using one of the following methods:
 
-  - Edit the `nodejs-app` workload definition and include the annotation under `spec.template.metadata.annotations`:
+  - Edit the workload definition and include the annotation under `spec.template.metadata.annotations`:
 
     ```yaml
     spec:
