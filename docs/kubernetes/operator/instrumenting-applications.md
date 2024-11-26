@@ -138,12 +138,12 @@ The possible values for the annotation are detailed in the [Operator documentati
 - `"my-other-namespace/my-instrumentation"`: to inject Instrumentation instance with name `"my-instrumentation"` from another namespace `"my-other-namespace"`.
 - `"false"`: do not inject.
 
-For extra details and examples of all supported languages, refer to:
+For extra details about the specific supported languages, refer to:
 
-- [Java example](./instrumenting-java.md)
-- [Python example](./instrumenting-python.md)
-- [Dotnet example](./instrumenting-dotnet.md)
-- [Go example](./instrumenting-go.md)
+- [Instrumenting Java](./instrumenting-java.md)
+- [Instrumenting Python](./instrumenting-python.md)
+- [Instrumenting Dotnet](./instrumenting-dotnet.md)
+- [Instrumenting Go](./instrumenting-go.md)
 
 ### Namespace based annotations example
 
