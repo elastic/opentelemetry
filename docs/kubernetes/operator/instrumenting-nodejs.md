@@ -74,7 +74,7 @@ elastic-instrumentation   107s   http://opentelemetry-kube-stack-daemon-collecto
 
   - ??It adds an init container in the Pod with the objective of copying the SDK to a shared volume.
 
-  - ??efines an `emptyDir volume` mounted in both containers.
+  - ??Defines an `emptyDir volume` mounted in both containers.
 
   - ??Adds `NODE_OPTIONS` and other OTEL related environment variables.
 
