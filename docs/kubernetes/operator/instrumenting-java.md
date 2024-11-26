@@ -59,6 +59,8 @@ elastic-instrumentation   107s   http://opentelemetry-kube-stack-daemon-collecto
 
 3. Restart application
 
+  Once the annotation has been set, the Pods need to be recreated for the instrumentation libraries to be injected.
+
     ```bash
     kubectl rollout restart deployment java-app -n java
     ```
@@ -66,9 +68,12 @@ elastic-instrumentation   107s   http://opentelemetry-kube-stack-daemon-collecto
 4. Verify the auto-instrumentation resources are injected in the Pod:
 
   Java apps are instrumented by the OpenTelemetry Operator with the following actions:
-    - It adds an init container in the Pod with the objective of copying the SDK and making it available for the main container.
-    - Defines and mount an emptyDir volume 
-    - Configures the main container to use the SDK as a `java agent`.
+
+  - It adds an init container in the Pod with the objective of copying the SDK to a shared volume.
+
+  - Defines an `emptyDir volume` mounted in both containers.
+
+  - Configures the main container to use the SDK as a `java agent`.
 
   Run a `kubectl describe` of one of your application pods and check:
 
@@ -77,7 +82,7 @@ elastic-instrumentation   107s   http://opentelemetry-kube-stack-daemon-collecto
     ```bash
     $ kubectl describe pod java-app-8d84c47b8-8h5z2 -n java
     Name:             java-app-8d84c47b8-8h5z2
-    Namespace:        java
+    Namespace:        java-ns
     ...
     ...
     Init Containers:
@@ -140,17 +145,17 @@ elastic-instrumentation   107s   http://opentelemetry-kube-stack-daemon-collecto
 
   Ensure the environment variable `OTEL_EXPORTER_OTLP_ENDPOINT` points to a valid endpoint and there's network communication between the Pod and the endpoint.
 
-4. Confirm data is flowing through in **Kibana**:
+5. Confirm data is flowing through in **Kibana**:
 
   - Open Observability -> Applications -> Service Inventory, and determine if:
     - The application appears in the list of services.
     - The application shows transactions and metrics.
   
-  - For application container logs, open **Kibana Discovery** and filter for your pods log. In the provided example we could filter them with any of:
+  - For application container logs, open **Kibana Discover** and filter for your pods log. In the provided example we could filter them with any of:
     - `k8s.deployment.name: "java-app"` (**adapt the query filter to your use case**)
     - `k8s.pod.name: java-app*` (**adapt the query filter to your use case**)
 
-  Note that the application logs are not provided by the instrumentation library, but by the DaemonSet collector deployed as part of the [operator installation](./README.md)
+  Note that the application logs are not provided by the instrumentation library, but by the DaemonSet collector deployed as part of the [operator installation](./README.md).
 
 ## Troubleshooting
 
