@@ -1,10 +1,10 @@
 # Instrumenting Java applications with EDOT SDKs on Kubernetes
 
-This document focuses on instrumenting Java applications on Kubernetes, using the OpenTelemetry Operator, EDOT Collectors and the [EDOT Java](https://github.com/elastic/elastic-otel-java) SDK.
+This document focuses on instrumenting Java applications on Kubernetes, using the OpenTelemetry Operator, EDOT Collectors and the [Elastic Distribution of OpenTelemetry Java](https://github.com/elastic/elastic-otel-java) SDK (EDOT Java).
 
-For general knowledge about the EDOT Java SDK, refer to the [getting started guide](https://github.com/elastic/elastic-otel-java/blob/main/docs/get-started.md).
-
-For general information about instrumenting applications on kubernetes, refer to [instrumenting applications](./instrumenting-applications.md).
+- For general knowledge about the EDOT Java SDK, refer to the [getting started guide](https://github.com/elastic/elastic-otel-java/blob/main/docs/get-started.md).
+- For Java auto-instrumentation specifics, refer to [OpenTelemetry Operator Java auto-instrumentation](https://opentelemetry.io/docs/kubernetes/operator/automatic/#java)
+- For general information about instrumenting applications on kubernetes, refer to [instrumenting applications](./instrumenting-applications.md)
 
 ## Java agent extensions consideration
 
