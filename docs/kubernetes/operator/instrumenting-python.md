@@ -17,74 +17,31 @@ This document focuses on instrumenting Python applications on Kubernetes, using 
 - For a full list of configuration options, refer to [Python specific configuration](https://opentelemetry.io/docs/zero-code/python/configuration/#python-specific-configuration).
 - For Python specific limitations when using the OpenTelemetry operator, refer to [Python-specific topics](https://opentelemetry.io/docs/zero-code/python/operator/#python-specific-topics).
 
-
 ## Guided example to instrument a Python app with EDOT Python SDK on Kubernetes
 
-In the following example you will learn how to:
+In this section you will learn how to:
 
-- Deploy an example Python app in a dedicated namespace.
-- Enable auto-instrumentation of the application following any of the supported methods, such as:
-  - Adding an annotation to the namespace.
+- Enable auto-instrumentation of a Python application following any of the supported methods, such as:
   - Adding an annotation to the deployment pods.
+  - Adding an annotation to the namespace.
 - Verify that auto-instrumentation libraries are injected and configured correctly.
 - Confirm data is flowing to **Kibana Observability**.
 
-Before continuing, ensure you have performed the [installation of the operator](./README.md), and confirm that the following `Instrumentation` object exists in the system:
+For demonstration purposes, we assume the application to be instrumented is a deployment named `python-app` running in the `python-ns` namespace.
+
+1. Ensure you have successfully [installed the OpenTelemetry Operator](./README.md), and confirm that the following `Instrumentation` object exists in the system:
 
 ```bash
 $ kubectl get instrumentation -n opentelemetry-operator-system
 NAME                      AGE    ENDPOINT                                                                                                
 elastic-instrumentation   107s   http://opentelemetry-kube-stack-daemon-collector.opentelemetry-operator-system.svc.cluster.local:4318
 ```
-
-Example auto-instrumentation steps:
-
-1. Create a `python` namespace and run a deployment named `python-app`
-
-    ```bash
-    # Python Namespace and Deployment
-    kubectl create namespace python
-    kubectl apply -f - <<EOF
-    apiVersion: apps/v1
-    kind: Deployment
-    metadata:
-      labels:
-        app: python-app
-      name: python-app
-      namespace: python
-    spec:
-      replicas: 1
-      selector:
-        matchLabels:
-          app: python-app
-      template:
-        metadata:
-          name: python-app
-          labels:
-            app: python-app
-        spec:
-          containers:
-            - image: andrewgizas/python-otel-auto:latest
-              imagePullPolicy: Always
-              name: python-app
-              env: 
-              - name: OTEL_LOG_LEVEL
-                value: "debug"
-              - name: AGENT_HAS_STARTED_IF_YOU_SEE
-                value: "Exception while exporting metrics HTTPConnectionPool"
-    EOF
-    ```
-
+> [!NOTE]
+> If your `Instrumentation` object has a different name or is created in a different namespace, you will have to adapt the annotation value in the next step.
 
 2. Enable auto-instrumentation of the Python application using one of the following methods:
 
-  - Add an annotation at namespace level (this will make all Pods of the namespace to be instrumented):
-
-    ```bash
-    kubectl annotate namespace python instrumentation.opentelemetry.io/inject-python=opentelemetry-operator-system/elastic-instrumentation
-    ```
-
-  - Alternatively, edit the `python-app` deployment to include the annotation under `spec.template.metadata.annotations`:
+  - Edit the `python-app` workload definition and include the annotation under `spec.template.metadata.annotations`:
 
     ```yaml
     spec:
@@ -96,6 +53,12 @@ Example auto-instrumentation steps:
           annotations:
             instrumentation.opentelemetry.io/inject-python: opentelemetry-operator-system/elastic-instrumentation
     ...
+    ```
+
+  - Alternatively, add the annotation at namespace level to apply auto-instrumentation in all Pods of the namespace:
+
+    ```bash
+    kubectl annotate namespace python-ns instrumentation.opentelemetry.io/inject-python=opentelemetry-operator-system/elastic-instrumentation
     ```
 
 3. Restart application:
@@ -116,7 +79,7 @@ Example auto-instrumentation steps:
 
   - Adds `PYTHONPATH` and other OTEL related environment variables.
 
-  Run `kubectl describe pod python-app-xxxx` and check:
+  Run a `kubectl describe` of one of your application pods and check:
 
   - There should be an init container named `opentelemetry-auto-instrumentation-python` in the Pod:
 
@@ -170,11 +133,11 @@ Example auto-instrumentation steps:
     - The application shows transactions and metrics.
     - If [python logs instrumentation](https://opentelemetry.io/docs/kubernetes/operator/automatic/#auto-instrumenting-python-logs) is enabled, the application logs should  appear in the Logs tab.
   
-  - For application container logs, open **Kibana Discovery** and filter for your pods log, with any of:
-    - `k8s.deployment.name: "python-app"`
-    - `k8s.pod.name: python-app*`
+  - For application container logs, open **Kibana Discover** and filter for your pods logs. In the provided example we could filter them with any of:
+    - `k8s.deployment.name: "python-app"` (**adapt the query filter to your use case**)
+    - `k8s.pod.name: python-app*` (**adapt the query filter to your use case**)
 
-    Note that the container logs are not provided by the instrumentation library, but by the DaemonSet collector deployed as part of the [operator installation](./README.md)
+    Note that the container logs are not provided by the instrumentation library, but by the DaemonSet collector deployed as part of the [operator installation](./README.md).
 
 ## Troubleshooting
 
