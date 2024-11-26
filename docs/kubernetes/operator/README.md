@@ -3,7 +3,7 @@
 This guide describes how to:
 
 - Install the [OpenTelemetry Operator](https://github.com/open-telemetry/opentelemetry-operator/) using the [kube-stack Helm chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-kube-stack).
-- Use the EDOT Collector to send Kubernetes logs, metrics, and application traces to an Elasticsearch cluster.
+- Use the EDOT Collectors to send Kubernetes logs, metrics, and application traces to an Elasticsearch cluster.
 - Use the operator for applications [auto-instrumentation](https://opentelemetry.io/docs/kubernetes/operator/automatic/) in all supported languages.
 
 ## Table of Contents
@@ -41,6 +41,9 @@ The following is the current list of supported versions:
 When [installing the release](#manual-deployment-of-all-components), ensure you use the right `--version` and `-f <values-file>` parameters. Values files are available in the [resources directory](/resources/kubernetes/operator/helm).
 
 ## Components description
+
+<details>
+  <summary>Expand to see a detailed description of all components involved</summary>
 
 ### OpenTelemetry Operator
 
@@ -86,6 +89,8 @@ The Helm chart is configured to enable zero-code instrumentation using the [Oper
 - Node.js
 - Python
 - .NET
+
+</details>
 
 ## Deploy components using the guided onboarding
 
@@ -169,10 +174,10 @@ Regardless of the installation method followed, perform the following checks to 
    - Verify that the **[OTEL][Metrics Kubernetes] Cluster Overview** dashboard in **Kibana** is displaying data correctly.
 
 4. **Log Data Availability in Kibana**
-   - In **Kibana Discovery**, confirm the availability of data under the `__logs-*__` data view.
+   - In **Kibana Discover**, confirm the availability of data under the `__logs-*__` data view.
 
 5. **Metrics Data Availability in Kibana**
-   - In **Kibana Discovery**, ensure data is available under the `__metrics-*__` data view.
+   - In **Kibana Discover**, ensure data is available under the `__metrics-*__` data view.
 
 ## Instrumenting Applications
 
