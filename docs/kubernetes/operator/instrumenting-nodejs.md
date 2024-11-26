@@ -7,7 +7,6 @@ For general knowledge about the EDOT Node.js SDK, refer to the [getting started 
 For general information about instrumenting applications on kubernetes, refer to [instrumenting applications](./instrumenting-applications.md).
 
 (TBD / PENDING: extra topics or relevant details about Node.js specifics for Kubernetes, if any).
-(TBD: for example... is there a way to deliver app logs via OTEL as we have in python?)
 
 ## Guided example to instrument a Node.js app with EDOT Node.js SDK on Kubernetes
 
