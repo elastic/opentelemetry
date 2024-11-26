@@ -167,19 +167,22 @@ Ensure that the `init container`, `volume` and `environment variables` described
 
 ## How auto-instrumentation works
 
-The OpenTelemetry Operator automates the process of instrumenting applications by injecting the necessary libraries and configurations into the application Pods.
+The OpenTelemetry Operator automates the process of instrumenting applications by injecting the necessary libraries and configuration into the application Pods.
 The process may vary slightly depending on the language, but it generally involves the following steps:
 
-1. **Adding an init container**:
+- **Adding an init container**:
+
   The operator adds an init container into the Pod. This container is responsible for copying the OpenTelemetry instrumentation library and make it accessible to the main application container.
 
-2. **Creating a shared volume**:
+- **Creating a shared volume**:
+
   The operator creates an `emptyDir` shared volume within the Pod, and mounts it in both containers. This volume serves as the medium for sharing the instrumentation library between the init container and the application container.
 
-3. **Configuring the main container**:
+- **Configuring the main container**:
+
   The operator injects environment variables into the main application container to configure OpenTelemetry settings (e.g., `OTEL_EXPORTER_OTLP_ENDPOINT`, `OTEL_TRACES_SAMPLER`). Additionally, it links the instrumentation library to the application, using mechanisms specific to the language runtime, such as:
-  - **For Java**: The library is linked via the `javaagent` option.
-  - **For Node.js**: The library is linked through `NODE_OPTIONS`.
+    - **For Java**: The library is linked via the `javaagent` option.
+    - **For Node.js**: The library is linked through `NODE_OPTIONS` environment variable.
 
 ## Advanced configuration
 

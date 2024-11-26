@@ -65,15 +65,7 @@ elastic-instrumentation   107s   http://opentelemetry-kube-stack-daemon-collecto
     kubectl rollout restart deployment java-app -n java
     ```
 
-4. Verify the auto-instrumentation resources are injected in the Pod:
-
-  Java apps are instrumented by the OpenTelemetry Operator with the following actions:
-
-  - It adds an init container in the Pod with the objective of copying the SDK to a shared volume.
-
-  - Defines an `emptyDir volume` mounted in both containers.
-
-  - Configures the main container to use the SDK as a `java agent`.
+4. Verify the [auto-instrumentation resources](./instrumenting-applications.md#how-auto-instrumentation-works) are injected in the Pod:
 
   Run a `kubectl describe` of one of your application pods and check:
 
