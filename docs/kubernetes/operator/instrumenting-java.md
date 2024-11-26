@@ -12,77 +12,49 @@ The operator supports configuration that installs [Java agent extensions](https:
 
 ## Guided example to instrument a Java app with EDOT Java SDK on Kubernetes
 
-In the following example you will learn how to:
+In this section you will learn how to:
 
-- Deploy an example Java app in a dedicated namespace.
-- Enable auto-instrumentation of the application following any of the supported methods, such as:
-  - Adding an annotation to the namespace.
+- Enable auto-instrumentation of a Java application following any of the supported methods, such as:
   - Adding an annotation to the deployment pods.
+  - Adding an annotation to the namespace.
 - Verify that auto-instrumentation libraries are injected and configured correctly.
 - Confirm data is flowing to **Kibana Observability**.
 
-Before continuing, ensure you have performed the [installation of the operator](./README.md), and confirm that the following `Instrumentation` object exists in the system:
+For demonstration purposes, we assume the application to be instrumented is a deployment named `java-app` running in the `java-ns` namespace.
+
+1. Ensure you have successfully [installed the OpenTelemetry Operator](./README.md), and confirm that the following `Instrumentation` object exists in the system:
 
 ```bash
 $ kubectl get instrumentation -n opentelemetry-operator-system
 NAME                      AGE    ENDPOINT                                                                                                
 elastic-instrumentation   107s   http://opentelemetry-kube-stack-daemon-collector.opentelemetry-operator-system.svc.cluster.local:4318
 ```
+> [!NOTE]
+> If your `Instrumentation` object has a different name or is created in a different namespace, you will have to adapt the annotation value in the next step.
 
-Example auto-instrumentation steps:
+2. Enable auto-instrumentation of your Java application using one of the following methods:
 
-1. Create a `java` namespace and run a deployment named `java-app`:
-
-    ```bash
-    # Java Namespace and Deployment
-    kubectl create namespace java
-    kubectl apply -f - <<EOF
-    apiVersion: apps/v1
-    kind: Deployment
-    metadata:
-      labels:
-        app: java-app
-      name: java-app
-      namespace: java
-    spec:
-      replicas: 1
-      selector:
-        matchLabels:
-          app: java-app
-      template:
-        metadata:
-          labels:
-            app: java-app
-        spec:
-          containers:
-          - name: java-app
-            image: docker.elastic.co/demos/apm/k8s-webhook-test
-            env:
-            - name: OTEL_INSTRUMENTATION_METHODS_INCLUDE
-              value: "test.Testing[methodB]"
-    EOF
-    ```
-
-2. Enable auto-instrumentation of the Java application using one of the following methods:
-
-  - Add an annotation at namespace level:
-
-    ```bash
-    kubectl annotate namespace java instrumentation.opentelemetry.io/inject-java=opentelemetry-operator-system/elastic-instrumentation
-    ```
-
-  - Alternatively, edit the `java-app` deployment to include the annotation under `spec.template.metadata.annotations`:
+  - Edit your application workload definition and include the annotation under `spec.template.metadata.annotations`:
 
     ```yaml
+    kind: Deployment
+    metadata:
+      name: java-app
+      namespace: java-ns
     spec:
     ...
       template:
         metadata:
-          labels:
-            app: java-app
+    ...
           annotations:
             instrumentation.opentelemetry.io/inject-java: opentelemetry-operator-system/elastic-instrumentation
     ...
+    ```
+
+  - Alternatively, add the annotation at namespace level to apply auto-instrumentation in all Pods of the namespace:
+
+    ```bash
+    kubectl annotate namespace java-ns instrumentation.opentelemetry.io/inject-java=opentelemetry-operator-system/elastic-instrumentation
     ```
 
 3. Restart application
@@ -91,14 +63,14 @@ Example auto-instrumentation steps:
     kubectl rollout restart deployment java-app -n java
     ```
 
-3. Verify the auto-instrumentation resources are injected in the Pod:
+4. Verify the auto-instrumentation resources are injected in the Pod:
 
   Java apps are instrumented by the OpenTelemetry Operator with the following actions:
     - It adds an init container in the Pod with the objective of copying the SDK and making it available for the main container.
     - Defines and mount an emptyDir volume 
     - Configures the main container to use the SDK as a `java agent`.
 
-  Run `kubectl describe pod java-app-xxxx` and check:
+  Run a `kubectl describe` of one of your application pods and check:
 
   - There should be an init container named `opentelemetry-auto-instrumentation-java` in the Pod:
 
@@ -140,7 +112,6 @@ Example auto-instrumentation steps:
       java-app:
         Environment:
     ...
-          OTEL_INSTRUMENTATION_METHODS_INCLUDE:  test.Testing[methodB]
           JAVA_TOOL_OPTIONS:                      -javaagent:/otel-auto-instrumentation-java/javaagent.jar
           OTEL_SERVICE_NAME:                     java-app
           OTEL_EXPORTER_OTLP_ENDPOINT:           http://opentelemetry-kube-stack-daemon-collector.opentelemetry-operator-system.svc.cluster.local:4318
@@ -175,9 +146,9 @@ Example auto-instrumentation steps:
     - The application appears in the list of services.
     - The application shows transactions and metrics.
   
-  - For application logs, open **Kibana Discovery** and filter for your pods log, with any of:
-    - `k8s.deployment.name: "java-app"`
-    - `k8s.pod.name: java-app*`
+  - For application container logs, open **Kibana Discovery** and filter for your pods log. In the provided example we could filter them with any of:
+    - `k8s.deployment.name: "java-app"` (**adapt the query filter to your use case**)
+    - `k8s.pod.name: java-app*` (**adapt the query filter to your use case**)
 
   Note that the application logs are not provided by the instrumentation library, but by the DaemonSet collector deployed as part of the [operator installation](./README.md)
 
