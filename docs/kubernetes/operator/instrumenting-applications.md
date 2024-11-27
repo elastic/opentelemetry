@@ -182,7 +182,7 @@ The process may vary slightly depending on the language, but it generally involv
 
   The operator injects environment variables into the main application container to configure OpenTelemetry settings (for example, `OTEL_EXPORTER_OTLP_ENDPOINT` or `OTEL_TRACES_SAMPLER`). Additionally, it links the instrumentation library to the application using mechanisms specific to the language runtime, such as:
     - **For Java**: The library is linked through the `javaagent` option.
-    - **For Node.js**: The library is linked through `NODE_OPTIONS` environment variable.
+    - **For Node.js**: The library is linked through the `NODE_OPTIONS` environment variable.
 
 ## Advanced configuration
 
