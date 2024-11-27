@@ -14,7 +14,7 @@ The operator supports a configuration that installs [Java agent extensions](http
 
 In this example, you'll learn how to:
 
-- Enable auto-instrumentation of a Java application following any of the supported methods, such as:
+- Enable auto-instrumentation of a Java application using one of the following supported methods:
   - Adding an annotation to the deployment pods.
   - Adding an annotation to the namespace.
 - Verify that auto-instrumentation libraries are injected and configured correctly.
