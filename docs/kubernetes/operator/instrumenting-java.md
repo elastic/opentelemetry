@@ -59,7 +59,7 @@ elastic-instrumentation   107s   http://opentelemetry-kube-stack-daemon-collecto
 
 3. Restart application
 
-  Once the annotation has been set, the Pods need to be recreated for the instrumentation libraries to be injected.
+  Once the annotation has been set, restart the application to create new Pods and inject the instrumentation libraries:
 
     ```bash
     kubectl rollout restart deployment java-app -n java
