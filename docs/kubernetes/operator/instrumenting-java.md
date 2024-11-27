@@ -12,7 +12,7 @@ The operator supports a configuration that installs [Java agent extensions](http
 
 ## Instrument a Java app with EDOT Java SDK on Kubernetes 
 
-In this section you will learn how to:
+In this example, you'll learn how to:
 
 - Enable auto-instrumentation of a Java application following any of the supported methods, such as:
   - Adding an annotation to the deployment pods.
