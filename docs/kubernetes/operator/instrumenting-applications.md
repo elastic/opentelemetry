@@ -139,7 +139,7 @@ The possible values for the annotation are detailed in the [Operator documentati
 - `"my-other-namespace/my-instrumentation"`: to inject Instrumentation instance with name `"my-instrumentation"` from another namespace `"my-other-namespace"`.
 - `"false"`: do not inject.
 
-For extra details specific languages, refer to:
+For details on instrumenting specific languages, refer to:
 
 - [Instrumenting Java](./instrumenting-java.md)
 - [Instrumenting Python](./instrumenting-python.md)
