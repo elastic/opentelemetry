@@ -20,7 +20,7 @@ In this example, you'll learn how to:
 - Verify that auto-instrumentation libraries are injected and configured correctly.
 - Confirm data is flowing to **Kibana Observability**.
 
-For demonstration purposes, we assume the application to be instrumented is a deployment named `java-app` running in the `java-ns` namespace.
+For this example, we assume the application you're instrumenting is a deployment named `java-app` running in the `java-ns` namespace.
 
 1. Ensure you have successfully [installed the OpenTelemetry Operator](./README.md), and confirm that the following `Instrumentation` object exists in the system:
 
