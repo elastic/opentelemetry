@@ -67,7 +67,7 @@ elastic-instrumentation   107s   http://opentelemetry-kube-stack-daemon-collecto
 
 4. Verify the [auto-instrumentation resources](./instrumenting-applications.md#how-auto-instrumentation-works) are injected in the Pod:
 
-  Run a `kubectl describe` of one of your application pods and check:
+  Run a `kubectl describe` of one of your application Pods and check:
 
   - There should be an init container named `opentelemetry-auto-instrumentation-java` in the Pod:
 
