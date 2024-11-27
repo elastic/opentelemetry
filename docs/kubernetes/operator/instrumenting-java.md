@@ -137,7 +137,7 @@ elastic-instrumentation   107s   http://opentelemetry-kube-stack-daemon-collecto
 
   Ensure the environment variable `OTEL_EXPORTER_OTLP_ENDPOINT` points to a valid endpoint and there's network communication between the Pod and the endpoint.
 
-5. Confirm data is flowing through in **Kibana**:
+5. Confirm data is flowing to **Kibana**:
 
   - Open Observability -> Applications -> Service Inventory, and determine if:
     - The application appears in the list of services.
