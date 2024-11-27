@@ -42,8 +42,10 @@ When [installing the release](#manual-deployment-of-all-components), ensure you 
 
 ## Components description
 
+Getting started with OpenTelemetry for Kubernetes observability requires an understanding of the following components, their functions, and interactions: OpenTelemetry Operator, Collectors, kube-stack Helm Chart, and auto-instrumentation resources.
+
 <details>
-  <summary>Expand to see a detailed description of all components involved</summary>
+  <summary>Expand this section for a detailed description of these components.</summary>
 
 ### OpenTelemetry Operator
 
@@ -56,7 +58,7 @@ All signals including logs, metrics, and traces are processed by the collectors 
 
 ### Kube-stack Helm Chart
 
-The [kube-stack Helm chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-kube-stack) is used to manage the installation of the operator (including its CRDs) and to configure a suite of collectors, which instrument various Kubernetes components to enable comprehensive observability and monitoring.
+The [kube-stack Helm chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-kube-stack) is used to manage the installation of the operator (including its CRDs), and to configure a suite of collectors, which instrument various Kubernetes components to enable comprehensive observability and monitoring.
 
 The chart is installed with a provided default `values.yaml` file that can be customized when needed.
 
