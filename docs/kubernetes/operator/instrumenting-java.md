@@ -139,7 +139,7 @@ elastic-instrumentation   107s   http://opentelemetry-kube-stack-daemon-collecto
 
 5. Confirm data is flowing to **Kibana**:
 
-  - Open Observability -> Applications -> Service Inventory, and determine if:
+  - Open **Observability** -> **Applications** -> **Service inventory**, and determine if:
     - The application appears in the list of services.
     - The application shows transactions and metrics.
   
