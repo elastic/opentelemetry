@@ -163,7 +163,7 @@ kubectl run otel-test -n java-apps --env OTEL_INSTRUMENTATION_METHODS_INCLUDE="t
 
 After adding the annotation and restarting the Pods, run `kubectl describe` on your application Pod to verify the SDK has been properly attached.
 
-Ensure that the `init container`, `volume` and `environment variables` described in [how auto-instrumentation works](#how-auto-instrumentation-works) have been successfully injected into the Pod.
+Ensure that the `init container`, `volume`, and `environment variables` described in [how auto-instrumentation works](#how-auto-instrumentation-works) have been successfully injected into the Pod.
 
 ## How auto-instrumentation works
 
