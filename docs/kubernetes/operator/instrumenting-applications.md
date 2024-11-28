@@ -181,7 +181,7 @@ The process may vary slightly depending on the language, but it generally involv
 - **Configuring the main container**:
 
   The operator injects environment variables into the main application container to configure OpenTelemetry settings (for example, `OTEL_EXPORTER_OTLP_ENDPOINT` or `OTEL_TRACES_SAMPLER`). Additionally, it links the instrumentation library to the application using mechanisms specific to the language runtime, such as:
-    - **For Java**: The library is linked through the `javaagent` option.
+    - **For Java**: The library is linked through the `javaagent` option using the JAVA_TOOL_OPTIONS environment variable.
     - **For Node.js**: The library is linked through the `NODE_OPTIONS` environment variable.
     - **For Python**: The operator uses the `PYTHONPATH` environment variable to load the library [sitecustomize](https://docs.python.org/es/dev/library/site.html#module-sitecustomize) module.
 
