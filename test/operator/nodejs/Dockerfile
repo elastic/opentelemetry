@@ -1,5 +1,6 @@
 FROM node
 
 ADD ./app.js .
+ADD ./start.bash .
 
-ENTRYPOINT [ "node", "app.js" ]
+ENTRYPOINT [ "bash", "start.bash" ]
