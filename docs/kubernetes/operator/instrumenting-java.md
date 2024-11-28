@@ -143,11 +143,11 @@ elastic-instrumentation   107s   http://opentelemetry-kube-stack-daemon-collecto
     - The application appears in the list of services.
     - The application shows transactions and metrics.
   
-  - For application container logs, open **Kibana Discover** and filter for your Pod's logs. In the provided example, we could filter for them with either of the following:
+  - For application container logs, open **Kibana Discover** and filter for your Pods' logs. In the provided example, we could filter for them with either of the following:
     - `k8s.deployment.name: "java-app"` (**adapt the query filter to your use case**)
     - `k8s.pod.name: java-app*` (**adapt the query filter to your use case**)
 
-  Note that the application logs are not provided by the instrumentation library, but by the DaemonSet collector deployed as part of the [operator installation](./README.md).
+  Note that the container logs are not provided by the instrumentation library, but by the DaemonSet collector deployed as part of the [operator installation](./README.md).
 
 ## Troubleshooting
 
