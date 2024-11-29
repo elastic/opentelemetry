@@ -38,20 +38,14 @@ jobs:
         with:
           version: v3.11.2
 
-      - name: Install Operator Skeleton
+      - name: Install Operator
         run: |
-          kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.15.3/cert-manager.yaml
-          bash test/operator/wait_for_pod_start.sh cert-manager cert-manager- 1/1 3
-          helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm-charts
+          bash test/operator/match_and_execute.sh "kubectl create namespace opentelemetry-operator-system"
+          bash test/operator/match_and_execute.sh "helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm-charts"
           helm repo update
-          helm install opentelemetry-operator --namespace opentelemetry-operator-system open-telemetry/opentelemetry-operator --create-namespace --set manager.collectorImage.repository="docker.elastic.co/beats/elastic-agent:8.15.0-SNAPSHOT",manager.extraArgs={"--enable-go-instrumentation=true"}
+          bash test/operator/match_and_execute.sh "helm upgrade --install --namespace opentelemetry-operator-system opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack --values 'https://raw.githubusercontent.com/elastic/opentelemetry/refs/heads/8.16/resources/kubernetes/operator/helm/values.yaml' --version 0.3.3"
           bash test/operator/wait_for_pod_start.sh opentelemetry-operator-system opentelemetry-operator 2/2 1
           kubectl get pods -A
-
-      - name: Add Namespaces And Instrumentation Skeleton
-        run: |
-          kubectl create namespace banana
-          kubectl create -f test/operator/elastic-instrumentation.yml
 
       - name: Start And Test Collector Skeleton
         run: |
@@ -59,6 +53,7 @@ jobs:
 
       - name: Start Test Images
         run: |
+          kubectl create namespace banana
           for t in ${AGENT_TESTS[@]}
           do
             if [ "x$t" = "xgo" ]; then   CONTAINER_READY="2/2"; else   CONTAINER_READY="1/1"; fi
