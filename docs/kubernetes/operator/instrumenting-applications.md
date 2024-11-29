@@ -104,7 +104,7 @@ spec:
       containers:
       - image: myapplication-image
         name: app
-      ...        
+      ...
 ```
 
 where ``<LANGUAGE>`` is one of: `go` , `java`, `nodejs`, `python`, `dotnet`
@@ -130,7 +130,7 @@ After adding annotations to Pods or Namespaces, the applications must be restart
 kubectl rollout restart deployment/my-deployment
 ```
 
-In case you have multiple Instrumentation objects with different settings or images, ensure you point your Pods to the the desired `Instrumentation` objects in the annotations.
+In case you have multiple Instrumentation objects with different settings or images, ensure you point your Pods to the desired `Instrumentation` objects in the annotations.
 
 The possible values for the annotation are detailed in the [Operator documentation](https://opentelemetry.io/docs/kubernetes/operator/automatic/#add-annotations-to-existing-deployments). For reference purposes, the values are:
 
@@ -152,7 +152,7 @@ The following example creates a namespace with an annotation to instrument all P
 ```
 kubectl create namespace java-apps
 
-#Annotate app namespace
+# Annotate app namespace
 kubectl annotate namespace java-apps instrumentation.opentelemetry.io/inject-java="opentelemetry-operator-system/elastic-instrumentation"
 
 # Run a java example application in the namespace
