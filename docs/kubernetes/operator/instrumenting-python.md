@@ -6,7 +6,7 @@ This document focuses on instrumenting Python applications on Kubernetes, using 
 
 - For Python auto-instrumentation specifics, refer to [OpenTelemetry Operator Python auto-instrumentation](https://opentelemetry.io/docs/kubernetes/operator/automatic/#python).
 
-- To manually instrument your Python application code (by customizing transactions, traces, and spans), refer to [EDOT Python manual instrumentation](https://github.com/elastic/elastic-otel-python/blob/main/docs/manual-instrumentation.md#Manually-instrument-your-Python-application).
+- To manually instrument your Python application code (by customizing spans and metrics), refer to [EDOT Python manual instrumentation](https://github.com/elastic/elastic-otel-python/blob/main/docs/manual-instrumentation.md#manually-instrument-your-auto-instrumented-python-application).
 
 - For general information about instrumenting applications on kubernetes, refer to [instrumenting applications](./instrumenting-applications.md).
 
