@@ -40,7 +40,7 @@ For this example, we assume the application you're instrumenting is a deployment
 
 ```bash
 $ kubectl get instrumentation -n opentelemetry-operator-system
-NAME                      AGE    ENDPOINT                                                                                                
+NAME                      AGE    ENDPOINT
 elastic-instrumentation   107s   http://opentelemetry-kube-stack-daemon-collector.opentelemetry-operator-system.svc.cluster.local:4318
 ```
 > [!NOTE]
@@ -73,7 +73,7 @@ elastic-instrumentation   107s   http://opentelemetry-kube-stack-daemon-collecto
   Once the annotation has been set, restart the application to create new Pods and inject the instrumentation libraries:
 
     ```bash
-    kubectl rollout restart deployment python-app -n python
+    kubectl rollout restart deployment python-app -n python-ns
     ```
 
 4. Verify the [auto-instrumentation resources](./instrumenting-applications.md#how-auto-instrumentation-works) are injected in the Pod:
@@ -83,7 +83,7 @@ elastic-instrumentation   107s   http://opentelemetry-kube-stack-daemon-collecto
   - There should be an init container named `opentelemetry-auto-instrumentation-python` in the Pod:
 
     ```bash
-    $ kubectl describe pod python-app-8d84c47b8-8h5z2 -n python
+    $ kubectl describe pod python-app-8d84c47b8-8h5z2 -n python-ns
     ...
     ...
     Init Containers:
@@ -131,7 +131,7 @@ elastic-instrumentation   107s   http://opentelemetry-kube-stack-daemon-collecto
           /otel-auto-instrumentation-python from opentelemetry-auto-instrumentation-python (rw)
     Containers:
       python-app:
-    ...  
+    ...
         Mounts:
           /otel-auto-instrumentation-python from opentelemetry-auto-instrumentation-python (rw)
     ...
@@ -143,15 +143,13 @@ elastic-instrumentation   107s   http://opentelemetry-kube-stack-daemon-collecto
 
   Ensure the environment variable `OTEL_EXPORTER_OTLP_ENDPOINT` points to a valid endpoint and there's network communication between the Pod and the endpoint.
 
-5. Confirm data is flowing through in **Kibana**:
-
 5. Confirm data is flowing to **Kibana**:
 
   - Open **Observability** -> **Applications** -> **Service inventory**, and determine if:
     - The application appears in the list of services.
     - The application shows transactions and metrics.
     - If [python logs instrumentation](https://opentelemetry.io/docs/kubernetes/operator/automatic/#auto-instrumenting-python-logs) is enabled, the application logs should  appear in the Logs tab.
-  
+
   - For application container logs, open **Kibana Discover** and filter for your Pods' logs. In the provided example, we could filter for them with either of the following:
     - `k8s.deployment.name: "python-app"` (**adapt the query filter to your use case**)
     - `k8s.pod.name: python-app*` (**adapt the query filter to your use case**)

@@ -120,9 +120,9 @@ Before installing the operator follow these actions:
 (TBD: details of API key permissions).
 
 2. Install the following integrations in Kibana:
-  - `System`
-  - `Kubernetes`
-  - `Kubernetes OpenTelemetry Assets`
+    - `System`
+    - `Kubernetes`
+    - `Kubernetes OpenTelemetry Assets`
 
 Notes:
 - When using the [Kibana onboarding UX](#deploying-components-using-kibana-onboarding-ux), the previous actions are automatically handled by Kibana.

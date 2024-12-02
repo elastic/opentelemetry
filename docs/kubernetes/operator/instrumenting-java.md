@@ -10,7 +10,7 @@ This document focuses on instrumenting Java applications on Kubernetes, using th
 
 The operator supports a configuration that installs [Java agent extensions](https://opentelemetry.io/docs/zero-code/java/agent/extensions/) in `Instrumentation` objects. The extension needs to be available in an image. Refer to [using extensions with the OpenTelemetry Java agent](https://www.elastic.co/observability-labs/blog/using-the-otel-operator-for-injecting-elastic-agents#using-an-extension-with-the-opentelemetry-java-agent) for an example of adding an extension to an agent.
 
-## Instrument a Java app with EDOT Java SDK on Kubernetes 
+## Instrument a Java app with EDOT Java SDK on Kubernetes
 
 In this example, you'll learn how to:
 
@@ -26,7 +26,7 @@ For this example, we assume the application you're instrumenting is a deployment
 
 ```bash
 $ kubectl get instrumentation -n opentelemetry-operator-system
-NAME                      AGE    ENDPOINT                                                                                                
+NAME                      AGE    ENDPOINT
 elastic-instrumentation   107s   http://opentelemetry-kube-stack-daemon-collector.opentelemetry-operator-system.svc.cluster.local:4318
 ```
 > [!NOTE]
@@ -62,7 +62,7 @@ elastic-instrumentation   107s   http://opentelemetry-kube-stack-daemon-collecto
   Once the annotation has been set, restart the application to create new Pods and inject the instrumentation libraries:
 
     ```bash
-    kubectl rollout restart deployment java-app -n java
+    kubectl rollout restart deployment java-app -n java-ns
     ```
 
 4. Verify the [auto-instrumentation resources](./instrumenting-applications.md#how-auto-instrumentation-works) are injected in the Pod:
@@ -72,7 +72,7 @@ elastic-instrumentation   107s   http://opentelemetry-kube-stack-daemon-collecto
   - There should be an init container named `opentelemetry-auto-instrumentation-java` in the Pod:
 
     ```bash
-    $ kubectl describe pod java-app-8d84c47b8-8h5z2 -n java
+    $ kubectl describe pod java-app-8d84c47b8-8h5z2 -n java-ns
     Name:             java-app-8d84c47b8-8h5z2
     Namespace:        java-ns
     ...
@@ -101,7 +101,7 @@ elastic-instrumentation   107s   http://opentelemetry-kube-stack-daemon-collecto
           /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-swhn5 (ro)
     ```
 
-  - The main container of the deployment is using the SDK as `javaagent`: 
+  - The main container of the deployment is using the SDK as `javaagent`:
 
     ```bash
     ...
@@ -125,7 +125,7 @@ elastic-instrumentation   107s   http://opentelemetry-kube-stack-daemon-collecto
           /otel-auto-instrumentation-java from opentelemetry-auto-instrumentation-java (rw)
     Containers:
       java-app:
-    ...  
+    ...
         Mounts:
           /otel-auto-instrumentation-java from opentelemetry-auto-instrumentation-java (rw)
     ...
@@ -142,7 +142,7 @@ elastic-instrumentation   107s   http://opentelemetry-kube-stack-daemon-collecto
   - Open **Observability** -> **Applications** -> **Service inventory**, and determine if:
     - The application appears in the list of services.
     - The application shows transactions and metrics.
-  
+
   - For application container logs, open **Kibana Discover** and filter for your Pods' logs. In the provided example, we could filter for them with either of the following:
     - `k8s.deployment.name: "java-app"` (**adapt the query filter to your use case**)
     - `k8s.pod.name: java-app*` (**adapt the query filter to your use case**)
