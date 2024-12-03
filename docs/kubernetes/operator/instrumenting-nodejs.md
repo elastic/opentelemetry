@@ -67,7 +67,7 @@ For this example, we assume the application you're instrumenting is a deployment
     kubectl rollout restart deployment nodejs-app -n nodejs-ns
     ```
 
-4. Verify the [auto-instrumentation resources](./instrumenting-applications.md#how-auto-instrumentation-works) are injected in the Pod:
+4. Verify the [auto-instrumentation resources](./instrumenting-applications.md#how-auto-instrumentation-works) are injected in the Pods:
 
     Run a `kubectl describe` of one of your application Pods and check:
 
@@ -148,8 +148,6 @@ For this example, we assume the application you're instrumenting is a deployment
     - Open **Observability** -> **Applications** -> **Service inventory**, and determine if:
       - The application appears in the list of services (`nodejs-app` in the example).
       - The application shows transactions and metrics.
-
-
 
     - For application container logs, open **Kibana Discover** and filter for your Pods' logs. In the provided example, we could filter for them with either of the following:
       - `k8s.deployment.name: "nodejs-app"` (**adapt the query filter to your use case**)
