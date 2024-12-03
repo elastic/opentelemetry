@@ -149,6 +149,9 @@ For this example, we assume the application you're instrumenting is a deployment
       - The application appears in the list of services (`nodejs-app` in the example).
       - The application shows transactions and metrics.
 
+      > [!TIP]
+      > Generate some traffic to your application to ensure there are transactions and metrics to see. You can use `kubectl port-forward` for this purpose is your application is not exposed externally.
+
     - For application container logs, open **Kibana Discover** and filter for your Pods' logs. In the provided example, we could filter for them with either of the following:
       - `k8s.deployment.name: "nodejs-app"` (**adapt the query filter to your use case**)
       - `k8s.pod.name: nodejs-app*` (**adapt the query filter to your use case**)
