@@ -3,7 +3,7 @@
 This guide describes how to:
 
 - Install the [OpenTelemetry Operator](https://github.com/open-telemetry/opentelemetry-operator/) using the [kube-stack Helm chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-kube-stack).
-- Use the EDOT Collector to send Kubernetes logs, metrics, and application traces to an Elasticsearch cluster.
+- Use the EDOT Collectors to send Kubernetes logs, metrics, and application traces to an Elasticsearch cluster.
 - Use the operator for applications [auto-instrumentation](https://opentelemetry.io/docs/kubernetes/operator/automatic/) in all supported languages.
 
 ## Table of Contents
@@ -42,6 +42,11 @@ When [installing the release](#manual-deployment-of-all-components), ensure you 
 
 ## Components description
 
+Getting started with OpenTelemetry for Kubernetes observability requires an understanding of the following components, their functions, and interactions: OpenTelemetry Operator, Collectors, kube-stack Helm Chart, and auto-instrumentation resources.
+
+<details>
+  <summary>Expand this section for a detailed description of these components.</summary>
+
 ### OpenTelemetry Operator
 
 The OpenTelemetry Operator is a [Kubernetes Operator](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/) implementation designed to manage OpenTelemetry resources in a Kubernetes environment. It defines and oversees the following Custom Resource Definitions (CRDs):
@@ -53,7 +58,7 @@ All signals including logs, metrics, and traces are processed by the collectors 
 
 ### Kube-stack Helm Chart
 
-The [kube-stack Helm chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-kube-stack) is used to manage the installation of the operator (including its CRDs) and to configure a suite of collectors, which instrument various Kubernetes components to enable comprehensive observability and monitoring.
+The [kube-stack Helm chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-kube-stack) is used to manage the installation of the operator (including its CRDs), and to configure a suite of collectors, which instrument various Kubernetes components to enable comprehensive observability and monitoring.
 
 The chart is installed with a provided default `values.yaml` file that can be customized when needed.
 
@@ -87,6 +92,8 @@ The Helm chart is configured to enable zero-code instrumentation using the [Oper
 - Python
 - .NET
 
+</details>
+
 ## Deploy components using the guided onboarding
 
 The guided onboarding simplifies deploying your Kubernetes components by setting up an [API Key](https://www.elastic.co/guide/en/kibana/current/api-keys.html) and the needed [Integrations](https://www.elastic.co/docs/current/en/integrations) in the background. Follow these steps to use the guided onboarding:
@@ -113,9 +120,9 @@ Before installing the operator follow these actions:
 (TBD: details of API key permissions).
 
 2. Install the following integrations in Kibana:
-  - `System`
-  - `Kubernetes`
-  - `Kubernetes OpenTelemetry Assets`
+    - `System`
+    - `Kubernetes`
+    - `Kubernetes OpenTelemetry Assets`
 
 Notes:
 - When using the [Kibana onboarding UX](#deploying-components-using-kibana-onboarding-ux), the previous actions are automatically handled by Kibana.
@@ -169,10 +176,10 @@ Regardless of the installation method followed, perform the following checks to 
    - Verify that the **[OTEL][Metrics Kubernetes] Cluster Overview** dashboard in **Kibana** is displaying data correctly.
 
 4. **Log Data Availability in Kibana**
-   - In **Kibana Discovery**, confirm the availability of data under the `__logs-*__` data view.
+   - In **Kibana Discover**, confirm the availability of data under the `__logs-*__` data view.
 
 5. **Metrics Data Availability in Kibana**
-   - In **Kibana Discovery**, ensure data is available under the `__metrics-*__` data view.
+   - In **Kibana Discover**, ensure data is available under the `__metrics-*__` data view.
 
 ## Instrumenting Applications
 

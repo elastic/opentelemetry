@@ -12,7 +12,7 @@ This section provides guidance and examples for applications instrumentation in 
 
 In Kubernetes environments with the OpenTelemetry Operator, [**automatic (or zero-code) instrumentation**](https://opentelemetry.io/docs/kubernetes/operator/automatic/) simplifies the process by injecting and configuring instrumentation libraries into the targeted Pods.
 
-On the other hand, **manual instrumentation** with OpenTelemetry involves adding specific OpenTelemetry SDKs and APIs directly into your application’s code. This approach provides more granular control over what and how data is captured, allowing you to customize trace spans, metrics, and logging based on your application’s logic.
+On the other hand, **manual instrumentation** with OpenTelemetry allows you to customize trace spans, metrics, and logging directly in your application’s code. This approach provides more granular control over what and how data is captured.
 
 ## Table of contents
 
@@ -20,6 +20,7 @@ On the other hand, **manual instrumentation** with OpenTelemetry involves adding
 - [Prerequisites](#prerequisites)
 - [Auto-instrumentation basics](#auto-instrumentation-basics)
 - [Configuring auto-instrumentation](#configuring-auto-instrumentation)
+- [How auto-instrumentation works](#how-auto-instrumentation-works)
 - [Advanced configuration](#advanced-configuration)
 - [Manual instrumentation](#manual-instrumentation)
 
@@ -103,16 +104,16 @@ spec:
       containers:
       - image: myapplication-image
         name: app
-      ...        
+      ...
 ```
 
 where ``<LANGUAGE>`` is one of: `go` , `java`, `nodejs`, `python`, `dotnet`
 
 > [!NOTE]
 > Ensure you add the annotations at Pod level and not directly at the workload `spec` level (Deployment, Job, etc.).
-> Ensure the annotation value must points to an existing `Instrumentation` object.
+> Ensure the annotation value points to an existing `Instrumentation` object.
 
-Alternatively, you can enable auto-instrumentation by adding the annotation at the **namespace level**. This approach automatically applies instrumentation to all Pods within the specified namespace.
+Alternatively, you can enable auto-instrumentation by adding the annotation at **namespace level**. This approach automatically applies instrumentation to all Pods within the specified namespace.
 
 ```yaml
 apiVersion: v1
@@ -129,14 +130,20 @@ After adding annotations to Pods or Namespaces, the applications must be restart
 kubectl rollout restart deployment/my-deployment
 ```
 
-In case you have multiple Instrumentation objects with different settings or images, ensure you point your Pods to the the desired `Instrumentation` objects in the annotations.
+In case you have multiple Instrumentation objects with different settings or images, ensure you point your Pods to the desired `Instrumentation` objects in the annotations.
 
 The possible values for the annotation are detailed in the [Operator documentation](https://opentelemetry.io/docs/kubernetes/operator/automatic/#add-annotations-to-existing-deployments). For reference purposes, the values are:
 
-- `"true"`: to inject Instrumentation resource with default name from the current namespace.
+- `"true"`: to inject Instrumentation instance with `default` name from the current namespace.
 - `"my-instrumentation"`: to inject Instrumentation instance with name `"my-instrumentation"` in the current namespace.
 - `"my-other-namespace/my-instrumentation"`: to inject Instrumentation instance with name `"my-instrumentation"` from another namespace `"my-other-namespace"`.
 - `"false"`: do not inject.
+
+For details on instrumenting specific languages, refer to:
+
+- [Instrumenting Java](./instrumenting-java.md)
+- [Instrumenting Python](./instrumenting-python.md)
+<!-- - [Instrumenting Dotnet](./instrumenting-dotnet.md) -->
 
 ### Namespace based annotations example
 
@@ -145,12 +152,38 @@ The following example creates a namespace with an annotation to instrument all P
 ```
 kubectl create namespace java-apps
 
-#Annotate app namespace
+# Annotate app namespace
 kubectl annotate namespace java-apps instrumentation.opentelemetry.io/inject-java="opentelemetry-operator-system/elastic-instrumentation"
 
 # Run a java example application in the namespace
 kubectl run otel-test -n java-apps --env OTEL_INSTRUMENTATION_METHODS_INCLUDE="test.Testing[methodB]" --image docker.elastic.co/demos/apm/k8s-webhook-test
 ```
+
+## Verify auto-instrumentation
+
+After adding the annotation and restarting the Pods, run `kubectl describe` on your application Pod to verify the SDK has been properly attached.
+
+Ensure that the `init container`, `volume`, and `environment variables` described in [how auto-instrumentation works](#how-auto-instrumentation-works) have been successfully injected into the Pod.
+
+## How auto-instrumentation works
+
+The OpenTelemetry Operator automates the process of instrumenting applications by injecting the necessary libraries and configuration into the application Pods.
+The process may vary slightly depending on the language, but it generally involves the following steps:
+
+- **Adding an init container**:
+
+  The operator adds an init container into the Pod. This container is responsible for copying the OpenTelemetry instrumentation library and make it accessible to the main application container.
+
+- **Creating a shared volume**:
+
+  The operator creates an `emptyDir` shared volume within the Pod, and mounts it in both containers. This volume serves as the medium for sharing the instrumentation library between the init container and the application container.
+
+- **Configuring the main container**:
+
+  The operator injects environment variables into the main application container to configure OpenTelemetry settings (for example, `OTEL_EXPORTER_OTLP_ENDPOINT` or `OTEL_TRACES_SAMPLER`). Additionally, it links the instrumentation library to the application using mechanisms specific to the language runtime, such as:
+    - **For Java**: The library is linked through the `javaagent` option using the JAVA_TOOL_OPTIONS environment variable.
+    - **For Node.js**: The library is linked through the `NODE_OPTIONS` environment variable.
+    - **For Python**: The operator uses the `PYTHONPATH` environment variable to load the library [sitecustomize](https://docs.python.org/es/dev/library/site.html#module-sitecustomize) module.
 
 ## Advanced configuration
 
