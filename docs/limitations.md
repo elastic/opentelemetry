@@ -25,8 +25,9 @@ OpenTelemetry SDKs provide multiple ways to report metrics temporality:
 
 A complete description and examples are provided in [aggregation temporality documentation](https://opentelemetry.io/docs/specs/otel/metrics/supplementary-guidelines/#aggregation-temporality).
 
-The `low memory` is not recommended for consistency because `counter` metrics are reported either as `delta` or
-`cumulative` when they are captured synchronously or asynchronously.
+With `low memory`, `counter` metrics are reported either as `delta` or `cumulative` when they are captured synchronously
+or asynchronously. Because querying `counter` metrics currently depends on temporal aggregation (see [Visualizations](#visualizations))
+this means visualizations depend on metric synchronous/asynchronous value capture.
 
 Temporal aggregation effect depends on the OpenTelemetry metric type:
 
