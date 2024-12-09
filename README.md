@@ -20,8 +20,8 @@ These pages detail the components and how to configure the EDOT Collector.
 
 - [Components](docs/collector-components.md): Get details on the components used to receive, process, and export telemetry data.
 - [Guided onboarding](docs/guided-onboarding.md): Use the guided onboarding in Elasticsearch Service or a serverless Observability project to send data using the EDOT Collector.
-- [Manual configurations](docs/manual-configuration.md): Manually configure the EDOT Collector to send data to Elastic Observability.
-- [Limitations](docs/collector-limitations.md): Understand the current limitations of the EDOT Collector.
+- [Manual configuration](docs/manual-configuration.md): Manually configure the EDOT Collector to send data to Elastic Observability.
+- [Limitations](docs/limitations.md): Understand the current limitations of using EDOT Collector, data storage and querying.
 
 ## Unified Kubernetes Observability with Elastic Distributions of OpenTelemetry
 

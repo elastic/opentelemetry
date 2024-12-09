@@ -9,7 +9,8 @@ A complete description and examples are provided in [aggregation temporality doc
 
 Temporal aggregation effect depends on the OpenTelemetry metric type:
 
-Gauge and up down counters always provide the "last value".
+Gauge and up down counters always provide the "last value", which means that the producers of those metrics only reads
+the last value, they don't keep track of the previous nor compute a delta.
 
 | metric type / temporal aggregation | cumulative | delta preferred | low memory                                   |
 |------------------------------------|------------|-----------------|----------------------------------------------|
