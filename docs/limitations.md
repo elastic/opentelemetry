@@ -16,6 +16,7 @@ The Elastic Distribution of the OpenTelemetry Collector has the following limita
 
 The [Elasticsearch exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/elasticsearchexporter) only support histograms with delta temporality,
 as a consequence SDKs must be configured to report them as delta.
+Changing temporal aggregation also impacts [visualizations](#visualizations).
 
 OpenTelemetry metrics data model provides multiple ways to report metrics temporality:
 - cumulative (default)
@@ -59,3 +60,12 @@ does however involves some challenges as it makes the processor stateful:
 
 As a consequence, using the `cumulativetodelta` processor is recommended close to the edge (where metrics are produced),
 and less recommended late in the data pipeline due to scalability challenges.
+
+# Visualizations
+
+With `counter` metrics, the absolute value is not relevant but the _rate_ of the value is, for example with a `counter`
+for the "number of HTTP requests", a visualization would likely be "number of HTTP requests per minute", this is usually
+implemented in Kibana/Lens with a `Counter rate` function applied on the time series.
+
+As a consequence, visualizations of `counter` metrics are currently tied to the metric temporal aggregation used, which
+means changing a metric temporal aggregation will require to modify visualizations.
