@@ -14,6 +14,9 @@ The Elastic Distribution of the OpenTelemetry Collector has the following limita
 
 ## Metrics temporal aggregation
 
+The [Elasticsearch exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/elasticsearchexporter) only support histograms with delta temporality,
+as a consequence SDKs must be configured to report them as delta.
+
 OpenTelemetry metrics data model provides multiple ways to report metrics temporality:
 - cumulative (default)
 - delta preferred
@@ -33,8 +36,6 @@ the last value, they don't keep track of the previous nor compute a delta.
 | counter                            | cumulative | delta           | synchronous: delta, asynchronous: cumulative |
 | histogram                          | cumulative | delta           | delta                                        |
 
-When metrics are stored in Elasticsearch with the `otel` mode,
-OpenTelemetry metrics will be written to Time Series Data Stream (TSDS) which currently only support delta histograms.
 
 As a consequence, metrics sent to Elasticsearch currently need to use the "delta preferred" to properly store histograms,
 otherwise they will be discarded by the collector.
