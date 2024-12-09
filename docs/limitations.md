@@ -24,17 +24,20 @@ OpenTelemetry metrics data model provides multiple ways to report metrics tempor
 
 A complete description and examples are provided in [aggregation temporality documentation](https://opentelemetry.io/docs/specs/otel/metrics/supplementary-guidelines/#aggregation-temporality).
 
+The `low memory` is not recommended for consistency because `counter` metrics are reported either as `delta` or
+`cumulative` when they are captured synchronously or asynchronously.
+
 Temporal aggregation effect depends on the OpenTelemetry metric type:
 
 Gauge and up down counters always provide the "last value", which means that the producers of those metrics only reads
 the last value, they don't keep track of the previous nor compute a delta.
 
-| metric type / temporal aggregation | cumulative | delta preferred | low memory                                   |
-|------------------------------------|------------|-----------------|----------------------------------------------|
-| gauge                              | last value | last value      | last value                                   |
-| up down counter                    | last value | last value      | last value                                   |
-| counter                            | cumulative | delta           | synchronous: delta, asynchronous: cumulative |
-| histogram                          | cumulative | delta           | delta                                        |
+| metric type / temporal aggregation | cumulative | delta preferred |
+|------------------------------------|------------|-----------------|
+| gauge                              | last value | last value      |
+| up down counter                    | last value | last value      |
+| counter                            | cumulative | delta           |
+| histogram                          | cumulative | delta           |
 
 
 As a consequence, metrics sent to Elasticsearch currently need to use the "delta preferred" to properly store histograms,
