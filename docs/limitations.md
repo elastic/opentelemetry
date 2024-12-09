@@ -68,4 +68,5 @@ for the "number of HTTP requests", a visualization would likely be "number of HT
 implemented in Kibana/Lens with a `Counter rate` function applied on the time series.
 
 As a consequence, visualizations of `counter` metrics are currently tied to the metric temporal aggregation used, which
-means changing a metric temporal aggregation will require to modify visualizations.
+means changing a metric temporal aggregation will require to modify visualizations or creating dedicated visualizations
+per temporal aggregation.
