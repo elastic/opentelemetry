@@ -15,10 +15,10 @@ The Elastic Distribution of the OpenTelemetry Collector has the following limita
 ## Metrics temporal aggregation
 
 The [Elasticsearch exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/elasticsearchexporter) only support histograms with delta temporality,
-as a consequence SDKs must be configured to report them as delta.
+as a consequence SDKs must be configured to report or convert them as delta.
 Changing temporal aggregation also impacts [visualizations](#visualizations).
 
-OpenTelemetry metrics data model provides multiple ways to report metrics temporality:
+OpenTelemetry SDKs provide multiple ways to report metrics temporality:
 - cumulative (default)
 - delta preferred
 - low memory
