@@ -84,8 +84,8 @@ For this example, we assume the application you're instrumenting is a deployment
     Init Containers:
       opentelemetry-auto-instrumentation-nodejs:
         Container ID:  containerd://cbf67d7ca1bd62c25614b905a11e81405bed6fd215f2df21f84b90fd0279230b
-        Image:         docker.elastic.co/observability/elastic-otel-nodejs:1.0.0
-        Image ID:      docker.elastic.co/observability/elastic-otel-nodejs@sha256:28d65d04a329c8d5545ed579d6c17f0d74800b7b1c5875e75e0efd29e210566a
+        Image:         docker.elastic.co/observability/elastic-otel-node:0.5.0
+        Image ID:      docker.elastic.co/observability/elastic-otel-nodejs@sha256:ae6a699442ab33f661ed6aa1f38393f55a31038038ae194e1f9a858bc8df06ab
         Port:          <none>
         Host Port:     <none>
         Command:
