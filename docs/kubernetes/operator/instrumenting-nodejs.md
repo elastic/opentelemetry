@@ -73,7 +73,7 @@ For this example, we assume the application you're instrumenting is a deployment
 
 **REVIEW NEEDED HERE, it's a copy & paste from java SDK used as javaagent**
 
-    - There should be an init container named `opentelemetry-auto-instrumentation-nodejs` in the Pod:
+    - There should be an init container named `opentelemetry-auto-instrumentation-nodejs` in the Pod. For exapmle:
 
     ```bash
     $ kubectl describe pod nodejs-app-8d84c47b8-8h5z2 -n nodejs-ns
