@@ -38,111 +38,107 @@ For this example, we assume the application you're instrumenting is a deployment
 
     - Edit your application workload definition and include the annotation under `spec.template.metadata.annotations`:
 
-    ```yaml
-    kind: Deployment
-    metadata:
-      name: nodejs-app
-      namespace: nodejs-ns
-    spec:
-    ...
-      template:
-        metadata:
-    ...
-          annotations:
-            instrumentation.opentelemetry.io/inject-nodejs: opentelemetry-operator-system/elastic-instrumentation
-    ...
-    ```
+      ```yaml
+      kind: Deployment
+      metadata:
+        name: nodejs-app
+        namespace: nodejs-ns
+      spec:
+      ...
+        template:
+          metadata:
+      ...
+            annotations:
+              instrumentation.opentelemetry.io/inject-nodejs: opentelemetry-operator-system/elastic-instrumentation
+      ...
+      ```
 
     - Alternatively, add the annotation at namespace level to apply auto-instrumentation in all Pods of the namespace:
 
-    ```bash
-    kubectl annotate namespace nodejs-ns instrumentation.opentelemetry.io/inject-nodejs=opentelemetry-operator-system/elastic-instrumentation
-    ```
+      ```bash
+      kubectl annotate namespace nodejs-ns instrumentation.opentelemetry.io/inject-nodejs=opentelemetry-operator-system/elastic-instrumentation
+      ```
 
 3. Restart application
 
     Once the annotation has been set, restart the application to create new Pods and inject the instrumentation libraries:
 
-    ```bash
-    kubectl rollout restart deployment nodejs-app -n nodejs-ns
-    ```
+      ```bash
+      kubectl rollout restart deployment nodejs-app -n nodejs-ns
+      ```
 
 4. Verify the [auto-instrumentation resources](./instrumenting-applications.md#how-auto-instrumentation-works) are injected in the Pods:
 
     Run a `kubectl describe` of one of your application Pods and check:
 
-**REVIEW NEEDED HERE, it's a copy & paste from java SDK used as javaagent**
+    - There should be an init container named `opentelemetry-auto-instrumentation-nodejs` in the Pod. For example:
 
-    - There should be an init container named `opentelemetry-auto-instrumentation-nodejs` in the Pod. For exapmle:
+      ```bash
+      $ kubectl describe pod nodejs-app-8d84c47b8-8h5z2 -n nodejs-ns
+      Name:             nodejs-app-8d84c47b8-8h5z2
+      Namespace:        nodejs-ns
+      ...
+      ...
+      Init Containers:
+        opentelemetry-auto-instrumentation-nodejs:
+          Container ID:  containerd://cbf67d7ca1bd62c25614b905a11e81405bed6fd215f2df21f84b90fd0279230b
+          Image:         docker.elastic.co/observability/elastic-otel-node:0.5.0
+          Image ID:      docker.elastic.co/observability/elastic-otel-nodejs@sha256:ae6a699442ab33f661ed6aa1f38393f55a31038038ae194e1f9a858bc8df06ab
+          Port:          <none>
+          Host Port:     <none>
+          Command:
+            cp
+            -r
+            /autoinstrumentation/.
+            /otel-auto-instrumentation-nodejs
+          State:          Terminated
+            Reason:       Completed
+            Exit Code:    0
+            Started:      Wed, 13 Nov 2024 15:47:02 +0100
+            Finished:     Wed, 13 Nov 2024 15:47:03 +0100
+          Ready:          True
+          Restart Count:  0
+          Environment:    <none>
+          Mounts:
+            /otel-auto-instrumentation-nodejs from opentelemetry-auto-instrumentation-nodejs (rw)
+            /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-swhn5 (ro)
+      ```
 
-    ```bash
-    $ kubectl describe pod nodejs-app-8d84c47b8-8h5z2 -n nodejs-ns
-    Name:             nodejs-app-8d84c47b8-8h5z2
-    Namespace:        nodejs-ns
-    ...
-    ...
-    Init Containers:
-      opentelemetry-auto-instrumentation-nodejs:
-        Container ID:  containerd://cbf67d7ca1bd62c25614b905a11e81405bed6fd215f2df21f84b90fd0279230b
-        Image:         docker.elastic.co/observability/elastic-otel-node:0.5.0
-        Image ID:      docker.elastic.co/observability/elastic-otel-nodejs@sha256:ae6a699442ab33f661ed6aa1f38393f55a31038038ae194e1f9a858bc8df06ab
-        Port:          <none>
-        Host Port:     <none>
-        Command:
-          cp
-          -r
-          /autoinstrumentation/.
-          /otel-auto-instrumentation-nodejs
-        State:          Terminated
-          Reason:       Completed
-          Exit Code:    0
-          Started:      Wed, 13 Nov 2024 15:47:02 +0100
-          Finished:     Wed, 13 Nov 2024 15:47:03 +0100
-        Ready:          True
-        Restart Count:  0
-        Environment:    <none>
-        Mounts:
-          /otel-auto-instrumentation-nodejs from opentelemetry-auto-instrumentation-nodejs (rw)
-          /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-swhn5 (ro)
-    ```
+    - The main container of the deployment is linking the SDK through `NODE_OPTIONS` environment variable:
 
-    - The main container of the deployment is using the SDK as `nodejsagent`:
-
-    ```bash
-    ...
-    Containers:
-      nodejs-app:
-        Environment:
-    ...
-          NODE_OPTIONS:                           --require /otel-auto-instrumentation-nodejs/autoinstrumentation.js
-          OTEL_SERVICE_NAME:                     nodejs-app
-          OTEL_EXPORTER_OTLP_ENDPOINT:           http://opentelemetry-kube-stack-daemon-collector.opentelemetry-operator-system.svc.cluster.local:4318
-    ...
-    ```
+      ```bash
+      ...
+      Containers:
+        nodejs-app:
+          Environment:
+      ...
+            NODE_OPTIONS:                           --require /otel-auto-instrumentation-nodejs/autoinstrumentation.js
+            OTEL_SERVICE_NAME:                     nodejs-app
+            OTEL_EXPORTER_OTLP_ENDPOINT:           http://opentelemetry-kube-stack-daemon-collector.opentelemetry-operator-system.svc.cluster.local:4318
+      ...
+      ```
 
     - The Pod has an `EmptyDir` volume named `opentelemetry-auto-instrumentation-nodejs` mounted in both the main and the init containers in path `/otel-auto-instrumentation-nodejs`.
 
-    ```bash
-    Init Containers:
-      opentelemetry-auto-instrumentation-nodejs:
-    ...
-        Mounts:
-          /otel-auto-instrumentation-nodejs from opentelemetry-auto-instrumentation-nodejs (rw)
-    Containers:
-      nodejs-app:
-    ...
-        Mounts:
-          /otel-auto-instrumentation-nodejs from opentelemetry-auto-instrumentation-nodejs (rw)
-    ...
-    Volumes:
-    ...
-      opentelemetry-auto-instrumentation-nodejs:
-        Type:        EmptyDir (a temporary directory that shares a pod's lifetime)
-    ```
+      ```bash
+      Init Containers:
+        opentelemetry-auto-instrumentation-nodejs:
+      ...
+          Mounts:
+            /otel-auto-instrumentation-nodejs from opentelemetry-auto-instrumentation-nodejs (rw)
+      Containers:
+        nodejs-app:
+      ...
+          Mounts:
+            /otel-auto-instrumentation-nodejs from opentelemetry-auto-instrumentation-nodejs (rw)
+      ...
+      Volumes:
+      ...
+        opentelemetry-auto-instrumentation-nodejs:
+          Type:        EmptyDir (a temporary directory that shares a pod's lifetime)
+      ```
 
     Ensure the environment variable `OTEL_EXPORTER_OTLP_ENDPOINT` points to a valid endpoint and there's network communication between the Pod and the endpoint.
-
-**END OF REVIEW NEEDED SECTION**
 
 5. Confirm data is flowing to **Kibana**:
 
