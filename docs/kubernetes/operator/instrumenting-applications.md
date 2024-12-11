@@ -143,6 +143,7 @@ For details on instrumenting specific languages, refer to:
 
 - [Instrumenting Java](./instrumenting-java.md)
 - [Instrumenting Python](./instrumenting-python.md)
+- [Instrumenting Node.js](./instrumenting-nodejs.md)
 <!-- - [Instrumenting Dotnet](./instrumenting-dotnet.md) -->
 
 ### Namespace based annotations example
