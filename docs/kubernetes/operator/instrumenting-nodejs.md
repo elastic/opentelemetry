@@ -90,8 +90,9 @@ For this example, we assume the application you're instrumenting is a deployment
         Host Port:     <none>
         Command:
           cp
-          /nodejsagent.jar
-          /otel-auto-instrumentation-nodejs/nodejsagent.jar
+          -r
+          /autoinstrumentation/.
+          /otel-auto-instrumentation-nodejs
         State:          Terminated
           Reason:       Completed
           Exit Code:    0
