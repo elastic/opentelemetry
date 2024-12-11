@@ -83,9 +83,6 @@ For this example, we assume the application you're instrumenting is a deployment
         opentelemetry-auto-instrumentation-nodejs:
           Container ID:  containerd://cbf67d7ca1bd62c25614b905a11e81405bed6fd215f2df21f84b90fd0279230b
           Image:         docker.elastic.co/observability/elastic-otel-node:0.5.0
-          Image ID:      docker.elastic.co/observability/elastic-otel-nodejs@sha256:ae6a699442ab33f661ed6aa1f38393f55a31038038ae194e1f9a858bc8df06ab
-          Port:          <none>
-          Host Port:     <none>
           Command:
             cp
             -r
