@@ -143,6 +143,7 @@ For details on instrumenting specific languages, refer to:
 
 - [Instrumenting Java](./instrumenting-java.md)
 - [Instrumenting Python](./instrumenting-python.md)
+- [Instrumenting Node.js](./instrumenting-nodejs.md)
 <!-- - [Instrumenting Dotnet](./instrumenting-dotnet.md) -->
 
 ### Namespace based annotations example
@@ -170,13 +171,13 @@ Ensure that the `init container`, `volume`, and `environment variables` describe
 The OpenTelemetry Operator automates the process of instrumenting applications by injecting the necessary libraries and configuration into the application Pods.
 The process may vary slightly depending on the language, but it generally involves the following steps:
 
-- **Adding an init container**:
-
-  The operator adds an init container into the Pod. This container is responsible for copying the OpenTelemetry instrumentation library and make it accessible to the main application container.
-
 - **Creating a shared volume**:
 
-  The operator creates an `emptyDir` shared volume within the Pod, and mounts it in both containers. This volume serves as the medium for sharing the instrumentation library between the init container and the application container.
+  The operator declares an `emptyDir` shared volume within the Pod, and mounts it the app container and a new init container. This volume serves as the medium for sharing the instrumentation library between the new init container and the application container.
+
+- **Adding an init container**:
+
+  The operator adds an init container into the Pod. This container is responsible for copying the OpenTelemetry instrumentation library to the shared volume.
 
 - **Configuring the main container**:
 
