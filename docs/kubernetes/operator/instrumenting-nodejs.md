@@ -114,7 +114,7 @@ For this example, we assume the application you're instrumenting is a deployment
       nodejs-app:
         Environment:
     ...
-          JAVA_TOOL_OPTIONS:                      -nodejsagent:/otel-auto-instrumentation-nodejs/nodejsagent.jar
+          NODE_OPTIONS:                           --require /otel-auto-instrumentation-nodejs/autoinstrumentation.js
           OTEL_SERVICE_NAME:                     nodejs-app
           OTEL_EXPORTER_OTLP_ENDPOINT:           http://opentelemetry-kube-stack-daemon-collector.opentelemetry-operator-system.svc.cluster.local:4318
     ...
