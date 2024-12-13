@@ -2,6 +2,7 @@
 Collecting logs and host metrics with the Elastic Distribution of OpenTelemetry (EDOT) Collector without using the [guided onboarding](guided-onboarding.md) requires completing some manual steps.
 
 <!-- adding a comment to test; will remove. -->
+<!-- adding another comment here to test; will remove. -->
 
 ## Before you begin
 The EDOT Collector has the following requirements:
