@@ -101,7 +101,7 @@ For this example, we assume the application you're instrumenting is a deployment
             /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-swhn5 (ro)
       ```
 
-    - The main container of the deployment is linking the SDK through `NODE_OPTIONS` environment variable:
+    - The main container of the deployment loads the SDK through the `NODE_OPTIONS` environment variable:
 
       ```bash
       ...
