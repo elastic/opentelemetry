@@ -114,6 +114,8 @@ For this example, we assume the application you're instrumenting is a deployment
             OTEL_EXPORTER_OTLP_ENDPOINT:           http://opentelemetry-kube-stack-daemon-collector.opentelemetry-operator-system.svc.cluster.local:4318
       ...
       ```
+      
+      Ensure the environment variable `OTEL_EXPORTER_OTLP_ENDPOINT` points to a valid endpoint and there's network communication between the Pod and the endpoint.
 
     - The Pod has an `EmptyDir` volume named `opentelemetry-auto-instrumentation-nodejs` mounted in both the main and the init containers in path `/otel-auto-instrumentation-nodejs`.
 
@@ -134,8 +136,6 @@ For this example, we assume the application you're instrumenting is a deployment
         opentelemetry-auto-instrumentation-nodejs:
           Type:        EmptyDir (a temporary directory that shares a pod's lifetime)
       ```
-
-    Ensure the environment variable `OTEL_EXPORTER_OTLP_ENDPOINT` points to a valid endpoint and there's network communication between the Pod and the endpoint.
 
 5. Confirm data is flowing to **Kibana**:
 
