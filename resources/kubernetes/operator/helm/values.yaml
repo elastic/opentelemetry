@@ -12,6 +12,14 @@ opentelemetry-operator:
       enabled: true # Enable/disable automatic certificate generation. Set to false if manually managing certificates.
       recreate: true # Force certificate regeneration on updates. Only applicable if autoGenerateCert.enabled is true.
 
+    # Avoid process resources in the kube-system and kube-node-lease namespaces GKE flagged admissionWebhooks as unsafe if those namespaces are processed. see https://cloud.google.com/kubernetes-engine/docs/how-to/optimize-webhooks#unsafe-webhooks
+    namespaceSelector:
+      matchExpressions:
+      - key: kubernetes.io/metadata.name
+        operator: NotIn
+        values:
+        - kube-system
+        - kube-node-lease
 crds:
   create: true # Install the OpenTelemetry Operator CRDs.
 
