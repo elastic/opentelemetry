@@ -522,7 +522,10 @@ collectors:
             mode: ecs
       processors:
         # [Batch Processor](https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor/batchprocessor)
-        batch: {}
+        batch: {} # inherit any values from helm chart
+        batch/metrics:
+          # explicitly set send_batch_max_size to 0, as splitting metrics requests may cause version_conflict_engine_exception in TSDB
+          send_batch_max_size: 0
         # [Elastic Trace Processor](https://github.com/elastic/opentelemetry-collector-components/tree/main/processor/elastictraceprocessor)
         elastictrace: {} # The processor enriches traces with elastic specific requirements.
         # [LSM Interval Processor](https://github.com/elastic/opentelemetry-collector-components/tree/main/processor/lsmintervalprocessor)
@@ -854,7 +857,7 @@ collectors:
             receivers:
               - kubeletstats
             processors:
-              - batch
+              - batch/metrics
               - k8sattributes
               - resourcedetection/system
               - resourcedetection/eks
@@ -872,7 +875,7 @@ collectors:
               - kubeletstats
             processors:
               - elasticinframetrics
-              - batch
+              - batch/metrics
               - k8sattributes/ecs
               - resourcedetection/system
               - resourcedetection/eks
@@ -890,7 +893,7 @@ collectors:
             receivers:
               - otlp
             processors:
-              - batch
+              - batch/metrics
               - resource/hostname
             exporters:
               - debug
@@ -921,7 +924,7 @@ collectors:
             receivers:
               - signaltometrics
             processors:
-              - batch
+              - batch/metrics
               - lsminterval
             exporters:
               - debug
