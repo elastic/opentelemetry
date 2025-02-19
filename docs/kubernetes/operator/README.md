@@ -147,7 +147,7 @@ Notes:
    - `YOUR_ELASTICSEARCH_ENDPOINT`: Elasticsearch endpoint (**with `https://` prefix**). For example: `https://1234567.us-west2.gcp.elastic-cloud.com:443`.
    - `YOUR_ELASTICSEARCH_API_KEY`: Elasticsearch API Key created in the previous step.
 
-3. If you need to [customize the configuration](#custom-configuration), make a copy of the `values.yaml` file and adapt it to your needs. Refer to the [compatibility matrix](#compatibility-matrix) for a complete list of available manifests in the `release branches`, such as the [8.16 values file](https://raw.githubusercontent.com/elastic/opentelemetry/refs/heads/8.16/resources/kubernetes/operator/helm/values.yaml). 
+3. If you need to [customize the configuration](#custom-configuration), make a copy of the `values.yaml` file and adapt it to your needs. Refer to the [compatibility matrix](#compatibility-matrix) for a complete list of available manifests in the `release branches`, such as the [8.16 values file](https://raw.githubusercontent.com/elastic/opentelemetry/refs/heads/8.16/resources/kubernetes/operator/helm/values.yaml).
 
 4. Run the following commands to deploy the `opentelemetry-kube-stack` Helm chart, using the appropriate values file:
 
@@ -238,7 +238,7 @@ The following table lists common parameters that might be relevant for your use 
 
 For more information on all available parameters and their meaning, refer to:
 * The provided `values.yaml`, which includes the default settings for the EDOT installation.
-* The official OpenTelemetry `kube-stack` Helm chart [values file](https://github.com/open-telemetry/opentelemetry-helm-charts/blob/main/charts/opentelemetry-kube-stack/values.yaml), with explanations of all parameters.
+* The official OpenTelemetry `kube-stack` Helm chart [values file](https://raw.githubusercontent.com/elastic/opentelemetry/refs/heads/8.16/resources/kubernetes/operator/helm/values.yaml), with explanations of all parameters.
 
 <!-- Do not change this anchor name as it's used by Kibana OTel+k8s Onboarding UX -->
 <a name="cert-manager"></a>
@@ -255,7 +255,7 @@ Follow any of the following options to install the `opentelemetry-kube-stack` He
 
 ```bash
 helm upgrade --install --namespace opentelemetry-operator-system opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack \
---values ./resources/kubernetes/operator/helm/values.yaml --version 0.3.3 \
+--values https://raw.githubusercontent.com/elastic/opentelemetry/refs/heads/8.16/resources/kubernetes/operator/helm/values.yaml --version 0.3.3 \
 --set opentelemetry-operator.admissionWebhooks.certManager.enabled=true --set opentelemetry-operator.admissionWebhooks.autoGenerateCert=null
 ```
 
