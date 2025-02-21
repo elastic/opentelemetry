@@ -1,43 +1,55 @@
-# Elastic Distributions of OpenTelemetry
+# Elastic Distributions of OpenTelemetry (EDOT)
 
-[OpenTelemetry](https://opentelemetry.io/docs/) is a vendor-neutral observability framework for collecting, processing, and exporting telemetry data.
+### What is OpenTelemetry?
+[OpenTelemetry](https://opentelemetry.io/docs/) is a vendor-neutral observability framework for collecting, processing, and exporting telemetry data. If you are new to OpenTelemetry we recommended reading OpenTelemetry [concepts](https://opentelemetry.io/docs/concepts/) and [components](https://opentelemetry.io/docs/concepts/components/).
 
-The Elastic Distributions of OpenTelemetry (EDOT) are composed of OpenTelemetry (OTel) project components, [OpenTelemetry Collector](https://github.com/open-telemetry/opentelemetry-collector), and language SDKs, which provide users with the necessary capabilities and out-of-the-box configurations, enabling quick and effortless infrastructure and application monitoring.
+### What is EDOT?
 
-You can use OpenTelemetry to send your telemetry data to Elastic Observability in the following ways:
+**Elastic Distributions of OpenTelemetry (EDOT)** is an open-source ecosystem of tailored [OpenTelemetry distributions](https://opentelemetry.io/docs/concepts/distributions/), comprising an [OpenTelemetry Collector](https://opentelemetry.io/docs/collector/) and various OpenTelemetry [Language SDKs](https://opentelemetry.io/docs/languages/).
+![EDOT-Distributions](docs/images/EDOT-SDKs-Collector.png)
+Each EDOT distribution is asssembled with carefully curated OpenTelemetry components, then rigorously tested to ensure production readiness. This provides a reliable and optimized OpenTelemetry experience, enabling seamless adoption with confidence and expert support.
 
-- Collect and send logs and host metrics to [Elastic Cloud](https://cloud.elastic.co/) using the EDOT Collector.
-- Instrument your applications and send logs, traces, and metrics to [Elastic Cloud](https://cloud.elastic.co/) using the Elastic Distributions of select [OpenTelemetry language SDKs](https://opentelemetry.io/docs/languages/). Currently, Elastic provides distributions for the following language SDKs: Java, .NET, Node.js, and Python.
-- Build and configure a [custom collector](https://opentelemetry.io/docs/collector/custom-collector/) or extend the [OpenTelemetry Collector Contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib) distribution to collect logs and metrics and send them to Elastic Observability.
+#### Available EDOT Distributions
 
-This diagram provides a quick overview of how the different components work together. Refer to the [components](docs/collector-components.md) for a more in-depth look.
+| EDOT Distribution | Status |
+|-------------------|---------------|
+| [EDOT Collector](docs/EDOT-collector/README.md) | Technical Preview |
+| [EDOT Java](https://github.com/elastic/elastic-otel-java) | GA |
+| [EDOT Python](https://github.com/elastic/elastic-otel-python) | Technical Preview |
+| [EDOT Node.js](https://github.com/elastic/elastic-otel-node) | Technical Preview |
+| [EDOT .NET](https://github.com/elastic/elastic-otel-dotnet) | Technical Preview |
+| [EDOT PHP](https://github.com/elastic/elastic-otel-php) | Technical Preview |
+| EDOT iOS and Android | GA |
 
-![Diagram of the OpenTelemetry flow](docs/images/elastic-otel-overview.png)
+### Production Readiness & Support
+Each EDOT distribution undergoes production-grade testing before being declared Generally Available (GA). Elastic provides full support for GA releases in accordance with our [support matrix](https://www.elastic.co/support/matrix) and SLAs.
 
-## Collect infrastructure data using the EDOT Collector
+Technical Preview distributions receive best-effort support and are not covered under standard SLAs.
 
-These pages detail the components and how to configure the EDOT Collector.
+### Get Started
 
-- [Components](docs/collector-components.md): Get details on the components used to receive, process, and export telemetry data.
-- [Guided onboarding](docs/guided-onboarding.md): Use the guided onboarding in Elasticsearch Service or a serverless Observability project to send data using the EDOT Collector.
-- [Manual configurations](docs/manual-configuration.md): Manually configure the EDOT Collector to send data to Elastic Observability.
-- [Limitations](docs/collector-limitations.md): Understand the current limitations of the EDOT Collector.
+#### Choose Your Observability Use Case
 
-## Unified Kubernetes Observability with Elastic Distributions of OpenTelemetry
+EDOT can handle telemetry from two main sources: **Applications** and shared **Infrastructure** such as hosts or Kubernetes.
 
-- [Kubernetes guided onboarding](docs/kubernetes/operator/README.md): Use the guided onboarding to send Kubernetes logs, metrics, and application traces to Elasticsearch using the [OpenTelemetry Operator](https://github.com/open-telemetry/opentelemetry-operator/) to orchestrate the EDOT Collectors and EDOT SDK instances you will need.
-- [Instrumenting applications](docs/kubernetes/operator/instrumenting-applications.md) on Kubernetes: Collect application data using EDOT language SDKs.
+![EDOT-diagram](docs/images/EDOT-diagram.png)
+Regardless of the source, all telemetry flows through the EDOT Collector, where it is processed (where required) and exported to Elastic Observability.
 
-## Collect application data using EDOT language SDKs
+#### Set Up EDOT Based on Your Environment
 
-Elastic offers several Distributions that extend [OpenTelemetry language SDKs](https://opentelemetry.io/docs/languages/). The following languages are currently available:
+This table provides guidance on how to monitor applications and infrastructure using **EDOT Collector** and **EDOT Language SDKs** in different environments.
 
-* [Java](https://github.com/elastic/elastic-otel-java)
-* [.NET](https://github.com/elastic/elastic-otel-dotnet)
-* [Node.js](https://github.com/elastic/elastic-otel-node)
-* [Python](https://github.com/elastic/elastic-otel-python)
-* [PHP](https://github.com/elastic/elastic-otel-php/)
+#### **Recommended Setup Based on Use Case**
+| **Use Case**                 | **Telemetry Type**         | **Infrastructure**        | **EDOT Collector** | **EDOT SDK** | **Recommended Setup** |
+|------------------------------|---------------------------|---------------------------|---------------------|------------------------|----------------------|
+| **Applications & Infrastructure** | Logs, Metrics, Traces | Kubernetes                 | ✅ | ✅ | Install the OpenTelemetry Operator to manage the EDOT Collector. Enable auto-instrumentation where available. |
+| **Infrastructure Only**      | Logs, Metrics            | Kubernetes                 | ✅ | ❌ | Install the OpenTelemetry Operator to manage the EDOT Collector (instrumentation not required).|
+| **Applications & Infrastructure** | Logs, Metrics, Traces | Host (VM, Bare Metal)      | ✅ | ✅ | Install EDOT Collector and instrument applications with EDOT Language SDKs |
+| **Infrastructure Only**      | Logs, Metrics            | Host (VM, Bare Metal)      | ✅ | ❌ | Install EDOT Collector only |
 
-## Configure a custom collector or the OpenTelemetry Collector Contrib distribution
+### Report issues or provide feedback
+To report issues or provide feedback on EDOT, please [submit a github issue](https://github.com/elastic/opentelemetry/issues/new/choose).
 
-[Configure a custom collector or the OpenTelemetry Collector Contrib distribution](docs/configure-upstream-collector.md): Build and configure a [custom collector](https://opentelemetry.io/docs/collector/custom-collector/) or extend the [OpenTelemetry Collector Contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib) distribution to collect logs and metrics and send them to Elastic Observability.
+
+### License
+View details of license for [EDOT Collector](https://github.com/elastic/elastic-agent/blob/main/LICENSE.txt). 

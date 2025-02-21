@@ -8,16 +8,26 @@ This guide describes how to:
 
 ## Table of Contents
 
-- [Prerequisites](#prerequisites)
-- [Compatibility Matrix](#compatibility-matrix)
-- [Components description](#components-description)
-- [Deploying components using Kibana Onboarding UX](#deploying-components-using-kibana-onboarding-ux)
-- [Manual deployment of all components](#manual-deployment-of-all-components)
-- [Installation verification](#installation-verification)
-- [Instrumenting applications](#instrumenting-applications)
-- [Upgrade](#operator-upgrade)
-- [Customizing configuration](#custom-configuration)
-- [Cert-manager integrated installation](#cert-manager)
+- [Get started with OpenTelemetry for Kubernetes Observability](#get-started-with-opentelemetry-for-kubernetes-observability)
+  - [Table of Contents](#table-of-contents)
+  - [Prerequisites](#prerequisites)
+  - [Compatibility Matrix](#compatibility-matrix)
+  - [Components description](#components-description)
+    - [OpenTelemetry Operator](#opentelemetry-operator)
+    - [Kube-stack Helm Chart](#kube-stack-helm-chart)
+    - [DaemonSet collectors](#daemonset-collectors)
+    - [Deployment collector](#deployment-collector)
+    - [Auto-instrumentation](#auto-instrumentation)
+  - [Deploy components using the guided onboarding](#deploy-components-using-the-guided-onboarding)
+  - [Manual deployment of all components](#manual-deployment-of-all-components)
+    - [Elastic Stack preparations](#elastic-stack-preparations)
+    - [Operator Installation](#operator-installation)
+  - [Installation verification:](#installation-verification)
+  - [Instrumenting Applications](#instrumenting-applications)
+  - [Upgrade](#upgrade)
+  - [Customizing configuration](#customizing-configuration)
+    - [Configurable parameters](#configurable-parameters)
+  - [Cert-manager integrated installation](#cert-manager-integrated-installation)
 
 ## Prerequisites
 
