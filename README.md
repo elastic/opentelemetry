@@ -35,17 +35,12 @@ EDOT can handle telemetry from two main sources: **Applications** and shared **I
 ![EDOT-diagram](docs/images/EDOT-diagram.png)
 Regardless of the source, all telemetry flows through the EDOT Collector, where it is processed (where required) and exported to Elastic Observability.
 
-#### Set Up EDOT Based on Your Environment
 
-This table provides guidance on how to monitor applications and infrastructure using **EDOT Collector** and **EDOT Language SDKs** in different environments.
-
-#### **Recommended Setup Based on Use Case**
 | **Use Case**                 | **Telemetry Type**         | **Infrastructure**        | **EDOT Collector** | **EDOT SDK** | **Recommended Setup** |
 |------------------------------|---------------------------|---------------------------|---------------------|------------------------|----------------------|
-| **Applications & Infrastructure** | Logs, Metrics, Traces | Kubernetes                 | ✅ | ✅ | Install the OpenTelemetry Operator to manage the EDOT Collector. Enable auto-instrumentation where available. |
-| **Infrastructure Only**      | Logs, Metrics            | Kubernetes                 | ✅ | ❌ | Install the OpenTelemetry Operator to manage the EDOT Collector (instrumentation not required).|
-| **Applications & Infrastructure** | Logs, Metrics, Traces | Host (VM, Bare Metal)      | ✅ | ✅ | Install EDOT Collector and instrument applications with EDOT Language SDKs |
-| **Infrastructure Only**      | Logs, Metrics            | Host (VM, Bare Metal)      | ✅ | ❌ | Install EDOT Collector only |
+| **Applications & Infrastructure** | Logs, Metrics, Traces | Kubernetes                 | ✅ | ✅ | [Quickstart](https://github.com/elastic/opentelemetry/blob/miguel-docs/quickstart-guide.md#%EF%B8%8F-kubernetes---infrastructure--application--monitoring)|
+| **Infrastructure Only**      | Logs, Metrics            | Kubernetes                 | ✅ | ❌ | [Quickstart](https://github.com/elastic/opentelemetry/blob/miguel-docs/quickstart-guide.md#%EF%B8%8F-kubernetes---infrastructure--application--monitoring)|
+| **Hosts**      | Logs, Metrics            | Host (VM, Bare Metal)      | ✅ | ❌ | [Quickstart](https://github.com/elastic/opentelemetry/blob/miguel-docs/quickstart-guide.md#%EF%B8%8F-hosts-monitoring-and-log-collection) |
 
 ### Report issues or provide feedback
 To report issues or provide feedback on EDOT, please [submit a github issue](https://github.com/elastic/opentelemetry/issues/new/choose).
