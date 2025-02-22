@@ -21,6 +21,7 @@ These instructions will install the OpenTelemetry Operator preconfigured to:
   * EDOT Collector Daemon: Collect node metrics and logs
   * EDOT Collector Gateway: Route all telemetry, perform APM pre-processing (eg. derive span metrics)
 * Auto-instrument applications that are annotated as described in the instructions
+
 ![K8s-architecture](docs/images/EDOT-K8s-architecture.png)
 ##### 1. Install the OpenTelemetry Operator
 Add the OpenTelemetry repository to Helm:
