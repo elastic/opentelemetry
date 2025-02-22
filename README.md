@@ -1,6 +1,6 @@
 # Elastic Distributions of OpenTelemetry (EDOT)
 
-### What is OpenTelemetry?
+### 🔭 What is OpenTelemetry?
 [OpenTelemetry](https://opentelemetry.io/docs/) is a vendor-neutral observability framework for collecting, processing, and exporting telemetry data. If you are new to OpenTelemetry we recommended reading OpenTelemetry [concepts](https://opentelemetry.io/docs/concepts/) and [components](https://opentelemetry.io/docs/concepts/components/).
 
 ### What is EDOT?
