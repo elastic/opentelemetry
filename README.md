@@ -9,7 +9,7 @@
 ![EDOT-Distributions](docs/images/EDOT-SDKs-Collector.png)
 Each EDOT distribution is asssembled with carefully curated OpenTelemetry components, then rigorously tested to ensure production readiness. This provides a reliable and optimized OpenTelemetry experience, enabling seamless adoption with confidence and expert support.
 
-#### 🗂️ Available EDOT Distributions
+### 🗂️ Available EDOT Distributions
 
 | EDOT Distribution | Status |
 |-------------------|---------------|
