@@ -115,6 +115,4 @@ The EDOT collector has some limitations which are mostly inherited from the upst
 * **Check Permissions:** Ensure the Collector has the right file and network permissions.
 * **Review Recent Changes:** Roll back recent config updates if the issue started after changes.
 
-For in-depth details on troubleshooting, refer to the OpenTelemetry Collector troubleshooting documentation.
-
 For in-depth details on troubleshooting refer to the [OpenTelemetry Collector troubleshooting documentation](https://opentelemetry.io/docs/collector/troubleshooting/)
