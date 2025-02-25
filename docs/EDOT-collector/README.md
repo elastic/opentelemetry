@@ -11,8 +11,6 @@ For comprehensive details on EDOT Collector components, visit [EDOT Collector Co
 * [Kubernetes Full Observability](#kubernetes-full-observability)
 * [Linux](#linux)
 
-
-
 ### Kubernetes Full Observability (Recommended)
 These instructions will install the OpenTelemetry Operator preconfigured to:
 
@@ -21,8 +19,7 @@ These instructions will install the OpenTelemetry Operator preconfigured to:
   * EDOT Collector Daemon: Collect node metrics and logs
   * EDOT Collector Gateway: Route all telemetry, perform APM pre-processing (eg. derive span metrics)
 * Auto-instrument applications that are annotated as described in the instructions
-
-![K8s-architecture](docs/images/EDOT-K8s-architecture.png)
+![K8s-architecture](/docs/images/EDOT-K8s-architecture.png)
 ##### 1. Install the OpenTelemetry Operator
 Add the OpenTelemetry repository to Helm:
 ```
@@ -88,74 +85,8 @@ curl --output elastic-distro-8.18.0-SNAPSHOT-linux-$arch.tar.gz --url https://sn
 rm ./otel.yml && curl https://raw.githubusercontent.com/elastic/elastic-agent/a4d698f501d625f8d6ebb21badbcecdce6bd32a0/internal/pkg/otel/samples/linux/platformlogs_hostmetrics.yml -o otel.yml && mkdir -p ./data/otelcol && sed -i 's#\${env:STORAGE_DIR}#'"$PWD"/data/otelcol'#g' ./otel.yml
 ```
 Run EDOT collector by replacing your endpoint and apiKey:
-## Configuration
-
-The EDOT Collector uses a YAML-based configuration file. Below is a sample configuration:
-
-```receivers:
-  # Receiver for system metrics
-  hostmetrics/system:
-    collection_interval: 30s
-    scrapers:
-      cpu:
-      memory:
-      disk:
-
-  # Receiver for platform logs
-  filelog/platformlogs:
-    include: [ /var/log/*.log ]
-    start_at: end
-
-processors:
-  resourcedetection:
-    detectors: ["system"]
-  attributes/dataset:
-    actions:
-      - key: event.dataset
-        from_attribute: data_stream.dataset
-        action: upsert
-
-exporters:
-  elasticsearch:
-    endpoints: ["${env:ELASTIC_ENDPOINT}"]
-    api_key: ${env:ELASTIC_API_KEY}
-    mapping:
-      mode: ecs
-
-service:
-  extensions: [file_storage]
-  pipelines:
-    metrics:
-      receivers: [hostmetrics/system]
-      processors: [resourcedetection, attributes/dataset]
-      exporters: [elasticsearch]
-    logs:
-      receivers: [filelog/platformlogs]
-      processors: [resourcedetection]
-      exporters: [elasticsearch]
-
-```
-
-**Note**: Replace `"https://your-elastic-instance:9200"` with your Elastic instance URL and `"YOUR_API_KEY"` with your API key.
-
-For comprehensive configuration options, consult the [OpenTelemetry Collector documentation](https://github.com/open-telemetry/opentelemetry-collector).
-
-## Advanced Features
-
-The EDOT Collector supports:
-
-- **Auto-Instrumentation**: Seamless integration with OpenTelemetry SDKs.
-- **Built-in Processors**: Includes functionalities like batching and attribute processing.
-- **Multi-Backend Support**: Extendable to other backends such as Jaeger, Prometheus, or Kafka.
 
 ## Troubleshooting
-
 If you encounter issues:
-
 - **Check Logs**: Review the Collector's logs for error messages.
 - **Validate Configuration**: Use the `--dry-run` option to test configurations.
-- **Community Support**: Engage with the OpenTelemetry community via [GitHub Discussions](https://github.com/open-telemetry/opentelemetry-collector/discussions).
-
----
-
-*For more detailed information, refer to the [OpenTelemetry Collector GitHub repository](https://github.com/open-telemetry/opentelemetry-collector).*
