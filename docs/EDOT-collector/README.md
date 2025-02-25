@@ -1,92 +1,112 @@
-# EDOT Collector
+## 🇪 EDOT Collector
 
 The **Elastic Distribution of OpenTelemetry (EDOT) Collector** is an open-source distribution of the [OpenTelemetry Collector](https://github.com/open-telemetry/opentelemetry-collector).
 
 Built on OpenTelemetry’s modular [architecture](https://opentelemetry.io/docs/collector/), the EDOT Collector offers a curated and fully supported selection of Receivers, Processors, Exporters, and Extensions. Designed for production-grade reliability. 
 
-For comprehensive details on EDOT Collector components, visit [EDOT Collector Components](docs/EDOT-collector/collector-components.md).
+### Get started
+The quickest way to get started with EDOT is to follow our [quick start guide](quickstart-guide.md).
 
-## Installation
+### 🧩 EDOT Collector components
 
-* [Kubernetes Full Observability](#kubernetes-full-observability)
-* [Linux](#linux)
+The Elastic Distribution of OpenTelemetry (EDOT) Collector is built on OpenTelemetry’s modular architecture, integrating a carefully curated selection of Receivers, Processors, Exporters, and Extensions to ensure stability, scalability, and seamless observability. The table below categorizes these components into Core and Extended groups, highlighting the supported and production-tested components included in EDOT.
 
-### Kubernetes Full Observability (Recommended)
-These instructions will install the OpenTelemetry Operator preconfigured to:
+<table style="border-collapse: collapse; width: 100%;">
+    <tr>
+        <th style="text-align: left;">Category</th>
+        <th style="text-align: left;">Component Type</th>
+        <th style="text-align: left;">Component Name</th>
+    </tr>
+    <!-- Core Components -->
+    <tr>
+        <td rowspan="14"><strong>Core</strong></td>
+        <td rowspan="2"><strong>Exporter</strong></td>
+        <td><a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/elasticsearchexporter">elasticsearch</a></td>
+    </tr>
+    <tr>
+        <td><a href="https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlpexporter">otlp</a></td>
+    </tr>
+    <tr>
+        <td rowspan="6"><strong>Processor</strong></td>
+        <td><a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/attributesprocessor">attributes</a></td>
+    </tr>
+    <tr>
+        <td><a href="https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor/batchprocessor">batch</a></td>
+    </tr>
+    <tr>
+        <td><a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/elasticinframetricsprocessor">elasticinframetrics</a></td>
+    </tr>
+    <tr>
+        <td><a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/k8sattributesprocessor">k8sattributes</a></td>
+    </tr>
+    <tr>
+        <td><a href="https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor/resourceprocessor">resource</a></td>
+    </tr>
+    <tr>
+        <td><a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/resourcedetectionprocessor">resourcedetection</a></td>
+    </tr>
+    <tr>
+        <td rowspan="6"><strong>Receiver</strong></td>
+        <td><a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/filelogreceiver">filelog</a></td>
+    </tr>
+    <tr>
+        <td><a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver">hostmetrics</a></td>
+    </tr>
+    <tr>
+        <td><a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/k8sclusterreceiver">k8s_cluster</a></td>
+    </tr>
+    <tr>
+        <td><a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/k8sobjectsreceiver">k8sobjects</a></td>
+    </tr>
+    <tr>
+        <td><a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/kubeletstatsreceiver">kubeletstats</a></td>
+    </tr>
+    <tr>
+        <td><a href="https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver">otlp</a></td>
+    </tr>
+    <!-- Extended Components -->
+    <tr>
+        <td rowspan="4"><strong>Extended</strong></td>
+        <td><strong>Exporter</strong></td>
+        <td><a href="https://github.com/elastic/elastic-agent/tree/main/internal/pkg/otel#exporters">Full List</a></td>
+    </tr>
+    <tr>
+        <td><strong>Receiver</strong></td>
+        <td><a href="https://github.com/elastic/elastic-agent/tree/main/internal/pkg/otel#receivers">Full List</a></td>
+    </tr>
+    <tr>
+        <td><strong>Processor</strong></td>
+        <td><a href="https://github.com/elastic/elastic-agent/tree/main/internal/pkg/otel#processors">Full List</a></td>
+    </tr>
+    <tr>
+        <td><strong>Connector</strong></td>
+        <td><a href="https://github.com/elastic/elastic-agent/tree/main/internal/pkg/otel#connectors">Full List</a></td>
+    </tr>
+</table>
 
-* Orchestrate various instances of EDOT with the below purpose:
-  * EDOT Collector Cluster: Collect cluster metrics
-  * EDOT Collector Daemon: Collect node metrics and logs
-  * EDOT Collector Gateway: Route all telemetry, perform APM pre-processing (eg. derive span metrics)
-* Auto-instrument applications that are annotated as described in the instructions
-![K8s-architecture](/docs/images/EDOT-K8s-architecture.png)
-##### 1. Install the OpenTelemetry Operator
-Add the OpenTelemetry repository to Helm:
-```
-helm repo add open-telemetry 'https://open-telemetry.github.io/opentelemetry-helm-charts' --force-update
-```
-Retrieve your [Elasticsearch endpoint](https://www.elastic.co/guide/en/kibana/current/search-space-connection-details.html) and [API key](https://www.elastic.co/guide/en/kibana/current/api-keys.html) and replace both in the below command to create a namespace and a secret with your credentials.
-```
-kubectl create namespace opentelemetry-operator-system
-kubectl create secret generic elastic-secret-otel \
-  --namespace opentelemetry-operator-system \
-  --from-literal=elastic_endpoint='<ELASTICSEARCH_ENDPOINT>' \
-  --from-literal=elastic_api_key='<BASE64_APIKEY>'
-```
-Install the OpenTelemetry Operator using the kube-stack Helm chart with a pre-configured `values.yaml` file that will orchestrate EDOT Collector. 
-```
-helm install opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack \
-  --namespace opentelemetry-operator-system \
-  --values 'https://raw.githubusercontent.com/elastic/elastic-agent/51942e903eb69bb295920763b10a1c8bec68d1e8/deploy/helm/edot-collector/kube-stack/values.yaml' \
-  --version '0.3.9'
-```
-**Install cert-manager (optional)**
-For automatic certificate renewal, we recommend installing [cert-manager](https://cert-manager.io/docs/installation/), and customize the values.yaml file before the installation as described in our [documentation](https://github.com/elastic/opentelemetry/tree/8.16/docs/kubernetes/operator#cert-manager).
+#### Core Components
+The Core category includes production-grade, tested, and supported components selected for their stability and key observability use cases. These components ensure efficient telemetry collection, processing, and export for production environments. Each links to its respective OpenTelemetry Contrib repository for detailed functionality and configuration.
 
-##### 2. Instrument your applications (optional)
-The following languages are currently supported for auto-instrumentation: **Node.js, Java, Python, .NET and Go.**. Select a programming and one of the below annotations methods
+#### Extended Components
+The Extended category offers additional Exporters, Processors, Receivers, and Connectors for specialized observability needs. While included by default in EDOT, these components are not covered under our SLAs.
 
-**Annotate a specific Deployment**
-Add a language-specific annotation to your Kubernetes Deployment manifest and restart your deployment. Replace 'LANGUAGE' with one of the supported values: `nodejs`, `java`, `python`, `dotnet` or `go`  
-```
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: myapp
-spec:
-  ...
-  template:
-    metadata:
-      annotations:
-        instrumentation.opentelemetry.io/inject-'LANGUAGE': "opentelemetry-operator-system/elastic-instrumentation"
-      ...
-    spec:
-      containers:
-      - image: myapplication-image
-        name: app
-      ...
-```
-**Annotate all resources in a namespace**
-Add a language-specific annotation to your namespace by replacing 'LANGUAGE' with one of the supported values: `nodejs`, `java`, `python`, `dotnet` or `go` in the below command. 
-```
-kubectl annotate namespace my-namespace instrumentation.opentelemetry.io/inject-nodejs="opentelemetry-operator-system/elastic-instrumentation"
-```
-Restart relevant language deployments already running in the namespace.
+#### Request a component to be added
+To request a component to be added to EDOT Collector, please submit a [github issue](https://github.com/elastic/opentelemetry/issues/new/choose).
 
-For other languages where auto-instrumentation is not available, refer to the documentation
+### 🩺 Troubleshooting Quick Reference
 
-### Linux
-Run the below commands to download the EDOT Collector package relevant to your system's architecture. 
-```
-arch=$(if ([[ $(arch) == "arm" || $(arch) == "aarch64" ]]); then echo "arm64"; else echo $(arch); fi)
- 
-curl --output elastic-distro-8.18.0-SNAPSHOT-linux-$arch.tar.gz --url https://snapshots.elastic.co/8.18.0-72dd839e/downloads/beats/elastic-agent/elastic-agent-8.18.0-SNAPSHOT-linux-$arch.tar.gz --proto '=https' --tlsv1.2 -fOL && mkdir -p elastic-distro-8.18.0-SNAPSHOT-linux-$arch && tar -xvf elastic-distro-8.18.0-SNAPSHOT-linux-$arch.tar.gz -C "elastic-distro-8.18.0-SNAPSHOT-linux-$arch" --strip-components=1 && cd elastic-distro-8.18.0-SNAPSHOT-linux-$arch
+* **Check Logs**: Review the Collector’s logs for error messages.
+* **Validate Configuration:** Use the `--dry-run` option to test configurations.
+* Enable Debug Logging: Run the Collector with `--log-level=debug` for detailed logs.
+* **Check Service Status:** Ensure the Collector is running with `systemctl status <collector-service>` (Linux) or `tasklist` (Windows).
+* **Test Connectivity:** Use `telnet <endpoint> <port>` or `curl` to verify backend availability.
+* **Check Open Ports:** Run netstat `-tulnp or lsof -i` to confirm the Collector is listening.
+* **Monitor Resource Usage:** Use top/htop (Linux) or Task Manager (Windows) to check CPU & memory.
+* **Validate Exporters:** Ensure exporters are properly configured and reachable.
+* **Verify Pipelines:** Use `otelctl` diagnose (if available) to check pipeline health.
+* **Check Permissions:** Ensure the Collector has the right file and network permissions.
+* **Review Recent Changes:** Roll back recent config updates if the issue started after changes.
 
-rm ./otel.yml && curl https://raw.githubusercontent.com/elastic/elastic-agent/a4d698f501d625f8d6ebb21badbcecdce6bd32a0/internal/pkg/otel/samples/linux/platformlogs_hostmetrics.yml -o otel.yml && mkdir -p ./data/otelcol && sed -i 's#\${env:STORAGE_DIR}#'"$PWD"/data/otelcol'#g' ./otel.yml
-```
-Run EDOT collector by replacing your endpoint and apiKey:
+For in-depth details on troubleshooting, refer to the OpenTelemetry Collector troubleshooting documentation.
 
-## Troubleshooting
-If you encounter issues:
-- **Check Logs**: Review the Collector's logs for error messages.
-- **Validate Configuration**: Use the `--dry-run` option to test configurations.
+For in-depth details on troubleshooting refer to the [OpenTelemetry Collector troubleshooting documentation](https://opentelemetry.io/docs/collector/troubleshooting/)
