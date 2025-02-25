@@ -4,8 +4,13 @@ The **Elastic Distribution of OpenTelemetry (EDOT) Collector** is an open-source
 
 Built on OpenTelemetry’s modular [architecture](https://opentelemetry.io/docs/collector/), the EDOT Collector offers a curated and fully supported selection of Receivers, Processors, Exporters, and Extensions. Designed for production-grade reliability. 
 
-### Get started
+### 🚀 Get started
 The quickest way to get started with EDOT is to follow our [quick start guide](https://github.com/elastic/opentelemetry/blob/miguel-docs/quickstart-guide.md).
+
+### 🎛️ Collector configuration
+The EDOT collector can be configured using the standard OTel collector configuration file or values.yml if you have deployed using Helm.
+
+For full details on each option visit [this page](docs/EDOT-collector/edot-collector-config.md)
 
 ### 🧩 EDOT Collector components
 
@@ -93,7 +98,10 @@ The Extended category offers additional Exporters, Processors, Receivers, and Co
 #### Request a component to be added
 To request a component to be added to EDOT Collector, please submit a [github issue](https://github.com/elastic/opentelemetry/issues/new/choose).
 
-### 🩺 Troubleshooting Quick Reference
+### Collector Limitations
+The EDOT collector has some limitations which are mostly inherited from the upstream components, see the [full list](docs/EDOT-collector/edot-collector-limitations.md) here before troubleshooting.
+
+### 🔧 Troubleshooting Quick Reference
 
 * **Check Logs**: Review the Collector’s logs for error messages.
 * **Validate Configuration:** Use the `--dry-run` option to test configurations.
