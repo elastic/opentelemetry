@@ -5,7 +5,7 @@ The **Elastic Distribution of OpenTelemetry (EDOT) Collector** is an open-source
 Built on OpenTelemetry’s modular [architecture](https://opentelemetry.io/docs/collector/), the EDOT Collector offers a curated and fully supported selection of Receivers, Processors, Exporters, and Extensions. Designed for production-grade reliability. 
 
 ### Get started
-The quickest way to get started with EDOT is to follow our [quick start guide](quickstart-guide.md).
+The quickest way to get started with EDOT is to follow our [quick start guide](/Users/workspace/visualcode-github/opentelemetry/quickstart-guide.md).
 
 ### 🧩 EDOT Collector components
 
