@@ -26,7 +26,7 @@ Each EDOT distribution undergoes production-grade testing before being declared 
 
 Technical Preview distributions receive best-effort support and are not covered under standard SLAs.
 
-### 🚀 Get Started
+### 🚀 [Get Started](quickstart-guide.md)
 
 #### Choose Your Observability Use Case
 
