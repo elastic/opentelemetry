@@ -2,8 +2,6 @@
 
 The EDOT Collector uses a YAML-based configuration file. Below is a sample configuration:
 
-```receivers:
-  # Receiver for system metrics
   hostmetrics/system:
     collection_interval: 30s
     scrapers:
