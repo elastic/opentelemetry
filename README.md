@@ -11,7 +11,7 @@ Each EDOT distribution is asssembled with carefully curated OpenTelemetry compon
 
 ### 🗂️ Available EDOT Distributions
 
-| EDOT Distribution | Status |
+| EDOT Distribution  | Status |
 |-------------------|---------------|
 | [EDOT Collector](docs/EDOT-collector/README.md) | Technical Preview |
 | [EDOT Java](https://github.com/elastic/elastic-otel-java) | GA |
@@ -19,7 +19,8 @@ Each EDOT distribution is asssembled with carefully curated OpenTelemetry compon
 | [EDOT Node.js](https://github.com/elastic/elastic-otel-node) | Technical Preview |
 | [EDOT .NET](https://github.com/elastic/elastic-otel-dotnet) | Technical Preview |
 | [EDOT PHP](https://github.com/elastic/elastic-otel-php) | Technical Preview |
-| EDOT iOS and Android | GA |
+| [EDOT iOS](https://github.com/elastic/apm-agent-ios) | GA |
+| [EDOT Android](https://github.com/elastic/apm-agent-android) | Technical Preview |
 
 ### 🟢 Production Readiness & Support
 Each EDOT distribution undergoes production-grade testing before being declared Generally Available (GA). Elastic provides full support for GA releases in accordance with our [support matrix](https://www.elastic.co/support/matrix) and SLAs.
