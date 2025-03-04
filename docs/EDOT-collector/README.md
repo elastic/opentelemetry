@@ -22,7 +22,7 @@ Visit [this page](https://github.com/elastic/elastic-agent/tree/main/internal/pk
 To request a component to be added to EDOT Collector, please submit a [github issue](https://github.com/elastic/opentelemetry/issues/new/choose).
 
 ### Collector Limitations
-The EDOT collector has some limitations which are mostly inherited from the upstream components, see the [full list](/edot-collector-limitations.md) here before troubleshooting.
+The EDOT collector has some limitations which are mostly inherited from the upstream components, see the [full list](docs/EDOT-collector/edot-collector-limitations.md) here before troubleshooting.
 
 ### 🔧 Troubleshooting Quick Reference
 

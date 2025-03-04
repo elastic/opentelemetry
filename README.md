@@ -11,7 +11,7 @@ Each EDOT distribution is asssembled with carefully curated OpenTelemetry compon
 
 ### 🗂️ Available EDOT Distributions
 
-| EDOT Distribution  | Status |
+| EDOT Distribution | Status |
 |-------------------|---------------|
 | [EDOT Collector](docs/EDOT-collector/README.md) | Technical Preview |
 | [EDOT Java](https://github.com/elastic/elastic-otel-java) | GA |
