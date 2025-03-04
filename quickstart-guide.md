@@ -38,7 +38,7 @@ Install the OpenTelemetry Operator using the kube-stack Helm chart with our pre-
 ```bash
 helm install opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack \
   --namespace opentelemetry-operator-system \
-  --values 'https://raw.githubusercontent.com/elastic/elastic-agent/51942e903eb69bb295920763b10a1c8bec68d1e8/deploy/helm/edot-collector/kube-stack/values.yaml' \
+  --values 'https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v8.17.2/deploy/helm/edot-collector/kube-stack/values.yaml' \
   --version '0.3.9'
 ```
 ##### Install cert-manager (recommended)
