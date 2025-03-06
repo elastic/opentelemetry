@@ -26,7 +26,7 @@ description: >-
   then rigorously tested to ensure production readiness. 
   This provides a reliable and optimized OpenTelemetry experience with Elastic,
   enabling seamless adoption with confidence and expert support.
-baseurl: "" # the subpath of your site, e.g. /blog
+baseurl: "/opentelemetry" # the subpath of your site, e.g. /blog
 url: "https://elastic.github.io/opentelemetry/" # the base hostname & protocol for your site, e.g. http://example.com
 logo: /images/edot.png
 favicon_ico: "/images/favicon.ico"
