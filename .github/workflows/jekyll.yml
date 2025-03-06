@@ -46,10 +46,15 @@ jobs:
           bundle install
       - name: Build site
         # Outputs to the './_site' directory by default
-        run: bundle exec jekyll build
+        run: |
+          cd docs
+          bundle exec jekyll build
       - name: Upload artifact
+        id: deployment
         # Automatically uploads an artifact from the './_site' directory by default
         uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs/_site
 
   # Deployment job
   deploy:
