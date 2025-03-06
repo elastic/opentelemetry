@@ -41,8 +41,6 @@ collections:
     output: true
   edot-sdks:
     output: true
-  kubernetes:
-    output: true
 
 callouts:
   note:
@@ -59,9 +57,6 @@ just_the_docs:
       nav_fold: true
     edot-sdks:
       name: EDOT SDKs
-      nav_fold: true
-    kubernetes:
-      name: Kubernetes
       nav_fold: true
   nav_sort: case_insensitive
 
