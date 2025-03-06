@@ -1,8 +1,9 @@
 ---
-title: Python Applications
+title: EDOT Python on Kubernetes
 layout: default
-nav_order: 3
-parent: Instrumenting Applications
+nav_order: 1
+parent: Setup
+grand_parent: EDOT Python
 ---
 
 # Instrumenting Python applications with EDOT SDKs on Kubernetes

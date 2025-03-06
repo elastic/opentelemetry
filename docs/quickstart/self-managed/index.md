@@ -5,4 +5,4 @@ nav_order: 1
 parent: Quick Start
 ---
 
-# EDOT Quick Start with a Self-managed Elastic Stack
+# Quick Start with a Self-managed Elastic Stack

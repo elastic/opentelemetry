@@ -5,7 +5,7 @@ nav_order: 1
 parent: Self-managed
 ---
 
-# ☸️ Kubernetes - Quick Start
+# Quick Start - Kubernetes - Self-managed
 
 The quick start for Kubernetes covers collection of OpenTelemetry data for infrastructure monitoring, logs collection and application  monitoring. These instructions will install an OpenTelemetry Operator preconfigured to automate orchestration of EDOT as below:
  
@@ -14,7 +14,7 @@ The quick start for Kubernetes covers collection of OpenTelemetry data for infra
 * **EDOT Collector Gateway:** perform APM pre-processing (when applicable). Route all telemetry to Elastic,  
 * **EDOT SDKs**: Annotated applications will be auto-instrumented with EDOT SDKs
   
-![K8s-architecture](../images/EDOT-K8s-architecture.png)
+![K8s-architecture](../../images/EDOT-K8s-architecture.png)
 
 ## Kubernetes Infrastructure Metrics and Log Collection
 

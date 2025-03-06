@@ -1,8 +1,9 @@
 ---
-title: Node.js Applications
+title: EDOT Node.js on Kubernetes
 layout: default
-nav_order: 2
-parent: Instrumenting Applications
+nav_order: 1
+parent: Setup
+grand_parent: EDOT Node.js
 ---
 
 # Instrumenting Node.js applications with EDOT SDKs on Kubernetes

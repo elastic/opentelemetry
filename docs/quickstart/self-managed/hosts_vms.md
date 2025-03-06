@@ -5,11 +5,13 @@ nav_order: 2
 parent: Self-managed
 ---
 
-# Hosts & VMs - Quick Start
+# Quick Start - Hosts & VMs - Self-managed
+
 These instructions guide you through setting up the EDOT Collector to collect host metrics, logs and application traces using an OpenTelemetry configuration. You’ll download the appropriate package for your system, configure authentication, and run the collector. Optional steps allow you to customize log collection paths and set up application monitoring.
-![EDOT-host-metrics-logs](../images/edot-host-metrics-logs.png)
+![EDOT-host-metrics-logs](../../images/edot-host-metrics-logs.png)
 
 ## Run EDOT Collector for Host Metrics and Log collection
+
 These instructions will download EDOT collector including an OpenTelemetry collector configuration that will:
 
 * Collect metrics from your host 
@@ -17,6 +19,7 @@ These instructions will download EDOT collector including an OpenTelemetry colle
 Run the below commands to download the EDOT Collector package relevant to your system's architecture. 
 
 ### Linux
+
 Download EDOT Collector
 
 ```bash

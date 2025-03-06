@@ -5,4 +5,4 @@ nav_order: 3
 parent: Quick Start
 ---
 
-# EDOT Quick Start on Elastic Cloud Hosted
+# Quick Start on Elastic Cloud Hosted

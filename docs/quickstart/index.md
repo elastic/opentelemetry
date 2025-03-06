@@ -10,24 +10,13 @@ This guide helps you set up Elastic Distributions for OpenTelemetry (EDOT) to mo
 
 > 🏁 *By the end of this guide, you’ll have a fully operational EDOT-powered monitoring pipeline sending data to Elastic Observability.*
 
-|                               | **Kubernetes**            | **Docker**                 | **Hosts & VMs**           |
-|-------------------------------|:-------------------------:|:--------------------------:|:-------------------------:|
-| **Self-managed**              | [Quick Start 🆂 ☸️]       | [Quick Start 🆂 🐳 ]      | [Quick Start 🆂 🖥 ] |
-| **Elastic Cloud Serverless**  | [Quick Start ☁️ ☸️]        | [Quick Start ☁️ 🐳 ]    | [Quick Start ☁️ 🖥 ] |
-| **Elastic Cloud Hosted**      |  [Quick Start 🗄️ ☸️]     |   [Quick Start 🗄️ 🐳 ]  | [Quick Start 🗄️ 🖥 ] |
+Choose the Quick Start guide based on the environment of your target system (`Kubernetes`, `Docker` or plain `Hosts / VMs`) and your Elastic deployment model (`Self-managed`, `Elastic Cloud Serverless`, `Elastic Cloud Hosted`):
 
-
-## 📖 Guide content
-
-* [Kubernetes](./kubernetes)
-
-* Infrastructure & Application Monitoring](#%EF%B8%8F-kubernetes---infrastructure--application--monitoring)
-
-* Hosts Monitoring and Log collection
-  * [Linux](#linux)
-  * [Mac](#macos)
-  * [Windows](#windows)
-
+|                                 | ☸️ **Kubernetes**            | 🐳 **Docker**                 | 🖥 **Hosts / VMs**           |
+|---------------------------------|:-------------------------:|:--------------------------:|:-------------------------:|
+| 🆂 **Self-managed Elastic Stack**  | [Quick Start 🆂 ☸️]        | [Quick Start 🆂 🐳 ]        | [Quick Start 🆂 🖥 ] |
+| ☁️ **Elastic Cloud Serverless**    |  [Quick Start ☁️ ☸️]        | [Quick Start ☁️ 🐳 ]        | [Quick Start ☁️ 🖥 ] |
+| 🗄️ **Elastic Cloud Hosted**        |  [Quick Start 🗄️ ☸️]       |   [Quick Start 🗄️ 🐳 ]      | [Quick Start 🗄️ 🖥 ] |
 
 ## Troubleshooting
 - [EDOT Collector Troubleshooting](_edot-collector/edot-collector-troubleshoot.md)

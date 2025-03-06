@@ -1,8 +1,9 @@
 ---
-title: Java Applications
+title: EDOT Java on Kubernetes
 layout: default
 nav_order: 1
-parent: Instrumenting Applications
+parent: Setup
+grand_parent: EDOT Java
 ---
 
 # Instrumenting Java applications with EDOT SDKs on Kubernetes
