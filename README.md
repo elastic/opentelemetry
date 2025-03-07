@@ -36,18 +36,11 @@ EDOT can handle telemetry from two main sources: **Applications** and shared **I
 ![EDOT-diagram](docs/images/EDOT-diagram.png)
 Regardless of the source, all telemetry flows through the EDOT Collector, where it is processed (where required) and exported to Elastic Observability.
 
-
-Regardless of the source, all telemetry flows through the EDOT Collector, where it is processed (where required) and exported to Elastic Observability.
-
 | **Use Case**                 | **Telemetry Type**         | **Infrastructure**        | <div align="center">**EDOT Collector**</div> | <div align="center">**EDOT SDK**</div> | <div align="center">**Setup EDOT**</div> |
 |------------------------------|---------------------------|---------------------------|:----------------------------------:|:----------------------------------:|----------------------|
 | **Applications & Infrastructure** | Logs, Metrics, Traces | Kubernetes                 | ✅ | ✅ | [Quickstart](https://github.com/elastic/opentelemetry/blob/main/quickstart-guide.md#%EF%B8%8F-kubernetes---infrastructure--application--monitoring)|
 | **Infrastructure Only**      | Logs, Metrics            | Kubernetes                 | ✅ | ❌ | [Quickstart](https://github.com/elastic/opentelemetry/blob/main/quickstart-guide.md#%EF%B8%8F-kubernetes---infrastructure--application--monitoring)|
 | **Hosts**      | Logs, Metrics            | Host (VM, Bare Metal)      | ✅ | ❌ | [Quickstart](https://github.com/elastic/opentelemetry/blob/main/quickstart-guide.md#%EF%B8%8F-hosts-monitoring-and-log-collection) |
 
-### 📥 Report issues or provide feedback
-To report issues or provide feedback on EDOT, please [submit a github issue](https://github.com/elastic/opentelemetry/issues/new/choose).
-
-
-### 📄 License
-View details of license for [EDOT Collector](https://github.com/elastic/elastic-agent/blob/main/LICENSE.txt). 
+### 📥 Report an issue or provide feedback
+To report an issue or provide feedback on EDOT, please [submit a github issue](https://github.com/elastic/opentelemetry/issues/new/choose).

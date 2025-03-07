@@ -25,7 +25,8 @@ Each EDOT distribution is asssembled with carefully curated OpenTelemetry compon
 | [EDOT Node.js](https://github.com/elastic/elastic-otel-node) | Technical Preview |
 | [EDOT .NET](https://github.com/elastic/elastic-otel-dotnet) | Technical Preview |
 | [EDOT PHP](https://github.com/elastic/elastic-otel-php) | Technical Preview |
-| EDOT iOS and Android | GA |
+| [EDOT iOS](https://github.com/elastic/apm-agent-ios) | GA |
+| [EDOT Android](https://github.com/elastic/apm-agent-android) | Technical Preview |
 
 ### 🟢 Production Readiness & Support
 Each EDOT distribution undergoes production-grade testing before being declared Generally Available (GA). Elastic provides full support for GA releases in accordance with our [support matrix](https://www.elastic.co/support/matrix) and SLAs.
@@ -41,18 +42,11 @@ EDOT can handle telemetry from two main sources: **Applications** and shared **I
 ![EDOT-diagram](images/EDOT-diagram.png)
 Regardless of the source, all telemetry flows through the EDOT Collector, where it is processed (where required) and exported to Elastic Observability.
 
-
-Regardless of the source, all telemetry flows through the EDOT Collector, where it is processed (where required) and exported to Elastic Observability.
-
 | **Use Case**                 | **Telemetry Type**         | **Infrastructure**        | **EDOT Collector** | **EDOT SDK** | **Setup EDOT** |
 |------------------------------|---------------------------|---------------------------|:----------------------------------:|:----------------------------------:|----------------------|
 | **Applications & Infrastructure** | Logs, Metrics, Traces | Kubernetes                 | ✅ | ✅ | [Quickstart](https://github.com/elastic/opentelemetry/blob/main/quickstart-guide.md#%EF%B8%8F-kubernetes---infrastructure--application--monitoring)|
 | **Infrastructure Only**      | Logs, Metrics            | Kubernetes                 | ✅ | ❌ | [Quickstart](https://github.com/elastic/opentelemetry/blob/main/quickstart-guide.md#%EF%B8%8F-kubernetes---infrastructure--application--monitoring)|
 | **Hosts**      | Logs, Metrics            | Host (VM, Bare Metal)      | ✅ | ❌ | [Quickstart](https://github.com/elastic/opentelemetry/blob/main/quickstart-guide.md#%EF%B8%8F-hosts-monitoring-and-log-collection) |
 
-### 📥 Report issues or provide feedback
-To report issues or provide feedback on EDOT, please [submit a github issue](https://github.com/elastic/opentelemetry/issues/new/choose).
-
-
-### 📄 License
-View details of license for [EDOT Collector](https://github.com/elastic/elastic-agent/blob/main/LICENSE.txt). 
+### 📥 Report an issue or provide feedback
+To report an issue or provide feedback on EDOT, please [submit a github issue](https://github.com/elastic/opentelemetry/issues/new/choose).
