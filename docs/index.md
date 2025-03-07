@@ -42,9 +42,6 @@ EDOT can handle telemetry from two main sources: **Applications** and shared **I
 ![EDOT-diagram](images/EDOT-diagram.png)
 Regardless of the source, all telemetry flows through the EDOT Collector, where it is processed (where required) and exported to Elastic Observability.
 
-
-Regardless of the source, all telemetry flows through the EDOT Collector, where it is processed (where required) and exported to Elastic Observability.
-
 | **Use Case**                 | **Telemetry Type**         | **Infrastructure**        | **EDOT Collector** | **EDOT SDK** | **Setup EDOT** |
 |------------------------------|---------------------------|---------------------------|:----------------------------------:|:----------------------------------:|----------------------|
 | **Applications & Infrastructure** | Logs, Metrics, Traces | Kubernetes                 | ✅ | ✅ | [Quickstart](https://github.com/elastic/opentelemetry/blob/main/quickstart-guide.md#%EF%B8%8F-kubernetes---infrastructure--application--monitoring)|
