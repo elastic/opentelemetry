@@ -45,3 +45,6 @@ The EDOT collector has some limitations which are mostly inherited from the upst
 * **Review Recent Changes:** Roll back recent config updates if the issue started after changes.
 
 For in-depth details on troubleshooting refer to the [OpenTelemetry Collector troubleshooting documentation](https://opentelemetry.io/docs/collector/troubleshooting/)
+
+### 📄 License
+View details of license for [EDOT Collector](https://github.com/elastic/elastic-agent/blob/main/LICENSE.txt). 
