@@ -16,6 +16,8 @@ The docs are currently split into three navigation sections:
 - EDOT Collector (`_edot-collector` dir)
 - EDOT SDKs (`_edot-sdks` dir)
 
+(The underscore prefix for navigation sections is a requirement.)
+
 Each markdown file results in a separate page.
 
 Docs pages can be structured hierarchically by using the `parent`, `grand_parent` and `nav_order` properties in the front matter sections in the markdown files:
@@ -53,6 +55,13 @@ You can use relative links when linking other pages within the docs. Howewver, p
 [My Link Text](./relativ/path/to/other_page.md)
 ```
 
+> [!WARNING]  
+> When linking cross navigation sections (e.g. from EDOT Collector pages to EDOT SDKs pages) make sure to **remove** the underscore `_` prefix of the section!
+>
+> Correct link: `[Link Text](../edot-sdks/java)`
+>
+> Incorrect link: `[Link Text](../_edot-sdks/java)`
+
 ### Adding Callouts
 
 In this theme we have defined two types of callouts: `NOTE` and `WARNING`.
@@ -70,6 +79,23 @@ For multi-paragraph callouts use the block syntax:
 > My first warning paragraph.
 >
 > My second warning paragraph.
+```
+
+### Using Artifact versions
+
+Jekyll allows to do variable replacement in markdown files. We use that feature to specify artifact versions (for download links, etc.) in the docs.
+The variables are defined in the `dcos/_config.yml` file. Use the corresponding variable (in the form of `{{ site.edot_versions.collector }}`, etc.) in markdown instead of the concrete version numbers
+
+**Correct**:
+
+```markdown 
+My markdown [link](https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{ site.edot_versions.collector }}-darwin-arm64.tar.gz)
+```
+
+**Incorrect**:
+
+```markdown 
+My markdown [link](https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-8.17.1-darwin-arm64.tar.gz)
 ```
 
 ## Building and previewing the docs site locally

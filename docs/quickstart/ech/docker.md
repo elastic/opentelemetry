@@ -5,6 +5,6 @@ nav_order: 3
 parent: Elastic Cloud Hosted
 ---
 
-# Quick Start - Docker - Hosted
+# Quickstart - Docker - Hosted
 
 TODO

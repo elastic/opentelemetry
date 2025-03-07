@@ -1,8 +1,14 @@
 ---
-title: Hosts & VMs
+title: Docker
 layout: default
 nav_order: 3
 parent: Self-managed
 ---
 
-# Quick Start - Docker - Self-managed
+# Quickstart
+
+🐳 Docker
+{: .label .label-blue }
+
+🆂 Self-managed Elastic Stack
+{: .label .label-yellow }

@@ -5,6 +5,6 @@ nav_order: 2
 parent: Elastic Cloud Serverless
 ---
 
-# Quick Start - Hosts & VMs - Serverless
+# Quickstart - Hosts & VMs - Serverless
 
 TODO

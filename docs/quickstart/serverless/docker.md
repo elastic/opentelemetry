@@ -1,10 +1,10 @@
 ---
-title: Hosts & VMs
+title: Docker
 layout: default
 nav_order: 3
 parent: Elastic Cloud Serverless
 ---
 
-# Quick Start - Docker - Serverless
+# Quickstart - Docker - Serverless
 
 TODO

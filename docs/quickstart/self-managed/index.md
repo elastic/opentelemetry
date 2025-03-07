@@ -2,7 +2,7 @@
 title: Self-managed
 layout: default
 nav_order: 1
-parent: Quick Start
+parent: Quickstart
 ---
 
-# Quick Start with a Self-managed Elastic Stack
+# Quickstart with a Self-managed Elastic Stack
