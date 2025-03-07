@@ -2,10 +2,10 @@
 title: Migration
 layout: default
 nav_order: 5
-parent: EDOT Java
+parent: EDOT .NET
 ---
 
-# Migrating to EDOT Java from the Elastic Java Agent
+# Migrating to EDOT .NET from Elastic .NET Agent
 
 TODO:
 - migration steps

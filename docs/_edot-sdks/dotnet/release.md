@@ -1,0 +1,10 @@
+---
+title: Release Notes
+layout: default
+nav_order: 7
+parent: EDOT .NET
+---
+
+# Release Notes for the EDOT .NET Agent
+
+TODO

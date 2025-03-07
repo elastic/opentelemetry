@@ -2,10 +2,10 @@
 title: Migration
 layout: default
 nav_order: 5
-parent: EDOT Java
+parent: EDOT PHP
 ---
 
-# Migrating to EDOT Java from the Elastic Java Agent
+# Migrating to EDOT PHP from the Elastic PHP Agent
 
 TODO:
 - migration steps

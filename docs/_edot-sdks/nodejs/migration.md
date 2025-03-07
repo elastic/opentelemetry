@@ -2,10 +2,10 @@
 title: Migration
 layout: default
 nav_order: 5
-parent: EDOT Java
+parent: EDOT Node.js
 ---
 
-# Migrating to EDOT Java from the Elastic Java Agent
+# Migrating to EDOT Node.js from the Elastic Node.js Agent
 
 TODO:
 - migration steps
