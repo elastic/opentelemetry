@@ -1,9 +1,9 @@
 ---
 title: EDOT Node.js
 layout: default
-nav_order: 6
+nav_order: 5
 ---
 
 ## EDOT Node.js
 
-Put some content here
+TODO: Put some content here

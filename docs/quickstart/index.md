@@ -1,5 +1,5 @@
 ---
-title: Quick Start
+title: Quickstart
 layout: default
 nav_order: 2
 ---
@@ -10,25 +10,25 @@ This guide helps you set up Elastic Distributions for OpenTelemetry (EDOT) to mo
 
 > 🏁 *By the end of this guide, you’ll have a fully operational EDOT-powered monitoring pipeline sending data to Elastic Observability.*
 
-Choose the Quick Start guide based on the environment of your target system (`Kubernetes`, `Docker` or plain `Hosts / VMs`) and your Elastic deployment model (`Self-managed`, `Elastic Cloud Serverless`, `Elastic Cloud Hosted`):
+Choose the Quickstart guide based on the environment of your target system (`Kubernetes`, `Docker` or plain `Hosts / VMs`) and your Elastic deployment model (`Self-managed`, `Elastic Cloud Serverless`, `Elastic Cloud Hosted`):
 
-|                                 | ☸️ **Kubernetes**            | 🐳 **Docker**                 | 🖥 **Hosts / VMs**           |
-|---------------------------------|:-------------------------:|:--------------------------:|:-------------------------:|
-| 🆂 **Self-managed Elastic Stack**  | [Quick Start 🆂 ☸️]        | [Quick Start 🆂 🐳 ]        | [Quick Start 🆂 🖥 ] |
-| ☁️ **Elastic Cloud Serverless**    |  [Quick Start ☁️ ☸️]        | [Quick Start ☁️ 🐳 ]        | [Quick Start ☁️ 🖥 ] |
-| 🗄️ **Elastic Cloud Hosted**        |  [Quick Start 🗄️ ☸️]       |   [Quick Start 🗄️ 🐳 ]      | [Quick Start 🗄️ 🖥 ] |
+|                                    | ☸️ **Kubernetes**            | 🐳 **Docker**                 | 🖥 **Hosts / VMs**           |
+|------------------------------------|:---------------------------:|:-----------------------------:|:---------------------------:|
+| 🆂 **Self-managed Elastic Stack**  | [Quickstart 🆂 ☸️]{: .btn }   | [Quickstart 🆂 🐳 ]{: .btn }  | [Quickstart 🆂 🖥 ]{: .btn } |
+| ☁️ **Elastic Cloud Serverless**     | [Quickstart ☁️ ☸️]{: .btn }   | [Quickstart ☁️ 🐳 ]{: .btn }   | [Quickstart ☁️ 🖥 ]{: .btn }  |
+| 🗄️ **Elastic Cloud Hosted**        | [Quickstart 🗄️ ☸️]{: .btn }   | [Quickstart 🗄️ 🐳 ]{: .btn }  | [Quickstart 🗄️ 🖥 ]{: .btn } |
 
 ## Troubleshooting
 - [EDOT Collector Troubleshooting](_edot-collector/edot-collector-troubleshoot.md)
 - [Auto-instrumentation Troubleshooting](_kubernetes/operator/troubleshoot-auto-instrumentation.md).
 
 
-[Quick Start 🆂 ☸️]: ./self-managed/k8s
-[Quick Start ☁️ ☸️]: ./serverless/k8s
-[Quick Start 🗄️ ☸️]: ./ech/k8s
-[Quick Start 🆂 🐳 ]: ./self-managed/docker
-[Quick Start ☁️ 🐳 ]: ./serverless/docker
-[Quick Start 🗄️ 🐳 ]: ./ech/docker
-[Quick Start 🆂 🖥 ]: ./self-managed/hosts_vms
-[Quick Start ☁️ 🖥 ]: ./serverless/hosts_vms
-[Quick Start 🗄️ 🖥 ]: ./ech/hosts_vms
+[Quickstart 🆂 ☸️]: ./self-managed/k8s
+[Quickstart ☁️ ☸️]: ./serverless/k8s
+[Quickstart 🗄️ ☸️]: ./ech/k8s
+[Quickstart 🆂 🐳 ]: ./self-managed/docker
+[Quickstart ☁️ 🐳 ]: ./serverless/docker
+[Quickstart 🗄️ 🐳 ]: ./ech/docker
+[Quickstart 🆂 🖥 ]: ./self-managed/hosts_vms
+[Quickstart ☁️ 🖥 ]: ./serverless/hosts_vms
+[Quickstart 🗄️ 🖥 ]: ./ech/hosts_vms

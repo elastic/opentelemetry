@@ -5,6 +5,6 @@ nav_order: 2
 parent: Elastic Cloud Hosted
 ---
 
-# Quick Start - Hosts & VMs - Hosted
+# Quickstart - Hosts & VMs - Hosted
 
 TODO

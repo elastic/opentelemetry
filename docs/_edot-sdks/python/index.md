@@ -1,9 +1,9 @@
 ---
 title: EDOT Python
 layout: default
-nav_order: 8
+nav_order: 5
 ---
 
 ## EDOT Python
 
-Put some content here
+TODO: Put some content here

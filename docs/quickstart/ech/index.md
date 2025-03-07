@@ -2,7 +2,7 @@
 title: Elastic Cloud Hosted
 layout: default
 nav_order: 3
-parent: Quick Start
+parent: Quickstart
 ---
 
-# Quick Start on Elastic Cloud Hosted
+# Quickstart on Elastic Cloud Hosted

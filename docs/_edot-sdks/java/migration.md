@@ -5,7 +5,7 @@ nav_order: 5
 parent: EDOT Java
 ---
 
-# Migrating to EDOT Java from Classic Elastic Java Agent
+# Migrating to EDOT Java from the Elastic Java Agent
 
 TODO:
 - migration steps
