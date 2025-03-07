@@ -24,7 +24,7 @@ logs collection and application monitoring.
 
 2. **Setup Credentials**
 
-    Retrieve your [Elasticsearch endpoint](https://www.elastic.co/guide/en/kibana/current/search-space-connection-details.html) and [API key](https://www.elastic.co/guide/en/kibana/current/api-keys.html) and replace both in the below command to create a namespace and a secret with your credentials.
+    Retrieve your [Elasticsearch endpoint](https://www.elastic.co/guide/en/kibana/current/search-space-connection-details.html){:target="_blank"} and [API key](https://www.elastic.co/guide/en/kibana/current/api-keys.html){:target="_blank"} and replace both in the below command to create a namespace and a secret with your credentials.
 
     ```bash
     kubectl create namespace opentelemetry-operator-system

@@ -21,12 +21,22 @@ The quick start for Hosts / VMs with a self-managed Elastic Stack will guide you
 
 2. **Configure the EDOT Collector**
 
-    Retrieve your [Elasticsearch endpoint](https://www.elastic.co/guide/en/kibana/current/search-space-connection-details.html) and [API key](https://www.elastic.co/guide/en/kibana/current/api-keys.html) and replace `<ELASTICSEARCH_ENDPOINT>` and `<BASE64_APIKEY>` before applying the below command.
+    Retrieve your [Elasticsearch endpoint](https://www.elastic.co/guide/en/kibana/current/search-space-connection-details.html){:target="_blank"} and [API key](https://www.elastic.co/guide/en/kibana/current/api-keys.html){:target="_blank"} and replace `<ELASTICSEARCH_ENDPOINT>` and `<ELASTIC_API_KEY>` before applying the below command.
 
-    *Linux / MacOS*
+    *Linux*
 
     ```bash
-    rm ./otel.yml && cp ./otel_samples/logs_metrics_traces.yml ./otel.yml && mkdir -p ./data/otelcol && sed -i 's#\${env:STORAGE_DIR}#'"$PWD"/data/otelcol'#g' ./otel.yml && sed -i 's#\${env:ELASTIC_ENDPOINT}#<ELASTICSEARCH_ENDPOINT>' ./otel.yml && sed -i 's/\${env:ELASTIC_API_KEY}/<BASE64_APIKEY>/g' ./otel.yml
+    ELASTICSEARCH_ENDPOINT=<ELASTICSEARCH_ENDPOINT> \
+    ELASTIC_API_KEY=<ELASTIC_API_KEY> \
+    rm ./otel.yml && cp ./otel_samples/logs_metrics_traces.yml ./otel.yml && mkdir -p ./data/otelcol && sed -i 's#\${env:STORAGE_DIR}#'"$PWD"/data/otelcol'#g' ./otel.yml && sed -i 's#\${env:ELASTIC_ENDPOINT}#$ELASTICSEARCH_ENDPOINT' ./otel.yml && sed -i 's/\${env:ELASTIC_API_KEY}/$ELASTIC_API_KEY/g' ./otel.yml
+    ```
+
+    *MacOS*
+
+    ```bash
+    ELASTICSEARCH_ENDPOINT=<ELASTICSEARCH_ENDPOINT> \
+    ELASTIC_API_KEY=<ELASTIC_API_KEY> \
+    rm ./otel.yml && cp ./otel_samples/logs_metrics_traces.yml ./otel.yml && mkdir -p ./data/otelcol && sed -i '' 's#\${env:STORAGE_DIR}#'"$PWD"/data/otelcol'#g' ./otel.yml && sed -i '' 's#\${env:ELASTIC_ENDPOINT}#$ELASTICSEARCH_ENDPOINT' ./otel.yml && sed -i '' 's/\${env:ELASTIC_API_KEY}/$ELASTIC_API_KEY/g' ./otel.yml
     ```
 
     *Windows*
@@ -39,7 +49,7 @@ The quick start for Hosts / VMs with a self-managed Elastic Stack will guide you
     $content = Get-Content .\otel.yml
     $content = $content -replace '\${env:STORAGE_DIR}', "$PWD\data\otelcol"
     $content = $content -replace '\${env:ELASTIC_ENDPOINT}', "<ELASTICSEARCH_ENDPOINT>"
-    $content = $content -replace '\${env:ELASTIC_API_KEY}', "<BASE64_APIKEY>"
+    $content = $content -replace '\${env:ELASTIC_API_KEY}', "<ELASTIC_API_KEY>"
     $content | Set-Content .\otel.yml
     ```
 
@@ -61,6 +71,7 @@ The quick start for Hosts / VMs with a self-managed Elastic Stack will guide you
     ```powershell
     .\elastic-agent.exe otel --config otel.yml
     ```
+
 4. **(Optional) Instrument your applications**
 
     If you would like to collect telemetry from applications running on the host where you installed the EDOT Collector,

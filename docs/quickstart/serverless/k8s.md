@@ -5,7 +5,6 @@ nav_order: 1
 parent: Elastic Cloud Serverless
 ---
 
-
 # Quickstart
 
 ☸️ Kubernetes
@@ -23,16 +22,18 @@ logs collection and application monitoring.
     helm repo add open-telemetry 'https://open-telemetry.github.io/opentelemetry-helm-charts' --force-update
     ```
 
-2. **Setup Credentials**
+2. **Setup Connection & Credentials**
 
-    Retrieve your [Elasticsearch endpoint](https://www.elastic.co/guide/en/kibana/current/search-space-connection-details.html) and [API key](https://www.elastic.co/guide/en/kibana/current/api-keys.html) and replace both in the below command to create a namespace and a secret with your credentials.
+    Retrieve the `Elastic OTLP Endpoint` and the `Elastic API Key` for your Serverless Project by [following these instructions](./#retrieving-connection-details-for-your-serverless-project).
+
+    Replace both, `<ELASTIC_OTLP_ENDPOINT>` and `<ELASTIC_API_KEY>` in the below command to create a namespace and a secret with your credentials.
 
     ```bash
     kubectl create namespace opentelemetry-operator-system
     kubectl create secret generic elastic-secret-otel \
     --namespace opentelemetry-operator-system \
-    --from-literal=elastic_endpoint='<ELASTICSEARCH_ENDPOINT>' \
-    --from-literal=elastic_api_key='<BASE64_APIKEY>'
+    --from-literal=elastic_otlp_endpoint='<ELASTIC_OTLP_ENDPOINT>' \
+    --from-literal=elastic_api_key='<ELASTIC_API_KEY>'
     ```
 
 3. **Install Operator**
@@ -42,7 +43,7 @@ logs collection and application monitoring.
     ```bash
     helm install opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack \
     --namespace opentelemetry-operator-system \
-    --values 'https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/{{ site.edot_versions.collector }}/deploy/helm/edot-collector/kube-stack/values.yaml' \
+    --values 'https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/{{ site.edot_versions.collector }}/deploy/helm/edot-collector/kube-stack/managed_otlp/values.yaml' \
     --version '0.3.9'
     ```
 4. **Auto-instrument Applications**
