@@ -9,7 +9,9 @@ parent: Quickstart
 
 ## Retrieving Connection Details for your Serverless Project
 
-1. **Retrieve the endpoint URL** for your Serverless project
+> ⚠️ The below instructions use a managed OTLP endpoint on Elastic Cloud Serverless, this feature is in **Technical Preview** and is not yet recommended for use in production.
+
+1. **Retrieve the managed OTLP endpoint URL** for your Serverless project
 
     1. Go to the [Elastic Cloud console](https://cloud.elastic.co/){:target="_blank"}.
     2. Next to your *project*, select `Manage`.
