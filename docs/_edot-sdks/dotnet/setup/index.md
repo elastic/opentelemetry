@@ -2,10 +2,10 @@
 title: Setup
 layout: default
 nav_order: 1
-parent: EDOT Java
+parent: EDOT .NET
 ---
 
-# Setting up the EDOT Java Agent
+# Setting up the EDOT .NET Agent
 
 TODO:
 - where to download
