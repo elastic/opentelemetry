@@ -60,9 +60,10 @@ just_the_docs:
       nav_fold: true
   nav_sort: case_insensitive
 
-# EDOT versions
+# ! DO NOT DELETE THE COMMENTS !
+# -- EDOT versions start -- 
 edot_versions:
-  collector: 8.17.2
+  collector: 8.17.3
   android:
   dotnet: 1.0.0-beta.1
   ios:
@@ -70,3 +71,7 @@ edot_versions:
   nodejs: 0.7.0
   php:
   python: 0.7.0
+# -- EDOT versions end -- 
+
+exclude:
+  - "gen_edot_col_components/"

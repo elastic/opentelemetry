@@ -18,7 +18,7 @@ helm repo update open-telemetry # update information of available charts locally
 helm search repo open-telemetry/opentelemetry-kube-stack --versions # list available versions of the chart
 
 helm upgrade --namespace opentelemetry-operator-system opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack \
---values 'https://raw.githubusercontent.com/elastic/opentelemetry/refs/heads/{{ site.edot_versions.collector }}/resources/kubernetes/operator/helm/values.yaml' \
+--values 'https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{ site.edot_versions.collector }}/deploy/helm/edot-collector/kube-stack/values.yaml' \
 --version 0.3.3
 ```
 

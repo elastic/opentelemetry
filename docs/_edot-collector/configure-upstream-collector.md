@@ -33,51 +33,60 @@ Create a builder configuration file,`builder-config.yml`, to define the custom c
 
 The following example `builder-config.yml` file contains the components needed to send your telemetry data to Elastic Observability. For more information on these components, refer to the [components](collector-components.md) documentation. Keep or remove components from the example configuration file to fit your needs.
 
+<!-- DO NOT DELETE THIS SECTION, TAGS ARE REQUIRED FOR GENERATION-->
+<!-- start:edot-collector-components-ocb -->
 ``` yaml
 dist:
   name: otelcol-dev
   description: Basic OTel Collector distribution for Developers
   output_path: ./otelcol-dev
-  otelcol_version: 0.107.0
+  otelcol_version: 0.119.0
 
 extensions:
-  - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/extension/healthcheckextension v0.106.1
-  - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/extension/storage/filestorage v0.106.1
-  - gomod: go.opentelemetry.io/collector/extension/memorylimiterextension v0.106.1
-
-exporters:
-  - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/elasticsearchexporter v0.106.1
-  - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/fileexporter v0.106.1
-  - gomod: go.opentelemetry.io/collector/exporter/debugexporter v0.106.1
-  - gomod: go.opentelemetry.io/collector/exporter/otlpexporter v0.106.1
-  - gomod: go.opentelemetry.io/collector/exporter/otlphttpexporter v0.106.1
-
-processors:
-  - gomod: go.opentelemetry.io/collector/processor/memorylimiterprocessor v0.106.1
-  - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/processor/attributesprocessor v0.106.1
-  - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/processor/filterprocessor v0.106.1
-  - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/processor/k8sattributesprocessor v0.106.1
-  - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/processor/resourcedetectionprocessor v0.106.1
-  - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/processor/resourceprocessor v0.106.1
-  - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/processor/transformprocessor v0.106.1
-  - gomod: github.com/elastic/opentelemetry-collector-components/processor/elasticinframetricsprocessor v0.7.1
-  - gomod: go.opentelemetry.io/collector/processor/batchprocessor v0.106.1
+- gomod: 	github.com/open-telemetry/opentelemetry-collector-contrib/extension/storage/filestorage v0.119.0
+- gomod: 	github.com/open-telemetry/opentelemetry-collector-contrib/extension/healthcheckextension v0.119.0
+- gomod: 	go.opentelemetry.io/collector/extension/memorylimiterextension v0.119.0
+- gomod: 	github.com/open-telemetry/opentelemetry-collector-contrib/extension/pprofextension v0.119.0
 
 receivers:
-  - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/jaegerreceiver v0.106.1
-  - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/prometheusreceiver v0.106.1
-  - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/zipkinreceiver v0.106.1
-  - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/filelogreceiver v0.106.1
-  - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/hostmetricsreceiver v0.106.1
-  - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/httpcheckreceiver v0.106.1
-  - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/k8sclusterreceiver v0.106.1
-  - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/k8sobjectsreceiver v0.106.1
-  - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/kubeletstatsreceiver v0.106.1
-  - gomod: go.opentelemetry.io/collector/receiver/otlpreceiver v0.106.1
+- gomod: 	github.com/open-telemetry/opentelemetry-collector-contrib/receiver/filelogreceiver v0.119.0
+- gomod: 	github.com/open-telemetry/opentelemetry-collector-contrib/receiver/hostmetricsreceiver v0.119.0
+- gomod: 	github.com/open-telemetry/opentelemetry-collector-contrib/receiver/httpcheckreceiver v0.119.0
+- gomod: 	github.com/open-telemetry/opentelemetry-collector-contrib/receiver/jaegerreceiver v0.119.0
+- gomod: 	github.com/open-telemetry/opentelemetry-collector-contrib/receiver/k8sclusterreceiver v0.119.0
+- gomod: 	github.com/open-telemetry/opentelemetry-collector-contrib/receiver/k8sobjectsreceiver v0.119.0
+- gomod: 	github.com/open-telemetry/opentelemetry-collector-contrib/receiver/kubeletstatsreceiver v0.119.0
+- gomod: 	go.opentelemetry.io/collector/receiver/otlpreceiver v0.119.0
+- gomod: 	github.com/open-telemetry/opentelemetry-collector-contrib/receiver/prometheusreceiver v0.119.0
+- gomod: 	github.com/open-telemetry/opentelemetry-collector-contrib/receiver/zipkinreceiver v0.119.0
+
+exporters:
+- gomod: 	go.opentelemetry.io/collector/exporter/debugexporter v0.119.0
+- gomod: 	github.com/open-telemetry/opentelemetry-collector-contrib/exporter/elasticsearchexporter v0.119.0
+- gomod: 	github.com/open-telemetry/opentelemetry-collector-contrib/exporter/fileexporter v0.119.0
+- gomod: 	github.com/open-telemetry/opentelemetry-collector-contrib/exporter/loadbalancingexporter v0.119.0
+- gomod: 	go.opentelemetry.io/collector/exporter/otlpexporter v0.119.0
+- gomod: 	go.opentelemetry.io/collector/exporter/otlphttpexporter v0.119.0
+
+processors:
+- gomod: 	github.com/open-telemetry/opentelemetry-collector-contrib/processor/attributesprocessor v0.119.0
+- gomod: 	go.opentelemetry.io/collector/processor/batchprocessor v0.119.0
+- gomod: 	github.com/elastic/opentelemetry-collector-components/processor/elasticinframetricsprocessor v0.13.0
+- gomod: 	github.com/elastic/opentelemetry-collector-components/processor/elastictraceprocessor v0.3.0
+- gomod: 	github.com/open-telemetry/opentelemetry-collector-contrib/processor/filterprocessor v0.119.0
+- gomod: 	github.com/open-telemetry/opentelemetry-collector-contrib/processor/k8sattributesprocessor v0.119.0
+- gomod: 	github.com/elastic/opentelemetry-collector-components/processor/lsmintervalprocessor v0.3.0
+- gomod: 	go.opentelemetry.io/collector/processor/memorylimiterprocessor v0.119.0
+- gomod: 	github.com/open-telemetry/opentelemetry-collector-contrib/processor/resourcedetectionprocessor v0.119.0
+- gomod: 	github.com/open-telemetry/opentelemetry-collector-contrib/processor/resourceprocessor v0.119.0
+- gomod: 	github.com/open-telemetry/opentelemetry-collector-contrib/processor/transformprocessor v0.119.0
 
 connectors:
-  - gomod: 	github.com/open-telemetry/opentelemetry-collector-contrib/connector/spanmetricsconnector v0.106.1
+- gomod: 	github.com/open-telemetry/opentelemetry-collector-contrib/connector/routingconnector v0.119.0
+- gomod: 	github.com/elastic/opentelemetry-collector-components/connector/signaltometricsconnector v0.3.0
+- gomod: 	github.com/open-telemetry/opentelemetry-collector-contrib/connector/spanmetricsconnector v0.119.0
 ```
+<!-- end:edot-collector-components-ocb -->
 
 ### Step 3. Build the Collector
 Build your custom collector using the ocb tool and the configuration file by running the following command:

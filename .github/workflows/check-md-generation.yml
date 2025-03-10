@@ -1,0 +1,30 @@
+name: Check generated markdown in docs pages
+
+on:
+  pull_request:
+    types: 
+      - opened
+      - synchronize
+    paths:
+      - 'docs/**'
+
+jobs:
+  # Build job
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install dependencies
+        run: |
+          cd docs/gen_edot_col_components
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      - name: Check Markdown Generation
+        run: |
+          cd docs
+          make check-md-gen
