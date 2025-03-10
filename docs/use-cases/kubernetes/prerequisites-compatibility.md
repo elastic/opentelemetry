@@ -22,10 +22,10 @@ The following is the current list of supported versions:
 
 | Stack Version | Helm chart Version |    Values file     |
 |---------------|--------------------|--------------------|
-| Serverless    | 0.3.3              | [values.yaml](https://raw.githubusercontent.com/elastic/elastic-agent/refs/heads/{{ site.edot_versions.collector }}/deploy/helm/edot-collector/kube-stack/managed_otlp/values.yaml)  |
+| Serverless    | 0.3.3              | [values.yaml](https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{ site.edot_versions.collector }}/deploy/helm/edot-collector/kube-stack/managed_otlp/values.yaml)  |
 | 8.16.0        | 0.3.3              | [values.yaml](https://raw.githubusercontent.com/elastic/opentelemetry/refs/heads/8.16/resources/kubernetes/operator/helm/values.yaml)  |
 | 8.17.0        | 0.3.3              | [values.yaml](https://raw.githubusercontent.com/elastic/elastic-agent/refs/heads/8.17/deploy/helm/edot-collector/kube-stack/values.yaml) |
-| {{ site.edot_versions.collector }} | 0.3.3 | [values.yaml](https://raw.githubusercontent.com/elastic/elastic-agent/refs/heads/{{ site.edot_versions.collector }}/deploy/helm/edot-collector/kube-stack/values.yaml) |
+| {{ site.edot_versions.collector }} | 0.3.3 | [values.yaml](https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{ site.edot_versions.collector }}/deploy/helm/edot-collector/kube-stack/values.yaml) |
 
 
 When [installing the release](./deployment#manual-deployment-of-all-components), ensure you use the right `--version` and `-f <values-file>` parameters.
