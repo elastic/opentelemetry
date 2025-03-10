@@ -15,11 +15,7 @@ Latest snapshot: [![Sonatype Nexus](https://img.shields.io/nexus/s/co.elastic.ot
 
 ## Prerequisites
 
-In order to send your data to Elastic using EDOT Java, you need to have the following prerequisites
-- an [Elastic](/quickstart/) deployment
-- an [EDOT collector](/edot-collector/) deployment
-
-TODO: how to create an API key for the OTEL SDK ? Should probably be distinct from the collector API key.
+You need to have completed the steps in the [Quickstart](/quickstart/) section that corresponds to your Elastic deployment model.
 
 ## Run
 
@@ -34,25 +30,25 @@ java \
 
 For applications deployed with Kubernetes, we recommend using [OpenTelemetry Operator](./k8s).
 
-## Configuration
+## Minimal configuration
 
-By default, the instrumentation agent sends data to `http://localhost:4318` OTLP endpoint using HTTP protocol.
+The minimal configuration to send data involves setting the values for `OTEL_EXPORTER_OTLP_ENDPOINT` and `OTEL_EXPORTER_OTLP_HEADERS` environment variables.
 
-Unless such a local endpoint is available on the host, you will need to configure the following environment variables:
-
-* `OTEL_EXPORTER_OTLP_ENDPOINT`: The full URL of the endpoint where data will be sent.
-* `OTEL_EXPORTER_OTLP_HEADERS`: A comma-separated list of `key=value` pairs that will
-  be added to the headers of every request. This is typically used for authentication information.
-
-The values of those configuration options should be retrieved from the Elastic deployment as part of the prerequisites.
-- `OTEL_EXPORTER_OTLP_ENDPOINT` should be set to the OTLP endpoint of the EDOT collector endpoint
-- `OTEL_EXPORTER_OTLP_HEADERS` should be set/modified to include authentication API key.
+Configuration of those environment values depends on the deployment model:
+- EDOT Collector running on the application host, accessible with `http://localhost:4318` without authentication, no further configuration is required.
+- EDOT Collector managed by the OpenTelemetry Kubernetes Operator: environment variables are automatically provided by the Operator, no further configuration is required.
+- Elastic Managed OTLP endpoint (Elastic Cloud Serverless):
+  - `OTEL_EXPORTER_OTLP_ENDPOINT` should be set to `<ELASTIC_OTLP_ENDPOINT>`
+  - `OTEL_EXPORTER_OTLP_HEADERS` should be set to include `Authorization=ApiKey <ELASTIC_API_KEY>` (comma-separated key=value list).
+- Self-managed EDOT Collector:
+  - `OTEL_EXPORTER_OTLP_ENDPOINT` should be set to the OTLP endpoint of EDOT Collector
+  - `OTEL_EXPORTER_OTLP_HEADERS` should be set to include `Authorization=ApiKey <ELASTIC_API_KEY>` (comma-separated key=value list).
 
 For example:
 
 ```shell
 export OTEL_EXPORTER_OTLP_ENDPOINT=https://my-deployment.apm.us-west1.gcp.cloud.es.io
-export OTEL_EXPORTER_OTLP_HEADERS="Authorization=Bearer P....l"
+export OTEL_EXPORTER_OTLP_HEADERS="Authorization=ApiKey P....l"
 ```
 
-For more advanced configuration, see [Configuration](../configuration.md) section.
+For more advanced configuration, see [Configuration](../configuration) section.
