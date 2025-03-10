@@ -10,18 +10,13 @@ This guide helps you set up Elastic Distributions for OpenTelemetry (EDOT) to mo
 
 > 🏁 *By the end of this guide, you’ll have a fully operational EDOT-powered monitoring pipeline sending data to Elastic Observability.*
 
-Choose the Quickstart guide based on the environment of your target system (`Kubernetes`, `Docker` or plain `Hosts / VMs`) and your Elastic deployment model (`Self-managed`, `Elastic Cloud Serverless`, `Elastic Cloud Hosted`):
+Choose the Quickstart guide based on the environment of your target system (`Kubernetes`, `Docker` or plain `Hosts / VMs`) and your Elastic deployment model (`Self-managed Elastic Stack`, `Elastic Cloud Serverless` or `Elastic Cloud Hosted`):
 
 |                                    | ☸️ **Kubernetes**            | 🐳 **Docker**                 | 🖥 **Hosts / VMs**           |
 |------------------------------------|:---------------------------:|:-----------------------------:|:---------------------------:|
 | 🆂 **Self-managed Elastic Stack**  | [Quickstart 🆂 ☸️]{: .btn }   | [Quickstart 🆂 🐳 ]{: .btn }  | [Quickstart 🆂 🖥 ]{: .btn } |
 | ☁️ **Elastic Cloud Serverless**     | [Quickstart ☁️ ☸️]{: .btn }   | [Quickstart ☁️ 🐳 ]{: .btn }   | [Quickstart ☁️ 🖥 ]{: .btn }  |
 | 🗄️ **Elastic Cloud Hosted**        | [Quickstart 🗄️ ☸️]{: .btn }   | [Quickstart 🗄️ 🐳 ]{: .btn }  | [Quickstart 🗄️ 🖥 ]{: .btn } |
-
-## Troubleshooting
-- [EDOT Collector Troubleshooting](_edot-collector/edot-collector-troubleshoot.md)
-- [Auto-instrumentation Troubleshooting](_kubernetes/operator/troubleshoot-auto-instrumentation.md).
-
 
 [Quickstart 🆂 ☸️]: ./self-managed/k8s
 [Quickstart ☁️ ☸️]: ./serverless/k8s

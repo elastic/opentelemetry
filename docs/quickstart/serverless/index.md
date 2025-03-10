@@ -9,7 +9,8 @@ parent: Quickstart
 
 ## Retrieving Connection Details for your Serverless Project
 
-> ⚠️ The below instructions use a managed OTLP endpoint on Elastic Cloud Serverless, this feature is in **Technical Preview** and is not yet recommended for use in production.
+{: .note }
+> The below instructions use a managed OTLP endpoint on Elastic Cloud Serverless, this feature is in **Technical Preview** and is not yet recommended for use in production.
 
 1. **Retrieve the managed OTLP endpoint URL** for your Serverless project
 
