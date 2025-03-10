@@ -36,7 +36,8 @@ The minimal configuration to send data involves setting the values for `OTEL_EXP
 
 Configuration of those environment values depends on the deployment model:
 - EDOT Collector running on the application host, accessible with `http://localhost:4318` without authentication, no further configuration is required.
-- EDOT Collector managed by the OpenTelemetry Kubernetes Operator: environment variables are automatically provided by the Operator, no further configuration is required.
+- EDOT Collector managed by the OpenTelemetry Kubernetes Operator
+  - `OTEL_EXPORTER_OTLP_ENDPOINT` and `OTEL_EXPORTER_OTLP_HEADERS` environment variables are automatically provided by the Operator, no further configuration is required.
 - Elastic Managed OTLP endpoint (Elastic Cloud Serverless):
   - `OTEL_EXPORTER_OTLP_ENDPOINT` should be set to `<ELASTIC_OTLP_ENDPOINT>`
   - `OTEL_EXPORTER_OTLP_HEADERS` should be set to include `Authorization=ApiKey <ELASTIC_API_KEY>` (comma-separated key=value list).
