@@ -57,12 +57,12 @@ logs and application traces and send the data through OTLP to your Elastic Serve
     ```
 
 3. **Run the EDOT Collector**
-
-    Execute the following command to run the EDOT Collector. 
     
     {: .note }
     The Collector will open the ports `4317` and `4318` to receive application data from locally running OTel SDKs without authentication.
     This allows the SDKs to send data without any further configuration needed as they use this endpoint by default.
+
+   Execute the following command to run the EDOT Collector.
 
     *Linux / MacOS*
 
