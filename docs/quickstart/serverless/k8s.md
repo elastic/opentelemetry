@@ -54,6 +54,8 @@ logs collection and application monitoring.
     kubectl annotate namespace YOUR_NAMESPACE instrumentation.opentelemetry.io/inject-<LANGUAGE>="opentelemetry-operator-system/elastic-instrumentation"
     ```
 
+    The OpenTelemetry Operator will automatically provide the OTLP endpoint configuration and authentication to the SDKs through environment variables.
+
     Restart your deployment to ensure the annotations and auto-instrumentations are applied.
 
     For languages where auto-instrumentation is not available, you will need to manually instrument your application. See the [Setup section in the corresponding SDK](../../edot-sdks).

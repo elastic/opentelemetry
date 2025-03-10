@@ -37,7 +37,7 @@ logs and application traces and send the data through OTLP to your Elastic Serve
     *MacOS*
 
     ```bash
-    ELASTICSEARCH_ENDPOINT=<ELASTICSEARCH_ENDPOINT> \
+    ELASTIC_OTLP_ENDPOINT=<ELASTIC_OTLP_ENDPOINT> \
     ELASTIC_API_KEY=<ELASTIC_API_KEY> \
     rm ./otel.yml && cp ./otel_samples/managed_otlp/logs_metrics_traces.yml ./otel.yml && mkdir -p ./data/otelcol && sed -i '' 's#\${env:STORAGE_DIR}#'"$PWD"/data/otelcol'#g' ./otel.yml && sed -i '' 's#\${env:ELASTIC_ENDPOINT}#ELASTIC_OTLP_ENDPOINT' ./otel.yml && sed -i '' 's/\${env:ELASTIC_API_KEY}/$ELASTIC_API_KEY/g' ./otel.yml
     ```
@@ -61,7 +61,8 @@ logs and application traces and send the data through OTLP to your Elastic Serve
     Execute the following command to run the EDOT Collector. 
     
     {: .note }
-    The Collector will open the ports `4317` and `4318` to receive application data from locally running OTel SDKs.
+    The Collector will open the ports `4317` and `4318` to receive application data from locally running OTel SDKs without authentication.
+    This allows the SDKs to send data without any further configuration needed as they use this endpoint by default.
 
     *Linux / MacOS*
 
