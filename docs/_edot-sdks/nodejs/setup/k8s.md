@@ -1,5 +1,5 @@
 ---
-title: EDOT Node.js on Kubernetes
+title: Kubernetes
 layout: default
 nav_order: 1
 parent: Setup
@@ -8,11 +8,11 @@ grand_parent: EDOT Node.js
 
 # Instrumenting Node.js applications with EDOT SDKs on Kubernetes
 
-This document focuses on instrumenting Node.js applications on Kubernetes, using the OpenTelemetry Operator, the Elastic Distribution of OpenTelemetry (EDOT) Collectors, and the [EDOT Node.js](https://github.com/elastic/elastic-otel-nodejs) SDK.
+This document focuses on instrumenting Node.js applications on Kubernetes, using the OpenTelemetry Operator, the Elastic Distribution of OpenTelemetry (EDOT) Collectors, and the EDOT Node.js SDK.
 
-- For general knowledge about the EDOT Node.js SDK, refer to the [getting started guide](https://github.com/elastic/elastic-otel-node/blob/main/packages/opentelemetry-node/docs/get-started.md) and [configuration](https://github.com/elastic/elastic-otel-node/blob/main/packages/opentelemetry-node/docs/configure.md).
+- For general knowledge about the EDOT Node.js SDK, refer to the [EDOT Node.js Intro page](../index) and [Configuration](..//configuration).
 - For Node.js auto-instrumentation specifics, refer to [OpenTelemetry Operator Node.js auto-instrumentation](https://opentelemetry.io/docs/kubernetes/operator/automatic/#nodejs).
-- For general information about instrumenting applications on kubernetes, refer to [instrumenting applications](./instrumenting-applications.md).
+- For general information about instrumenting applications on Kubernetes, refer to [instrumenting applications on Kubernetes](../../../use-cases/kubernetes/instrumenting-applications).
 
 ## Instrument a Node.js app with EDOT Node.js SDK on Kubernetes
 
@@ -32,7 +32,7 @@ In this example, you'll learn how to:
 
 For this example, we assume the application you're instrumenting is a deployment named `nodejs-app` running in the `nodejs-ns` namespace.
 
-1. Ensure you have successfully [installed the OpenTelemetry Operator](./README.md), and confirm that the following `Instrumentation` object exists in the system:
+1. Ensure you have successfully [installed the OpenTelemetry Operator](../../../use-cases/kubernetes/deployment), and confirm that the following `Instrumentation` object exists in the system:
 
     ```bash
     $ kubectl get instrumentation -n opentelemetry-operator-system
@@ -76,7 +76,7 @@ For this example, we assume the application you're instrumenting is a deployment
       kubectl rollout restart deployment nodejs-app -n nodejs-ns
       ```
 
-4. Verify the [auto-instrumentation resources](./instrumenting-applications.md#how-auto-instrumentation-works) are injected in the Pods:
+4. Verify the [auto-instrumentation resources](../../../use-cases/kubernetes/instrumenting-applications#how-auto-instrumentation-works) are injected in the Pods:
 
     Run a `kubectl describe` of one of your application Pods and check:
 
@@ -149,18 +149,19 @@ For this example, we assume the application you're instrumenting is a deployment
 5. Confirm data is flowing to **Kibana**:
 
     - Open **Observability** -> **Applications** -> **Service inventory**, and determine if:
-      - The application appears in the list of services (`nodejs-app` in the example).
-      - The application shows transactions and metrics.
+        - The application appears in the list of services (`nodejs-app` in the example).
+        - The application shows transactions and metrics.
 
-      > [!TIP]
-      > You may need to generate traffic to your application to see spans and metrics.
+    
+        {: .note }
+        > You may need to generate traffic to your application to see spans and metrics.
 
     - For application container logs, open **Kibana Discover** and filter for your Pods' logs. In the provided example, we could filter for them with either of the following:
-      - `k8s.deployment.name: "nodejs-app"` (**adapt the query filter to your use case**)
-      - `k8s.pod.name: nodejs-app*` (**adapt the query filter to your use case**)
+        - `k8s.deployment.name: "nodejs-app"` (**adapt the query filter to your use case**)
+        - `k8s.pod.name: nodejs-app*` (**adapt the query filter to your use case**)
 
-    Note that the container logs are not provided by the instrumentation library, but by the DaemonSet collector deployed as part of the [operator installation](./README.md).
+    Note that the container logs are not provided by the instrumentation library, but by the DaemonSet collector deployed as part of the [operator installation](../../../use-cases/kubernetes/deployment).
 
 ## Troubleshooting
 
-- Refer to [troubleshoot auto-instrumentation](./troubleshoot-auto-instrumentation.md) for further analysis.
+Refer to [troubleshoot auto-instrumentation](../../../use-cases/kubernetes/instrumenting-applications#troubleshooting-auto-instrumentation) for further analysis.

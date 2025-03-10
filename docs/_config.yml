@@ -64,9 +64,9 @@ just_the_docs:
 edot_versions:
   collector: 8.17.2
   android:
-  dotnet:
+  dotnet: 1.0.0-beta.1
   ios:
-  java:
-  nodejs:
+  java: 1.2.1
+  nodejs: 0.7.0
   php:
-  python:
+  python: 0.7.0

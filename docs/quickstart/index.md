@@ -18,11 +18,6 @@ Choose the Quickstart guide based on the environment of your target system (`Kub
 | ☁️ **Elastic Cloud Serverless**     | [Quickstart ☁️ ☸️]{: .btn }   | [Quickstart ☁️ 🐳 ]{: .btn }   | [Quickstart ☁️ 🖥 ]{: .btn }  |
 | 🗄️ **Elastic Cloud Hosted**        | [Quickstart 🗄️ ☸️]{: .btn }   | [Quickstart 🗄️ 🐳 ]{: .btn }  | [Quickstart 🗄️ 🖥 ]{: .btn } |
 
-## Troubleshooting
-- [EDOT Collector Troubleshooting](_edot-collector/edot-collector-troubleshoot.md)
-- [Auto-instrumentation Troubleshooting](_kubernetes/operator/troubleshoot-auto-instrumentation.md).
-
-
 [Quickstart 🆂 ☸️]: ./self-managed/k8s
 [Quickstart ☁️ ☸️]: ./serverless/k8s
 [Quickstart 🗄️ ☸️]: ./ech/k8s

@@ -1,22 +1,14 @@
 ---
 title: Instrumenting Applications
 layout: default
-nav_order: 1
+nav_order: 4
 parent: Monitoring on Kubernetes
 grand_parent: Use Cases
 ---
 
 # Instrumenting applications with EDOT SDKs on Kubernetes
 
-Elastic Distributions of OpenTelemetry (EDOT) SDKs cover multiple languages:
-
-* [EDOT Java](https://github.com/elastic/elastic-otel-java)
-* [EDOT .NET](https://github.com/elastic/elastic-otel-dotnet)
-* [EDOT Node.js](https://github.com/elastic/elastic-otel-node)
-* [EDOT Python](https://github.com/elastic/elastic-otel-python)
-* [EDOT PHP](https://github.com/elastic/elastic-otel-php/)
-
-This section provides guidance and examples for applications instrumentation in a Kubernetes environment for all supported languages.
+[Elastic Distributions of OpenTelemetry (EDOT) SDKs](../../edot-sdks/index) cover multiple languages. This section provides guidance and examples for applications instrumentation in a Kubernetes environment for all supported languages.
 
 In Kubernetes environments with the OpenTelemetry Operator, [**automatic (or zero-code) instrumentation**](https://opentelemetry.io/docs/kubernetes/operator/automatic/) simplifies the process by injecting and configuring instrumentation libraries into the targeted Pods.
 
@@ -24,45 +16,25 @@ On the other hand, **manual instrumentation** with OpenTelemetry allows you to c
 
 ## Table of contents
 
-- [Supported languages](#supported-languages)
 - [Prerequisites](#prerequisites)
 - [Auto-instrumentation basics](#auto-instrumentation-basics)
 - [Configuring auto-instrumentation](#configuring-auto-instrumentation)
 - [How auto-instrumentation works](#how-auto-instrumentation-works)
 - [Advanced configuration](#advanced-configuration)
-- [Manual instrumentation](#manual-instrumentation)
-
-## Supported languages
-
-The following table illustrates the different languages supported by OpenTelemetry (OTel) and the Elastic Stack, the type of SDK/API used for instrumentation (either zero-code or source code dependencies), and the corresponding deployment types (on-premises, ESS, or serverless) for each language.
-
-| Language   | OTel SDK/API Type                                       | Deployment Model Support             |
-|------------|---------------------------------------------------------|-------------------------------------|
-| Java       | EDOT Java - **zero-code instrumentation**               | All deployment types                |
-| Node.js    | EDOT Node.js - **zero-code instrumentation**            | All deployment types                |
-| .NET       | EDOT .NET - **zero-code instrumentation**               | All deployment types                |
-| PHP        | EDOT PHP - source code dependencies                     | All deployment types                |
-| Python     | EDOT Python - **zero-code instrumentation**             | All deployment types                |
-| Swift      | EDOT Swift - source code dependencies                   | ESS, on-premises                    |
-| Android    | EDOT Android - source code dependencies                 | ESS, on-premises                    |
-| Javascript | Vanilla OTel RUM SDK/API - source code dependencies     | ESS, on-premises                    |
-| Rust       | Vanilla OTel Rust SDK/API - source code dependencies    | All deployment types                |
-| Ruby       | Vanilla OTel Ruby SDK/API - source code dependencies    | All deployment types                |
-| Go         | Vanilla OTel Go SDK/API - **zero-code instrumentation** | All deployment types                |
-| C++        | Vanilla OTel C++ SDK/API - source code dependencies     | All deployment types                |
+- [Troubleshooting auto-instrumentation](#troubleshooting-auto-instrumentation)
 
 ## Prerequisites
 
 Before starting with application auto-instrumentation, ensure the following prerequisites are in place for proper setup:
- 
-- Install the OpenTelemetry operator and EDOT collectors following the [getting started guide](./README.md).
+
+- Install the OpenTelemetry operator and EDOT collectors following the [quickstart guide](../../quickstart).
 - Ensure a valid `kind: Instrumentation` object exists in the cluster.
 
 ## Auto-instrumentation basics
 
 Zero-code instrumentation is handled by the operator through `Instrumentation` objects, used to automatically inject the necessary SDKs and configuration into application workloads.
 
-If you followed the [getting started guide](./README.md) to install the operator, there should be an `Instrumentation` object with name `elastic-instrumentation` in namespace `opentelemetry-operator-system`:
+If you followed the [quickstart guide](../../quickstart) to install the operator, there should be an `Instrumentation` object with name `elastic-instrumentation` in namespace `opentelemetry-operator-system`:
 
 ```bash
 kubectl get instrumentation -A
@@ -85,11 +57,11 @@ The `Instrumentation` object stores important parameters:
   dotnet:
     image: docker.elastic.co/observability/elastic-otel-dotnet:edge
   java:
-    image: docker.elastic.co/observability/elastic-otel-javaagent:1.0.0
+    image: docker.elastic.co/observability/elastic-otel-javaagent:{{ site.edot_versions.java }}
   nodejs:
-    image: docker.elastic.co/observability/elastic-otel-node:0.4.1
+    image: docker.elastic.co/observability/elastic-otel-node:{{ site.edot_versions.nodejs }}
   python:
-    image: docker.elastic.co/observability/elastic-otel-python:0.4.1
+    image: docker.elastic.co/observability/elastic-otel-python:{{ site.edot_versions.python }}
 ```
 
 ## Configuring auto-instrumentation
@@ -102,17 +74,17 @@ kind: Deployment
 metadata:
   name: myapp
 spec:
-  ...
+  # ...
   template:
     metadata:
       annotations:
         instrumentation.opentelemetry.io/inject-<LANGUAGE>: "opentelemetry-operator-system/elastic-instrumentation"
-      ...
+      # ...
     spec:
       containers:
       - image: myapplication-image
         name: app
-      ...
+      # ...
 ```
 
 where ``<LANGUAGE>`` is one of: `go` , `java`, `nodejs`, `python`, `dotnet`
@@ -149,16 +121,16 @@ The possible values for the annotation are detailed in the [Operator documentati
 
 For details on instrumenting specific languages, refer to:
 
-- [Instrumenting Java](./instrumenting-java.md)
-- [Instrumenting Python](./instrumenting-python.md)
-- [Instrumenting Node.js](./instrumenting-nodejs.md)
+- [Instrumenting Java](../../edot-sdks/java/setup/k8s)
+- [Instrumenting Python](../../edot-sdks/python/setup/k8s)
+- [Instrumenting Node.js](../../edot-sdks/nodejs/setup/k8s)
 <!-- - [Instrumenting Dotnet](./instrumenting-dotnet.md) -->
 
 ### Namespace based annotations example
 
 The following example creates a namespace with an annotation to instrument all Pods of the namespace with `java` libraries.
 
-```
+```bash
 kubectl create namespace java-apps
 
 # Annotate app namespace
@@ -196,14 +168,14 @@ The process may vary slightly depending on the language, but it generally involv
 
 ## Advanced configuration
 
-You can apply OTEL specific configuration to your applications at two different levels:
-- At Pod/container level, by using OTEL related environment variables.
+You can apply OTel-specific configuration to your applications at two different levels:
+- At Pod/container level, by using OTel-related environment variables.
 - At `Instrumentation` object level, for example configuring different settings per language.
 
 Use cases:
 - Change the library to be injected.
 - Change the exporter endpoint.
-- Apply certain logging level settings (OTEL_LOG_LEVEL).
+- Apply certain logging level settings (`OTEL_LOG_LEVEL`).
 
 ### Adding extra Instrumentation objects
 
@@ -212,98 +184,96 @@ Consider also the creation of different `Instrumentation` objects for different 
 - Different configuration options for certain languages.
 - Trying out different versions of the SDKs.
 
-(TBD: add instructions and references about Instrumentation objects)
-
-
-## Manual instrumentation
-(TBD, in-progress)
-
-The manual instrumentation...
-Configuration requirements (does every language has its own requirements)?
-Exporter destination? HTTP vs OTLP? does each EDOT SDK support different protocols?
-
-# Troubleshooting auto-instrumentation
+## Troubleshooting auto-instrumentation
 
 1. Check the operator is running, eg
-```
-$ kubectl get pods -n opentelemetry-operator-system
-NAME                                                              READY   STATUS             RESTARTS      AGE
-opentelemetry-kube-stack-opentelemetry-operator-7b8684cfbdbv4hj   2/2     Running            0             58s
-...
-```
+
+    ```bash
+    $ kubectl get pods -n opentelemetry-operator-system
+    NAME                                                              READY   STATUS             RESTARTS      AGE
+    opentelemetry-kube-stack-opentelemetry-operator-7b8684cfbdbv4hj   2/2     Running            0             58s
+    ...
+    ```
 
 2. Check the `Instrumentation` object has been deployed, eg
-```
-$ kubectl describe Instrumentation -n opentelemetry-operator-system
-Name:         elastic-instrumentation
-Namespace:    opentelemetry-operator-system
-  ...
-Kind:         Instrumentation
-Metadata:
-  ...
-Spec:
-  Dotnet:
-    Image:  docker.elastic.co/observability/elastic-otel-dotnet:edge
-  Go:
-    Image:  ghcr.io/open-telemetry/opentelemetry-go-instrumentation/autoinstrumentation-go:v0.14.0-alpha
-  Java:
-    Image:  docker.elastic.co/observability/elastic-otel-javaagent:1.0.0
-  Nodejs:
-    Image:  docker.elastic.co/observability/elastic-otel-node:edge
-  Python:
-    Image:  docker.elastic.co/observability/elastic-otel-python:edge
-  ...
-```
+
+    ```bash
+    $ kubectl describe Instrumentation -n opentelemetry-operator-system
+    Name:         elastic-instrumentation
+    Namespace:    opentelemetry-operator-system
+    ...
+    Kind:         Instrumentation
+    Metadata:
+    ...
+    Spec:
+    Dotnet:
+        Image:  docker.elastic.co/observability/elastic-otel-dotnet:edge
+    Go:
+        Image:  ghcr.io/open-telemetry/opentelemetry-go-instrumentation/autoinstrumentation-go:v0.14.0-alpha
+    Java:
+        Image:  docker.elastic.co/observability/elastic-otel-javaagent:1.0.0
+    Nodejs:
+        Image:  docker.elastic.co/observability/elastic-otel-node:edge
+    Python:
+        Image:  docker.elastic.co/observability/elastic-otel-python:edge
+    ...
+    ```
 
 3. Check your pod is running, eg (using example running in banana namespace)
-```
-$ kubectl get pods -n banana
-NAME               READY   STATUS    RESTARTS   AGE
-example-otel-app   1/1     Running   0          104s
-```
+
+    ```bash
+    $ kubectl get pods -n banana
+    NAME               READY   STATUS    RESTARTS   AGE
+    example-otel-app   1/1     Running   0          104s
+    ```
 
 4. Check the pod has had the instrumentation initcontainer installed (for golang, container not initcontainer) and that the events show the docker image was successfully pulled and containers started
-```
-$ kubectl describe pod/example-otel-app -n banana
-Name:             example-otel-app
-Namespace:        banana
-...
-Annotations:      instrumentation.opentelemetry.io/inject-java: opentelemetry-operator-system/elastic-instrumentation
-Init Containers:
-  opentelemetry-auto-instrumentation-java:
-    Container ID:  docker://7ecdf3954263d591b994ed1c0519d16322479b1515b58c1fbbe51d3066210d99
-    Image:         docker.elastic.co/observability/elastic-otel-javaagent:1.0.0
-    Image ID:      docker-pullable://docker.elastic.co/observability/elastic-otel-javaagent@sha256:28d65d04a329c8d5545ed579d6c17f0d74800b7b1c5875e75e0efd29e210566a
+
+    ```bash
+    $ kubectl describe pod/example-otel-app -n banana
+    Name:             example-otel-app
+    Namespace:        banana
     ...
-Containers:
-  example-otel-app:
-...
-Events:
-  Type    Reason     Age   From               Message
-  ----    ------     ----  ----               -------
-  Normal  Scheduled  5m3s  default-scheduler  Successfully assigned banana/example-otel-app to docker-desktop
-  Normal  Pulled     5m3s  kubelet            Container image "docker.elastic.co/observability/elastic-otel-javaagent:1.0.0" already present on machine
-  Normal  Created    5m3s  kubelet            Created container opentelemetry-auto-instrumentation-java
-  Normal  Started    5m3s  kubelet            Started container opentelemetry-auto-instrumentation-java
-  Normal  Pulling    5m2s  kubelet            Pulling image "docker.elastic.co/demos/apm/k8s-webhook-test"
-  Normal  Pulled     5m1s  kubelet            Successfully pulled image "docker.elastic.co/demos/apm/k8s-webhook-test" in 1.139s (1.139s including waiting). Image size: 406961626 bytes.
-  Normal  Created    5m1s  kubelet            Created container example-otel-app
-  Normal  Started    5m1s  kubelet            Started container example-otel-app
-```
+    Annotations:      instrumentation.opentelemetry.io/inject-java: opentelemetry-operator-system/elastic-instrumentation
+    Init Containers:
+    opentelemetry-auto-instrumentation-java:
+        Container ID:  docker://7ecdf3954263d591b994ed1c0519d16322479b1515b58c1fbbe51d3066210d99
+        Image:         docker.elastic.co/observability/elastic-otel-javaagent:1.0.0
+        Image ID:      docker-pullable://docker.elastic.co/observability/elastic-otel-javaagent@sha256:28d65d04a329c8d5545ed579d6c17f0d74800b7b1c5875e75e0efd29e210566a
+        ...
+    Containers:
+    example-otel-app:
+    ...
+    Events:
+    Type    Reason     Age   From               Message
+    ----    ------     ----  ----               -------
+    Normal  Scheduled  5m3s  default-scheduler  Successfully assigned banana/example-otel-app to docker-desktop
+    Normal  Pulled     5m3s  kubelet            Container image "docker.elastic.co/observability/elastic-otel-javaagent:1.0.0" already present on machine
+    Normal  Created    5m3s  kubelet            Created container opentelemetry-auto-instrumentation-java
+    Normal  Started    5m3s  kubelet            Started container opentelemetry-auto-instrumentation-java
+    Normal  Pulling    5m2s  kubelet            Pulling image "docker.elastic.co/demos/apm/k8s-webhook-test"
+    Normal  Pulled     5m1s  kubelet            Successfully pulled image "docker.elastic.co/demos/apm/k8s-webhook-test" in 1.139s (1.139s including waiting). Image size: 406961626 bytes.
+    Normal  Created    5m1s  kubelet            Created container example-otel-app
+    Normal  Started    5m1s  kubelet            Started container example-otel-app
+    ```
 
-5.(a) check your pod logs - look for agent output eg
-```
-$ kubectl logs example-otel-app -n banana
-...
-[otel.javaagent 2024-10-11 13:32:44:127 +0000] [main] INFO io.opentelemetry.javaagent.tooling.VersionLogger - opentelemetry-javaagent - version: 1.0.0
-...
-```
+5. check your pod logs - look for agent output eg
 
-5.(b) if there is no obvious agent log output, restart the pod with agent log level set to debug and look for agent debug output. Setting the agent to debug is different for the different language agents.
-- All langs: add/set environment variable OTEL_LOG_LEVEL set to debug, eg
-```
-      env:
-      - name: OTEL_LOG_LEVEL
-        value: "debug"
-```
-- Java: add/set environment variable OTEL_JAVAAGENT_DEBUG set to true
+    ```bash
+    $ kubectl logs example-otel-app -n banana
+    ...
+    [otel.javaagent 2024-10-11 13:32:44:127 +0000] [main] INFO io.opentelemetry.javaagent.tooling.VersionLogger - opentelemetry-javaagent - version: 1.0.0
+    ...
+    ```
+
+5. if there is no obvious agent log output, restart the pod with agent log level set to debug and look for agent debug output. Setting the agent to debug is different for the different language agents.
+
+    - All langs: add/set environment variable `OTEL_LOG_LEVEL` set to debug, eg
+
+        ```yaml
+            env:
+            - name: OTEL_LOG_LEVEL
+                value: "debug"
+        ```
+
+    - Java: add/set environment variable OTEL_JAVAAGENT_DEBUG set to true

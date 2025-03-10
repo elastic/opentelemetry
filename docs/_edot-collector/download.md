@@ -20,7 +20,7 @@ Below are the direct download links for **EDOT Collector version {{ site.edot_ve
 | Linux (DEB)  | aarch64      | [Download](https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{ site.edot_versions.collector }}-arm64.deb) |
 | Linux (RPM)  | x86_64       | [Download](https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{ site.edot_versions.collector }}-x86_64.rpm) |
 | Linux (RPM)  | aarch64      | [Download](https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{ site.edot_versions.collector }}-aarch64.rpm) |
-https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-8.17.3-aarch64.rpm
+
 Once downloaded you can get EDOT Collector running with the below command.
 ```
 sudo ./otelcol --config otel.yml
