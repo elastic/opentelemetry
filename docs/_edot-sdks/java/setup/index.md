@@ -23,13 +23,16 @@ TODO: how to create an API key for the OTEL SDK ? Should probably be distinct fr
 
 ## Run
 
-Use the `-javaagent:` JVM argument with the path to agent jar.
+Use the `-javaagent:` JVM argument with the path to agent jar, this requires to modify the JVM arguments and restart
+the application.
 
 ```bash
 java \
   -javaagent:/path/to/agent.jar \
   -jar myapp.jar
 ```
+
+For applications deployed with Kubernetes, we recommend using [OpenTelemetry Operator](./k8s).
 
 ## Configuration
 
