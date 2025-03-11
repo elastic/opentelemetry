@@ -27,57 +27,59 @@ You can download the latest release version or snapshot version of the EDOT Java
 
 You need to have completed the steps in the [Quickstart](/quickstart/) section that corresponds to your Elastic deployment model.
 
-## Setting up the Agent
+##  Configure the Java agent
 
-1. **Configure the agent**
+The minimal configuration to send data involves setting the values for `OTEL_EXPORTER_OTLP_ENDPOINT` and `OTEL_EXPORTER_OTLP_HEADERS` environment variables.
 
-    The minimal configuration to send data involves setting the values for `OTEL_EXPORTER_OTLP_ENDPOINT` and `OTEL_EXPORTER_OTLP_HEADERS` environment variables.
+We also recommend setting the `service.name` resource attribute explicitly with `OTEL_SERVICE_NAME` as it allows to qualify captured data and group multiple service instances together.
 
-    Configuration of those environment values depends on the deployment model:
+Here is an example to set `OTEL_EXPORTER_OTLP_ENDPOINT`, `OTEL_EXPORTER_OTLP_HEADERS` and `OTEL_SERVICE_NAME` environment variables:
 
-    *Local EDOT Collector*
+```bash
+export OTEL_EXPORTER_OTLP_ENDPOINT=https://my-deployment.apm.us-west1.gcp.cloud.es.io
+export OTEL_EXPORTER_OTLP_HEADERS="Authorization=ApiKey P....l"
+export OTEL_SERVICE_NAME="my-awesome-service"
+```
 
-    EDOT Collector is accessible with `http://localhost:4318` without authentication, no further configuration is required.
+For more advanced configuration, see [Configuration](../configuration) section.
 
-    *Self-managed EDOT Collector*
+Configuration of those environment values depends on the deployment model:
 
-    `OTEL_EXPORTER_OTLP_ENDPOINT` should be set to the OTLP endpoint of your selfmanaged EDOT Collector.
+### Local EDOT Collector
+
+EDOT Collector is accessible with `http://localhost:4318` without authentication, no further configuration is required.
+The `OTEL_EXPORTER_OTLP_ENDPOINT` and `OTEL_EXPORTER_OTLP_HEADERS` environment variables do not have to be set.
+
+**Self-managed EDOT Collector**
+
+`OTEL_EXPORTER_OTLP_ENDPOINT` should be set to the OTLP endpoint of your selfmanaged EDOT Collector.
     
-    If EDOT Collector requires authentication, `OTEL_EXPORTER_OTLP_HEADERS` should be set to include `Authorization=ApiKey <ELASTIC_API_KEY>` (comma-separated key=value list).
+If EDOT Collector requires authentication, `OTEL_EXPORTER_OTLP_HEADERS` should be set to include `Authorization=ApiKey <ELASTIC_API_KEY>` (comma-separated key=value list).
 
-    *Elastic Managed OTLP endpoint*
+### Elastic Managed OTLP endpoint
 
-    Use [these guides](../../../quickstart/serverless/index) to retrieve the `<ELASTIC_OTLP_ENDPOINT>` and the `<ELASTIC_API_KEY>`.
+Use [these guides](../../../quickstart/serverless/index) to retrieve the `<ELASTIC_OTLP_ENDPOINT>` and the `<ELASTIC_API_KEY>`.
 
-    - `OTEL_EXPORTER_OTLP_ENDPOINT` should be set to `<ELASTIC_OTLP_ENDPOINT>`
-    - `OTEL_EXPORTER_OTLP_HEADERS` should be set to include `Authorization=ApiKey <ELASTIC_API_KEY>` (comma-separated key=value list).
+- `OTEL_EXPORTER_OTLP_ENDPOINT` should be set to `<ELASTIC_OTLP_ENDPOINT>`
+- `OTEL_EXPORTER_OTLP_HEADERS` should be set to include `Authorization=ApiKey <ELASTIC_API_KEY>` (comma-separated key=value list).
 
-    *Kubernetes*
+### Kubernetes
 
-    Connection to the EDOT Collector is managed by the OTel Kubernetes Operator, [follow the Quickstart Guides](../../../quickstart/index) for Kubernetes.
+Connection to the EDOT Collector is managed by the OTel Kubernetes Operator, [follow the Quickstart Guides](../../../quickstart/index) for Kubernetes.
 
+## Run the Java agent
 
-    We also recommend setting the `service.name` resource attribute explicitly with `OTEL_SERVICE_NAME` as it allows to qualify captured data and group multiple service instances together.
+Use the `-javaagent:` JVM argument with the path to agent jar, this requires to modify the JVM arguments and restart
+the application.
 
-    Here is an example to set `OTEL_EXPORTER_OTLP_ENDPOINT`, `OTEL_EXPORTER_OTLP_HEADERS` and `OTEL_SERVICE_NAME` environment variables:
+```bash
+java \
+-javaagent:/path/to/agent.jar \
+-jar myapp.jar
+```
 
-    ```bash
-    export OTEL_EXPORTER_OTLP_ENDPOINT=https://my-deployment.apm.us-west1.gcp.cloud.es.io
-    export OTEL_EXPORTER_OTLP_HEADERS="Authorization=ApiKey P....l"
-    export OTEL_SERVICE_NAME="my-awesome-service"
-    ```
+When modifying the JVM command line arguments is not possible, the `JAVA_TOOL_OPTIONS` environment variable can be used
+to provide the `-javaagent:` argument or JVM system properties. When `JAVA_TOOL_OPTIONS` is set, all JVMs will automatically 
+use it, thus special care should be taken to limit the scope to the relevant JVMs.
 
-    For more advanced configuration, see [Configuration](../configuration) section.
-
-2. **Run the Java Agent**
-
-    Use the `-javaagent:` JVM argument with the path to agent jar, this requires to modify the JVM arguments and restart
-    the application.
-
-    ```bash
-    java \
-    -javaagent:/path/to/agent.jar \
-    -jar myapp.jar
-    ```
-
-    For applications deployed with Kubernetes, we recommend using [OpenTelemetry Operator](./k8s).
+For applications deployed with Kubernetes, we recommend using [OpenTelemetry Operator](./k8s).
