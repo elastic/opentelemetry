@@ -46,6 +46,9 @@ logs collection and application monitoring.
     --values 'https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{ site.edot_versions.collector }}/deploy/helm/edot-collector/kube-stack/managed_otlp/values.yaml' \
     --version '0.3.9'
     ```
+
+    The Operator will provide a deployment of the EDOT Collector and provide the configuration environment variables, thus enabling SDKs and instrumentation to send data to the EDOT Collector without further configuration.
+
 4. **Auto-instrument Applications**
 
     Add a language-specific annotation to your namespace by replacing `<LANGUAGE>` with one of the supported values (`nodejs`, `java`, `python`, `dotnet` or `go`) in the below command. 
@@ -53,6 +56,8 @@ logs collection and application monitoring.
     ```bash
     kubectl annotate namespace YOUR_NAMESPACE instrumentation.opentelemetry.io/inject-<LANGUAGE>="opentelemetry-operator-system/elastic-instrumentation"
     ```
+
+    The OpenTelemetry Operator will automatically provide the OTLP endpoint configuration and authentication to the SDKs through environment variables.
 
     Restart your deployment to ensure the annotations and auto-instrumentations are applied.
 

@@ -24,6 +24,10 @@ parent: Quickstart
         --> https://my-prj-a1b2c3<b>.ingest.</b>eu-west-1.aws.elastic.cloud
         </code></pre>
 
+    This URL will be referred to as `ELASTIC_OTLP_ENDPOINT`, and API key (see below) will be required to use it.
+
 2. **Create an API key** 
 
     Create an API Key following [these instructions](https://www.elastic.co/guide/en/kibana/current/api-keys.html){:target="_blank"}.
+
+    This API key will be referred to as `ELASTIC_API_KEY`.
