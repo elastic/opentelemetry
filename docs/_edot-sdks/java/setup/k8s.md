@@ -12,7 +12,7 @@ This document focuses on instrumenting Java applications on Kubernetes, using th
 
 - For general knowledge about the EDOT Java SDK, refer to the [EDOT Java Intro page](../index).
 - For Java auto-instrumentation specifics, refer to [OpenTelemetry Operator Java auto-instrumentation](https://opentelemetry.io/docs/kubernetes/operator/automatic/#java).
-- For general information about instrumenting applications on kubernetes, refer to [instrumenting applications on Kubernetes](../../../use-cases/kubernetes/instrumenting-applications).
+- For general information about instrumenting applications on Kubernetes, refer to [instrumenting applications on Kubernetes](../../../use-cases/kubernetes/instrumenting-applications).
 
 ## Java agent extensions consideration
 
