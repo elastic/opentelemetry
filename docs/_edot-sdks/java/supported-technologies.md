@@ -60,3 +60,11 @@ It supports:
 
 * Tracing for requests, including GenAI-specific attributes such as token usage
 * Opt-In logging of OpenAI request and response content payloads
+
+## Elastic Universal profiling integration
+
+Universal profiling integration provides the ability to correlate traces with profiling data from the Elastic universal profiler.
+
+This feature is enabled by default on supported systems, disabled otherwise.
+
+See [universal-profiling-integration](https://github.com/elastic/elastic-otel-java/tree/main/universal-profiling-integration) for details and configuration options.
