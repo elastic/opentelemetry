@@ -25,7 +25,7 @@ The following table lists common parameters that might be relevant for your use 
 
 For more information on all available parameters and their meaning, refer to:
 * The provided `values.yaml`, which includes the default settings for the EDOT installation.
-* The official OpenTelemetry `kube-stack` Helm chart [values file](https://raw.githubusercontent.com/elastic/opentelemetry/refs/heads/{{ site.edot_versions.collector }}/resources/kubernetes/operator/helm/values.yaml), with explanations of all parameters.
+* The official OpenTelemetry `kube-stack` Helm chart [values file](https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{ site.edot_versions.collector }}/deploy/helm/edot-collector/kube-stack/values.yaml), with explanations of all parameters.
 
 ## Cert-manager integrated installation
 
@@ -39,7 +39,7 @@ Follow any of the following options to install the `opentelemetry-kube-stack` He
 
 ```bash
 helm upgrade --install --namespace opentelemetry-operator-system opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack \
---values https://raw.githubusercontent.com/elastic/opentelemetry/refs/heads/{{ site.edot_versions.collector }}/resources/kubernetes/operator/helm/values.yaml --version 0.3.3 \
+--values https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{ site.edot_versions.collector }}/deploy/helm/edot-collector/kube-stack/values.yaml --version 0.3.3 \
 --set opentelemetry-operator.admissionWebhooks.certManager.enabled=true --set opentelemetry-operator.admissionWebhooks.autoGenerateCert=null
 ```
 

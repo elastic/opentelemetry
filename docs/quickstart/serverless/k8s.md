@@ -43,7 +43,7 @@ logs collection and application monitoring.
     ```bash
     helm install opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack \
     --namespace opentelemetry-operator-system \
-    --values 'https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/{{ site.edot_versions.collector }}/deploy/helm/edot-collector/kube-stack/managed_otlp/values.yaml' \
+    --values 'https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{ site.edot_versions.collector }}/deploy/helm/edot-collector/kube-stack/managed_otlp/values.yaml' \
     --version '0.3.9'
     ```
 4. **Auto-instrument Applications**

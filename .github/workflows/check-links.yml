@@ -1,0 +1,32 @@
+name: Check links in docs pages
+
+on:
+  pull_request:
+    types: 
+      - opened
+      - synchronize
+    paths:
+      - 'docs/**'
+
+jobs:
+  # Build job
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Ruby
+        # https://github.com/ruby/setup-ruby/releases/tag/v1.207.0
+        uses: ruby/setup-ruby@4a9ddd6f338a97768b8006bf671dfbad383215f4
+        with:
+          ruby-version: '3.4.1'
+          bundler-cache: true
+          cache-version: 0
+      - name: Install Dependencies
+        run: |
+          cd docs
+          make install
+      - name: Check Links
+        run: |
+          cd docs
+          make check-links

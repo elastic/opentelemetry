@@ -1,0 +1,49 @@
+{%- if grouped_components['Receivers'] -%}
+### Receivers
+
+| Component | Version |
+|:---|---|
+{% for comp in grouped_components['Receivers'] -%}
+| {{ comp['name'] }} | {{ comp['version'] }} |
+{% endfor %}
+{% endif %}
+
+{%- if grouped_components['Exporters'] -%}
+### Exporters
+
+| Component | Version |
+|:---|---|
+{% for comp in grouped_components['Exporters'] -%}
+| {{ comp['name'] }} | {{ comp['version'] }} |
+{% endfor %}
+{% endif %}
+
+{%- if grouped_components['Processors'] -%}
+### Processors
+
+| Component | Version |
+|:---|---|
+{% for comp in grouped_components['Processors'] -%}
+| {{ comp['name'] }} | {{ comp['version'] }} |
+{% endfor %}
+{% endif %}
+
+{%- if grouped_components['Connectors'] -%}
+### Connectors
+
+| Component | Version |
+|:---|---|
+{% for comp in grouped_components['Connectors'] -%}
+| {{ comp['name'] }} | {{ comp['version'] }} |
+{% endfor %}
+{% endif %}
+
+{%- if grouped_components['Extensions'] -%}
+### Extensions
+
+| Component | Version |
+|:---|---|
+{% for comp in grouped_components['Extensions'] -%}
+| {{ comp['name'] }} | {{ comp['version'] }} |
+{% endfor %}
+{%- endif -%}
