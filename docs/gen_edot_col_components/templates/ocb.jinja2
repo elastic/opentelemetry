@@ -7,36 +7,36 @@ dist:
 
 {% if grouped_components['Extensions'] -%}
 extensions:
-{% for comp in grouped_components['Extensions'] -%}
+{%- for comp in grouped_components['Extensions'] %}
   - gomod: {{ comp['dep'] }}
-{% endfor %}
-{% endif %}
+{%- endfor %}
+{%- endif %}
 
-{%- if grouped_components['Receivers'] -%}
+{% if grouped_components['Receivers'] -%}
 receivers:
-{% for comp in grouped_components['Receivers'] -%}
+{%- for comp in grouped_components['Receivers'] %}
   - gomod: {{ comp['dep'] }}
-{% endfor %}
-{% endif %}
+{%- endfor %}
+{%- endif %}
 
-{%- if grouped_components['Exporters'] -%}
+{% if grouped_components['Exporters'] -%}
 exporters:
-{% for comp in grouped_components['Exporters'] -%}
+{%- for comp in grouped_components['Exporters'] %}
   - gomod: {{ comp['dep'] }}
-{% endfor %}
-{% endif %}
+{%- endfor %}
+{%- endif %}
 
-{%- if grouped_components['Processors'] -%}
+{% if grouped_components['Processors'] -%}
 processors:
-{% for comp in grouped_components['Processors'] -%}
+{%- for comp in grouped_components['Processors'] %}
   - gomod: {{ comp['dep'] }}
-{% endfor %}
-{% endif %}
+{%- endfor %}
+{%- endif %}
 
-{%- if grouped_components['Connectors'] -%}
+{% if grouped_components['Connectors'] -%}
 connectors:
-{% for comp in grouped_components['Connectors'] -%}
+{%- for comp in grouped_components['Connectors'] %}
   - gomod: {{ comp['dep'] }}
-{% endfor %}
-{%- endif -%}
+{%- endfor %}
+{%- endif %}
 ```

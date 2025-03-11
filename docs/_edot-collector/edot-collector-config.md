@@ -4,6 +4,10 @@ layout: default
 nav_order: 3
 ---
 
+## Upstream collector configuration examples
+
+Use the Elastic [example configurations](https://github.com/elastic/elastic-agent/tree/main/internal/pkg/otel/samples) as a reference when configuring your upstream collector.
+
 ## Collector Configuration
 
 The EDOT Collector uses a YAML-based configuration file. Below is a sample configuration:
