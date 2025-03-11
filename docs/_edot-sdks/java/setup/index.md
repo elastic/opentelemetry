@@ -57,15 +57,14 @@ You need to have completed the steps in the [Quickstart](/quickstart/) section t
     Connection to the EDOT Collector is managed by the OTel Kubernetes Operator, [follow the Quickstart Guides](../../../quickstart/index) for Kubernetes.
 
 
-    We also recommend setting the `service.name` resource attribute explicitly:
+    We also recommend setting the `service.name` resource attribute explicitly with `OTEL_SERVICE_NAME` as it allows to qualify captured data and group multiple service instances together.
 
-      TODO
-
-    Set the `OTEL_EXPORTER_OTLP_ENDPOINT` and `OTEL_EXPORTER_OTLP_HEADERS` environment variables. For example:
+    Here is an example to set `OTEL_EXPORTER_OTLP_ENDPOINT`, `OTEL_EXPORTER_OTLP_HEADERS` and `OTEL_SERVICE_NAME` environment variables:
 
     ```bash
     export OTEL_EXPORTER_OTLP_ENDPOINT=https://my-deployment.apm.us-west1.gcp.cloud.es.io
     export OTEL_EXPORTER_OTLP_HEADERS="Authorization=ApiKey P....l"
+    export OTEL_SERVICE_NAME="my-awesome-service"
     ```
 
     For more advanced configuration, see [Configuration](../configuration) section.
