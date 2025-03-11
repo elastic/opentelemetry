@@ -48,7 +48,7 @@ See [span-stacktrace](https://github.com/open-telemetry/opentelemetry-java-contr
 
 Experimental runtime metrics are _enabled_ by default.
 
-Set `otel.instrumentation.runtime-telemetry.emit-experimental-telemetry` to `false` to disable them.
+Set `OTEL_INSTRUMENTATION_RUNTIME_TELEMETRY_EMIT_EXPERIMENTAL_TELEMETRY` to `false` to disable them.
 
 ## OpenAI Client instrumentation (tech preview)
 
