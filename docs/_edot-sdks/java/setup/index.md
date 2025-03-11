@@ -7,49 +7,76 @@ parent: EDOT Java
 
 # Setting up the EDOT Java Agent
 
+**Kubernetes**
+
+For Kubernetes we recommend using the OTel Kubernetes Operator that also manages the auto-instrumentation of Java applications. Follow the [Quickstart Guide](../../../quickstart/index) for Kubernetes or learn more about [instrumentation details on Kubernetes for Java](./k8s). 
+
+**All other environments**
+
+Follow the Java setup guide below for all other environments.
+
 ## Download
 
-Latest release: [![Maven Central](https://img.shields.io/maven-central/v/co.elastic.otel/elastic-otel-javaagent?label=elastic-otel-javaagent)](https://mvnrepository.com/artifact/co.elastic.otel/elastic-otel-javaagent/latest)
+You can download the latest release version or snapshot version of the EDOT Java Agent from the following links:
 
-Latest snapshot: [![Sonatype Nexus](https://img.shields.io/nexus/s/co.elastic.otel/elastic-otel-javaagent?server=https%3A%2F%2Foss.sonatype.org&label=elastic-otel-javaagent)](https://oss.sonatype.org/service/local/artifact/maven/redirect?r=snapshots&g=co.elastic.otel&a=elastic-otel-javaagent&v=LATEST)
+| Latest Release | Latest Snapshot |
+|:---:|:---:|
+| [![Maven Central](https://img.shields.io/maven-central/v/co.elastic.otel/elastic-otel-javaagent?label=elastic-otel-javaagent&style=for-the-badge)](https://mvnrepository.com/artifact/co.elastic.otel/elastic-otel-javaagent/latest) | [![Sonatype Nexus](https://img.shields.io/nexus/s/co.elastic.otel/elastic-otel-javaagent?server=https%3A%2F%2Foss.sonatype.org&label=elastic-otel-javaagent&style=for-the-badge)](https://oss.sonatype.org/service/local/artifact/maven/redirect?r=snapshots&g=co.elastic.otel&a=elastic-otel-javaagent&v=LATEST) |
 
 ## Prerequisites
 
 You need to have completed the steps in the [Quickstart](/quickstart/) section that corresponds to your Elastic deployment model.
 
-## Run
+## Setting up the Agent
 
-Use the `-javaagent:` JVM argument with the path to agent jar, this requires to modify the JVM arguments and restart
-the application.
+1. **Configure the agent**
 
-```bash
-java \
-  -javaagent:/path/to/agent.jar \
-  -jar myapp.jar
-```
+    The minimal configuration to send data involves setting the values for `OTEL_EXPORTER_OTLP_ENDPOINT` and `OTEL_EXPORTER_OTLP_HEADERS` environment variables.
 
-For applications deployed with Kubernetes, we recommend using [OpenTelemetry Operator](./k8s).
+    Configuration of those environment values depends on the deployment model:
 
-## Minimal configuration
+    *Local EDOT Collector*
 
-The minimal configuration to send data involves setting the values for `OTEL_EXPORTER_OTLP_ENDPOINT` and `OTEL_EXPORTER_OTLP_HEADERS` environment variables.
+    EDOT Collector is accessible with `http://localhost:4318` without authentication, no further configuration is required.
 
-Configuration of those environment values depends on the deployment model:
-- EDOT Collector running on the application host, accessible with `http://localhost:4318` without authentication, no further configuration is required.
-- EDOT Collector managed by the OpenTelemetry Kubernetes Operator
-  - `OTEL_EXPORTER_OTLP_ENDPOINT` and `OTEL_EXPORTER_OTLP_HEADERS` environment variables are automatically provided by the Operator, no further configuration is required.
-- Elastic Managed OTLP endpoint (Elastic Cloud Serverless):
-  - `OTEL_EXPORTER_OTLP_ENDPOINT` should be set to `<ELASTIC_OTLP_ENDPOINT>`
-  - `OTEL_EXPORTER_OTLP_HEADERS` should be set to include `Authorization=ApiKey <ELASTIC_API_KEY>` (comma-separated key=value list).
-- Self-managed EDOT Collector:
-  - `OTEL_EXPORTER_OTLP_ENDPOINT` should be set to the OTLP endpoint of EDOT Collector
-  - `OTEL_EXPORTER_OTLP_HEADERS` should be set to include `Authorization=ApiKey <ELASTIC_API_KEY>` (comma-separated key=value list).
+    *Self-managed EDOT Collector*
 
-For example:
+    `OTEL_EXPORTER_OTLP_ENDPOINT` should be set to the OTLP endpoint of your selfmanaged EDOT Collector.
 
-```shell
-export OTEL_EXPORTER_OTLP_ENDPOINT=https://my-deployment.apm.us-west1.gcp.cloud.es.io
-export OTEL_EXPORTER_OTLP_HEADERS="Authorization=ApiKey P....l"
-```
+    *Elastic Managed OTLP endpoint*
 
-For more advanced configuration, see [Configuration](../configuration) section.
+    Use [these guides](../../../quickstart/serverless/index) to retrieve the `<ELASTIC_OTLP_ENDPOINT>` and the `<ELASTIC_API_KEY>`.
+
+    - `OTEL_EXPORTER_OTLP_ENDPOINT` should be set to `<ELASTIC_OTLP_ENDPOINT>`
+    - `OTEL_EXPORTER_OTLP_HEADERS` should be set to include `Authorization=ApiKey <ELASTIC_API_KEY>` (comma-separated key=value list).
+
+    *Kubernetes*
+
+    Connection to the EDOT Collector is managed by the OTel Kubernetes Operator, [follow the Quickstart Guides](../../../quickstart/index) for Kubernetes.
+
+
+    We also recommend setting the `service.name` resource attribute explicitly:
+
+      TODO
+
+    Set the `OTEL_EXPORTER_OTLP_ENDPOINT` and `OTEL_EXPORTER_OTLP_HEADERS` environment variables. For example:
+
+    ```bash
+    export OTEL_EXPORTER_OTLP_ENDPOINT=https://my-deployment.apm.us-west1.gcp.cloud.es.io
+    export OTEL_EXPORTER_OTLP_HEADERS="Authorization=ApiKey P....l"
+    ```
+
+    For more advanced configuration, see [Configuration](../configuration) section.
+
+2. **Run the Java Agent**
+
+    Use the `-javaagent:` JVM argument with the path to agent jar, this requires to modify the JVM arguments and restart
+    the application.
+
+    ```bash
+    java \
+    -javaagent:/path/to/agent.jar \
+    -jar myapp.jar
+    ```
+
+    For applications deployed with Kubernetes, we recommend using [OpenTelemetry Operator](./k8s).
