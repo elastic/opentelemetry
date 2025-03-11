@@ -42,6 +42,8 @@ You need to have completed the steps in the [Quickstart](/quickstart/) section t
     *Self-managed EDOT Collector*
 
     `OTEL_EXPORTER_OTLP_ENDPOINT` should be set to the OTLP endpoint of your selfmanaged EDOT Collector.
+    
+    If EDOT Collector requires authentication, `OTEL_EXPORTER_OTLP_HEADERS` should be set to include `Authorization=ApiKey <ELASTIC_API_KEY>` (comma-separated key=value list).
 
     *Elastic Managed OTLP endpoint*
 
