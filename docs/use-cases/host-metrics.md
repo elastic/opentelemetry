@@ -6,3 +6,5 @@ parent: Use Cases
 ---
 
 # Collecting Host Metrics with EDOT
+
+🚧 Coming soon

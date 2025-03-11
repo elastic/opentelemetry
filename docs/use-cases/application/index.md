@@ -1,10 +1,10 @@
 ---
-title: Collecting Traces
+title: Instrumenting Applications
 layout: default
 nav_order: 3
 parent: Use Cases
 ---
 
-# Collecting Application Traces with EDOT
+# Instrumenting Applications with EDOT
 
 🚧 Coming soon
