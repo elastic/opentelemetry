@@ -63,7 +63,7 @@ It supports:
 
 ## Elastic Universal profiling integration
 
-Universal profiling integration provides the ability to correlate traces with profiling data from the Elastic universal profiler.
+[Universal Profiling](https://www.elastic.co/observability/universal-profiling) integration provides the ability to correlate traces with profiling data from the Elastic universal profiler.
 
 This feature is enabled by default on supported systems, disabled otherwise.
 
