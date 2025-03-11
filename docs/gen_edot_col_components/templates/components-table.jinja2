@@ -1,49 +1,37 @@
-{%- if grouped_components['Receivers'] -%}
-### Receivers
 
-| Component | Version |
-|:---|---|
+| Component | GitHub Repo | Version |
+|:---|:---|:---|
+{%if grouped_components['Receivers'] -%}
+|***Receivers***|||
 {% for comp in grouped_components['Receivers'] -%}
-| {{ comp['name'] }} | {{ comp['version'] }} |
+| [{{ comp['name'] }}]({{ comp['html_url'] }}) | {{ comp['repo_link'] }} | {{ comp['version'] }} |
 {% endfor %}
-{% endif %}
+{%- endif -%}
 
 {%- if grouped_components['Exporters'] -%}
-### Exporters
-
-| Component | Version |
-|:---|---|
+|***Exporters***|||
 {% for comp in grouped_components['Exporters'] -%}
-| {{ comp['name'] }} | {{ comp['version'] }} |
+| [{{ comp['name'] }}]({{ comp['html_url'] }}) | {{ comp['repo_link'] }} | {{ comp['version'] }} |
 {% endfor %}
-{% endif %}
+{%- endif -%}
 
 {%- if grouped_components['Processors'] -%}
-### Processors
-
-| Component | Version |
-|:---|---|
+|***Processors***|||
 {% for comp in grouped_components['Processors'] -%}
-| {{ comp['name'] }} | {{ comp['version'] }} |
+| [{{ comp['name'] }}]({{ comp['html_url'] }}) | {{ comp['repo_link'] }} | {{ comp['version'] }} |
 {% endfor %}
-{% endif %}
+{%- endif -%}
 
 {%- if grouped_components['Connectors'] -%}
-### Connectors
-
-| Component | Version |
-|:---|---|
+|***Connectors***|||
 {% for comp in grouped_components['Connectors'] -%}
-| {{ comp['name'] }} | {{ comp['version'] }} |
+| [{{ comp['name'] }}]({{ comp['html_url'] }}) | {{ comp['repo_link'] }} | {{ comp['version'] }} |
 {% endfor %}
-{% endif %}
+{%- endif -%}
 
 {%- if grouped_components['Extensions'] -%}
-### Extensions
-
-| Component | Version |
-|:---|---|
+|***Extensions***|||
 {% for comp in grouped_components['Extensions'] -%}
-| {{ comp['name'] }} | {{ comp['version'] }} |
+| [{{ comp['name'] }}]({{ comp['html_url'] }}) | {{ comp['repo_link'] }} | {{ comp['version'] }} |
 {% endfor %}
 {%- endif -%}
