@@ -49,3 +49,14 @@ See [span-stacktrace](https://github.com/open-telemetry/opentelemetry-java-contr
 Experimental runtime metrics are _enabled_ by default.
 
 Set `otel.instrumentation.runtime-telemetry.emit-experimental-telemetry` to `false` to disable them.
+
+## OpenAI Client instrumentation (tech preview)
+
+Instrumentation for the [official OpenAI Java Client](https://github.com/openai/openai-java).
+
+Note that this instrumentation is currently in **tech preview**, because the OpenAI client itself is still in **beta**.
+
+It supports:
+
+* Tracing for requests, including GenAI-specific attributes such as token usage
+* Opt-In logging of OpenAI request and response content payloads
