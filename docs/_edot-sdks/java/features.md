@@ -28,7 +28,7 @@ The EDOT Java agent includes the following resource attributes providers from [o
 The EDOT Java agent includes the [Inferred Spans Extension](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/inferred-spans)
 from [opentelemetry-java-contrib](https://github.com/open-telemetry/opentelemetry-java-contrib/).
 
-This extension provides the ability to enhance the traces by creating spans from [async-profiler](https://github.com/async-profiler/async-profiler) data.
+This extension provides the ability to enhance the traces by creating spans from [async-profiler](https://github.com/async-profiler/async-profiler) data without the need of explicit instrumentation of corresponding spans.
 
 This feature is disabled by default and can be enabled by setting `OTEL_INFERRED_SPANS_ENABLED` to `true`.
 
