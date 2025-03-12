@@ -1,10 +1,10 @@
 ---
 title: Release Notes
 layout: default
-nav_order: 7
+nav_order: 8
 parent: EDOT Java
 ---
 
 # Release Notes for the EDOT Java Agent
 
-TODO
+Release notes are published [on Github](https://github.com/elastic/elastic-otel-java/releases)
