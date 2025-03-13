@@ -15,11 +15,9 @@ This guide assumes you have tested the other components in the route from applic
 
 Ensure you have set a service name (eg `-Dotel.service.name=Service1` or environment variable `OTEL_SERVICE_NAME` set to `Service1`) otherwise by default the data (traces, metrics, logs) will be sent to `unknown_service_java` - you may be getting data but it may all be under that service
 
-## Connectivity
+## Connectivity to endpoint
 
-### To endpoint
-
-1. Check _from_ the host/VM/pod/container/image running the app, that connectivity is available to the APM server or collector. The examples here use a default URL, which you should replace with the endpoint you are using:
+Check _from_ the host/VM/pod/container/image running the app, that connectivity is available to the APM server or collector. The examples here use a default URL, which you should replace with the endpoint you are using:
 
 - OpenTelemetry or EDOT collector without authentication: `curl -i http://127.0.0.1:4318/v1/traces -X POST -d '{}' -H content-type:application/json`
 - APM server without authentication: `curl --verbose -X GET http://127.0.0.1:8200`
