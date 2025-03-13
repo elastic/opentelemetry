@@ -27,4 +27,4 @@ Choose the environment and target system from the [quick start overview](../../q
 
 2. **Configuration**
 
-See the [Configuration section in the corresponding EDOT SDK](../../_edot-sdks/index.md) to enable and disable specific instrumentations and to see what instrumentation is enabled by default.
+See the [Configuration section in the corresponding EDOT SDK](../../_edot-sdks/index) to enable and disable specific instrumentations and to see what instrumentation is enabled by default.
