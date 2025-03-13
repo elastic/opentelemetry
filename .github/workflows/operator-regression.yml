@@ -12,7 +12,11 @@ permissions:
 
 jobs:
   integration-test:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        #os: [observability-linux-2-arm64, ubuntu-latest]
+        os: [ubuntu-latest]
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -22,6 +26,33 @@ jobs:
       - name: Create Kind cluster and local Docker registry
         run:
            bash test/operator/kind-with-registry.sh
+
+      - name: Start Elasticsearch
+        run: |
+           docker network create elastic
+           #Local elasticsearch without SSL on http://localhost:9200
+           docker run --name es01 --net elastic -p 9200:9200 -m 1GB -e xpack.security.enabled=false -e xpack.security.enrollment.enabled=false -e discovery.type=single-node docker.elastic.co/elasticsearch/elasticsearch:8.16.1 1>es.log 2>&1 &
+           bash test/operator/utilities/wait_for_es_http_ready.bash http://localhost:9200
+
+      - name: Start Collector
+        run: |
+           #Elastic agent from download instructions
+           curl -L -O https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-8.16.1-linux-x86_64.tar.gz
+           tar xzvf elastic-agent-*-linux-x86_64.tar.gz
+           cd elastic-agent-*-linux-x86_64/
+           #Use latext collector config for elastic agent
+           curl -L -O https://raw.githubusercontent.com/elastic/elastic-agent/refs/heads/main/internal/pkg/otel/samples/linux/logs_metrics_traces.yml
+           #bind to ANY rather than LOOPBACK so that the pods can connect
+           sed -e 's/http:/http:\n        endpoint: 0.0.0.0:4318/' logs_metrics_traces.yml > logs_metrics_traces2.yml
+           export STORAGE_DIR=/var/tmp
+           export ELASTIC_ENDPOINT=http://localhost:9200
+           export ELASTIC_API_KEY=nothing
+           sudo -E ./elastic-agent otel --config logs_metrics_traces2.yml 1>collector.log 2>&1 &
+           bash ../test/operator/utilities/wait_for_log_entry.bash collector.log "elastic agent collector" "Everything is ready"
+
+      - name: Test Collector
+        run: |
+          echo "Nothing here yet"
 
       - name: Create Test Images
         run: |
@@ -36,7 +67,7 @@ jobs:
       - name: Set up Helm
         uses: azure/setup-helm@v4
         with:
-          version: v3.11.2
+          version: v3.13.3
 
       - name: Install Operator
         run: |
@@ -47,13 +78,14 @@ jobs:
           bash test/operator/wait_for_pod_start.sh opentelemetry-operator-system opentelemetry-operator 2/2 1
           kubectl get pods -A
 
-      - name: Start And Test Collector Skeleton
-        run: |
-          echo "Nothing here yet"
-
       - name: Start Test Images
         run: |
+          HOST_IP=$(hostname -I | awk '{print $1}')
+          echo "using host ip $HOST_IP"
+          sed -e "s/REPLACE/$HOST_IP/" test/operator/utilities/endpoint.yml > endpoint.yml
           kubectl create namespace banana
+          kubectl apply -f test/operator/utilities/dummyservice.yml
+          kubectl apply -f endpoint.yml
           for t in ${AGENT_TESTS[@]}
           do
             if [ "x$t" = "xgo" ]; then   CONTAINER_READY="2/2"; else   CONTAINER_READY="1/1"; fi
@@ -61,6 +93,9 @@ jobs:
             echo "Starting pod for $t"
             kubectl create -f test/operator/$t/test-app.yaml
             bash test/operator/wait_for_pod_start.sh banana $t-test-app $CONTAINER_READY 1
+            kubectl logs pod/$t-test-app -n banana
             bash test/operator/wait_for_agent_start.sh banana $t-test-app "$AGENT_START_GREP"
+            bash test/operator/utilities/wait_for_es_transaction.bash http://localhost:9200 $t-test-app "kubectl logs pod/$t-test-app -n banana"
+            kubectl logs pod/$t-test-app -n banana
             kubectl delete -f test/operator/$t/test-app.yaml
           done
