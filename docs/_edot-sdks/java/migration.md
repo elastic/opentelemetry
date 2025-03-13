@@ -11,11 +11,13 @@ This documentation describes how to update applications using the [Elastic APM J
 
 ## Advantages of using EDOT Java agent
 
-TODO
+- Allows to capture, send, transform and store data in an OpenTelemetry native way. This includes for example data following semantic conventions or ability to use intermediate collectors and processors.
+- OpenTelemetry Java Instrumentation provides a broad coverage of libraries and frameworks.
 
 ## Limitations
 
-TODO
+- EDOT Java agent and OpenTelemetry Java instrumentation are only compatible with Java 8 and later.
+- Support for LDAP client instrumentation is not available yet.
 
 ## Migration steps
 
