@@ -1,3 +1,9 @@
+---
+title: LLM Observability
+layout: default
+nav_order: 5
+parent: Use Cases
+---
 # LLM Observability with EDOT
 
 We currently support LLM observability with our EDOT Java, EDOT Node.js and EDOT Python as tech preview.
