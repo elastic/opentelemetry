@@ -17,7 +17,7 @@ This quick start describes the setup and collection of OpenTelemetry data for LL
 
 1. **Setup**
 
-Choose the environment and target system from the [quick start overview](../../quickstart/index.md) and follow the setup instructions for your environment, target system and to instrument your LLM application. The instrumentation for the supported technologies is enabled by default.
+Choose the environment and target system from the [quick start overview](../../quickstart/index) and follow the setup instructions to instrument your LLM application. The instrumentation for the supported technologies is enabled by default.
 
 2. **Configuration**
 
