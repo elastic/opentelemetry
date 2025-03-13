@@ -19,13 +19,14 @@ TODO
 
 ## Migration steps
 
-- remove the `-javaagent:` argument containing [Elastic APM Java agent]([Elastic APM Java agent](https://www.elastic.co/guide/en/apm/agent/java/current/index.html) from the JVM arguments
+- remove the `-javaagent:` argument containing [Elastic APM Java agent](https://www.elastic.co/guide/en/apm/agent/java/current/index.html) from the JVM arguments
 - replace configuration options using [reference](#option-reference) below, see [configuration](./configuration) for ways to provide those.
-- add `-javaagent:` argument to the JVM arguments to use EDOT Java agent.
+- add `-javaagent:` argument to the JVM arguments to use EDOT Java or follow [Kubernetes instructions](./setup/k8s) if applicable.
 
 ## Option reference
 
-This list contains APM Java agent configuration options that can be migrated to EDOT Java agent configuration.
+This list contains APM Java agent configuration options that can be migrated to EDOT Java agent configuration because
+they have an equivalent in OpenTelemetry:
 
 * [server_url](#server_url)
 * [server_urls](#server_urls)
