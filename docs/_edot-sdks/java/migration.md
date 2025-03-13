@@ -42,6 +42,7 @@ they have an equivalent in OpenTelemetry:
 * [service_version](#service_version)
 * [environment](#environment)
 * [global_labels](#global_labels)
+* [trace_methods](#trace_methods)
 
 ### `server_url`
 
@@ -94,4 +95,8 @@ For example: `OTEL_RESOURCE_ATTRIBUTES=deployment.environment=testing`.
 The Elastic [`global_labels`](https://www.elastic.co/guide/en/apm/agent/java/current/config-core.html#config-global-labels) option corresponds to adding `key=value` comma separated pairs in [OTEL_RESOURCE_ATTRIBUTES](https://opentelemetry.io/docs/concepts/sdk-configuration/general-sdk-configuration/#otel_resource_attributes).
 
 For example: `OTEL_RESOURCE_ATTRIBUTES=alice=first,bob=second`. Such labels will result in labels.key=value attributes on the server, e.g. labels.alice=first
+
+### `trace_methods`
+
+The Elastic [`trace_methods`] option can be replaced by the [`OTEL_INSTRUMENTATION_METHODS_INCLUDE`](https://opentelemetry.io/docs/zero-code/java/agent/annotations/#creating-spans-around-methods-with-otelinstrumentationmethodsinclude) OpenTelemetry option, however the syntax is different and the ability to use wildcards is more limited.
 
