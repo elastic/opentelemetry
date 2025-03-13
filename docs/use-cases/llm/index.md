@@ -15,7 +15,7 @@ We currently support LLM observability with our EDOT Java, EDOT Node.js and EDOT
 | OpenAI Client | :red_circle: | :red_circle: | :red_circle: |
 | AWS Bedrock | :red_circle: | :red_circle: | :red_circle: |
 
-See the [Supported Technologies section in the corresponding EDOT SDK](../../_edot-sdks/index.md) for detailed information on supported versions.
+See the [Supported Technologies section in the corresponding EDOT SDK](../../_edot-sdks/index) for detailed information on supported versions.
 
 # Quickstart
 
