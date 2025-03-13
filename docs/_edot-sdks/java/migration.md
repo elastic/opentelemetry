@@ -7,12 +7,14 @@ parent: EDOT Java
 
 # Migrating to EDOT Java from the Elastic Java Agent
  
-This documentation describes how to update applications using the [Elastic APM Java agent](https://www.elastic.co/guide/en/apm/agent/java/current/index.html) to use the Elastic Distribution of OpenTelemetry Java (EDOT Java).
+This documentation describes how to update applications that are currently using the [Elastic APM Java agent](https://www.elastic.co/guide/en/apm/agent/java/current/index.html) to use the Elastic Distribution of OpenTelemetry Java (EDOT Java).
 
 ## Advantages of using EDOT Java agent
 
-- Allows to capture, send, transform and store data in an OpenTelemetry native way. This includes for example ability to use all features of the OpenTelemetry SDK for manual tracing, data following semantic conventions or ability to use intermediate collectors and processors.
+- Allows to capture, send, transform and store data in an OpenTelemetry native way. This includes for example the ability to use all features of the OpenTelemetry SDK for manual tracing, data following semantic conventions or ability to use intermediate collectors and processors.
 - OpenTelemetry Java Instrumentation provides a broad coverage of libraries and frameworks.
+- EDOT Java is a fully compatible drop-in replacement for the OpenTelemetry Java Agent
+- No vendor lock-in through proprietary instrumentation or agent
 
 ## Limitations
 
@@ -21,7 +23,7 @@ This documentation describes how to update applications using the [Elastic APM J
 - Usages of the [Elastic APM Agent API](https://www.elastic.co/guide/en/apm/agent/java/current/public-api.html) require migration to OpenTelemetry API
   - for [Annotation API](https://www.elastic.co/guide/en/apm/agent/java/current/public-api.html#api-annotation) see [OpenTelemetry Annotations](https://opentelemetry.io/docs/zero-code/java/agent/annotations/).
   - for [Transaction API](https://www.elastic.co/guide/en/apm/agent/java/current/public-api.html#api-transaction) see [OpenTelemetry API](https://opentelemetry.io/docs/zero-code/java/agent/api/).
-  - Migration of application code is _not strictly required_ when deploying EDOT agent, the only possible impact is missing spans, transactions and metrics that were created explicitly with those. The broader coverage of OpenTelemetry Instrumentation is expected to compensate previously unsupported libraries by Elastic APM Java agent, but it does not for custom application code that relies on manual tracing.
+  - Note that migration of application code using these APIs and annotations is _not strictly required_ when deploying the EDOT agent. If not migrated, the spans, transactions and metrics that were previously explicitly created with those custom API calls and annotations, will no longer be generated. The broader OpenTelemetry instrumentation coverage may replace the need for some or all of these custom code changes.
 
 ## Migration steps
 
@@ -29,6 +31,8 @@ This documentation describes how to update applications using the [Elastic APM J
 - remove the `-javaagent:` argument containing [Elastic APM Java agent](https://www.elastic.co/guide/en/apm/agent/java/current/index.html) from the JVM arguments
 - replace configuration options using [reference](#option-reference) below, see [configuration](./configuration) for ways to provide those.
 - add `-javaagent:` argument to the JVM arguments to use EDOT Java and restart the application or follow [Kubernetes instructions](./setup/k8s) if applicable.
+- there is currently no EDOT equivalent for starting the agent with the [remote attach](https://www.elastic.co/guide/en/apm/agent/java/current/setup-attach-cli.html) capability. The `-javaagent:` option is the preferred startup mechanism.
+- there is a migration path for starting the agent with [self attach](https://www.elastic.co/guide/en/apm/agent/java/current/setup-attach-api.html), which is to use [runtime attachment](https://github.com/open-telemetry/opentelemetry-java-contrib/blob/main/runtime-attach/README.md). 
 
 ## Option reference
 
