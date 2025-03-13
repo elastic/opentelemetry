@@ -24,9 +24,10 @@ This documentation describes how to update applications using the [Elastic APM J
 
 ## Migration steps
 
+- (optional) migrate usages of Elastic APM Agent API with OpenTelemetry API in the application source code.
 - remove the `-javaagent:` argument containing [Elastic APM Java agent](https://www.elastic.co/guide/en/apm/agent/java/current/index.html) from the JVM arguments
 - replace configuration options using [reference](#option-reference) below, see [configuration](./configuration) for ways to provide those.
-- add `-javaagent:` argument to the JVM arguments to use EDOT Java or follow [Kubernetes instructions](./setup/k8s) if applicable.
+- add `-javaagent:` argument to the JVM arguments to use EDOT Java and restart the application or follow [Kubernetes instructions](./setup/k8s) if applicable.
 
 ## Option reference
 
