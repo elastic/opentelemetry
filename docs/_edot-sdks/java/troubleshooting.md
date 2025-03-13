@@ -39,9 +39,6 @@ The APM server should produce output similar to
 }
 ```
 
-### Authentication
-
-In all cases, use the "APM server on https" endpoint connectivity test described above to confirm you are using the correct credentials
 
 ## Is it the agent?
 
