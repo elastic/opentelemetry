@@ -10,6 +10,7 @@ parent: Customization
 The EDOT Collector comes with embedded Collector components from the [OTel Collector Core](https://github.com/open-telemetry/opentelemetry-collector), 
 [OTel Collector Contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib) and the [Elastic Collector Components](https://github.com/elastic/opentelemetry-collector-components) repositories. 
 
+<!-- DO NOT DELETE THIS SECTION, TAGS ARE REQUIRED FOR GENERATION-->
 <!-- start:edot-collector-components-table -->
 
 | Component | GitHub Repo | Version |
