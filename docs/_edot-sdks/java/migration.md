@@ -21,6 +21,7 @@ This documentation describes how to update applications using the [Elastic APM J
 - Usages of the [Elastic APM Agent API](https://www.elastic.co/guide/en/apm/agent/java/current/public-api.html) require migration to OpenTelemetry API
   - for [Annotation API](https://www.elastic.co/guide/en/apm/agent/java/current/public-api.html#api-annotation) see [OpenTelemetry Annotations](https://opentelemetry.io/docs/zero-code/java/agent/annotations/).
   - for [Transaction API](https://www.elastic.co/guide/en/apm/agent/java/current/public-api.html#api-transaction) see [OpenTelemetry API](https://opentelemetry.io/docs/zero-code/java/agent/api/).
+  - Migration of application code is _not strictly required_ when deploying EDOT agent, the only possible impact is missing spans, transactions and metrics that were created explicitly with those. The broader coverage of OpenTelemetry Instrumentation is expected to compensate previously unsupported libraries by Elastic APM Java agent, but it does not for custom application code that relies on manual tracing.
 
 ## Migration steps
 
