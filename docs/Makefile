@@ -1,5 +1,5 @@
-.PHONY: generate-collector-components
-generate-collector-components: 
+.PHONY: generate
+generate: 
 	cd gen_edot_col_components && pip install -r requirements.txt && python3 render_md.py
 
 .PHONY: check-md-gen
@@ -19,5 +19,5 @@ check-links: build-site
 	bundle exec htmlproofer --assume_extension '.html' --swap-urls '^/opentelemetry/:/' --ignore_urls '/http:\/\/localhost:4000.*/','/https:\/\/elastic.github.io\/opentelemetry\/*/','/https:\/\/mvnrepository.com\/artifact\/co.elastic.otel\/elastic-otel-javaagent.*/' --no_enforce_https ./_site
 
 .PHONY: run-local
-run-local: generate-collector-components
+run-local: generate
 	bundle exec jekyll serve

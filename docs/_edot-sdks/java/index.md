@@ -1,7 +1,7 @@
 ---
 title: EDOT Java
 layout: default
-nav_order: 5
+nav_order: 3
 ---
 
 ## EDOT Java

@@ -1,0 +1,60 @@
+{%- macro icon(value) -%}
+{%- if value == "ga" -%}
+✅
+{%- elif value == "not-available" -%}
+❌
+{%- elif value == "not-applicable" -%}
+➖
+{%- elif value == "tech-preview" -%}
+𝐓
+{%- else %}
+{%- endif -%}
+{%- endmacro %}
+{% macro title(feature) -%}
+{%- if 'link' in feature and feature['link'] -%}
+<a href="{{ feature['link'] }}">{{ feature['name'] }}</a>
+{%- else -%}
+{{ feature['name'] }}
+{%- endif -%}
+{%- endmacro -%}
+<table class="features-table"> 
+    <thead>
+        <tr> 
+            <th class="l" colspan="8">
+                <div>
+                    <div>✅ generally available</div>
+                    <div>𝐓 in technical preview</div>
+                    <div>➖ not applicable</div>
+                    <div>❌ not available</div>
+                </div>
+            </th> 
+        </tr>
+        <tr> 
+            <th class="f"><div>Feature</div></th> 
+            <th class="r s"><div>.NET </div></th> 
+            <th class="r s"><div>Java</div></th> 
+            <th class="r s"><div>Node.js</div></th> 
+            <th class="r s"><div>PHP</div></th> 
+            <th class="r s"><div>Python</div></th> 
+            <th class="r s"><div>Android</div></th> 
+            <th class="r s"><div>iOS</div></th> 
+        </tr> 
+    </thead> 
+    <tbody>
+{%- for feature in features %}
+        <!-- Feature: {{ feature['name'] }} -->
+        <tr>
+            <td class="f">{{ title(feature) }}</td>
+{%- for lang in [".NET", "Java", "Node.js", "PHP", "Python", "Android", "iOS"] %}
+            <td class="s tooltip"> <!-- {{ lang }} -->
+                <div>{{ icon(feature[lang]['status']) }}</div>
+{%- if feature[lang]['min_version'] %}
+                <div class="xs">{{ feature[lang]['min_version'] }}+</div>
+                <div class="tooltiptext">'{{ feature['name'] }}' is available in EDOT {{ lang }} since version {{ feature[lang]['min_version'] }}</div>
+{%- endif%}
+            </td>
+{%- endfor %}
+        </tr>
+{%- endfor %}
+    </tbody> 
+</table>

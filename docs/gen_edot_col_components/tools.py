@@ -1,14 +1,20 @@
 from jinja2 import Environment, FileSystemLoader
 import urllib.request
 from collections import defaultdict
-import re
-
-import os
+import yaml
 import re
 from pathlib import Path
 
 TABLE_TAG = 'edot-collector-components-table'
 DEPS_TAG = 'edot-collector-components-ocb'
+FEATURES_TAG = 'edot-features'
+
+EDOT_COLLECTOR_DIR = '../_edot-collector'
+EDOT_SDKS_DIR = '../_edot-sdks'
+TEMPLATE_COLLECTOR_COMPONENTS_TABLE = 'templates/components-table.jinja2'
+TEMPLATE_COLLECTOR_OCB_FILE = 'templates/ocb.jinja2'
+TEMPLATE_SDK_FEATURES = 'templates/features.jinja2'
+SDK_FEATURES_YAML = '../_edot-sdks/features.yml'
 
 def fetch_url_content(url):
     try:
@@ -113,7 +119,7 @@ def find_files_with_substring(directory, substring):
                 print(f"Skipping {file_path}: {e}")
     return matching_files
 
-def render_markdown(components, otel_col_version, template):
+def render_markdown(data, template):
     # Set up the Jinja2 environment
     env = Environment(loader=FileSystemLoader('.'))
 
@@ -121,16 +127,11 @@ def render_markdown(components, otel_col_version, template):
     template = env.get_template(template)
 
     # Define the data to pass to the template
-    data = {
-        'grouped_components': components,
-        'otel_col_version': otel_col_version
-    }
 
     return template.render(data)
 
-def render_components_into_file(dir, components, otel_col_version, template, tag):    
-    
-    output = render_markdown(components, otel_col_version, template)
+def render_components_into_file(dir, data, template, tag):    
+    output = render_markdown(data, template)
     start_tag = f'<!-- start:{tag} -->'
     end_tag = f'<!-- end:{tag} -->'
     
@@ -147,8 +148,8 @@ def render_components_into_file(dir, components, otel_col_version, template, tag
         with open(filePath, 'w', encoding='utf-8') as file:
             file.write(updated_content)   
 
-def check_markdown_generation(dir, components, otel_col_version, template, tag):
-    output = render_markdown(components, otel_col_version, template)
+def check_markdown_generation(dir, data, template, tag):
+    output = render_markdown(data, template)
     start_tag = f'<!-- start:{tag} -->'
     end_tag = f'<!-- end:{tag} -->'
     
@@ -164,25 +165,46 @@ def check_markdown_generation(dir, components, otel_col_version, template, tag):
         
         for match in matches:
             if match.strip() != output.strip():
-                print(f'Warning: Generated markdown for collector components is outdated in file {filePath}! Regenerate markdown by running `make generate-collector-components`!')
+                print(f'Warning: Generated markdown is outdated in file {filePath}! Regenerate markdown by running `make generate-collector-components`!')
                 return False;
             
     return True;
+
+def get_features_data(source_file):
+    with open(source_file, 'r') as file:
+        try:
+            return yaml.safe_load(file)
+        except yaml.YAMLError as exc:
+            print(f"Error reading YAML file: {exc}")
+            exit(1)
 
 def check_markdown():
     col_version = get_collector_version('../_config.yml')
     url = f'https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{col_version}/go.mod'
     components = get_otel_components(url)
     otel_col_version = get_otel_col_upstream_version(url)
-    tables = check_markdown_generation('../_edot-collector', components, otel_col_version, 'templates/components-table.jinja2', TABLE_TAG) 
+    data = {
+        'grouped_components': components,
+        'otel_col_version': otel_col_version
+    }
+    tables = check_markdown_generation(EDOT_COLLECTOR_DIR, data, TEMPLATE_COLLECTOR_COMPONENTS_TABLE, TABLE_TAG) 
+    ocb = check_markdown_generation(EDOT_COLLECTOR_DIR, data, TEMPLATE_COLLECTOR_OCB_FILE, DEPS_TAG)
     
-    ocb = check_markdown_generation('../_edot-collector', components, otel_col_version, 'templates/ocb.jinja2', DEPS_TAG)
-    return tables and ocb
+    features_data = get_features_data(SDK_FEATURES_YAML)
+    features = check_markdown_generation(EDOT_SDKS_DIR, features_data, TEMPLATE_SDK_FEATURES, FEATURES_TAG)
+    return tables and ocb and features
 
 def generate_markdown():
     col_version = get_collector_version('../_config.yml')
     url = f'https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{col_version}/go.mod'
     components = get_otel_components(url)
     otel_col_version = get_otel_col_upstream_version(url)
-    render_components_into_file('../_edot-collector', components, otel_col_version, 'templates/components-table.jinja2', TABLE_TAG)
-    render_components_into_file('../_edot-collector', components, otel_col_version, 'templates/ocb.jinja2', DEPS_TAG)
+    data = {
+        'grouped_components': components,
+        'otel_col_version': otel_col_version
+    }
+    render_components_into_file(EDOT_COLLECTOR_DIR, data, TEMPLATE_COLLECTOR_COMPONENTS_TABLE, TABLE_TAG)
+    render_components_into_file(EDOT_COLLECTOR_DIR, data, TEMPLATE_COLLECTOR_OCB_FILE, DEPS_TAG)
+    
+    features_data = get_features_data(SDK_FEATURES_YAML)
+    render_components_into_file(EDOT_SDKS_DIR, features_data, TEMPLATE_SDK_FEATURES, FEATURES_TAG)
