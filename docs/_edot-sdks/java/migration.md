@@ -24,6 +24,7 @@ This documentation describes how to update applications that are currently using
   - for [Annotation API](https://www.elastic.co/guide/en/apm/agent/java/current/public-api.html#api-annotation) see [OpenTelemetry Annotations](https://opentelemetry.io/docs/zero-code/java/agent/annotations/).
   - for [Transaction API](https://www.elastic.co/guide/en/apm/agent/java/current/public-api.html#api-transaction) see [OpenTelemetry API](https://opentelemetry.io/docs/zero-code/java/agent/api/).
   - Note that migration of application code using these APIs and annotations is _not strictly required_ when deploying the EDOT agent. If not migrated, the spans, transactions and metrics that were previously explicitly created with those custom API calls and annotations, will no longer be generated. The broader OpenTelemetry instrumentation coverage may replace the need for some or all of these custom code changes.
+- By default, micrometer instrumentation is disabled and won't capture metrics, enabling requires to set `otel.instrumentation.micrometer.enabled=true`.
 
 ## Migration steps
 
