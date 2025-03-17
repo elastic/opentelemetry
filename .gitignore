@@ -11,3 +11,7 @@ docs/Gemfile.lock
 # Python
 
 __pycache__
+
+# .NET
+
+test/operator/dotnet/obj/**
