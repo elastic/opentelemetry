@@ -13,7 +13,7 @@ and rich out-of-the-box experience with [Elastic Observability](https://www.elas
 
 > **NOTE**: To learn more about OpenTelemetry distributions in general, visit the [OpenTelemetry documentation](https://opentelemetry.io/docs/concepts/distributions).
 
-The quickest way to get started with EDOT .NET is to follow our [quickstart](./setup/quickstart) guide.
+The quickest way to get started with EDOT .NET is to follow our [quickstart](./setup/index) guide.
 
 ## Features
 
@@ -41,7 +41,7 @@ EDOT .NET support all [officially supported](https://dotnet.microsoft.com/en-us/
 Data can be exported in the OpenTelemetry-native [OTLP (OpenTelemetry protocol)](https://opentelemetry.io/docs/specs/otlp) format via gRPC (recommended)
 and HTTP to self-managed, Elastic Cloud Hosted or Elastic Cloud Serverless observability backends.
 
-For the best (and supported) experience, we recommend exporting data from EDOT .NET via the [EDOT Collector](./edot-collector/index).
+For the best (and supported) experience, we recommend exporting data from EDOT .NET via the [EDOT Collector](/docs/_edot-collector/index).
 
 | EDOT .NET version | 8.x      | 9.x      | Serverless |
 | ----------------- | -------- | -------- | ---------- |
