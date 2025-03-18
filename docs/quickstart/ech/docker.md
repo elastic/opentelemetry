@@ -7,4 +7,10 @@ parent: Elastic Cloud Hosted
 
 # Quickstart - Docker - Hosted
 
-TODO
+🐳 Docker
+{: .label .label-blue }
+
+🗄️ Elastic Cloud Hosted
+{: .label .label-blue }
+
+🚧 Coming soon

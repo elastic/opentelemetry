@@ -7,4 +7,10 @@ parent: Elastic Cloud Serverless
 
 # Quickstart - Docker - Serverless
 
-TODO
+🐳 Docker
+{: .label .label-blue }
+
+☁️ Elastic Cloud Serverless
+{: .label .label-green }
+
+🚧 Coming soon
