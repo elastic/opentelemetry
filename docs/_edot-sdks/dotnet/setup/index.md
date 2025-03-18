@@ -117,7 +117,7 @@ To specify a service name, we can amend the preceding code as follows:
 
 ```csharp
 builder.AddElasticOpenTelemetry(b => b
- .ConfigureResource(r => r.AddService("MyAppName")));
+  .ConfigureResource(r => r.AddService("MyAppName")));
 ```
 
 > **NOTE**: The preceding code will require two additional `using` directives:
