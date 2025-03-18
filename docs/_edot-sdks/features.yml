@@ -23,6 +23,30 @@ features:
     iOS:
       status: ga
       min_version: 1.0
+  - name: Head-based Sampling
+    link: https://opentelemetry.io/docs/concepts/sampling/#head-sampling
+    min_stack_version:
+    .NET:
+      status: 
+      min_version: 
+    Java:
+      status: 
+      min_version: 
+    Node.js:
+      status: 
+      min_version: 
+    PHP:
+      status: 
+      min_version: 
+    Python:
+      status: 
+      min_version: 
+    Android:
+      status: 
+      min_version: 
+    iOS:
+      status: 
+      min_version: 
   - name: Logs Collection & Correlation
     link: https://opentelemetry.io/docs/specs/otel/logs/#log-correlation
     min_stack_version:

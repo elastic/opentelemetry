@@ -110,6 +110,31 @@ For languages for which Elastic does not offer its own distribution, we recommen
                 <div class="tooltiptext">'Distributed Tracing' is available in EDOT iOS since version 1.0</div>
             </td>
         </tr>
+        <!-- Feature: Head-based Sampling -->
+        <tr>
+            <td class="f"><a href="https://opentelemetry.io/docs/concepts/sampling/#head-sampling">Head-based Sampling</a></td>
+            <td class="s tooltip"> <!-- .NET -->
+                <div></div>
+            </td>
+            <td class="s tooltip"> <!-- Java -->
+                <div></div>
+            </td>
+            <td class="s tooltip"> <!-- Node.js -->
+                <div></div>
+            </td>
+            <td class="s tooltip"> <!-- PHP -->
+                <div></div>
+            </td>
+            <td class="s tooltip"> <!-- Python -->
+                <div></div>
+            </td>
+            <td class="s tooltip"> <!-- Android -->
+                <div></div>
+            </td>
+            <td class="s tooltip"> <!-- iOS -->
+                <div></div>
+            </td>
+        </tr>
         <!-- Feature: Logs Collection & Correlation -->
         <tr>
             <td class="f"><a href="https://opentelemetry.io/docs/specs/otel/logs/#log-correlation">Logs Collection & Correlation</a></td>
