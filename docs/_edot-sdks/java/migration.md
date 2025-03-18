@@ -28,12 +28,13 @@ This documentation describes how to update applications that are currently using
 
 ## Migration steps
 
+- review all pros/cons of this migration guide including the [differences in performance overhead](./overhead).
 - (optional) migrate usages of Elastic APM Agent API with OpenTelemetry API in the application source code.
 - remove the `-javaagent:` argument containing [Elastic APM Java agent](https://www.elastic.co/guide/en/apm/agent/java/current/index.html) from the JVM arguments
 - replace configuration options using [reference](#option-reference) below, see [configuration](./configuration) for ways to provide those.
 - add `-javaagent:` argument to the JVM arguments to use EDOT Java and restart the application or follow [Kubernetes instructions](./setup/k8s) if applicable.
 - there is currently no EDOT equivalent for starting the agent with the [remote attach](https://www.elastic.co/guide/en/apm/agent/java/current/setup-attach-cli.html) capability. The `-javaagent:` option is the preferred startup mechanism.
-- there is a migration path for starting the agent with [self attach](https://www.elastic.co/guide/en/apm/agent/java/current/setup-attach-api.html), which is to use [runtime attachment](https://github.com/open-telemetry/opentelemetry-java-contrib/blob/main/runtime-attach/README.md). 
+- there is a migration path for starting the agent with [self attach](https://www.elastic.co/guide/en/apm/agent/java/current/setup-attach-api.html), which is to use [runtime attachment](https://github.com/open-telemetry/opentelemetry-java-contrib/blob/main/runtime-attach/README.md).
 
 ## Option reference
 
