@@ -93,9 +93,9 @@ For example: `OTEL_RESOURCE_ATTRIBUTES=service.version=1.2.3`.
 
 ### `environment`
 
-The Elastic [`environment`](https://www.elastic.co/guide/en/apm/agent/java/current/config-core.html#config-environment) option corresponds to setting the `deployment.environment` key in [OTEL_RESOURCE_ATTRIBUTES](https://opentelemetry.io/docs/concepts/sdk-configuration/general-sdk-configuration/#otel_resource_attributes).
+The Elastic [`environment`](https://www.elastic.co/guide/en/apm/agent/java/current/config-core.html#config-environment) option corresponds to setting the `deployment.environment.name` key in [OTEL_RESOURCE_ATTRIBUTES](https://opentelemetry.io/docs/concepts/sdk-configuration/general-sdk-configuration/#otel_resource_attributes).
 
-For example: `OTEL_RESOURCE_ATTRIBUTES=deployment.environment=testing`.
+For example: `OTEL_RESOURCE_ATTRIBUTES=deployment.environment.name=testing`.
 
 ### `global_labels`
 
