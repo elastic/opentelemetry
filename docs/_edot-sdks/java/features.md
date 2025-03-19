@@ -51,6 +51,12 @@ Experimental runtime metrics are _enabled_ by default.
 
 Set `OTEL_INSTRUMENTATION_RUNTIME_TELEMETRY_EMIT_EXPERIMENTAL_TELEMETRY` to `false` to disable them.
 
+## Metric Temporality
+
+Elasticsearch and Kibana work best with metrics provided in delta-temporality.
+Therefore, the EDOT Java changes the default value of `otel.exporter.otlp.metrics.temporality.preference` to `DELTA`.
+You can override this default if needed, note though that some provided Kibana dashboards will not work correctly in this case.
+
 ## Elastic Universal profiling integration
 
 [Universal Profiling](https://www.elastic.co/observability/universal-profiling) integration provides the ability to correlate traces with profiling data from the Elastic universal profiler.
