@@ -44,7 +44,7 @@
 {%- for feature in features %}
         <!-- Feature: {{ feature['name'] }} -->
         <tr>
-            <td class="f">{{ title(feature) }}</td>
+            <td {% if feature.is_sub_feature %}class="f sub"{% else %}class="f bold"{% endif %}>{{ title(feature) }}</td>
 {%- for lang in [".NET", "Java", "Node.js", "PHP", "Python", "Android", "iOS"] %}
             <td class="s tooltip"> <!-- {{ lang }} -->
                 <div>{{ icon(feature[lang]['status']) }}</div>
