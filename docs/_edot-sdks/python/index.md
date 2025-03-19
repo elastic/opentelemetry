@@ -22,7 +22,7 @@ With EDOT Python you have access to all the features of the OpenTelemetry Python
 
 * [Setup](./setup/index)
 * [Setup on Kubernetes](./setup/k8s)
-* [Supported technologies](./supported-techologies)
+* [Supported technologies](./supported-technologies)
 * [Manual instrumentation](./setup/manual-instrumentation)
 * [Configuration](./configuration)
 * [Migrating from Elastic APM Python Agent](./migration)
