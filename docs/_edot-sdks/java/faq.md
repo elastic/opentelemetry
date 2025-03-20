@@ -9,24 +9,29 @@ parent: EDOT Java
 
 ## Does agent requires access to or modification of application code ?
 
-TODO
+No, the agent modifies the Java application binaries in bytecode form and does not requires original code nor
+recompiling or re-packaging the application.
 
 ## How to disable the agent ?
 
-TODO
+There are two ways to disable the instrumentation agent:
 
 - remove `-javaagent:` JVM argument
-- use configuration
+- set `OTEL_JAVAAGENT_ENABLED` environment variable or `otel.javaagent.enabled` Java system property to `false`
 
-## How to partially disable the agent
+In both cases you need to restart the JVM.
 
-TODO
+## How to partially enable or disable the agent ?
+
+It is possible to partially disable the agent, or to only selectively enable a limited set of instrumentations
+by following instructions in the [upstream documentation](https://opentelemetry.io/docs/zero-code/java/agent/disable/).
 
 ## How to know if EDOT is attached to a running JVM ?
 
-TODO
-- check JVM logs, agent startup log message might be included
-- check JVM arguments `ps -ef|grep javaagent`
+There are a few ways we can detect if the agent has been attached to a JVM
+- in JVM logs, agent startup log message (see [below](#how-to-identify-the-version-of-edot-agent-)) might be included
+- in JVM arguments `ps -ef|grep javaagent`
+- in environment variables, for example `JAVA_TOOL_OPTIONS`, for example by inspecting the output of `export|grep javaagent`
 
 ## How to identify the version of EDOT agent ?
 
