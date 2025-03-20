@@ -17,16 +17,7 @@ This guide requires to have already added auto-instrumentation with OpenTelemetr
 <!-- ✅ Provide _minimal_ configuration/setup -->
 ### Configure EDOT Python
 
-To configure EDOT Python, at a minimum you'll need your Elastic Observability cloud deployment's OTLP endpoint and
-authorization data to set a few `OTLP_*` environment variables that will be available when running EDOT Python:
-
-```sh
-export OTEL_RESOURCE_ATTRIBUTES=service.name=<app-name>
-export OTEL_EXPORTER_OTLP_ENDPOINT=https://my-deployment.apm.us-west1.gcp.cloud.es.io
-export OTEL_EXPORTER_OTLP_HEADERS="Authorization=Bearer P....l"
-```
-
-Refer to our [Setup](./index) page for more details.
+Refer to our [Setup](./index#configure-EDOT-Python) page for more details.
 
 <!-- ✅ Manually instrument the application and start sending data to Elastic -->
 ### Manually instrument your auto instrumented Python application
@@ -107,7 +98,7 @@ def hello():
 
 To confirm that EDOT Python has successfully connected to Elastic:
 
-1. Go to **APM** → **Traces**.
+1. Go to **Observability** → **Applications** → **Service Inventory**
 1. You should see the name of the service to which you just added EDOT Python. It can take several minutes after initializing EDOT Python for the service to show up in this list.
 1. Click on the name in the list to see trace data.
 
