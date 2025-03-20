@@ -9,7 +9,7 @@ parent: EDOT Java
 
 The sections below are in the order you should follow, unless you have already identified the section you need.
 
-This guide assumes you have tested the other components in the route from application+agent to Elastic Observability (eg collector or APM server, Elasticsearch, and Kibana) and that the problem has been isolated to the application+agent.
+This guide assumes you have tested the other components in the route from application+agent to Elastic Observability (eg collector, Elasticsearch, and Kibana) and that the problem has been isolated to the application+agent.
 
 ## General
 
@@ -17,28 +17,17 @@ Ensure you have set a service name (eg `-Dotel.service.name=Service1` or environ
 
 ## Connectivity to endpoint
 
-Check _from_ the host/VM/pod/container/image running the app, that connectivity is available to the APM server or collector. The examples here use a default URL, which you should replace with the endpoint you are using:
+Check _from_ the host/VM/pod/container/image running the app, that connectivity is available to the collector.
+
+The examples here use a default URL `http://127.0.0.1:4318/, which you should replace with the endpoint you are using:
 
 - OpenTelemetry or EDOT collector without authentication: `curl -i http://127.0.0.1:4318/v1/traces -X POST -d '{}' -H content-type:application/json`
-- APM server without authentication: `curl --verbose -X GET http://127.0.0.1:8200`
-- APM server with secret token authentication: `curl -X POST http://127.0.0.1:8200/ -H "Authorization: Bearer <secret_token>"`
-- APM server with API key authentication: `curl -X POST http://127.0.0.1:8200/ -H "Authorization: ApiKey <api_key>"`
+- OpenTelemetry or EDOT collector with API key authentication: `curl -i http://127.0.0.1:4318/v1/traces -X POST -d '{}' -H content-type:application/json -H "Authorization:ApiKey <api_key>"`
 
 The collector should produce output similar to
 ```
 {"partialSuccess":{}}
 ```
-
-The APM server should produce output similar to
-```
-{
-  "build_date": "2021-12-18T19:59:06Z",
-  "build_sha": "24fe620eeff5a19e2133c940c7e5ce1ceddb1445",
-  "publish_ready": true,
-  "version": "8.17.3"
-}
-```
-
 
 ## Is it the agent?
 
