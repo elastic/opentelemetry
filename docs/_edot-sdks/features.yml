@@ -23,9 +23,35 @@ features:
     iOS:
       status: ga
       min_version: 1.0
-  - name: Head-based Sampling
-    link: https://opentelemetry.io/docs/concepts/sampling/#head-sampling
+  - name: Service Map
+    link: https://www.elastic.co/guide/en/observability/current/apm-service-maps.html
+    is_sub_feature: true
     min_stack_version:
+    .NET:
+      status: ga
+      min_version: 
+    Java:
+      status: ga
+      min_version: 
+    Node.js:
+      status: ga
+      min_version: 
+    PHP:
+      status: ga
+      min_version: 
+    Python:
+      status: ga
+      min_version: 
+    Android:
+      status: ga
+      min_version: 
+    iOS:
+      status: ga
+      min_version: 
+  - name: Zero-code instrumentation
+    link: https://opentelemetry.io/docs/concepts/instrumentation/zero-code/
+    min_stack_version:
+    is_sub_feature: true
     .NET:
       status: 
       min_version: 
@@ -47,7 +73,82 @@ features:
     iOS:
       status: 
       min_version: 
-  - name: Logs Collection & Correlation
+  - name: Head-based Sampling
+    link: https://opentelemetry.io/docs/concepts/sampling/#head-sampling
+    min_stack_version:
+    is_sub_feature: true
+    .NET:
+      status: 
+      min_version: 
+    Java:
+      status: 
+      min_version: 
+    Node.js:
+      status: 
+      min_version: 
+    PHP:
+      status: 
+      min_version: 
+    Python:
+      status: 
+      min_version: 
+    Android:
+      status: 
+      min_version: 
+    iOS:
+      status: 
+      min_version: 
+  - name: Baggage
+    link: https://opentelemetry.io/docs/concepts/signals/baggage/
+    min_stack_version:
+    is_sub_feature: true
+    .NET:
+      status:
+      min_version:
+    Java:
+      status:
+      min_version:
+    Node.js:
+      status:
+      min_version:
+    PHP:
+      status:
+      min_version:
+    Python:
+      status:
+      min_version:
+    Android:
+      status:
+      min_version:
+    iOS:
+      status:
+      min_version:
+  - name: Inferred Spans
+    link: ../edot-sdks/java/features#inferred-spans
+    min_stack_version:
+    is_sub_feature: true
+    .NET:
+      status: not-available
+      min_version: 
+    Java:
+      status: ga
+      min_version: 
+    Node.js:
+      status: not-available
+      min_version: 
+    PHP:
+      status: not-available
+      min_version: 
+    Python:
+      status: not-available
+      min_version: 
+    Android:
+      status: not-available
+      min_version: 
+    iOS:
+      status: not-available
+      min_version: 
+  - name: Logs Collection
     link: https://opentelemetry.io/docs/specs/otel/logs/#log-correlation
     min_stack_version:
     .NET:
@@ -64,6 +165,130 @@ features:
       min_version: 
     Python:
       status: ga
+      min_version: 
+    Android:
+      status: 
+      min_version: 
+    iOS:
+      status: 
+      min_version: 
+  - name: Logs Correlation
+    link: https://opentelemetry.io/docs/specs/otel/logs/#opentelemetry-solution
+    is_sub_feature: true
+    min_stack_version:
+    .NET:
+      status: ga
+      min_version: 
+    Java:
+      status: ga
+      min_version: 
+    Node.js:
+      status: ga
+      min_version: 
+    PHP:
+      status: ga
+      min_version: 
+    Python:
+      status: ga
+      min_version: 
+    Android:
+      status: 
+      min_version: 
+    iOS:
+      status: 
+      min_version: 
+  - name: Metrics Collection
+    link: https://opentelemetry.io/docs/concepts/signals/metrics/
+    min_stack_version:
+    .NET:
+      status: ga
+      min_version: 
+    Java:
+      status: ga
+      min_version: 
+    Node.js:
+      status: ga
+      min_version: 
+    PHP:
+      status: ga
+      min_version: 
+    Python:
+      status: ga
+      min_version: 
+    Android:
+      status: 
+      min_version: 
+    iOS:
+      status: 
+      min_version: 
+  - name: Custom Metrics
+    link:
+    is_sub_feature: true
+    min_stack_version:
+    .NET:
+      status: ga
+      min_version: 
+    Java:
+      status: ga
+      min_version: 
+    Node.js:
+      status: ga
+      min_version: 
+    PHP:
+      status: ga
+      min_version: 
+    Python:
+      status: ga
+      min_version: 
+    Android:
+      status: 
+      min_version: 
+    iOS:
+      status: 
+      min_version:
+  - name: Agent Health Monitoring
+    link:
+    is_sub_feature: true
+    min_stack_version:
+    .NET:
+      status: not-available
+      min_version: 
+    Java:
+      status: not-available
+      min_version: 
+    Node.js:
+      status: not-available
+      min_version: 
+    PHP:
+      status: not-available
+      min_version: 
+    Python:
+      status: not-available
+      min_version: 
+    Android:
+      status: not-available
+      min_version: 
+    iOS:
+      status: not-available
+      min_version: 
+  - name: Runtime Metrics
+    link: https://opentelemetry.io/docs/specs/semconv/runtime/
+    is_sub_feature: true
+    min_stack_version:
+    .NET:
+      status: 
+      min_version: 
+    Java:
+      status: 
+      min_version: 
+    Node.js:
+      status: 
+      min_version: 
+    PHP:
+      status: 
+      min_version: 
+    Python:
+      status: 
       min_version: 
     Android:
       status: 
@@ -94,123 +319,32 @@ features:
       min_version: 
     iOS:
       status: ga
-      min_version: 
-  - name: Custom Metrics
+      min_version:
+  - name: Crash Reporting
     link:
+    is_sub_feature: true
     min_stack_version:
     .NET:
-      status: ga
+      status: not-applicable
       min_version: 
     Java:
-      status: ga
+      status: not-applicable
       min_version: 
     Node.js:
-      status: ga
+      status: not-applicable
       min_version: 
     PHP:
-      status: ga
+      status: not-applicable
       min_version: 
     Python:
-      status: ga
-      min_version: 
-    Android:
-      status: 
-      min_version: 
-    iOS:
-      status: 
-      min_version: 
-  - name: Runtime Metrics
-    link:
-    min_stack_version:
-    .NET:
-    Java:
-    Node.js:
-      status: 
-      min_version: 
-    PHP:
-      status: 
-      min_version: 
-    Python:
-      status: 
-      min_version: 
-    Android:
-      status: 
-      min_version: 
-    iOS:
-      status: 
-      min_version: 
-  - name: Service Map
-    link: https://www.elastic.co/guide/en/observability/current/apm-service-maps.html
-    min_stack_version:
-    .NET:
-      status: ga
-      min_version: 
-    Java:
-      status: ga
-      min_version: 
-    Node.js:
-      status: ga
-      min_version: 
-    PHP:
-      status: ga
-      min_version: 
-    Python:
-      status: ga
+      status: not-applicable
       min_version: 
     Android:
       status: ga
       min_version: 
     iOS:
       status: ga
-      min_version: 
-  - name: Inferred Spans
-    link: ../edot-sdks/java/features#inferred-spans
-    min_stack_version:
-    .NET:
-      status: not-available
-      min_version: 
-    Java:
-      status: ga
-      min_version: 
-    Node.js:
-      status: not-available
-      min_version: 
-    PHP:
-      status: not-available
-      min_version: 
-    Python:
-      status: not-available
-      min_version: 
-    Android:
-      status: not-available
-      min_version: 
-    iOS:
-      status: not-available
-      min_version: 
-  - name: Profiling Integration
-    link: ../edot-sdks/java/features#elastic-universal-profiling-integration
-    min_stack_version:
-    .NET:
-      status: not-available
-      min_version: 
-    Java:
-      status: tech-preview
-      min_version: 
-    Node.js:
-      status: not-available
-      min_version: 
-    PHP:
-      status: not-available
-      min_version: 
-    Python:
-      status: not-available
-      min_version: 
-    Android:
-      status: not-available
-      min_version: 
-    iOS:
-      status: not-available
-      min_version: 
+      min_version:
   - name: Central Configuration
     link:
     min_stack_version:
@@ -234,15 +368,15 @@ features:
       min_version: 
     iOS:
       status: not-available
-      min_version: 
-  - name: Agent Health Monitoring
-    link:
+      min_version:
+  - name: Profiling Integration
+    link: ../edot-sdks/java/features#elastic-universal-profiling-integration
     min_stack_version:
     .NET:
       status: not-available
       min_version: 
     Java:
-      status: not-available
+      status: tech-preview
       min_version: 
     Node.js:
       status: not-available
@@ -258,28 +392,4 @@ features:
       min_version: 
     iOS:
       status: not-available
-      min_version: 
-  - name: Crash Reporting
-    link:
-    min_stack_version:
-    .NET:
-      status: not-applicable
-      min_version: 
-    Java:
-      status: not-applicable
-      min_version: 
-    Node.js:
-      status: not-applicable
-      min_version: 
-    PHP:
-      status: not-applicable
-      min_version: 
-    Python:
-      status: not-applicable
-      min_version: 
-    Android:
-      status: ga
-      min_version: 
-    iOS:
-      status: ga
-      min_version: 
+      min_version:
