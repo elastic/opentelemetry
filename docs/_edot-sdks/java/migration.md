@@ -17,7 +17,10 @@ Allows to capture, send, transform and store data in an OpenTelemetry native way
 
 ### Broad Coverage of Instrumentation
 
-OpenTelemetry Java Instrumentation provides a [broad coverage of libraries and frameworks](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation).
+OpenTelemetry Java Instrumentation provides a [broad coverage of libraries, frameworks and applications](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md).
+
+- [Libraries and frameworks](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md#libraries--frameworks)
+- [Application servers](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md#application-servers)
 
 ### Compatible Drop-in Replacement
 
