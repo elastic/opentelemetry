@@ -107,7 +107,7 @@ For example: `OTEL_RESOURCE_ATTRIBUTES=deployment.environment.name=testing`.
 
 ### `global_labels`
 
-The Elastic [`global_labels`](https://www.elastic.co/guide/en/apm/agent/python/current/configuration.html#config-global-labels) option corresponds to adding `key=value` comma separated pairs in [OTEL_RESOURCE_ATTRIBUTES](https://opentelemetry.io/docs/concepts/sdk-configuration/general-sdk-configuration/#otel_resource_attributes).
+The Elastic [`global_labels`](https://www.elastic.co/guide/en/apm/agent/python/current/configuration.html#config-global_labels) option corresponds to adding `key=value` comma separated pairs in [OTEL_RESOURCE_ATTRIBUTES](https://opentelemetry.io/docs/concepts/sdk-configuration/general-sdk-configuration/#otel_resource_attributes).
 
 For example: `OTEL_RESOURCE_ATTRIBUTES=alice=first,bob=second`. Such labels will result in labels.key=value attributes on the server, e.g. labels.alice=first
 
