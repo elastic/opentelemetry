@@ -46,21 +46,49 @@ the agent version, for example `-javaagent:elastic-otel-javaagent-1.2.3.jar`
 When the original agent jar file has been renamed, it is still possible to inspect the `Implementation-Version` entry in `META-INF/MANIFEST.MF` file of the agent jar,
 for example with `unzip -p elastic-otel-javaagent.jar META-INF/MANIFEST.MF|grep 'Implementation-Version'`
 
-## What are the versions of the OpenTelemetry upstream dependencies
+## What are the versions of the OpenTelemetry upstream dependencies ?
 
-TODO
-- SDK
-- Instrumentation
-- Semantic conventions
+Because EDOT Java is a distribution of [OpenTelemetry Java instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation),
+it includes the following dependencies:
 
-link to release notes
+- [OpenTelemetry Java Instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation)
+- [OpenTelemetry Java SDK](https://github.com/open-telemetry/opentelemetry-java)
+- [Semantic Conventions Java mappings](https://github.com/open-telemetry/semantic-conventions-java)
+- [OpenTelemetry Java Contrib](https://github.com/open-telemetry/opentelemetry-java-contrib)
 
-## Updating EDOT
+The versions of those included in EDOT is usually aligned with the OpenTelemetry Java Instrumentation, for reference we
+provide in the [release notes](https://github.com/elastic/elastic-otel-java/releases) details of versions included in each release.
 
-- general recommendation on updating to latest
-- how to update
+## When and how to update EDOT
 
-- updating EDOT does not require to update OpenTelemetry API/SDK in the application
+The general recommendation is to update EDOT agent to the latest version when possible to benefit from:
+- bug fixes and technical improvements
+- support of new features and instrumentation
+- evolution of semantic conventions
+- frequent and regular updates usually makes reviewing and handling changes easier.
+
+Updating to the latest EDOT version involves reviewing changes of the included dependencies:
+
+- [OpenTelemetry Java Instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation)
+- [OpenTelemetry Java SDK](https://github.com/open-telemetry/opentelemetry-java)
+- [Semantic Conventions Java mappings](https://github.com/open-telemetry/semantic-conventions-java)
+- [OpenTelemetry Java Contrib](https://github.com/open-telemetry/opentelemetry-java-contrib)
+
+In order to review each of those individually, you can use the [EDOT release notes](https://github.com/elastic/elastic-otel-java/releases) 
+for links to the respective versions of each component.
+
+### OpenTelemetry API/SDK update
+
+In order to implement manual instrumentation, some applications use the OpenTelemetry API and/or SDK which allows them
+to capture custom spans, metrics or even send data without any instrumentation agent.
+
+Updates of the OpenTelemetry API/SDK in the application and the EDOT Java agent can be done independently.
+- EDOT Java is backward-compatible with all previous versions of OpenTelemetry API/SDK
+- Using a more recent version of API/SDK than the one in EDOT should usually work without problem, however to ensure maximum compatibility keeping OpenTelemetry API/SDK version ≤ EDOT OpenTelemetry API/SDK version is recommended.
+
+### How to update
+
+Updating EDOT Java agent is done by replacing the agent binary `.jar` that has been [added during setup](./setup/).
 
 ## Is the agent compatible with other instrumentation agents ?
 
