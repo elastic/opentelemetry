@@ -29,17 +29,17 @@ logs and application traces and send the data through OTLP to your Elastic Serve
     *Linux*
 
     ```bash
-    ELASTIC_OTLP_ENDPOINT=<ELASTIC_OTLP_ENDPOINT> \
-    ELASTIC_API_KEY=<ELASTIC_API_KEY> \
+    ELASTIC_OTLP_ENDPOINT=<ELASTIC_OTLP_ENDPOINT> && \
+    ELASTIC_API_KEY=<ELASTIC_API_KEY> && \
     rm ./otel.yml && cp ./otel_samples/managed_otlp/logs_metrics_traces.yml ./otel.yml && mkdir -p ./data/otelcol && sed -i 's#\${env:STORAGE_DIR}#'"$PWD"/data/otelcol'#g' ./otel.yml && sed -i 's#\${env:ELASTIC_OTLP_ENDPOINT}#$ELASTIC_OTLP_ENDPOINT' ./otel.yml && sed -i 's/\${env:ELASTIC_API_KEY}/$ELASTIC_API_KEY/g' ./otel.yml
     ```
 
     *MacOS*
 
     ```bash
-    ELASTIC_OTLP_ENDPOINT=<ELASTIC_OTLP_ENDPOINT> \
-    ELASTIC_API_KEY=<ELASTIC_API_KEY> \
-    rm ./otel.yml && cp ./otel_samples/managed_otlp/logs_metrics_traces.yml ./otel.yml && mkdir -p ./data/otelcol && sed -i '' 's#\${env:STORAGE_DIR}#'"$PWD"/data/otelcol'#g' ./otel.yml && sed -i '' 's#\${env:ELASTIC_OTLP_ENDPOINT}#$ELASTIC_OTLP_ENDPOINT' ./otel.yml && sed -i '' 's/\${env:ELASTIC_API_KEY}/$ELASTIC_API_KEY/g' ./otel.yml
+    ELASTIC_OTLP_ENDPOINT=<ELASTIC_OTLP_ENDPOINT> && \
+    ELASTIC_API_KEY=<ELASTIC_API_KEY> && \
+    rm ./otel.yml && cp ./otel_samples/managed_otlp/logs_metrics_traces.yml ./otel.yml && mkdir -p ./data/otelcol && sed -i '' 's#\${env:STORAGE_DIR}#'"$PWD"/data/otelcol'#g' ./otel.yml && sed -i '' 's#\${env:ELASTIC_OTLP_ENDPOINT}#'"$ELASTIC_OTLP_ENDPOINT"'#g' ./otel.yml && sed -i '' 's#\${env:ELASTIC_API_KEY}#'"$ELASTIC_API_KEY"'#g' ./otel.yml
     ```
 
     *Windows*
