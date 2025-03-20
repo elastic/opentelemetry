@@ -42,7 +42,7 @@ After installing EDOT Python, configure and initialize it to start sending data 
 To configure EDOT Python, at a minimum you'll need your Elastic Observability cloud OTLP endpoint and
 authorization data to set a few `OTLP_*` environment variables that will be available when running EDOT Python:
 
-* `OTEL_RESOURCE_ATTRIBUTES`: Use this to add a service name that will make it easier to recognize your application when reviewing data sent to Elastic.
+* `OTEL_RESOURCE_ATTRIBUTES`: Use this to add a `service.name` and `deployment.environment` that will make it easier to recognize your application when reviewing data sent to Elastic.
 * `OTEL_EXPORTER_OTLP_ENDPOINT`: The full URL of the endpoint where data will be sent.
 * `OTEL_EXPORTER_OTLP_HEADERS`: A comma-separated list of `key=value` pairs that will
 be added to the headers of every request. This is typically used for authentication information.
@@ -93,9 +93,9 @@ opentelemetry-instrument gunicorn main:app
 
 To confirm that EDOT Python has successfully connected to Elastic:
 
-1. Go to **APM** → **Traces**.
+1. Go to **APM** → **Services**
 1. You should see the name of the service to which you just added EDOT Python. It can take several minutes after initializing EDOT Python for the service to show up in this list.
 1. Click on the name in the list to see trace data.
 
 > [!NOTE]
-> There may be no trace data to visualize unless you have _used_ your application since initializing EDOT Python.
+> There may be no trace data to visualize unless you have _invoked_ your application since initializing EDOT Python.

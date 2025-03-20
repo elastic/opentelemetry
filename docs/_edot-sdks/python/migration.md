@@ -14,7 +14,7 @@ For step-by-step instructions on setting up EDOT Python refer to the [Setup](./s
 
 As a distribution of OpenTelemetry, EDOT Python follows certain standards, but there is still some space for innovation.
 
-## Bold on autoinstrumentation
+## Bold on auto-instrumentation
 
 We have chosen to make autoinstrumentation as simple as possible so you can just focus on your code; we favored an experience that requires minimal changes to your application code. The upstream OpenTelemetry configuration has more options than the distribution requires. Our default configuration is listed [here](https://github.com/elastic/elastic-otel-python?tab=readme-ov-file#configuration).
 
@@ -25,10 +25,10 @@ We provide a tool to discover available instrumentations automatically that can 
 
 ## Performance comparison
 
-Any instrumentation agent will incur in a performance penalty for your application because more work will be done. How much really depends
+Every instrumentation agent comes with a (small) performance overhead for your application. How much really depends
 on your application and on the instrumentations used.
 
-While we can't provide generically applicable, accurate numbers about the performance penalty, here you can find some measurement taken
+While we can't provide generically applicable, accurate numbers about the performance overhead, here you can find some measurement taken
 from a sample web application which allows to provide a comparison between agents and an order of magnitude of the effective overhead.
 
 Those numbers are only provided as indicators, and you should not attempt to extrapolate them. You should however use
