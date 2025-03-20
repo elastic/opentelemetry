@@ -16,7 +16,7 @@ As a distribution of OpenTelemetry, EDOT Python follows certain standards, but t
 
 ## Bold on auto-instrumentation
 
-We have chosen to make autoinstrumentation as simple as possible so you can just focus on your code; we favored an experience that requires minimal changes to your application code. The upstream OpenTelemetry configuration has more options than the distribution requires. Our default configuration is listed [here](https://github.com/elastic/elastic-otel-python?tab=readme-ov-file#configuration).
+We have chosen to make auto-instrumentation as simple as possible so you can just focus on your code; we favored an experience that requires minimal changes to your application code. The upstream OpenTelemetry configuration has more options than the distribution requires. Our default configuration is listed [here](https://github.com/elastic/elastic-otel-python?tab=readme-ov-file#configuration).
 
 ## Bring your own instrumentation
 
