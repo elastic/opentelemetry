@@ -17,7 +17,7 @@ This guide requires to have already added auto-instrumentation with OpenTelemetr
 <!-- ✅ Provide _minimal_ configuration/setup -->
 ### Configure EDOT Python
 
-Refer to our [Setup](./index#configure-EDOT-Python) page for more details.
+Refer to our [Setup](./index#configure-edot-python) page for more details.
 
 <!-- ✅ Manually instrument the application and start sending data to Elastic -->
 ### Manually instrument your auto instrumented Python application
