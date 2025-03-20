@@ -17,15 +17,3 @@ With EDOT Python you have access to all the features of the OpenTelemetry Python
 * Preconfigured collection of tracing and metrics signals, applying some opinionated defaults, such as which sources are collected by default.
 
 **Ready to try out EDOT Python?** Follow the step-by-step instructions in [Setup](./setup/index).
-
-## Read the docs
-
-* [Setup](./setup/index)
-* [Setup on Kubernetes](./setup/k8s)
-* [Supported technologies](./supported-technologies)
-* [Manual instrumentation](./setup/manual-instrumentation)
-* [Configuration](./configuration)
-* [Migrating from Elastic APM Python Agent](./migration)
-* [Troubleshooting](./troubleshooting)
-* [FAQ](./faq)
-* [Release notes](./release)
