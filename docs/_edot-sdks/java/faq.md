@@ -89,16 +89,3 @@ Updates of the OpenTelemetry API/SDK in the application and the EDOT Java agent 
 ### How to update
 
 Updating EDOT Java agent is done by replacing the agent binary `.jar` that has been [added during setup](./setup/).
-
-## Is the agent compatible with other instrumentation agents ?
-
-TODO
-
-## How to instrument un-supported libraries/frameworks
-
-TODO
-
-- use configuration (but limited)
-- use otel API with code modification
-- write an instrumentation extension
-- contribute instrumentation to upstream
