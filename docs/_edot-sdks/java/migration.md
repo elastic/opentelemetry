@@ -24,7 +24,11 @@ OpenTelemetry Java Instrumentation provides a [broad coverage of libraries, fram
 
 ### Compatible Drop-in Replacement
 
-EDOT Java is a fully compatible drop-in replacement for the upstream OpenTelemetry Java Agent. Hence, there's no vendor lock-in through proprietary instrumentation or agent.
+The upstream OpenTelemetry Java Agent is a vendor-neutral implementation.
+EDOT Java is a distribution of it and is thus a
+ fully compatible drop-in replacement of the upstream OpenTelemetry Java Agent.
+
+Hence, exclusive features of EDOT aside, there is no vendor lock-in through proprietary instrumentation or agent.
 
 ## Limitations
 
