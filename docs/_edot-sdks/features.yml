@@ -10,7 +10,7 @@ features:
       min_version: 1.0
     Node.js:
       status: ga
-      min_version: "1.0"
+      min_version: 1.0
     PHP:
       status: ga
       min_version: 1.0
@@ -60,7 +60,7 @@ features:
       min_version: 
     Node.js:
       status: ga
-      min_version: "1.0"
+      min_version: 1.0
     PHP:
       status: 
       min_version: 
@@ -85,7 +85,7 @@ features:
       min_version: 
     Node.js:
       status: ga
-      min_version: "1.0"
+      min_version: 1.0
     PHP:
       status: 
       min_version: 
@@ -110,7 +110,7 @@ features:
       min_version:
     Node.js:
       status: ga
-      min_version: "1.0"
+      min_version: 1.0
     PHP:
       status:
       min_version:
