@@ -86,8 +86,8 @@ For languages for which Elastic does not offer its own distribution, we recommen
             </td>
             <td class="s tooltip"> <!-- Node.js -->
                 <div>✅</div>
-                <div class="xs">0.2.0+</div>
-                <div class="tooltiptext">'Distributed Tracing' is available in EDOT Node.js since version 0.2.0</div>
+                <div class="xs">1.0+</div>
+                <div class="tooltiptext">'Distributed Tracing' is available in EDOT Node.js since version 1.0</div>
             </td>
             <td class="s tooltip"> <!-- PHP -->
                 <div>✅</div>
@@ -146,6 +146,8 @@ For languages for which Elastic does not offer its own distribution, we recommen
             </td>
             <td class="s tooltip"> <!-- Node.js -->
                 <div>✅</div>
+                <div class="xs">1.0+</div>
+                <div class="tooltiptext">'Zero-code instrumentation' is available in EDOT Node.js since version 1.0</div>
             </td>
             <td class="s tooltip"> <!-- PHP -->
                 <div></div>
@@ -171,6 +173,8 @@ For languages for which Elastic does not offer its own distribution, we recommen
             </td>
             <td class="s tooltip"> <!-- Node.js -->
                 <div>✅</div>
+                <div class="xs">1.0+</div>
+                <div class="tooltiptext">'Head-based Sampling' is available in EDOT Node.js since version 1.0</div>
             </td>
             <td class="s tooltip"> <!-- PHP -->
                 <div></div>
@@ -196,6 +200,8 @@ For languages for which Elastic does not offer its own distribution, we recommen
             </td>
             <td class="s tooltip"> <!-- Node.js -->
                 <div>✅</div>
+                <div class="xs">1.0+</div>
+                <div class="tooltiptext">'Baggage' is available in EDOT Node.js since version 1.0</div>
             </td>
             <td class="s tooltip"> <!-- PHP -->
                 <div></div>
