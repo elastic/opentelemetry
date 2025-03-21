@@ -10,7 +10,7 @@ on:
 
 jobs:
   # Build job
-  build:
+  check-links:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
