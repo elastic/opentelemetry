@@ -10,7 +10,7 @@ features:
       min_version: 1.0
     Node.js:
       status: ga
-      min_version: "0.2.0"
+      min_version: "1.0"
     PHP:
       status: ga
       min_version: 1.0
