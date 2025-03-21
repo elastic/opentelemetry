@@ -1,5 +1,5 @@
 ---
-title: Performance overhad
+title: Performance Overhead
 layout: default
 nav_order: 8
 parent: EDOT Python
