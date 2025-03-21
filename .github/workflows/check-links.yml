@@ -1,4 +1,4 @@
-name: Check links in docs pages
+name: check-links
 
 on:
   pull_request:
