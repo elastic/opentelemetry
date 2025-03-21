@@ -32,7 +32,7 @@ The quick start for Hosts / VMs with a self-managed Elastic Stack will guide you
     mkdir -p ./data/otelcol && \
     sed -i "s#\${env:STORAGE_DIR}#${PWD}/data/otelcol#g" ./otel.yml && \
     sed -i "s#\${env:ELASTIC_ENDPOINT}#${ELASTICSEARCH_ENDPOINT}#g" ./otel.yml && \
-    sed -i "s#\${env:ELASTIC_API_KEY}#$ELASTIC_API_KEY#g" ./otel.yml
+    sed -i "s#\${env:ELASTIC_API_KEY}#${$ELASTIC_API_KEY}#g" ./otel.yml
     ```
 
     *MacOS*

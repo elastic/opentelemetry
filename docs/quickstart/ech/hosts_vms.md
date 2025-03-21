@@ -30,7 +30,11 @@ The quick start for Hosts / VMs with with Elastic Cloud Hosted will guide you th
     ```bash
     ELASTICSEARCH_ENDPOINT=<ELASTICSEARCH_ENDPOINT> && \
     ELASTIC_API_KEY=<ELASTIC_API_KEY> && \
-    rm ./otel.yml && cp ./otel_samples/logs_metrics_traces.yml ./otel.yml && mkdir -p ./data/otelcol && sed -i 's#\${env:STORAGE_DIR}#'"$PWD"/data/otelcol'#g' ./otel.yml && sed -i 's#\${env:ELASTIC_ENDPOINT}#$ELASTICSEARCH_ENDPOINT' ./otel.yml && sed -i 's/\${env:ELASTIC_API_KEY}/$ELASTIC_API_KEY/g' ./otel.yml
+    cp ./otel_samples/logs_metrics_traces.yml ./otel.yml && \
+    mkdir -p ./data/otelcol && \
+    sed -i "s#\${env:STORAGE_DIR}#${PWD}/data/otelcol#g" ./otel.yml && \
+    sed -i "s#\${env:ELASTIC_ENDPOINT}#${ELASTICSEARCH_ENDPOINT}#g" ./otel.yml && \
+    sed -i "s#\${env:ELASTIC_API_KEY}#${$ELASTIC_API_KEY}#g" ./otel.yml
     ```
 
     *MacOS*
@@ -38,7 +42,11 @@ The quick start for Hosts / VMs with with Elastic Cloud Hosted will guide you th
     ```bash
     ELASTICSEARCH_ENDPOINT=<ELASTICSEARCH_ENDPOINT> && \
     ELASTIC_API_KEY=<ELASTIC_API_KEY> && \
-    rm ./otel.yml && cp ./otel_samples/logs_metrics_traces.yml ./otel.yml && mkdir -p ./data/otelcol && sed -i '' 's#\${env:STORAGE_DIR}#'"$PWD"/data/otelcol'#g' ./otel.yml && sed -i '' 's#\${env:ELASTIC_ENDPOINT}#'"$ELASTICSEARCH_ENDPOINT"'#g' ./otel.yml && sed -i '' 's#\${env:ELASTIC_API_KEY}#'"$ELASTIC_API_KEY"'#g' ./otel.yml
+    cp ./otel_samples/logs_metrics_traces.yml ./otel.yml && \
+    mkdir -p ./data/otelcol && \
+    sed -i '' "s#\${env:STORAGE_DIR}#${PWD}/data/otelcol#g" ./otel.yml && \
+    sed -i '' "s#\${env:ELASTIC_ENDPOINT}#${ELASTICSEARCH_ENDPOINT}#g" ./otel.yml && \
+    sed -i '' "s#\${env:ELASTIC_API_KEY}#${ELASTIC_API_KEY}#g" ./otel.yml
     ```
 
     *Windows*

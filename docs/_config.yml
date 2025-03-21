@@ -81,7 +81,7 @@ edot_versions:
   nodejs: 0.7.0
   php: 1.0.0
   python: 0.7.0
-# -- EDOT versions end -- 
+# -- EDOT versions end --
 
 exclude:
   - "gen_edot_col_components/"

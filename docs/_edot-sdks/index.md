@@ -285,7 +285,7 @@ For languages for which Elastic does not offer its own distribution, we recommen
         </tr>
         <!-- Feature: Logs Collection -->
         <tr>
-            <td class="f bold"><a href="https://opentelemetry.io/docs/specs/otel/logs/#log-correlation">Logs Collection</a></td>
+            <td class="f bold"><a href="https://opentelemetry.io/docs/specs/otel/logs/#opentelemetry-solution">Logs Collection</a></td>
             <td class="s tooltip"> <!-- .NET -->
                 <div>✅</div>
                 <div class="xs">1.0+</div>
@@ -320,7 +320,7 @@ For languages for which Elastic does not offer its own distribution, we recommen
         </tr>
         <!-- Feature: Logs Correlation -->
         <tr>
-            <td class="f sub"><a href="https://opentelemetry.io/docs/specs/otel/logs/#opentelemetry-solution">Logs Correlation</a></td>
+            <td class="f sub"><a href="https://opentelemetry.io/docs/specs/otel/logs/#log-correlation">Logs Correlation</a></td>
             <td class="s tooltip"> <!-- .NET -->
                 <div>✅</div>
                 <div class="xs">1.0+</div>

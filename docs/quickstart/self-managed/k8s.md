@@ -31,7 +31,7 @@ logs collection and application monitoring.
     kubectl create secret generic elastic-secret-otel \
     --namespace opentelemetry-operator-system \
     --from-literal=elastic_endpoint='<ELASTICSEARCH_ENDPOINT>' \
-    --from-literal=elastic_api_key='<BASE64_APIKEY>'
+    --from-literal=elastic_api_key='<ELASTIC_API_KEY>'
     ```
 
 3. **Install Operator**
