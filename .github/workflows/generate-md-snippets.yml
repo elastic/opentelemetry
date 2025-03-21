@@ -1,4 +1,4 @@
-name: Generate markdown snippets
+name: generate-markdown-snippets
 
 on:
   pull_request:
