@@ -11,8 +11,10 @@ The EDOT Java agent is a [distribution](https://opentelemetry.io/docs/concepts/d
 [OpenTelemetry Java Instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation) agent, it thus
 inherits all the features of the OpenTelemetry Java Instrumentation to capture logs, metrics and traces.
 
-The EDOT Java agent also provides exclusive features that are _not available_ in the [OpenTelemetry Java Instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation)
-or are provided but with different default configuration.
+The EDOT Java agent also provides:
+
+- exclusive features that are _not available_ in the [OpenTelemetry Java Instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation)
+- features of [OpenTelemetry Java Instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation) with different default configuration
 
 In addition to the features listed here, see [supported technologies](./supported-technologies) for an overview of the supported technologies.
 
@@ -48,6 +50,12 @@ See [span-stacktrace](https://github.com/open-telemetry/opentelemetry-java-contr
 Experimental runtime metrics are _enabled_ by default.
 
 Set `OTEL_INSTRUMENTATION_RUNTIME_TELEMETRY_EMIT_EXPERIMENTAL_TELEMETRY` to `false` to disable them.
+
+## Metric Temporality
+
+Elasticsearch and Kibana work best with metrics provided in delta-temporality.
+Therefore, the EDOT Java changes the default value of `otel.exporter.otlp.metrics.temporality.preference` to `DELTA`.
+You can override this default if needed, note though that some provided Kibana dashboards will not work correctly in this case.
 
 ## Elastic Universal profiling integration
 
