@@ -47,7 +47,7 @@ features:
       min_version: 
     iOS:
       status: ga
-      min_version: v1.0.0
+      min_version: v1.0
   - name: Zero-code instrumentation
     link: https://opentelemetry.io/docs/concepts/instrumentation/zero-code/
     min_stack_version:
