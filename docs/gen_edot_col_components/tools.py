@@ -165,7 +165,7 @@ def check_markdown_generation(dir, data, template, tag):
         
         for match in matches:
             if match.strip() != output.strip():
-                print(f'Warning: Generated markdown is outdated in file {filePath}! Regenerate markdown by running `make generate-collector-components`!')
+                print(f'Warning: Generated markdown is outdated in file {filePath}! Regenerate markdown by running `make generate`!')
                 return False;
             
     return True;

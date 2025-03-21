@@ -59,8 +59,8 @@ features:
       status: 
       min_version: 
     Node.js:
-      status: 
-      min_version: 
+      status: ga
+      min_version: 1.0
     PHP:
       status: 
       min_version: 
@@ -84,8 +84,8 @@ features:
       status: 
       min_version: 
     Node.js:
-      status: 
-      min_version: 
+      status: ga
+      min_version: 1.0
     PHP:
       status: 
       min_version: 
@@ -109,8 +109,8 @@ features:
       status:
       min_version:
     Node.js:
-      status:
-      min_version:
+      status: ga
+      min_version: 1.0
     PHP:
       status:
       min_version:
@@ -158,8 +158,8 @@ features:
       status: ga
       min_version: 
     Node.js:
-      status: ga
-      min_version: 
+      status: tech-preview
+      min_version:
     PHP:
       status: ga
       min_version: 
@@ -183,8 +183,8 @@ features:
       status: ga
       min_version: 
     Node.js:
-      status: ga
-      min_version: 
+      status: tech-preview
+      min_version:
     PHP:
       status: ga
       min_version: 
@@ -282,8 +282,8 @@ features:
       status: 
       min_version: 
     Node.js:
-      status: 
-      min_version: 
+      status: tech-preview
+      min_version:
     PHP:
       status: 
       min_version: 
