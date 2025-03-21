@@ -319,7 +319,7 @@ features:
       min_version: 
     iOS:
       status: ga
-      min_version: v0.1.0
+      min_version: v1.0
   - name: Crash Reporting
     link:
     is_sub_feature: true
