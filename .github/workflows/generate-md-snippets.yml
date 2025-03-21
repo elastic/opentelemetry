@@ -9,8 +9,7 @@ on:
       - 'docs/**'
 
 jobs:
-  # Build job
-  build:
+  run-generate-md:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
