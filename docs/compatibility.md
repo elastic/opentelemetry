@@ -124,7 +124,7 @@ The following table gives an overview of compatibility and support of EDOT Colle
 
 Other, non-EDOT distributions of the OTel Collector (such as custom Collector builds, upstream Collector distributions, etc.) are **technically compatible** (✔️) (but *not officially supported* through Elastic) if they contain the required OTel Collector components and are configured analogously to the EDOT Collector.
 
-Required components and configuration options per use case can be retrieved from the [sample configuration files](https://github.com/elastic/elastic-agent/tree/{{ site.edot_versions.collector }}/internal/pkg/otel/samples/linux) for the EDOT Collector.
+Required components and configuration options per use case can be retrieved from the [sample configuration files](https://github.com/elastic/elastic-agent/tree/v{{ site.edot_versions.collector }}/internal/pkg/otel/samples/linux) for the EDOT Collector.
 
 ## EDOT SDKs
 
