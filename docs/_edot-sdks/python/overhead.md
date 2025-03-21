@@ -5,7 +5,7 @@ nav_order: 8
 parent: EDOT Python
 ---
 
-## Performance overhead
+## Performance Overhead
 
 Every instrumentation agent comes with a (small) performance overhead for your application. How much really depends
 on your application and on the instrumentations used.
