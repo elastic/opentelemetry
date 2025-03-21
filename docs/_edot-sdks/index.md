@@ -127,6 +127,8 @@ For languages for which Elastic does not offer its own distribution, we recommen
             </td>
             <td class="s tooltip"> <!-- Python -->
                 <div>✅</div>
+                <div class="xs">1.0+</div>
+                <div class="tooltiptext">'Service Map' is available in EDOT Python since version 1.0</div>
             </td>
             <td class="s tooltip"> <!-- Android -->
                 <div>✅</div>
@@ -151,7 +153,9 @@ For languages for which Elastic does not offer its own distribution, we recommen
                 <div></div>
             </td>
             <td class="s tooltip"> <!-- Python -->
-                <div></div>
+                <div>✅</div>
+                <div class="xs">1.0+</div>
+                <div class="tooltiptext">'Zero-code instrumentation' is available in EDOT Python since version 1.0</div>
             </td>
             <td class="s tooltip"> <!-- Android -->
                 <div></div>
@@ -176,7 +180,9 @@ For languages for which Elastic does not offer its own distribution, we recommen
                 <div></div>
             </td>
             <td class="s tooltip"> <!-- Python -->
-                <div></div>
+                <div>✅</div>
+                <div class="xs">1.0+</div>
+                <div class="tooltiptext">'Head-based Sampling' is available in EDOT Python since version 1.0</div>
             </td>
             <td class="s tooltip"> <!-- Android -->
                 <div></div>
@@ -201,7 +207,9 @@ For languages for which Elastic does not offer its own distribution, we recommen
                 <div></div>
             </td>
             <td class="s tooltip"> <!-- Python -->
-                <div></div>
+                <div>✅</div>
+                <div class="xs">1.0+</div>
+                <div class="tooltiptext">'Baggage' is available in EDOT Python since version 1.0</div>
             </td>
             <td class="s tooltip"> <!-- Android -->
                 <div></div>
@@ -251,7 +259,7 @@ For languages for which Elastic does not offer its own distribution, we recommen
                 <div>✅</div>
             </td>
             <td class="s tooltip"> <!-- Python -->
-                <div>✅</div>
+                <div>𝐓</div>
             </td>
             <td class="s tooltip"> <!-- Android -->
                 <div></div>
@@ -276,7 +284,7 @@ For languages for which Elastic does not offer its own distribution, we recommen
                 <div>✅</div>
             </td>
             <td class="s tooltip"> <!-- Python -->
-                <div>✅</div>
+                <div>𝐓</div>
             </td>
             <td class="s tooltip"> <!-- Android -->
                 <div></div>
@@ -302,6 +310,8 @@ For languages for which Elastic does not offer its own distribution, we recommen
             </td>
             <td class="s tooltip"> <!-- Python -->
                 <div>✅</div>
+                <div class="xs">1.0+</div>
+                <div class="tooltiptext">'Metrics Collection' is available in EDOT Python since version 1.0</div>
             </td>
             <td class="s tooltip"> <!-- Android -->
                 <div></div>
@@ -327,6 +337,8 @@ For languages for which Elastic does not offer its own distribution, we recommen
             </td>
             <td class="s tooltip"> <!-- Python -->
                 <div>✅</div>
+                <div class="xs">1.0+</div>
+                <div class="tooltiptext">'Custom Metrics' is available in EDOT Python since version 1.0</div>
             </td>
             <td class="s tooltip"> <!-- Android -->
                 <div></div>
@@ -402,6 +414,8 @@ For languages for which Elastic does not offer its own distribution, we recommen
             </td>
             <td class="s tooltip"> <!-- Python -->
                 <div>✅</div>
+                <div class="xs">1.0+</div>
+                <div class="tooltiptext">'Capturing Errors / Exceptions' is available in EDOT Python since version 1.0</div>
             </td>
             <td class="s tooltip"> <!-- Android -->
                 <div>✅</div>
