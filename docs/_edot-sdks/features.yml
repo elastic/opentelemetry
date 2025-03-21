@@ -47,7 +47,7 @@ features:
       min_version: 
     iOS:
       status: ga
-      min_version: 
+      min_version: v1.0
   - name: Zero-code instrumentation
     link: https://opentelemetry.io/docs/concepts/instrumentation/zero-code/
     min_stack_version:
@@ -71,7 +71,7 @@ features:
       status: 
       min_version: 
     iOS:
-      status: 
+      status: not-available
       min_version: 
   - name: Head-based Sampling
     link: https://opentelemetry.io/docs/concepts/sampling/#head-sampling
@@ -96,8 +96,8 @@ features:
       status: 
       min_version: 
     iOS:
-      status: 
-      min_version: 
+      status: ga
+      min_version: v1.0
   - name: Baggage
     link: https://opentelemetry.io/docs/concepts/signals/baggage/
     min_stack_version:
@@ -121,8 +121,8 @@ features:
       status:
       min_version:
     iOS:
-      status:
-      min_version:
+      status: ga
+      min_version: v1.0
   - name: Inferred Spans
     link: ../edot-sdks/java/features#inferred-spans
     min_stack_version:
@@ -170,8 +170,8 @@ features:
       status: 
       min_version: 
     iOS:
-      status: 
-      min_version: 
+      status: ga
+      min_version: v1.0
   - name: Logs Correlation
     link: https://opentelemetry.io/docs/specs/otel/logs/#opentelemetry-solution
     is_sub_feature: true
@@ -195,8 +195,8 @@ features:
       status: 
       min_version: 
     iOS:
-      status: 
-      min_version: 
+      status: ga
+      min_version: v1.0
   - name: Metrics Collection
     link: https://opentelemetry.io/docs/concepts/signals/metrics/
     min_stack_version:
@@ -219,8 +219,8 @@ features:
       status: 
       min_version: 
     iOS:
-      status: 
-      min_version: 
+      status: tech-preview
+      min_version: v0.7
   - name: Custom Metrics
     link:
     is_sub_feature: true
@@ -244,8 +244,8 @@ features:
       status: 
       min_version: 
     iOS:
-      status: 
-      min_version:
+      status: tech-preview
+      min_version: v0.7
   - name: Agent Health Monitoring
     link:
     is_sub_feature: true
@@ -294,7 +294,7 @@ features:
       status: 
       min_version: 
     iOS:
-      status: 
+      status: not-available
       min_version: 
   - name: Capturing Errors / Exceptions
     link:
@@ -319,7 +319,7 @@ features:
       min_version: 
     iOS:
       status: ga
-      min_version:
+      min_version: v1.0
   - name: Crash Reporting
     link:
     is_sub_feature: true
@@ -344,7 +344,7 @@ features:
       min_version: 
     iOS:
       status: ga
-      min_version:
+      min_version: v1.0
   - name: Central Configuration
     link:
     min_stack_version:
@@ -368,7 +368,7 @@ features:
       min_version: 
     iOS:
       status: not-available
-      min_version:
+      min_version: 
   - name: Profiling Integration
     link: ../edot-sdks/java/features#elastic-universal-profiling-integration
     min_stack_version:
