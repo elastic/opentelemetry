@@ -22,6 +22,8 @@ nav_order: 3
 
 ## EDOT SDKs
 
+For the best (and supported) experience, we recommend exporting data from EDOT SDKs via the [EDOT Collector](https://elastic.github.io/opentelemetry/edot-collector/index).
+
 ### EDOT .NET
 
 🚧 Coming soon
@@ -47,7 +49,13 @@ Elastic **officially supports** (✅) the technologies, JVM versions and operati
 
 ### EDOT Python
 
-🚧 Coming soon
+| EDOT Python | Elastic Stack 8.x | Elastic Stack 9.x | Serverless |
+| ----------- | ----------------- | ----------------- | ---------- |
+| 1.0.0       | 8.18.0+¹          | 9.0.0+¹           | ✅ ²       |
+
+***1.** Via the EDOT Collector.*
+
+***2.** Via the OTel-native ingest endpoint.*
 
 ### EDOT Android
 
