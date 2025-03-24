@@ -32,7 +32,7 @@ available and their corresponding environment variable names, see [Configuration
 All OpenTelemetry environment variables from the upstream SDK may also be used to configure the SDK behavior for features
 such as resources, samples and exporters.
 
-### `IConfiguration` integration
+### IConfiguration integration
 
 In applications that use the [".NET generic host"](https://learn.microsoft.com/dotnet/core/extensions/generic-host), such as
 [ASP.NET Core](https://learn.microsoft.com/aspnet/core/introduction-to-aspnet-core) and

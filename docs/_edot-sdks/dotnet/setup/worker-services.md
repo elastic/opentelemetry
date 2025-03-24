@@ -6,4 +6,4 @@ parent: Setup
 grand_parent: EDOT .NET
 ---
 
-# Set up OpenTelemetry for worker services
+# Set up EDOT .NET for worker services

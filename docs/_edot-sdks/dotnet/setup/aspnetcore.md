@@ -6,4 +6,4 @@ parent: Setup
 grand_parent: EDOT .NET
 ---
 
-# Set up OpenTelemetry for ASP.NET Core applications
+# Set up EDOT .NET for ASP.NET Core applications

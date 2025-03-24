@@ -28,7 +28,6 @@ installing and using EDOT .NET in common application templates:
 
 -------
 
-
 ## Features
 
 With EDOT .NET, you have access to all the features of the [OpenTelemetry SDK for .NET](https://github.com/open-telemetry/opentelemetry-dotnet) plus:
