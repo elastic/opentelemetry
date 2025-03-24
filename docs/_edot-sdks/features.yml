@@ -56,8 +56,8 @@ features:
       status: 
       min_version: 
     Java:
-      status: 
-      min_version: 
+      status: ga
+      min_version: 1.0
     Node.js:
       status: ga
       min_version: 1.0
@@ -81,8 +81,8 @@ features:
       status: 
       min_version: 
     Java:
-      status: 
-      min_version: 
+      status: ga
+      min_version: 1.0
     Node.js:
       status: ga
       min_version: 1.0
@@ -106,8 +106,8 @@ features:
       status:
       min_version:
     Java:
-      status:
-      min_version:
+      status: ga
+      min_version: 1.0
     Node.js:
       status: ga
       min_version: 1.0
@@ -279,8 +279,8 @@ features:
       status: 
       min_version: 
     Java:
-      status: 
-      min_version: 
+      status: ga
+      min_version: 1.0
     Node.js:
       status: tech-preview
       min_version:
