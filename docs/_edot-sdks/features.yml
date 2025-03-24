@@ -288,7 +288,7 @@ features:
       status: not-available
       min_version:
     Python:
-      status: 
+      status: not-available
       min_version: 
     Android:
       status: 
