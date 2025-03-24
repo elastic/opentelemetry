@@ -144,8 +144,8 @@ to your project.
 <PackageReference Include="Elastic.OpenTelemetry" Version="<LATEST>" />
 ```
 
-> **NOTE**: Replace the `<LATEST>` version placeholder with the 
-[latest available package from NuGet.org](https://www.nuget.org/packages/Elastic.OpenTelemetry).
+{: .note }
+Replace the `<LATEST>` version placeholder with the [latest available package from NuGet.org](https://www.nuget.org/packages/Elastic.OpenTelemetry).
 
 You may also need to install additional instrumentation libraries to observe signals from specific components, such as
 ASP.NET Core.
@@ -154,8 +154,8 @@ ASP.NET Core.
 <PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="<LATEST>" />
 ```
 
-> **NOTE**: Replace the `<LATEST>` version placeholder with the 
-[latest available package from NuGet.org](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.AspNetCore).
+{: .note }
+Replace the `<LATEST>` version placeholder with the [latest available package from NuGet.org](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.AspNetCore).
 
 In an ASP.NET Core application, the APM Agent is likely registered using the `AddAllElasticApm` extension method
 defined on the `IServiceCollection`.
@@ -281,7 +281,8 @@ In the preceding code, `AddOpenTelemetry` extension method for the `IServiceColl
 to enable the core components. This method returns an `OpenTelemetryBuilder`, which must be further
 configured to enable tracing, metrics and logging, as well as export via OTLP.
 
-> **NOTE**: Each contrib instrumentation library must be registered manually when using the SDK.
+{: .note }
+Each contrib instrumentation library must be registered manually when using the SDK.
 
 To get started with the Elastic Distribution of OpenTelemetry .NET, add the 
 `Elastic.OpenTelemetry` [NuGet package](https://www.nuget.org/packages/Elastic.OpenTelemetry)
@@ -291,8 +292,8 @@ reference to your project file:
 <PackageReference Include="Elastic.OpenTelemetry" Version="<LATEST>" />
 ```
 
-> **NOTE**: Replace the `<LATEST>` version placeholder with the 
-[latest available package from NuGet.org](https://www.nuget.org/packages/Elastic.OpenTelemetry).
+{: .note }
+Replace the `<LATEST>` version placeholder with the [latest available package from NuGet.org](https://www.nuget.org/packages/Elastic.OpenTelemetry).
 
 EDOT .NET includes a transitive dependency on the OpenTelemetry SDK, so you do not _need_ to add the 
 OpenTelemetry SDK package to your project directly. However, you _can_ explicitly add the OpenTelemetry 
@@ -315,8 +316,9 @@ performs instrumentation assembly scanning to automatically add instrumentation 
 that it finds deployed with the application. All that is required is the installation of the relevant
 instrumentation NuGet packages.
 
-> **NOTE**: Instrumentation assembly scanning is not supported in applications using [AOT](https://learn.microsoft.com/dotnet/core/deploying/native-aot) 
-compilation.
+{: .warning }
+> Instrumentation assembly scanning is not supported for applications using native [AOT](https://learn.microsoft.com/dotnet/core/deploying/native-aot) 
+> or [single-file deployment](https://learn.microsoft.com/dotnet/core/deploying/single-file) compilation features.
 
 ### Zero-code auto instrumentation
 

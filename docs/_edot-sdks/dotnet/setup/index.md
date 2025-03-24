@@ -62,8 +62,8 @@ reference to your project file:
 <PackageReference Include="Elastic.OpenTelemetry" Version="<LATEST>" />
 ```
 
-> **NOTE**: Replace the `<LATEST>` version placeholder with the 
-[latest available package from NuGet.org](https://www.nuget.org/packages/Elastic.OpenTelemetry).
+{: .note }
+Replace the `<LATEST>` version placeholder with the [latest available package from NuGet.org](https://www.nuget.org/packages/Elastic.OpenTelemetry).
 
 EDOT .NET includes a transitive dependency on the OpenTelemetry SDK, so you do not _need_ to add the OpenTelemetry SDK package to your project directly. However,
 you _can_ explicitly add the OpenTelemetry SDK as a dependency if you want to opt into newer SDK versions.
@@ -80,8 +80,8 @@ Manually add the latest version to your project file:
 <PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="<LATEST>" />
 ```
 
-> **NOTE**: Replace the `<LATEST>` version placeholder with the 
-[latest available package from NuGet.org](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.AspNetCore).
+{: .note }
+Replace the `<LATEST>` version placeholder with the [latest available package from NuGet.org](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.AspNetCore).
 
 The presence of this package is detected by the EDOT instrumentation assembly scanning feature (enabled by default).
 
@@ -120,12 +120,14 @@ builder.AddElasticOpenTelemetry(b => b
   .ConfigureResource(r => r.AddService("MyAppName")));
 ```
 
-> **NOTE**: The preceding code will require two additional `using` directives:
+{: .note }
+The preceding code requires two additional `using` directives:
 
 ```csharp
 using OpenTelemetry;
 using OpenTelemetry.Resources;
 ```
+
 Alternatively, the `OTEL_SERVICE_NAME` environment variable can be used to configure the service name.
 There are two ways to specify this with the OpenTelemetry SDK. Either, as a traditional environment variable, configured before
 launching the process, or as an entry in the [.NET configuration APIs](https://learn.microsoft.com/dotnet/core/extensions/configuration).

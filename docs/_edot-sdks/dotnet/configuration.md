@@ -64,7 +64,8 @@ For example, you can define the configuration for the Elastic Distribution of Op
 }
 ```
 
-> **NOTE**: This example sets the file log directory to `C:\Logs` which enables diagnostic file logging.
+{: .note }
+This example sets the file log directory to `C:\Logs` which enables diagnostic file logging.
 
 Configuration parsed from the `Elastic:OpenTelemetry` section of the `IConfiguration` instance will be
 bound to the `ElasticOpenTelemetryOptions` instance used to configure EDOT .NET.

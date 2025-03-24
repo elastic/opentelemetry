@@ -109,8 +109,9 @@ The log level at which the profiler should log. Valid values are
 The default value is `information`. More verbose log levels like `trace` and `debug` can affect the runtime
 performance of profiler auto instrumentation, so are recommended _only_ for diagnostics purposes.
 
-> **NOTE**: If `ELASTIC_OTEL_LOG_TARGETS` is not explicitly set to include `file`, global file logging will only 
-be enabled when configured with `trace` or `debug`.
+{: .note }
+> If `ELASTIC_OTEL_LOG_TARGETS` is not explicitly set to include `file`, global file logging will only 
+> be enabled when configured with `trace` or `debug`.
 
 `OTEL_DOTNET_AUTO_LOG_DIRECTORY` _(optional)_::
 

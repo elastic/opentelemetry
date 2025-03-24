@@ -74,7 +74,9 @@ registering them when present.
 - [OpenTelemetry.Resources.OperatingSystem](https://www.nuget.org/packages/OpenTelemetry.Resources.OperatingSystem)
 - [OpenTelemetry.Resources.Process](https://www.nuget.org/packages/OpenTelemetry.Resources.Process)
 
-> **NOTE**: Instrumentation assembly scanning is not supported when publishing using native AOT.
+{: .warning }
+> Instrumentation assembly scanning is not supported for applications using native [AOT](https://learn.microsoft.com/dotnet/core/deploying/native-aot) 
+> or [single-file deployment](https://learn.microsoft.com/dotnet/core/deploying/single-file) compilation features.
 
 ## Defaults for tracing
 
