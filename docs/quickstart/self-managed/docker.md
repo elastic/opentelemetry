@@ -12,3 +12,5 @@ parent: Self-managed
 
 🆂 Self-managed Elastic Stack
 {: .label .label-yellow }
+
+🚧 Coming soon

@@ -29,7 +29,7 @@ def fetch_url_content(url):
 def dep_to_component(dep):
     url = dep[:dep.rfind(' v')].strip()
     html_url = url
-    repo_link = '[Contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib)'
+    repo_link = '[OTel Contrib Repo](https://github.com/open-telemetry/opentelemetry-collector-contrib)'
     if url.startswith('github.com/'):
         pattern = r'github.com\/(?P<org>[^\/]*)\/(?P<repo>[^\/]*)\/(?P<comp_type>[^\/]*)\/(?P<comp_name>.*)'
         match = re.search(pattern, url)
@@ -37,13 +37,13 @@ def dep_to_component(dep):
             print
             html_url = f'https://github.com/{match.group("org")}/{match.group("repo")}/tree/main/{match.group("comp_type")}/{match.group("comp_name")}'
             if match.group("repo") == 'opentelemetry-collector-components':
-                repo_link = '[Elastic](https://github.com/elastic/opentelemetry-collector-components)'
+                repo_link = '[Elastic Repo](https://github.com/elastic/opentelemetry-collector-components)'
     elif url.startswith('go.opentelemetry.io/collector'):
         pattern = r'go.opentelemetry.io\/collector\/(?P<comp_type>[^\/]*)\/(?P<comp_name>.*)'
         match = re.search(pattern, url)
         if match:
             html_url = f'https://github.com/open-telemetry/opentelemetry-collector/tree/main/{match.group("comp_type")}/{match.group("comp_name")}'
-            repo_link = '[Core](https://github.com/open-telemetry/opentelemetry-collector)'
+            repo_link = '[OTel Core Repo](https://github.com/open-telemetry/opentelemetry-collector)'
         
     comp = {
         'name': dep[(dep.rfind('/')+1):(dep.rfind(' ')+1)],
@@ -165,7 +165,7 @@ def check_markdown_generation(dir, data, template, tag):
         
         for match in matches:
             if match.strip() != output.strip():
-                print(f'Warning: Generated markdown is outdated in file {filePath}! Regenerate markdown by running `make generate-collector-components`!')
+                print(f'Warning: Generated markdown is outdated in file {filePath}! Regenerate markdown by running `make generate`!')
                 return False;
             
     return True;
