@@ -38,7 +38,7 @@ features:
       min_version: 
     PHP:
       status: ga
-      min_version: 
+      min_version: 1.0
     Python:
       status: ga
       min_version: 1.0
@@ -62,8 +62,8 @@ features:
       status: ga
       min_version: 1.0
     PHP:
-      status: 
-      min_version: 
+      status: ga
+      min_version: 1.0
     Python:
       status: ga
       min_version: 1.0
@@ -87,8 +87,8 @@ features:
       status: ga
       min_version: 1.0
     PHP:
-      status: 
-      min_version: 
+      status: not-available
+      min_version:
     Python:
       status: ga
       min_version: 1.0
@@ -112,8 +112,8 @@ features:
       status: ga
       min_version: 1.0
     PHP:
-      status:
-      min_version:
+      status: ga
+      min_version: 1.0
     Python:
       status: ga
       min_version: 1.0
@@ -137,8 +137,8 @@ features:
       status: not-available
       min_version: 
     PHP:
-      status: not-available
-      min_version: 
+      status: tech-preview
+      min_version: 1.0
     Python:
       status: not-available
       min_version: 
@@ -162,7 +162,7 @@ features:
       min_version:
     PHP:
       status: ga
-      min_version: 
+      min_version: 1.0
     Python:
       status: tech-preview
       min_version: 
@@ -187,7 +187,7 @@ features:
       min_version:
     PHP:
       status: ga
-      min_version: 
+      min_version: 1.0
     Python:
       status: tech-preview
       min_version: 
@@ -211,7 +211,7 @@ features:
       min_version: 
     PHP:
       status: ga
-      min_version: 
+      min_version: 1.0
     Python:
       status: ga
       min_version: 1.0
@@ -236,7 +236,7 @@ features:
       min_version: 
     PHP:
       status: ga
-      min_version: 
+      min_version: 1.0
     Python:
       status: ga
       min_version: 1.0
@@ -261,7 +261,7 @@ features:
       min_version: 
     PHP:
       status: not-available
-      min_version: 
+      min_version:
     Python:
       status: not-available
       min_version: 
@@ -285,8 +285,8 @@ features:
       status: tech-preview
       min_version:
     PHP:
-      status: 
-      min_version: 
+      status: not-available
+      min_version:
     Python:
       status: 
       min_version: 
@@ -310,7 +310,7 @@ features:
       min_version: 
     PHP:
       status: ga
-      min_version: 
+      min_version: 1.0
     Python:
       status: ga
       min_version: 1.0
