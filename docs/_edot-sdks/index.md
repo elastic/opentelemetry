@@ -413,8 +413,8 @@ For languages for which Elastic does not offer its own distribution, we recommen
             <td class="f sub"><a href="https://opentelemetry.io/docs/specs/semconv/runtime/">Runtime Metrics</a></td>
             <td class="s tooltip"> <!-- .NET -->
                 <div>✅</div>
-                <div class="xs">.NET 9++</div>
-                <div class="tooltiptext">'Runtime Metrics' is available in EDOT .NET since version .NET 9+</div>
+                <div class="xs">1.0+</div>
+                <div class="tooltiptext">'Runtime Metrics' is available in EDOT .NET since version 1.0</div>
             </td>
             <td class="s tooltip"> <!-- Java -->
                 <div></div>
