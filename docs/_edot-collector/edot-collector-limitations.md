@@ -27,4 +27,8 @@ The Elastic Distribution of the OpenTelemetry (EDOT) Collector has the following
   The [`hostmetrics receiver`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver) logs errors if it cannot access certain process information due to insufficient permissions.  
 
 - **Mapping errors appear temporarily in the console**  
-  Initial mapping errors occur until the system completes the mapping process.  
+  Initial mapping errors occur until the system completes the mapping process.
+
+- **Ingest Pipelines with OTel-native Data**
+
+- **Histograms only supported in delta temporality**

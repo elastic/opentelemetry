@@ -75,3 +75,7 @@ edot_versions:
 
 exclude:
   - "gen_edot_col_components/"
+
+mermaid:
+  # Version of mermaid library
+  version: "11.5.0"
