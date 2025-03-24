@@ -44,7 +44,7 @@ features:
       min_version: 1.0
     Android:
       status: ga
-      min_version: 
+      min_version: 1.0
     iOS:
       status: ga
       min_version: v1.0
@@ -68,7 +68,7 @@ features:
       status: ga
       min_version: 1.0
     Android:
-      status: 
+      status: not-available
       min_version: 
     iOS:
       status: not-available
@@ -93,7 +93,7 @@ features:
       status: ga
       min_version: 1.0
     Android:
-      status: 
+      status: not-available
       min_version: 
     iOS:
       status: ga
@@ -118,7 +118,7 @@ features:
       status: ga
       min_version: 1.0
     Android:
-      status:
+      status: not-available
       min_version:
     iOS:
       status: ga
@@ -167,8 +167,8 @@ features:
       status: tech-preview
       min_version: 
     Android:
-      status: 
-      min_version: 
+      status: ga
+      min_version: 1.0
     iOS:
       status: ga
       min_version: v1.0
@@ -192,8 +192,8 @@ features:
       status: tech-preview
       min_version: 
     Android:
-      status: 
-      min_version: 
+      status: ga
+      min_version: 1.0
     iOS:
       status: ga
       min_version: v1.0
@@ -216,8 +216,8 @@ features:
       status: ga
       min_version: 1.0
     Android:
-      status: 
-      min_version: 
+      status: ga
+      min_version: 1.0
     iOS:
       status: tech-preview
       min_version: v0.7
@@ -241,8 +241,8 @@ features:
       status: ga
       min_version: 1.0
     Android:
-      status: 
-      min_version: 
+      status: ga
+      min_version: 1.0
     iOS:
       status: tech-preview
       min_version: v0.7
@@ -291,7 +291,7 @@ features:
       status: not-available
       min_version: 
     Android:
-      status: 
+      status: not-available
       min_version: 
     iOS:
       status: not-available
@@ -316,7 +316,7 @@ features:
       min_version: 1.0
     Android:
       status: ga
-      min_version: 
+      min_version: 1.0
     iOS:
       status: ga
       min_version: v1.0
@@ -340,7 +340,7 @@ features:
       status: not-applicable
       min_version: 
     Android:
-      status: ga
+      status: not-available
       min_version: 
     iOS:
       status: ga
