@@ -29,7 +29,7 @@ features:
     min_stack_version:
     .NET:
       status: ga
-      min_version: 
+      min_version: 1.0
     Java:
       status: ga
       min_version: 
@@ -54,7 +54,7 @@ features:
     is_sub_feature: true
     .NET:
       status: ga
-      min_version: 
+      min_version: 1.0
     Java:
       status: 
       min_version: 
@@ -79,7 +79,7 @@ features:
     is_sub_feature: true
     .NET:
       status: ga
-      min_version: 
+      min_version: 1.0
     Java:
       status: 
       min_version: 
@@ -104,7 +104,7 @@ features:
     is_sub_feature: true
     .NET:
       status: ga
-      min_version:
+      min_version: 1.0
     Java:
       status:
       min_version:
@@ -153,7 +153,7 @@ features:
     min_stack_version:
     .NET:
       status: ga
-      min_version: 
+      min_version: 1.0
     Java:
       status: ga
       min_version: 
@@ -178,7 +178,7 @@ features:
     min_stack_version:
     .NET:
       status: ga
-      min_version: 
+      min_version: 1.0
     Java:
       status: ga
       min_version: 
@@ -202,7 +202,7 @@ features:
     min_stack_version:
     .NET:
       status: ga
-      min_version: 
+      min_version: 1.0
     Java:
       status: ga
       min_version: 
@@ -227,7 +227,7 @@ features:
     min_stack_version:
     .NET:
       status: ga
-      min_version: 
+      min_version: 1.0
     Java:
       status: ga
       min_version: 
@@ -277,7 +277,7 @@ features:
     min_stack_version:
     .NET:
       status: ga
-      min_version: .NET 9+
+      min_version: 1.0
     Java:
       status: 
       min_version: 
@@ -301,7 +301,7 @@ features:
     min_stack_version:
     .NET:
       status: ga
-      min_version: 
+      min_version: 1.0
     Java:
       status: ga
       min_version: 
