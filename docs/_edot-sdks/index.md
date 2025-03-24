@@ -7,8 +7,8 @@ nav_order: 1
 # EDOT Language SDKs
 
 The Elastic Distributions of OpenTelemetry (EDOT) Language SDKs (aka. application agents) are thin wrappers around corresponding upstream [OpenTelemetry SDKs](https://opentelemetry.io/docs/languages/), preconfigured for best experience with Elastic Observability.
-EDOT Language SDKs are fully compatible with and can be used as a drop in replacement for upstream OTel SDKs. 
-In addition, EDOT SDKs provide some popular, enterprise add-on features Elastic APM users might know from classic Elastic APM agents.
+EDOT Language SDKs are fully compatible with and can be used as a drop-in replacement for upstream OTel SDKs. 
+In addition, EDOT SDKs provide popular, enterprise add-on features and technical support, Elastic APM users might know from classic Elastic APM agents.
 
 ![](../images/edot-sdks.png)
 
