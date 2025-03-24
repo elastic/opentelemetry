@@ -115,6 +115,8 @@ For languages for which Elastic does not offer its own distribution, we recommen
             <td class="f sub"><a href="https://www.elastic.co/guide/en/observability/current/apm-service-maps.html">Service Map</a></td>
             <td class="s tooltip"> <!-- .NET -->
                 <div>✅</div>
+                <div class="xs">1.0+</div>
+                <div class="tooltiptext">'Service Map' is available in EDOT .NET since version 1.0</div>
             </td>
             <td class="s tooltip"> <!-- Java -->
                 <div>✅</div>
@@ -145,7 +147,9 @@ For languages for which Elastic does not offer its own distribution, we recommen
         <tr>
             <td class="f sub"><a href="https://opentelemetry.io/docs/concepts/instrumentation/zero-code/">Zero-code instrumentation</a></td>
             <td class="s tooltip"> <!-- .NET -->
-                <div></div>
+                <div>✅</div>
+                <div class="xs">1.0+</div>
+                <div class="tooltiptext">'Zero-code instrumentation' is available in EDOT .NET since version 1.0</div>
             </td>
             <td class="s tooltip"> <!-- Java -->
                 <div></div>
@@ -176,7 +180,9 @@ For languages for which Elastic does not offer its own distribution, we recommen
         <tr>
             <td class="f sub"><a href="https://opentelemetry.io/docs/concepts/sampling/#head-sampling">Head-based Sampling</a></td>
             <td class="s tooltip"> <!-- .NET -->
-                <div></div>
+                <div>✅</div>
+                <div class="xs">1.0+</div>
+                <div class="tooltiptext">'Head-based Sampling' is available in EDOT .NET since version 1.0</div>
             </td>
             <td class="s tooltip"> <!-- Java -->
                 <div></div>
@@ -207,7 +213,9 @@ For languages for which Elastic does not offer its own distribution, we recommen
         <tr>
             <td class="f sub"><a href="https://opentelemetry.io/docs/concepts/signals/baggage/">Baggage</a></td>
             <td class="s tooltip"> <!-- .NET -->
-                <div></div>
+                <div>✅</div>
+                <div class="xs">1.0+</div>
+                <div class="tooltiptext">'Baggage' is available in EDOT .NET since version 1.0</div>
             </td>
             <td class="s tooltip"> <!-- Java -->
                 <div></div>
@@ -268,6 +276,8 @@ For languages for which Elastic does not offer its own distribution, we recommen
             <td class="f bold"><a href="https://opentelemetry.io/docs/specs/otel/logs/#log-correlation">Logs Collection</a></td>
             <td class="s tooltip"> <!-- .NET -->
                 <div>✅</div>
+                <div class="xs">1.0+</div>
+                <div class="tooltiptext">'Logs Collection' is available in EDOT .NET since version 1.0</div>
             </td>
             <td class="s tooltip"> <!-- Java -->
                 <div>✅</div>
@@ -297,6 +307,8 @@ For languages for which Elastic does not offer its own distribution, we recommen
             <td class="f sub"><a href="https://opentelemetry.io/docs/specs/otel/logs/#opentelemetry-solution">Logs Correlation</a></td>
             <td class="s tooltip"> <!-- .NET -->
                 <div>✅</div>
+                <div class="xs">1.0+</div>
+                <div class="tooltiptext">'Logs Correlation' is available in EDOT .NET since version 1.0</div>
             </td>
             <td class="s tooltip"> <!-- Java -->
                 <div>✅</div>
@@ -326,6 +338,8 @@ For languages for which Elastic does not offer its own distribution, we recommen
             <td class="f bold"><a href="https://opentelemetry.io/docs/concepts/signals/metrics/">Metrics Collection</a></td>
             <td class="s tooltip"> <!-- .NET -->
                 <div>✅</div>
+                <div class="xs">1.0+</div>
+                <div class="tooltiptext">'Metrics Collection' is available in EDOT .NET since version 1.0</div>
             </td>
             <td class="s tooltip"> <!-- Java -->
                 <div>✅</div>
@@ -357,6 +371,8 @@ For languages for which Elastic does not offer its own distribution, we recommen
             <td class="f sub">Custom Metrics</td>
             <td class="s tooltip"> <!-- .NET -->
                 <div>✅</div>
+                <div class="xs">1.0+</div>
+                <div class="tooltiptext">'Custom Metrics' is available in EDOT .NET since version 1.0</div>
             </td>
             <td class="s tooltip"> <!-- Java -->
                 <div>✅</div>
@@ -412,7 +428,9 @@ For languages for which Elastic does not offer its own distribution, we recommen
         <tr>
             <td class="f sub"><a href="https://opentelemetry.io/docs/specs/semconv/runtime/">Runtime Metrics</a></td>
             <td class="s tooltip"> <!-- .NET -->
-                <div></div>
+                <div>✅</div>
+                <div class="xs">1.0+</div>
+                <div class="tooltiptext">'Runtime Metrics' is available in EDOT .NET since version 1.0</div>
             </td>
             <td class="s tooltip"> <!-- Java -->
                 <div></div>
@@ -438,6 +456,8 @@ For languages for which Elastic does not offer its own distribution, we recommen
             <td class="f bold">Capturing Errors / Exceptions</td>
             <td class="s tooltip"> <!-- .NET -->
                 <div>✅</div>
+                <div class="xs">1.0+</div>
+                <div class="tooltiptext">'Capturing Errors / Exceptions' is available in EDOT .NET since version 1.0</div>
             </td>
             <td class="s tooltip"> <!-- Java -->
                 <div>✅</div>
