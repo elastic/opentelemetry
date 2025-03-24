@@ -152,7 +152,9 @@ For languages for which Elastic does not offer its own distribution, we recommen
                 <div class="tooltiptext">'Zero-code instrumentation' is available in EDOT .NET since version 1.0</div>
             </td>
             <td class="s tooltip"> <!-- Java -->
-                <div></div>
+                <div>✅</div>
+                <div class="xs">1.0+</div>
+                <div class="tooltiptext">'Zero-code instrumentation' is available in EDOT Java since version 1.0</div>
             </td>
             <td class="s tooltip"> <!-- Node.js -->
                 <div>✅</div>
@@ -185,7 +187,9 @@ For languages for which Elastic does not offer its own distribution, we recommen
                 <div class="tooltiptext">'Head-based Sampling' is available in EDOT .NET since version 1.0</div>
             </td>
             <td class="s tooltip"> <!-- Java -->
-                <div></div>
+                <div>✅</div>
+                <div class="xs">1.0+</div>
+                <div class="tooltiptext">'Head-based Sampling' is available in EDOT Java since version 1.0</div>
             </td>
             <td class="s tooltip"> <!-- Node.js -->
                 <div>✅</div>
@@ -218,7 +222,9 @@ For languages for which Elastic does not offer its own distribution, we recommen
                 <div class="tooltiptext">'Baggage' is available in EDOT .NET since version 1.0</div>
             </td>
             <td class="s tooltip"> <!-- Java -->
-                <div></div>
+                <div>✅</div>
+                <div class="xs">1.0+</div>
+                <div class="tooltiptext">'Baggage' is available in EDOT Java since version 1.0</div>
             </td>
             <td class="s tooltip"> <!-- Node.js -->
                 <div>✅</div>
@@ -433,7 +439,9 @@ For languages for which Elastic does not offer its own distribution, we recommen
                 <div class="tooltiptext">'Runtime Metrics' is available in EDOT .NET since version 1.0</div>
             </td>
             <td class="s tooltip"> <!-- Java -->
-                <div></div>
+                <div>✅</div>
+                <div class="xs">1.0+</div>
+                <div class="tooltiptext">'Runtime Metrics' is available in EDOT Java since version 1.0</div>
             </td>
             <td class="s tooltip"> <!-- Node.js -->
                 <div>𝐓</div>
