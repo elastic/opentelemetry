@@ -408,7 +408,7 @@ For languages for which Elastic does not offer its own distribution, we recommen
                 <div></div>
             </td>
             <td class="s tooltip"> <!-- Python -->
-                <div></div>
+                <div>❌</div>
             </td>
             <td class="s tooltip"> <!-- Android -->
                 <div></div>
