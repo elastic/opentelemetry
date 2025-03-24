@@ -5,6 +5,6 @@ nav_order: 7
 parent: EDOT PHP
 ---
 
-# Release Notes for the EDOT PHP SDK
+# Release Notes for the EDOT PHP Agent
 
-TODO
+Release notes are published [on Github](https://github.com/elastic/elastic-otel-php/releases)
