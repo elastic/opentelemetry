@@ -53,7 +53,7 @@ features:
     min_stack_version:
     is_sub_feature: true
     .NET:
-      status: 
+      status: ga
       min_version: 
     Java:
       status: 
@@ -78,7 +78,7 @@ features:
     min_stack_version:
     is_sub_feature: true
     .NET:
-      status: 
+      status: ga
       min_version: 
     Java:
       status: 
@@ -103,7 +103,7 @@ features:
     min_stack_version:
     is_sub_feature: true
     .NET:
-      status:
+      status: ga
       min_version:
     Java:
       status:
@@ -276,8 +276,8 @@ features:
     is_sub_feature: true
     min_stack_version:
     .NET:
-      status: 
-      min_version: 
+      status: ga
+      min_version: .NET 9+
     Java:
       status: 
       min_version: 
