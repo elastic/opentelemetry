@@ -7,4 +7,6 @@ parent: EDOT .NET
 
 # Release Notes for the EDOT .NET Agent
 
-TODO
+## 1.0.0
+
+Initial release of EDOT .NET
