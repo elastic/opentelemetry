@@ -31,6 +31,9 @@ This page guides migrating to EDOT .NET from either the existing
 [Elastic APM Agent for .NET](https://www.elastic.co/guide/en/apm/agent/dotnet/current/index.html) or from the upstream
 OpenTelemetry SDK.
 
+- [Migrating to EDOT .NET from Elastic .NET Agent](#migrating-to-edot-net-from-elastic-net-agent)
+- [Migrating to EDOT .NET from the upstream OpenTelemetry .NET SDK](#migrating-to-edot-net-from-the-upstream-opentelemetry-net-sdk)
+
 ## Migrating to EDOT .NET from Elastic .NET Agent
 
 ### Migrating manual application instrumentation
@@ -247,7 +250,7 @@ be updated to point to the Elastic redistribution of the OpenTelemetry autoinstr
 
 Please follow the steps in [Using EDOT .NET zero-code instrumentation](./setup/zero-code) to configure the profiler.
 
-## Migrating to EDOT .NET from OpenTelemetry .NET
+## Migrating to EDOT .NET from the upstream OpenTelemetry .NET SDK
 
 Our design goal for EDOT .NET has been to introduce no new concepts and require minimal code changes to migrate
 from the upstream OpenTelemetry SDK for .NET to EDOT .NET as easily as possible. Our [opinionated defaults](./setup/edot-defaults)
