@@ -34,7 +34,7 @@ jobs:
   changed-files:
     runs-on: ubuntu-latest
     outputs:
-      docs_changed: ${{ steps.filter.outputs.docs_changed }}
+      docs_changed: ${{ steps.filter.outputs.docs }}
     steps:
       - uses: actions/checkout@v4
   
