@@ -10,7 +10,7 @@ The Elastic Distributions of OpenTelemetry (EDOT) Language SDKs (aka. applicatio
 EDOT Language SDKs are fully compatible with and can be used as a drop-in replacement for upstream OTel SDKs. 
 In addition, EDOT SDKs provide popular, enterprise add-on features and technical support, Elastic APM users might know from classic Elastic APM agents.
 
-![](../images/edot-sdks.png)
+<p style="justify-self: center;"><img src="../images/edot-sdks.png" width="300" alt="EDOT SDKs"/></p>
 
 Currently, the following EDOT SDKs are availble:
 
@@ -199,7 +199,9 @@ For languages for which Elastic does not offer its own distribution, we recommen
                 <div class="tooltiptext">'Head-based Sampling' is available in EDOT Node.js since version 1.0</div>
             </td>
             <td class="s tooltip"> <!-- PHP -->
-                <div>❌</div>
+                <div>✅</div>
+                <div class="xs">1.0+</div>
+                <div class="tooltiptext">'Head-based Sampling' is available in EDOT PHP since version 1.0</div>
             </td>
             <td class="s tooltip"> <!-- Python -->
                 <div>✅</div>
@@ -260,6 +262,8 @@ For languages for which Elastic does not offer its own distribution, we recommen
             </td>
             <td class="s tooltip"> <!-- Java -->
                 <div>✅</div>
+                <div class="xs">1.0+</div>
+                <div class="tooltiptext">'Inferred Spans' is available in EDOT Java since version 1.0</div>
             </td>
             <td class="s tooltip"> <!-- Node.js -->
                 <div>❌</div>
@@ -281,7 +285,7 @@ For languages for which Elastic does not offer its own distribution, we recommen
         </tr>
         <!-- Feature: Logs Collection -->
         <tr>
-            <td class="f bold"><a href="https://opentelemetry.io/docs/specs/otel/logs/#log-correlation">Logs Collection</a></td>
+            <td class="f bold"><a href="https://opentelemetry.io/docs/specs/otel/logs/#opentelemetry-solution">Logs Collection</a></td>
             <td class="s tooltip"> <!-- .NET -->
                 <div>✅</div>
                 <div class="xs">1.0+</div>
@@ -289,6 +293,8 @@ For languages for which Elastic does not offer its own distribution, we recommen
             </td>
             <td class="s tooltip"> <!-- Java -->
                 <div>✅</div>
+                <div class="xs">1.0+</div>
+                <div class="tooltiptext">'Logs Collection' is available in EDOT Java since version 1.0</div>
             </td>
             <td class="s tooltip"> <!-- Node.js -->
                 <div>𝐓</div>
@@ -314,7 +320,7 @@ For languages for which Elastic does not offer its own distribution, we recommen
         </tr>
         <!-- Feature: Logs Correlation -->
         <tr>
-            <td class="f sub"><a href="https://opentelemetry.io/docs/specs/otel/logs/#opentelemetry-solution">Logs Correlation</a></td>
+            <td class="f sub"><a href="https://opentelemetry.io/docs/specs/otel/logs/#log-correlation">Logs Correlation</a></td>
             <td class="s tooltip"> <!-- .NET -->
                 <div>✅</div>
                 <div class="xs">1.0+</div>
@@ -322,6 +328,8 @@ For languages for which Elastic does not offer its own distribution, we recommen
             </td>
             <td class="s tooltip"> <!-- Java -->
                 <div>✅</div>
+                <div class="xs">1.0+</div>
+                <div class="tooltiptext">'Logs Correlation' is available in EDOT Java since version 1.0</div>
             </td>
             <td class="s tooltip"> <!-- Node.js -->
                 <div>𝐓</div>
@@ -355,9 +363,13 @@ For languages for which Elastic does not offer its own distribution, we recommen
             </td>
             <td class="s tooltip"> <!-- Java -->
                 <div>✅</div>
+                <div class="xs">1.0+</div>
+                <div class="tooltiptext">'Metrics Collection' is available in EDOT Java since version 1.0</div>
             </td>
             <td class="s tooltip"> <!-- Node.js -->
                 <div>✅</div>
+                <div class="xs">1.0+</div>
+                <div class="tooltiptext">'Metrics Collection' is available in EDOT Node.js since version 1.0</div>
             </td>
             <td class="s tooltip"> <!-- PHP -->
                 <div>✅</div>
@@ -390,9 +402,13 @@ For languages for which Elastic does not offer its own distribution, we recommen
             </td>
             <td class="s tooltip"> <!-- Java -->
                 <div>✅</div>
+                <div class="xs">1.0+</div>
+                <div class="tooltiptext">'Custom Metrics' is available in EDOT Java since version 1.0</div>
             </td>
             <td class="s tooltip"> <!-- Node.js -->
                 <div>✅</div>
+                <div class="xs">1.0+</div>
+                <div class="tooltiptext">'Custom Metrics' is available in EDOT Node.js since version 1.0</div>
             </td>
             <td class="s tooltip"> <!-- PHP -->
                 <div>✅</div>
@@ -479,9 +495,13 @@ For languages for which Elastic does not offer its own distribution, we recommen
             </td>
             <td class="s tooltip"> <!-- Java -->
                 <div>✅</div>
+                <div class="xs">1.0+</div>
+                <div class="tooltiptext">'Capturing Errors / Exceptions' is available in EDOT Java since version 1.0</div>
             </td>
             <td class="s tooltip"> <!-- Node.js -->
                 <div>✅</div>
+                <div class="xs">1.0+</div>
+                <div class="tooltiptext">'Capturing Errors / Exceptions' is available in EDOT Node.js since version 1.0</div>
             </td>
             <td class="s tooltip"> <!-- PHP -->
                 <div>✅</div>

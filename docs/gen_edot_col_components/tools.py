@@ -81,8 +81,8 @@ def get_otel_components(url):
     elastic_agent_go_mod = fetch_url_content(url)
 
     lines = elastic_agent_go_mod.splitlines()
-    components_type = ['receiver', 'connector', 'processor', 'exporter', 'extension']
-    otel_deps = [line for line in lines if (not line.endswith('// indirect') and any(f'/{comp}/' in line for comp in components_type))]
+    components_type = ['receiver', 'connector', 'processor', 'exporter', 'extension', 'provider']
+    otel_deps = [line for line in lines if (not line.endswith('// indirect') and ("=>" not in line) and (any(f'/{comp}/' in line for comp in components_type)))]
     otel_components = list(map(dep_to_component, otel_deps))
     
     

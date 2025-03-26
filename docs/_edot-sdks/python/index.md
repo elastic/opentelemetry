@@ -2,6 +2,7 @@
 title: EDOT Python
 layout: default
 nav_order: 6
+fa_icon_key: fa-brands fa-python
 ---
 
 # EDOT Python
@@ -17,18 +18,3 @@ With EDOT Python you have access to all the features of the OpenTelemetry Python
 * Preconfigured collection of tracing and metrics signals, applying some opinionated defaults, such as which sources are collected by default.
 
 **Ready to try out EDOT Python?** Follow the step-by-step instructions in [Setup](./setup/index).
-
-## Compatibility matrix
-
-Data can be exported in the OpenTelemetry-native [OTLP (OpenTelemetry protocol)](https://opentelemetry.io/docs/specs/otlp) format via gRPC (default)
-and HTTP to self-managed, Elastic Cloud Hosted or Elastic Cloud Serverless observability backends.
-
-For the best (and supported) experience, we recommend exporting data from EDOT Python via the [EDOT Collector](https://elastic.github.io/opentelemetry/edot-collector/index).
-
-| EDOT Python | Elastic Stack 8.x | Elastic Stack 9.x | Serverless |
-| ----------- | ----------------- | ----------------- | ---------- |
-| 1.0.0       | 8.18.0+¹          | 9.0.0+¹           | ✅ ²       |
-
-***1.** Via the EDOT Collector.*
-
-***2.** Via the OTel-native ingest endpoint.*
