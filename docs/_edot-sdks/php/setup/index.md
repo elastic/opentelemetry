@@ -20,7 +20,7 @@ This guide shows you how to use the Elastic Distribution of OpenTelemetry PHP (E
 
 ## Prerequisites
 
-Before getting started, you'll need somewhere to send the gathered OpenTelemetry data so it can be viewed and analyzed. EDOT PHP supports sending data to any OpenTelemetry protocol (OTLP) endpoint, but this guide assumes you are sending data to an [Elastic Observability](https://www.elastic.co/observability) cloud deployment. You can use an existing one or set up a new one.
+Before getting started, you'll need to send the gathered OpenTelemetry data somewhere so it can be viewed and analyzed. EDOT PHP supports sending data to any OpenTelemetry protocol (OTLP) endpoint, but this guide assumes you are sending data to an [Elastic Observability](https://www.elastic.co/observability) cloud deployment. You can use an existing one or set up a new one.
 
 <details>
 <summary><strong>Expand for setup instructions</strong></summary>
