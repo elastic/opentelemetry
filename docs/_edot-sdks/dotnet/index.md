@@ -2,6 +2,7 @@
 title: EDOT .NET
 layout: default
 nav_order: 2
+fa_icon_key: fa-solid fa-n
 ---
 
 # EDOT .NET
@@ -50,17 +51,7 @@ EDOT .NET support all [officially supported](https://dotnet.microsoft.com/en-us/
 
 1. *Due to assembly binding issues introduced by Microsoft, we recommend at least .NET Framework 4.7.2 for best compatibility.*
 
-## Compatibility matrix
+## Exporting Data to Elastic
 
 Data can be exported in the OpenTelemetry-native [OTLP (OpenTelemetry protocol)](https://opentelemetry.io/docs/specs/otlp) format via gRPC (recommended)
 and HTTP to self-managed, Elastic Cloud Hosted or Elastic Cloud Serverless observability backends.
-
-For the best (and supported) experience, we recommend exporting data from EDOT .NET via the [EDOT Collector](/docs/_edot-collector/index).
-
-| EDOT .NET version | 8.x      | 9.x      | Serverless |
-| ----------------- | -------- | -------- | ---------- |
-| 1.0.0             | 8.18.0+¹ | 9.0.0+¹  | 🗸 ²       |
-
-***1.** Via the EDOT Collector.*
-
-***2.** Via the OTel-native ingest endpoint.*

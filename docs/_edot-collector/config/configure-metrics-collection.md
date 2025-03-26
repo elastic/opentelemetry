@@ -1,10 +1,10 @@
 ---
-title: Customize Metrics
+title: Configure Metrics Collection
 parent: Configuration
 layout: default
 nav_order: 4
 ---
 
-# Customize Metrics Collection
+# Configure Metrics Collection
 
 🚧 Coming soon

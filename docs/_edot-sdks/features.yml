@@ -87,8 +87,8 @@ features:
       status: ga
       min_version: 1.0
     PHP:
-      status: not-available
-      min_version:
+      status: ga
+      min_version: 1.0
     Python:
       status: ga
       min_version: 1.0
@@ -132,7 +132,7 @@ features:
       min_version: 
     Java:
       status: ga
-      min_version: 
+      min_version: 1.0
     Node.js:
       status: not-available
       min_version: 
@@ -156,7 +156,7 @@ features:
       min_version: 1.0
     Java:
       status: ga
-      min_version: 
+      min_version: 1.0
     Node.js:
       status: tech-preview
       min_version:
@@ -181,7 +181,7 @@ features:
       min_version: 1.0
     Java:
       status: ga
-      min_version: 
+      min_version: 1.0
     Node.js:
       status: tech-preview
       min_version:
@@ -205,10 +205,10 @@ features:
       min_version: 1.0
     Java:
       status: ga
-      min_version: 
+      min_version: 1.0
     Node.js:
       status: ga
-      min_version: 
+      min_version: 1.0
     PHP:
       status: ga
       min_version: 1.0
@@ -230,10 +230,10 @@ features:
       min_version: 1.0
     Java:
       status: ga
-      min_version: 
+      min_version: 1.0
     Node.js:
       status: ga
-      min_version: 
+      min_version: 1.0
     PHP:
       status: ga
       min_version: 1.0
@@ -304,10 +304,10 @@ features:
       min_version: 1.0
     Java:
       status: ga
-      min_version: 
+      min_version: 1.0
     Node.js:
       status: ga
-      min_version: 
+      min_version: 1.0
     PHP:
       status: ga
       min_version: 1.0

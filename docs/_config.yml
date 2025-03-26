@@ -58,18 +58,28 @@ just_the_docs:
     edot-sdks:
       name: EDOT SDKs
       nav_fold: true
+      nav_external_links:
+        - title: EDOT Android
+          url: https://www.elastic.co/guide/en/apm/agent/android/current/intro.html
+          fa_icon_key: fa-brands fa-android
+          hide_icon: false
+        - title: EDOT iOS
+          url: https://www.elastic.co/guide/en/apm/agent/swift/current/intro.html
+          fa_icon_key: fa-brands fa-apple
+          hide_icon: false
   nav_sort: case_insensitive
 
 # ! DO NOT DELETE THE COMMENTS !
 # -- EDOT versions start -- 
 edot_versions:
-  collector: 8.17.3
-  android:
-  dotnet: 1.0.0-beta.1
-  ios:
+  stack: 9.0.0
+  collector: 9.0.0-rc1
+  android: 1.0.0
+  dotnet: 1.0.0
+  ios:  1.0.0
   java: 1.2.1
   nodejs: 0.7.0
-  php:
+  php: 1.0.0
   python: 0.7.0
 # -- EDOT versions end -- 
 
@@ -79,3 +89,9 @@ exclude:
 mermaid:
   # Version of mermaid library
   version: "11.5.0"
+
+nav_external_links:
+  - title: GitHub Repos
+    url: https://github.com/elastic/opentelemetry/#edot-components--repos
+    fa_icon_key: fa-brands fa-github
+    hide_icon: false

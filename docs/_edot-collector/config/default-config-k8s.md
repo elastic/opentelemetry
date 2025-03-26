@@ -17,13 +17,13 @@ The [Kubernetes setup](../../quickstart/index) utilizes the OpenTelemetry Operat
 <table>
     <thead>
         <tr>
-            <td>Direct ingestion into Elasticsearch</td>
-            <td>Managed OTLP Endpoint</td>
+            <td style="text-align:center;"><b>Direct ingestion into Elasticsearch</b></td>
+            <td style="text-align:center;"><b>Managed OTLP Endpoint</b></td>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>
+            <td style="text-align:center;">
                 <pre class="mermaid">
                     flowchart LR
                         cluster@{ shape: proc, label: "Cluster
@@ -41,7 +41,7 @@ The [Kubernetes setup](../../quickstart/index) utilizes the OpenTelemetry Operat
                         style es stroke:#33f,stroke-width:2px,color:#000;
                 </pre>
             </td>
-            <td>
+            <td style="text-align:center;">
                 <pre class="mermaid">
                     flowchart LR
                         cluster@{ shape: proc, label: "Cluster
@@ -59,6 +59,14 @@ The [Kubernetes setup](../../quickstart/index) utilizes the OpenTelemetry Operat
 
                         style otlp stroke:#33f,stroke-width:2px,color:#000;
                 </pre>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:center;">
+                <a href="https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{ site.edot_versions.collector }}/deploy/helm/edot-collector/kube-stack/values.yaml">📄 K8s - ES</a>
+            </td>
+            <td style="text-align:center;">
+            <a href="https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{ site.edot_versions.collector }}/deploy/helm/edot-collector/kube-stack/managed_otlp/values.yaml">📄 K8s - OTLP</a>
             </td>
         </tr>
     </tbody>

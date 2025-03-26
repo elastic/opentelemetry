@@ -1,11 +1,11 @@
 ---
-title: Customize Logs
+title: Configure Logs Collection
 parent: Configuration
 layout: default
 nav_order: 3
 ---
 
-# Customize Logs Collection
+# Configure Logs Collection
 
 🚧 Coming soon
 

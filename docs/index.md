@@ -2,6 +2,7 @@
 title: Introduction
 layout: default
 nav_order: 1
+fa_icon_key: fa-solid fa-info
 ---
 
 # Elastic Distributions of OpenTelemetry (EDOT)
@@ -46,3 +47,21 @@ Pick the right [Quickstart Guide](./quickstart/index) for your environment
 
 ## 📥 Report an issue or provide feedback
 To report an issue or provide feedback on EDOT, please [submit a github issue](https://github.com/elastic/opentelemetry/issues/new/choose).
+
+## Component Versions
+
+These documentation pages are optimized for the following versions of the corresponding EDOT components and Elastic Stack.
+
+| Component | Version |
+|:---|:---:|
+|Elastic Stack | {{ site.edot_versions.stack }} |
+|EDOT Collector| {{ site.edot_versions.collector }} |
+|EDOT .NET| {{ site.edot_versions.dotnet }} |
+|EDOT Java| {{ site.edot_versions.java }} |
+|EDOT Node.js| {{ site.edot_versions.nodejs }} |
+|EDOT PHP| {{ site.edot_versions.php }} |
+|EDOT Python| {{ site.edot_versions.python }} |
+|EDOT Android| {{ site.edot_versions.android }} |
+|EDOT iOS| {{ site.edot_versions.ios }} |
+
+For other versions [visit the documentation sources](https://github.com/elastic/opentelemetry/tags) in the GitHub repository.
