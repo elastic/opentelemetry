@@ -41,9 +41,12 @@ INFO io.opentelemetry.javaagent.tooling.VersionLogger - opentelemetry-javaagent 
 ```
 
 In addition, the `-javaagent:` JVM argument can provide the path to the agent file name, which _might_ also contain
-the agent version, for example `-javaagent:elastic-otel-javaagent-1.2.3.jar`
+the agent version, for example `-javaagent:elastic-otel-javaagent-1.2.3.jar`.
 
-When the original agent jar file has been renamed, it is still possible to inspect the `Implementation-Version` entry in `META-INF/MANIFEST.MF` file of the agent jar,
+Executing the agent jar as an application with `java -jar elastic-otel-javaagent.jar` will provide the agent version on standard output,
+which could be relevant to use when the jar file has been renamed.
+
+Also, it is also possible to inspect the `Implementation-Version` entry in `META-INF/MANIFEST.MF` file of the agent jar,
 for example with `unzip -p elastic-otel-javaagent.jar META-INF/MANIFEST.MF|grep 'Implementation-Version'`
 
 ## What are the versions of the OpenTelemetry upstream dependencies ?
