@@ -9,15 +9,15 @@ parent: EDOT PHP
 
 Is something not working as expected?
 Don't worry if you can't figure out what the problem is; we’re here to help!
-As a first step, make sure your application is compatible with the [technologies supported by EDOT PHP](./supported-technologies.md).
+As a first step, make sure your application is compatible with the [technologies supported by EDOT PHP](./supported-technologies).
 
 If you're an existing Elastic customer with a support contract, please create a ticket in the
 [Elastic Support portal](https://support.elastic.co/customers/s/login/).
 Other users can post in the [APM discuss forum](https://discuss.elastic.co/c/apm).
 
-### Enable logging
+## Enable logging
 
-In diagnosing issues with the agent's operation, logs play a key role. A detailed explanation of the logging configuration options can be found in the [configuration documentation](configure.md#logging-configuration).
+In diagnosing issues with the agent's operation, logs play a key role. A detailed explanation of the logging configuration options can be found in the [configuration documentation](configure#logging-configuration).
 
 In most cases, setting the logging level to `debug` is sufficient. In extreme cases, `trace` can be used, but keep in mind that the amount of generated data may be significant.
 
@@ -30,28 +30,27 @@ export OTEL_LOG_LEVEL=DEBUG
 > **IMPORTANT:** _Please upload your complete debug logs_ to a service like [GitHub Gist](https://gist.github.com) so that we can analyze the problem. Logs should include everything from when the application starts up until the first request executes. It is important to note that logs may contain sensitive data — be sure to review and sanitize them before sharing.
 
 
-### Disable the Agent
+## Disable the Agent
 
 In the unlikely event the agent causes disruptions to a production application,
 you can disable the agent while you troubleshoot.
 
-You can disable the agent by setting [`elastic_otel.enabled`](./configuration.md#general-configuration) to `false`.
+You can disable the agent by setting [`elastic_otel.enabled`](./configuration#general-configuration) to `false`.
 
 > **IMPORTANT:** You'll need to restart your application for the changes to apply.
 
 
-### Agent is not instrumenting code
+## Agent is not instrumenting code
 
-#### `open_basedir` PHP configuration option
+### `open_basedir` PHP configuration option
 
 If you see a similar entry in the agent log, this indicates an incorrect open_basedir configuration.
-For more details please see [limitations documentation](./setup/limitations.md#open_basedir-php-configuration-option).
+For more details please see [limitations documentation](./setup/limitations#open_basedir-php-configuration-option).
 
 
-`Elastic Agent bootstrap file (...php/bootstrap_php_part.php) is located outside of paths allowed by open_basedir ini setting.
-`
+`EDOT PHP bootstrap file (...php/bootstrap_php_part.php) is located outside of paths allowed by open_basedir ini setting.`
 
-### Collection of diagnostic information
+## Collection of diagnostic information
 
 For a more detailed analysis of issues, it is necessary to collect diagnostic information. The agent allows for the automatic collection of such information - all data will be saved to the file specified in the configuration.
 
@@ -93,7 +92,7 @@ What information will be collected:
 - Process memory information and memory maps (`/proc/{id}/maps` and `/proc/{id}/smaps_rollup`)
 - Process status information (`/proc/{id}/status`)
 
-### Enabling Debugging for Instrumented Functions
+## Enabling Debugging for Instrumented Functions
 
 EDOT allows detailed diagnostics of arguments passed to instrumented functions. This makes it possible to verify whether the data used by the instrumented application is correctly analyzed by the instrumentation code.
 
@@ -104,7 +103,7 @@ ELASTIC_OTEL_DEBUG_PHP_HOOKS_ENABLED=true
 ```
 
 
-### Enabling instrumentation of the entire application code
+## Enabling instrumentation of the entire application code
 
 For diagnostic purposes (*this feature is not suitable for production use*), EDOT allows instrumentation of the entire code. This enables tracking function calls throughout the processing of an entire request or script. It provides better insight into the application's behavior and can help diagnose issues.
 

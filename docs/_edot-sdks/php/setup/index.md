@@ -18,55 +18,42 @@ This guide shows you how to use the Elastic Distribution of OpenTelemetry PHP (E
 
 **New to OpenTelemetry?** This section will guide you through the _minimal_ configuration options to get EDOT PHP set up in your application. You do _not_ need any existing experience with OpenTelemetry to set up EDOT PHP initially. If you need more control over your configuration after getting set up, you can learn more in the [OpenTelemetry documentation](https://opentelemetry.io/docs/languages/php/).
 
-## Prerequisites
+## 1. Prerequisites
 
 Before you begin, make sure you have a destination for the telemetry data collected by EDOT PHP.
 While EDOT PHP can export data to any OpenTelemetry Protocol (OTLP)–compatible endpoint, this guide focuses on using [Elastic Observability](https://www.elastic.co/observability) as the backend.
 You can either use an existing Elastic Cloud deployment or create a new one.
 
-To quickly get up and running, follow the [Elastic OpenTelemetry Quickstart guide](https://elastic.github.io/opentelemetry/quickstart/), which walks you through:
+To quickly get up and running, follow the [Elastic OpenTelemetry Quickstart guide](../../quickstart/index), which walks you through:
 
 - Creating a free Elastic Cloud deployment
 - Configuring your OpenTelemetry agent
 - Exploring traces and metrics in Kibana
 
-## Install
+### Operating system and PHP version
 
-### Prerequisites
-
-#### Operating system
-
-- **Linux**
-  - Architectures: **x86_64** and **ARM64**
-  - **glibc-based systems**: Packages available as **DEB** and **RPM**
-  - **musl libc-based systems (Alpine Linux)**: Packages available as **APK**
-
-#### PHP
-
-Supported PHP versions are 8.1-8.4.
-You can find more details in [supported technologies](../supported-technologies.md) doc.
+Please refer to the [supported technologies](../supported-technologies) page for details about currently supported operating systems and PHP versions.
 
 ### Other limitations
-See [limitations](./limitations.md) about other limitations of EDOT PHP.
+See [limitations](./limitations) about other limitations of EDOT PHP.
 
-### Download and install packages
+## 2. Download and install packages
 
 To install EDOT PHP download one of the [packages for supported platforms](https://github.com/elastic/elastic-otel-php/releases/latest).
 
-#### Install RPM package (RHEL/CentOS, Fedora)
+### Install RPM package (RHEL/CentOS, Fedora)
 
     rpm -ivh <package-file>.rpm
 
-#### Install DEB package (Debian, Ubuntu 18+)
+### Install DEB package (Debian, Ubuntu 18+)
 
     dpkg -i <package-file>.deb
 
-#### Install APK package (Alpine)
+### Install APK package (Alpine)
 
     apk add --allow-untrusted <package-file>.apk
 
-<!-- Start-to-finish operation -->
-## Send data to Elastic
+## 3. Send data to Elastic
 
 After installing EDOT PHP, configure and initialize it to start sending data to Elastic.
 
@@ -90,7 +77,7 @@ export OTEL_EXPORTER_OTLP_HEADERS="Authorization=ApiKey P....=="
 
 :warning: After completing the configuration, you should restart the PHP process. If you are using PHP as an Apache Webserver module or PHP-FPM, you need to perform a **full** process restart to ensure that the extension with the agent is loaded correctly.
 
-## Confirm that EDOT PHP is working
+## 4. Confirm that EDOT PHP is working
 
 To confirm that EDOT PHP has successfully connected to Elastic:
 
@@ -101,7 +88,7 @@ To confirm that EDOT PHP has successfully connected to Elastic:
 > [!NOTE]
 > There may be no trace data to visualize unless you have _used_ your application since initializing EDOT PHP.
 
-## Next steps
+## 5. Next steps
 
-* Reference all available [configuration options](../configuration.md).
+* Reference all available [configuration options](../configuration).
 * Learn more about viewing and interpreting data in the [Observability guide](https://www.elastic.co/guide/en/observability/current/apm.html).
