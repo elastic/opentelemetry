@@ -29,7 +29,7 @@ The following sections describe the the pipelines of the above configurations sp
 For *self-managed* and *Elastic Cloud Hosted* Stack deployment use cases (as of Elastic Stack version {{ site.edot_versions.collector }}), we recommend ingesting OpenTelemetry data
 from the EDOT Collector directly into Elasticsearch using the [`elasticsearch`] exporter. 
 
-Learn more about the configuration options for the `elasticsearch` exporter in the [corresponding documentation](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/elasticsearchexporter/README.md#configuration-options) or learn about [common configuration use cases](./customize-data-ingestion) for the `elasticsearch` exporter.
+Learn more about the configuration options for the `elasticsearch` exporter in the [corresponding documentation](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/elasticsearchexporter/README.md#configuration-options) or learn about [common configuration use cases](./configure-data-ingestion) for the `elasticsearch` exporter.
 
 The `elasticsearch` exporter comes with two relevant data ingestion modes:
 

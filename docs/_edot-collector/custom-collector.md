@@ -10,7 +10,7 @@ parent: Customization
 You can build and configure a [custom collector](https://opentelemetry.io/docs/collector/custom-collector/) or extend the [OpenTelemetry Collector Contrib ](https://github.com/open-telemetry/opentelemetry-collector-contrib) distribution to collect logs and metrics and send them to Elastic Observability.
 
 For a more seamless experience, use the Elastic Distribution of the OpenTelemetry Collector.
-Refer to the [configuration](./edot-collector-config) docs for more on configuring the EDOT Collector.
+Refer to the [configuration](./config/index) docs for more on configuring the EDOT Collector.
 
 ## Build a custom collector
 

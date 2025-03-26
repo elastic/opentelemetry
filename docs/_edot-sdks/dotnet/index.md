@@ -21,7 +21,7 @@ To learn more about OpenTelemetry distributions in general, visit the [OpenTelem
 The quickest way to get started with EDOT .NET is to follow our [quickstart](./setup/index) guide. We also have guides for 
 installing and using EDOT .NET in common application templates:
 
-* [ASP.NET Core](./setup/aspnetcore.md)
+* [ASP.NET Core](./setup/aspnetcore)
 * [ASP.NET (.NET Framework)](./setup/aspnet)
 * [Console applications](./setup/console)
 * [Worker services](./setup/worker-services)

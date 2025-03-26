@@ -92,6 +92,6 @@ mermaid:
 
 nav_external_links:
   - title: GitHub Repos
-    url: https://github.com/elastic/opentelemetry/#edot-components--repos
+    url: https://github.com/elastic/opentelemetry
     fa_icon_key: fa-brands fa-github
     hide_icon: false

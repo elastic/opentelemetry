@@ -10,9 +10,9 @@ nav_order: 2
 
 The [Kubernetes setup](../../quickstart/index) utilizes the OpenTelemetry Operator to automate orchestration of EDOT Collectors:
  
-* [EDOT Collector Cluster](#cluster-collector): Collection of cluster metrics.
-* [EDOT Collector Daemon](#daemonset-collector): Collection of node metrics, logs and application telemetry.
-* [EDOT Collector Gateway](#gateway-collectors): Pre-processing, aggregation and ingestion of data into Elastic.
+* [EDOT Collector Cluster](#pipeline---cluster-collector): Collection of cluster metrics.
+* [EDOT Collector Daemon](#pipeline---daemonset-collectors): Collection of node metrics, logs and application telemetry.
+* [EDOT Collector Gateway](#pipeline---gateway-collectors): Pre-processing, aggregation and ingestion of data into Elastic.
 
 <table>
     <thead>
@@ -132,7 +132,7 @@ flowchart LR
     resource -->|L/M| otlp_exporter
 
 %% system metrics pipeline
-    kubletstats@{ shape: proc, label: "kubletstats
+    kubeletstats@{ shape: proc, label: "kubeletstats
     fa:fa-right-to-bracket"} -->|M| batch_lm
     hostmetrics@{ shape: proc, label: "hostmetrics
     fa:fa-right-to-bracket"} -->|M| batch_lm
@@ -143,7 +143,7 @@ The `Daemonset Collectors` gather telemetry associated with corresponding, indiv
 1. *Host metrics and container logs*
 
     [`filelog`] and [`hostmetrics`] receivers are used to gather container logs and host metrics, respectively.
-    The [`kubletstats`] receiver collects additional Kubernetes Node, Pod and Container metrics.
+    The [`kubeletstats`] receiver collects additional Kubernetes Node, Pod and Container metrics.
     The logs and metrics are batched for better performance ([`batch`] processor) and then enriched with meta information using the
     [`k8sattributes`], [`resourcedetection`] and [`resource`] processors.
 
@@ -228,7 +228,7 @@ With this scenario there's no need to do any Elastic-specific enrichment in your
 [`resourcedetection`]: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/resourcedetectionprocessor
 [`filelog`]: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/filelogreceiver
 [`hostmetrics`]: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver
-[`kubletstats`]: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/kubletstatsreceiver
-[`batch`]: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/batchprocessor
+[`kubeletstats`]: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/kubeletstatsreceiver
+[`batch`]: https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor/batchprocessor
 [`OTLP`]: https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver
 [`routing`]: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/routingconnector

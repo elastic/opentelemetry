@@ -16,7 +16,7 @@ The quickest way to get started with EDOT is to follow our [quickstart guide](..
 ## 🎛️ Collector configuration
 The EDOT collector can be configured using the standard OTel collector configuration file or values.yml if you have deployed using Helm.
 
-For full details on each option visit [this page](./edot-collector-config)
+For full details on each option visit [this page](./config/index)
 
 ## 🧩 EDOT Collector components
 

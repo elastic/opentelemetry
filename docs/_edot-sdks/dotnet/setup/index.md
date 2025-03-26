@@ -23,7 +23,6 @@ This quickstart guide documents the introductory steps required to set up OpenTe
 * [Console applications](./console)
 * [Worker services](./worker-services)
 * [Zero code](./zero-code)
-* [Advanced scenarios](./advanced-scenarios)
 
 ### Prerequisites
 
