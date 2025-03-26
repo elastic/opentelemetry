@@ -22,7 +22,93 @@ nav_order: 3
 
 ## EDOT SDKs
 
-For the best (and supported) experience, we recommend exporting data from EDOT SDKs via the [EDOT Collector](https://elastic.github.io/opentelemetry/edot-collector/index).
+For the best experience, we recommend exporting data from EDOT SDKs via the [EDOT Collector](https://elastic.github.io/opentelemetry/edot-collector/index).
+
+### Compatibility with EDOT Collector / Elastic Stack
+
+<table class="compatibility">
+    <thead>
+        <tr>
+            <th rowspan=2 colspan=2><b>EDOT SDK</b></th>
+            <th colspan=4>EDOT Collector </th>
+            <th rowspan=2><b>Serverless</b></th>
+        </tr>
+        <tr>
+            <th>< 8.16</th>
+            <th>< 8.18</th>
+            <th>8.18+</th>
+            <th>9.0+</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:left;"><b>EDOT .NET</b></td>
+            <td>1.x</td>
+            <td>❌</td>
+            <td>🟡</td>
+            <td>🟡</td>
+            <td>✅</td>
+            <td>✅</td>
+        </tr>
+        <tr>
+            <td style="text-align:left;"><b>EDOT Java</b></td>
+            <td>1.x</td>
+            <td>❌</td>
+            <td>🟡</td>
+            <td>🟡</td>
+            <td>✅</td>
+            <td>✅</td>
+        </tr>
+        <tr>
+            <td style="text-align:left;"><b>EDOT Node.js</b></td>
+            <td>1.x</td>
+            <td>❌</td>
+            <td>🟡</td>
+            <td>🟡</td>
+            <td>✅</td>
+            <td>✅</td>
+        </tr>
+        <tr>
+            <td style="text-align:left;"><b>EDOT PHP</b></td>
+            <td>1.x</td>
+            <td>❌</td>
+            <td>🟡</td>
+            <td>🟡</td>
+            <td>✅</td>
+            <td>✅</td>
+        </tr>
+        <tr>
+            <td style="text-align:left;"><b>EDOT Python</b></td>
+            <td>1.x</td>
+            <td>❌</td>
+            <td>🟡</td>
+            <td>🟡</td>
+            <td>✅</td>
+            <td>✅</td>
+        </tr>
+        <tr>
+            <td style="text-align:left;"><b>EDOT Android</b></td>
+            <td>1.x</td>
+            <td>❌</td>
+            <td>🟡</td>
+            <td>🟡</td>
+            <td>✅</td>
+            <td>✅</td>
+        </tr>
+        <tr>
+            <td style="text-align:left;"><b>EDOT iOS</b></td>
+            <td>1.x</td>
+            <td>❌</td>
+            <td>🟡</td>
+            <td>🟡</td>
+            <td>✅</td>
+            <td>✅</td>
+        </tr>
+    </tbody>
+</table>
+
+- Collectors are forward compatible
+- Also check the other table, for EDOT Collector compatibility with Stack version compatibility
 
 ### EDOT .NET
 
@@ -49,13 +135,7 @@ Elastic **officially supports** (✅) the technologies, JVM versions and operati
 
 ### EDOT Python
 
-| EDOT Python | Elastic Stack 8.x | Elastic Stack 9.x | Serverless |
-| ----------- | ----------------- | ----------------- | ---------- |
-| 1.0.0       | 8.18.0+¹          | 9.0.0+¹           | ✅ ²       |
-
-***1.** Via the EDOT Collector.*
-
-***2.** Via the OTel-native ingest endpoint.*
+🚧 Coming soon
 
 ### EDOT Android
 

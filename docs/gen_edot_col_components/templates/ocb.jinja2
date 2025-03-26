@@ -39,4 +39,11 @@ connectors:
   - gomod: {{ comp['dep'] }}
 {%- endfor %}
 {%- endif %}
+
+{% if grouped_components['Providers'] -%}
+providers:
+{%- for comp in grouped_components['Providers'] %}
+  - gomod: {{ comp['dep'] }}
+{%- endfor %}
+{%- endif %}
 ```

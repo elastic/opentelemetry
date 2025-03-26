@@ -2,6 +2,7 @@
 title: Quickstart
 layout: default
 nav_order: 2
+fa_icon_key: fa-solid fa-rocket
 ---
 
 # 🚀 EDOT Quickstart Guide
