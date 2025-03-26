@@ -17,7 +17,7 @@ Other users can post in the [APM discuss forum](https://discuss.elastic.co/c/apm
 
 ## Enable logging
 
-In diagnosing issues with the agent's operation, logs play a key role. A detailed explanation of the logging configuration options can be found in the [configuration documentation](configure#logging-configuration).
+In diagnosing issues with the agent's operation, logs play a key role. A detailed explanation of the logging configuration options can be found in the [configuration documentation](./configuration#logging-configuration).
 
 In most cases, setting the logging level to `debug` is sufficient. In extreme cases, `trace` can be used, but keep in mind that the amount of generated data may be significant.
 
