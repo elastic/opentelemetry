@@ -168,3 +168,5 @@ Restart the relevant PHP processes for changes to take effect. This could includ
     The classic Elastic APM agent includes span compression, which merges multiple similar spans (e.g., repeated SQL queries or HTTP calls) into a single composite span to reduce trace noise and overhead.
 
     EDOT PHP does not currently support span compression. As a result, traces may be more verbose and produce higher cardinality, especially in loop-heavy code.
+
+> For a broader overview of known limitations — including technical constraints related to PHP runtime and extensions — see the [Limitations](./setup/limitations.md) page.

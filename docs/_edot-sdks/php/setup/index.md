@@ -20,18 +20,15 @@ This guide shows you how to use the Elastic Distribution of OpenTelemetry PHP (E
 
 ## Prerequisites
 
-Before getting started, you'll need to send the gathered OpenTelemetry data somewhere so it can be viewed and analyzed. EDOT PHP supports sending data to any OpenTelemetry protocol (OTLP) endpoint, but this guide assumes you are sending data to an [Elastic Observability](https://www.elastic.co/observability) cloud deployment. You can use an existing one or set up a new one.
+Before you begin, make sure you have a destination for the telemetry data collected by EDOT PHP.
+While EDOT PHP can export data to any OpenTelemetry Protocol (OTLP)–compatible endpoint, this guide focuses on using [Elastic Observability](https://www.elastic.co/observability) as the backend.
+You can either use an existing Elastic Cloud deployment or create a new one.
 
-<details>
-<summary><strong>Expand for setup instructions</strong></summary>
+To quickly get up and running, follow the [Elastic OpenTelemetry Quickstart guide](https://elastic.github.io/opentelemetry/quickstart/), which walks you through:
 
-To create your first Elastic Observability deployment:
-
-1. Sign up for a [free Elastic Cloud trial](https://cloud.elastic.co/registration) or sign into an existing account.
-1. Go to <https://cloud.elastic.co/home>.
-1. Click **Create deployment**.
-1. When the deployment is ready, click **Open** to visit your Kibana home page (for example, `https://{DEPLOYMENT_NAME}.kb.{REGION}.cloud.es.io/app/home#/getting_started`).
-</details>
+- Creating a free Elastic Cloud deployment
+- Configuring your OpenTelemetry agent
+- Exploring traces and metrics in Kibana
 
 ## Install
 
@@ -81,19 +78,6 @@ authorization data to set a few `OTLP_*` environment variables that will be avai
 * `OTEL_EXPORTER_OTLP_ENDPOINT`: The full URL of the endpoint where data will be sent.
 * `OTEL_EXPORTER_OTLP_HEADERS`: A comma-separated list of `key=value` pairs that will
 be added to the headers of every request. This is typically used for authentication information.
-
-<!--
-These are the instructions used in other distro docs, but in the README in this repo
-it looks like you might be recommending using an API key rather than using the secret
-token method used in the setup guides in Kibana.
--->
-You can find the values of the endpoint and header variables in Kibana's APM tutorial. In Kibana:
-
-1. Go to **Setup guides**.
-1. Select **Observability**.
-1. Select **Monitor my application performance**.
-1. Scroll down and select the **OpenTelemetry** option.
-1. The appropriate values for `OTEL_EXPORTER_OTLP_ENDPOINT` and `OTEL_EXPORTER_OTLP_HEADERS` are shown there.
 
 Here's an example how to connect to Serverless environment:
 
