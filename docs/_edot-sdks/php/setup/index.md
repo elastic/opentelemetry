@@ -24,7 +24,7 @@ Before you begin, make sure you have a destination for the telemetry data collec
 While EDOT PHP can export data to any OpenTelemetry Protocol (OTLP)–compatible endpoint, this guide focuses on using [Elastic Observability](https://www.elastic.co/observability) as the backend.
 You can either use an existing Elastic Cloud deployment or create a new one.
 
-To quickly get up and running, follow the [Elastic OpenTelemetry Quickstart guide](../../quickstart/index), which walks you through:
+To quickly get up and running, follow the [Elastic OpenTelemetry Quickstart guide](../../../quickstart/index), which walks you through:
 
 - Creating a free Elastic Cloud deployment
 - Configuring your OpenTelemetry agent
