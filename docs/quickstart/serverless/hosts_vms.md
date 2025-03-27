@@ -35,7 +35,7 @@ logs and application traces and send the data through OTLP to your Elastic Serve
     mkdir -p ./data/otelcol && \
     sed -i "s#\${env:STORAGE_DIR}#${PWD}/data/otelcol#g" ./otel.yml && \
     sed -i "s#\${env:ELASTIC_OTLP_ENDPOINT}#${ELASTIC_OTLP_ENDPOINT}#g" ./otel.yml && \
-    sed -i "s#\${env:ELASTIC_API_KEY}#${$ELASTIC_API_KEY}#g" ./otel.yml
+    sed -i "s#\${env:ELASTIC_API_KEY}#${ELASTIC_API_KEY}#g" ./otel.yml
     ```
 
     *MacOS*
