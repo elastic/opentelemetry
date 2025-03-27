@@ -34,7 +34,7 @@ The quick start for Hosts / VMs with with Elastic Cloud Hosted will guide you th
     mkdir -p ./data/otelcol && \
     sed -i "s#\${env:STORAGE_DIR}#${PWD}/data/otelcol#g" ./otel.yml && \
     sed -i "s#\${env:ELASTIC_ENDPOINT}#${ELASTICSEARCH_ENDPOINT}#g" ./otel.yml && \
-    sed -i "s#\${env:ELASTIC_API_KEY}#${$ELASTIC_API_KEY}#g" ./otel.yml
+    sed -i "s#\${env:ELASTIC_API_KEY}#${ELASTIC_API_KEY}#g" ./otel.yml
     ```
 
     *MacOS*
