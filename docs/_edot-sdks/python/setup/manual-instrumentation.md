@@ -102,5 +102,5 @@ To confirm that EDOT Python has successfully connected to Elastic:
 1. You should see the name of the service to which you just added EDOT Python. It can take several minutes after initializing EDOT Python for the service to show up in this list.
 1. Click on the name in the list to see trace data.
 
-> [!NOTE]
-> There may be no trace data to visualize unless you have _used_ your application since initializing EDOT Python.
+{: .note }
+There may be no trace data to visualize unless you have _used_ your application since initializing EDOT Python.

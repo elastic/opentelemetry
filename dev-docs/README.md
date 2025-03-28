@@ -84,7 +84,7 @@ For multi-paragraph callouts use the block syntax:
 ### Using Artifact versions
 
 Jekyll allows to do variable replacement in markdown files. We use that feature to specify artifact versions (for download links, etc.) in the docs.
-The variables are defined in the `dcos/_config.yml` file. Use the corresponding variable (in the form of `{{ site.edot_versions.collector }}`, etc.) in markdown instead of the concrete version numbers
+The variables are defined in the `docs/_config.yml` file. Use the corresponding variable (in the form of `{{ site.edot_versions.collector }}`, etc.) in markdown instead of the concrete version numbers
 
 **Correct**:
 
@@ -107,11 +107,14 @@ My markdown [link](https://artifacts.elastic.co/downloads/beats/elastic-agent/el
 
 ### Preview the docs locally
 
-Initially, install the dependencies:
+Initially, from the `docs` directory containing the `Gemfile` install the dependencies:
 
 ```bash
 bundle install
 ```
+
+{: .note }
+You may need to install ruby development headers to compile some gems
 
 Run the site locally:
 
