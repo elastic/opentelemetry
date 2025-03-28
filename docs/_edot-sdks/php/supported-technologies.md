@@ -5,7 +5,7 @@ nav_order: 3
 parent: EDOT PHP
 ---
 
-# The Elastic Distribution of OpenTelemetry PHP supports the following technologies
+# EDOT PHP supports the following technologies
 
 ## PHP Versions
 - PHP 8.1 - 8.4
