@@ -28,8 +28,8 @@ in your environment:
 edot-bootstrap --action=install
 ```
 
-> [!NOTE]
-> Add this command every time you deploy an updated version of your application (in other words, add it to your container image build process).
+{: .note }
+Add this command every time you deploy an updated version of your application (in other words, add it to your container image build process).
 
 <!-- ✅ Start-to-finish operation -->
 ## Send data to Elastic
@@ -74,5 +74,5 @@ To confirm that EDOT Python has successfully connected to Elastic:
 1. You should see the name of the service to which you just added EDOT Python. It can take several minutes after initializing EDOT Python for the service to show up in this list.
 1. Click on the name in the list to see trace data.
 
-> [!NOTE]
-> There may be no trace data to visualize unless you have _invoked_ your application since initializing EDOT Python.
+{: .note }
+There may be no trace data to visualize unless you have _invoked_ your application since initializing EDOT Python.
