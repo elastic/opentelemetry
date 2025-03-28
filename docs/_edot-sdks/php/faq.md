@@ -7,4 +7,3 @@ parent: EDOT PHP
 
 # Frequently Asked Questions on EDOT PHP
 
-TODO
