@@ -40,7 +40,7 @@ EDOT PHP supports all popular variations of using PHP in combination with a web 
 ## Extends the upstream OpenTelemetry PHP with additional features and improvements
 - **Truly zero-config auto-instrumentation**
   Unlike the upstream OpenTelemetry PHP agent, **EDOT PHP works fully automatically** — no need to modify your application code, add Composer packages, or adjust deployment scripts.
-  Once the system package is installed, EDOT PHP automatically detects your application and injects the instrumentation code at runtime, with **no manual integration required**.
+  Once the system package is installed, EDOT PHP automatically detects your application and injects the instrumentation code at runtime, **without a need for manual integration**.
 
 - **Automatic Root/Transaction Span**
   Automatically creates the root span for each incoming request, providing a consistent entry point for trace data without requiring manual instrumentation.
