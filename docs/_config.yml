@@ -84,6 +84,7 @@ edot_versions:
 # -- EDOT versions end --
 
 exclude:
+  - vendor
   - "gen_edot_col_components/"
 
 mermaid:
