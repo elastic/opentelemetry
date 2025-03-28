@@ -2,6 +2,7 @@
 title: Introduction
 layout: default
 nav_order: 1
+fa_icon_key: fa-solid fa-info
 ---
 
 # Elastic Distributions of OpenTelemetry (EDOT)
@@ -25,8 +26,8 @@ Each EDOT distribution is asssembled with carefully curated OpenTelemetry compon
 | [EDOT Node.js](./edot-sdks/nodejs/index) | Technical Preview |
 | [EDOT PHP](./edot-sdks/php/index) | Technical Preview |
 | [EDOT Python](./edot-sdks/python/index) | Technical Preview |
-| [EDOT Android](./edot-sdks/android/index) | Technical Preview |
-| [EDOT iOS](./edot-sdks/ios/index) | GA |
+| [EDOT Android](https://www.elastic.co/guide/en/apm/agent/android/current/intro.html) | Technical Preview |
+| [EDOT iOS](https://www.elastic.co/guide/en/apm/agent/swift/current/intro.html) | GA |
 
 ## 🟢 Production Readiness & Support
 Each EDOT distribution undergoes production-grade testing before being declared Generally Available (GA). Elastic provides full support for GA releases in accordance with our [support matrix](https://www.elastic.co/support/matrix) and SLAs.
@@ -46,3 +47,21 @@ Pick the right [Quickstart Guide](./quickstart/index) for your environment
 
 ## 📥 Report an issue or provide feedback
 To report an issue or provide feedback on EDOT, please [submit a github issue](https://github.com/elastic/opentelemetry/issues/new/choose).
+
+## Component Versions
+
+These documentation pages are optimized for the following versions of the corresponding EDOT components and Elastic Stack.
+
+| Component | Version |
+|:---|:---:|
+|Elastic Stack | {{ site.edot_versions.stack }} |
+|EDOT Collector| {{ site.edot_versions.collector }} |
+|EDOT .NET| {{ site.edot_versions.dotnet }} |
+|EDOT Java| {{ site.edot_versions.java }} |
+|EDOT Node.js| {{ site.edot_versions.nodejs }} |
+|EDOT PHP| {{ site.edot_versions.php }} |
+|EDOT Python| {{ site.edot_versions.python }} |
+|EDOT Android| {{ site.edot_versions.android }} |
+|EDOT iOS| {{ site.edot_versions.ios }} |
+
+For other versions [visit the documentation sources](https://github.com/elastic/opentelemetry/tags) in the GitHub repository.

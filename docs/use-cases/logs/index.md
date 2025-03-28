@@ -6,3 +6,5 @@ parent: Use Cases
 ---
 
 # Collecting Logs with EDOT
+
+🚧 Coming soon

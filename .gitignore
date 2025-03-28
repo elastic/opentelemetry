@@ -4,3 +4,14 @@ docs/.jekyll-cache
 docs/.jekyll-metadata
 docs/vendor
 docs/Gemfile.lock
+
+# Mac OS
+**/.DS_Store
+
+# Python
+
+__pycache__
+
+# .NET
+
+test/operator/dotnet/obj/**

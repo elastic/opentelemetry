@@ -12,7 +12,7 @@ The [quickstart guides](../../quickstart/index) for Kubernetes install a set of 
 The Kubernetes setup utilizes the OpenTelemetry Operator preconfigured to automate orchestration of EDOT as below:
  
 * **EDOT Collector Cluster:** Collection of cluster metrics.
-* **EDOT Collector Daemon:** Collection of node metrics and logs.
+* **EDOT Collector Daemon:** Collection of node metrics, logs and application telemetry.
 * **EDOT Collector Gateway:** Pre-processing, aggregation and ingestion of data into Elastic. 
 * **EDOT SDKs**: Annotated applications will be auto-instrumented with [EDOT SDKs](../../edot-sdks/index).
   

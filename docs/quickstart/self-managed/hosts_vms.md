@@ -17,7 +17,7 @@ The quick start for Hosts / VMs with a self-managed Elastic Stack will guide you
 
 1. **Download the EDOT Collector**
 
-    [Download the EDOT Collector](../../edot-collector/download) for your operating system.
+    [Download the EDOT Collector](../../edot-collector/download) for your operating system, extract the archive and move to the extracted directory.
 
 2. **Configure the EDOT Collector**
 
@@ -26,17 +26,25 @@ The quick start for Hosts / VMs with a self-managed Elastic Stack will guide you
     *Linux*
 
     ```bash
-    ELASTICSEARCH_ENDPOINT=<ELASTICSEARCH_ENDPOINT> \
-    ELASTIC_API_KEY=<ELASTIC_API_KEY> \
-    rm ./otel.yml && cp ./otel_samples/logs_metrics_traces.yml ./otel.yml && mkdir -p ./data/otelcol && sed -i 's#\${env:STORAGE_DIR}#'"$PWD"/data/otelcol'#g' ./otel.yml && sed -i 's#\${env:ELASTIC_ENDPOINT}#$ELASTICSEARCH_ENDPOINT' ./otel.yml && sed -i 's/\${env:ELASTIC_API_KEY}/$ELASTIC_API_KEY/g' ./otel.yml
+    ELASTICSEARCH_ENDPOINT=<ELASTICSEARCH_ENDPOINT> && \
+    ELASTIC_API_KEY=<ELASTIC_API_KEY> && \
+    cp ./otel_samples/logs_metrics_traces.yml ./otel.yml && \
+    mkdir -p ./data/otelcol && \
+    sed -i "s#\${env:STORAGE_DIR}#${PWD}/data/otelcol#g" ./otel.yml && \
+    sed -i "s#\${env:ELASTIC_ENDPOINT}#${ELASTICSEARCH_ENDPOINT}#g" ./otel.yml && \
+    sed -i "s#\${env:ELASTIC_API_KEY}#${ELASTIC_API_KEY}#g" ./otel.yml
     ```
 
     *MacOS*
 
     ```bash
-    ELASTICSEARCH_ENDPOINT=<ELASTICSEARCH_ENDPOINT> \
-    ELASTIC_API_KEY=<ELASTIC_API_KEY> \
-    rm ./otel.yml && cp ./otel_samples/logs_metrics_traces.yml ./otel.yml && mkdir -p ./data/otelcol && sed -i '' 's#\${env:STORAGE_DIR}#'"$PWD"/data/otelcol'#g' ./otel.yml && sed -i '' 's#\${env:ELASTIC_ENDPOINT}#$ELASTICSEARCH_ENDPOINT' ./otel.yml && sed -i '' 's/\${env:ELASTIC_API_KEY}/$ELASTIC_API_KEY/g' ./otel.yml
+    ELASTICSEARCH_ENDPOINT=<ELASTICSEARCH_ENDPOINT> && \
+    ELASTIC_API_KEY=<ELASTIC_API_KEY> && \
+    cp ./otel_samples/logs_metrics_traces.yml ./otel.yml && \
+    mkdir -p ./data/otelcol && \
+    sed -i '' "s#\${env:STORAGE_DIR}#${PWD}/data/otelcol#g" ./otel.yml && \
+    sed -i '' "s#\${env:ELASTIC_ENDPOINT}#${ELASTICSEARCH_ENDPOINT}#g" ./otel.yml && \
+    sed -i '' "s#\${env:ELASTIC_API_KEY}#${ELASTIC_API_KEY}#g" ./otel.yml
     ```
 
     *Windows*

@@ -82,4 +82,6 @@ When modifying the JVM command line arguments is not possible, the `JAVA_TOOL_OP
 to provide the `-javaagent:` argument or JVM system properties. When `JAVA_TOOL_OPTIONS` is set, all JVMs will automatically 
 use it, thus special care should be taken to limit the scope to the relevant JVMs.
 
+Also, some application servers require manual steps or modification of their configuration files, see [dedicated instructions](https://opentelemetry.io/docs/zero-code/java/agent/server-config/) for more details.
+
 For applications deployed with Kubernetes, we recommend using [OpenTelemetry Operator](./k8s).

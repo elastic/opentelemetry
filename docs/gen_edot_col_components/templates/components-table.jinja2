@@ -35,3 +35,10 @@
 | [{{ comp['name'] }}]({{ comp['html_url'] }}) | {{ comp['repo_link'] }} | {{ comp['version'] }} |
 {% endfor %}
 {%- endif -%}
+
+{%- if grouped_components['Providers'] -%}
+|***Providers***|||
+{% for comp in grouped_components['Providers'] -%}
+| [{{ comp['name'] }}]({{ comp['html_url'] }}) | {{ comp['repo_link'] }} | {{ comp['version'] }} |
+{% endfor %}
+{%- endif -%}
