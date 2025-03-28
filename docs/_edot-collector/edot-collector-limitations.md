@@ -32,3 +32,11 @@ The Elastic Distribution of the OpenTelemetry (EDOT) Collector has the following
 - **Ingest Pipelines with OTel-native Data**
 
 - **Histograms only supported in delta temporality**
+
+- **Characters for allowed service names**
+
+- **Limitations on GKE Autopilot - What and why?**
+
+# Additional info
+
+- K8s metrics and host metrics are ingested twice, once in OTel format and once in ECS format
