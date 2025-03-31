@@ -29,6 +29,11 @@ OTEL_EXPORTER_OTLP_ENDPOINT=https://my-otel-collector
 OTEL_EXPORTER_OTLP_HEADERS='Authorization=ApiKey mySecretApiKey'
 ```
 
+For authentication, the `OTEL_EXPORTER_OTLP_HEADERS` can also be used with an APM secret token:
+```shell
+OTEL_EXPORTER_OTLP_HEADERS='Authorization=Bearer mySecretToken'
+```
+
 ## Configuration options
 
 EDOT Java instrumentation agent is based on OpenTelemetry Java [SDK](https://github.com/open-telemetry/opentelemetry-java) and [Instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation), and thus supports the following
