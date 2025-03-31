@@ -49,8 +49,12 @@ To create your first Elastic Observability serverless project:
 1. Once the project is ready, click *Open* to access Kibana
 1. Choose **Add data** to take you to the onboarding home page (for example, `https://{DEPLOYMENT_NAME}.kb.{REGION}.{CLOUDPROVIDER}.elastic.cloud/app/observabilityOnboarding`).
 1. Choose **Application** and select **OpenTelemetry**
-1. Follow the onboarding instructions to create an API key and capture the endpoint URL that will be used when configuring application(s).
+1. From step 2, select **Managed OTLP Endpoint**
+1. Follow the onboarding instructions in step 3 to create an API key and capture the endpoint URL that will be used when configuring application(s) using environment variables.
 </details>
+
+{: .warning }
+> When using Serverless, you must use the Managed OTLP Endpoint URL (tech preview) for the best (and supported) experience when using EDOT .NET.
 
 ### Installing the NuGet packages
 
