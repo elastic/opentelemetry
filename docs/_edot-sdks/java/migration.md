@@ -90,6 +90,7 @@ they have an equivalent in OpenTelemetry:
 * [global_labels](#global_labels)
 * [trace_methods](#trace_methods)
 * [capture_jmx_metrics](#capture_jmx_metrics)
+* [capture_headers](#capture_headers)
 
 ### `server_url`
 
@@ -155,3 +156,15 @@ The Elastic [`capture_jmx_metrics`](https://www.elastic.co/guide/en/apm/agent/ja
 The JMX Insight feature provides the following benefits:
 - ability to define custom metrics using YAML
 - capturing metrics with pre-defined metrics by using `OTEL_JMX_TARGET_SYSTEM` configuration option.
+
+### `capture_headers`
+
+The Elastic `capture_headers` option can be replaced with the following options:
+- `otel.instrumentation.http.server.capture-request-headers` for HTTP server request
+- `otel.instrumentation.http.server.capture-response-headers` for HTTP server response
+- `otel.instrumentation.http.client.capture-request-headers` for HTTP client request
+- `otel.instrumentation.http.client.capture-response-headers` for HTTP client response
+- `otel.instrumentation.messaging.experimental.capture-headers` for messaging
+
+Support for those configuration options depends on the instrumentation modules,
+you can open an [issue in EDOT](https://github.com/elastic/elastic-otel-java/issues) or [upstream](https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues) if needed.
