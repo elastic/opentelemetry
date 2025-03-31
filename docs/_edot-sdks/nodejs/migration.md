@@ -9,12 +9,6 @@ parent: EDOT Node.js
 
 This documentation describes how to update applications that are currently using the [Elastic APM Node.js agent](https://www.elastic.co/guide/en/apm/agent/nodejs/current/index.html) to use the Elastic Distribution of OpenTelemetry for Node.js (EDOT Node.js).
 
-TODO:
-- migration steps
-- advantages of using EDOT
-- limitations compared to classic agents
-- (optional) performance comparison
-
 ## Advantages of using EDOT Ndode.js agent
 
 ### OpenTelemetry-native Data
@@ -63,7 +57,7 @@ they have an equivalent in OpenTelemetry:
 * [secretToken](#secretToken)
 * [apiKey](#apiKey)
 * [serviceName](#serviceName)
-* [active](#active) TODO
+* [active](#active)
 * [serviceVersion](#serviceVersion)
 * [environment](#environment)
 * [globalLabels](#globalLabels)
