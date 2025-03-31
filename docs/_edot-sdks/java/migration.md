@@ -89,6 +89,7 @@ they have an equivalent in OpenTelemetry:
 * [environment](#environment)
 * [global_labels](#global_labels)
 * [trace_methods](#trace_methods)
+* [capture_jmx_metrics](#capture_jmx_metrics)
 
 ### `server_url`
 
@@ -146,3 +147,11 @@ For example: `OTEL_RESOURCE_ATTRIBUTES=alice=first,bob=second`. Such labels will
 
 The Elastic [`trace_methods`] option can be replaced by the [`OTEL_INSTRUMENTATION_METHODS_INCLUDE`](https://opentelemetry.io/docs/zero-code/java/agent/annotations/#creating-spans-around-methods-with-otelinstrumentationmethodsinclude) OpenTelemetry option, however the syntax is different and the ability to use wildcards is more limited.
 
+### `capture_jmx_metrics`
+
+The Elastic [`capture_jmx_metrics`](https://www.elastic.co/guide/en/apm/agent/java/current/config-jmx.html#config-capture-jmx-metrics) option can be replaced by 
+[OpenTelemetry JMX Insight](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/javaagent/README.md) feature which is included in EDOT Java.
+
+The JMX Insight feature provides the following benefits:
+- ability to define custom metrics using YAML
+- capturing metrics with pre-defined metrics by using `OTEL_JMX_TARGET_SYSTEM` configuration option.
