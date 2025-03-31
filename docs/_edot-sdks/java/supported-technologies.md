@@ -16,7 +16,7 @@ and need explicit configuration to be enabled.
 
 The EDOT Java agent also supports technologies listed here that are _not available_ in the [OpenTelemetry Java Instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation).
 
-See also the [EDOT Java agent features](./features) for defaults that might differ from the OpenTelemetry Java Instrumentation.
+See also the [EDOT Java agent configuration](./configuration#configuration-options) for defaults that might differ from the OpenTelemetry Java Instrumentation.
 
 ## OpenAI Client instrumentation (tech preview)
 
@@ -28,3 +28,11 @@ It supports:
 
 * Tracing for requests, including GenAI-specific attributes such as token usage
 * Opt-In logging of OpenAI request and response content payloads
+
+Configuration options:
+
+| Option                                                | default                                                       | description                                                                                                                                                                                                                                                                      |
+|-------------------------------------------------------|---------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `OTEL_INSTRUMENTATION_OPENAI_CLIENT_ENABLED`          | `true`                                                        | enables or disable OpenAI instrumentation                                                                                                                                                                                                                                        |
+| `ELASTIC_OTEL_JAVA_INSTRUMENTATION_GENAI_EMIT_EVENTS` | value of `OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT` | If set to `true`, the agent will generate log events for OpenAI requests and responses. Potentially sensitive content will only be included if `OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT` is `true`                                                                    |
+| `OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT`  | `false`                                                       | If set to `true`, enables the capturing of OpenAI request and response content in the log events outputted by the agent.                                                                                                                                                       ↪ |

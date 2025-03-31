@@ -14,7 +14,7 @@ inherits all the features of the OpenTelemetry Java Instrumentation to capture l
 The EDOT Java agent also provides:
 
 - exclusive features that are _not available_ in the [OpenTelemetry Java Instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation)
-- features of [OpenTelemetry Java Instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation) with different default configuration
+- features of [OpenTelemetry Java Instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation) with [different default configuration](./configuration#configuration-options)
 
 In addition to the features listed here, see [supported technologies](./supported-technologies) for an overview of the supported technologies.
 
@@ -41,7 +41,9 @@ See [inferred-spans](https://github.com/open-telemetry/opentelemetry-java-contri
 The EDOT Java agent includes the [Span Stacktrace Extension](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/span-stacktrace)
 from [opentelemetry-java-contrib](https://github.com/open-telemetry/opentelemetry-java-contrib/).
 
-This feature is enabled by default and allows to capture a stacktrace for spans that have a duration above a threshold (default 5ms).
+This feature is enabled by default and allows to capture a stacktrace for spans that have a duration above a threshold.
+
+The `OTEL_JAVA_EXPERIMENTAL_SPAN_STACKTRACE_MIN_DURATION` configuration option (defaults to `5ms`) allows to configure the minimal duration threshold, a negative value will disable the feature.
 
 See [span-stacktrace](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/span-stacktrace) documentation for configuration options.
 
@@ -54,7 +56,7 @@ Set `OTEL_INSTRUMENTATION_RUNTIME_TELEMETRY_EMIT_EXPERIMENTAL_TELEMETRY` to `fal
 ## Metric Temporality
 
 Elasticsearch and Kibana work best with metrics provided in delta-temporality.
-Therefore, the EDOT Java changes the default value of `otel.exporter.otlp.metrics.temporality.preference` to `DELTA`.
+Therefore, the EDOT Java changes the default value of `OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE` to `DELTA`.
 You can override this default if needed, note though that some provided Kibana dashboards will not work correctly in this case.
 
 ## Elastic Universal profiling integration
