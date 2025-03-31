@@ -8,10 +8,11 @@ grand_parent: EDOT .NET
 
 # EDOT .NET opinionated defaults
 
-When using EDOT .NET, you are opted into Elastic defaults for tracing, metrics and logging. These defaults are designed
-to provide a quicker getting started experience by automatically enabling data collection from telemetry signals without
-requiring as much up-front code as the upstream OpenTelemetry SDK. For most applications, these defaults should be satisfactory.
-However, they may be overridden for advanced use cases.
+When using EDOT .NET, Elastic defaults for tracing, metrics and logging are applied. These defaults are designed
+to provide a faster getting started experience by automatically enabling data collection from telemetry signals without
+requiring as much up-front code as the upstream OpenTelemetry SDK. This has the positive side effect of reducing the
+boilerplate code you must maintain in your application. These defaults should be satisfactory for most applications
+but may be overridden for advanced use cases.
 
 ## Defaults for all signals
 
@@ -26,6 +27,14 @@ EDOT .NET enables:
 - Observation of all signals (tracing, metrics and logging)
 - OTLP exporter for all signals
 
+When sending data to an Elastic Observability backend, OTLP via the EDOT Collector is recommended for
+compatibility and is required for full support. EDOT .NET enables OTLP over gRPC as the default for all signals.
+This behaviour can be disabled using [configuration](./../configuration).
+
+All signals are configured to apply EDOT .NET defaults for resource attributes via the `ResourceBuilder`.
+
+### Controlling defaults for each signal
+
 For discrete control of the signals where Elastic defaults apply, consider using one of the
 signal-specific extension methods for the `IOpenTelemetryBuilder`.
 
@@ -37,15 +46,17 @@ For example, you might choose to use the OpenTelemetry SDK but only enable traci
 defaults using the following registration code.
 
 ```csharp
+using OpenTelemetry;
+
 builder.Services.AddOpenTelemetry()
    .WithElasticTracing();
 ```
 
-When sending data to an Elastic Observability backend, OTLP via the EDOT Collector is recommended.
-EDOT .NET enables OTLP over gRPC as the default for all signals. This behaviour can be disabled using
-[configuration](./../configuration).
+The preceding code:
 
-All signals are configured to apply EDOT .NET defaults for resource attributes via the `ResourceBuilder`.
+1. Imports the required types from the `OpenTelemetry` namespace.
+1. Registers the OpenTelemetry SDK for the application using `AddOpenTelemetry`.
+1. Adds Elastic defaults for tracing (see below). This doesn't apply Elastic defaults for logging or metrics.
 
 ## Defaults for resource attributes
 
@@ -68,7 +79,7 @@ The resource detectors are registered on the `ResourceBuilder` to enrich the res
 ### Instrumentation assembly scanning
 
 Instrumentation assembly scanning checks for the presence of the following contrib resource detector packages,
-registering them when present.
+automatically registering them when present.
 
 - [OpenTelemetry.Resources.Container](https://www.nuget.org/packages/OpenTelemetry.Resources.Container)
 - [OpenTelemetry.Resources.OperatingSystem](https://www.nuget.org/packages/OpenTelemetry.Resources.OperatingSystem)
@@ -86,13 +97,16 @@ EDOT .NET applies subtly different defaults depending on the .NET runtime versio
 
 On .NET 9 and newer runtimes, EDOT .NET observes the `System.Net.Http` source to collect traces from the
 .NET HTTP APIs. Since .NET 9, the built-in traces are compliant with current semantic conventions. Using
-the built-in `System.Net.Http` source is therefore recommended. If the target application explicitly depends on the `OpenTelemetry.Instrumentation.Http` package, EDOT .NET assumes it should be
-used instead of the built-in source. When upgrading applications to .NET 9 and newer, consider removing the
-package reference to `OpenTelemetry.Instrumentation.Http`.
+the built-in `System.Net.Http` source is now the recommended choice. If the target application explicitly
+depends on the `OpenTelemetry.Instrumentation.Http` package, EDOT .NET assumes it should be
+used instead of the built-in source.
+
+{: .note }
+When upgrading applications to .NET 9 and newer, consider removing the package reference to `OpenTelemetry.Instrumentation.Http`.
 
 On all other runtimes, when using the NuGet installation method, a transistive dependency is included for the 
 [OpenTelemetry.Instrumentation.Http](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.Http)
-contrib instrumentation package, which is registered on the `TracerProviderBuilder`. 
+contrib instrumentation package, which is automatically registered on the `TracerProviderBuilder` via instrumentation assembly scanning.
 
 ### gRPC traces
 
@@ -100,19 +114,20 @@ When using the NuGet installation method, a transistive dependency is included f
 [OpenTelemetry.Instrumentation.GrpcNetClient](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.GrpcNetClient)
 contrib instrumentation package.
 
-All scenarios register The gRPC client instrumentation on the `TracerProviderBuilder`. 
+All scenarios register the gRPC client when instrumentation assembly scanning is supported and enabled.
 
 ### SQL client traces
 
 When using the NuGet installation method, a transistive dependency is included for the 
 [OpenTelemetry.Instrumentation.SqlClient](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.SqlClient)
-contrib instrumentation package. The SQL client instrumentation is registered in all scenarios, except when 
-the target application has been compiled for native AOT.
+contrib instrumentation package.
+
+All scenarios register the SQL client when instrumentation assembly scanning is supported and enabled.
 
 ### Additional sources
 
 EDOT .NET observes the `Elastic.Transport` source to collect traces from Elastic client libraries, such as
-`Elastic.Clients.Elasticsearch`, which is built upon the transport layer.
+`Elastic.Clients.Elasticsearch`, which is built upon the [Elastic transport](https://github.com/elastic/elastic-transport-net) layer.
 
 ### Instrumentation assembly scanning
 
@@ -124,17 +139,33 @@ registering them when present.
 - [OpenTelemetry.Instrumentation.AWS](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.AWS)
 - [OpenTelemetry.Instrumentation.ConfluentKafka](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.ConfluentKafka) :
  Instrumentation is registered for both Kafka consumers and producers.
+- [OpenTelemetry.Instrumentation.ElasticsearchClient](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.ElasticsearchClient)
 - [OpenTelemetry.Instrumentation.EntityFrameworkCore](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.EntityFrameworkCore)
+- [OpenTelemetry.Instrumentation.GrpcNetClient](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.GrpcNetClient)
 - [OpenTelemetry.Instrumentation.GrpcCore](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.GrpcCore)
 - [OpenTelemetry.Instrumentation.Hangfire](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.Hangfire)
-- [OpenTelemetry.Instrumentation.ElasticsearchClient](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.ElasticsearchClient)
+- [OpenTelemetry.Instrumentation.Http](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.Http)
 - [OpenTelemetry.Instrumentation.Owin](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.Owin)
 - [OpenTelemetry.Instrumentation.Quartz](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.Quartz)
 - [OpenTelemetry.Instrumentation.ServiceFabricRemoting](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.ServiceFabricRemoting)
+- [OpenTelemetry.Instrumentation.SqlClient](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.SqlClient)
 - [OpenTelemetry.Instrumentation.StackExchangeRedis](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.StackExchangeRedis)
 - [OpenTelemetry.Instrumentation.Wcf](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.Wcf)
 
-> **NOTE**: Instrumentation assembly scanning is not supported when publishing using native AOT.
+{: .warning }
+> Instrumentation assembly scanning is not supported for applications using native [AOT](https://learn.microsoft.com/dotnet/core/deploying/native-aot) 
+> or [single-file deployment](https://learn.microsoft.com/dotnet/core/deploying/single-file) compilation features.
+
+#### ASP.NET Core defaults
+
+To provide a richer experience out-of-the-box, EDOT .NET registers an exception enricher for ASP.NET Core
+when using instrumentation assembly scanning.
+
+When an unhandled exception occurs during a request that ASP.NET Core handles, the exception is added as
+a span event using the [`AddException`](https://learn.microsoft.com/dotnet/api/system.diagnostics.activity.addexception)
+API from `System.Diagnostics`. Span events are stored as logs in the Observability backend and will appear
+in the "Errors" UI. Additionally, when the `Exception.Source` property is not null, its value is added as
+an attribute `exception.source` on the ASP.NET Core request span.
 
 ## Defaults for metrics
 
@@ -147,12 +178,14 @@ On .NET 9 and newer runtimes, EDOT .NET observes the `System.Net.Http` meter to 
 the built-in `System.Net.Http` meter is therefore recommended. 
 
 If the target application has an explicit dependency on the `OpenTelemetry.Instrumentation.Http` package, 
-EDOT .NET assumes that it should be used instead of the built-in meter. When upgrading applications to .NET 9
-and newer, consider removing the package reference to `OpenTelemetry.Instrumentation.Http`.
+EDOT .NET assumes that it should be used instead of the built-in meter. 
+
+{: .note }
+When upgrading applications to .NET 9 and newer, consider removing the package reference to `OpenTelemetry.Instrumentation.Http`.
 
 On all other runtimes, when using the NuGet installation method, a transistive dependency is included for the 
 [OpenTelemetry.Instrumentation.Http](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.Http)
-contrib instrumentation package, which is registered on the `TracerProviderBuilder`. 
+contrib instrumentation package, which is registered on the `MeterProviderBuilder` via instrumentation assembly scanning.
 
 ### Runtime metrics
 
@@ -161,12 +194,14 @@ On .NET 9 and newer runtimes, EDOT .NET observes the `System.Runtime` meter to c
 the built-in `System.Runtime` meter is therefore recommended. 
 
 If the target application has an explicit dependency on the `OpenTelemetry.Instrumentation.Runtime` package,
-EDOT .NET assumes that it should be used instead of the built-in meter. When upgrading applications to .NET 9
-and newer, consider removing the package reference to `OpenTelemetry.Instrumentation.Runtime`.
+EDOT .NET assumes that it should be used instead of the built-in meter.
+
+{: .note }
+When upgrading applications to .NET 9 and newer, consider removing the package reference to `OpenTelemetry.Instrumentation.Runtime`.
 
 On all other runtimes, when using the NuGet installation method, a transistive dependency is included for the 
 [OpenTelemetry.Instrumentation.Runtime](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.Runtime)
-contrib instrumentation package, which is registered on the `MeterProviderBuilder`. 
+contrib instrumentation package, which is registered on the `MeterProviderBuilder` via instrumentation assembly scanning.
 
 ### Process metrics
 
@@ -203,8 +238,13 @@ registering them when present.
 - [OpenTelemetry.Instrumentation.ConfluentKafka](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.ConfluentKafka) :
   Instrumentation is registered for both Kafka consumers and producers.
 - [OpenTelemetry.Instrumentation.EventCounters](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.EventCounters)
+- [OpenTelemetry.Instrumentation.Http](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.Http)
+- [OpenTelemetry.Instrumentation.Runtime](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.Runtime)
+- [OpenTelemetry.Instrumentation.Process](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.Process)
 
-> **NOTE**: Instrumentation assembly scanning is not supported when publishing using native AOT.
+{: .warning }
+> Instrumentation assembly scanning is not supported for applications using native [AOT](https://learn.microsoft.com/dotnet/core/deploying/native-aot) 
+> or [single-file deployment](https://learn.microsoft.com/dotnet/core/deploying/single-file) compilation features.
 
 ### Configuration defaults
 
@@ -228,11 +268,16 @@ Instrumentation assembly scanning is enabled by default and is designed to simpl
 code required to configure the OpenTelemetry SDK. Instrumentation assembly scanning uses reflection
 to invoke the required registration method for the contrib instrumentation and resource detector packages.
 
-> **IMPORTANT**: Sometimes, it may be safe to manually call the `AddXyzInstrumentation` method,
-but that is not guaranteed. When using EDOT .NET, we strongly recommend you remove the registration of
-instrumentation to avoid overhead and mitigate the potential for duplicated spans. This has a positive
-side-effect of simplifying the code you need to manage.
+{: .warning }
+> It may not be safe to manually call the `AddXyzInstrumentation` method in combination with assembly scanning,
+> for all instrumentations. When using EDOT .NET, we strongly recommend you remove the registration of instrumentation
+> to avoid overhead and mitigate the potential for duplicated spans. This has a positive side-effect of simplifying the
+> code you need to manage.
 
-> **NOTE**: Instrumentation assembly scanning is not supported when publishing using native AOT.
+Alternatively, if you need to configure advanced options when registering instrumentation,
+disable instrumentation assembly scanning via [configuration](./../configuration) and prefer manually registering
+all instrumentation in your application code.
 
-Instrumentation assembly scanning can be disabled via [configuration](./../configuration).
+{: .warning }
+> Instrumentation assembly scanning is not supported for applications using native [AOT](https://learn.microsoft.com/dotnet/core/deploying/native-aot) 
+> or [single-file deployment](https://learn.microsoft.com/dotnet/core/deploying/single-file) compilation features.
