@@ -91,6 +91,9 @@ they have an equivalent in OpenTelemetry:
 * [trace_methods](#trace_methods)
 * [capture_jmx_metrics](#capture_jmx_metrics)
 * [capture_headers](#capture_headers)
+* [span_stack_trace_min_duration](#span_stack_trace_min_duration)
+* [disable_instrumentations](#disable_instrumentations)
+* [enable_instrumentations](#enable_instrumentations)
 
 ### `server_url`
 
@@ -167,5 +170,18 @@ The Elastic `capture_headers` option can be replaced with the following options:
 - `otel.instrumentation.messaging.experimental.capture-headers` for messaging
 
 Note that the `capture_headers` option is dyamically adjustable, while the `otel.*` options are statically set by startup and cannot be subsequently adjusted
-Support for those configuration options depends on the instrumentation modules,
-you can open an [issue in EDOT](https://github.com/elastic/elastic-otel-java/issues) or [upstream](https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues) if needed.
+
+### `span_stack_trace_min_duration`
+
+The Elastic `span_stack_trace_min_duration` option can be replaced with [`OTEL_JAVA_EXPERIMENTAL_SPAN_STACKTRACE_MIN_DURATION`](./features#span-stacktrace).
+
+### `disable_instrumentations`
+
+The `disable_instrumentations` option allows to selectively disable instrumentation (opt-out) can be replaced with `OTEL_INSTRUMENTATION_<name>_ENABLED` where `<name>` is the instrumentation name.
+See [OpenTelemetry documentation](https://opentelemetry.io/docs/zero-code/java/agent/disable/) for reference and values.
+
+### `enable_instrumentations`
+
+The `enable_instrumentations` option allows to disable all instrumentation enabled by default and selectively enable instrumentation (opt-in) can be replaced with:
+- `OTEL_INSTRUMENTATION_COMMON_DEFAULT_ENABLED` = `false` to disable instrumentations enabled by default
+- `OTEL_INSTRUMENTATION_<name>_ENABLED` = `true` where `<name>` is the name of the instrumentation to enable. See [OpenTelemetry documentation](https://opentelemetry.io/docs/zero-code/java/agent/disable/) for reference and values.
