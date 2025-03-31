@@ -166,5 +166,6 @@ The Elastic `capture_headers` option can be replaced with the following options:
 - `otel.instrumentation.http.client.capture-response-headers` for HTTP client response
 - `otel.instrumentation.messaging.experimental.capture-headers` for messaging
 
+Note that the `capture_headers` option is dyamically adjustable, while the `otel.*` options are statically set by startup and cannot be subsequently adjusted
 Support for those configuration options depends on the instrumentation modules,
 you can open an [issue in EDOT](https://github.com/elastic/elastic-otel-java/issues) or [upstream](https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues) if needed.
