@@ -31,7 +31,7 @@ The preceding code:
 1. Enables EDOT .NET and its [opinionated defaults](./../setup/edot-defaults) by calling `WithElasticDefaults` on the `IOpenTelemetryBuilder`.
 
 {: .warning }
-> The `using` keyword is applied in the preceding code to define a using declaration, which ensures that the
+> The `using` keyword is applied to the `sdk` variable to define a using declaration, which ensures that the
 > `OpenTelemetrySdk` instance is disposed of when the application terminates. Disposing of the OpenTelemetry SDK gives the
 > SDK a chance to flush any telemetry held in memory. Skipping this step may result in data loss.
 
