@@ -90,6 +90,10 @@ they have an equivalent in OpenTelemetry:
 * [global_labels](#global_labels)
 * [trace_methods](#trace_methods)
 * [capture_jmx_metrics](#capture_jmx_metrics)
+* [capture_headers](#capture_headers)
+* [span_stack_trace_min_duration](#span_stack_trace_min_duration)
+* [disable_instrumentations](#disable_instrumentations)
+* [enable_instrumentations](#enable_instrumentations)
 
 ### `server_url`
 
@@ -155,3 +159,29 @@ The Elastic [`capture_jmx_metrics`](https://www.elastic.co/guide/en/apm/agent/ja
 The JMX Insight feature provides the following benefits:
 - ability to define custom metrics using YAML
 - capturing metrics with pre-defined metrics by using `OTEL_JMX_TARGET_SYSTEM` configuration option.
+
+### `capture_headers`
+
+The Elastic `capture_headers` option can be replaced with the following options:
+- `otel.instrumentation.http.server.capture-request-headers` for HTTP server request
+- `otel.instrumentation.http.server.capture-response-headers` for HTTP server response
+- `otel.instrumentation.http.client.capture-request-headers` for HTTP client request
+- `otel.instrumentation.http.client.capture-response-headers` for HTTP client response
+- `otel.instrumentation.messaging.experimental.capture-headers` for messaging
+
+Note that the `capture_headers` option is dyamically adjustable, while the `otel.*` options are statically set by startup and cannot be subsequently adjusted
+
+### `span_stack_trace_min_duration`
+
+The Elastic `span_stack_trace_min_duration` option can be replaced with [`OTEL_JAVA_EXPERIMENTAL_SPAN_STACKTRACE_MIN_DURATION`](./features#span-stacktrace).
+
+### `disable_instrumentations`
+
+The `disable_instrumentations` option allows to selectively disable instrumentation (opt-out) can be replaced with `OTEL_INSTRUMENTATION_<name>_ENABLED` where `<name>` is the instrumentation name.
+See [OpenTelemetry documentation](https://opentelemetry.io/docs/zero-code/java/agent/disable/) for reference and values.
+
+### `enable_instrumentations`
+
+The `enable_instrumentations` option allows to disable all instrumentation enabled by default and selectively enable instrumentation (opt-in) can be replaced with:
+- `OTEL_INSTRUMENTATION_COMMON_DEFAULT_ENABLED` = `false` to disable instrumentations enabled by default
+- `OTEL_INSTRUMENTATION_<name>_ENABLED` = `true` where `<name>` is the name of the instrumentation to enable. See [OpenTelemetry documentation](https://opentelemetry.io/docs/zero-code/java/agent/disable/) for reference and values.
