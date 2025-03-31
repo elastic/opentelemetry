@@ -17,8 +17,8 @@ Configuration of the OpenTelemetry SDK should be performed through the mechanism
 
 ```sh
 export OTEL_RESOURCE_ATTRIBUTES=service.name=<app-name>
-export OTEL_EXPORTER_OTLP_ENDPOINT=https://my-deployment.apm.us-west1.gcp.cloud.es.io
-export OTEL_EXPORTER_OTLP_HEADERS="Authorization=Bearer P....l"
+export OTEL_EXPORTER_OTLP_ENDPOINT=https://my-deployment.ingest.us-west1.gcp.cloud.es.io
+export OTEL_EXPORTER_OTLP_HEADERS="Authorization=ApiKey P....l"
 opentelemetry-instrument <command to start your service>
 ```
 
