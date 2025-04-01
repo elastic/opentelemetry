@@ -219,12 +219,4 @@ The Elastic [`cloudProvider`](https://www.elastic.co/guide/en/apm/agent/nodejs/c
 
 For example: `OTEL_NODE_RESOURCE_DETECTORS=os,env,host,process,gcp`. Will make the agent query for GCP metadata only and use other non-cloud detectors to enrich that metadata.
 
-
-
-TODO:
-https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#long-field-max-length
-
-is it maybe attr limits on each signal?
-https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#attribute-limits
-https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#span-limits
-https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#logrecord-limits
+<!-- TODO: Check if possible to migrate `longFieldMaxLenght`. ref: https://github.com/elastic/elastic-otel-node/issues/696-->
