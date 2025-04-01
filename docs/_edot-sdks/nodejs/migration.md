@@ -7,7 +7,7 @@ parent: EDOT Node.js
 
 # Migrating to EDOT Node.js from the Elastic Node.js Agent
 
-This documentation describes how to update applications that are currently using the [Elastic APM Node.js agent](https://www.elastic.co/guide/en/apm/agent/nodejs/current/index.html) to use the Elastic Distribution of OpenTelemetry for Node.js (EDOT Node.js).
+This documentation describes how to update applications that are currently using the [Elastic APM Node.js agent](https://www.elastic.co/guide/en/apm/agent/nodejs/current/index.html) (npm package `elastic-apm-node`) to use the Elastic Distribution of OpenTelemetry for Node.js (EDOT Node.js, npm package `@elastic/opentelemetry-node`).
 
 ## Advantages of using EDOT Node.js agent
 
