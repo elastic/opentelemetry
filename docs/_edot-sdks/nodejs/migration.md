@@ -45,7 +45,7 @@ EDOT Node.js does not implement [span compression](https://www.elastic.co/guide/
     - Install EDOT Node.js: `npm install --save @elastic/opentelemetry-node`
 2. **Remove APM Node.js start method**
     - For services starting the APM Node.js Agent by `require`ing in the code with [require and start](https://www.elastic.co/guide/en/apm/agent/nodejs/current/starting-the-agent.html#start-option-require-and-start) or [require start module](https://www.elastic.co/guide/en/apm/agent/nodejs/current/starting-the-agent.html#start-option-require-start-module) the code should be removed.
-    - For services starting with [`--require` Node.js CLI option](https://www.elastic.co/guide/en/apm/agent/nodejs/current/starting-the-agent.html#start-option-node-require-opt) the option should be removed. If the `--require` option is
+    - For services starting with the [`--require` Node.js CLI option](https://www.elastic.co/guide/en/apm/agent/nodejs/current/starting-the-agent.html#start-option-node-require-opt) the option should be removed. If the `--require` option is
     defined in `NODE_OPTIONS` environment variable it should be removed from there.
 3. **(Optional) Migrate manual instrumentation API:** If you're using [Elastic APM Node.js Agent API](https://www.elastic.co/guide/en/apm/agent/nodejs/current/api.html) to crate manual transactions and spans you should refactor the code to use `@opentelemetry/api` methods. OpenTelemetry documentaion has several examples of how to [create spans](https://opentelemetry.io/docs/languages/js/instrumentation/#create-spans) manually.
 4. **Replace configuration options** using the [Reference](#option-reference) below, see [Configuration](./configuration) for ways to provide those.
