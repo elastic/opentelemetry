@@ -135,7 +135,7 @@ Elastic **officially supports** (✅) the technologies, JVM versions and operati
 
 ### EDOT Python
 
-🚧 Coming soon
+EDOT Python is a wrapper around the upstream OpenTelemetry Python SDK and supports the very same [Python versions](../edot-sdks/python/supported-technologies#python-versions). A list of [supported instrumentations](../edot-sdks/python/supported-technologies#instrumentations) is available in the [supported technologies page](../edot-sdks/python/supported-technologies).
 
 ### EDOT Android
 
