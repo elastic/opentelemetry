@@ -47,10 +47,7 @@ EDOT Node.js does not implement [span compression](https://www.elastic.co/guide/
     - For services starting the APM Node.js Agent by `require`ing in the code with [require and start](https://www.elastic.co/guide/en/apm/agent/nodejs/current/starting-the-agent.html#start-option-require-and-start) or [require start module](https://www.elastic.co/guide/en/apm/agent/nodejs/current/starting-the-agent.html#start-option-require-start-module) the code should be removed.
     - For services starting with [`--require` Node.js CLI option](https://www.elastic.co/guide/en/apm/agent/nodejs/current/starting-the-agent.html#start-option-node-require-opt) the option should be removed. If the `--require` option is
     defined in `NODE_OPTIONS` environment variable it should be removed from there.
-    <!-- TODO: add the rest of the methods? -->
-3. **(Optional) Migrate manual instrumentation API:** Usages of the [Elastic APM Node.js Agent API](https://www.elastic.co/guide/en/apm/agent/nodejs/current/api.html) require migration to OpenTelemetry API:
-    - TODO: explain differences between OTEL & APM? no transactions?
-    - TODO: prepare a table of APM API -> OTEL API?
+3. **(Optional) Migrate manual instrumentation API:** If you're using [Elastic APM Node.js Agent API](https://www.elastic.co/guide/en/apm/agent/nodejs/current/api.html) to crate manual transactions and spans you should refactor the code to use `@opentelemetry/api` methods. OpenTelemetry documentaion has several examples of how to [create spans](https://opentelemetry.io/docs/languages/js/instrumentation/#create-spans) manually.
 4. **Replace configuration options** using the [Reference](#option-reference) below, see [Configuration](./configuration) for ways to provide those.
 5. **Add EDOT Node.js start method** as described in [Setup](./setup/index.html#start-edot-nodejs).
 
@@ -67,15 +64,12 @@ they have an equivalent in OpenTelemetry:
 * [serviceVersion](#serviceversion)
 * [environment](#environment)
 * [globalLabels](#globallabels)
-* [serverCaCertFile](#servercacertfile)
 * [transactionSampleRate](#transactionsamplerate)
-* [hostname](#hostname)
 * [logLevel](#loglevel)
 * [maxQueueSize](#maxqueuesize)
 * [serverTimeout](#servertimeout)
 * [apmClientHeaders](#apmclientheaders)
 * [disableInstrumentations](#disableinstrumentations)
-* [containerId](#containerid)
 * [metricsInterval](#metricsinterval)
 * [cloudProvider](#cloudProvider)
 
@@ -128,29 +122,15 @@ The Elastic [`globalLabels`](https://www.elastic.co/guide/en/apm/agent/nodejs/cu
 
 For example: `OTEL_RESOURCE_ATTRIBUTES=alice=first,bob=second`. Such labels will result in labels.key=value attributes on the server, e.g. labels.alice=first
 
-### `serverCaCertFile`
-
-TODO (double check)
-
-The Elastic [`serverCaCertFile`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#server-ca-cert-file) option corresponds to the OpenTelemetry [OTEL_EXPORTER_OTLP_CERTIFICATE](https://opentelemetry.io/docs/specs/otel/protocol/exporter/) option. Notice this options can be set specifically for each signal (`OTEL_EXPORTER_OTLP_{SIGNAL}_CERTIFICATE` where signal is LOGS, METRICS or TRACES) and only applies to `grpc` protocol exporter.
-
-For example: `OTEL_EXPORTER_OTLP_CERTIFICATE=./path/to/ca.crt`.
-
 ### `transactionSampleRate`
-
-TODO (double check)
 
 The Elastic [`transactionSampleRate`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#transaction-sample-rate) option does not directly correspond to a OpenTelemetry option but the same behaviour can be achieved using `OTEL_TRACES_SAMPLER` and `OTEL_TRACES_SAMPLER_ARG` options. OpenTelemetry Node.js SDK comes with the built-in `TraceIdRatioBased` sampler which accepts an argument for the sample rate.
 
-For example: `OTEL_TRACES_SAMPLER=traceidratio OTEL_TRACES_SAMPLER_ARG=0.25`.
+For example: `OTEL_TRACES_SAMPLER=traceidratio OTEL_TRACES_SAMPLER_ARG=0.25` will sample 25% of the traces your service.
 
-### `hostname`
+If your serivce may be accessed by other instrumented services and you want to keep the sampling decision to have distrubuted tracing you could use a different sampler that takes into account the sampling decision from the upstream service in distributed traces.
 
-TODO (double check)
-
-The Elastic [`hostname`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#service-version) option corresponds to setting the `host.name` key in [OTEL_RESOURCE_ATTRIBUTES](https://opentelemetry.io/docs/concepts/sdk-configuration/general-sdk-configuration/#otel_resource_attributes).
-
-For example: `OTEL_RESOURCE_ATTRIBUTES=host.name=my-host`.
+For example: `OTEL_TRACES_SAMPLER=parentbased_traceidratio OTEL_TRACES_SAMPLER_ARG=0.25` will sample 25% of the traces if they start in your service. For traces coming from an upstream service the sampling decision made upstream will be kept.
 
 ### `logLevel`
 
@@ -198,14 +178,6 @@ For example: `OTEL_EXPORTER_OTLP_HEADERS=foo=bar,baz=quux`.
 The Elastic [`disableInstrumentations`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#apm-client-headers) option corresponds to the EDOT Node.js [`OTEL_NODE_DISABLED_INSTRUMENTATIONS`](https://elastic.github.io/opentelemetry/edot-sdks/nodejs/configuration.html#otel_node_disabledenabled_instrumentations-details) option.
 
 For example: `OTEL_NODE_DISABLED_INSTRUMENTATIONS=express,mysql`.
-
-### `containerId`
-
-TODO (double check)
-
-The Elastic [`containerId`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#container-id) option corresponds to setting the `container.id` key in [OTEL_RESOURCE_ATTRIBUTES](https://opentelemetry.io/docs/concepts/sdk-configuration/general-sdk-configuration/#otel_resource_attributes).
-
-For example: `OTEL_RESOURCE_ATTRIBUTES=container.id=my-id`.
 
 ### `metricsInterval`
 
