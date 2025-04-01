@@ -76,6 +76,7 @@ We don't install instrumentations by default and we suggest to use our [edot-boo
 | [opentelemetry-instrumentation-tortoiseorm](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-tortoiseorm) | tortoise-orm >= 0.17.0 | development
 | [opentelemetry-instrumentation-urllib](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-urllib) | urllib | migration
 | [opentelemetry-instrumentation-urllib3](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-urllib3) | urllib3 >= 1.0.0, < 3.0.0 | migration
+| [opentelemetry-instrumentation-vertexai](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation-genai/opentelemetry-instrumentation-vertexai) | google-cloud-aiplatform >= 1.64 | development
 | [opentelemetry-instrumentation-wsgi](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-wsgi) | wsgi | migration
 
 The semantic conventions status tracks the stabilization of the semantic conventions used in the instrumentation:
