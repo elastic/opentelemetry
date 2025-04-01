@@ -49,7 +49,9 @@ EDOT Node.js does not implement [span compression](https://www.elastic.co/guide/
     defined in `NODE_OPTIONS` environment variable it should be removed from there.
 3. **(Optional) Migrate manual instrumentation API:** If you're using [Elastic APM Node.js Agent API](https://www.elastic.co/guide/en/apm/agent/nodejs/current/api.html) to crate manual transactions and spans you should refactor the code to use `@opentelemetry/api` methods. OpenTelemetry documentaion has several examples of how to [create spans](https://opentelemetry.io/docs/languages/js/instrumentation/#create-spans) manually.
 4. **Replace configuration options** using the [Reference](#option-reference) below, see [Configuration](./configuration) for ways to provide those.
-5. **Add EDOT Node.js start method** as described in [Setup](./setup/index.html#start-edot-nodejs).
+5. **Add EDOT Node.js start method:** use Node.js `--import` [option](https://nodejs.org/api/cli.html#--importmodule) when starting your service. You can set it
+    - directly as a command option `node --import @elastic/opentelemetry-node service.js`
+    - in [NODE_OPTIONS](https://nodejs.org/api/cli.html#node_optionsoptions) environment var `NODE_OPTIONS="--import @elastic/opentelemetry-node" node service.js`
 
 ## Option reference
 
