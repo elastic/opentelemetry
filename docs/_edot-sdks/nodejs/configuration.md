@@ -136,7 +136,7 @@ A comma-separated list of named resource detectors to use. EDOT Node.js supports
 - `alibaba`
 - `aws`
 - `azure`
-- `gcp`
+- `gcp` - ([temporarily removed](https://github.com/elastic/elastic-otel-node/pull/703))
 - `all` - enable all resource detectors (the default)
 - `none` - disable resource detection
 
