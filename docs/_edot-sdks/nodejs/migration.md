@@ -22,9 +22,10 @@ Allows to capture, send, transform and store data in an OpenTelemetry native way
 
 ## Limitations
 
-### Node.js support
+### Supported Node.js versions
 
-EDOT Node.js and OpenTelemetry upstream SDK do support Node.js with versions in the range `^18.19.0 || >=20.6.0`.
+EDOT Node.js and OpenTelemetry upstream SDK support Node.js versions in the range `^18.19.0 || >=20.6.0`.
+Elastic APM Node.js works with Node.js versions `>=14.17.0`, though with limited support for Node.js 14 and 16 given that those major versions of Node.js are out of long-term support.
 
 ### Missing Instrumentations
 
@@ -33,9 +34,9 @@ EDOT Node.js does not yet support instrumentation for AWS Lambda and Azure Funct
 - For AWS Lambda use [OpenTelemetry Lambda layers](https://github.com/open-telemetry/opentelemetry-lambda).
 - For Azure Functions you can [configure OpenTelemetry](https://learn.microsoft.com/en-us/azure/azure-functions/opentelemetry-howto?tabs=app-insights&pivots=programming-language-javascript).
 
-### Central and Dynamic configuration
+### Central configuration
 
-Currently EDOT Node.js does not yet have an equivalent of the [central configuration feature](https://www.elastic.co/guide/en/observability/current/apm-agent-configuration.html) that the Elastic APM Node.js agent supports. When using EDOT Node.js, all the configurations are static and should be provided to the application with other configurations, e.g. environment variables.
+Currently EDOT Node.js does not yet have an equivalent of the [central configuration feature](https://www.elastic.co/guide/en/observability/current/apm-agent-configuration.html) that the Elastic APM Node.js agent supports. When using EDOT Node.js, all the configurations are static and must be provided to the application as environment variables.
 
 ### Span compression
 
@@ -47,19 +48,18 @@ EDOT Node.js does not implement [span compression](https://www.elastic.co/guide/
     - Remove the Elastic APM Node.js Agent package: `npm uninstall elastic-apm-node`
     - Install EDOT Node.js: `npm install --save @elastic/opentelemetry-node`
 2. **Remove APM Node.js start method**
-    - For services starting the APM Node.js Agent by `require`ing in the code with [require and start](https://www.elastic.co/guide/en/apm/agent/nodejs/current/starting-the-agent.html#start-option-require-and-start) or [require start module](https://www.elastic.co/guide/en/apm/agent/nodejs/current/starting-the-agent.html#start-option-require-start-module) the code should be removed.
-    - For services starting with the [`--require` Node.js CLI option](https://www.elastic.co/guide/en/apm/agent/nodejs/current/starting-the-agent.html#start-option-node-require-opt) the option should be removed. If the `--require` option is
-    defined in `NODE_OPTIONS` environment variable it should be removed from there.
-3. **(Optional) Migrate manual instrumentation API:** If you're using [Elastic APM Node.js Agent API](https://www.elastic.co/guide/en/apm/agent/nodejs/current/api.html) to crate manual transactions and spans you should refactor the code to use `@opentelemetry/api` methods. OpenTelemetry documentaion has several examples of how to [create spans](https://opentelemetry.io/docs/languages/js/instrumentation/#create-spans) manually.
-4. **Replace configuration options** using the [Reference](#option-reference) below, see [Configuration](./configuration) for ways to provide those.
-5. **Add EDOT Node.js start method:** use Node.js `--import` [option](https://nodejs.org/api/cli.html#--importmodule) when starting your service. You can set it
-    - directly as a command option `node --import @elastic/opentelemetry-node service.js`
-    - in [NODE_OPTIONS](https://nodejs.org/api/cli.html#node_optionsoptions) environment var `NODE_OPTIONS="--import @elastic/opentelemetry-node" node service.js`
+    - For services starting the APM Node.js Agent by `require()`ing in the code with the [require and start](https://www.elastic.co/guide/en/apm/agent/nodejs/current/starting-the-agent.html#start-option-require-and-start) or [require start module](https://www.elastic.co/guide/en/apm/agent/nodejs/current/starting-the-agent.html#start-option-require-start-module) methods, the `require('elastic-apm-node')` code should be removed.
+    - For services starting with the [`--require` Node.js CLI option](https://www.elastic.co/guide/en/apm/agent/nodejs/current/starting-the-agent.html#start-option-node-require-opt) the option should be removed. If the `--require` option is defined in `NODE_OPTIONS` environment variable it should be removed from there.
+3. **(Optional) Migrate manual instrumentation API:** If you're using the [Elastic APM Node.js Agent API](https://www.elastic.co/guide/en/apm/agent/nodejs/current/api.html) to create manual transactions and spans you should refactor the code to use `@opentelemetry/api` methods. OpenTelemetry documentaion has several examples of how to [create spans](https://opentelemetry.io/docs/languages/js/instrumentation/#create-spans) manually.
+4. **Replace configuration options** using the [Configuration migration reference](#configuration-migration-reference) below. See [Configuration](./configuration) for details on EDOT Node.js configuration.
+5. **Add EDOT Node.js start method:**
+    Use the [Node.js `--import` option](https://nodejs.org/api/cli.html#--importmodule) to start EDOT Node.js with your service:
+    - Set it on the command-line -- `node --import @elastic/opentelemetry-node service.js` -- or
+    - in the [`NODE_OPTIONS` environment variable](https://nodejs.org/api/cli.html#node_optionsoptions): `NODE_OPTIONS="--import @elastic/opentelemetry-node" node service.js`
 
-## Option reference
+## Configuration migration reference
 
-This list contains Elastic APM Node.js agent configuration options that can be migrated to EDOT Node.js SDK configuration because
-they have an equivalent in OpenTelemetry:
+This list contains Elastic APM Node.js agent configuration options that can be migrated to EDOT Node.js SDK configuration because they have an equivalent in OpenTelemetry:
 
 * [serverUrl](#serverurl)
 * [secretToken](#secrettoken)
@@ -82,22 +82,22 @@ they have an equivalent in OpenTelemetry:
 
 The Elastic APM Node.js agent [`serverUrl`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#server-url) option corresponds to the OpenTelemetry [`OTEL_EXPORTER_OTLP_ENDPOINT`](https://opentelemetry.io/docs/concepts/sdk-configuration/otlp-exporter-configuration/#otel_exporter_otlp_endpoint) option.
 
-- If using Elastic Cloud Serverless, then set `OTEL_EXPORTER_OTLP_ENDPOINT` to the managed OTLP endpoint URL for your Serverless project, e.g. `export OTEL_EXPORTER_OTLP_ENDPOINT=https://my-prj-a1b2c3.ingest.eu-west-1.aws.elastic.cloud`. See the [Quickstart for Elastic Cloud Serverless](../../quickstart/serverless/).
+- If using Elastic Cloud Serverless, then set `OTEL_EXPORTER_OTLP_ENDPOINT` to the managed OTLP endpoint URL for your Serverless project, e.g. `OTEL_EXPORTER_OTLP_ENDPOINT=https://my-prj-a1b2c3.ingest.eu-west-1.aws.elastic.cloud`. See the [Quickstart for Elastic Cloud Serverless](../../quickstart/serverless/).
 
 - If using Elastic Cloud Hosted or Self-managed, then set `OTEL_EXPORTER_OTLP_ENDPOINT` to the endpoint URL of your EDOT Collector. See the [Quickstart for Elastic Cloud Hosted](../../quickstart/ech/hosts_vms) or the [Quickstart for Self-managed](../../quickstart/self-managed/hosts_vms).
 
 ### `secretToken`
 
-The Elastic APM Node.js agent [`secretToken`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#secret-token) option corresponds to the OpenTelemetry [OTEL_EXPORTER_OTLP_HEADERS](https://opentelemetry.io/docs/concepts/sdk-configuration/otlp-exporter-configuration/#otel_exporter_otlp_headers) option.
+The Elastic APM Node.js agent [`secretToken`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#secret-token) option corresponds to setting the `Authorization` header in the OpenTelemetry [OTEL_EXPORTER_OTLP_HEADERS](https://opentelemetry.io/docs/concepts/sdk-configuration/otlp-exporter-configuration/#otel_exporter_otlp_headers) option.
 
 For example: `OTEL_EXPORTER_OTLP_HEADERS="Authorization=Bearer an_apm_secret_token"`.
 
 {: .note}
-Secret token usage is discouraged and Elastic recomends the usage of API keys to for authentication.
+Secret token usage is discouraged and Elastic recomends the usage of API keys for authentication.
 
 ### `apiKey`
 
-The Elastic APM Node.js agent [`apiKey`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#api-key) option corresponds to the OpenTelemetry [OTEL_EXPORTER_OTLP_HEADERS](https://opentelemetry.io/docs/concepts/sdk-configuration/otlp-exporter-configuration/#otel_exporter_otlp_headers) option.
+The Elastic APM Node.js agent [`apiKey`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#api-key) option corresponds to setting the `Authorization` header in the OpenTelemetry [OTEL_EXPORTER_OTLP_HEADERS](https://opentelemetry.io/docs/concepts/sdk-configuration/otlp-exporter-configuration/#otel_exporter_otlp_headers) option.
 
 For example:`OTEL_EXPORTER_OTLP_HEADERS="Authorization=ApiKey an_api_key"`.
 
@@ -105,14 +105,11 @@ For example:`OTEL_EXPORTER_OTLP_HEADERS="Authorization=ApiKey an_api_key"`.
 
 The Elastic APM Node.js agent [`serviceName`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#service-name) option corresponds to the OpenTelemetry [OTEL_SERVICE_NAME](https://opentelemetry.io/docs/concepts/sdk-configuration/general-sdk-configuration/#otel_service_name) option.
 
-The service name value can also be set using [OTEL_RESOURCE_ATTRIBUTES](https://opentelemetry.io/docs/concepts/sdk-configuration/general-sdk-configuration/#otel_resource_attributes).
-
-For example: `OTEL_RESOURCE_ATTRIBUTES=service.name=myservice`. If `OTEL_SERVICE_NAME` is set, it takes precedence over the resource attribute.
+The service name value can also be set using [OTEL_RESOURCE_ATTRIBUTES](https://opentelemetry.io/docs/concepts/sdk-configuration/general-sdk-configuration/#otel_resource_attributes). For example: `OTEL_RESOURCE_ATTRIBUTES=service.name=myservice`. A value in `OTEL_SERVICE_NAME` takes precedence over a `service.name` value in `OTEL_RESOURCE_ATTRIBUTES`.
 
 ### `active`
 
-The Elastic APM Node.js agent [`active`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#active) option corresponds to the OpenTelemetry [OTEL_SDK_DISABLED](https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#general-sdk-configuration) option but it has the opposite meaning. Set the `OTEL_SDK_DISABLED` to `true` if you want to 
-deactivate the agent.
+The Elastic APM Node.js agent [`active`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#active) option corresponds to the OpenTelemetry [OTEL_SDK_DISABLED](https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#general-sdk-configuration) option but it has the opposite meaning. Set the `OTEL_SDK_DISABLED` to `true` if you want to deactivate the agent.
 
 For example: `OTEL_SDK_DISABLED=true`.
 
@@ -136,18 +133,12 @@ For example: `OTEL_RESOURCE_ATTRIBUTES=alice=first,bob=second`. Such labels will
 
 ### `transactionSampleRate`
 
-The Elastic APM Node.js agent [`transactionSampleRate`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#transaction-sample-rate) option does not directly correspond to a OpenTelemetry option but the same behaviour can be achieved using `OTEL_TRACES_SAMPLER` and `OTEL_TRACES_SAMPLER_ARG` options. OpenTelemetry Node.js SDK comes with the built-in `TraceIdRatioBased` sampler which accepts an argument for the sample rate.
-
-For example: `OTEL_TRACES_SAMPLER=traceidratio OTEL_TRACES_SAMPLER_ARG=0.25` will sample 25% of the traces your service.
-
-If your serivce may be accessed by other instrumented services and you want to keep the sampling decision to have distrubuted tracing you could use a different sampler that takes into account the sampling decision from the upstream service in distributed traces.
-
-For example: `OTEL_TRACES_SAMPLER=parentbased_traceidratio OTEL_TRACES_SAMPLER_ARG=0.25` will sample 25% of the traces if they start in your service. For traces coming from an upstream service the sampling decision made upstream will be kept.
+The Elastic APM Node.js agent [`transactionSampleRate`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#transaction-sample-rate) corresponds to the OpenTelemetry `OTEL_TRACES_SAMPLER` and `OTEL_TRACES_SAMPLER_ARG` options. For example, for the equivalent of `transactionSampleRate: '0.25'` use `OTEL_TRACES_SAMPLER=parentbased_traceidratio OTEL_TRACES_SAMPLER_ARG=0.25`.
 
 ### `logLevel`
 
 The Elastic APM Node.js agent [`logLevel`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#log-level) option corresponds to the OpenTelemetry [`OTEL_LOG_LEVEL`](https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#general-sdk-configuration) option. The possible values change a bit but they represent similar levels. The following
-table shows the equivalent values of log levels between `elastic-apm-node` and EDOT Node.js
+table shows the equivalent values of log levels between `elastic-apm-node` and EDOT Node.js.
 
 | ELASTIC_APM_LOG_LEVEL | OTEL_LOG_LEVEL |
 | --------------------- | -------------- |
@@ -201,6 +192,6 @@ For example: `OTEL_METRIC_EXPORT_INTERVAL=30000`.
 
 The Elastic APM Node.js agent [`cloudProvider`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#cloud-provider) option does not corresponds directly to an OpenTelemetry option but you can get similar behaviour by properly setting [`OTEL_NODE_RESOURCE_DETECTORS`](https://opentelemetry.io/docs/zero-code/js/configuration/#sdk-resource-detector-configuration) option. If you set this option make sure you add along with the cloud detector the non-cloud detectors that apply to your service. For a full list of detectors check [OTEL_NODE_RESOURCE_DETECTORS details](./configuration#otel_node_resource_detectors-details). Not setting this option is the equivalent of `auto`.
 
-For example: `OTEL_NODE_RESOURCE_DETECTORS=os,env,host,process,gcp`. Will make the agent query for GCP metadata only and use other non-cloud detectors to enrich that metadata.
+For example: `OTEL_NODE_RESOURCE_DETECTORS=os,env,host,serviceinstance,process,aws` will make the agent query for AWS metadata only and use other non-cloud detectors to enrich that metadata.
 
-<!-- TODO: Check if possible to migrate `longFieldMaxLenght`. ref: https://github.com/elastic/elastic-otel-node/issues/696-->
+<!-- TODO: Check if possible to migrate `longFieldMaxLength`. ref: https://github.com/elastic/elastic-otel-node/issues/696 -->
