@@ -19,7 +19,7 @@ The following sampling files are available:
 
 Use the above example configurations as a reference when configuring your upstream collector or customizing your EDOT Collector configuration.
 
-The following sections describe the the pipelines of the above configurations split down by single use cases.
+The following sections describe the pipelines of the above configurations split down by single use cases.
 
 - TOC
 {:toc}

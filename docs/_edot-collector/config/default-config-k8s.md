@@ -147,7 +147,7 @@ The `Daemonset Collectors` gather telemetry associated with corresponding, indiv
     The logs and metrics are batched for better performance ([`batch`] processor) and then enriched with meta information using the
     [`k8sattributes`], [`resourcedetection`] and [`resource`] processors.
 
-2. *Application teleemtry through OTLP from OTel SDKs*
+2. *Application telemetry through OTLP from OTel SDKs*
 
     The `Daemonset Collectors` also receive the application telemetry from OTel SDKs that instrument services / pods running on
     corresponding Kubernetes nodes. The Daemonset Collectors receive that data through [`OTLP`], batch the data ([`batch`] processor)
