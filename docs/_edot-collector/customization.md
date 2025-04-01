@@ -13,7 +13,7 @@ If your use case requires additional components, you have two options:
 1. [Build your custom, EDOT-like collector](./custom-collector) 
 2. [Open a request](https://github.com/elastic/opentelemetry/issues/new/choose) to add those components to EDOT 
 
-Requests for adding new components to the EDOT Collector will be review and decided on the basis of the popularity of the requests, technical suitability and other criteria. 
+Requests for adding new components to the EDOT Collector will be reviewed and decided on the basis of the popularity of the requests, technical suitability and other criteria. 
 
 {: .note }
 > Custom collector builds are *not* covered through [Elastic's Support](https://www.elastic.co/support_policy).

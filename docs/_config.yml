@@ -22,7 +22,7 @@ title: EDOT
 description: >-
   Elastic Distributions of OpenTelemetry is an open-source ecosystem of tailored OpenTelemetry distributions,
   comprising an OpenTelemetry Collector and various OpenTelemetry Language SDKs.
-  Each EDOT distribution is asssembled with carefully curated OpenTelemetry components,
+  Each EDOT distribution is assembled with carefully curated OpenTelemetry components,
   then rigorously tested to ensure production readiness. 
   This provides a reliable and optimized OpenTelemetry experience with Elastic,
   enabling seamless adoption with confidence and expert support.

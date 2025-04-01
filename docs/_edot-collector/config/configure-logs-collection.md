@@ -11,7 +11,7 @@ nav_order: 3
 
 ## Pre-processing Logs
 
-- limitation: (as of 9.0) Elasticsearch Ingest Pipelinges are not (yet) applicable to OTel-native data
+- limitation: (as of 9.0) Elasticsearch Ingest Pipelines are not (yet) applicable to OTel-native data
 - pre-processing of logs needs to happen in OTel collectors
 
 ### Parsing JSON logs
