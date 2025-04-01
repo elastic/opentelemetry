@@ -5,7 +5,7 @@ nav_order: 1
 parent: EDOT .NET
 ---
 
-# Setting up the EDOT .NET Agent
+# Setting up the EDOT .NET SDK
 
 ## Quickstart guide
 
@@ -173,7 +173,10 @@ configuration. The values (particularly the API key) are sensitive and should be
 [Secret Manager](https://learn.microsoft.com/aspnet/core/security/app-secrets) feature during local development. Once enabled
 for your application, add `OTEL_EXPORTER_OTLP_ENDPOINT` and `OTEL_EXPORTER_OTLP_HEADERS` as keys with their respective values.
 
-> **RECOMMENDATION**: Consider using a key/secret store for production environments.
+{: .note-title}
+> Recommendation
+>
+> Strongly consider using a key/secret store for production environments.
 
 ### Instrumenting application code
 

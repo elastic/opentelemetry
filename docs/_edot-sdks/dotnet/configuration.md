@@ -5,7 +5,7 @@ nav_order: 2
 parent: EDOT .NET
 ---
 
-# Configuring the EDOT .NET Agent
+# Configuring the EDOT .NET SDK
 
 Configure the Elastic Distribution of OpenTelemetry .NET (EDOT .NET) to send data to Elastic.
 
