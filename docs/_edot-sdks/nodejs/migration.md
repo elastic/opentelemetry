@@ -175,7 +175,7 @@ For example: `OTEL_EXPORTER_OTLP_HEADERS=foo=bar,baz=quux`.
 
 ### `disableInstrumentations`
 
-The Elastic [`disableInstrumentations`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#apm-client-headers) option corresponds to the OpenTelemetry [`OTEL_NODE_DISABLED_INSTRUMENTATIONS`](https://opentelemetry.io/docs/zero-code/js/configuration/#disable-specific-instrumentations) option. See [Configuration](./configuration) if you want to learn more advanced usage.
+The Elastic [`disableInstrumentations`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#apm-client-headers) option corresponds to the EDOT Node.js [`OTEL_NODE_DISABLED_INSTRUMENTATIONS`](https://elastic.github.io/opentelemetry/edot-sdks/nodejs/configuration.html#otel_node_disabledenabled_instrumentations-details) option.
 
 For example: `OTEL_NODE_DISABLED_INSTRUMENTATIONS=express,mysql`.
 
