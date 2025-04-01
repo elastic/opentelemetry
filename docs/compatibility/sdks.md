@@ -166,9 +166,10 @@ EDOT Node.js is a wrapper around the upstream OpenTelemetry JavaScript SDK and s
 
 ### EDOT iOS
 
-🚧 Coming soon
+| Category                                                                                          | Compatibility & Support Level |
+|:--------------------------------------------------------------------------------------------------|:-----------------------------:|
+| [Frameworks](https://www.elastic.co/guide/en/apm/agent/swift/current/supported-technologies.html) |               ✅               |
 
-[Application Servers]: 
 [Incompatible]: ./nomenclature
 [Compatible]: ./nomenclature
 [Supported]: ./nomenclature
