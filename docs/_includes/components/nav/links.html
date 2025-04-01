@@ -35,7 +35,17 @@
         <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
       </button>
       {%- endif -%}
-      <a href="{{ node.url | relative_url }}" class="nav-list-link">{% if node.fa_icon_key %}<i class="{{ node.fa_icon_key }} fa-fw"></i>{% endif %} {{ node.title }}</a>
+      <a {% if node.ext_link -%}
+      href="{{ node.ext_link}}"
+      {%- else -%}
+          href="{{ node.url | relative_url }}"
+      {%- endif %} class="nav-list-link{%- if node.ext_link %} external{% endif -%}"
+      {%- if node.ext_link %} target="_blank"{% endif -%}
+      >
+      {% if node.fa_icon_key %}<i class="{{ node.fa_icon_key }} fa-fw"></i>{% endif %}
+      {{ node.title }} 
+      {% if node.ext_link %}<svg viewBox="0 0 24 24" aria-labelledby="svg-external-link-title"><use xlink:href="#svg-external-link"></use></svg>{% endif %}
+    </a>
       {%- if nav_children.size >= 1 -%}
         {%- if node.child_nav_order == 'desc' or node.child_nav_order == 'reversed' -%}
           {%- assign nav_children = nav_children | reverse -%}
