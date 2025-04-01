@@ -71,7 +71,7 @@ they have an equivalent in OpenTelemetry:
 * [apmClientHeaders](#apmclientheaders)
 * [disableInstrumentations](#disableinstrumentations)
 * [metricsInterval](#metricsinterval)
-* [cloudProvider](#cloudProvider)
+* [cloudProvider](#cloudprovider)
 
 ### `serverUrl`
 
