@@ -19,7 +19,8 @@ Allows to capture, send, transform and store data in an OpenTelemetry native way
 
 ### Missing Instrumentations
 
-EDOT Node.js only supports a technologies listed in [Supported Technologies](./supported-technologies) page. Although they do not appear in the list `AWS Lambda` and `Azure Functions` can be instrumented other means
+EDOT Node.js does not yet support instrumentation for AWS Lambda and Azure Functions. However, there are upstream and third-party options based on OpenTelemetry:
+
 
 - for AWS Lambda use [OpenTelemetry Lambda layers](https://github.com/open-telemetry/opentelemetry-lambda).
 - for Azure Functions you can [configure OpenTelemetry](https://learn.microsoft.com/en-us/azure/azure-functions/opentelemetry-howto?tabs=app-insights&pivots=programming-language-javascript).
