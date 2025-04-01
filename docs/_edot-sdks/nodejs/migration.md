@@ -82,6 +82,10 @@ they have an equivalent in OpenTelemetry:
 
 The Elastic APM Node.js agent [`serverUrl`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#server-url) option corresponds to the OpenTelemetry [`OTEL_EXPORTER_OTLP_ENDPOINT`](https://opentelemetry.io/docs/concepts/sdk-configuration/otlp-exporter-configuration/#otel_exporter_otlp_endpoint) option.
 
+- If using Elastic Cloud Serverless, then set `OTEL_EXPORTER_OTLP_ENDPOINT` to the managed OTLP endpoint URL for your Serverless project, e.g. `export OTEL_EXPORTER_OTLP_ENDPOINT=https://my-prj-a1b2c3.ingest.eu-west-1.aws.elastic.cloud`. See the [Quickstart for Elastic Cloud Serverless](../../quickstart/serverless/).
+
+- If using Elastic Cloud Hosted or Self-managed, then set `OTEL_EXPORTER_OTLP_ENDPOINT` to the endpoint URL of your EDOT Collector. See the [Quickstart for Elastic Cloud Hosted](../../quickstart/ech/hosts_vms) or the [Quickstart for Self-managed](../../quickstart/self-managed/hosts_vms).
+
 ### `secretToken`
 
 The Elastic APM Node.js agent [`secretToken`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#secret-token) option corresponds to the OpenTelemetry [OTEL_EXPORTER_OTLP_HEADERS](https://opentelemetry.io/docs/concepts/sdk-configuration/otlp-exporter-configuration/#otel_exporter_otlp_headers) option.
