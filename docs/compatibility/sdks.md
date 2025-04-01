@@ -147,7 +147,11 @@ Elastic **officially supports** (✅) the technologies, JVM versions and operati
 
 ### EDOT Python
 
-🚧 Coming soon
+| Category                                                                             | Compatibility & Support Level |
+|:-------------------------------------------------------------------------------------|:-----------------------------:|
+| [Python](../edot-sdks/python/supported-technologies.html#python-versions)            |               ✅               |
+| [Instrumentations](../edot-sdks/python/supported-technologies.html#instrumentations) |               ✅               |
+
 
 ### EDOT Android
 
