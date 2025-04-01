@@ -27,7 +27,7 @@ EDOT Node.js does not yet support instrumentation for AWS Lambda and Azure Funct
 
 ### Central and Dynamic configuration
 
-Currently EDOT Node.js does not have an equivalent of the [central configuration feature](https://www.elastic.co/guide/en/observability/current/apm-agent-configuration.html) that the Elastic APM Node.js agent supports. When using EDOT Node.js, all the configurations are static and should be provided to the application with other configurations, e.g. environment variables.
+Currently EDOT Node.js does not yet have an equivalent of the [central configuration feature](https://www.elastic.co/guide/en/observability/current/apm-agent-configuration.html) that the Elastic APM Node.js agent supports. When using EDOT Node.js, all the configurations are static and should be provided to the application with other configurations, e.g. environment variables.
 
 ### Span compression
 
