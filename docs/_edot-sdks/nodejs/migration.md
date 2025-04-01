@@ -40,7 +40,7 @@ EDOT Node.js does not implement [span compression](https://www.elastic.co/guide/
 
 ## Migration steps
 
-1. **Replace Agent Node.js package**
+1. **Replace Node.js package**
     - Remove Elastic's APM Node.js Agent package by running `npm uninstall --save elastic-apm-node` command in your project.
     - Install EDOT Node.js by runing `npm install --save @elastic/opentelemetry-node` command in your project.
 2. **Remove APM Node.js start method**
