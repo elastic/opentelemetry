@@ -42,7 +42,7 @@ EDOT Node.js does not implement [span compression](https://www.elastic.co/guide/
 
 1. **Replace Node.js package**
     - Remove the Elastic APM Node.js Agent package: `npm uninstall elastic-apm-node`
-    - Install EDOT Node.js by runing `npm install --save @elastic/opentelemetry-node` command in your project.
+    - Install EDOT Node.js: `npm install --save @elastic/opentelemetry-node`
 2. **Remove APM Node.js start method**
     - For services starting the APM Node.js Agent by `require`ing in the code with [require and start](https://www.elastic.co/guide/en/apm/agent/nodejs/current/starting-the-agent.html#start-option-require-and-start) or [require start module](https://www.elastic.co/guide/en/apm/agent/nodejs/current/starting-the-agent.html#start-option-require-start-module) the code should be removed.
     - For services starting with [`--require` Node.js CLI option](https://www.elastic.co/guide/en/apm/agent/nodejs/current/starting-the-agent.html#start-option-node-require-opt) the option should be removed. If the `--require` option is
