@@ -23,7 +23,7 @@ We have chosen to make auto-instrumentation as simple as possible so you can jus
 ### Bring your own instrumentation
 
 In EDOT Python we decided to not ship all the available instrumentations in order to accommodate environments where installing more packages than requested may be an issue.
-We provide a tool to discover available instrumentations automatically that can be added to your build workflow. See [Get started](https://github.com/elastic/elastic-otel-python/blob/main/docs/get-started.md#install-the-available-instrumentation).
+We provide a tool to discover available instrumentations automatically that can be added to your build workflow. See [Setup](./setup/index#install-the-available-instrumentation).
 
 ## Performance overhead
 
