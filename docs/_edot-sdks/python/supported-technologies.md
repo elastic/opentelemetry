@@ -103,7 +103,7 @@ We can instrument the following LLM (Large Language Model) libraries with instru
 
 1. Support for sync and async [chat completions](https://platform.openai.com/docs/guides/text?api-mode=chat) with create and the beta parse APIs and [embeddings](https://platform.openai.com/docs/guides/embeddings?lang=python) API.
 2. Support for [Bedrock Runtime](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/bedrock-runtime.html) [InvokeModel](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_runtime_InvokeModel.html), [InvokeModelWithResponseStream](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_runtime_InvokeModelWithResponseStream.html), [Converse](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_runtime_Converse.html) and [ConverseStream](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_runtime_ConverseStream.html) APIs. A subset of models are traced in InvokeModel and InvokeModelWithStreaming API, see [botocore instrumentation](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-botocore#bedrock-runtime).
-3. Instrumentation is still not complete, missing support for async APIs and streaming calls.
+3. Instrumentation supports tracing and sending events for synchronous API calls, and currently doesn't support async APIs and streaming calls yet.
 
 #### Configuration
 
