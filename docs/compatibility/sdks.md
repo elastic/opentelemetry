@@ -137,7 +137,13 @@ Elastic **officially supports** (✅) the technologies, JVM versions and operati
 
 ### EDOT PHP
 
-🚧 Coming soon
+| Category                                                                                      | Compatibility & Support Level |
+|:----------------------------------------------------------------------------------------------|:-----------------------------:|
+| [PHP](../edot-sdks/php/supported-technologies.html#php-versions)                              |               ✅               |
+| [PHP SAPI's](../edot-sdks/php/supported-technologies.html#supported-php-sapis)                |               ✅               |
+| [Operating Systems](../edot-sdks/php/supported-technologies.html#supported-operating-systems) |               ✅               |
+| [Frameworks](../edot-sdks/php/supported-technologies.html#instrumented-frameworks)            |               ✅               |
+| [Libraries](../edot-sdks/php/supported-technologies.html#instrumented-libraries)              |               ✅               |
 
 ### EDOT Python
 
