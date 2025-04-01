@@ -112,7 +112,10 @@ For the best experience, we recommend exporting data from EDOT SDKs via the [EDO
 
 ### EDOT .NET
 
-🚧 Coming soon
+| Category                                                                             | Compatibility & Support Level |
+|:-------------------------------------------------------------------------------------|:-----------------------------:|
+| [.NET Frameworks](../edot-sdks/dotnet/supported-technologies.html#net-frameworks)    |               ✅               |
+| [Instrumentations](../edot-sdks/dotnet/supported-technologies.html#instrumentations) |               ✅               |
 
 ### EDOT Java
 
