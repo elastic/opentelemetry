@@ -126,7 +126,7 @@ For example: `OTEL_RESOURCE_ATTRIBUTES=alice=first,bob=second`. Such labels will
 
 ### `transactionSampleRate`
 
-The Elastic [`transactionSampleRate`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#transaction-sample-rate) option does not directly correspond to a OpenTelemetry option but the same behaviour can be achieved using `OTEL_TRACES_SAMPLER` and `OTEL_TRACES_SAMPLER_ARG` options. OpenTelemetry Node.js SDK comes with the built-in `TraceIdRatioBased` sampler which accepts an argument for the sample rate.
+The Elastic [`transactionSampleRate`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#transaction-sample-rate) option does not directly correspond to an OpenTelemetry option but the same behavior can be achieved using `OTEL_TRACES_SAMPLER` and `OTEL_TRACES_SAMPLER_ARG` options. OpenTelemetry Node.js SDK comes with the built-in `TraceIdRatioBased` sampler which accepts an argument for the sample rate.
 
 For example: `OTEL_TRACES_SAMPLER=traceidratio OTEL_TRACES_SAMPLER_ARG=0.25` will sample 25% of the traces your service.
 
