@@ -122,11 +122,11 @@ For the best experience, we recommend exporting data from EDOT SDKs via the [EDO
 EDOT Java is a wrapper around the upstream OTel Java Agent and, thus, follows the compatibility of the upstream component.
 Elastic **officially supports** (✅) the technologies, JVM versions and operating systems that are tested and documented in the upstream Java Agent:
 
-| Category                 | Compatibility & Support Level  |
-|:-------------------------|:------------------------------:|
-| [JVMs]                   | ✅                             | 
-| [Application Servers]    | ✅                             |
-| [Libraries & Frameworks] | ✅                             |
+| Category                                                                                                                                                   | Compatibility & Support Level |
+|:-----------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------:|
+| [JVMs](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md#jvms-and-operating-systems)              |               ✅               |
+| [Application Servers](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md#application-servers )     |               ✅               |
+| [Libraries & Frameworks](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md#libraries--frameworks) |               ✅               |
 
 ### EDOT Node.js
 
@@ -148,13 +148,7 @@ Elastic **officially supports** (✅) the technologies, JVM versions and operati
 
 🚧 Coming soon
 
-## Other SDK Distributions
-
-🚧 Coming soon
-
-[JVMs]: https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md#jvms-and-operating-systems
-[Application Servers]: https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md#application-servers
-[Libraries & Frameworks]: https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md#libraries--frameworks
+[Application Servers]: 
 [Incompatible]: ./nomenclature
 [Compatible]: ./nomenclature
 [Supported]: ./nomenclature
