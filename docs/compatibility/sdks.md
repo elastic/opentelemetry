@@ -130,10 +130,10 @@ Elastic **officially supports** (✅) the technologies, JVM versions and operati
 
 ### EDOT Node.js
 
-| Category                                                                           | Compatibility & Support Level |
-|:-----------------------------------------------------------------------------------|:-----------------------------:|
-| [Node.js](../edot-sdks/nodejs/supported-technologies.html#nodejs-versions)         |               ✅               |
-| [TypeScript](../edot-sdks/nodejs/supported-technologies.html#ntypescript-versions) |               ✅               |
+| Category                                                                          | Compatibility & Support Level |
+|:----------------------------------------------------------------------------------|:-----------------------------:|
+| [Node.js](../edot-sdks/nodejs/supported-technologies.html#nodejs-versions)        |               ✅               |
+| [TypeScript](../edot-sdks/nodejs/supported-technologies.html#typescript-versions) |               ✅               |
 
 ### EDOT PHP
 
