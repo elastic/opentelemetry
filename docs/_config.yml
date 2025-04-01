@@ -63,10 +63,12 @@ just_the_docs:
           url: https://www.elastic.co/guide/en/apm/agent/android/current/intro.html
           fa_icon_key: fa-brands fa-android
           hide_icon: false
+          opens_in_new_tab: true
         - title: EDOT iOS
           url: https://www.elastic.co/guide/en/apm/agent/swift/current/intro.html
           fa_icon_key: fa-brands fa-apple
           hide_icon: false
+          opens_in_new_tab: true
   nav_sort: case_insensitive
 
 # ! DO NOT DELETE THE COMMENTS !
@@ -96,3 +98,4 @@ nav_external_links:
     url: https://github.com/elastic/opentelemetry
     fa_icon_key: fa-brands fa-github
     hide_icon: false
+    opens_in_new_tab: true
