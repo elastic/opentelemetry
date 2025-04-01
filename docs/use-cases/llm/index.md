@@ -16,7 +16,7 @@ We currently support LLM observability with our EDOT Java, EDOT Node.js and EDOT
 |:-----------|:----------|:-------------|:------------|
 | OpenAI Client | ✅ | ✅ | ✅ |
 | AWS Bedrock | ❌ | ❌ | ✅ |
-| Google VertexAI | ❌ | ❌ | ✅ |
+| Google Vertex AI | ❌ | ❌ | ✅ |
 
 See the [Supported Technologies section in the corresponding EDOT SDK](../../edot-sdks/index) for detailed information on supported versions.
 
