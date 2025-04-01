@@ -7,7 +7,7 @@ parent: EDOT Node.js
 
 # Migrating to EDOT Node.js from the Elastic Node.js Agent
 
-This documentation describes how to update applications that are currently using the [Elastic APM Node.js agent](https://www.elastic.co/guide/en/apm/agent/nodejs/current/index.html) to use the Elastic Distribution of OpenTelemetry for Node.js (EDOT Node.js).
+This documentation describes how to update applications that are currently using the [Elastic APM Node.js agent](https://www.elastic.co/guide/en/apm/agent/nodejs/current/index.html) (npm package `elastic-apm-node`) to use the Elastic Distribution of OpenTelemetry for Node.js (EDOT Node.js, npm package `@elastic/opentelemetry-node`).
 
 ## Advantages of using EDOT Node.js agent
 
@@ -40,12 +40,12 @@ EDOT Node.js does not implement [span compression](https://www.elastic.co/guide/
 
 ## Migration steps
 
-1. **Replace Agent Node.js package**
-    - Remove Elastic's APM Node.js Agent package by running `npm uninstall --save elastic-apm-node` command in your project.
-    - Install EDOT Node.js by runing `npm install --save @elastic/opentelemetry-node` command in your project.
+1. **Replace Node.js package**
+    - Remove the Elastic APM Node.js Agent package: `npm uninstall elastic-apm-node`
+    - Install EDOT Node.js: `npm install --save @elastic/opentelemetry-node`
 2. **Remove APM Node.js start method**
     - For services starting the APM Node.js Agent by `require`ing in the code with [require and start](https://www.elastic.co/guide/en/apm/agent/nodejs/current/starting-the-agent.html#start-option-require-and-start) or [require start module](https://www.elastic.co/guide/en/apm/agent/nodejs/current/starting-the-agent.html#start-option-require-start-module) the code should be removed.
-    - For services starting with [`--require` Node.js CLI option](https://www.elastic.co/guide/en/apm/agent/nodejs/current/starting-the-agent.html#start-option-node-require-opt) the option should be removed. If the `--require` option is
+    - For services starting with the [`--require` Node.js CLI option](https://www.elastic.co/guide/en/apm/agent/nodejs/current/starting-the-agent.html#start-option-node-require-opt) the option should be removed. If the `--require` option is
     defined in `NODE_OPTIONS` environment variable it should be removed from there.
 3. **(Optional) Migrate manual instrumentation API:** If you're using [Elastic APM Node.js Agent API](https://www.elastic.co/guide/en/apm/agent/nodejs/current/api.html) to crate manual transactions and spans you should refactor the code to use `@opentelemetry/api` methods. OpenTelemetry documentaion has several examples of how to [create spans](https://opentelemetry.io/docs/languages/js/instrumentation/#create-spans) manually.
 4. **Replace configuration options** using the [Reference](#option-reference) below, see [Configuration](./configuration) for ways to provide those.
@@ -55,7 +55,7 @@ EDOT Node.js does not implement [span compression](https://www.elastic.co/guide/
 
 ## Option reference
 
-This list contains APM Java agent configuration options that can be migrated to EDOT Node.js agent configuration because
+This list contains Elastic APM Node.js agent configuration options that can be migrated to EDOT Node.js SDK configuration because
 they have an equivalent in OpenTelemetry:
 
 * [serverUrl](#serverurl)
