@@ -127,7 +127,7 @@ Elastic **officially supports** (✅) the technologies, JVM versions and operati
 
 ### EDOT Node.js
 
-🚧 Coming soon
+EDOT Node.js is a wrapper around the upstream OpenTelemetry JavaScript SDK and shares the same Node.js compatibility requirements. See the [EDOT Node.js supported technologies](../edot-sdks/nodejs/supported-technologies) for details.
 
 ### EDOT PHP
 
