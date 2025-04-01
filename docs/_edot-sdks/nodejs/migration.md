@@ -53,7 +53,7 @@ EDOT Node.js does not implement [span compression](https://www.elastic.co/guide/
 
 ## Option reference
 
-This list contains APM Java agent configuration options that can be migrated to EDOT Node.js agent configuration because
+This list contains Elastic APM Node.js agent configuration options that can be migrated to EDOT Node.js SDK configuration because
 they have an equivalent in OpenTelemetry:
 
 * [serverUrl](#serverurl)
