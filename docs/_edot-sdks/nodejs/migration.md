@@ -9,7 +9,12 @@ parent: EDOT Node.js
 
 This documentation describes how to update applications that are currently using the [Elastic APM Node.js agent](https://www.elastic.co/guide/en/apm/agent/nodejs/current/index.html) to use the Elastic Distribution of OpenTelemetry for Node.js (EDOT Node.js).
 
-## Advantages of using EDOT Ndode.js agent
+## Advantages of using EDOT Node.js agent
+
+### Compatible Drop-in Replacement
+
+The upstream `@opentelemetry/auto-instrumentations-node` package is a vendor-neutral implementation.
+EDOT Node.js is a distribution of it and is thus a fully compatible drop-in replacement of the `@opentelemetry/auto-instrumentations-node` package.
 
 ### OpenTelemetry-native Data
 
@@ -163,15 +168,23 @@ table shows the equivalent values of log levels between `elastic-apm-node` and E
 
 ### `maxQueueSize`
 
-The Elastic [`maxQueueSize`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#max-queue-size) option corresponds to the OpenTelemetry [`OTEL_BSP_MAX_QUEUE_SIZE`](https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#batch-span-processor) option.
+The Elastic [`maxQueueSize`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#max-queue-size) option corresponds to a couple of OpenTelemetry options:
 
-For example: `OTEL_BSP_MAX_QUEUE_SIZE=4096`.
+- [`OTEL_BSP_MAX_QUEUE_SIZE`](https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#batch-span-processor) option to set the queue size for spans.
+- [`OTEL_BLRP_MAX_QUEUE_SIZE`](https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#batch-span-processor) option to set the queue size for logs.
+
+
+For example: `OTEL_BSP_MAX_QUEUE_SIZE=2048 OTEL_BLRP_MAX_QUEUE_SIZE=4096`.
 
 ### `serverTimeout`
 
-The Elastic [`serverTimeout`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#server-timeout) option corresponds to the OpenTelemetry [`OTEL_BLRP_EXPORT_TIMEOUT`](https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#batch-span-processor) option.
+The Elastic [`serverTimeout`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#server-timeout) option corresponds to a OpenTelemetry options per signal:
 
-For example: `OTEL_BLRP_EXPORT_TIMEOUT=50000`.
+- [`OTEL_BLRP_EXPORT_TIMEOUT`](https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#batch-logrecord-processor) option for logs.
+- [`OTEL_BSP_EXPORT_TIMEOUT`](https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#batch-span-processor) option for spans.
+- [`OTEL_METRIC_EXPORT_TIMEOUT`](https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#batch-span-processor) option for metrics.
+
+For example: `OTEL_BSP_EXPORT_TIMEOUT=50000 OTEL_BLRP_EXPORT_TIMEOUT=50000 OTEL_METRIC_EXPORT_TIMEOUT=50000`.
 
 ### `apmClientHeaders`
 
@@ -201,10 +214,9 @@ For example: `OTEL_METRIC_EXPORT_INTERVAL=30000`.
 
 ### `cloudProvider`
 
-The Elastic [`cloudProvider`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#cloud-provider) option does not corresponds directly to an OpenTelemetry option but you can get similar behaviour by properly setting [`OTEL_NODE_RESOURCE_DETECTORS`](https://opentelemetry.io/docs/zero-code/js/configuration/#sdk-resource-detector-configuration) option. You have to make sure the
-cloud provider is on the list of detectors. Not setting this option is the equivalent of `auto`.
+The Elastic [`cloudProvider`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#cloud-provider) option does not corresponds directly to an OpenTelemetry option but you can get similar behaviour by properly setting [`OTEL_NODE_RESOURCE_DETECTORS`](https://opentelemetry.io/docs/zero-code/js/configuration/#sdk-resource-detector-configuration) option. If you set this option make sure you add along with the cloud detector the non-cloud detectors that apply to your service. For a full list of detectors check [OTEL_NODE_RESOURCE_DETECTORS details](./configuration#otel_node_resource_detectors-details). Not setting this option is the equivalent of `auto`.
 
-For example: `OTEL_NODE_RESOURCE_DETECTORS=os,env,host,process,gcp`. Will make the agent query for GCP metadata only.
+For example: `OTEL_NODE_RESOURCE_DETECTORS=os,env,host,process,gcp`. Will make the agent query for GCP metadata only and use other non-cloud detectors to enrich that metadata.
 
 
 
