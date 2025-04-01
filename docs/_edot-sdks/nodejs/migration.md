@@ -53,24 +53,25 @@ EDOT Node.js does not implement [span compression](https://www.elastic.co/guide/
 This list contains APM Java agent configuration options that can be migrated to EDOT Node.js agent configuration because
 they have an equivalent in OpenTelemetry:
 
-* [serverUrl](#serverUrl)
-* [secretToken](#secretToken)
-* [apiKey](#apiKey)
-* [serviceName](#serviceName)
+* [serverUrl](#serverurl)
+* [secretToken](#secrettoken)
+* [apiKey](#apikey)
+* [serviceName](#servicename)
 * [active](#active)
-* [serviceVersion](#serviceVersion)
+* [serviceVersion](#serviceversion)
 * [environment](#environment)
-* [globalLabels](#globalLabels)
-* [serverCaCertFile](#serverCaCertFile)
-* [transactionSampleRate](#transactionSampleRate)
+* [globalLabels](#globallabels)
+* [serverCaCertFile](#servercacertfile)
+* [transactionSampleRate](#transactionsamplerate)
 * [hostname](#hostname)
-* [logLevel](#logLevel)
-* [maxQueueSize](#maxQueueSize)
-* [serverTimeout](#serverTimeout)
-* [apmClientHeaders](#apmClientHeaders)
-* [disableInstrumentations](#disableInstrumentations)
-* [containerId](#containerId)
-* [metricsInterval](#metricsInterval)
+* [logLevel](#loglevel)
+* [maxQueueSize](#maxqueuesize)
+* [serverTimeout](#servertimeout)
+* [apmClientHeaders](#apmclientheaders)
+* [disableInstrumentations](#disableinstrumentations)
+* [containerId](#containerid)
+* [metricsInterval](#metricsinterval)
+* [cloudProvider](#cloudProvider)
 
 ### `serverUrl`
 
@@ -121,19 +122,25 @@ The Elastic [`globalLabels`](https://www.elastic.co/guide/en/apm/agent/nodejs/cu
 
 For example: `OTEL_RESOURCE_ATTRIBUTES=alice=first,bob=second`. Such labels will result in labels.key=value attributes on the server, e.g. labels.alice=first
 
-### TODO (double check) `serverCaCertFile`
+### `serverCaCertFile`
 
-The Elastic [`serverCaCertFile`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#server-ca-cert-file) option corresponds to the OpenTelemetry [OTEL_EXPORTER_OTLP_CERTIFICATE](https://opentelemetry.io/docs/specs/otel/protocol/exporter/) option. Notice this options can be set specifically for each signal (OTEL_EXPORTER_OTLP_(LOGS|METRICS|TRACES)_CERTIFICATE) and only applies to `grpc` protocol exporter.
+TODO (double check)
+
+The Elastic [`serverCaCertFile`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#server-ca-cert-file) option corresponds to the OpenTelemetry [OTEL_EXPORTER_OTLP_CERTIFICATE](https://opentelemetry.io/docs/specs/otel/protocol/exporter/) option. Notice this options can be set specifically for each signal (`OTEL_EXPORTER_OTLP_{SIGNAL}_CERTIFICATE` where signal is LOGS, METRICS or TRACES) and only applies to `grpc` protocol exporter.
 
 For example: `OTEL_EXPORTER_OTLP_CERTIFICATE=./path/to/ca.crt`.
 
-### TODO (double check) `transactionSampleRate`
+### `transactionSampleRate`
+
+TODO (double check)
 
 The Elastic [`transactionSampleRate`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#transaction-sample-rate) option does not directly correspond to a OpenTelemetry option but the same behaviour can be achieved using `OTEL_TRACES_SAMPLER` and `OTEL_TRACES_SAMPLER_ARG` options. OpenTelemetry Node.js SDK comes with the built-in `TraceIdRatioBased` sampler which accepts an argument for the sample rate.
 
 For example: `OTEL_TRACES_SAMPLER=traceidratio OTEL_TRACES_SAMPLER_ARG=0.25`.
 
-### TODO (double check) `hostname`
+### `hostname`
+
+TODO (double check)
 
 The Elastic [`hostname`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#service-version) option corresponds to setting the `host.name` key in [OTEL_RESOURCE_ATTRIBUTES](https://opentelemetry.io/docs/concepts/sdk-configuration/general-sdk-configuration/#otel_resource_attributes).
 
@@ -178,7 +185,9 @@ The Elastic [`disableInstrumentations`](https://www.elastic.co/guide/en/apm/agen
 
 For example: `OTEL_NODE_DISABLED_INSTRUMENTATIONS=express,mysql`.
 
-### TODO (double check) `containerId`
+### `containerId`
+
+TODO (double check)
 
 The Elastic [`containerId`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#container-id) option corresponds to setting the `container.id` key in [OTEL_RESOURCE_ATTRIBUTES](https://opentelemetry.io/docs/concepts/sdk-configuration/general-sdk-configuration/#otel_resource_attributes).
 
