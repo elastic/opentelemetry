@@ -22,6 +22,10 @@ Allows to capture, send, transform and store data in an OpenTelemetry native way
 
 ## Limitations
 
+### Node.js support
+
+EDOT Node.js and OpenTelemetry upstream SDK do support Node.js with versions in the range `^18.19.0 || >=20.6.0`.
+
 ### Missing Instrumentations
 
 EDOT Node.js does not yet support instrumentation for AWS Lambda and Azure Functions. However, there are upstream and third-party options based on OpenTelemetry:
