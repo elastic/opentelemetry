@@ -120,6 +120,8 @@ For languages for which Elastic does not offer its own distribution, we recommen
             </td>
             <td class="s tooltip"> <!-- Java -->
                 <div>✅</div>
+                <div class="xs">1.0+</div>
+                <div class="tooltiptext">'Service Map' is available in EDOT Java since version 1.0</div>
             </td>
             <td class="s tooltip"> <!-- Node.js -->
                 <div>✅</div>
@@ -300,6 +302,8 @@ For languages for which Elastic does not offer its own distribution, we recommen
             </td>
             <td class="s tooltip"> <!-- Node.js -->
                 <div>𝐓</div>
+                <div class="xs">1.0+</div>
+                <div class="tooltiptext">'Logs Collection' is available in EDOT Node.js since version 1.0</div>
             </td>
             <td class="s tooltip"> <!-- PHP -->
                 <div>✅</div>
@@ -308,6 +312,8 @@ For languages for which Elastic does not offer its own distribution, we recommen
             </td>
             <td class="s tooltip"> <!-- Python -->
                 <div>𝐓</div>
+                <div class="xs">1.0+</div>
+                <div class="tooltiptext">'Logs Collection' is available in EDOT Python since version 1.0</div>
             </td>
             <td class="s tooltip"> <!-- Android -->
                 <div>✅</div>
@@ -335,6 +341,8 @@ For languages for which Elastic does not offer its own distribution, we recommen
             </td>
             <td class="s tooltip"> <!-- Node.js -->
                 <div>𝐓</div>
+                <div class="xs">1.0+</div>
+                <div class="tooltiptext">'Logs Correlation' is available in EDOT Node.js since version 1.0</div>
             </td>
             <td class="s tooltip"> <!-- PHP -->
                 <div>✅</div>
@@ -343,6 +351,8 @@ For languages for which Elastic does not offer its own distribution, we recommen
             </td>
             <td class="s tooltip"> <!-- Python -->
                 <div>𝐓</div>
+                <div class="xs">1.0+</div>
+                <div class="tooltiptext">'Logs Correlation' is available in EDOT Python since version 1.0</div>
             </td>
             <td class="s tooltip"> <!-- Android -->
                 <div>✅</div>
@@ -473,6 +483,8 @@ For languages for which Elastic does not offer its own distribution, we recommen
             </td>
             <td class="s tooltip"> <!-- Node.js -->
                 <div>𝐓</div>
+                <div class="xs">1.0+</div>
+                <div class="tooltiptext">'Runtime Metrics' is available in EDOT Node.js since version 1.0</div>
             </td>
             <td class="s tooltip"> <!-- PHP -->
                 <div>❌</div>
