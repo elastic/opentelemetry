@@ -41,8 +41,7 @@ observed by default.
 * Instrumentation assembly scanning to automatically enable instrumentation from installed contrib NuGet packages.
 
 {: .warning }
-> Instrumentation assembly scanning is not supported for applications using native [AOT](https://learn.microsoft.com/dotnet/core/deploying/native-aot) 
-> or [single-file deployment](https://learn.microsoft.com/dotnet/core/deploying/single-file) compilation features.
+> Instrumentation assembly scanning is not supported for applications using native [AOT](https://learn.microsoft.com/dotnet/core/deploying/native-aot) compilation.
 
 ## .NET runtime support
 

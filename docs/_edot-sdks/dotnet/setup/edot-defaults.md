@@ -86,8 +86,7 @@ automatically registering them when present.
 - [OpenTelemetry.Resources.Process](https://www.nuget.org/packages/OpenTelemetry.Resources.Process)
 
 {: .warning }
-> Instrumentation assembly scanning is not supported for applications using native [AOT](https://learn.microsoft.com/dotnet/core/deploying/native-aot) 
-> or [single-file deployment](https://learn.microsoft.com/dotnet/core/deploying/single-file) compilation features.
+> Instrumentation assembly scanning is not supported for applications using native [AOT](https://learn.microsoft.com/dotnet/core/deploying/native-aot) compilation.
 
 ## Defaults for tracing
 
@@ -153,8 +152,7 @@ registering them when present.
 - [OpenTelemetry.Instrumentation.Wcf](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.Wcf)
 
 {: .warning }
-> Instrumentation assembly scanning is not supported for applications using native [AOT](https://learn.microsoft.com/dotnet/core/deploying/native-aot) 
-> or [single-file deployment](https://learn.microsoft.com/dotnet/core/deploying/single-file) compilation features.
+> Instrumentation assembly scanning is not supported for applications using native [AOT](https://learn.microsoft.com/dotnet/core/deploying/native-aot) compilation.
 
 #### ASP.NET Core defaults
 
@@ -243,8 +241,7 @@ registering them when present.
 - [OpenTelemetry.Instrumentation.Process](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.Process)
 
 {: .warning }
-> Instrumentation assembly scanning is not supported for applications using native [AOT](https://learn.microsoft.com/dotnet/core/deploying/native-aot) 
-> or [single-file deployment](https://learn.microsoft.com/dotnet/core/deploying/single-file) compilation features.
+> Instrumentation assembly scanning is not supported for applications using native [AOT](https://learn.microsoft.com/dotnet/core/deploying/native-aot) compilation.
 
 ### Configuration defaults
 
@@ -279,5 +276,4 @@ disable instrumentation assembly scanning via [configuration](./../configuration
 all instrumentation in your application code.
 
 {: .warning }
-> Instrumentation assembly scanning is not supported for applications using native [AOT](https://learn.microsoft.com/dotnet/core/deploying/native-aot) 
-> or [single-file deployment](https://learn.microsoft.com/dotnet/core/deploying/single-file) compilation features.
+> Instrumentation assembly scanning is not supported for applications using native [AOT](https://learn.microsoft.com/dotnet/core/deploying/native-aot) compilation.
