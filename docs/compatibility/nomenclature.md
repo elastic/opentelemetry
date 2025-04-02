@@ -15,11 +15,11 @@ Elastic Distributions for OpenTelemetry (EDOT) are built from upstream OTel comp
 
 In the following sections we differentiate the following compatibility and support states:
 
-| State | Description | Symbol |
-|:---|:---|:---:|
-| **Incompatible** | Component, use case or ingestion path is technically not compatible, thus, functionality is likely to be significantly impacted.  | ❌ |
-| **Compatible** | Component, use case or ingestion path is **technically compatible**. The functionality is not expected to be impaired, though, minor deviations may occur. Component, use case or ingestion path is *not officially support by Elastic*, hence, Elastic does not provide guaranteed support or troubleshooting assistance | 🟡 |
-| **Supported** | Component, use case or ingestion path is **technically compatible** and Elastic provides **official support**. The functionality is explicitly tested. Limitations will be documented. | ✅ |
+| State            | Description                                                                                                                                                                                                                                                                                                               | Symbol |
+|:-----------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:------:|
+| **Incompatible** | Component, use case or ingestion path is technically not compatible, thus, functionality is likely to be significantly impacted.                                                                                                                                                                                          |   ❌    |
+| **Compatible**   | Component, use case or ingestion path is **technically compatible**. The functionality is not expected to be impaired, though, minor deviations may occur. Component, use case or ingestion path is *not officially support by Elastic*, hence, Elastic does not provide guaranteed support or troubleshooting assistance |   🟡   |
+| **Supported**    | Component, use case or ingestion path is **technically compatible** and Elastic provides **official support**. The functionality is explicitly tested. Limitations will be documented.                                                                                                                                    |   ✅    |
 
 ## EDOT Collector Components Categorization
 The EDOT Collector includes two types of components with different compatibility and support scope:
