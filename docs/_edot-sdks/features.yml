@@ -377,7 +377,7 @@ features:
       min_version: 
     Java:
       status: tech-preview
-      min_version: 
+      min_version: 1.0
     Node.js:
       status: not-available
       min_version: 
