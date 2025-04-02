@@ -598,6 +598,8 @@ For languages for which Elastic does not offer its own distribution, we recommen
             </td>
             <td class="s tooltip"> <!-- Java -->
                 <div>𝐓</div>
+                <div class="xs">1.0+</div>
+                <div class="tooltiptext">'Profiling Integration' is available in EDOT Java since version 1.0</div>
             </td>
             <td class="s tooltip"> <!-- Node.js -->
                 <div>❌</div>
