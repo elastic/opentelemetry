@@ -320,8 +320,7 @@ that it finds deployed with the application. All that is required is the install
 instrumentation NuGet packages.
 
 {: .warning }
-> Instrumentation assembly scanning is not supported for applications using native [AOT](https://learn.microsoft.com/dotnet/core/deploying/native-aot) 
-> or [single-file deployment](https://learn.microsoft.com/dotnet/core/deploying/single-file) compilation features.
+> Instrumentation assembly scanning is not supported for applications using native [AOT](https://learn.microsoft.com/dotnet/core/deploying/native-aot) compilation.
 
 ### Zero-code auto instrumentation
 
