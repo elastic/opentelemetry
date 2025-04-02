@@ -88,6 +88,7 @@ elastic_otel.enabled=true
 | Option(s)            | Default | Accepted values | Description                                                 |
 | -------------------- | ------- | --------------- | ----------------------------------------------------------- |
 | ELASTIC_OTEL_ENABLED | true    | true or false   | Enables the automatic bootstrapping of instrumentation code |
+| ELASTIC_OTEL_NATIVE_OTLP_SERIALIZER_ENABLED   | true    | true or false   | Enables the native built-in OTLP Protobuf serializer for maximum performance |
 
 #### Asynchronous data sending configuration ####
 
