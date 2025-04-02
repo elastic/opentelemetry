@@ -76,6 +76,7 @@ We don't install instrumentations by default and we suggest to use our [edot-boo
 | [opentelemetry-instrumentation-tortoiseorm](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-tortoiseorm) | tortoise-orm >= 0.17.0 | development
 | [opentelemetry-instrumentation-urllib](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-urllib) | urllib | migration
 | [opentelemetry-instrumentation-urllib3](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-urllib3) | urllib3 >= 1.0.0, < 3.0.0 | migration
+| [opentelemetry-instrumentation-vertexai](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation-genai/opentelemetry-instrumentation-vertexai) | google-cloud-aiplatform >= 1.64 | development
 | [opentelemetry-instrumentation-wsgi](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-wsgi) | wsgi | migration
 
 The semantic conventions status tracks the stabilization of the semantic conventions used in the instrumentation:
@@ -89,3 +90,25 @@ Some libraries like the [Python Elasticsearch Client](https://www.elastic.co/gui
 natively supports OpenTelemetry instrumentation.
 
 The [elasticsearch](https://elasticsearch-py.readthedocs.io/en/latest/) package got native OpenTelemetry support since version 8.13.
+
+### LLM instrumentations
+
+We can instrument the following LLM (Large Language Model) libraries with instrumentations implementing the [OpenTelemetry GenAI Semantic Conventions](https://opentelemetry.io/docs/specs/semconv/gen-ai/):
+
+| **SDK**                     | **Instrumentation**                          | **Traces** | **Metrics** | **Logs** | **Notes** |
+|-----------------------------|----------------------------------------------|------------|-------------|----------|-----------|
+| OpenAI                      | [elastic-opentelemetry-instrumentation-openai](https://github.com/elastic/elastic-otel-python-instrumentations/blob/main/instrumentation/elastic-opentelemetry-instrumentation-openai) | ✅         | ✅          | ✅       | 1.        |
+| AWS SDK for Python (Boto3)  | [opentelemetry-instrumentation-botocore](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-botocore)              | ✅         | ✅          | ✅       | 2.        |
+| Google Cloud AI Platform    | [opentelemetry-instrumentation-vertexai](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation-genai/opentelemetry-instrumentation-vertexai)        | ✅         | 🚧          | ✅       | 3.        |
+
+1. Support for sync and async [chat completions create](https://platform.openai.com/docs/guides/text?api-mode=chat) API and [embeddings](https://platform.openai.com/docs/guides/embeddings?lang=python) API.
+2. Support for [Bedrock Runtime](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/bedrock-runtime.html) [InvokeModel](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_runtime_InvokeModel.html), [InvokeModelWithResponseStream](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_runtime_InvokeModelWithResponseStream.html), [Converse](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_runtime_Converse.html) and [ConverseStream](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_runtime_ConverseStream.html) APIs. A subset of models are traced in InvokeModel and InvokeModelWithStreaming API, see [botocore instrumentation](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-botocore#bedrock-runtime).
+3. Instrumentation supports tracing and sending events for synchronous API calls, and currently doesn't support async APIs and streaming calls yet.
+
+#### Configuration
+
+These instrumentations implement the following configuration options:
+
+| Option                                                | default | description               |
+|-------------------------------------------------------|---------|:--------------------------|
+| `OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT`  | `false`| If set to `true`, enables the capturing of request and response content in the log events outputted by the agent.
