@@ -13,9 +13,10 @@ We currently support LLM observability with our EDOT Java, EDOT Node.js and EDOT
 # Supported Technologies
 
 | Technology | EDOT Java | EDOT Node.js | EDOT Python |
-|:---------|:---------|:---------|:---------|
+|:-----------|:----------|:-------------|:------------|
 | OpenAI Client | ✅ | ✅ | ✅ |
 | AWS Bedrock | ❌ | ❌ | ✅ |
+| Google Vertex AI | ❌ | ❌ | ✅ |
 
 See the [Supported Technologies section in the corresponding EDOT SDK](../../edot-sdks/index) for detailed information on supported versions.
 
@@ -31,4 +32,4 @@ Choose the environment and target system from the [quick start overview](../../q
 
 See the [Configuration section in the corresponding EDOT SDK](../../edot-sdks/index) to enable and disable specific instrumentations and to see what instrumentation is enabled by default.
 
-When you finish the setup and the configuration of the EDOT SDK and there is a workload on your application, you should start to see telemetry data in Kibana. If there is no telemetry data showing up, please see the troubleshooting of the EDOT SDK,
+When you finish the setup and the configuration of the EDOT SDK and there is a workload on your application, you should start to see telemetry data in Kibana. If there is no telemetry data showing up, please see the troubleshooting of the EDOT SDK.
