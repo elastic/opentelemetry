@@ -159,10 +159,10 @@ EDOT Node.js is a wrapper around the upstream OpenTelemetry JavaScript SDK and s
 
 | Category                                                                                                                                       | Compatibility & Support Level |
 |:-----------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------:|
-| [Android Gradle Plugin](https://www.elastic.co/guide/en/apm/agent/android/current/supported-technologies.html#supported-agp-versions)          |               ✅               |
-| [Androind Runtime](https://www.elastic.co/guide/en/apm/agent/android/current/supported-technologies.html#supported-android-runtime-versions)   |               ✅               |
-| [UI Frameworks](https://www.elastic.co/guide/en/apm/agent/android/current/supported-technologies.html#supported-ui-frameworks)                 |               ✅               |
-| [Networking Frameworks](https://www.elastic.co/guide/en/apm/agent/android/current/supported-technologies.html#supported-networking-frameworks) |               ✅               |
+| [Android Gradle Plugin](https://www.elastic.co/guide/en/apm/agent/android/current)          |               ✅               |
+| [Androind Runtime](https://www.elastic.co/guide/en/apm/agent/android/current)   |               ✅               |
+| [UI Frameworks](https://www.elastic.co/guide/en/apm/agent/android/current)                 |               ✅               |
+| [Networking Frameworks](https://www.elastic.co/guide/en/apm/agent/android) |               ✅               |
 
 ### EDOT iOS
 
