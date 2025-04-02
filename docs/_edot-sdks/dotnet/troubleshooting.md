@@ -5,7 +5,7 @@ nav_order: 4
 parent: EDOT .NET
 ---
 
-# Troubleshooting the EDOT .NET Agent
+# Troubleshooting the EDOT .NET SDK
 
 Use the information in this section to troubleshoot common problems and find answers for frequently
 asked questions. As a first step, ensure your stack is compatible with the [supported technologies](.//supported-technologies)
