@@ -22,7 +22,7 @@ Currently, the following EDOT SDKs are availble:
 | [EDOT PHP](./php/index) | GA |
 | [EDOT Python](./python/index) | GA |
 | <a href="https://www.elastic.co/guide/en/apm/agent/android/current/intro.html" target="_blank">EDOT Android</a> | GA |
-| <a href="https://www.elastic.co/guide/en/apm/agent/swift/current/intro.html" target="_blank">EDOT iOS ⤴</a> | GA |
+| <a href="https://www.elastic.co/guide/en/apm/agent/swift/current/intro.html" target="_blank">EDOT iOS</a> | GA |
 
 For languages for which Elastic does not offer its own distribution, we recommend using the upstream OTel SDKs:
 
