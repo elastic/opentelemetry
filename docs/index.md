@@ -20,14 +20,16 @@ Each EDOT distribution is asssembled with carefully curated OpenTelemetry compon
 
 | EDOT Distribution | Status |
 |:-------------------|:---------------|
-| [EDOT Collector](./edot-collector/index) | Technical Preview |
-| [EDOT .NET](./edot-sdks/dotnet/index) | Technical Preview |
+| [EDOT Collector](./edot-collector/index) | Technical Preview<sup>*</sup> |
+| [EDOT .NET](./edot-sdks/dotnet/index) | GA |
 | [EDOT Java](./edot-sdks/java/index) | GA |
-| [EDOT Node.js](./edot-sdks/nodejs/index) | Technical Preview |
-| [EDOT PHP](./edot-sdks/php/index) | Technical Preview |
-| [EDOT Python](./edot-sdks/python/index) | Technical Preview |
-| [EDOT Android](https://www.elastic.co/guide/en/apm/agent/android/current/intro.html) | Technical Preview |
+| [EDOT Node.js](./edot-sdks/nodejs/index) | GA |
+| [EDOT PHP](./edot-sdks/php/index) | GA |
+| [EDOT Python](./edot-sdks/python/index) | GA |
+| [EDOT Android](https://www.elastic.co/guide/en/apm/agent/android/current/intro.html) | GA |
 | [EDOT iOS](https://www.elastic.co/guide/en/apm/agent/swift/current/intro.html) | GA |
+
+<sup>(*)</sup> GA coming soon
 
 ## 🟢 Production Readiness & Support
 Each EDOT distribution undergoes production-grade testing before being declared Generally Available (GA). Elastic provides full support for GA releases in accordance with our [support matrix](https://www.elastic.co/support/matrix) and SLAs.
