@@ -42,6 +42,29 @@ You can disable the agent by setting [`elastic_otel.enabled`](./configuration#ge
 
 ## Agent is not instrumenting code
 
+### Native OTLP serializer issues
+
+If you're experiencing issues where **no spans, logs, or metrics** are being sent — or you encounter log messages like:
+
+```bash
+Failed to serialize spans/logs/metrics batch...
+```
+
+— it may be due to a failure in the native OTLP Protobuf serializer.
+
+The native serializer is enabled by default for maximum performance, but in rare cases, it may encounter incompatibilities with certain environments or data.
+
+To confirm whether this is the cause, try disabling the native serializer using the following environment variable:
+
+```bash
+export ELASTIC_OTEL_NATIVE_OTLP_SERIALIZER_ENABLED=false
+```
+
+Restart your application and check if spans/logs/metrics start appearing correctly.
+
+> **Note:** When disabled, the agent falls back to a PHP-based serializer, which has lower performance.
+
+
 ### `open_basedir` PHP configuration option
 
 If you see a similar entry in the agent log, this indicates an incorrect open_basedir configuration.
