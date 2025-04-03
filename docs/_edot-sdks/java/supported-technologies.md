@@ -18,7 +18,9 @@ The EDOT Java agent also supports technologies listed here that are _not availab
 
 See also the [EDOT Java agent configuration](./configuration#configuration-options) for defaults that might differ from the OpenTelemetry Java Instrumentation.
 
-## OpenAI Client instrumentation (tech preview)
+## LLM instrumentations
+
+### OpenAI Client instrumentation (tech preview)
 
 Instrumentation for the [official OpenAI Java Client](https://github.com/openai/openai-java).
 
