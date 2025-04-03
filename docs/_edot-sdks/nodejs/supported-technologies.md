@@ -75,11 +75,12 @@ The following instrumentations are included in EDOT Node.js. All are enabled by 
 
 We can instrument the following LLM (Large Language Model) libraries with instrumentations implementing the [OpenTelemetry GenAI Semantic Conventions](https://opentelemetry.io/docs/specs/semconv/gen-ai/):
 
-| **SDK**                     | **Instrumentation**                          | **Traces** | **Metrics** | **Logs** | **Notes** |
-|-----------------------------|----------------------------------------------|------------|-------------|----------|-----------|
-| OpenAI                      | [@elastic-opentelemetry-instrumentation-openai](https://github.com/elastic/elastic-otel-node/tree/main/packages/instrumentation-openai#readme) | ✅         | ✅          | ✅       | 1.        |
+| SDK    | Instrumentation | Traces | Metrics | Logs | Notes |
+|--------|-----------------|--------|---------|------|-------|
+| OpenAI | [@elastic/opentelemetry-instrumentation-openai](https://github.com/elastic/elastic-otel-node/tree/main/packages/instrumentation-openai#readme) | ✅         | ✅          | ✅       | 1.        |
 
 1. Support for [chat](https://platform.openai.com/docs/api-reference/chat) and [embeddings](https://platform.openai.com/docs/api-reference/embeddings) API endpoints.
+
 
 ### Disabled instrumentations
 
