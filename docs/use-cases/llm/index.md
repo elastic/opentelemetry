@@ -12,7 +12,7 @@ We currently support LLM observability with our EDOT Java, EDOT Node.js and EDOT
 
 # Supported Technologies
 
-| Technology | [EDOT Java](../../edot-sdks/java/supported-technologies.html#llm-instrumentations) | EDOT Node.js | [EDOT Python](../../edot-sdks/python/supported-technologies.html#llm-instrumentations) |
+| Technology | [EDOT Java](../../edot-sdks/java/supported-technologies.html#llm-instrumentations) | [EDOT Node.js](../../edot-sdks/nodejs/supported-technologies.html#llm-instrumentations) | [EDOT Python](../../edot-sdks/python/supported-technologies.html#llm-instrumentations) |
 |:-----------|:----------|:-------------|:------------|
 | OpenAI Client | ✅ | ✅ | ✅ |
 | AWS Bedrock | ❌ | ❌ | ✅ |
