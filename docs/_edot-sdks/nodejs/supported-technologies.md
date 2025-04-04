@@ -79,7 +79,7 @@ We can instrument the following LLM (Large Language Model) libraries with instru
 |--------|-----------------|--------|---------|------|-------|
 | OpenAI | [@elastic/opentelemetry-instrumentation-openai](https://github.com/elastic/elastic-otel-node/tree/main/packages/instrumentation-openai#readme) | ✅         | ✅          | ✅       | (1)       |
 
-1. Support for [chat](https://platform.openai.com/docs/api-reference/chat) and [embeddings](https://platform.openai.com/docs/api-reference/embeddings) API endpoints.
+<sup>(1)</sup> Support for [chat](https://platform.openai.com/docs/api-reference/chat) and [embeddings](https://platform.openai.com/docs/api-reference/embeddings) API endpoints.
 
 
 ### Disabled instrumentations
