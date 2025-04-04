@@ -49,6 +49,9 @@ callouts:
   warning:
     title: "Warning"
     color: yellow
+  info:
+    title: "Info"
+    color: blue
 
 just_the_docs:
   collections:

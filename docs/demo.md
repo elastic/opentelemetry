@@ -7,4 +7,4 @@ fa_icon_key: fa-solid fa-desktop
 
 # OpenTelemetry Demo
 
-🚧 Coming soon. Meanwhile visit the [EDOT OpenTelemetry Playground](https://ela.st/demo-otel)
+Visit the [EDOT OpenTelemetry Playground](https://ela.st/demo-otel)

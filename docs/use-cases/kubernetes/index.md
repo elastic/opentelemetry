@@ -1,7 +1,7 @@
 ---
 title: Monitoring on Kubernetes
 layout: default
-nav_order: 4
+nav_order: 1
 parent: Use Cases
 ---
 

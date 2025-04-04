@@ -18,11 +18,11 @@ nav_order: 2
 | Feature | Availability |
 |:---|:---:|
 | **APM** | ✅ |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Service Maps | ✅ |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Distributed Tracing | ✅ |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Head-based Sampling (HBS) | ✅ |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *Tail-based Sampling (TBS)* | 🟡 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Self-managed, OTel collector-based TBS | 🟡 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [Service Maps] | ✅ |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [Distributed Tracing] | ✅ |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [Head-based Sampling (HBS)] | ✅ |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *[Tail-based Sampling (TBS)]* | 🟡 |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [Self-managed, OTel collector-based TBS] | 🟡 |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TBS managed / hosted in Elastic Cloud | ❌ |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Runtime metrics<sup>(1)</sup> | ⚪ |
 | **Infrastructure Monitoring** | ✅ |
@@ -53,3 +53,9 @@ Check out the [SDKs Overview](../edot-sdks/index#features) page for SDK-specific
 [Incompatible]: ./nomenclature
 [Compatible]: ./nomenclature
 [Supported]: ./nomenclature
+
+[Service Maps]: https://www.elastic.co/guide/en/observability/current/apm-service-maps.html
+[Distributed Tracing]: https://www.elastic.co/guide/en/observability/current/apm-traces.html
+[Head-based Sampling (HBS)]: https://www.elastic.co/guide/en/observability/current/apm-sampling.html#apm-head-based-sampling
+[Tail-based Sampling (TBS)]: https://www.elastic.co/guide/en/observability/current/apm-sampling.html#apm-tail-based-sampling
+[Self-managed, OTel collector-based TBS]: https://opentelemetry.io/blog/2022/tail-sampling/
