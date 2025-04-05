@@ -5,6 +5,8 @@ nav_order: 2
 parent: Customization
 ---
 
+<!-- DO NOT DELETE THIS SECTION, TAGS ARE REQUIRED FOR GENERATION-->
+<!-- start:edot-collector-components-ocb -->
 # Build a Custom EDOT-like Collector
 
 You can build and configure a [custom collector](https://opentelemetry.io/docs/collector/custom-collector/) or extend the [OpenTelemetry Collector Contrib ](https://github.com/open-telemetry/opentelemetry-collector-contrib) distribution to collect logs and metrics and send them to Elastic Observability.
@@ -23,15 +25,16 @@ To build a custom collector to collect your telemetry data and send it to Elasti
 Refer to the following sections to complete these steps.
 
 ### Step 1. Install the OpenTelemetry Collector builder
-Install the ocb using the command that aligns with you system from the [OpenTelemetry building a custom collector documentation](https://opentelemetry.io/docs/collector/custom-collector/#step-1---install-the-builder).
+Install the ocb using the command that aligns with your system from the [OpenTelemetry building a custom collector documentation](https://opentelemetry.io/docs/collector/custom-collector/#step-1---install-the-builder).
+
+{: .warning}
+Make sure to install **version 0.120.0** of the OpenTelemetry Collector Builder!
 
 ### Step 2. Create a builder configuration file
 Create a builder configuration file,`builder-config.yml`, to define the custom collector. This file specifies the components (extensions, exporters, processors, receivers, and connectors) included in your custom collector.
 
 The following example `builder-config.yml` file contains the components needed to send your telemetry data to Elastic Observability. For more information on these components, refer to the [components](./components) documentation. Keep or remove components from the example configuration file to fit your needs.
 
-<!-- DO NOT DELETE THIS SECTION, TAGS ARE REQUIRED FOR GENERATION-->
-<!-- start:edot-collector-components-ocb -->
 ``` yaml
 dist:
   name: otelcol-dev
@@ -98,7 +101,6 @@ providers:
   - gomod: go.opentelemetry.io/collector/confmap/provider/httpsprovider v1.26.0
   - gomod: go.opentelemetry.io/collector/confmap/provider/yamlprovider v1.26.0
 ```
-<!-- end:edot-collector-components-ocb -->
 
 ### Step 3. Build the Collector
 Build your custom collector using the ocb tool and the configuration file by running the following command:
@@ -108,3 +110,4 @@ Build your custom collector using the ocb tool and the configuration file by run
 This command generates a new collector in the specified output path, `otelcol-dev`. The generated collector includes the components you specified in the configuration file.
 
 For general information on building a custom collector, refer to the [OpenTelemetry documentation](https://opentelemetry.io/docs/collector/custom-collector/#step-1---install-the-builder).
+<!-- end:edot-collector-components-ocb -->

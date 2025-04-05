@@ -27,7 +27,7 @@ Visit [this page](./components) for the full list of OTel Collector components e
 To request a component to be added to EDOT Collector, please submit a [GitHub issue here](https://github.com/elastic/opentelemetry/issues/new/choose).
 
 ## Collector Limitations
-The EDOT collector has some limitations which are mostly inherited from the upstream components, see the [full list](./edot-collector-limitations) here before troubleshooting.
+The EDOT collector has some limitations which are mostly inherited from the upstream components, see the [full list](../compatibility/limitations) here before troubleshooting.
 
 ### 📄 License
 View details of license for [EDOT Collector](https://github.com/elastic/elastic-agent/blob/main/LICENSE.txt). 

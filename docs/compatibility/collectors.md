@@ -2,7 +2,7 @@
 title: Collector Distributions
 parent: Compatibility & Support
 layout: default
-nav_order: 2
+nav_order: 3
 ---
 # Compatibility & Support - OTel Collectors
 {: .no_toc }
@@ -63,7 +63,7 @@ The following table gives an overview of compatibility and support of EDOT Colle
 
 The components included in the EDOT Collector are categorized into **[Core]** and **[Extended]** components:
 
-| **Component**                | **GitHub Repo**        | **EDOTCol 8.x** | **EDOTCol 9.x**         |
+| **Component**                | **GitHub Repo**        | **EDOT Col 8.x** | **EDOT Col 9.x**         |
 |:-----------------------------|:------------------------|-----------------|--------------------------|
 |**Receivers**                 |                        |                 |                          |
 | filelogreceiver              | [OTel Contrib Repo]    | 🟡 [Extended]        | ✅ [Core] (since 9.0)      |

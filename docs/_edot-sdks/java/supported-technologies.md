@@ -9,7 +9,13 @@ parent: EDOT Java
 
 The EDOT Java agent is a [distribution](https://opentelemetry.io/docs/concepts/distributions/) of
 [OpenTelemetry Java Instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation) agent, it thus
-inherits all the [supported technologies of the OpenTelemetry Java Instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md).
+inherits all the [supported (✅)](../../compatibility/nomenclature#compatibility--support-nomenclature) technologies of the OpenTelemetry Java Instrumentation:
+
+| Category                 | Compatibility & Support Level  |
+|:-------------------------|:------------------------------:|
+| [JVMs]                   | ✅                             | 
+| [Application Servers]    | ✅                             |
+| [Libraries & Frameworks] | ✅                             |
 
 Please note that [some supported technologies are disabled by default](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md#disabled-instrumentations)
 and need explicit configuration to be enabled.

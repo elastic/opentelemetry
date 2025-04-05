@@ -1,7 +1,7 @@
 ---
 title: LLM Observability
 layout: default
-nav_order: 5
+nav_order: 2
 parent: Use Cases
 ---
 # LLM Observability with EDOT
