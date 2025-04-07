@@ -69,4 +69,4 @@ Also, each enabled instrumentation adds instrumentation overhead, this can be co
 - [disable all instrumentations and selectively enable the ones you need](https://opentelemetry.io/docs/zero-code/java/agent/disable/#enable-only-specific-instrumentation)
 
 However note that some instrumentation relies on other instrumentation to function properly.
-When selectively enabling instrumentation, be sure to enable the transitive instrumentation dependencies too.
+When selectively **enabling** instrumentation, be sure to enable the transitive instrumentation dependencies too.
