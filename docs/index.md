@@ -43,9 +43,7 @@ Pick the right [Quickstart Guide](./quickstart/index) for your environment
 **or** choose your observability use case:
 
 - [Monitoring on Kubernetes](./use-cases/kubernetes/index)
-- [Collecting Logs](./use-cases/logs/index)
-- [Monitoring Hosts](./use-cases/host-metrics/index)
-- [Instrumenting Applications](./use-cases/application/index)
+- [LLM Observability](./use-cases/llm/index)
 
 ## 📥 Report an issue or provide feedback
 To report an issue or provide feedback on EDOT, please [submit a github issue](https://github.com/elastic/opentelemetry/issues/new/choose).
