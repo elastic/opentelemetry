@@ -62,3 +62,11 @@ With EDOT Java, the following resource attribute providers are enabled by defaul
 Because those resource attributes providers rely on metadata endpoints, they may require a few HTTP requests.
 When the cloud provider is known or none is being used, it might be relevant to selectively disable them by setting
 their respective configuration options to `false`.
+
+Also, each enabled instrumentation adds instrumentation overhead, this can be controlled by applying one of the following strategies:
+
+- [disable instrumentations selectively](https://opentelemetry.io/docs/zero-code/java/agent/disable/#suppressing-specific-agent-instrumentation)
+- [disable all instrumentations and selectively enable the ones you need](https://opentelemetry.io/docs/zero-code/java/agent/disable/#enable-only-specific-instrumentation)
+
+However note that some instrumentation relies on other instrumentation to function properly.
+When selectively enabling instrumentation, be sure to enable the transitive instrumentation dependencies too.
