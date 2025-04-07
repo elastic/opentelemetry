@@ -50,3 +50,15 @@ This difference is also the reason why we observe a difference in the maximum he
 in-memory when possible and not recycled by the garbage collector. This however does not mean that Elastic APM Java agent _requires_
 about 100mb more of memory compared to EDOT, but that when there is no limitation on heap memory usage the agent will
 use available memory to minimize memory allocation.
+
+## Optimizing application startup
+
+With EDOT Java, the following resource attribute providers are enabled by default:
+
+- AWS: [`OTEL_RESOURCE_PROVIDERS_AWS_ENABLED`](./configuration#configuration-options) = `true`
+- GCP: [`OTEL_RESOURCE_PROVIDERS_GCP_ENABLED`](./configuration#configuration-options) = `true`
+- Azure: [`OTEL_RESOURCE_PROVIDERS_AZURE_ENABLED`](./configuration#configuration-options) = `true`
+
+Because those resource attributes providers rely on metadata endpoints, they may require a few HTTP requests.
+When the cloud provider is known or none is being used, it might be relevant to selectively disable them by setting
+their respective configuration options to `false`.
