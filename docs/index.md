@@ -8,13 +8,13 @@ fa_icon_key: fa-solid fa-info
 # Elastic Distributions of OpenTelemetry (EDOT)
 
 ## 🔭 What is OpenTelemetry?
-[OpenTelemetry](https://opentelemetry.io/docs/) is a vendor-neutral observability framework for collecting, processing, and exporting telemetry data. If you are new to OpenTelemetry we recommended reading OpenTelemetry [concepts](https://opentelemetry.io/docs/concepts/) and [components](https://opentelemetry.io/docs/concepts/components/).
+[OpenTelemetry](https://opentelemetry.io/docs/) is a vendor-neutral observability framework for collecting, processing, and exporting telemetry data. If you are new to OpenTelemetry we recommend reading OpenTelemetry [concepts](https://opentelemetry.io/docs/concepts/) and [components](https://opentelemetry.io/docs/concepts/components/).
 
 ## 🇪 What is EDOT?
 
 **Elastic Distributions of OpenTelemetry (EDOT)** is an open-source ecosystem of tailored [OpenTelemetry distributions](https://opentelemetry.io/docs/concepts/distributions/), comprising an [OpenTelemetry Collector](https://opentelemetry.io/docs/collector/) and various OpenTelemetry [Language SDKs](https://opentelemetry.io/docs/languages/).
 ![EDOT-Distributions](./images/EDOT-SDKs-Collector.png)
-Each EDOT distribution is asssembled with carefully curated OpenTelemetry components, then rigorously tested to ensure production readiness. This provides a reliable and optimized OpenTelemetry experience, enabling seamless adoption with confidence and expert support.
+Each EDOT distribution is assembled with carefully curated OpenTelemetry components, then rigorously tested to ensure production readiness. This provides a reliable and optimized OpenTelemetry experience, enabling seamless adoption with confidence and expert support.
 
 ## 🗂️ Available EDOT Distributions
 
@@ -43,9 +43,7 @@ Pick the right [Quickstart Guide](./quickstart/index) for your environment
 **or** choose your observability use case:
 
 - [Monitoring on Kubernetes](./use-cases/kubernetes/index)
-- [Collecting Logs](./use-cases/logs/index)
-- [Monitoring Hosts](./use-cases/host-metrics/index)
-- [Instrumenting Applications](./use-cases/application/index)
+- [LLM Observability](./use-cases/llm/index)
 
 ## 📥 Report an issue or provide feedback
 To report an issue or provide feedback on EDOT, please [submit a github issue](https://github.com/elastic/opentelemetry/issues/new/choose).

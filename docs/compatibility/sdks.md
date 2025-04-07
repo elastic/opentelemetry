@@ -2,29 +2,19 @@
 title: SDK Distributions
 parent: Compatibility & Support
 layout: default
-nav_order: 3
+nav_order: 4
 ---
 
 # Compatibility & Support - OTel SDKs
-{: .no_toc }
 
 ### Legend
-{: .no_toc }
 
 | **[Incompatible]** | **[Compatible]** | **[Supported]** |
 | ❌ | 🟡 | ✅ |
 
-### Table of content
-{: .no_toc }
-
-- TOC
-{:toc}
-
-## EDOT SDKs
-
 For the best experience, we recommend exporting data from EDOT SDKs via the [EDOT Collector](https://elastic.github.io/opentelemetry/edot-collector/index).
 
-### Compatibility with EDOT Collector / Elastic Stack
+## Compatibility with EDOT Collector / Elastic Stack
 
 <table class="compatibility">
     <thead>
@@ -107,15 +97,9 @@ For the best experience, we recommend exporting data from EDOT SDKs via the [EDO
     </tbody>
 </table>
 
-- Collectors are forward compatible
-- Also check the other table, for EDOT Collector compatibility with Stack version compatibility
+Please check the [EDOT Collector compatibility table](./collectors#edot-collector-compatibility---elastic-stack) for compatibility with Elastic Stack versions.
 
-### EDOT .NET
-
-| Category                                                                             | Compatibility & Support Level |
-|:-------------------------------------------------------------------------------------|:-----------------------------:|
-| [.NET Frameworks](../edot-sdks/dotnet/supported-technologies.html#net-frameworks)    |               ✅               |
-| [Instrumentations](../edot-sdks/dotnet/supported-technologies.html#instrumentations) |               ✅               |
+For compatibility of language-specific technologies also check out the "Supported Technologies" pages of the [EDOT SDKs documentation](../edot-sdks/index).
 
 ### EDOT Java
 
@@ -166,6 +150,11 @@ EDOT Node.js is a wrapper around the upstream OpenTelemetry JavaScript SDK and s
 | Category                                                                                          | Compatibility & Support Level |
 |:--------------------------------------------------------------------------------------------------|:-----------------------------:|
 | [Frameworks](https://www.elastic.co/guide/en/apm/agent/swift/current/supported-technologies.html) |               ✅               |
+
+
+## Other SDK Distributions
+
+OTel SDK distributions other than the ones listed above are usually *technically compatible* (🟡) with Elastic but are *not officially supported by Elastic* (✅).
 
 [Incompatible]: ./nomenclature
 [Compatible]: ./nomenclature
