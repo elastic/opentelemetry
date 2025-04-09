@@ -2,6 +2,8 @@
 
 % Docsv3 page: https://docs-v3-preview.elastic.dev/elastic/elasticsearch/tree/main/reference/query-languages/query-dsl/query-dsl-query-string-query
 
+% Note: This is a reference file in Elasticsearch that's not from docs-content.
+
 # Query string query [query-dsl-query-string-query]
 
 
