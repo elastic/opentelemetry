@@ -16,7 +16,7 @@ The recommended OTel architecture for Kubernetes clusters includes a set of Open
 **OTel / EDOT Collector - Daemon**
 
 The OTel / EDOT Collector in *Daemon mode* is deployed on each Kubernetes node to collect nodes-local logs and host metrics. 
-The daemon collector also receives telemetry from applicaitons instrumented with OTel SDKs and running on corresponding nodes.
+The daemon collector also receives telemetry from applications instrumented with OTel SDKs and running on corresponding nodes.
 That collector enriches the application telemetry with resource information such as host and Kubernetes metadata. 
 All data is then being sent through OTLP to the OTel / EDOT Gateway Collector.
 
