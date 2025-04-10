@@ -7,19 +7,42 @@ parent: EDOT .NET
 
 # Troubleshooting the EDOT .NET SDK
 
-Use the information in this section to troubleshoot common problems and find answers for frequently
-asked questions. As a first step, ensure your stack is compatible with the [supported technologies](.//supported-technologies)
-for EDOT .NET and the OpenTelemetry SDK.
+Use the information in this section to troubleshoot common problems. As a first step, ensure your stack is 
+compatible with the [supported technologies](.//supported-technologies) for EDOT .NET and the OpenTelemetry SDK.
 
 Don’t worry if you can’t figure out what the problem is; we’re here to help. If you are an existing
 Elastic customer with a support contract, please create a ticket in the [Elastic Support portal](https://support.elastic.co/customers/s/login/).
-If not, post in the [APM discuss forum](https://discuss.elastic.co/c/apm).
+If not, post in the [APM discuss forum](https://discuss.elastic.co/c/apm) or [open a GitHub issue](https://github.com/elastic/elastic-otel-dotnet/issues).
 
-For most problems, such as when no data is sent to the Elastic Observability backend, it’s a good idea to first check
-the EDOT .NET logs which will provide initialisation details and OpenTelemetry SDK events.
+For most problems, such as when no data is received in your Elastic Observability backend, it’s a good idea to first check
+the EDOT .NET logs which will provide initialisation details and OpenTelemetry SDK events. If you don’t see anything suspicious
+ in the EDOT .NET logs (no warning or error), it’s recommended to switch the log level to `Trace` for further investigation.
 
-If you don’t see anything suspicious in the EDOT .NET logs (no warning or error), it’s recommended to turn
-the log level to `Trace` for further investigation.
+## Known issues
+
+### Missing log records
+
+The upstream SDK is (currently) [not spec-compliant](https://github.com/open-telemetry/opentelemetry-dotnet/issues/4324) regarding 
+the deduplication of attributes when exporting log records. When a log is created within multiple scopes, each scope may store information
+using the same logical key. In this situation, attributes will be duplicated in the exported data. This situation is most likely to present when 
+logging in to the scope of a request and when the `OpenTelemetryLoggerOptions.IncludeScopes` option is enabled. ASP.NET Core adds the 
+`RequestId` to multiple scopes. We therefore recommend not enabling `IncludeScopes` until this is fixed in the SDK. When using the
+EDOT Collector or Managed OTLP endpoint in serverless, non-compliant log records will fail to be ingested.
+
+EDOT .NET currently emits a warning if it detects the use of `IncludeScopes` in ASP.NET Core scenarios.
+
+It is also possible for this to occur even when `IncludeScopes` is false. The following code will also result in duplicate
+attributes and the potential for lost log records.
+
+```csharp
+Logger.LogInformation("Eat your {fruit} {fruit} {fruit}!", "apple", "banana", "mango");
+```
+
+To avoid this scenario, ensure each placeholder uses a unique name. e.g.
+
+```csharp
+Logger.LogInformation("Eat your {fruit1} {fruit2} {fruit3}!", "apple", "banana", "mango");
+```
 
 ## Obtaining EDOT .NET diagnostic logs
 
