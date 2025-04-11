@@ -257,9 +257,10 @@ OpenTelemetry SDK.
 | Option                   | EDOT .NET default | OpenTelemetry SDK default |
 | ------------------------ | ----------------- | ------------------------- |
 | IncludeFormattedMessage  | `true`            | `false`                   |
-| IncludeScopes            | `true` (1.0.0 to 1.0.1) *           | `false`                   |
+| IncludeScopes            | `false` (Since 1.0.2) *           | `false`                   |
 
-\* Since 1.0.2 `IncludeScopes` is no longer enabled by default. See [troubleshooting](./../troubleshooting/#missing-log-records)
+\* Since 1.0.2 `IncludeScopes` is no longer enabled by default. See [troubleshooting](./../troubleshooting/#missing-log-records).
+1.0.0 and 1.0.1 default to `true`.
 
 ### Instrumentation assembly scanning
 
