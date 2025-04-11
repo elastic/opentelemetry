@@ -20,8 +20,12 @@ Hence, we recommend using OTel collector processing pipelines for pre-processing
 
 ## Parsing JSON logs
 
-Parsing logs that come in json format can be achieved through filelog receiver's operators. Specifically,
-the `router` operator can be used in order to check if the format is json and route the logs to `json-parser`:
+Parsing logs that come in json format can be achieved through
+[filelog](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.123.0/receiver/filelogreceiver/README.md)
+receiver's operators. Specifically, the
+[`router`](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.123.0/pkg/stanza/docs/operators/router.md)
+operator can be used in order to check if the format is json and route the logs to
+[`json-parser`](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.123.0/pkg/stanza/docs/operators/json_parser.md):
 
 ```yaml
 # ...
@@ -47,7 +51,9 @@ receivers:
 
 ## Parsing multiline logs
 
-Parsing mutliline logs can be achieved using the `multiline` operator as in the following example:
+Parsing mutliline logs can be achieved using the
+[`multiline`](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.123.0/receiver/filelogreceiver/README.md#multiline-configuration)
+option as in the following example:
 
 ```yaml
 receivers:
@@ -75,8 +81,12 @@ Exception in thread 2 "main" java.lang.NullPointerException
 ## Parsing OTLP logs in JSON format
 
 Applications instrumented with OpenTelemetry SDKs can be tuned to write their logs in `OTLP/JSON` format
-in files that are stored on the disk. With that, the filelog receiver can be used to collect and parse these logs and
-forward them to the `otlpjson` connector which extracts the `OTLP` logs from the `OTLP/JSON` log lines.
+in files that are stored on the disk. With that, the
+[filelog](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.123.0/receiver/filelogreceiver/README.md)
+receiver can be used to collect and parse these logs and
+forward them to the
+[`otlpjson`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.123.0/connector/otlpjsonconnector)
+connector which extracts the `OTLP` logs from the `OTLP/JSON` log lines.
 An example `OTLP/JSON` is the following:
 
 ```json
@@ -190,8 +200,10 @@ service:
 
 ## Parsing apache logs
 
-Parsing logs of a known technology, like Apache logs, can be achieved through filelog receiver's operators. Specifically,
-the `router` operator can be used in order to check if the format is `JSON` and route the logs to the `json-parser`:
+Parsing logs of a known technology, like Apache logs, can be achieved through filelog receiver's operators.
+Specifically, the
+[`regex_parser`](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.123.0/pkg/stanza/docs/operators/regex_parser.md)
+operator can be used in order to parse the logs that follow the specific pattern:
 
 ```yaml
 receivers:
@@ -217,7 +229,11 @@ Detailed examples can be found in the respective [blog post](https://www.elastic
 and the
 [Collector's documentation](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/receivercreator/README.md#supported-logs-annotations).
 
-The collector configuration should enable the `k8s_observer` and the `receiver_creator` properly:
+The collector configuration should enable the
+[`k8s_observer`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.123.0/extension/observer/k8sobserver)
+and the
+[`receiver_creator`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.123.0/receiver/receivercreator)
+properly:
 
 ```yaml
 receivers:
@@ -320,7 +336,9 @@ that follow a specific pattern.
 
 ### Parsing JSON logs using OTTL
 
-The following `transform` processor can be used to parse logs that come in `JSON` format:
+The following
+[`transform`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.123.0/processor/transformprocessor)
+processor can be used to parse logs that come in `JSON` format:
 
 ```yaml
 processors:
