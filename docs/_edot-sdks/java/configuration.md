@@ -47,6 +47,7 @@ EDOT Java uses different defaults than the OpenTelemetry Java instrumentation fo
 |----------------------------------------------------------------------|-------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
 | `OTEL_RESOURCE_PROVIDERS_AWS_ENABLED`                                | `true`            | `false` ([docs](https://opentelemetry.io/docs/zero-code/java/agent/configuration/#enable-resource-providers-that-are-disabled-by-default))   |
 | `OTEL_RESOURCE_PROVIDERS_GCP_ENABLED`                                | `true`            | `false` ([docs](https://opentelemetry.io/docs/zero-code/java/agent/configuration/#enable-resource-providers-that-are-disabled-by-default))   |
+| `OTEL_RESOURCE_PROVIDERS_AZURE_ENABLED`                              | `true`            | `false` ([docs](https://opentelemetry.io/docs/zero-code/java/agent/configuration/#enable-resource-providers-that-are-disabled-by-default))   |
 | `OTEL_INSTRUMENTATION_RUNTIME-TELEMETRY_EMIT-EXPERIMENTAL-TELEMETRY` | `true`            | `false` ([docs](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/runtime-telemetry/README.md)) |
 | `OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE`                  | `delta` (*)       | `cumulative` ([docs](https://opentelemetry.io/docs/specs/otel/metrics/sdk_exporters/otlp/#additional-environment-variable-configuration))    |
 
