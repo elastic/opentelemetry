@@ -77,7 +77,7 @@ The following table gives an overview of compatibility and support of EDOT SDKs 
     </tbody>
 </table>
 
-Refer to the [EDOT Collector compatibility table](./collectors#edot-collector-compatibility---elastic-stack) for compatibility with Elastic Stack versions.
+Refer to the [EDOT Collector compatibility table](./collectors#edot-collector-compatibility-with-elastic-stack) for compatibility with Elastic Stack versions.
 
 {: .note}
 > Ingesting data from EDOT SDKs through EDOT Collector into Elastic Stack versions 8.18 or higher is supported (✅).
