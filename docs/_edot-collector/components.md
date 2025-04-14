@@ -75,28 +75,49 @@ The EDOT Collector comes with embedded Collector components from the [OTel Colle
 
 The components included in the EDOT Collector are categorized into **[Core]** and **[Extended]** components.
 
-The following table shows the status of each 
+The following table shows the status of each component.
 
-| **Component**                | **GitHub Repo**        | **EDOT Col 8.x** | **EDOT Col 9.x**         |
-|:-----------------------------|:------------------------|-----------------|--------------------------|
-|**Receivers**                 |                        |                 |                          |
-| filelogreceiver              | [OTel Contrib Repo]    | 🟡 [Extended]        | ✅ [Core] (since 9.0)      |
-| hostmetricsreceiver          | [OTel Contrib Repo]    | 🟡 [Extended]        | ✅ [Core] (since 9.0)      |
-| k8sclusterreceiver           | [OTel Contrib Repo]    | 🟡 [Extended]        | ✅ [Core] (since 9.0)      |
-| k8sobjectsreceiver           | [OTel Contrib Repo]    | 🟡 [Extended]        | ✅ [Core] (since 9.0)      |
-| kubeletstatsreceiver         | [OTel Contrib Repo]    | 🟡 [Extended]        | ✅ [Core] (since 9.0)      |
-| otlpreceiver                 | [OTel Core Repo]       | 🟡 [Extended]        | ✅ [Core] (since 9.0)      |
-| **Exporters**                |                        |                 |                          |
-| elasticsearchexporter        | [OTel Contrib Repo]    | 🟡 [Extended]        | ✅ [Core] (since 9.0)      |
-| otlpexporter                 | [OTel Core Repo]       | 🟡 [Extended]        | ✅ [Core] (since 9.0)      |
-| **Processors**               |                        |                 |                          |
-| attributesprocessor          | [OTel Contrib Repo]    | 🟡 [Extended]        | ✅ [Core] (since 9.0)      |
-| batchprocessor               | [OTel Core Repo]       | 🟡 [Extended]        | ✅ [Core] (since 9.0)      |
-| elasticinframetricsprocessor | [Elastic Repo]         | 🟡 [Extended]        | ✅ [Core] (since 9.0)      |
-| elastictraceprocessor        | [Elastic Repo]         | 🟡 [Extended]        | ✅ [Core] (since 9.0)      |
-| k8sattributesprocessor       | [OTel Contrib Repo]    | 🟡 [Extended]        | ✅ [Core] (since 9.0)      |
-| resourceprocessor            | [OTel Contrib Repo]    | 🟡 [Extended]        | ✅ [Core] (since 9.0)      |
-| resourcedetectionprocessor   | [OTel Contrib Repo]    | 🟡 [Extended]        | ✅ [Core] (since 9.0)      |
-| **Connectors**               |                        |                 |                          |
-| elasticapmconnector          | [Elastic Repo]         | 🟡 [Extended]        | ✅ [Core] (since 9.0)      |
-| routingconnector             | [OTel Contrib Repo]    | 🟡 [Extended]        | ✅ [Core] (since 9.0)      |
+
+| **Component**                | **GitHub Repo**        | **EDOT Col 9.x**           |
+|:-----------------------------|:-----------------------|----------------------------|
+|**Receivers**                 |                        |                            |
+| filelogreceiver              | [OTel Contrib Repo]    | ✅ [Core] (since 9.0)      |
+| hostmetricsreceiver          | [OTel Contrib Repo]    | ✅ [Core] (since 9.0)      |
+| k8sclusterreceiver           | [OTel Contrib Repo]    | ✅ [Core] (since 9.0)      |
+| k8sobjectsreceiver           | [OTel Contrib Repo]    | ✅ [Core] (since 9.0)      |
+| kubeletstatsreceiver         | [OTel Contrib Repo]    | ✅ [Core] (since 9.0)      |
+| otlpreceiver                 | [OTel Core Repo]       | ✅ [Core] (since 9.0)      |
+| httpcheckreceiver            | [OTel Core Repo]       | 🟡 [Extended]              |
+| jaegerreceiver               | [OTel Core Repo]       | 🟡 [Extended]              |
+| jmxreceiver                  | [OTel Core Repo]       | 🟡 [Extended]              |
+| kafkareceiver                | [OTel Core Repo]       | 🟡 [Extended]              |
+| nginxreceiver                | [OTel Core Repo]       | 🟡 [Extended]              |
+| nopreceiver                  | [OTel Core Repo]       | 🟡 [Extended]              |
+| prometheusreceiver           | [OTel Core Repo]       | 🟡 [Extended]              |
+| receivercreator              | [OTel Core Repo]       | 🟡 [Extended]              |
+| redisreceiver                | [OTel Core Repo]       | 🟡 [Extended]              |
+| zipkinreceiver               | [OTel Core Repo]       | 🟡 [Extended]              |
+| **Exporters**                |                        |                            |
+| elasticsearchexporter        | [OTel Contrib Repo]    | ✅ [Core] (since 9.0)      |
+| otlpexporter                 | [OTel Core Repo]       | ✅ [Core] (since 9.0)      |
+| otlphttpexporter             | [OTel Core Repo]       | ✅ [Core] (since 9.0)      |
+| debugexporter                | [OTel Core Repo]       | 🟡 [Extended]              |
+| fileexporter                 | [OTel Core Repo]       | 🟡 [Extended]              |
+| kafkaexporter                | [OTel Core Repo]       | 🟡 [Extended]              |
+| loadbalancingexporter        | [OTel Core Repo]       | 🟡 [Extended]              |
+| **Processors**               |                        |                            |
+| attributesprocessor          | [OTel Contrib Repo]    | ✅ [Core] (since 9.0)      |
+| batchprocessor               | [OTel Core Repo]       | ✅ [Core] (since 9.0)      |
+| elasticinframetricsprocessor | [Elastic Repo]         | ✅ [Core] (since 9.0)      |
+| elastictraceprocessor        | [Elastic Repo]         | ✅ [Core] (since 9.0)      |
+| k8sattributesprocessor       | [OTel Contrib Repo]    | ✅ [Core] (since 9.0)      |
+| resourceprocessor            | [OTel Contrib Repo]    | ✅ [Core] (since 9.0)      |
+| resourcedetectionprocessor   | [OTel Contrib Repo]    | ✅ [Core] (since 9.0)      |
+| transformprocessor           | [OTel Contrib Repo]    | ✅ [Core] (since 9.0)      |
+| filterprocessor              | [OTel Contrib Repo]    | 🟡 [Extended]              |
+| geoipprocessor               | [OTel Contrib Repo]    | 🟡 [Extended]              |
+| memorylimiterprocessor       | [OTel Contrib Repo]    | 🟡 [Extended]              |
+| **Connectors**               |                        |                           |
+| elasticapmconnector          | [Elastic Repo]         | ✅ [Core] (since 9.0)      |
+| routingconnector             | [OTel Contrib Repo]    | ✅ [Core] (since 9.0)      |
+| spanmetricsconnector         | [OTel Contrib Repo]    | 🟡 [Extended]              |
