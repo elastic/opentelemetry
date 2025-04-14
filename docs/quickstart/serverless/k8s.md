@@ -24,7 +24,7 @@ logs collection and application monitoring.
 
 2. **Setup Connection & Credentials**
 
-    Retrieve the `Elastic OTLP Endpoint` and the `Elastic API Key` for your Serverless Project by [following these instructions](./#retrieving-connection-details-for-your-serverless-project).
+    Retrieve the `Elastic OTLP Endpoint` and the `Elastic API Key` for your Serverless Project by [following these instructions](./#retrieve-connection-details-for-your-project).
 
     Replace both, `<ELASTIC_OTLP_ENDPOINT>` and `<ELASTIC_API_KEY>` in the below command to create a namespace and a secret with your credentials.
 

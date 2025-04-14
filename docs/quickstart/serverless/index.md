@@ -23,10 +23,10 @@ The Elastic Cloud Managed OTLP Endpoint ensures that OpenTelemetry data is store
 * An Elastic Observability Serverless project.
 * An Elastic Distribution of OpenTelemetry or any system that can forward logs, metrics, or traces in OTLP format.
 
-## Retrieving connection details for your project
+## Retrieve connection details for your project
 
 {: .note }
-> The following instructions use a managed OTLP endpoint on Elastic Cloud Serverless. This feature is in **Technical Preview** and isn't yet recommended for use in production.
+> The following instructions use a managed OTLP endpoint on Elastic Cloud Serverless. This feature is in **Technical Preview** and shouldn't be used in production.
 
 Follow these steps to retrieve the managed OTLP endpoint URL for your Serverless project:
 
@@ -56,6 +56,6 @@ The managed endpoint has per-project rate limits in place. If you reach this lim
 
 ## Provide feedback
 
-Help improve the Elastic Cloud Managed OTLP Endpoint by sending us feedback in our [discussion forum](https://discuss.elastic.co/c/apm) or [community Slack](https://elasticstack.slack.com/signup#/domain-signup).
+Help improve the Elastic Cloud Managed OTLP Endpoint by sending us feedback in our [discussion forum](https://discuss.elastic.co/c/apm) or [community Slack](https://elasticstack.slack.com/signup).
 
 For EDOT collector feedback, open an issue in the [elastic-agent repository](https://github.com/elastic/elastic-agent/issues).
