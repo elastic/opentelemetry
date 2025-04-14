@@ -22,7 +22,7 @@ logs and application traces and send the data through OTLP to your Elastic Serve
 
 2. **Configure the EDOT Collector**
 
-    Retrieve the `Elastic OTLP Endpoint` and the `Elastic API Key` for your Serverless Project by [following these instructions](./#retrieving-connection-details-for-your-serverless-project).
+    Retrieve the `Elastic OTLP Endpoint` and the `Elastic API Key` for your Serverless Project by [following these instructions](./#retrieve-connection-details-for-your-project).
 
     Replace `<ELASTIC_OTLP_ENDPOINT>` and `<ELASTIC_API_KEY>` before applying the command below.
 
