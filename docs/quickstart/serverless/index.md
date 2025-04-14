@@ -14,7 +14,7 @@ This endpoint is designed for the following use cases:
 * Logs and Infrastructure Monitoring: Logs forwarded in OTLP format and host and Kubernetes metrics in OTLP format.
 * APM: Application telemetry in OTLP format.
 
-## Differences from the existing Elastic APM Endpoint
+## Differences from the existing Elastic APM Endpoint
 
 The Elastic Cloud Managed OTLP Endpoint ensures that OpenTelemetry data is stored without any schema translation, preserving both OpenTelemetry semantic conventions and resource attributes. It supports ingesting OTLP logs, metrics, and traces in a unified manner, ensuring consistent treatment across all telemetry data.
 
