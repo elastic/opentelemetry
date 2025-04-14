@@ -51,11 +51,14 @@ The following table gives an overview of compatibility and support of EDOT Colle
     </tbody>
 </table>
 
-### Components
+{: .note}
+> EDOT Collector supports Elastic Stack versions 8.18 and higher. Use the generally available 9.x versions and higher of the EDOT Collector to ingest data into Elastic Stack versions 8.18 or higher under Elastic's official support (✅).
+
+### EDOT Collector Compatibility - Components
 
 For information on the compatibility of each Collector component, refer to the [full list of Core and Extended components](../edot-collector/components).
 
-### Operating systems
+### EDOT Collector Compatibility - Operating Systems
 
 The following table gives an overview of compatibility and support of EDOT Collector versions with different operating systems.
 
