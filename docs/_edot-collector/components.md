@@ -68,5 +68,5 @@ The components included in the EDOT Collector are categorized into **[Core]** an
 | [httpsprovider ](https://github.com/open-telemetry/opentelemetry-collector/tree/main/confmap/provider/httpsprovider) | [OTel Core Repo](https://github.com/open-telemetry/opentelemetry-collector) | v1.26.0 | |
 | [yamlprovider ](https://github.com/open-telemetry/opentelemetry-collector/tree/main/confmap/provider/yamlprovider) | [OTel Core Repo](https://github.com/open-telemetry/opentelemetry-collector) | v1.26.0 | |
 
-[Extended]: ./nomenclature#extended-components
-[Core]: ./nomenclature#core-components
+[Extended]: ../compatibility/nomenclature#extended-components
+[Core]: ../compatibility//nomenclature#core-components
