@@ -23,7 +23,6 @@ The following table gives an overview of compatibility and support of EDOT SDKs 
         <tr>
             <th rowspan=2><b>EDOT SDK</b></th>
             <th colspan=3><b>EDOT Collector</b></th>
-            <th rowspan=2><b>Serverless</b></th>
         </tr>
         <tr>
             <th>< 8.16</th>
