@@ -12,16 +12,15 @@ nav_order: 4
 | **[Incompatible]** | **[Compatible]** | **[Supported]** |
 | ❌ | 🟡 | ✅ |
 
-For the best experience, we recommend exporting data from EDOT SDKs via the [EDOT Collector](https://elastic.github.io/opentelemetry/edot-collector/index).
+For the best experience, export data from EDOT SDKs using the [EDOT Collector](https://elastic.github.io/opentelemetry/edot-collector/index).
 
-## Compatibility with EDOT Collector / Elastic Stack
+## Compatibility with EDOT Collector and Elastic stack
 
 <table class="compatibility">
     <thead>
         <tr>
             <th rowspan=2 colspan=2><b>EDOT SDK</b></th>
             <th colspan=4>EDOT Collector </th>
-            <th rowspan=2><b>Serverless</b></th>
         </tr>
         <tr>
             <th>< 8.16</th>
@@ -33,71 +32,57 @@ For the best experience, we recommend exporting data from EDOT SDKs via the [EDO
     <tbody>
         <tr>
             <td style="text-align:left;"><b>EDOT .NET</b></td>
-            <td>1.x</td>
             <td>❌</td>
             <td>🟡</td>
             <td>🟡</td>
-            <td>✅</td>
             <td>✅</td>
         </tr>
         <tr>
             <td style="text-align:left;"><b>EDOT Java</b></td>
-            <td>1.x</td>
             <td>❌</td>
             <td>🟡</td>
             <td>🟡</td>
-            <td>✅</td>
             <td>✅</td>
         </tr>
         <tr>
             <td style="text-align:left;"><b>EDOT Node.js</b></td>
-            <td>1.x</td>
             <td>❌</td>
             <td>🟡</td>
             <td>🟡</td>
-            <td>✅</td>
             <td>✅</td>
         </tr>
         <tr>
             <td style="text-align:left;"><b>EDOT PHP</b></td>
-            <td>1.x</td>
             <td>❌</td>
             <td>🟡</td>
             <td>🟡</td>
-            <td>✅</td>
             <td>✅</td>
         </tr>
         <tr>
             <td style="text-align:left;"><b>EDOT Python</b></td>
-            <td>1.x</td>
             <td>❌</td>
             <td>🟡</td>
             <td>🟡</td>
-            <td>✅</td>
             <td>✅</td>
         </tr>
         <tr>
             <td style="text-align:left;"><b>EDOT Android</b></td>
-            <td>1.x</td>
             <td>❌</td>
             <td>🟡</td>
             <td>🟡</td>
-            <td>✅</td>
             <td>✅</td>
         </tr>
         <tr>
             <td style="text-align:left;"><b>EDOT iOS</b></td>
-            <td>1.x</td>
             <td>❌</td>
             <td>🟡</td>
             <td>🟡</td>
-            <td>✅</td>
             <td>✅</td>
         </tr>
     </tbody>
 </table>
 
-Please check the [EDOT Collector compatibility table](./collectors#edot-collector-compatibility---elastic-stack) for compatibility with Elastic Stack versions.
+Refer to the [EDOT Collector compatibility table](./collectors#edot-collector-compatibility---elastic-stack) for compatibility with Elastic Stack versions.
 
 For compatibility of language-specific technologies also check out the "Supported Technologies" pages of the [EDOT SDKs documentation](../edot-sdks/index).
 

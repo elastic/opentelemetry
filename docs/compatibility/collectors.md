@@ -21,15 +21,15 @@ nav_order: 3
 
 ## EDOT Collector 
 
-### EDOT Collector Compatibility - Elastic Stack
+### EDOT Collector compatibility with Elastic stack
 
 The following table gives an overview of compatibility and support of EDOT Collector versions with Elastic Stack versions.
 
 <table class="compatibility">
     <thead>
         <tr>
-            <th rowspan=2><b>EDOT Collector Version</b></th>
-            <th colspan=5>Elastic Stack</th>
+            <th rowspan=2><b>EDOT Collector version</b></th>
+            <th colspan=5>Elastic stack version</th>
         </tr>
         <tr>
             <th>< 8.16</th>
@@ -41,14 +41,6 @@ The following table gives an overview of compatibility and support of EDOT Colle
     </thead>
     <tbody>
         <tr>
-            <td><b>8.x</b></td>
-            <td>❌</td>
-            <td>🟡</td>
-            <td>🟡</td>
-            <td>🟡</td>
-            <td>🟡</td>
-        </tr>
-        <tr>
             <td><b>9.0</b></td>
             <td>❌</td>
             <td>🟡</td>
@@ -59,50 +51,23 @@ The following table gives an overview of compatibility and support of EDOT Colle
     </tbody>
 </table>
 
-### EDOT Collector Compatibility - Components
+### Components
 
-The components included in the EDOT Collector are categorized into **[Core]** and **[Extended]** components:
+For information on the compatibility of each Collector component, refer to the [full list of Core and Extended components](../edot-collector/components).
 
-| **Component**                | **GitHub Repo**        | **EDOT Col 8.x** | **EDOT Col 9.x**         |
-|:-----------------------------|:------------------------|-----------------|--------------------------|
-|**Receivers**                 |                        |                 |                          |
-| filelogreceiver              | [OTel Contrib Repo]    | 🟡 [Extended]        | ✅ [Core] (since 9.0)      |
-| hostmetricsreceiver          | [OTel Contrib Repo]    | 🟡 [Extended]        | ✅ [Core] (since 9.0)      |
-| k8sclusterreceiver           | [OTel Contrib Repo]    | 🟡 [Extended]        | ✅ [Core] (since 9.0)      |
-| k8sobjectsreceiver           | [OTel Contrib Repo]    | 🟡 [Extended]        | ✅ [Core] (since 9.0)      |
-| kubeletstatsreceiver         | [OTel Contrib Repo]    | 🟡 [Extended]        | ✅ [Core] (since 9.0)      |
-| otlpreceiver                 | [OTel Core Repo]       | 🟡 [Extended]        | ✅ [Core] (since 9.0)      |
-| **Exporters**                |                        |                 |                          |
-| elasticsearchexporter        | [OTel Contrib Repo]    | 🟡 [Extended]        | ✅ [Core] (since 9.0)      |
-| otlpexporter                 | [OTel Core Repo]       | 🟡 [Extended]        | ✅ [Core] (since 9.0)      |
-| **Processors**               |                        |                 |                          |
-| attributesprocessor          | [OTel Contrib Repo]    | 🟡 [Extended]        | ✅ [Core] (since 9.0)      |
-| batchprocessor               | [OTel Core Repo]       | 🟡 [Extended]        | ✅ [Core] (since 9.0)      |
-| elasticinframetricsprocessor | [Elastic Repo]         | 🟡 [Extended]        | ✅ [Core] (since 9.0)      |
-| elastictraceprocessor        | [Elastic Repo]         | 🟡 [Extended]        | ✅ [Core] (since 9.0)      |
-| k8sattributesprocessor       | [OTel Contrib Repo]    | 🟡 [Extended]        | ✅ [Core] (since 9.0)      |
-| resourceprocessor            | [OTel Contrib Repo]    | 🟡 [Extended]        | ✅ [Core] (since 9.0)      |
-| resourcedetectionprocessor   | [OTel Contrib Repo]    | 🟡 [Extended]        | ✅ [Core] (since 9.0)      |
-| **Connectors**               |                        |                 |                          |
-| elasticapmconnector          | [Elastic Repo]         | 🟡 [Extended]        | ✅ [Core] (since 9.0)      |
-| routingconnector             | [OTel Contrib Repo]    | 🟡 [Extended]        | ✅ [Core] (since 9.0)      |
-
-See the **[full list of Core & Extended EDOT Collector components here](../edot-collector/components)**.
-
-### EDOT Collector Compatibility - Operating Systems
+### Operating systems
 
 The following table gives an overview of compatibility and support of EDOT Collector versions with different operating systems.
 
-| **EDOT Collector Version** | Linux/arm64  | Linux/amd64    | Windows    | macOS     |
+| **EDOT Collector version** | Linux/arm64  | Linux/amd64    | Windows    | macOS     |
 |:--------------------------:|:------------:|:--------------:|:----------:|:---------:|
-| **8.x**                    | 🟡            | 🟡              | 🟡          | 🟡         |
 | **9.x**                    | ✅           | ✅              | 🟡          | 🟡         |
 
-## Other Collector Distributions
+## Other Collector distributions
 
-Other, non-EDOT distributions of the OTel Collector (such as custom Collector builds, upstream Collector distributions, etc.) are *not* officially supported through Elastic but deemed **technically compatible** (🟡) if they contain the [required OTel Collector components](../edot-collector/custom-collector) and are configured analogously to the EDOT Collector.
+Non-EDOT distributions of the OTel Collector, such as custom Collector builds, upstream Collector distributions, and so on aren't officially supported through Elastic but are technically compatible (🟡) if they contain the [required OTel Collector components](../edot-collector/custom-collector) and are configured like the EDOT Collector.
 
-Required components and configuration options per use case can be retrieved from the [sample configuration files](https://github.com/elastic/elastic-agent/tree/v{{ site.edot_versions.collector }}/internal/pkg/otel/samples/linux) for the EDOT Collector.
+You can retrieve required components and configuration options from the [sample configuration files](https://github.com/elastic/elastic-agent/tree/v{{ site.edot_versions.collector }}/internal/pkg/otel/samples/linux) for the EDOT Collector.
 
 [Incompatible]: ./nomenclature
 [Compatible]: ./nomenclature
