@@ -265,9 +265,9 @@ Then annotating the pod will enable custom log collection targeted only for this
 # ...
 metadata:
   annotations:
-  io.opentelemetry.discovery.logs/enabled: "true"
-  io.opentelemetry.discovery.logs/config: |
-    operators:
+    io.opentelemetry.discovery.logs/enabled: "true"
+    io.opentelemetry.discovery.logs/config: |
+      operators:
       - id: container-parser
         type: container
       # Check if format is json and route properly
@@ -302,26 +302,14 @@ The following example can be used in order to collect and parse Apache logs by a
 ```yaml
 metadata:
   annotations:
-  io.opentelemetry.discovery.logs/enabled: "true"
-  io.opentelemetry.discovery.logs/config: |
-    operators:
-      - id: container-parser
-        type: container
-      # Check if format is json and route properly
-      - id: get-format
-        routes:
-        - expr: body matches "^\\{"
-          output: json-parser
-        type: router
-      - id: json-parser
-        type: json_parser
-        on_error: send_quiet
-        parse_from: body
-        parse_to: body
-      - id: custom-value
-        type: add
-        field: attributes.tag
-        value: custom-value
+    io.opentelemetry.discovery.logs.apache/enabled: "true"
+    io.opentelemetry.discovery.logs.apache/config: |
+      operators:
+        - type: container
+          id: container-parser
+        - id: apache-logs
+          type: regex_parser
+          regex: ^(?P<source_ip>\d+\.\d+.\d+\.\d+)\s+-\s+-\s+\[(?P<timestamp_log>\d+/\w+/\d+:\d+:\d+:\d+\s+\+\d+)\]\s"(?P<http_method>\w+)\s+(?P<http_path>.*)\s+(?P<http_version>.*)"\s+(?P<http_code>\d+)\s+(?P<http_size>\d+)$
 spec:
     containers:
       - name: apache
@@ -329,7 +317,6 @@ spec:
 ```
 
 ## Using Processors / OTTL for Logs processing
-
 
 OTTL functions can be used in the transform processor to parse logs of a specific format or logs
 that follow a specific pattern. 
