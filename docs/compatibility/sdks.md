@@ -14,20 +14,21 @@ nav_order: 4
 
 For the best experience, we recommend exporting data from EDOT SDKs via the [EDOT Collector](https://elastic.github.io/opentelemetry/edot-collector/index).
 
-## Compatibility with EDOT Collector / Elastic Stack
+## Compatibility with EDOT Collector
+
+The following table gives an overview of compatibility and support of EDOT SDKs versions with the EDOT Collector versions:
 
 <table class="compatibility">
     <thead>
         <tr>
             <th rowspan=2 colspan=2><b>EDOT SDK</b></th>
-            <th colspan=4>EDOT Collector </th>
+            <th colspan=3>EDOT Collector </th>
             <th rowspan=2><b>Serverless</b></th>
         </tr>
         <tr>
             <th>< 8.16</th>
-            <th>< 8.18</th>
-            <th>8.18+</th>
-            <th>9.0+</th>
+            <th>8.16 - 8.19</th>
+            <th>9.x</th>
         </tr>
     </thead>
     <tbody>
@@ -35,7 +36,6 @@ For the best experience, we recommend exporting data from EDOT SDKs via the [EDO
             <td style="text-align:left;"><b>EDOT .NET</b></td>
             <td>1.x</td>
             <td>❌</td>
-            <td>🟡</td>
             <td>🟡</td>
             <td>✅</td>
             <td>✅</td>
@@ -45,7 +45,6 @@ For the best experience, we recommend exporting data from EDOT SDKs via the [EDO
             <td>1.x</td>
             <td>❌</td>
             <td>🟡</td>
-            <td>🟡</td>
             <td>✅</td>
             <td>✅</td>
         </tr>
@@ -53,7 +52,6 @@ For the best experience, we recommend exporting data from EDOT SDKs via the [EDO
             <td style="text-align:left;"><b>EDOT Node.js</b></td>
             <td>1.x</td>
             <td>❌</td>
-            <td>🟡</td>
             <td>🟡</td>
             <td>✅</td>
             <td>✅</td>
@@ -63,7 +61,6 @@ For the best experience, we recommend exporting data from EDOT SDKs via the [EDO
             <td>1.x</td>
             <td>❌</td>
             <td>🟡</td>
-            <td>🟡</td>
             <td>✅</td>
             <td>✅</td>
         </tr>
@@ -71,7 +68,6 @@ For the best experience, we recommend exporting data from EDOT SDKs via the [EDO
             <td style="text-align:left;"><b>EDOT Python</b></td>
             <td>1.x</td>
             <td>❌</td>
-            <td>🟡</td>
             <td>🟡</td>
             <td>✅</td>
             <td>✅</td>
@@ -81,7 +77,6 @@ For the best experience, we recommend exporting data from EDOT SDKs via the [EDO
             <td>1.x</td>
             <td>❌</td>
             <td>🟡</td>
-            <td>🟡</td>
             <td>✅</td>
             <td>✅</td>
         </tr>
@@ -89,7 +84,6 @@ For the best experience, we recommend exporting data from EDOT SDKs via the [EDO
             <td style="text-align:left;"><b>EDOT iOS</b></td>
             <td>1.x</td>
             <td>❌</td>
-            <td>🟡</td>
             <td>🟡</td>
             <td>✅</td>
             <td>✅</td>
@@ -99,7 +93,20 @@ For the best experience, we recommend exporting data from EDOT SDKs via the [EDO
 
 Please check the [EDOT Collector compatibility table](./collectors#edot-collector-compatibility---elastic-stack) for compatibility with Elastic Stack versions.
 
-For compatibility of language-specific technologies also check out the "Supported Technologies" pages of the [EDOT SDKs documentation](../edot-sdks/index).
+{: .note}
+> Ingesting data from EDOT SDKs through EDOT Collector 9.x into Elastic Stack versions 8.18+ is supported (✅).
+
+## Supported Technologies per EDOT SDK
+
+For compatibility of language-specific technologies check out the following pages for corresponding EDOT SDKs:
+
+- [Supported Technologies - .NET](../edot-sdks/dotnet/supported-technologies)
+- [Supported Technologies - Java](../edot-sdks/java/supported-technologies)
+- [Supported Technologies - Node.js](../edot-sdks/nodejs/supported-technologies)
+- [Supported Technologies - PHP](../edot-sdks/php/supported-technologies)
+- [Supported Technologies - Python](../edot-sdks/python/supported-technologies)
+- [Supported Technologies - Android](https://www.elastic.co/guide/en/apm/agent/android/current/intro.html)
+- [Supported Technologies - iOS](https://www.elastic.co/guide/en/apm/agent/swift/current/supported-technologies.html)
 
 ### EDOT Java
 
