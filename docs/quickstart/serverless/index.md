@@ -20,7 +20,7 @@ The Elastic Cloud Managed OTLP Endpoint ensures that OpenTelemetry data is store
 
 ## Prerequisites
 
-* An Elastic Observability Serverless project. To learn more, refer to [create an Observability project](/solutions/observability/get-started/create-an-observability-project.md).
+* An Elastic Observability Serverless project.
 * An Elastic Distribution of OpenTelemetry or any system that can forward logs, metrics, or traces in OTLP format.
 
 ## Retrieving connection details for your project
