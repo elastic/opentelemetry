@@ -42,13 +42,12 @@ See also the [EDOT Java agent configuration](./configuration#configuration-optio
 
 ## LLM instrumentations
 
-### OpenAI Client instrumentation (tech preview)
+### OpenAI Client instrumentation
 
 Instrumentation for the [official OpenAI Java Client](https://github.com/openai/openai-java).
+The minimum supported OpenAI Java Client version is 1.1.0.
 
-Note that this instrumentation is currently in **tech preview**, because the OpenAI client itself is still in **beta**.
-
-It supports:
+This instrumentation supports:
 
 * Tracing for requests, including GenAI-specific attributes such as token usage
 * Opt-In logging of OpenAI request and response content payloads
