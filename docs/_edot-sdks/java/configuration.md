@@ -61,7 +61,7 @@ This table only contains minimal configuration, see each respective feature for 
 | `OTEL_INFERRED_SPANS_ENABLED`                          | `false` | [Inferred spans](./features#inferred-spans)                                                          |
 | `OTEL_JAVA_EXPERIMENTAL_SPAN_STACKTRACE_MIN_DURATION`  | `5ms`   | [Span stacktrace](./features#span-stacktrace)                                                        |
 | `ELASTIC_OTEL_UNIVERSAL_PROFILING_INTEGRATION_ENABLED` | `auto`  | [Elastic Universal profiling integration](./features#elastic-universal-profiling-integration)        |
-| `OTEL_INSTRUMENTATION_OPENAI_CLIENT_ENABLED`           | `true`  | [OpenAI client instrumentation](./supported-technologies#openai-client-instrumentation-tech-preview) |
+| `OTEL_INSTRUMENTATION_OPENAI_CLIENT_ENABLED`           | `true`  | [OpenAI client instrumentation](./supported-technologies#openai-client-instrumentation) |
 
 ## Configuration methods
 
