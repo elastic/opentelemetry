@@ -294,7 +294,7 @@ Migrating from the Elastic APM Attacher for Kubernetes consists of the following
 ### Add instrumentation CRDs
 
 For example, if you have Elastic APM Java agents version 1.53.0 and Elastic APM Nodejs agents version 4.11.2 defined for your values,
-and additionally have set the `ELASTIC_APM_LOG_SENDING` environment variable to `true` for the Java agent, then the corresponding 
+and additionally have set the `ELASTIC_APM_LOG_SENDING` environment variable to `true` for the Java agent by default, then the corresponding 
 instrumentation would look as in the following snippet. Make sure to replace both `<ELASTIC_APM_SERVER_ENDPOINT>` and `<ELASTIC_API_KEY>`
 with your credentials:
 
