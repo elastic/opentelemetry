@@ -282,7 +282,7 @@ Consider also the creation of different `Instrumentation` objects for different 
 ## Migrating from the Elastic APM Attacher for Kubernetes
 
 While the Elastic APM Attacher for Kubernetes only supports the Elastic APM application agents, the OpenTelemetry operator can support both the
-Elastic APM application agents and than EDOT agents. The OpenTelemetry operator has more features and is being actively developed.
+Elastic APM application agents and the EDOT agents. The OpenTelemetry operator has more features and is being actively developed.
 
 Migrating from the Elastic APM Attacher for Kubernetes consists of the following steps:
 
