@@ -339,7 +339,7 @@ with the new annotation for the instrumentation.
 
 For example if you had a Java application deployment definition which specified the Elastic APM Attacher for Kubernetes
 annotation of `co.elastic.apm/attach: java`, you can replace that annotation with the equivalent annotation for the
-OpenTelemetry operator using the new instrumentation names you have defined.
+OpenTelemetry operator using the new instrumentation names you have defined. For the above example Instrumentation, the annotation would be `instrumentation.opentelemetry.io/inject-java: "opentelemetry-operator-system/elastic-apm-instrumentation"`
 
 Subsequent rollouts of that deployment will use the new instrumentation. The pods themselves will be auto-instrumented in
 the same way as they were already being instrumented. Any `ELASTIC_*` environment variables and configuration options will
