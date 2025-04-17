@@ -281,26 +281,27 @@ Consider also the creation of different `Instrumentation` objects for different 
 
 ## Migrating from the Elastic APM Attacher for Kubernetes
 
-The [Elastic APM Attacher for Kubernetes](https://github.com/elastic/apm-k8s-attacher) is functionally similar to the OpenTelemetry operator, 
-but is targeted at the Elastic APM application agents rather than EDOT agents. The OpenTelemetry operator has more features and is being more actively
-developed. It is recommended to migrate from the Elastic APM Attacher for Kubernetes to the OpenTelemetry operator.
+While the Elastic APM Attacher for Kubernetes only supports the Elastic APM application agents, the OpenTelemetry operator can support both the
+Elastic APM application agents and than EDOT agents. The OpenTelemetry operator has more features and is being actively developed.
 
-Both products can be installed simultaneously, there is no conflict in having them both running in a Kubernetes cluster. While the 
-Elastic APM Attacher for Kubernetes only supports the Elastic APM application agents, the OpenTelemetry operator can support both the
-Elastic APM application agents **and** than EDOT agents. Assuming the OpenTelemetry operator is installed in your cluster, migrating
-from the Elastic APM Attacher for Kubernetes is a simple two-step process, outlined in the next two sections
+Migrating from the Elastic APM Attacher for Kubernetes consists of the following steps:
 
-### Add Instrumentation CRDs for the Elastic APM application agents
+1. Install the OpenTelemetry operator.
+2. Define and install Instrumentation CRDs which correspond to the currently defined values in the existing Elastic APM Attacher for Kubernetes deployment.
+3. Change the annotations in deployment definitions from the `co.elastic.apm/attach: ...` to the `instrumentation.opentelemetry.io/inject-...` equivalents.
+4. Rollout the new deployment definitions.
 
-You should add one or more Instrumentation definitions that correspond to the versions and configurations of the values you have
-in your existing Elastic APM Attacher for Kubernetes deployment. For example if you have Elastic APM Java agents version 1.53.0
-and Elastic APM Nodejs agents version 4.11.2 defined for your values, and additionally have set the `ELASTIC_APM_LOG_SENDING` environment
-variable to `true` for the Java agent, then the corresponding Instrumentation (here named `elastic-apm-instrumentation` and installed
-into the `opentelemetry-operator-system` namepace where the OpenTelemetry operator instrumentations are also installed) would look as
-shown just below (replace both `<ELASTIC_APM_SERVER_ENDPOINT>` and `<ELASTIC_API_KEY>` in the below yaml with your credentials).
+### Add instrumentation CRDs
 
+For example, if you have Elastic APM Java agents version 1.53.0 and Elastic APM Nodejs agents version 4.11.2 defined for your values,
+and additionally have set the `ELASTIC_APM_LOG_SENDING` environment variable to `true` for the Java agent, then the corresponding 
+instrumentation would look as in the following snippet. Make sure to replace both `<ELASTIC_APM_SERVER_ENDPOINT>` and `<ELASTIC_API_KEY>`
+with your credentials:
 
 ```yaml
+#
+# Filename: elastic-apm-instrumentation.yaml
+#
 apiVersion: opentelemetry.io/v1alpha1
 kind: Instrumentation
 metadata:
@@ -325,7 +326,7 @@ spec:
         value: "<ELASTIC_API_KEY>"
 ```
 
-If that yaml were saved in a file called `elastic-apm-instrumentation.yaml`, then this Instrumentation could be added to your cluster with
+To add the instrumentation to your cluster, run the following command:
 
 ```bash
 kubectl apply -f elastic-apm-instrumentation.yaml
@@ -333,21 +334,13 @@ kubectl apply -f elastic-apm-instrumentation.yaml
 
 ### Migrate your pods to the new Instrumentation
 
-Once the new Instrumentations have been defined, migrating your pods is done simply by replacing the annotation that currently applies to them,
-with the new annotation for the Instrumentation. For example if you had a Java application deployment definition which specified the
-Elastic APM Attacher for Kubernetes annotation of `co.elastic.apm/attach: java`, you can simply replace that annotation
-with the equivalent annotation for the OpenTelemetry operator using the new Instrumentation names you have defined, eg
-`instrumentation.opentelemetry.io/inject-java: "opentelemetry-operator-system/elastic-apm-instrumentation"`
+After you've defined the new instrumentations, migrate your pods by replacing the annotation that currently applies to them
+with the new annotation for the instrumentation. 
 
-Subsequent rollouts of that deployment will use the new Instrumentation, and the pods themselves will be auto-instrumented in exactly the
-same way as they were already being instrumented. In particular, any ELASTIC_* environment variables and config options would continue to
-be applied in exactly the same way
+For example if you had a Java application deployment definition which specified the Elastic APM Attacher for Kubernetes
+annotation of `co.elastic.apm/attach: java`, you can replace that annotation with the equivalent annotation for the
+OpenTelemetry operator using the new instrumentation names you have defined.
 
-### Summary
-
-In summary, migrating from Elastic APM Attacher for Kubernetes to the OpenTelemetry operator is a very simple process:
-
-1. Install the OpenTelemetry operator
-2. Define and install Instrumentation CRDs which correspond to the currently defined values in the existing Elastic APM Attacher for Kubernetes deployment
-3. Change the annotations in deployment definitions from the `co.elastic.apm/attach: ...` to the `instrumentation.opentelemetry.io/inject-...` equivalents
-4. Rollout the new deployment definitions
+Subsequent rollouts of that deployment will use the new instrumentation. The pods themselves will be auto-instrumented in
+the same way as they were already being instrumented. Any `ELASTIC_*` environment variables and configuration options will
+continue to apply.
