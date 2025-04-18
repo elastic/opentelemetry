@@ -14,7 +14,7 @@ parent: Elastic Cloud Serverless
 {: .label .label-green }
 
 The quick start for Hosts / VMs with Elastic Cloud Serverless will guide you through setting up the EDOT Collector and EDOT SDKs to collect host metrics,
-logs and application traces and send the data through OTLP to your Elastic Serverless Porject.
+logs and application traces and send the data through OTLP to your Elastic Serverless Project.
 
 1. **Download the EDOT Collector**
 
