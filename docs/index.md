@@ -20,7 +20,7 @@ Each EDOT distribution is assembled with carefully curated OpenTelemetry compone
 
 | EDOT Distribution | Status |
 |:-------------------|:---------------|
-| [EDOT Collector](./edot-collector/index) | Technical Preview<sup>*</sup> |
+| [EDOT Collector](./edot-collector/index) | GA |
 | [EDOT .NET](./edot-sdks/dotnet/index) | GA |
 | [EDOT Java](./edot-sdks/java/index) | GA |
 | [EDOT Node.js](./edot-sdks/nodejs/index) | GA |
@@ -32,6 +32,7 @@ Each EDOT distribution is assembled with carefully curated OpenTelemetry compone
 <sup>(*)</sup> GA coming soon
 
 ## 🟢 Production Readiness & Support
+
 Each EDOT distribution undergoes production-grade testing before being declared Generally Available (GA). Elastic provides full support for GA releases in accordance with our [support matrix](https://www.elastic.co/support/matrix) and SLAs.
 
 Technical Preview distributions receive best-effort support and are not covered under standard SLAs.
