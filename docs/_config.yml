@@ -82,7 +82,7 @@ just_the_docs:
 # -- EDOT versions start -- 
 edot_versions:
   stack: 9.0.0
-  collector: 9.0.0-rc1
+  collector: 9.0.0
   android: 1.0.0
   dotnet: 1.0.0
   ios:  1.0.0
