@@ -5,9 +5,9 @@ This functionality is in technical preview and may be changed or removed in a fu
 ::::
 
 
-Apache, AWS CloudTrail, Nginx, and Zeek integrations offer the ability to seamlessly ingest data from a Splunk Enterprise instance.  Data will be automatically mapped to the Elastic Common Schema, making it available for rapid analysis in Elastic solutions, including Security and {{observability}}.
+Apache, AWS CloudTrail, Nginx, and Zeek integrations offer the ability to seamlessly ingest data from a Splunk Enterprise instance. Data will be automatically mapped to the Elastic Common Schema, making it available for rapid analysis in Elastic solutions, including Security and {{observability}}.
 
-These integrations work by using the `httpjson` input in {{agent}} to run a Splunk search via the Splunk REST API and then extract the raw event from the results.  The raw event is then processed via the {{agent}}.  The Splunk search is customizable and the interval between searches is customizable.  These integrations only get new data since the last query, not historical data.
+These integrations work by using the `httpjson` input in {{agent}} to run a Splunk search via the Splunk REST API and then extract the raw event from the results. The raw event is then processed via the {{agent}}. The Splunk search is customizable and the interval between searches is customizable. These integrations only get new data since the last query, not historical data.
 
 :::{image} ../../../images/observability-elastic-agent-splunk.png
 :alt: Splunk integration components
@@ -50,7 +50,7 @@ Enter the required information to connect to the Splunk Enterprise REST API.
 
 The URL of the Splunk Enterprise Server must include the scheme (`http` or `https`), the IP address or hostname of the Splunk Enterprise Server, and the port the REST API is listening on.
 
-The Splunk username and password must be of a user with a role or capability to use REST API endpoints.  Administrative users have these permissions by default.
+The Splunk username and password must be of a user with a role or capability to use REST API endpoints. Administrative users have these permissions by default.
 
 SSL Configuration is available under the "Advanced options".  These may be necessary if Splunk Enterprise server uses self-signed certificates.  See [SSL Options](beats://reference/filebeat/configuration-ssl.md) for valid configuration options.
 
