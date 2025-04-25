@@ -7,4 +7,194 @@ nav_order: 4
 
 # Configure Metrics Collection
 
-🚧 Coming soon
+This page contains example and references for customizing metrics collection.
+
+{: .note}
+As of Elastic Stack version {{ site.edot_versions.collector }} Elasticsearch Ingest Pipelines are not (yet) applicable to OTel-native data, see [corresponding limitation documentation](../../compatibility/limitations#centralized-parsing-and-processing-of-data).
+Hence, we recommend using OTel collector processing pipelines for pre-processing metrics.
+{:toc}
+
+
+## OTLP metrics
+
+Any application emitting metrics via OTLP (OpenTelemetry Protocol) can forward them to the EDOT Collector using the OTLP receiver. This is the recommended method for collecting application-level telemetry.
+
+The following OTLP receiver configuration enables both gRPC and HTTP protocols for incoming OTLP traffic:
+
+```yaml
+# [OTLP Receiver](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver)
+receivers:
+  otlp:
+    protocols:
+      grpc:
+        endpoint: 0.0.0.0:4317
+      http:
+        endpoint: 0.0.0.0:4318
+```
+
+Ensure your application is configured to export metrics using the OTLP protocol, targeting the endpoints provided above.
+
+## Host metrics
+
+The [hostmetrics receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver) enables collection of host-level metrics such as CPU usage, memory utilization, and filesystem stats.
+
+The following configuration collects a standard set of host metrics that align with Elastic's Infrastructure dashboards in Kibana:
+
+```yaml
+hostmetrics:
+  collection_interval: 10s
+  root_path: /proc # Mounted node's root file system
+  scrapers:
+    cpu:
+      metrics:
+        system.cpu.utilization:
+          enabled: true
+        system.cpu.logical.count:
+          enabled: true
+    memory:
+      metrics:
+        system.memory.utilization:
+          enabled: true
+    network: {}
+    processes: {}
+    load: {}
+    disk: {}
+    filesystem:
+      exclude_mount_points:
+        mount_points:
+          - /dev/*
+          - /proc/*
+          - /sys/*
+          - /run/k3s/containerd/*
+          - /var/lib/docker/*
+          - /var/lib/kubelet/*
+          - /snap/*
+        match_type: regexp
+      exclude_fs_types:
+        fs_types:
+          - autofs
+          - binfmt_misc
+          - bpf
+          - cgroup2
+          - configfs
+          - debugfs
+          - devpts
+          - devtmpfs
+          - fusectl
+          - hugetlbfs
+          - iso9660
+          - mqueue
+          - nsfs
+          - overlay
+          - proc
+          - procfs
+          - pstore
+          - rpc_pipefs
+          - securityfs
+          - selinuxfs
+          - squashfs
+          - sysfs
+          - tracefs
+        match_type: strict
+```
+
+Important notes:
+
+ - The receiver must be granted access to the /proc filesystem, typically by running the collector with privileged access (or the corresponding capabilities) and mounting /proc and /sys appropriately. For detailed instructions, refer to the hostmetrics container usage [guide](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver#collecting-host-metrics-from-inside-a-container-linux-only) (Linux only).
+
+ - Enabling the process scraper can significantly increase the volume of scraped metrics, potentially impacting performance. See upstream issue [#39423](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/39423) for discussion.
+
+ - To ensure compatibility with Kibana's Infrastructure dashboards, include the [elasticinframetrics processor](https://github.com/elastic/opentelemetry-collector-components/tree/main/processor/elasticinframetricsprocessor) in your pipeline.
+
+## Kubernetes metrics
+
+Kubernetes metrics can be collected using multiple receivers depending on the type and source of the metrics. Each receiver may require specific Kubernetes permissions, and some are best deployed as DaemonSets or singletons.
+
+As with host metrics, use the [elasticinframetrics processor](https://github.com/elastic/opentelemetry-collector-components/tree/main/processor/elasticinframetricsprocessor) to ensure metrics align with the Kibana Infrastructure inventory.
+
+### Kubelet metrics
+
+The [kubeletstats](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/kubeletstatsreceiver) receiver collects resource usage stats directly from the Kubelet's /stats/summary endpoint. These stats include pod-level and node-level metrics.
+
+```yaml
+kubeletstats:
+  auth_type: serviceAccount # Authentication mechanism with the Kubelet endpoint, refer to: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/kubeletstatsreceiver#configuration
+  collection_interval: 20s
+  endpoint: ${env:OTEL_K8S_NODE_NAME}:10250
+  node: '${env:OTEL_K8S_NODE_NAME}'
+  # Required to work for all CSPs without an issue
+  insecure_skip_verify: true
+  k8s_api_config:
+    auth_type: serviceAccount
+  metrics:
+    k8s.pod.memory.node.utilization:
+      enabled: true
+    k8s.pod.cpu.node.utilization:
+      enabled: true
+    k8s.container.cpu_limit_utilization:
+      enabled: true
+    k8s.pod.cpu_limit_utilization:
+      enabled: true
+    k8s.container.cpu_request_utilization:
+      enabled: true
+    k8s.container.memory_limit_utilization:
+      enabled: true
+    k8s.pod.memory_limit_utilization:
+      enabled: true
+    k8s.container.memory_request_utilization:
+      enabled: true
+    k8s.node.uptime:
+      enabled: true
+    k8s.node.cpu.usage:
+      enabled: true
+    k8s.pod.cpu.usage:
+      enabled: true
+  extra_metadata_labels:
+    - container.id
+```
+
+Deployment Recommendation: To capture stats from every node in the cluster, deploy the collector with the kubeletstats receiver as a DaemonSet.
+
+
+### Cluster metrics
+
+The [k8sclusterreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/k8sclusterreceiver) gathers metrics and entity events directly from the Kubernetes API server. It captures cluster-wide resources like nodes, deployments, pods, and more.
+
+```yaml
+k8s_cluster:
+  auth_type: serviceAccount # Determines how to authenticate to the K8s API server. This can be one of none (for no auth), serviceAccount (to use the standard service account token provided to the agent pod), or kubeConfig to use credentials from ~/.kube/config.
+  node_conditions_to_report:
+    - Ready
+    - MemoryPressure
+  allocatable_types_to_report:
+    - cpu
+    - memory
+  metrics:
+    k8s.pod.status_reason:
+      enabled: true
+  resource_attributes:
+    k8s.kubelet.version:
+      enabled: true
+    os.description:
+      enabled: true
+    os.type:
+      enabled: true
+    k8s.container.status.last_terminated_reason:
+      enabled: true
+```
+
+Deployment Recommendation: Run a single instance of this receiver (e.g., as a Deployment) with sufficient RBAC permissions to access the K8s API server.
+
+## Other metrics
+
+The EDOT Collector supports a wide range of metric receivers for popular software systems, including:
+
+ - Redis ([redisreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/redisreceiver)): Retrieve Redis INFO data from a single Redis instance.
+
+ - JMX-based applications ([jmxreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/jmxreceiver)): Launch a child JRE process running the JMX Metric Gatherer configured with your specified JMX connection information and target Groovy script. It then reports metrics to an implicitly created OTLP receiver.
+
+ - Prometheus scrape targets ([prometheusreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/prometheusreceiver)): Receives metric data in [Prometheus](https://prometheus.io/) format.
+
+ - Kafka ([kafkareceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/kafkareceiver)): Receives telemetry data from Kafka, with configurable topics and encodings.
+
+For a full list of supported receivers, see the EDOT Collector components [reference](https://elastic.github.io/opentelemetry/edot-collector/components).
