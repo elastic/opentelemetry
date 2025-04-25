@@ -7,10 +7,10 @@ nav_order: 4
 
 # Configure Metrics Collection
 
-This page contains example and references for customizing metrics collection.
+This page contains examples and references for customizing metrics collection.
 
 {: .note}
-As of Elastic Stack version {{ site.edot_versions.collector }} Elasticsearch Ingest Pipelines are not (yet) applicable to OTel-native data, see [corresponding limitation documentation](../../compatibility/limitations#centralized-parsing-and-processing-of-data).
+As of Elastic Stack version {{ site.edot_versions.collector }} Elasticsearch Ingest Pipelines are not (yet) applicable to OTel-native data; see [corresponding limitation documentation](../../compatibility/limitations#centralized-parsing-and-processing-of-data).
 Hence, we recommend using OTel collector processing pipelines for pre-processing metrics.
 {:toc}
 
@@ -36,7 +36,7 @@ Ensure your application is configured to export metrics using the OTLP protocol,
 
 ## Host metrics
 
-The [hostmetrics receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver) enables collection of host-level metrics such as CPU usage, memory utilization, and filesystem stats.
+The [hostmetrics receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver) enables the collection of host-level metrics such as CPU usage, memory utilization, and file system stats.
 
 The following configuration collects a standard set of host metrics that align with Elastic's Infrastructure dashboards in Kibana:
 
@@ -100,7 +100,7 @@ hostmetrics:
 
 Important notes:
 
- - The receiver must be granted access to the /proc filesystem, typically by running the collector with privileged access (or the corresponding capabilities) and mounting /proc and /sys appropriately. For detailed instructions, refer to the hostmetrics container usage [guide](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver#collecting-host-metrics-from-inside-a-container-linux-only) (Linux only).
+ - The receiver must be granted access to the /proc file system, typically by running the collector with privileged access (or the corresponding capabilities) and mounting /proc and /sys appropriately. For detailed instructions, refer to the hostmetrics container usage [guide](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver#collecting-host-metrics-from-inside-a-container-linux-only) (Linux only).
 
  - Enabling the process scraper can significantly increase the volume of scraped metrics, potentially impacting performance. See upstream issue [#39423](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/39423) for discussion.
 
@@ -197,7 +197,7 @@ Deployment Recommendation: Run a single instance of this receiver (e.g., as a De
 
 ## Other metrics
 
-The EDOT Collector supports a wide range of metric receivers for popular software systems, including:
+The EDOT Collector supports a wide range of metrics receivers for popular software systems, including:
 
  - Redis ([redisreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/redisreceiver)): Retrieve Redis INFO data from a single Redis instance.
 
