@@ -104,7 +104,17 @@ Important notes:
 
  - Enabling the process scraper can significantly increase the volume of scraped metrics, potentially impacting performance. See upstream issue [#39423](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/39423) for discussion.
 
- - To ensure compatibility with Kibana's Infrastructure dashboards, include the [elasticinframetrics processor](https://github.com/elastic/opentelemetry-collector-components/tree/main/processor/elasticinframetricsprocessor) in your pipeline.
+ - To ensure compatibility with Kibana's Infrastructure dashboards, include the [elasticinframetrics processor](https://github.com/elastic/opentelemetry-collector-components/tree/main/processor/elasticinframetricsprocessor) in your pipeline:
+
+ ```yaml
+      service:
+        pipelines:
+          metrics/infra:
+            receivers:
+              - hostmetrics
+            processors:
+              - elasticinframetrics
+ ```
 
 ## Kubernetes metrics
 
