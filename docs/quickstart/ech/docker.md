@@ -13,7 +13,7 @@ parent: Elastic Cloud Hosted
 🗄️ Elastic Cloud Hosted
 {: .label .label-blue }
 
-The quick start for Docker with with Elastic Cloud Hosted will guide you through setting up the EDOT Collector and EDOT SDKs to collect host metrics, logs and application traces.
+Learn how to set up the EDOT Collector and EDOT SDKs in a Docker environment with Elastic Cloud Hosted to collect host metrics, logs and application traces.
 
 ## Instructions
 
