@@ -23,7 +23,7 @@ Follow these steps to deploy the EDOT Collector and EDOT OTel SDKs in Docker wit
 
 2. Retrieve the **Elasticsearch Endpoint** and the **Elastic API Key** for your Elastic Cloud deployment by [following these instructions](./#retrieving-connection-details-for-your-elastic-cloud-deployment).
 
-3. Create a `.env` file with the following content, replacing the placeholder values with your actual Elastic Cloud credentials:
+3. Create an `.env` file with the following content. Replace the placeholder values with your Elastic Cloud credentials:
    
    ```bash
    HOST_FILESYSTEM=/
