@@ -75,7 +75,7 @@ Follow these steps to deploy the EDOT Collector and EDOT OTel SDKs in Docker.
    docker compose up -d
    ```
 
-6. **(Optional) Instrument your applications**
+6. (Optional) Instrument your applications
 
     If you would like to collect telemetry from applications running on the host where you installed the EDOT Collector,
     you need to instrument your target applications according to the setup instructions for corresponding EDOT SDKs:
