@@ -15,6 +15,13 @@ parent: Elastic Cloud Hosted
 
 Learn how to set up the EDOT Collector and EDOT SDKs in a Docker environment with Elastic Cloud Hosted to collect host metrics, logs and application traces.
 
+## Prerequisites
+
+Make sure the following requirements are present:
+
+- Docker installed and running.
+- An Elastic Cloud deployment.
+
 ## Instructions
 
 Follow these steps to deploy the EDOT Collector and EDOT OTel SDKs in Docker with ECH.

@@ -17,10 +17,10 @@ Learn how to set up the EDOT Collector and EDOT SDKs in a Docker environment to 
 
 ## Prerequisites
 
-- Docker installed and running
-- An Elastic Cloud deployment
-- Your Elastic Cloud API key
-- Your Elastic Cloud endpoint URL
+Make sure the following requirements are present:
+
+- Docker installed and running.
+- A Self-Managed Elasticsearch cluster up and running.
 
 ## Instructions
 

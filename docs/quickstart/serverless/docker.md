@@ -16,6 +16,13 @@ parent: Elastic Cloud Serverless
 The quick start for Docker with Elastic Cloud Serverless will guide you through setting up the EDOT Collector and EDOT SDKs to collect host metrics,
 logs and application traces and send the data through OTLP to your Elastic Serverless Project.
 
+## Prerequisites
+
+Make sure the following requirements are present:
+
+- Docker installed and running.
+- An Elastic Serverless Project deployment.
+
 ## Instructions
 
 1. Create a `otel-collector-config.yml` file with your EDOT collector configuration. See the [configuration reference](../../_edot-collector/config/default-config-standalone.md) for "Managed OTLP Endpoint" for more details.
