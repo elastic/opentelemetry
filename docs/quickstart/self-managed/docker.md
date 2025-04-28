@@ -13,7 +13,7 @@ parent: Self-managed
 🆂 Self-managed Elastic Stack
 {: .label .label-yellow }
 
-The quick start for Docker with a self-managed Elastic Stack will guide you through setting up the EDOT Collector and EDOT SDKs to collect host metrics, logs and application traces.
+Learn how to set up the EDOT Collector and EDOT SDKs in a Docker environment to collect host metrics, logs and application traces.
 
 ## Prerequisites
 
