@@ -78,8 +78,3 @@ The quick start for Docker with with Elastic Cloud Hosted will guide you through
     - [Python](../../edot-sdks/python/setup)
 
     Configure your SDKs to send the data to the local EDOT Collector using OTLP/gRPC (`http://localhost:4317`) or OTLP/HTTP (`http://localhost:4318`).
-
-
-
-
-
