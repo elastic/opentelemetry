@@ -17,9 +17,11 @@ Learn how to set up the EDOT Collector and EDOT SDKs in a Docker environment wit
 
 ## Instructions
 
-1. Create a `otel-collector-config.yml` file with your EDOT collector configuration. See the [configuration reference](../../_edot-collector/config/default-config-standalone.md) for "Direct ingestion into Elasticsearch" for more details.
+Follow these steps to deploy the EDOT Collector and EDOT OTel SDKs in Docker with ECH.
 
-2. Retrieve the `Elasticsearch Endpoint` and the `Elastic API Key` for your Elastic Cloud deployment by [following these instructions](./#retrieving-connection-details-for-your-elastic-cloud-deployment).
+1. Create the `otel-collector-config.yml` file with your EDOT Collector configuration. Refer to the [configuration reference](../../_edot-collector/config/default-config-standalone.md).
+
+2. Retrieve the **Elasticsearch Endpoint** and the **Elastic API Key** for your Elastic Cloud deployment by [following these instructions](./#retrieving-connection-details-for-your-elastic-cloud-deployment).
 
 3. Create a `.env` file with the following content, replacing the placeholder values with your actual Elastic Cloud credentials:
    
