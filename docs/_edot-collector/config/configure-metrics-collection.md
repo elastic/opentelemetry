@@ -17,7 +17,7 @@ Hence, we recommend using OTel collector processing pipelines for pre-processing
 
 ## OTLP metrics
 
-Any application emitting metrics via OTLP (OpenTelemetry Protocol) can forward them to the EDOT Collector using the OTLP receiver. This is the recommended method for collecting application-level telemetry.
+Any application emitting metrics through OTLP (OpenTelemetry Protocol) can forward them to the EDOT Collector using the OTLP receiver. This is the recommended method for collecting application-level telemetry.
 
 The following OTLP receiver configuration enables both gRPC and HTTP protocols for incoming OTLP traffic:
 
@@ -32,13 +32,13 @@ receivers:
         endpoint: 0.0.0.0:4318
 ```
 
-Ensure your application is configured to export metrics using the OTLP protocol, targeting the endpoints provided above.
+Ensure your application is configured to export metrics using the OTLP protocol, targeting the endpoints provided in the previous example.
 
 ## Host metrics
 
-The [hostmetrics receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver) enables the collection of host-level metrics such as CPU usage, memory utilization, and file system stats.
+The [hostmetrics receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver) enables the collection of host-level metrics such as CPU usage, memory usage, and filesystem stats.
 
-The following configuration collects a standard set of host metrics that align with Elastic's Infrastructure dashboards in Kibana:
+The following configuration collects a standard set of host metrics that aligns with Elastic's Infrastructure dashboards in Kibana:
 
 ```yaml
 hostmetrics:
@@ -98,13 +98,11 @@ hostmetrics:
         match_type: strict
 ```
 
-Important notes:
+Note that you must grant access to the /proc filesystem to the receiver, typically by running the Collector with privileged access or the corresponding capabilities, and mounting /proc and /sys appropriately. Refer to the hostmetrics container usage [guide](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver#collecting-host-metrics-from-inside-a-container-linux-only) (Linux only).
 
- - The receiver must be granted access to the /proc file system, typically by running the collector with privileged access (or the corresponding capabilities) and mounting /proc and /sys appropriately. For detailed instructions, refer to the hostmetrics container usage [guide](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver#collecting-host-metrics-from-inside-a-container-linux-only) (Linux only).
+Enabling the process scraper might significantly increase the volume of scraped metrics, potentially impacting performance. Refer to the upstream issue [#39423](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/39423) for discussion.
 
- - Enabling the process scraper can significantly increase the volume of scraped metrics, potentially impacting performance. See upstream issue [#39423](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/39423) for discussion.
-
- - To ensure compatibility with Kibana's Infrastructure dashboards, include the [elasticinframetrics processor](https://github.com/elastic/opentelemetry-collector-components/tree/main/processor/elasticinframetricsprocessor) in your pipeline:
+To ensure compatibility with Kibana's Infrastructure dashboards, include the [elasticinframetrics processor](https://github.com/elastic/opentelemetry-collector-components/tree/main/processor/elasticinframetricsprocessor) in your pipeline:
 
  ```yaml
       service:
@@ -118,13 +116,13 @@ Important notes:
 
 ## Kubernetes metrics
 
-Kubernetes metrics can be collected using multiple receivers depending on the type and source of the metrics. Each receiver may require specific Kubernetes permissions, and some are best deployed as DaemonSets or singletons.
+You can collect Kubernetes metrics using multiple receivers depending on the type and source of the metrics. Each receiver might require specific Kubernetes permissions. Some are best deployed as DaemonSets or singletons.
 
 As with host metrics, use the [elasticinframetrics processor](https://github.com/elastic/opentelemetry-collector-components/tree/main/processor/elasticinframetricsprocessor) to ensure metrics align with the Kibana Infrastructure inventory.
 
 ### Kubelet metrics
 
-The [kubeletstats](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/kubeletstatsreceiver) receiver collects resource usage stats directly from the Kubelet's /stats/summary endpoint. These stats include pod-level and node-level metrics.
+The [kubeletstats](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/kubeletstatsreceiver) receiver collects resource usage stats directly from the Kubelet's /stats/summary endpoint. Stats include pod-level and node-level metrics.
 
 ```yaml
 kubeletstats:
@@ -163,8 +161,7 @@ kubeletstats:
     - container.id
 ```
 
-Deployment Recommendation: To capture stats from every node in the cluster, deploy the collector with the kubeletstats receiver as a DaemonSet.
-
+To capture stats from every node in the cluster, deploy the Collector with the kubeletstats receiver as a DaemonSet.
 
 ### Cluster metrics
 
@@ -193,7 +190,7 @@ k8s_cluster:
       enabled: true
 ```
 
-Deployment Recommendation: Run a single instance of this receiver (e.g., as a Deployment) with sufficient RBAC permissions to access the K8s API server.
+Run a single instance of this receiver, for example as a Deployment, with sufficient RBAC permissions to access the K8s API server.
 
 ## Other metrics
 
