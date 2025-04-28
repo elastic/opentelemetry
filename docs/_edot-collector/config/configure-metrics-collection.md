@@ -19,7 +19,7 @@ Hence, we recommend using OTel collector processing pipelines for pre-processing
 
 Any application emitting metrics through OTLP (OpenTelemetry Protocol) can forward them to the EDOT Collector using the OTLP receiver. This is the recommended method for collecting application-level telemetry.
 
-The following OTLP receiver configuration enables both gRPC and HTTP protocols for incoming OTLP traffic:
+The following OTLP receiver configuration turns on both gRPC and HTTP protocols for incoming OTLP traffic:
 
 ```yaml
 # [OTLP Receiver](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver)
@@ -32,11 +32,11 @@ receivers:
         endpoint: 0.0.0.0:4318
 ```
 
-Ensure your application is configured to export metrics using the OTLP protocol, targeting the endpoints provided in the previous example.
+Configure your application to export metrics using the OTLP protocol, targeting the endpoints provided in the previous example.
 
 ## Host metrics
 
-The [hostmetrics receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver) enables the collection of host-level metrics such as CPU usage, memory usage, and filesystem stats.
+The [hostmetrics receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver) turns on the collection of host-level metrics such as CPU use, memory use, and filesystem stats.
 
 The following configuration collects a standard set of host metrics that aligns with Elastic's Infrastructure dashboards in Kibana:
 
@@ -98,7 +98,7 @@ hostmetrics:
         match_type: strict
 ```
 
-Note that you must grant access to the /proc filesystem to the receiver, typically by running the Collector with privileged access or the corresponding capabilities, and mounting /proc and /sys appropriately. Refer to the hostmetrics container usage [guide](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver#collecting-host-metrics-from-inside-a-container-linux-only) (Linux only).
+You must grant access to the /proc filesystem to the receiver by running the Collector with privileged access and mounting /proc and /sys appropriately. Refer to the hostmetrics container use [guide](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver#collecting-host-metrics-from-inside-a-container-linux-only) (Linux only).
 
 Enabling the process scraper might significantly increase the volume of scraped metrics, potentially impacting performance. Refer to the upstream issue [#39423](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/39423) for discussion.
 
@@ -116,7 +116,7 @@ To ensure compatibility with Kibana's Infrastructure dashboards, include the [el
 
 ## Kubernetes metrics
 
-You can collect Kubernetes metrics using multiple receivers depending on the type and source of the metrics. Each receiver might require specific Kubernetes permissions. Some are best deployed as DaemonSets or singletons.
+You can collect Kubernetes metrics using multiple receivers depending on the type and source of the metrics. Each receiver might require specific Kubernetes permissions and require a deployment as DaemonSets or singletons.
 
 As with host metrics, use the [elasticinframetrics processor](https://github.com/elastic/opentelemetry-collector-components/tree/main/processor/elasticinframetricsprocessor) to ensure metrics align with the Kibana Infrastructure inventory.
 
@@ -190,7 +190,7 @@ k8s_cluster:
       enabled: true
 ```
 
-Run a single instance of this receiver, for example as a Deployment, with sufficient RBAC permissions to access the K8s API server.
+Run a single instance of this receiver, for example as a Deployment, with sufficient permissions to access the K8s API server.
 
 ## Other metrics
 
@@ -198,7 +198,7 @@ The EDOT Collector supports a wide range of metrics receivers for popular softwa
 
  - Redis ([redisreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/redisreceiver)): Retrieve Redis INFO data from a single Redis instance.
 
- - JMX-based applications ([jmxreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/jmxreceiver)): Launch a child JRE process running the JMX Metric Gatherer configured with your specified JMX connection information and target Groovy script. It then reports metrics to an implicitly created OTLP receiver.
+ - JMX-based applications ([jmxreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/jmxreceiver)): Open a child Java process running the JMX Metric Gatherer configured with your specified JMX connection information and target Groovy script. It then reports metrics to an implicitly created OTLP receiver.
 
  - Prometheus scrape targets ([prometheusreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/prometheusreceiver)): Receives metric data in [Prometheus](https://prometheus.io/) format.
 
