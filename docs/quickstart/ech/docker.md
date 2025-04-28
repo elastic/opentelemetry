@@ -62,7 +62,7 @@ Follow these steps to deploy the EDOT Collector and EDOT OTel SDKs in Docker wit
         - STORAGE_DIR=/usr/share/elastic-agent
    ```
 
-5. Start the collector by running:
+5. Start the Collector by running:
 
    ```bash
    docker compose up -d
