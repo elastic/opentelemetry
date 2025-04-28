@@ -70,8 +70,8 @@ Follow these steps to deploy the EDOT Collector and EDOT OTel SDKs in Docker wit
 
 6. **(Optional) Instrument your applications**
 
-    If you would like to collect telemetry from applications running on the host where you installed the EDOT Collector,
-    you need to instrument your target applications according to the setup instructions for corresponding EDOT SDKs:
+   To collect telemetry from applications running on the host where you installed the EDOT Collector, 
+   instrument your target applications following the setup instructions for the corresponding language:
 
     - [.NET](../../edot-sdks/dotnet/setup)
     - [Java](../../edot-sdks/java/setup)
