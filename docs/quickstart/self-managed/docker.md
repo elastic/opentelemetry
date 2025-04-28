@@ -61,6 +61,7 @@ The quick start for Docker with a self-managed Elastic Stack will guide you thro
         - ${OTEL_COLLECTOR_CONFIG}:/etc/otelcol-config.yml
       environment:
         - HOST_FILESYSTEM
+        - ELASTIC_AGENT_OTEL
         - ELASTIC_API_KEY
         - ELASTIC_ENDPOINT
         - STORAGE_DIR=/usr/share/elastic-agent

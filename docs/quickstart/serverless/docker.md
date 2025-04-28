@@ -20,7 +20,7 @@ logs and application traces and send the data through OTLP to your Elastic Serve
 
 1. Create a `otel-collector-config.yml` file with your EDOT collector configuration. See the [configuration reference](../../_edot-collector/config/default-config-standalone.md) for "Managed OTLP Endpoint" for more details.
 
-2. Retrieve the `Elastic OTLP Endpoint` and the `Elastic API Key` for your Serverless Project by [following these instructions](./#retrieving-connection-details-for-your-serverless-project).
+2. Retrieve the `Elastic OTLP Endpoint` and the `Elastic API Key` for your Serverless Project by [following these instructions](./#retrieve-connection-details-for-your-project).
 
 3. Create a `.env` file with the following content, replacing the placeholder values with your actual Elastic Cloud credentials:
 
@@ -55,6 +55,7 @@ logs and application traces and send the data through OTLP to your Elastic Serve
         - ${OTEL_COLLECTOR_CONFIG}:/etc/otelcol-config.yml
       environment:
         - HOST_FILESYSTEM
+        - ELASTIC_AGENT_OTEL
         - ELASTIC_API_KEY
         - ELASTIC_OTLP_ENDPOINT
         - STORAGE_DIR=/usr/share/elastic-agent

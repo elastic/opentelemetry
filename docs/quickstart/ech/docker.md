@@ -56,6 +56,7 @@ The quick start for Docker with with Elastic Cloud Hosted will guide you through
         - HOST_FILESYSTEM
         - ELASTIC_API_KEY
         - ELASTIC_ENDPOINT
+        - ELASTIC_AGENT_OTEL
         - STORAGE_DIR=/usr/share/elastic-agent
    ```
 
