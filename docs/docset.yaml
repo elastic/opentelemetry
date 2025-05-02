@@ -1,6 +1,26 @@
 project: 'EDOT docs'
 exclude:
+external_hosts:
+  - opentelemetry.io
+  - github.com
+  - elastic.co
 cross_links:
+  - apm-agent-android
+  - apm-agent-dotnet
+  - apm-agent-go
+  - apm-agent-ios
+  - apm-agent-java
+  - apm-agent-nodejs
+  - apm-agent-php
+  - apm-agent-python
+  - apm-agent-ruby
+  - apm-agent-rum-js
+  - apm-aws-lambda
+  - apm-k8s-attacher
+  - apm-server
+  - cloud
+  - cloud-on-k8s
+  - docs-content
 toc:
   - toc: reference
 # - toc: release-notes
