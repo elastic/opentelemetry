@@ -1,11 +1,11 @@
 ---
-title: Introduction
-layout: default
-nav_order: 1
-fa_icon_key: fa-solid fa-info
+navigation_title: Reference
+description: EDOT reference documentation.
 ---
 
-# Elastic Distributions of OpenTelemetry (EDOT)
+# Reference
+
+The following sub-pages contain reference documentation for EDOT.
 
 ## 🔭 What is OpenTelemetry?
 [OpenTelemetry](https://opentelemetry.io/docs/) is a vendor-neutral observability framework for collecting, processing, and exporting telemetry data. If you are new to OpenTelemetry we recommend reading OpenTelemetry [concepts](https://opentelemetry.io/docs/concepts/) and [components](https://opentelemetry.io/docs/concepts/components/).
@@ -39,7 +39,7 @@ Technical Preview distributions receive best-effort support and are not covered 
 
 ## 🚀 Get Started
 
-Pick the right [Quickstart Guide](./quickstart/index) for your environment 
+Pick the right [Quickstart Guide](./quickstart/index) for your environment
 
 **or** choose your observability use case:
 
@@ -55,14 +55,14 @@ These documentation pages are optimized for the following versions of the corres
 
 | Component | Version |
 |:---|:---:|
-|Elastic Stack | {{ site.edot_versions.stack }} |
-|EDOT Collector| {{ site.edot_versions.collector }} |
-|EDOT .NET| {{ site.edot_versions.dotnet }} |
-|EDOT Java| {{ site.edot_versions.java }} |
-|EDOT Node.js| {{ site.edot_versions.nodejs }} |
-|EDOT PHP| {{ site.edot_versions.php }} |
-|EDOT Python| {{ site.edot_versions.python }} |
-|EDOT Android| {{ site.edot_versions.android }} |
-|EDOT iOS| {{ site.edot_versions.ios }} |
+|Elastic Stack | <STACK_VERSION> |
+|EDOT Collector| <COLLECTOR_VERSION> |
+|EDOT .NET| <DOTNET_VERSION> |
+|EDOT Java| <JAVA_VERSION> |
+|EDOT Node.js| <NODEJS_VERSION> |
+|EDOT PHP| <PHP_VERSION> |
+|EDOT Python| <PYTHON_VERSION> |
+|EDOT Android| <ANDROID_VERSION> |
+|EDOT iOS| <IOS_VERSION> |
 
 For other versions [visit the documentation sources](https://github.com/elastic/opentelemetry/tags) in the GitHub repository.

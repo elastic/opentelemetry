@@ -1,10 +1,7 @@
 ---
-title: Setup
-layout: default
-nav_order: 1
-parent: EDOT Java
+navigation_title: Setup
+description: Instructions for setting up the Elastic Distribution of OpenTelemetry (EDOT) Java Agent in various environments, including Kubernetes and others.
 ---
-
 # Setting up the EDOT Java Agent
 
 **Kubernetes**
@@ -35,7 +32,7 @@ We also recommend setting the `service.name` resource attribute explicitly with 
 
 Here is an example to set `OTEL_EXPORTER_OTLP_ENDPOINT`, `OTEL_EXPORTER_OTLP_HEADERS` and `OTEL_SERVICE_NAME` environment variables:
 
-```bash
+```sh
 export OTEL_EXPORTER_OTLP_ENDPOINT=https://my-deployment.apm.us-west1.gcp.cloud.es.io
 export OTEL_EXPORTER_OTLP_HEADERS="Authorization=ApiKey P....l"
 export OTEL_SERVICE_NAME="my-awesome-service"
@@ -72,7 +69,7 @@ Connection to the EDOT Collector is managed by the OTel Kubernetes Operator, [fo
 Use the `-javaagent:` JVM argument with the path to agent jar, this requires to modify the JVM arguments and restart
 the application.
 
-```bash
+```sh
 java \
 -javaagent:/path/to/agent.jar \
 -jar myapp.jar

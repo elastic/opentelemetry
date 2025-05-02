@@ -1,8 +1,6 @@
 ---
-title: Setup
-layout: default
-nav_order: 1
-parent: EDOT PHP
+navigation_title: Setup
+description: Set up the Elastic Distribution of OpenTelemetry PHP to instrument your PHP application.
 ---
 
 <!-- TODO:
@@ -75,7 +73,9 @@ export OTEL_EXPORTER_OTLP_HEADERS="Authorization=ApiKey P....=="
 
 ### Run EDOT PHP
 
-:warning: After completing the configuration, you should restart the PHP process. If you are using PHP as an Apache Webserver module or PHP-FPM, you need to perform a **full** process restart to ensure that the extension with the agent is loaded correctly.
+:::warning
+After completing the configuration, you should restart the PHP process. If you are using PHP as an Apache Webserver module or PHP-FPM, you need to perform a **full** process restart to ensure that the extension with the agent is loaded correctly.
+:::
 
 ## 4. Confirm that EDOT PHP is working
 
@@ -85,8 +85,9 @@ To confirm that EDOT PHP has successfully connected to Elastic:
 1. You should see the name of the service to which you just added EDOT PHP. It can take several minutes after initializing EDOT PHP for the service to show up in this list.
 1. Click on the name in the list to see trace data.
 
-{: .note }
+:::note
 There may be no trace data to visualize unless you have _used_ your application since initializing EDOT PHP.
+:::
 
 ## 5. Next steps
 

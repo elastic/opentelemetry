@@ -1,8 +1,6 @@
 ---
-title: Frequently Asked Questions
-layout: default
-nav_order: 6
-parent: EDOT Node.js
+navigation_title: Frequently Asked Questions
+description: Frequently asked questions about the Elastic Distribution of OpenTelemetry Node.js (EDOT Node.js).
 ---
 
 # Frequently Asked Questions on EDOT Node.js
@@ -13,7 +11,7 @@ Set the `OTEL_SDK_DISABLED` environment variable to `true`, and restart your app
 
 ## How to disable an instrumentation?
 
-Set the [`OTEL_NODE_DISABLED_INSTRUMENTATIONS`](./configuration#otel_node_disabledenabled_instrumentations-details) environment variable.
+Set the [`OTEL_NODE_DISABLED_INSTRUMENTATIONS`](./configuration.md#otel_node_disabledenabled_instrumentations-details) environment variable.
 
 For example, to disable `@opentelemetry/instrumentation-net` and `@opentelemetry/instrumentation-dns`:
 

@@ -1,7 +1,6 @@
 ---
-title: Troubleshooting
-layout: default
-nav_order: 7
+navigation_title: Troubleshooting
+description: Troubleshooting tips and resources for the EDOT Collector.
 ---
 
 # Troubleshooting the EDOT Collector

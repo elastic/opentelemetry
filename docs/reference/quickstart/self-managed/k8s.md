@@ -1,5 +1,5 @@
 ---
-title: Kubernetes
+navigation_title: Kubernetes
 layout: default
 nav_order: 1
 parent: Self-managed

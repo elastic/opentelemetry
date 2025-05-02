@@ -1,10 +1,7 @@
 ---
-title: Features
-layout: default
-nav_order: 3
-parent: EDOT Java
+navigation_title: Features
+description: Explore the features of the Elastic Distribution of OpenTelemetry (EDOT) Java Agent, including inherited OpenTelemetry features and exclusive Elastic enhancements like inferred spans and universal profiling integration.
 ---
-
 # Features of the EDOT Java Agent
 
 The EDOT Java agent is a [distribution](https://opentelemetry.io/docs/concepts/distributions/) of

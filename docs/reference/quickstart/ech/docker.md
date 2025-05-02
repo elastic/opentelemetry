@@ -1,17 +1,9 @@
 ---
-title: Docker
-layout: default
-nav_order: 3
-parent: Elastic Cloud Hosted
+navigation_title: Docker
+description: Learn how to set up the EDOT Collector and EDOT SDKs in a Docker environment with Elastic Cloud Hosted to collect host metrics, logs and application traces.
 ---
 
 # Quickstart - Docker - Hosted
-
-🐳 Docker
-{: .label .label-blue }
-
-🗄️ Elastic Cloud Hosted
-{: .label .label-blue }
 
 Learn how to set up the EDOT Collector and EDOT SDKs in a Docker environment with Elastic Cloud Hosted to collect host metrics, logs and application traces.
 

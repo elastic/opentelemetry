@@ -1,8 +1,6 @@
 ---
-title: SDK Distributions
-parent: Compatibility & Support
-layout: default
-nav_order: 4
+navigation_title: SDK Distributions
+description: Compatibility and support information for EDOT SDK versions with EDOT Collector versions.
 ---
 
 # Compatibility & Support - OTel SDKs
@@ -10,76 +8,30 @@ nav_order: 4
 ### Legend
 
 | **[Incompatible]** | **[Compatible]** | **[Supported]** |
-| ❌ | 🟡 | ✅ |
+| :----------------- | :--------------- | :-------------- |
+| ❌                 | 🟡               | ✅              |
 
-For the best experience, export data from EDOT SDKs using the [EDOT Collector](https://elastic.github.io/opentelemetry/edot-collector/index).
+For the best experience, export data from EDOT SDKs using the [EDOT Collector](../edot-collector/index).
 
 ## Compatibility with EDOT Collector
 
 The following table gives an overview of compatibility and support of EDOT SDKs versions with the EDOT Collector versions:
 
-<table class="compatibility">
-    <thead>
-        <tr>
-            <th rowspan=2><b>EDOT SDK</b></th>
-            <th colspan=3><b>EDOT Collector</b></th>
-        </tr>
-        <tr>
-            <th>< 8.16</th>
-            <th>8.16 - 8.19</th>
-            <th>9.x</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td style="text-align:left;"><b>EDOT .NET</b></td>
-            <td>❌</td>
-            <td>🟡</td>
-            <td>✅</td>
-        </tr>
-        <tr>
-            <td style="text-align:left;"><b>EDOT Java</b></td>
-            <td>❌</td>
-            <td>🟡</td>
-            <td>✅</td>
-        </tr>
-        <tr>
-            <td style="text-align:left;"><b>EDOT Node.js</b></td>
-            <td>❌</td>
-            <td>🟡</td>
-            <td>✅</td>
-        </tr>
-        <tr>
-            <td style="text-align:left;"><b>EDOT PHP</b></td>
-            <td>❌</td>
-            <td>🟡</td>
-            <td>✅</td>
-        </tr>
-        <tr>
-            <td style="text-align:left;"><b>EDOT Python</b></td>
-            <td>❌</td>
-            <td>🟡</td>
-            <td>✅</td>
-        </tr>
-        <tr>
-            <td style="text-align:left;"><b>EDOT Android</b></td>
-            <td>❌</td>
-            <td>🟡</td>
-            <td>✅</td>
-        </tr>
-        <tr>
-            <td style="text-align:left;"><b>EDOT iOS</b></td>
-            <td>❌</td>
-            <td>🟡</td>
-            <td>✅</td>
-        </tr>
-    </tbody>
-</table>
+| **EDOT SDK**     | **< 8.16** | **8.16 - 8.19** | **9.x** |
+| :--------------- | :--------- | :-------------- | :------ |
+| **EDOT .NET**    | ❌         | 🟡              | ✅      |
+| **EDOT Java**    | ❌         | 🟡              | ✅      |
+| **EDOT Node.js** | ❌         | 🟡              | ✅      |
+| **EDOT PHP**     | ❌         | 🟡              | ✅      |
+| **EDOT Python**  | ❌         | 🟡              | ✅      |
+| **EDOT Android** | ❌         | 🟡              | ✅      |
+| **EDOT iOS**     | ❌         | 🟡              | ✅      |
 
 Refer to the [EDOT Collector compatibility table](./collectors#edot-collector-compatibility-with-elastic-stack) for compatibility with Elastic Stack versions.
 
-{: .note}
-> Ingesting data from EDOT SDKs through EDOT Collector into Elastic Stack versions 8.18 or higher is supported (✅).
+:::{note}
+Ingesting data from EDOT SDKs through EDOT Collector into Elastic Stack versions 8.18 or higher is supported (✅).
+:::
 
 ## Supported Technologies per EDOT SDK
 

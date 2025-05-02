@@ -1,8 +1,8 @@
 ---
-title: Migration
-layout: default
-nav_order: 5
-parent: EDOT Python
+navigation_title: Migration
+description: Migrating to EDOT Python from the Elastic APM Python Agent.
+applies_to:
+  serverless: all
 ---
 
 # Migrating to EDOT Python from the Elastic APM Python Agent

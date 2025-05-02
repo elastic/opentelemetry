@@ -1,8 +1,8 @@
 ---
-title: Configuration
-layout: default
-nav_order: 2
-parent: EDOT Python
+navigation_title: Configuration
+description: Configure the Elastic Distribution of OpenTelemetry Python (EDOT Python) to send data to Elastic.
+applies_to:
+  serverless: all
 ---
 
 # Configuration
@@ -42,8 +42,9 @@ Instrument Python `logging` module to format and forward logs in OTLP format is 
 export OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED=true
 ```
 
-{: .note }
+:::{note}
 Enabling this will make any call to [logging.basicConfig](https://docs.python.org/3/library/logging.html#logging.basicConfig) from your application a no-op.
+:::
 
 #### Differences from OpenTelemetry Python
 
@@ -55,8 +56,9 @@ EDOT Python uses different defaults than OpenTelemetry Python for the following 
 | `OTEL_METRICS_EXEMPLAR_FILTER` | `always_off` | `trace_based` |
 | `OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE` | `DELTA` | `CUMULATIVE` |
 
-{: .note }
+:::{note}
 `OTEL_EXPERIMENTAL_RESOURCE_DETECTORS` cloud resource detectors are dynamically set. When running in a Kubernetes Pod it will be set to `process_runtime,os,otel,telemetry_distro,service_instance,_gcp,aws_eks`.
+:::
 
 
 ### Configuration options that are _only_ available in EDOT Python

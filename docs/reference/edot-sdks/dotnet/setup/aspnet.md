@@ -1,9 +1,5 @@
 ---
-title: ASP.NET
-layout: default
-nav_order: 2
-parent: Setup
-grand_parent: EDOT .NET
+navigation_title: ASP.NET
 ---
 
 # Set up EDOT .NET for ASP.NET applications on .NET Framework
@@ -19,8 +15,9 @@ reference to your project file:
 <PackageReference Include="Elastic.OpenTelemetry" Version="<LATEST>" />
 ```
 
-{: .note }
+:::{note}
 Replace the `<LATEST>` version placeholder with the [latest available package from NuGet.org](https://www.nuget.org/packages/Elastic.OpenTelemetry).
+:::
 
 EDOT .NET includes a transitive dependency on the OpenTelemetry SDK, so you do not _need_ to add the OpenTelemetry SDK package to your project directly. However,
 you _can_ explicitly add the OpenTelemetry SDK as a dependency if you want to opt into newer SDK versions.
@@ -33,12 +30,14 @@ reference to your project file:
 <PackageReference Include="OpenTelemetry.Instrumentation.AspNet" Version="<LATEST>" />
 ```
 
-{: .note }
+:::{note}
 Replace the `<LATEST>` version placeholder with the [latest available package from NuGet.org](https://www.nuget.org/packages/Elastic.OpenTelemetry).
+:::
 
-{: .note }
+:::{note}
 If you use the Visual Studio NuGet Package Manager or the .NET CLI to install this package, you will need to allow pre-release
 package versions.
+:::
 
 ## Modify web.config
 

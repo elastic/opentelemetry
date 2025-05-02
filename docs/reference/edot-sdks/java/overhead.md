@@ -1,10 +1,7 @@
 ---
-title: Performance overhead
-layout: default
-nav_order: 8
-parent: EDOT Java
+navigation_title: Performance overhead
+description: Understand the performance overhead associated with the Elastic Distribution of OpenTelemetry (EDOT) Java Agent compared to the classic Elastic APM agent and no agent.
 ---
-
 # Performance overhead
 
 While it is designed to and usually have minimal performance overhead, the EDOT Java agent, like any instrumentation agent,

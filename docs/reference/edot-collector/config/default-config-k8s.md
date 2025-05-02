@@ -1,81 +1,42 @@
 ---
-title: Default Config—Kubernetes
+navigation_title: Default Config—Kubernetes
 parent: Configuration
-layout: default
 nav_order: 2
 ---
 
 # Default Configuration - EDOT Collectors on Kubernetes
-{: .no_toc }
 
 The [Kubernetes setup](../../quickstart/index) utilizes the OpenTelemetry Operator to automate orchestration of EDOT Collectors:
- 
+
 * [EDOT Collector Cluster](#pipeline---cluster-collector): Collection of cluster metrics.
 * [EDOT Collector Daemon](#pipeline---daemonset-collectors): Collection of node metrics, logs and application telemetry.
 * [EDOT Collector Gateway](#pipeline---gateway-collectors): Pre-processing, aggregation and ingestion of data into Elastic.
 
-<table>
-    <thead>
-        <tr>
-            <td style="text-align:center;"><b>Direct ingestion into Elasticsearch</b></td>
-            <td style="text-align:center;"><b>Managed OTLP Endpoint</b></td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td style="text-align:center;">
-                <pre class="mermaid">
-                    flowchart LR
-                        cluster@{ shape: proc, label: "Cluster
-                        Collector
-                        fa:fa-microchip"} -->|otlp| gateway@{ shape: procs, label: "Gateway
-                        Collectors
-                        fa:fa-microchip"}
+| Direct ingestion into Elasticsearch | Managed OTLP Endpoint |
+|---|---|
+| ```mermaid
+flowchart LR
+    cluster@{ shape: proc, label: "Cluster\nCollector\nfa:fa-microchip"} -->|otlp| gateway@{ shape: procs, label: "Gateway\nCollectors\nfa:fa-microchip"}
 
-                        daemon@{ shape: procs, label: "Daemonset
-                        Collectors
-                        fa:fa-microchip"} -->|otlp| gateway
+    daemon@{ shape: procs, label: "Daemonset\nCollectors\nfa:fa-microchip"} -->|otlp| gateway
 
-                        gateway ==>|_bulk| es@{ shape: db, label: "Elasticsearch" }
+    gateway ==>|_bulk| es@{ shape: db, label: "Elasticsearch" }
 
-                        style es stroke:#33f,stroke-width:2px,color:#000;
-                </pre>
-            </td>
-            <td style="text-align:center;">
-                <pre class="mermaid">
-                    flowchart LR
-                        cluster@{ shape: proc, label: "Cluster
-                        Collector
-                        fa:fa-microchip"} -->|otlp| gateway@{ shape: procs, label: "Gateway
-                        Collectors
-                        fa:fa-microchip"}
+    style es stroke:#33f,stroke-width:2px,color:#000;
+``` | ```mermaid
+flowchart LR
+    cluster@{ shape: proc, label: "Cluster\nCollector\nfa:fa-microchip"} -->|otlp| gateway@{ shape: procs, label: "Gateway\nCollectors\nfa:fa-microchip"}
 
-                        daemon@{ shape: procs, label: "Daemonset
-                        Collectors
-                        fa:fa-microchip"} -->|otlp| gateway
+    daemon@{ shape: procs, label: "Daemonset\nCollectors\nfa:fa-microchip"} -->|otlp| gateway
 
-                        gateway ==>|otlp| otlp@{ shape: display, label: "Managed
-                        OTLP endpoint" }
+    gateway ==>|otlp| otlp@{ shape: display, label: "Managed\nOTLP endpoint" }
 
-                        style otlp stroke:#33f,stroke-width:2px,color:#000;
-                </pre>
-            </td>
-        </tr>
-        <tr>
-            <td style="text-align:center;">
-                <a href="https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{ site.edot_versions.collector }}/deploy/helm/edot-collector/kube-stack/values.yaml">📄 K8s - ES</a>
-            </td>
-            <td style="text-align:center;">
-            <a href="https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{ site.edot_versions.collector }}/deploy/helm/edot-collector/kube-stack/managed_otlp/values.yaml">📄 K8s - OTLP</a>
-            </td>
-        </tr>
-    </tbody>
-</table>
+    style otlp stroke:#33f,stroke-width:2px,color:#000;
+``` |
+| [📄 K8s - ES](https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v<COLLECTOR_VERSION>/deploy/helm/edot-collector/kube-stack/values.yaml) | [📄 K8s - OTLP](https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v<COLLECTOR_VERSION>/deploy/helm/edot-collector/kube-stack/managed_otlp/values.yaml) |
 
 The following sections describe the default pipelines for the different roles of EDOT collectors in a Kubernetes setup.
 
-- TOC
-{:toc}
 
 ## Pipeline - Cluster Collector
 

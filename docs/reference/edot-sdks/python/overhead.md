@@ -1,8 +1,8 @@
 ---
-title: Performance Overhead
-layout: default
-nav_order: 8
-parent: EDOT Python
+navigation_title: Performance Overhead
+description: Performance overhead comparison between EDOT Python and Elastic APM Python Agent.
+applies_to:
+  serverless: all
 ---
 
 ## Performance Overhead

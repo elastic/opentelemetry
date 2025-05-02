@@ -1,8 +1,6 @@
 ---
-title: Nomenclature
-parent: Compatibility & Support
-layout: default
-nav_order: 1
+navigation_title: Nomenclature
+description: Explanation of compatibility and support states (Incompatible, Compatible, Supported) for EDOT components.
 ---
 
 # Compatibility & Support Nomenclature
@@ -16,7 +14,7 @@ Elastic Distributions for OpenTelemetry (EDOT) are built from upstream OTel comp
 In the following sections we differentiate the following compatibility and support states:
 
 | State            | Description                                                                                                                                                                                                                                                                                                               | Symbol |
-|:-----------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:------:|
+| :--------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-----: |
 | **Incompatible** | Component, use case or ingestion path is technically not compatible, thus, functionality is likely to be significantly impacted.                                                                                                                                                                                          |   ❌    |
 | **Compatible**   | Component, use case or ingestion path is **technically compatible**. The functionality is not expected to be impaired, though, minor deviations may occur. Component, use case or ingestion path is *not officially supported by Elastic*, hence, Elastic does not provide guaranteed support or troubleshooting assistance |   🟡   |
 | **Supported**    | Component, use case or ingestion path is **technically compatible** and Elastic provides **official support**. The functionality is explicitly tested. Limitations will be documented.                                                                                                                                    |   ✅    |
@@ -26,19 +24,21 @@ The EDOT Collector includes two types of components with different compatibility
 
 ### Core Components
 
-These are used by default in Elastic’s onboarding flows and are essential for common use cases. 
+These are used by default in Elastic’s onboarding flows and are essential for common use cases.
 They are **fully supported** (✅) under your Service Level Agreement (SLA).
 
 ### Extended Components
 
-A curated set of optional components that enhance functionality and are **technically compatible** (🟡). 
-These are not part of Elastic’s core product journeys and are not covered by SLAs. 
+A curated set of optional components that enhance functionality and are **technically compatible** (🟡).
+These are not part of Elastic’s core product journeys and are not covered by SLAs.
 You’re free to use them, but Elastic provides limited support.
 
-{: .note-title}
-> Recommendation
->
-> For the best support experience, we recommend relying on *Core Components*, and using *Extended Components* only when required.
+:::{note}
+**Recommendation**
 
-{: .warning}
-> Since the EDOT Collector is built on upstream OpenTelemetry, breaking upstream changes (e.g., to semantic conventions or configuration options) may impact both, *Extended Components* and *Core Components*. Elastic highlights and manages these through docs and support channels.
+For the best support experience, we recommend relying on *Core Components*, and using *Extended Components* only when required.
+:::
+
+:::{warning}
+Since the EDOT Collector is built on upstream OpenTelemetry, breaking upstream changes (e.g., to semantic conventions or configuration options) may impact both, *Extended Components* and *Core Components*. Elastic highlights and manages these through docs and support channels.
+:::

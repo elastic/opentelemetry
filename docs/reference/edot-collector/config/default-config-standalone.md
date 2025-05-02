@@ -1,18 +1,16 @@
 ---
-title: Default Config—Standalone
+navigation_title: Default Config—Standalone
 parent: Configuration
-layout: default
 nav_order: 1
 ---
 
 # Default Configuration - Standalone EDOT Collector
-{: .no_toc }
 
 The standalone EDOT Collector comes with a default configuration that covers pipelines for the collection of logs, host metrics and data from OTel SDKs.
 The following sampling files are available:
 
 | Use Cases | Direct ingestion into Elasticsearch | Managed OTLP Endpoint |
-|:---|:---:|:---:|
+|---|---|---|
 | Platform logs | [📄 Logs - ES] | [📄 Logs - OTLP] |
 | Platform logs & host metrics | [📄 Logs &#124; Metrics - ES] | [📄 Logs &#124; Metrics - OTLP] |
 | Platform logs, host metrics,<br>application telemetry | [📄 Logs &#124; Metrics &#124; App - ES]<br>(*default*) | [📄 Logs &#124; Metrics &#124; App - OTLP]<br>(*default*) |
@@ -21,13 +19,10 @@ Use the above example configurations as a reference when configuring your upstre
 
 The following sections describe the pipelines of the above configurations split down by single use cases.
 
-- TOC
-{:toc}
-
 ## Direct Ingestion into Elasticsearch
 
-For *self-managed* and *Elastic Cloud Hosted* Stack deployment use cases (as of Elastic Stack version {{ site.edot_versions.collector }}), we recommend ingesting OpenTelemetry data
-from the EDOT Collector directly into Elasticsearch using the [`elasticsearch`] exporter. 
+For *self-managed* and *Elastic Cloud Hosted* Stack deployment use cases (as of Elastic Stack version <COLLECTOR_VERSION>), we recommend ingesting OpenTelemetry data
+from the EDOT Collector directly into Elasticsearch using the [`elasticsearch`] exporter.
 
 Learn more about the configuration options for the `elasticsearch` exporter in the [corresponding documentation](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/elasticsearchexporter/README.md#configuration-options) or learn about [common configuration use cases](./configure-data-ingestion) for the `elasticsearch` exporter.
 
@@ -78,12 +73,13 @@ The application pipeline in the EDOT Collector receives data from OTel SDKs thro
 
 The [`elastictrace`] processor enriches trace data with additional attributes that improve the user experience in the Elastic Observability UIs. In addition, the [`elasticapm`] connector generates pre-aggregated APM metrics from tracing data.
 
-{: .note}
+:::{note}
 > Both components, `elastictrace` and `elasticapm` are required for Elastic APM UIs to work properly. However, both components are not (yet) included in the OpenTelemetry [Collector Contrib repository](https://github.com/open-telemetry/opentelemetry-collector-contrib). Thus, to use OpenTelemetry with Elastic for APM use cases one of the following options is available:
 >
 > * use the EDOT Collector with that configuration to ingest data into Elasticsearch
 > * **or** [build a custom, EDOT-like ](../custom-collector) for ingesting data into Elasticsearch
 > * **or** use Elastic's [managed OTLP endpoint](../../quickstart/serverless/index) that would do the enrichment for you
+:::
 
 Application-related OTel data is ingested into Elasticsearch in OTel-native format using the [`elasticsearch`] exporter.
 
@@ -151,9 +147,9 @@ As you can see, with the managed OTLP Endpoint there is no need for configuring 
 [`resource`]: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/resourceprocessor
 [`resourcedetection`]: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/resourcedetectionprocessor
 [`OTLP`]: https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver
-[📄 Logs - ES]: https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{ site.edot_versions.collector }}/internal/pkg/otel/samples/linux/platformlogs.yml
-[📄 Logs - OTLP]: https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{ site.edot_versions.collector }}/internal/pkg/otel/samples/linux/managed_otlp/platformlogs.yml
-[📄 Logs &#124; Metrics - ES]: https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{ site.edot_versions.collector }}/internal/pkg/otel/samples/linux/platformlogs_hostmetrics.yml
-[📄 Logs &#124; Metrics - OTLP]: https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{ site.edot_versions.collector }}/internal/pkg/otel/samples/linux/managed_otlp/platformlogs_hostmetrics.yml
-[📄 Logs &#124; Metrics &#124; App - ES]: https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{ site.edot_versions.collector }}/internal/pkg/otel/samples/linux/managed_otlp/logs_metrics_traces.yml
-[📄 Logs &#124; Metrics &#124; App - OTLP]: https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{ site.edot_versions.collector }}/internal/pkg/otel/samples/linux/managed_otlp/logs_metrics_traces.yml
+[📄 Logs - ES]: https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v<COLLECTOR_VERSION>/internal/pkg/otel/samples/linux/platformlogs.yml
+[📄 Logs - OTLP]: https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v<COLLECTOR_VERSION>/internal/pkg/otel/samples/linux/managed_otlp/platformlogs.yml
+[📄 Logs &#124; Metrics - ES]: https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v<COLLECTOR_VERSION>/internal/pkg/otel/samples/linux/platformlogs_hostmetrics.yml
+[📄 Logs &#124; Metrics - OTLP]: https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v<COLLECTOR_VERSION>/internal/pkg/otel/samples/linux/managed_otlp/platformlogs_hostmetrics.yml
+[📄 Logs &#124; Metrics &#124; App - ES]: https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v<COLLECTOR_VERSION>/internal/pkg/otel/samples/linux/managed_otlp/logs_metrics_traces.yml
+[📄 Logs &#124; Metrics &#124; App - OTLP]: https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v<COLLECTOR_VERSION>/internal/pkg/otel/samples/linux/managed_otlp/logs_metrics_traces.yml

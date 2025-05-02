@@ -1,8 +1,5 @@
 ---
-title: Configuration
-layout: default
-nav_order: 2
-parent: EDOT .NET
+navigation_title: Configuration
 ---
 
 # Configuring the EDOT .NET SDK
@@ -64,8 +61,9 @@ For example, you can define the configuration for the Elastic Distribution of Op
 }
 ```
 
-{: .note }
+:::{note}
 This example sets the file log directory to `C:\Logs` which enables diagnostic file logging.
+:::
 
 Configuration parsed from the `Elastic:OpenTelemetry` section of the `IConfiguration` instance will be
 bound to the `ElasticOpenTelemetryOptions` instance used to configure EDOT .NET.

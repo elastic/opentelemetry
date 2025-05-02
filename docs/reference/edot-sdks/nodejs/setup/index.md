@@ -1,8 +1,6 @@
 ---
-title: Setup
-layout: default
-nav_order: 1
-parent: EDOT Node.js
+navigation_title: Setup
+description: How to set up the Elastic Distribution of OpenTelemetry Node.js (EDOT Node.js).
 ---
 
 # Setting up EDOT Node.js
@@ -22,14 +20,14 @@ export OTEL_SERVICE_NAME="my-app"
 node --import @elastic/opentelemetry-node my-app.js
 ```
 
-This setup guide covers each of these steps. (If you are deploying in Kubernetes, see the [Kubernetes setup guide](./k8s).)
+This setup guide covers each of these steps. (If you are deploying in Kubernetes, see the [Kubernetes setup guide](./k8s.md).)
 
 
 ## Prerequisites
 
 Before getting started, you'll need somewhere to send the gathered OpenTelemetry data, so it can be viewed and analyzed. This doc assumes you're using an Elastic Observability deployment. You can use an existing one or set up a new one.
 
-Follow the EDOT [Quickstart guide](../../../quickstart/) to get a deployment and gather the `ELASTIC_OTLP_ENDPOINT` and `ELASTIC_API_KEY` pieces of data that you'll need to configure the EDOT Node.js SDK.
+Follow the EDOT [Quickstart guide](../../../quickstart/index.md) to get a deployment and gather the `ELASTIC_OTLP_ENDPOINT` and `ELASTIC_API_KEY` pieces of data that you'll need to configure the EDOT Node.js SDK.
 
 
 ## Installation
@@ -51,12 +49,13 @@ EDOT Node.js is configured with environment variables beginning with `OTEL_` or 
 
 To configure EDOT Node.js, as a typical minimum you will need:
 
-* `OTEL_EXPORTER_OTLP_ENDPOINT`: The full URL of an OpenTelemetry Collector where data will be sent. When using Elastic Observability, this will be the "ingest" endpoint of an Elastic Cloud Serverless project or the URL of a deployed [EDOT Collector](../../../edot-collector/) **Set this to the `ELASTIC_OTLP_ENDPOINT` value as described in the [EDOT Quickstart pages](../../../quickstart/).**
-* `OTEL_EXPORTER_OTLP_HEADERS`: A comma-separated list of HTTP headers used for exporting data, typically used to set the `Authorization` header with auth information. **Get an `ELASTIC_API_KEY` as described in the [EDOT Quickstart pages](../../../quickstart/) and set this to `"Authorization=ApiKey ELASTIC_API_KEY"`.**
+* `OTEL_EXPORTER_OTLP_ENDPOINT`: The full URL of an OpenTelemetry Collector where data will be sent. When using Elastic Observability, this will be the "ingest" endpoint of an Elastic Cloud Serverless project or the URL of a deployed [EDOT Collector](../../../edot-collector/index.md) **Set this to the `ELASTIC_OTLP_ENDPOINT` value as described in the [EDOT Quickstart pages](../../../quickstart/index.md).**
+* `OTEL_EXPORTER_OTLP_HEADERS`: A comma-separated list of HTTP headers used for exporting data, typically used to set the `Authorization` header with auth information. **Get an `ELASTIC_API_KEY` as described in the [EDOT Quickstart pages](../../../quickstart/index.md) and set this to `"Authorization=ApiKey ELASTIC_API_KEY"`.**
 * `OTEL_SERVICE_NAME`: The name of your service, used to distinguish telemetry data from other services in your system. If not set, it will default to `unknown_service:node`.
 
-{: .note }
-> In some environments, for example in some Kubernetes setups, a *local* OpenTelemetry Collector (e.g. EDOT Collector) is deployed with an endpoint of `http://localhost:4318`. This is the default exporter endpoint used by EDOT Node.js. In this case the `OTEL_EXPORTER_OTLP_ENDPOINT` environment variable does not need to be set.
+:::note
+In some environments, for example in some Kubernetes setups, a *local* OpenTelemetry Collector (e.g. EDOT Collector) is deployed with an endpoint of `http://localhost:4318`. This is the default exporter endpoint used by EDOT Node.js. In this case the `OTEL_EXPORTER_OTLP_ENDPOINT` environment variable does not need to be set.
+:::
 
 ### Additional common configuration
 
@@ -67,7 +66,7 @@ Some other common configuration settings that are good to know:
 * `OTEL_LOG_LEVEL=verbose`: This can be used to get more internal logging data from EDOT Node.js when investigating issues with telemetry.
 * `OTEL_SDK_DISABLED=true`: This can be used to fully disable EDOT Node.js, perhaps when troubleshooting.
 
-For more information on all the available configuration options, refer to [Configuration](../configuration).
+For more information on all the available configuration options, refer to [Configuration](../configuration.md).
 
 
 ## Start EDOT Node.js
@@ -89,7 +88,7 @@ node my-app.js
 
 <!-- TODO: Refer to other ways to start the SDK when have ref for that. -->
 
-EDOT Node.js will automatically instrument popular modules (listed in [Supported technologies](../supported-technologies)) used by your service, and send traces, metrics, and logs telemetry data (using OTLP) to your configured observability backend.
+EDOT Node.js will automatically instrument popular modules (listed in [Supported technologies](../supported-technologies.md)) used by your service, and send traces, metrics, and logs telemetry data (using OTLP) to your configured observability backend.
 
 ## Confirm instrumentation is working
 
@@ -99,5 +98,5 @@ To confirm that EDOT Node.js has be setup successfully:
 2. Go to **Applications** → **Service Inventory** in your Elastic deployment.
 3. You should see the name of your service. (It can take a minute or two after starting your service with EDOT Node.js for the service to show up in this list.)
 
-If you do not see your service, work through [the Troubleshooting guide](../troubleshooting).
+If you do not see your service, work through [the Troubleshooting guide](../troubleshooting.md).
 

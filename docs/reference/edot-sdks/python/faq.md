@@ -1,8 +1,8 @@
 ---
-title: Frequently Asked Questions
-layout: default
-nav_order: 7
-parent: EDOT Python
+navigation_title: Frequently Asked Questions
+description: Frequently Asked Questions on EDOT Python.
+applies_to:
+  serverless: all
 ---
 
 # Frequently Asked Questions on EDOT Python

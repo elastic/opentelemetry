@@ -1,8 +1,5 @@
 ---
-title: EDOT .NET
-layout: default
-nav_order: 2
-fa_icon_key: fa-solid fa-n
+navigation_title: EDOT .NET
 ---
 
 # EDOT .NET
@@ -12,8 +9,9 @@ The Elastic Distribution of OpenTelemetry .NET (EDOT .NET) provides an extension
 EDOT .NET makes it easier to get started using OpenTelemetry in your .NET applications through strictly OpenTelemetry native means while also providing a smooth 
 and rich out-of-the-box experience with [Elastic Observability](https://www.elastic.co/observability).
 
-{: .note }
+:::{note}
 To learn more about OpenTelemetry distributions in general, visit the [OpenTelemetry documentation](https://opentelemetry.io/docs/concepts/distributions).
+:::
 
 -------
 **Getting started**
@@ -40,8 +38,9 @@ observed by default.
 * Ensuring that the OpenTelemetry protocol [(OTLP) exporter](https://opentelemetry.io/docs/specs/otlp) is enabled by default.
 * Instrumentation assembly scanning to automatically enable instrumentation from installed contrib NuGet packages.
 
-{: .warning }
-> Instrumentation assembly scanning is not supported for applications using native [AOT](https://learn.microsoft.com/dotnet/core/deploying/native-aot) compilation.
+:::{warning}
+Instrumentation assembly scanning is not supported for applications using native [AOT](https://learn.microsoft.com/dotnet/core/deploying/native-aot) compilation.
+:::
 
 ## .NET runtime support
 

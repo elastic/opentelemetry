@@ -1,8 +1,6 @@
 ---
-title: Troubleshooting
-layout: default
-nav_order: 4
-parent: EDOT PHP
+navigation_title: Troubleshooting
+description: Troubleshooting the Elastic Distribution of OpenTelemetry PHP agent.
 ---
 
 # Troubleshooting the EDOT PHP Agent
@@ -27,7 +25,9 @@ Additionally, it is recommended to enable logging for OpenTelemetry components, 
 export OTEL_LOG_LEVEL=DEBUG
 ```
 
-> **IMPORTANT:** _Please upload your complete debug logs_ to a service like [GitHub Gist](https://gist.github.com) so that we can analyze the problem. Logs should include everything from when the application starts up until the first request executes. It is important to note that logs may contain sensitive data — be sure to review and sanitize them before sharing.
+:::important
+Please upload your complete debug logs to a service like [GitHub Gist](https://gist.github.com) so that we can analyze the problem. Logs should include everything from when the application starts up until the first request executes. It is important to note that logs may contain sensitive data — be sure to review and sanitize them before sharing.
+:::
 
 
 ## Disable the Agent
@@ -37,7 +37,9 @@ you can disable the agent while you troubleshoot.
 
 You can disable the agent by setting [`elastic_otel.enabled`](./configuration#general-configuration) to `false`.
 
-> **IMPORTANT:** You'll need to restart your application for the changes to apply.
+:::important
+You'll need to restart your application for the changes to apply.
+:::
 
 
 ## Agent is not instrumenting code
@@ -62,7 +64,9 @@ export ELASTIC_OTEL_NATIVE_OTLP_SERIALIZER_ENABLED=false
 
 Restart your application and check if spans/logs/metrics start appearing correctly.
 
-> **Note:** When disabled, the agent falls back to a PHP-based serializer, which has lower performance.
+:::note
+When disabled, the agent falls back to a PHP-based serializer, which has lower performance.
+:::
 
 
 ### `open_basedir` PHP configuration option
@@ -99,11 +103,13 @@ If there are multiple PHP processes in your system, we allow you to specify dire
 
 - `%t` - In this place, the agent will substitute the UNIX timestamp.
 
->:warning: **IMPORTANT:** After setting the path, remember to _fully restart the process_ for which you are collecting diagnostic information. This may vary depending on the context, such as PHP, PHP-FPM, Apache, or PHP-CGI. Diagnostic information will be recorded after the first HTTP request is made or at the beginning of script execution for PHP-CLI.
->
->Please also be aware that the information contained in the output file may include sensitive data, such as passwords, security tokens or environment variables from your system. Make sure to review the data and mask sensitive information before sharing the file publicly.
->
->After collecting diagnostic information, remember to disable this feature and restore the previous configuration in php.ini or the environment variable.
+:::warning IMPORTANT
+After setting the path, remember to _fully restart the process_ for which you are collecting diagnostic information. This may vary depending on the context, such as PHP, PHP-FPM, Apache, or PHP-CGI. Diagnostic information will be recorded after the first HTTP request is made or at the beginning of script execution for PHP-CLI.
+
+Please also be aware that the information contained in the output file may include sensitive data, such as passwords, security tokens or environment variables from your system. Make sure to review the data and mask sensitive information before sharing the file publicly.
+
+After collecting diagnostic information, remember to disable this feature and restore the previous configuration in php.ini or the environment variable.
+:::
 
 
 What information will be collected:

@@ -1,8 +1,8 @@
 ---
-title: LLM Observability
-layout: default
-nav_order: 2
-parent: Use Cases
+navigation_title: LLM Observability
+description: Overview of LLM observability with EDOT, including supported technologies and quickstart instructions.
+applies_to:
+  serverless: all # Assuming default applicability, adjust if needed
 ---
 # LLM Observability with EDOT
 

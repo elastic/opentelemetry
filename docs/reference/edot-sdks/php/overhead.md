@@ -1,8 +1,6 @@
 ---
-title: Performance overhead
-layout: default
-nav_order: 8
-parent: EDOT PHP
+navigation_title: Performance overhead
+description: Performance comparison of PHP instrumentation agents.
 ---
 
 ## Performance Comparison of PHP Instrumentation Agents

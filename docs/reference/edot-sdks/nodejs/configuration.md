@@ -1,8 +1,6 @@
 ---
-title: Configuration
-layout: default
-nav_order: 2
-parent: EDOT Node.js
+navigation_title: Configuration
+description: How to configure the Elastic Distribution of OpenTelemetry Node.js (EDOT Node.js) using environment variables.
 ---
 
 # Configuring the EDOT Node.js SDK
@@ -31,16 +29,15 @@ export OTEL_SERVICE_NAME=my-app
 
 This section attempts to list all environment variables that can be used to configure EDOT Node.js. Some settings also have a section below discussing behavior that is interesting and/or specific to EDOT Node.js.
 
-{: .warning }
-> The behavior of `OTEL_` environment variables are typically defined by upstream OpenTelemetry dependencies of EDOT Node.js. In some cases, these dependencies have a "development" status (`0.x` versions). This means that their behavior can be broken in a minor release of EDOT Node.js.
+:::warning
+The behavior of `OTEL_` environment variables are typically defined by upstream OpenTelemetry dependencies of EDOT Node.js. In some cases, these dependencies have a "development" status (`0.x` versions). This means that their behavior can be broken in a minor release of EDOT Node.js.
+:::
 
-<dl style="font-size: 0.875rem; grid-template-columns: 3em 1fr; margin-top: 2em">
-  <dt>❇</dt>
-  <dd>Marks settings that are more commonly used.</dd>
+❇
+: Marks settings that are more commonly used.
 
-  <dt>🔹</dt>
-  <dd>Marks settings with a default value or behavior that differs between EDOT Node.js and upstream OTel JS, or that only exists in EDOT Node.js.</dd>
-</dl>
+🔹
+: Marks settings with a default value or behavior that differs between EDOT Node.js and upstream OTel JS, or that only exists in EDOT Node.js.
 
 | Name | Notes |
 | :--- | :---- |
@@ -123,7 +120,7 @@ This section attempts to list all environment variables that can be used to conf
 This section includes additional details on some configuration settings that merit more explanation, or that have behavior that differs in EDOT Node.js when compared to upstream OpenTelemetry JS.
 
 
-### `OTEL_NODE_RESOURCE_DETECTORS` details
+### `OTEL_NODE_RESOURCE_DETECTORS` details [otel_node_resource_detectors-details]
 
 A comma-separated list of named resource detectors to use. EDOT Node.js supports the same set as the upstream [`@opentelemetry/auto-instrumentations-node`](https://github.com/open-telemetry/opentelemetry-js-contrib/blob/main/metapackages/auto-instrumentations-node/README.md#usage-auto-instrumentation):
 
@@ -149,12 +146,12 @@ export OTEL_NODE_RESOURCE_DETECTORS=env,host,os,process,serviceinstance,containe
 In addition, EDOT Node.js always includes the [`telemetry.distro.*` resource attributes](https://opentelemetry.io/docs/specs/semconv/attributes-registry/telemetry/).
 
 
-### `OTEL_NODE_{DISABLED,ENABLED}_INSTRUMENTATIONS` details
+### `OTEL_NODE_{DISABLED,ENABLED}_INSTRUMENTATIONS` details [otel_node_disabledenabled_instrumentations-details]
 
 `OTEL_NODE_DISABLED_INSTRUMENTATIONS` is a comma-separated list of instrumentation names to disable, from the default set.
 `OTEL_NODE_ENABLED_INSTRUMENTATIONS` is a comma-separated list of instrumentation names to enable. Specifying this results in *only* those instrumentations being enabled.
 
-The default set of enabled instrumentations is [the set of included instrumentations](./supported-technologies#instrumentations), minus any that are noted as ["disabled by default"](./supported-technologies#disabled-instrumentations).
+The default set of enabled instrumentations is [the set of included instrumentations](./supported-technologies.md#instrumentations), minus any that are noted as ["disabled by default"](./supported-technologies.md#disabled-instrumentations).
 
 EDOT Node.js handles these settings the same as the upstream [`@opentelemetry/auto-instrumentations-node`](https://github.com/open-telemetry/opentelemetry-js-contrib/blob/main/metapackages/auto-instrumentations-node/README.md#usage-auto-instrumentation), with one addition. In `@opentelemetry/auto-instrumentations-node`, the name of an instrumentation is the name of the package with the `@opentelemetry/instrumentation-` prefix removed -- `cassandra-driver` refers to the instrumentation provided by `@opentelemetry/instrumentation-cassandra`. EDOT Node.js can include instrumentations that do not have this prefix, e.g. `@elastic/opentelemetry-instrumentation-openai`. In these cases, the "name" for the instrumentation is the full package name. For example, to enable only instrumentation for openai, http, fastify, and pino one could use:
 
@@ -163,14 +160,14 @@ export OTEL_NODE_ENABLED_INSTRUMENTATIONS=http,fastify,pino,@elastic/opentelemet
 ```
 
 
-### `ELASTIC_OTEL_METRICS_DISABLED` details
+### `ELASTIC_OTEL_METRICS_DISABLED` details [elastic_otel_metrics_disabled-details]
 
 EDOT Node.js enables the collection and export of metrics by default. If you wish to disable metrics you can by setting the environment variable `ELASTIC_OTEL_METRICS_DISABLED` to the string `true`.
 
 Setting `ELASTIC_OTEL_METRICS_DISABLED=true` is similar to setting `OTEL_METRICS_EXPORTER=none`, in that it ensures no metrics are exported by the SDK. However, this setting will also disable the collection of metrics by the `@opentelemetry/host-metrics` and `@opentelemetry/instrumentation-runtime-node` packages, which can be a minor performace improvement.
 
 
-### `OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE` details
+### `OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE` details [otel_exporter_otlp_metrics_temporality_preference-details]
 
 Elasticsearch and Kibana work best with metrics provided in delta-temporality.
 Therefore, the EDOT Node.js changes the default value of `OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE` to `delta`.
@@ -181,7 +178,7 @@ Upstream OpenTelemetry defaults the temporality preference to `cumulative`. See 
 <!-- TODO: assumes https://github.com/elastic/elastic-otel-node/pull/670 will be merged -->
 
 
-### `OTEL_SEMCONV_STABILITY_OPT_IN` details
+### `OTEL_SEMCONV_STABILITY_OPT_IN` details [otel_semconv_stability_opt_in-details]
 
 The `OTEL_SEMCONV_STABILITY_OPT_IN` environment variable is defined by OpenTelemetry as the mechanism for user-controlled migration from experimental to stable semantic conventions. Currently it only applies to HTTP semantic conventions. See [the OpenTelemetry HTTP semconv stability migration doc](https://opentelemetry.io/docs/specs/semconv/non-normative/http-migration/) for an introduction.
 
@@ -193,7 +190,7 @@ For Node.js usage, the following instrumentations produce telemetry using HTTP s
 EDOT Node.js differs from current upstream OTel JS in that it *defaults `OTEL_SEMCONV_STABILITY_OPT_IN` to `http`*. This means that, by default, all HTTP-related telemetry from EDOT Node.js will use the newer, stable HTTP semantic conventions. (This difference from upstream is expected to be temporary, as upstream `@opentelemetry/instrumentation-http` switches to producing only stable HTTP semantic conventions after its transition period.)
 
 
-### `OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT` details
+### `OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT` details [otel_instrumentation_genai_capture_message_content-details]
 
 Set `OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT` to `true` to
 enable capture of content data, such as prompt and completion content, in GenAI telemetry. Currently this applies to the [`@elastic/opentelemetry-instrumentation-openai` instrumentation for the OpenAI Node.js client](https://github.com/elastic/elastic-otel-node/tree/main/packages/instrumentation-openai/#configuration) that is included in EDOT Node.js

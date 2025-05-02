@@ -1,9 +1,8 @@
 ---
-title: Customization
-layout: default
-nav_order: 6
-parent: Monitoring on Kubernetes
-grand_parent: Use Cases
+navigation_title: Customization
+description: Guide on customizing the EDOT installation parameters for Kubernetes monitoring.
+applies_to:
+  serverless: all # Assuming default applicability, adjust if needed
 ---
 
 # Customizing configuration

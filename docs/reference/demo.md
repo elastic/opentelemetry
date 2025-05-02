@@ -1,10 +1,16 @@
 ---
-title: Demo
-layout: default
-nav_order: 6
-fa_icon_key: fa-solid fa-desktop
+navigation_title: Demo
+description: Demo setup for EDOT.
 ---
 
-# OpenTelemetry Demo
+# Demo
 
-Visit the [EDOT OpenTelemetry Playground](https://ela.st/demo-otel)
+A demo environment showcasing EDOT capabilities is available in the [opentelemetry-demo repository](https://github.com/elastic/opentelemetry-demo).
+
+This demo includes:
+
+*   Sample applications instrumented with OpenTelemetry SDKs.
+*   EDOT Collector configured for various scenarios (e.g., Kubernetes, hosts).
+*   Integration with an Elastic Stack deployment (Elasticsearch and Kibana).
+
+Follow the instructions in the repository's README to set up and run the demo.

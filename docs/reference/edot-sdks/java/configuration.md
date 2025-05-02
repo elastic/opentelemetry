@@ -1,27 +1,24 @@
 ---
-title: Configuration
-layout: default
-nav_order: 2
-parent: EDOT Java
+navigation_title: Configuration
+description: Learn how to configure the Elastic Distribution of OpenTelemetry (EDOT) Java Agent, including minimal setup, configuration options, and methods like environment variables and system properties.
 ---
-
 # Configuring the EDOT Java Agent
 
 The [minimal configuration](#minimal-configuration) section provides a recommended starting point for EDOT Java configuration.
 
-See [configuration options](#configuration-options) for details on the supported configuration options and [configuration methods](#configuration-methods) for how to provide them. 
+See [configuration options](#configuration-options) for details on the supported configuration options and [configuration methods](#configuration-methods) for how to provide them.
 
 ## Minimal configuration
 
-This configuration is provided using [environment variables](#environment-variables), other [configuration methods](#configuration-methods) are also supported. 
+This configuration is provided using [environment variables](#environment-variables), other [configuration methods](#configuration-methods) are also supported.
 
-```shell
+```sh
 # service name: mandatory for integration in UI and correlation
 OTEL_SERVICE_NAME=my-service
 
 # resource attributes: recommended for integration in UI and correlation, can also include service.name
 OTEL_RESOURCE_ATTRIBUTES='service.version=1.0,deployment.environment.name=production'
- 
+
 # exporter endpoint: mandatory if not using a local collector accessible on http://localhost:4317
 OTEL_EXPORTER_OTLP_ENDPOINT=https://my-otel-collector
 
@@ -30,7 +27,7 @@ OTEL_EXPORTER_OTLP_HEADERS='Authorization=ApiKey mySecretApiKey'
 ```
 
 For authentication, the `OTEL_EXPORTER_OTLP_HEADERS` can also be used with an APM secret token:
-```shell
+```sh
 OTEL_EXPORTER_OTLP_HEADERS='Authorization=Bearer mySecretToken'
 ```
 

@@ -1,8 +1,6 @@
 ---
-title: Supported Technologies
-layout: default
-nav_order: 3
-parent: EDOT PHP
+navigation_title: Supported Technologies
+description: Supported technologies for the Elastic Distribution of OpenTelemetry PHP.
 ---
 
 # EDOT PHP supports the following technologies
@@ -11,16 +9,19 @@ parent: EDOT PHP
 
 EDOT PHP sends data via the OpenTelemetry protocol (OTLP). While OTLP ingest works with later 8.16+ versions of the EDOT Collector, for full support it is strongly recommended that you use either [EDOT Collector](../../edot-collector/) versions 9.x or [Elastic Cloud Serverless](https://www.elastic.co/guide/en/serverless/current/intro.html) for OTLP ingest.
 
-{: .note}
-> Ingesting data from EDOT SDKs through EDOT Collector 9.x into Elastic Stack versions 8.18+ *is supported*.
+:::note
+Ingesting data from EDOT SDKs through EDOT Collector 9.x into Elastic Stack versions 8.18+ *is supported*.
+:::
 
 See [EDOT SDKs compatibility](../../compatibility/sdks) for support details.
 
 ## PHP Versions
 - PHP 8.1 - 8.4
 
-> Unlike the upstream OpenTelemetry PHP agent, EDOT PHP supports extension-level instrumentation starting from PHP 8.1 (not just 8.2).
-> This allows you to capture **detailed traces** from libraries such as **cURL**, **PDO**, and **MySQLi**, even in PHP 8.1 environments.
+:::note
+Unlike the upstream OpenTelemetry PHP agent, EDOT PHP supports extension-level instrumentation starting from PHP 8.1 (not just 8.2).
+This allows you to capture **detailed traces** from libraries such as **cURL**, **PDO**, and **MySQLi**, even in PHP 8.1 environments.
+:::
 
 ## Supported PHP SAPI's
 - php-cli
@@ -63,5 +64,7 @@ EDOT PHP supports all popular variations of using PHP in combination with a web 
 - **Asynchronous data sending**
   Sends telemetry data in the background to avoid impacting application performance, ensuring minimal latency and efficient resource usage.
 
-> EDOT PHP supports background data transmission (non-blocking export), but **only when the exporter is set to `http/protobuf` (OTLP over HTTP)** — which is the default configuration.
-> If you change the exporter or the transport protocol (e.g., to gRPC or another format), telemetry data will be sent **synchronously**, potentially impacting request latency.
+:::note
+EDOT PHP supports background data transmission (non-blocking export), but **only when the exporter is set to `http/protobuf` (OTLP over HTTP)** — which is the default configuration.
+If you change the exporter or the transport protocol (e.g., to gRPC or another format), telemetry data will be sent **synchronously**, potentially impacting request latency.
+:::

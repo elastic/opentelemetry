@@ -1,8 +1,6 @@
 ---
-title: Compatibility & Support
-layout: default
-nav_order: 5
-fa_icon_key: fa-solid fa-puzzle-piece
+navigation_title: Compatibility & Support
+description: Compatibility and support levels for different OpenTelemetry Distributions.
 ---
 
 # Compatibility & Support

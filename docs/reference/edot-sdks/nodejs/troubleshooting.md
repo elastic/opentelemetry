@@ -1,8 +1,6 @@
 ---
-title: Troubleshooting
-layout: default
-nav_order: 4
-parent: EDOT Node.js
+navigation_title: Troubleshooting
+description: Troubleshooting guide for the Elastic Distribution of OpenTelemetry Node.js (EDOT Node.js).
 ---
 
 # Troubleshooting the EDOT Node.js SDK
@@ -14,7 +12,7 @@ If you need help and you're an existing Elastic customer with a support contract
 
 ## Is your app compatible with the SDK's supported technologies?
 
-First, review the [supported technologies](./supported-technologies) to ensure your application is supported by the SDK. Are you using a Node.js version that the SDK supports? Are the versions of your dependencies in the [supported version range](./supported-technologies#instrumentations) to be instrumented?
+First, review the [supported technologies](./supported-technologies.md) to ensure your application is supported by the SDK. Are you using a Node.js version that the SDK supports? Are the versions of your dependencies in the [supported version range](./supported-technologies.md#instrumentations) to be instrumented?
 
 
 ## Have you set a service name?
@@ -33,7 +31,7 @@ curl -i $ELASTIC_OTLP_ENDPOINT \
     -H "Authorization: ApiKey $ELASTIC_API_KEY"
 ```
 
-For example, if you [configured](./configuration#basic-configuration) EDOT Node.js with:
+For example, if you [configured](./configuration.md#basic-configuration) EDOT Node.js with:
 
 ```bash
 export OTEL_EXPORTER_OTLP_ENDPOINT="https://my-deployment-abc123.ingest.us-west-2.aws.elastic.cloud"
@@ -80,7 +78,7 @@ node --import @elastic/opentelemetry-node my-app.js
 ```
 
 
-## SDK diagnostic logs
+## SDK diagnostic logs [sdk-diagnostic-logs]
 
 Next, enable verbose diagnostic / debug logging from EDOT Node.js:
 
@@ -118,6 +116,7 @@ When opening an issue:
 2. **Describe your application/service/system architecture** as accurately as possible.
 3. Include as much **[diagnostic log output](#sdk-diagnostic-logs)** as possible.
 
-{: .warning }
-> Though an effort is made to avoid it, verbose/debug diagnostic logs **can include sensitive information**. Therefore it is **not** recommended that the full log is included in public forums or GitHub issues. (This is less of a concern for private Elastic customer support.)
+:::warning
+Though an effort is made to avoid it, verbose/debug diagnostic logs **can include sensitive information**. Therefore it is **not** recommended that the full log is included in public forums or GitHub issues. (This is less of a concern for private Elastic customer support.)
+:::
 

@@ -1,20 +1,19 @@
 ---
-title: Supported Technologies
-layout: default
-nav_order: 3
-parent: EDOT Node.js
+navigation_title: Supported Technologies
+description: Supported technologies for the Elastic Distribution of OpenTelemetry Node.js (EDOT Node.js).
 ---
 
 # Technologies Supported by the EDOT Node.js SDK
 
 ## EDOT Collector / Elastic Stack versions
 
-The Elastic Distribution of OpenTelemetry Node.js (EDOT Node.js) sends data via the OpenTelemetry protocol (OTLP). While OTLP ingest works with later 8.16+ versions of the EDOT Collector, for full support it is strongly recommended that you use either [EDOT Collector](../../edot-collector/) versions 9.x or [Elastic Cloud Serverless](https://www.elastic.co/guide/en/serverless/current/intro.html) for OTLP ingest.
+The Elastic Distribution of OpenTelemetry Node.js (EDOT Node.js) sends data via the OpenTelemetry protocol (OTLP). While OTLP ingest works with later 8.16+ versions of the EDOT Collector, for full support it is strongly recommended that you use either [EDOT Collector](../../edot-collector/index.md) versions 9.x or [Elastic Cloud Serverless](https://www.elastic.co/guide/en/serverless/current/intro.html) for OTLP ingest.
 
-{: .note}
-> Ingesting data from EDOT SDKs through EDOT Collector 9.x into Elastic Stack versions 8.18+ *is supported*.
+:::note
+Ingesting data from EDOT SDKs through EDOT Collector 9.x into Elastic Stack versions 8.18+ *is supported*.
+:::
 
-See [EDOT SDKs compatibility](../../compatibility/sdks) for support details.
+See [EDOT SDKs compatibility](../../compatibility/sdks.md) for support details.
 
 ## Node.js versions
 
@@ -34,7 +33,7 @@ To use this package, `@elastic/opentelemetry-node`, in TypeScript code requires:
 - using `"module": "node16"` (or "nodenext") in "tsconfig.json" to get support for handling the "exports" entry in package.json. This is so the `@elastic/opentelemetry-node/sdk` entry-point can be used. (See https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-7.html#ecmascript-module-support-in-nodejs)
 
 
-## Instrumentations
+## Instrumentations [instrumentations]
 
 The following instrumentations are included in EDOT Node.js. All are enabled by default, except those noted "disabled by default".
 🔹 marks instrumentations that differ between EDOT Node.js and upstream OTel JS, or that only exist in EDOT Node.js.
@@ -87,14 +86,14 @@ We can instrument the following LLM (Large Language Model) libraries with instru
 <sup>(1)</sup> Support for [chat](https://platform.openai.com/docs/api-reference/chat) and [embeddings](https://platform.openai.com/docs/api-reference/embeddings) API endpoints.
 
 
-### Disabled instrumentations
+### Disabled instrumentations [disabled-instrumentations]
 
 The following instrumentations are included in EDOT Node.js, but *disabled by default*:
 
 - `@opentelemetry/instrumentation-fs` (Disabled upstream in [open-telemetry/opentelemetry-js-contrib#2467](https://github.com/open-telemetry/opentelemetry-js-contrib/pull/2467).)
 - `@opentelemetry/instrumentation-fastify` (Deprecated upstream and slated for removal. See [open-telemetry/opentelemetry-js-contrib#2652](https://github.com/open-telemetry/opentelemetry-js-contrib/pull/2652))
 
-To enable these instrumentations, use the [`OTEL_NODE_ENABLED_INSTRUMENTATIONS` environment variable](./configuration#otel_node_disabledenabled_instrumentations-details). Make sure you list all the instrumentations you need for your service since only the ones in that list will be enabled. For example:
+To enable these instrumentations, use the [`OTEL_NODE_ENABLED_INSTRUMENTATIONS` environment variable](./configuration.md#otel_node_disabledenabled_instrumentations-details). Make sure you list all the instrumentations you need for your service since only the ones in that list will be enabled. For example:
 
 ```bash
 export OTEL_EXPORTER_OTLP_ENDPOINT="https://my-deployment-abc123.ingest.us-west-2.aws.elastic.cloud"

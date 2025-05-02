@@ -1,8 +1,8 @@
 ---
-title: Monitoring on Kubernetes
-layout: default
-nav_order: 1
-parent: Use Cases
+navigation_title: Monitoring on Kubernetes
+description: Detailed description of the Kubernetes setup for EDOT, including components and customization guidance.
+applies_to:
+  serverless: all # Assuming default applicability, adjust if needed
 ---
 
 # Monitoring on Kubernetes with EDOT

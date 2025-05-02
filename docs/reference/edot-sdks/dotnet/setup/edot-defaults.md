@@ -1,9 +1,5 @@
 ---
-title: Opinionated defaults
-layout: default
-nav_order: 6
-parent: Setup
-grand_parent: EDOT .NET
+navigation_title: Opinionated defaults
 ---
 
 # EDOT .NET opinionated defaults
@@ -85,8 +81,9 @@ automatically registering them when present.
 - [OpenTelemetry.Resources.OperatingSystem](https://www.nuget.org/packages/OpenTelemetry.Resources.OperatingSystem)
 - [OpenTelemetry.Resources.Process](https://www.nuget.org/packages/OpenTelemetry.Resources.Process)
 
-{: .warning }
-> Instrumentation assembly scanning is not supported for applications using native [AOT](https://learn.microsoft.com/dotnet/core/deploying/native-aot) compilation.
+:::{warning}
+Instrumentation assembly scanning is not supported for applications using native [AOT](https://learn.microsoft.com/dotnet/core/deploying/native-aot) compilation.
+:::
 
 ## Defaults for tracing
 
@@ -100,8 +97,9 @@ the built-in `System.Net.Http` source is now the recommended choice. If the targ
 depends on the `OpenTelemetry.Instrumentation.Http` package, EDOT .NET assumes it should be
 used instead of the built-in source.
 
-{: .note }
+:::{note}
 When upgrading applications to .NET 9 and newer, consider removing the package reference to `OpenTelemetry.Instrumentation.Http`.
+:::
 
 On all other runtimes, when using the NuGet installation method, a transistive dependency is included for the 
 [OpenTelemetry.Instrumentation.Http](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.Http)
@@ -151,8 +149,9 @@ registering them when present.
 - [OpenTelemetry.Instrumentation.StackExchangeRedis](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.StackExchangeRedis)
 - [OpenTelemetry.Instrumentation.Wcf](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.Wcf)
 
-{: .warning }
-> Instrumentation assembly scanning is not supported for applications using native [AOT](https://learn.microsoft.com/dotnet/core/deploying/native-aot) compilation.
+:::{warning}
+Instrumentation assembly scanning is not supported for applications using native [AOT](https://learn.microsoft.com/dotnet/core/deploying/native-aot) compilation.
+:::
 
 #### ASP.NET Core defaults
 
@@ -178,8 +177,9 @@ the built-in `System.Net.Http` meter is therefore recommended.
 If the target application has an explicit dependency on the `OpenTelemetry.Instrumentation.Http` package, 
 EDOT .NET assumes that it should be used instead of the built-in meter. 
 
-{: .note }
+:::{note}
 When upgrading applications to .NET 9 and newer, consider removing the package reference to `OpenTelemetry.Instrumentation.Http`.
+:::
 
 On all other runtimes, when using the NuGet installation method, a transistive dependency is included for the 
 [OpenTelemetry.Instrumentation.Http](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.Http)
@@ -194,8 +194,9 @@ the built-in `System.Runtime` meter is therefore recommended.
 If the target application has an explicit dependency on the `OpenTelemetry.Instrumentation.Runtime` package,
 EDOT .NET assumes that it should be used instead of the built-in meter.
 
-{: .note }
+:::{note}
 When upgrading applications to .NET 9 and newer, consider removing the package reference to `OpenTelemetry.Instrumentation.Runtime`.
+:::
 
 On all other runtimes, when using the NuGet installation method, a transistive dependency is included for the 
 [OpenTelemetry.Instrumentation.Runtime](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.Runtime)
@@ -240,8 +241,9 @@ registering them when present.
 - [OpenTelemetry.Instrumentation.Runtime](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.Runtime)
 - [OpenTelemetry.Instrumentation.Process](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.Process)
 
-{: .warning }
-> Instrumentation assembly scanning is not supported for applications using native [AOT](https://learn.microsoft.com/dotnet/core/deploying/native-aot) compilation.
+:::{warning}
+Instrumentation assembly scanning is not supported for applications using native [AOT](https://learn.microsoft.com/dotnet/core/deploying/native-aot) compilation.
+:::
 
 ### Configuration defaults
 
@@ -268,15 +270,17 @@ Instrumentation assembly scanning is enabled by default and is designed to simpl
 code required to configure the OpenTelemetry SDK. Instrumentation assembly scanning uses reflection
 to invoke the required registration method for the contrib instrumentation and resource detector packages.
 
-{: .warning }
-> It may not be safe to manually call the `AddXyzInstrumentation` method in combination with assembly scanning,
-> for all instrumentations. When using EDOT .NET, we strongly recommend you remove the registration of instrumentation
-> to avoid overhead and mitigate the potential for duplicated spans. This has a positive side-effect of simplifying the
-> code you need to manage.
+:::{warning}
+It may not be safe to manually call the `AddXyzInstrumentation` method in combination with assembly scanning,
+for all instrumentations. When using EDOT .NET, we strongly recommend you remove the registration of instrumentation
+to avoid overhead and mitigate the potential for duplicated spans. This has a positive side-effect of simplifying the
+code you need to manage.
+:::
 
 Alternatively, if you need to configure advanced options when registering instrumentation,
 disable instrumentation assembly scanning via [configuration](./../configuration) and prefer manually registering
 all instrumentation in your application code.
 
-{: .warning }
-> Instrumentation assembly scanning is not supported for applications using native [AOT](https://learn.microsoft.com/dotnet/core/deploying/native-aot) compilation.
+:::{warning}
+Instrumentation assembly scanning is not supported for applications using native [AOT](https://learn.microsoft.com/dotnet/core/deploying/native-aot) compilation.
+:::

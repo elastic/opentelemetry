@@ -1,11 +1,7 @@
 ---
-title: Kubernetes
-layout: default
-nav_order: 1
-parent: Setup
-grand_parent: EDOT Java
+navigation_title: Kubernetes Setup
+description: Guide on instrumenting Java applications on Kubernetes using the OpenTelemetry Operator, EDOT Collectors, and the EDOT Java SDK.
 ---
-
 # Instrumenting Java applications with EDOT SDKs on Kubernetes
 
 This document focuses on instrumenting Java applications on Kubernetes, using the OpenTelemetry Operator, Elastic Distribution of OpenTelemetry (EDOT) Collectors, and the EDOT Java SDK.
@@ -32,14 +28,15 @@ For this example, we assume the application you're instrumenting is a deployment
 
 1. Ensure you have successfully [installed the OpenTelemetry Operator](../../../use-cases/kubernetes/deployment), and confirm that the following `Instrumentation` object exists in the system:
 
-    ```bash
+    ```sh
     $ kubectl get instrumentation -n opentelemetry-operator-system
     NAME                      AGE    ENDPOINT
     elastic-instrumentation   107s   http://opentelemetry-kube-stack-daemon-collector.opentelemetry-operator-system.svc.cluster.local:4318
     ```
 
-    {: .note }
-    > If your `Instrumentation` object has a different name or is created in a different namespace, you will have to adapt the annotation value in the next step.
+:::{note}
+> If your `Instrumentation` object has a different name or is created in a different namespace, you will have to adapt the annotation value in the next step.
+:::
 
 2. Enable auto-instrumentation of your Java application using one of the following methods:
 
@@ -62,7 +59,7 @@ For this example, we assume the application you're instrumenting is a deployment
 
     - Alternatively, add the annotation at namespace level to apply auto-instrumentation in all Pods of the namespace:
 
-        ```bash
+        ```sh
         kubectl annotate namespace java-ns instrumentation.opentelemetry.io/inject-java=opentelemetry-operator-system/elastic-instrumentation
         ```
 
@@ -70,7 +67,7 @@ For this example, we assume the application you're instrumenting is a deployment
 
     Once the annotation has been set, restart the application to create new Pods and inject the instrumentation libraries:
 
-    ```bash
+    ```sh
     kubectl rollout restart deployment java-app -n java-ns
     ```
 
@@ -80,7 +77,7 @@ For this example, we assume the application you're instrumenting is a deployment
 
     - There should be an init container named `opentelemetry-auto-instrumentation-java` in the Pod:
 
-        ```bash
+        ```sh
         $ kubectl describe pod java-app-8d84c47b8-8h5z2 -n java-ns
         Name:             java-app-8d84c47b8-8h5z2
         Namespace:        java-ns

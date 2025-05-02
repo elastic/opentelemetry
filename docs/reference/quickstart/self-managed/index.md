@@ -1,8 +1,6 @@
 ---
-title: Self-managed
-layout: default
-nav_order: 1
-parent: Quickstart
+navigation_title: Self-managed
+description: Before following the quickstart guides to setup your EDOT deployment, make sure to install your self-managed Elastic Stack.
 ---
 
 # Quickstart with a Self-managed Elastic Stack

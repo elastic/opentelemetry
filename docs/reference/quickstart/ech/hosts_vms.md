@@ -1,17 +1,9 @@
 ---
-title: Hosts & VMs
-layout: default
-nav_order: 2
-parent: Elastic Cloud Hosted
+navigation_title: Hosts & VMs
+description: The quick start for Hosts / VMs with with Elastic Cloud Hosted will guide you through setting up the EDOT Collector and EDOT SDKs to collect host metrics, logs and application traces.
 ---
 
 # Quickstart
-
-🖥 Hosts / VMs
-{: .label .label-red }
-
-🗄️ Elastic Cloud Hosted
-{: .label .label-blue }
 
 The quick start for Hosts / VMs with with Elastic Cloud Hosted will guide you through setting up the EDOT Collector and EDOT SDKs to collect host metrics, logs and application traces.
 
@@ -65,10 +57,11 @@ The quick start for Hosts / VMs with with Elastic Cloud Hosted will guide you th
 
 3. **Run the EDOT Collector**
 
-    Execute the following command to run the EDOT Collector. 
-    
-    {: .note }
+    Execute the following command to run the EDOT Collector.
+
+    :::note
     The Collector will open the ports `4317` and `4318` to receive application data from locally running OTel SDKs.
+    :::
 
     *Linux / MacOS*
 

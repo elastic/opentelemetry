@@ -1,15 +1,15 @@
 ---
-title: Upgrade
-layout: default
-nav_order: 5
-parent: Monitoring on Kubernetes
-grand_parent: Use Cases
+navigation_title: Upgrade
+description: Instructions for upgrading the EDOT Helm chart release for Kubernetes monitoring.
+applies_to:
+  serverless: all # Assuming default applicability, adjust if needed
 ---
 
 ## Upgrade
 
-{: .note }
+:::note
 > Before upgrading or updating the release configuration refer to [compatibility matrix](./prerequisites-compatibility#compatibility-matrix) for a list of supported versions and [customizing configuration](./customization#customizing-configuration) for a list of supported configurable parameters.
+:::
 
 To upgrade an installed release, run a `helm upgrade` command providing the desired chart version and using the correct `values.yaml` for your environment. For example:
 

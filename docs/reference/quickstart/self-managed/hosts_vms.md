@@ -1,17 +1,9 @@
 ---
-title: Hosts / VMs
-layout: default
-nav_order: 2
-parent: Self-managed
+navigation_title: Hosts / VMs
+description: The quick start for Hosts / VMs with a self-managed Elastic Stack will guide you through setting up the EDOT Collector and EDOT SDKs to collect host metrics, logs and application traces.
 ---
 
 # Quickstart
-
-🖥 Hosts / VMs
-{: .label .label-red }
-
-🆂 Self-managed Elastic Stack
-{: .label .label-yellow }
 
 The quick start for Hosts / VMs with a self-managed Elastic Stack will guide you through setting up the EDOT Collector and EDOT SDKs to collect host metrics, logs and application traces.
 
@@ -21,7 +13,7 @@ The quick start for Hosts / VMs with a self-managed Elastic Stack will guide you
 
 2. **Configure the EDOT Collector**
 
-    Retrieve your [Elasticsearch endpoint](https://www.elastic.co/guide/en/kibana/current/search-space-connection-details.html){:target="_blank"} and [API key](https://www.elastic.co/guide/en/kibana/current/api-keys.html){:target="_blank"} and replace `<ELASTICSEARCH_ENDPOINT>` and `<ELASTIC_API_KEY>` before applying the below command.
+    Retrieve your [Elasticsearch endpoint](https://www.elastic.co/guide/en/kibana/current/search-space-connection-details.html) and [API key](https://www.elastic.co/guide/en/kibana/current/api-keys.html) and replace `<ELASTICSEARCH_ENDPOINT>` and `<ELASTIC_API_KEY>` before applying the below command.
 
     *Linux*
 
@@ -63,10 +55,11 @@ The quick start for Hosts / VMs with a self-managed Elastic Stack will guide you
 
 3. **Run the EDOT Collector**
 
-    Execute the following command to run the EDOT Collector. 
-    
-    {: .note }
+    Execute the following command to run the EDOT Collector.
+
+    :::note
     The Collector will open the ports `4317` and `4318` to receive application data from locally running OTel SDKs.
+    :::
 
     *Linux / MacOS*
 

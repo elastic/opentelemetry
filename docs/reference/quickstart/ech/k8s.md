@@ -1,17 +1,9 @@
 ---
-title: Kubernetes
-layout: default
-nav_order: 1
-parent: Elastic Cloud Hosted
+navigation_title: Kubernetes
+description: The quick start for Kubernetes with Elastic Cloud Hosted covers the collection of OpenTelemetry data for infrastructure monitoring, logs collection and application monitoring.
 ---
 
 # Quickstart - Kubernetes - Hosted
-
-☸️ Kubernetes
-{: .label .label-purple }
-
-🗄️ Elastic Cloud Hosted
-{: .label .label-blue }
 
 The quick start for Kubernetes with Elastic Cloud Hosted covers the collection of OpenTelemetry data for infrastructure monitoring,
 logs collection and application monitoring.
@@ -36,8 +28,9 @@ logs collection and application monitoring.
     --from-literal=elastic_api_key='<ELASTIC_API_KEY>'
     ```
 
-    {: .note}
+    :::note
     > On Windows PowerShell, replace backslashes (`\`) with backticks (`` ` ``) for line continuation and single quotes (`'`) with double quotes (`"`).
+    :::
 
 3. **Install Operator**
 
@@ -46,7 +39,7 @@ logs collection and application monitoring.
     ```bash
     helm install opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack \
     --namespace opentelemetry-operator-system \
-    --values 'https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{ site.edot_versions.collector }}/deploy/helm/edot-collector/kube-stack/values.yaml' \
+    --values 'https://raw.githubusercontent.com/elastic/elastic-agent/main/deploy/helm/edot-collector/kube-stack/values.yaml' \
     --version '0.3.9'
     ```
 

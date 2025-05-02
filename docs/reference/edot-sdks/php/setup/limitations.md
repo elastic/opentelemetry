@@ -1,9 +1,6 @@
 ---
-title: Limitations
-layout: default
-nav_order: 1
-parent: Setup
-grand_parent: EDOT PHP
+navigation_title: Limitations
+description: Limitations of the Elastic Distribution of OpenTelemetry PHP.
 ---
 
 # Limitations

@@ -1,8 +1,8 @@
 ---
-title: Supported Technologies
-layout: default
-nav_order: 3
-parent: EDOT Python
+navigation_title: Supported Technologies
+description: Technologies Supported by the EDOT Python SDK.
+applies_to:
+  serverless: all
 ---
 
 # Technologies Supported by the EDOT Python SDK
@@ -11,8 +11,9 @@ parent: EDOT Python
 
 EDOT Python sends data via the OpenTelemetry protocol (OTLP). While OTLP ingest works with later 8.16+ versions of the EDOT Collector, for full support it is strongly recommended that you use either [EDOT Collector](../../edot-collector/) versions 9.x or [Elastic Cloud Serverless](https://www.elastic.co/guide/en/serverless/current/intro.html) for OTLP ingest.
 
-{: .note}
+:::{note}
 > Ingesting data from EDOT SDKs through EDOT Collector 9.x into Elastic Stack versions 8.18+ *is supported*.
+:::
 
 See [EDOT SDKs compatibility](../../compatibility/sdks) for support details.
 

@@ -1,8 +1,8 @@
 ---
-title: EDOT Python
-layout: default
-nav_order: 6
-fa_icon_key: fa-brands fa-python
+navigation_title: EDOT Python
+description: The Elastic Distribution of OpenTelemetry Python (EDOT Python) is a customized version of OpenTelemetry Python.
+applies_to:
+  serverless: all
 ---
 
 # EDOT Python

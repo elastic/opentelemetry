@@ -1,14 +1,13 @@
 ---
-title: Overview
-layout: default
-nav_order: 1
+navigation_title: Overview
+description: Introduction to the Elastic Distribution of OpenTelemetry (EDOT) Collector, a curated and supported distribution of the OpenTelemetry Collector.
 ---
 
 # EDOT Collector
 
 The **Elastic Distribution of OpenTelemetry (EDOT) Collector** is an open-source distribution of the [OpenTelemetry Collector](https://github.com/open-telemetry/opentelemetry-collector).
 
-Built on OpenTelemetry’s modular [architecture](https://opentelemetry.io/docs/collector/), the EDOT Collector offers a curated and fully supported selection of Receivers, Processors, Exporters, and Extensions. Designed for production-grade reliability. 
+Built on OpenTelemetry’s modular [architecture](https://opentelemetry.io/docs/collector/), the EDOT Collector offers a curated and fully supported selection of Receivers, Processors, Exporters, and Extensions. Designed for production-grade reliability.
 
 ## 🚀 Get started
 The quickest way to get started with EDOT is to follow our [quickstart guide](../quickstart/index).
@@ -20,7 +19,7 @@ For full details on each option visit [this page](./config/index)
 
 ## 🧩 EDOT Collector components
 
-The Elastic Distribution of OpenTelemetry (EDOT) Collector is built on OpenTelemetry’s modular architecture, integrating a carefully curated selection of Receivers, Processors, Exporters, and Extensions to ensure stability, scalability, and seamless observability. 
+The Elastic Distribution of OpenTelemetry (EDOT) Collector is built on OpenTelemetry’s modular architecture, integrating a carefully curated selection of Receivers, Processors, Exporters, and Extensions to ensure stability, scalability, and seamless observability.
 
 Visit [this page](./components) for the full list of OTel Collector components embedded in the EDOT Collector.
 
@@ -30,4 +29,4 @@ To request a component to be added to EDOT Collector, please submit a [GitHub is
 The EDOT collector has some limitations which are mostly inherited from the upstream components, see the [full list](../compatibility/limitations) here before troubleshooting.
 
 ### 📄 License
-View details of license for [EDOT Collector](https://github.com/elastic/elastic-agent/blob/main/LICENSE.txt). 
+View details of license for [EDOT Collector](https://github.com/elastic/elastic-agent/blob/main/LICENSE.txt).

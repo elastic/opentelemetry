@@ -1,9 +1,8 @@
 ---
-title: Kubernetes
-layout: default
-nav_order: 1
-parent: Setup
-grand_parent: EDOT Python
+navigation_title: Kubernetes
+description: Instrumenting Python applications with EDOT SDKs on Kubernetes.
+applies_to:
+  serverless: all
 ---
 
 # Instrumenting Python applications with EDOT SDKs on Kubernetes
@@ -44,8 +43,9 @@ For this example, we assume the application you're instrumenting is a deployment
     elastic-instrumentation   107s   http://opentelemetry-kube-stack-daemon-collector.opentelemetry-operator-system.svc.cluster.local:4318
     ```
 
-    {: .note }
+    :::{note}
     > If your `Instrumentation` object has a different name or is created in a different namespace, you will have to adapt the annotation value in the next step.
+    :::
 
 2. Enable auto-instrumentation of the Python application using one of the following methods:
 

@@ -1,44 +1,41 @@
 ---
-title: Features 
-layout: default
-parent: Compatibility & Support
-nav_order: 2
+navigation_title: Features
+description: Overview of Elastic features available with EDOT.
 ---
 
 # Elastic Features available with EDOT
 
 ### Legend
-{: .no_toc }
 
 | **[Incompatible]** | **[Compatible]** | **[Supported]** |
-| ❌ | 🟡 | ✅ |
+| :----------------- | :--------------- | :-------------- |
+| ❌                 | 🟡               | ✅              |
 
 ### Features
 
-| Feature | Availability |
-|:---|:---:|
-| **APM** | ✅ |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [Service Maps] | ✅ |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [Distributed Tracing] | ✅ |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [Head-based Sampling (HBS)] | ✅ |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *[Tail-based Sampling (TBS)]* | 🟡 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [Self-managed, OTel collector-based TBS] | 🟡 |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TBS managed / hosted in Elastic Cloud | ❌ |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Runtime metrics<sup>(1)</sup> | ⚪ |
-| **Infrastructure Monitoring** | ✅ |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Host view<sup>(2)</sup> | ✅ |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Kubernetes dashboard | ✅ |
-| **Logs Collection** | ✅ |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; OTel-native, collector-based logs parsing & processing | ✅ |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; OTel-native, collector-based data routing | ✅ |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Managed, centralized processing<sup>(3)</sup> | ❌ |
-| **Metrics Collection**<sup>(4)</sup> | ✅ |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Automatic metrics mapping | ✅ |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Usage of [Time Series Data Streams](https://www.elastic.co/guide/en/elasticsearch/reference/current/tsds.html) | ✅ |
-| **Central Management** | ❌ |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Central management of OTel collectors | ❌ |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Central management of OTel SDKs | ❌ |
-
+| Feature                                                                                             | Availability |
+| :-------------------------------------------------------------------------------------------------- | :----------- |
+| **APM**                                                                                             | ✅           |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [Service Maps]                                                 | ✅           |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [Distributed Tracing]                                          | ✅           |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [Head-based Sampling (HBS)]                                    | ✅           |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *[Tail-based Sampling (TBS)]*                                  | 🟡           |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [Self-managed, OTel collector-based TBS] | 🟡           |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TBS managed / hosted in Elastic Cloud      | ❌           |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Runtime metrics<sup>(1)</sup>                                  | ⚪           |
+| **Infrastructure Monitoring**                                                                       | ✅           |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Host view<sup>(2)</sup>                                        | ✅           |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Kubernetes dashboard                                           | ✅           |
+| **Logs Collection**                                                                                 | ✅           |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; OTel-native, collector-based logs parsing & processing         | ✅           |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; OTel-native, collector-based data routing                      | ✅           |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Managed, centralized processing<sup>(3)</sup>                  | ❌           |
+| **Metrics Collection**<sup>(4)</sup>                                                                | ✅           |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Automatic metrics mapping                                      | ✅           |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Usage of [Time Series Data Streams]                              | ✅           |
+| **Central Management**                                                                              | ❌           |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Central management of OTel collectors                          | ❌           |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Central management of OTel SDKs                              | ❌           |
 
 <sup>(1)</sup> see [language-specific features overview](../edot-sdks/index#features)
 
@@ -59,3 +56,4 @@ Check out the [SDKs Overview](../edot-sdks/index#features) page for SDK-specific
 [Head-based Sampling (HBS)]: https://www.elastic.co/guide/en/observability/current/apm-sampling.html#apm-head-based-sampling
 [Tail-based Sampling (TBS)]: https://www.elastic.co/guide/en/observability/current/apm-sampling.html#apm-tail-based-sampling
 [Self-managed, OTel collector-based TBS]: https://opentelemetry.io/blog/2022/tail-sampling/
+[Time Series Data Streams]: https://www.elastic.co/guide/en/elasticsearch/reference/current/tsds.html

@@ -1,8 +1,6 @@
 ---
-title: EDOT PHP
-layout: default
-nav_order: 5
-fa_icon_key: fa-brands fa-php
+navigation_title: EDOT PHP
+description: The Elastic Distribution of OpenTelemetry PHP (EDOT PHP) is a customized version of OpenTelemetry for PHP.
 ---
 
 # Elastic Distribution of OpenTelemetry PHP

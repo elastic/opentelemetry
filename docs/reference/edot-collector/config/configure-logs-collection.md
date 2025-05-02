@@ -1,22 +1,18 @@
 ---
-title: Configure Logs Collection
+navigation_title: Configure Logs Collection
 parent: Configuration
-layout: default
 nav_order: 3
 ---
 
 # Configure Logs Collection
-{: .no_toc }
 
 This page contains example and references for customizing logs collection.
 
-{: .note}
-As of Elastic Stack version {{ site.edot_versions.collector }} Elasticsearch Ingest Pipelines are not (yet) applicable to OTel-native data, see [corresponding limitation documentation](../../compatibility/limitations#centralized-parsing-and-processing-of-data).
+:::{note}
+As of Elastic Stack version <COLLECTOR_VERSION> Elasticsearch Ingest Pipelines are not (yet) applicable to OTel-native data, see [corresponding limitation documentation](../../compatibility/limitations#centralized-parsing-and-processing-of-data).
 Hence, we recommend using OTel collector processing pipelines for pre-processing and parsing of logs.
+:::
 
-
-- TOC
-{:toc}
 
 ## Parsing JSON logs
 

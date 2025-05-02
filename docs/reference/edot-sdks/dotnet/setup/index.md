@@ -1,8 +1,5 @@
 ---
-title: Setup
-layout: default
-nav_order: 1
-parent: EDOT .NET
+navigation_title: Setup
 ---
 
 # Setting up the EDOT .NET SDK
@@ -13,7 +10,7 @@ EDOT .NET is designed to be straightforward to integrate into your applications.
 [OpenTelemetry SDK](https://opentelemetry.io/docs/languages/net/), those that are transitioning from the 
 [Elastic APM Agent](https://www.elastic.co/guide/en/apm/agent/dotnet/current/index.html) and those introducing observability instrumentation for
 the first time. When the OpenTelemetry SDK or Elastic APM Agent are already in use, minor code changes are required at the point of registration.
-S ee the [migration](./../migration) documentation for more details.
+See the [migration](./../migration) documentation for more details.
 
 This quickstart guide documents the introductory steps required to set up OpenTelemetry using EDOT .NET for an ASP.NET Core 
 [minimal API](https://learn.microsoft.com/aspnet/core/fundamentals/minimal-apis) application. For detailed, technology-specific steps, see:
@@ -53,8 +50,9 @@ To create your first Elastic Observability serverless project:
 1. Follow the onboarding instructions in step 3 to create an API key and capture the endpoint URL that will be used when configuring application(s) using environment variables.
 </details>
 
-{: .warning }
-> When using Serverless, you must use the Managed OTLP Endpoint URL (tech preview) for the best (and supported) experience when using EDOT .NET.
+:::{warning}
+When using Serverless, you must use the Managed OTLP Endpoint URL (tech preview) for the best (and supported) experience when using EDOT .NET.
+:::
 
 ### Installing the NuGet packages
 
@@ -65,8 +63,9 @@ reference to your project file:
 <PackageReference Include="Elastic.OpenTelemetry" Version="<LATEST>" />
 ```
 
-{: .note }
+:::{note}
 Replace the `<LATEST>` version placeholder with the [latest available package from NuGet.org](https://www.nuget.org/packages/Elastic.OpenTelemetry).
+:::
 
 EDOT .NET includes a transitive dependency on the OpenTelemetry SDK, so you do not _need_ to add the OpenTelemetry SDK package to your project directly. However,
 you _can_ explicitly add the OpenTelemetry SDK as a dependency if you want to opt into newer SDK versions.
@@ -83,8 +82,9 @@ Manually add the latest version to your project file:
 <PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="<LATEST>" />
 ```
 
-{: .note }
+:::{note}
 Replace the `<LATEST>` version placeholder with the [latest available package from NuGet.org](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.AspNetCore).
+:::
 
 The presence of this package is detected by the EDOT instrumentation assembly scanning feature (enabled by default).
 
@@ -113,7 +113,7 @@ producing the telemetry. While defaults are applied for required attributes such
 explicitly set a descriptive service name to distinguish its data in the Elastic Observability UI.
 
 The OpenTelemetry SDK supports several mechanisms to configure resource attributes. For simple scenarios, the service
-information can be set programatically. To achieve this when using EDOT, the `AddElasticOpenTelemetry` method includes an
+information can be set programmatically. To achieve this when using EDOT, the `AddElasticOpenTelemetry` method includes an
 overload accepting an `Action<IOpenTelemetryBuilder>` used to configure the OpenTelemetry SDK via its builder API.
 
 To specify a service name, we can amend the preceding code as follows:
@@ -173,15 +173,14 @@ configuration. The values (particularly the API key) are sensitive and should be
 [Secret Manager](https://learn.microsoft.com/aspnet/core/security/app-secrets) feature during local development. Once enabled
 for your application, add `OTEL_EXPORTER_OTLP_ENDPOINT` and `OTEL_EXPORTER_OTLP_HEADERS` as keys with their respective values.
 
-{: .note-title}
-> Recommendation
->
-> Strongly consider using a key/secret store for production environments.
+:::{tip} Recommendation
+Strongly consider using a key/secret store for production environments.
+:::
 
 ### Instrumenting application code
 
 EDOT .NET enables the collection of trace, metric and log signals by default. With no additional configuration, your configured Elastic
-Observability backend will recieve telemetry data from your application at runtime. Development teams are encouraged to enrich the value
+Observability backend will receive telemetry data from your application at runtime. Development teams are encouraged to enrich the value
 of telemetry by instrumenting their code to emit application-specific telemetry data such as traces, metrics and logs. 
 
 In .NET, it is recommended that the built-in .NET APIs be used for this instrumentation. See:

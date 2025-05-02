@@ -1,15 +1,8 @@
 ---
-title: Advanced scenarios
-layout: default
-nav_order: 5
-parent: Setup
-grand_parent: EDOT .NET
-nav_exclude: true
+navigation_title: Advanced scenarios
 ---
 
 # Advanced scenarios
-
-TODO
 
 ## Conditionally enabling signals
 

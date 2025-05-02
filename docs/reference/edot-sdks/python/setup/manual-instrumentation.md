@@ -1,9 +1,8 @@
 ---
-title: Manual Instrumentation
-layout: default
-nav_order: 2
-parent: Setup
-grand_parent: EDOT Python
+navigation_title: Manual Instrumentation
+description: Manually instrumenting Python applications with EDOT Python.
+applies_to:
+  serverless: all
 ---
 
 # Manual instrumentation
@@ -102,5 +101,6 @@ To confirm that EDOT Python has successfully connected to Elastic:
 1. You should see the name of the service to which you just added EDOT Python. It can take several minutes after initializing EDOT Python for the service to show up in this list.
 1. Click on the name in the list to see trace data.
 
-{: .note }
+:::{note}
 There may be no trace data to visualize unless you have _used_ your application since initializing EDOT Python.
+:::

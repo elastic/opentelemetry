@@ -1,9 +1,8 @@
 ---
-title: Instrumenting Applications
-layout: default
-nav_order: 4
-parent: Monitoring on Kubernetes
-grand_parent: Use Cases
+navigation_title: Instrumenting Applications
+description: Guidance on instrumenting applications with EDOT SDKs on Kubernetes using automatic or manual instrumentation.
+applies_to:
+  serverless: all # Assuming default applicability, adjust if needed
 ---
 
 # Instrumenting applications with EDOT SDKs on Kubernetes
@@ -90,9 +89,10 @@ spec:
 
 where ``<LANGUAGE>`` is one of: `go` , `java`, `nodejs`, `python`, `dotnet`
 
-{: .note }
+:::note
 > Ensure you add the annotations at Pod level and not directly at the workload `spec` level (Deployment, Job, etc.).
 > Ensure the annotation value points to an existing `Instrumentation` object.
+:::
 
 Alternatively, you can enable auto-instrumentation by adding the annotation at **namespace level**. This approach automatically applies instrumentation to all Pods within the specified namespace.
 

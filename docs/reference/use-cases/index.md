@@ -1,8 +1,8 @@
 ---
-title: Use Cases
-layout: default
-nav_order: 4
-fa_icon_key: fa-solid fa-layer-group
+navigation_title: Use Cases
+description: Overview of different use cases for the Elastic Distribution of OpenTelemetry.
+applies_to:
+  serverless: all # Assuming default applicability, adjust if needed
 ---
 
 # Use Cases

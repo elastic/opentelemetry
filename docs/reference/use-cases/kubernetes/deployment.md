@@ -1,9 +1,8 @@
 ---
-title: Deployment
-layout: default
-nav_order: 3
-parent: Monitoring on Kubernetes
-grand_parent: Use Cases
+navigation_title: Deployment
+description: Instructions for deploying EDOT components for Kubernetes monitoring, using guided onboarding or manual steps.
+applies_to:
+  serverless: all # Assuming default applicability, adjust if needed
 ---
 
 # Deployment
@@ -22,9 +21,10 @@ Notes on installing the OpenTelemetry Operator:
 - Make sure the `elastic_endpoint` shown in the installation command is valid for your environment. If not, replace it with the correct Elasticsearch endpoint.
 - The `elastic_api_key` shown in the installation command corresponds to an API key created by Kibana when the onboarding process is initiated.
 
-{: .note }
-> The default installation deploys an OpenTelemetry Operator with a self-signed TLS certificate.
-> To automatically generate and renew certificates, refer to [cert-manager integrated installation](./customization#cert-manager-integrated-installation) for instructions on customizing the `values.yaml` file before running the `helm install` command.
+:::note
+The default installation deploys an OpenTelemetry Operator with a self-signed TLS certificate.
+To automatically generate and renew certificates, refer to [cert-manager integrated installation](./customization#cert-manager-integrated-installation) for instructions on customizing the `values.yaml` file before running the `helm install` command.
+:::
 
 ## Manual deployment of all components
 

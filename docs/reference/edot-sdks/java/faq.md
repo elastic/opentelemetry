@@ -1,10 +1,7 @@
 ---
-title: Frequently Asked Questions
-layout: default
-nav_order: 7
-parent: EDOT Java
+navigation_title: FAQ
+description: Find answers to frequently asked questions about the Elastic Distribution of OpenTelemetry (EDOT) Java Agent, including disabling, versioning, and updates.
 ---
-
 # Frequently Asked Questions on EDOT Java
 
 ## Does agent requires access to or modification of application code ?

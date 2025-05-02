@@ -1,9 +1,5 @@
 ---
-title: .NET worker services
-layout: default
-nav_order: 4
-parent: Setup
-grand_parent: EDOT .NET
+navigation_title: .NET worker services
 ---
 
 # Set up EDOT .NET for worker services

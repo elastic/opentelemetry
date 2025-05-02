@@ -1,9 +1,8 @@
 ---
-title: Prerequisites & Compatibility
-layout: default
-nav_order: 1
-parent: Monitoring on Kubernetes
-grand_parent: Use Cases
+navigation_title: Prerequisites & Compatibility
+description: Prerequisites and compatibility matrix for monitoring Kubernetes with EDOT.
+applies_to:
+  serverless: all # Assuming default applicability, adjust if needed
 ---
 
 ## Prerequisites

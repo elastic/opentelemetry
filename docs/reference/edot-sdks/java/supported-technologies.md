@@ -1,10 +1,7 @@
 ---
-title: Supported Technologies
-layout: default
-nav_order: 4
-parent: EDOT Java
+navigation_title: Supported Technologies
+description: Overview of technologies supported by the Elastic Distribution of OpenTelemetry (EDOT) Java Agent, including JVM versions, application servers, frameworks, and LLM instrumentations.
 ---
-
 # Technologies Supported by the EDOT Java Agent
 
 The EDOT Java agent is a [distribution](https://opentelemetry.io/docs/concepts/distributions/) of
@@ -15,10 +12,11 @@ inherits all the [supported (✅)](../../compatibility/nomenclature#compatibilit
 
 The EDOT Java agent sends data via the OpenTelemetry protocol (OTLP). While OTLP ingest works with later 8.16+ versions of the EDOT Collector, for full support it is strongly recommended that you use either [EDOT Collector](../../edot-collector/) versions 9.x or [Elastic Cloud Serverless](https://www.elastic.co/guide/en/serverless/current/intro.html) for OTLP ingest.
 
-{: .note}
-> Ingesting data from EDOT SDKs through EDOT Collector 9.x into Elastic Stack versions 8.18+ *is supported*.
-
 See [EDOT SDKs compatibility](../../compatibility/sdks) for support details.
+
+:::{note}
+> Ingesting data from EDOT SDKs through EDOT Collector 9.x into Elastic Stack versions 8.18+ *is supported*.
+:::
 
 ## JVM Versions
 

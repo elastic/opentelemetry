@@ -1,9 +1,5 @@
 ---
-title: Zero-code instrumentation
-layout: default
-nav_order: 5
-parent: Setup
-grand_parent: EDOT .NET
+navigation_title: Zero-code instrumentation
 ---
 
 # Using profiler-based zero-code instrumentation
@@ -26,8 +22,9 @@ Supported processor architectures are:
 - AMD64 (x86-64)
 - ARM64 (Experimental)
 
-{: .note }
+:::{note}
 ARM64 build does not support CentOS based images.
+:::
 
 ## Setup
 

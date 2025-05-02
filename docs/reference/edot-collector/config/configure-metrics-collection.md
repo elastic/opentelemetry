@@ -1,7 +1,6 @@
 ---
-title: Configure Metrics Collection
+navigation_title: Configure Metrics Collection
 parent: Configuration
-layout: default
 nav_order: 4
 ---
 
@@ -9,10 +8,10 @@ nav_order: 4
 
 This page contains examples and references for customizing metrics collection.
 
-{: .note}
-As of Elastic Stack version {{ site.edot_versions.collector }} Elasticsearch Ingest Pipelines are not (yet) applicable to OTel-native data; see [corresponding limitation documentation](../../compatibility/limitations#centralized-parsing-and-processing-of-data).
+:::{note}
+As of Elastic Stack version <COLLECTOR_VERSION> Elasticsearch Ingest Pipelines are not (yet) applicable to OTel-native data; see [corresponding limitation documentation](../../compatibility/limitations#centralized-parsing-and-processing-of-data).
 Hence, we recommend using OTel collector processing pipelines for pre-processing metrics.
-{:toc}
+:::
 
 
 ## OTLP metrics

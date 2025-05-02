@@ -1,14 +1,10 @@
 ---
-nav_exclude: true
+description: "Quick start guide for setting up EDOT Collector on Hosts/VMs with a self-managed Elastic Stack."
+applies_to:
+  serverless: all
 ---
 
 # Quickstart
-
-🖥 Hosts / VMs
-{: .label .label-green }
-
-🆂 Self-managed Elastic Stack
-{: .label .label-yellow }
 
 The quick start for Hosts / VMs with a self-managed Elastic Stack will guide you through setting up the EDOT Collector and to collect host metrics, logs and application traces using an OpenTelemetry configuration. You’ll download the appropriate package for your system, configure authentication, and run the collector. Optional steps allow you to customize log collection paths and set up application monitoring.
 ![EDOT-host-metrics-logs](../../images/edot-host-metrics-logs.png)
@@ -17,9 +13,9 @@ The quick start for Hosts / VMs with a self-managed Elastic Stack will guide you
 
 These instructions will download EDOT collector including an OpenTelemetry collector configuration that will:
 
-* Collect metrics from your host 
+* Collect metrics from your host
 * Collect logs from a set of locations in your host
-Run the below commands to download the EDOT Collector package relevant to your system's architecture. 
+Run the below commands to download the EDOT Collector package relevant to your system's architecture.
 
 ### Linux
 
@@ -31,7 +27,7 @@ arch=$(if ([[ $(arch) == "arm" || $(arch) == "aarch64" ]]); then echo "arm64"; e
 curl --output elastic-distro-8.17.2-linux-$arch.tar.gz --url https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-8.17.2-linux-$arch.tar.gz --proto '=https' --tlsv1.2 -fOL && mkdir -p elastic-distro-8.17.2-linux-$arch && tar -xvf elastic-distro-8.17.2-linux-$arch.tar.gz -C "elastic-distro-8.17.2-linux-$arch" --strip-components=1 && cd elastic-distro-8.17.2-linux-$arch
 ```
 
-Replace the collector configuration with a preset for logs and host metrics collection and inject your credentials into the EDOT collector default configuration. 
+Replace the collector configuration with a preset for logs and host metrics collection and inject your credentials into the EDOT collector default configuration.
 
 Retrieve your [Elasticsearch endpoint](https://www.elastic.co/guide/en/kibana/current/search-space-connection-details.html) and [API key](https://www.elastic.co/guide/en/kibana/current/api-keys.html) and replace `<ELASTICSEARCH_ENDPOINT>` and `<BASE64_APIKEY>` before applying the below command.
 
@@ -55,7 +51,7 @@ arch=$(if ([[ $(arch) == "arm" || $(arch) == "aarch64" ]]); then echo "arm64"; e
 curl --output elastic-distro-8.17.2-darwin-$arch.tar.gz --url https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-8.17.2-darwin-$arch.tar.gz --proto '=https' --tlsv1.2 -fOL && mkdir -p "elastic-distro-8.17.2-darwin-$arch" && tar -xvf elastic-distro-8.17.2-darwin-$arch.tar.gz -C "elastic-distro-8.17.2-darwin-$arch" --strip-components=1 && cd elastic-distro-8.17.2-darwin-$arch
 ```
 
-Replace the collector configuration with a preset for logs and host metrics collection and inject your credentials into the EDOT collector default configuration. 
+Replace the collector configuration with a preset for logs and host metrics collection and inject your credentials into the EDOT collector default configuration.
 
 Retrieve your [Elasticsearch endpoint](https://www.elastic.co/guide/en/kibana/current/search-space-connection-details.html) and [API key](https://www.elastic.co/guide/en/kibana/current/api-keys.html) and replace `<ELASTICSEARCH_ENDPOINT>` and `<BASE64_APIKEY>` before applying the below command.
 
@@ -72,14 +68,15 @@ sudo ./otelcol --config otel.yml
 ### Windows
 Download EDOT Collector
 
-```# Download and extract
+```powershell
+# Download and extract
 $distroPath = "elastic-distro-8.17.2-windows-x86_64";$zipFile = "$distroPath.zip"
 ```
 
 This step disables the progress bar which might slow down the download
 
-```bash
-$ProgressPreference = 'SilentlyContinue';Invoke-WebRequest -Uri "https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-> 8.17.2-windows-x86_64.zip" -OutFile $zipFile;
+```powershell
+$ProgressPreference = 'SilentlyContinue';Invoke-WebRequest -Uri "https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-8.17.2-windows-x86_64.zip" -OutFile $zipFile;
 New-Item -ItemType Directory -Force -Path $distroPath | Out-Null
 Expand-Archive -Path $zipFile -DestinationPath $distroPath
 Move-Item -Path "$distroPath\elastic-agent-8.17.2-windows-x86_64\*" -Destination $distroPath
@@ -90,7 +87,7 @@ Set-Location $distroPath
 
 This command replaces the collector configuration with a preset for logs and host metrics collection
 
-```bash
+```powershell
 Remove-Item -Path .\otel.yml -ErrorAction SilentlyContinue
 Copy-Item .\otel_samples\platformlogs_hostmetrics.yml .\otel.yml
 New-Item -ItemType Directory -Force -Path .\data\otelcol | Out-Null
@@ -98,7 +95,7 @@ New-Item -ItemType Directory -Force -Path .\data\otelcol | Out-Null
 
 Replace environment variables in otel.yml
 
-```bash
+```powershell
 $content = Get-Content .\otel.yml
 $content = $content -replace '\${env:STORAGE_DIR}', "$PWD\data\otelcol"
 $content = $content -replace '\${env:ELASTIC_ENDPOINT}', "https://sample.eu-west-1.aws.qa.cld.elstc.co:443"

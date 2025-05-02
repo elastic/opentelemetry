@@ -1,8 +1,8 @@
 ---
-title: Setup
-layout: default
-nav_order: 1
-parent: EDOT Python
+navigation_title: Setup
+description: Setting up EDOT Python.
+applies_to:
+  serverless: all
 ---
 
 # Setting up EDOT Python
@@ -28,8 +28,9 @@ in your environment:
 edot-bootstrap --action=install
 ```
 
-{: .note }
+:::{note}
 Add this command every time you deploy an updated version of your application (in other words, add it to your container image build process).
+:::
 
 <!-- ✅ Start-to-finish operation -->
 ## Send data to Elastic
@@ -74,5 +75,6 @@ To confirm that EDOT Python has successfully connected to Elastic:
 1. You should see the name of the service to which you just added EDOT Python. It can take several minutes after initializing EDOT Python for the service to show up in this list.
 1. Click on the name in the list to see trace data.
 
-{: .note }
+:::{note}
 There may be no trace data to visualize unless you have _invoked_ your application since initializing EDOT Python.
+:::

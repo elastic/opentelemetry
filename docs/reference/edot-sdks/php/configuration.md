@@ -1,8 +1,6 @@
 ---
-title: Configuration
-layout: default
-nav_order: 2
-parent: EDOT PHP
+navigation_title: Configuration
+description: Configure the Elastic Distribution of OpenTelemetry PHP (EDOT PHP) to send data to Elastic.
 ---
 
 # Configuring the EDOT PHP SDK
@@ -42,17 +40,21 @@ The most important OpenTelemetry options you should be aware of include:
 | [OTEL_TRACES_SAMPLER_ARG](https://opentelemetry.io/docs/languages/sdk-configuration/general/#otel_traces_sampler_arg)         |                         | string or number                                | Provides an argument to the configured traces sampler, such as the sampling ratio for `traceidratio` (e.g., `0.25` for 25% sampling).                                                                      |
 | [OTEL_LOG_LEVEL](https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#general-sdk-configuration)                           | "info"                  | "error", "warn", "info", "debug"                | Sets the verbosity level of the OpenTelemetry SDK’s internal logging. Useful for debugging configuration or troubleshooting instrumentation.                                                               |
 
-> **Reference:**
-> For full configuration options of PHP SDK, see the official [OpenTelemetry PHP SDK Configuration documentation](https://opentelemetry.io/docs/languages/php/sdk/#configuration).
->
-> **Note:**
-> EDOT PHP sets the `OTEL_PHP_AUTOLOAD_ENABLED` option to `true` by default.
-> This enables automatic instrumentation without requiring any changes to your application code.
-> Modifying this option will have no effect — EDOT will override it and enforce it as `true`.
 
-> **Note on EDOT PHP background sending:**
-> EDOT PHP supports background data transmission (non-blocking export), but **only when the exporter is set to `http/protobuf` (OTLP over HTTP)** — which is the default configuration.
-> If you change the exporter or the transport protocol (e.g., to gRPC or another format), telemetry data will be sent **synchronously**, potentially impacting request latency.
+:::note Reference
+For full configuration options of PHP SDK, see the official [OpenTelemetry PHP SDK Configuration documentation](https://opentelemetry.io/docs/languages/php/sdk/#configuration).
+:::
+
+:::note
+EDOT PHP sets the `OTEL_PHP_AUTOLOAD_ENABLED` option to `true` by default.
+This enables automatic instrumentation without requiring any changes to your application code.
+Modifying this option will have no effect — EDOT will override it and enforce it as `true`.
+:::
+
+:::note Note on EDOT PHP background sending
+EDOT PHP supports background data transmission (non-blocking export), but **only when the exporter is set to `http/protobuf` (OTLP over HTTP)** — which is the default configuration.
+If you change the exporter or the transport protocol (e.g., to gRPC or another format), telemetry data will be sent **synchronously**, potentially impacting request latency.
+:::
 
 
 ### Configuration options that are _only_ available in EDOT PHP

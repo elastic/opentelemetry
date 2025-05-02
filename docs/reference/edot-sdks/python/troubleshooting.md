@@ -1,8 +1,8 @@
 ---
-title: Troubleshooting
-layout: default
-nav_order: 4
-parent: EDOT Python
+navigation_title: Troubleshooting
+description: Troubleshooting the EDOT Python Agent.
+applies_to:
+  serverless: all
 ---
 
 # Troubleshooting the EDOT Python Agent

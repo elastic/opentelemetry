@@ -1,10 +1,7 @@
 ---
-title: Migration
-layout: default
-nav_order: 6
-parent: EDOT Java
+navigation_title: Migration
+description: Guide for migrating from the Elastic APM Java agent to the Elastic Distribution of OpenTelemetry (EDOT) Java Agent, outlining advantages, limitations, and steps.
 ---
-
 # Migrating to EDOT Java from the Elastic Java Agent
  
 This documentation describes how to update applications that are currently using the [Elastic APM Java agent](https://www.elastic.co/guide/en/apm/agent/java/current/index.html) to use the Elastic Distribution of OpenTelemetry Java (EDOT Java).
@@ -67,8 +64,9 @@ By default, micrometer instrumentation is disabled and won't capture metrics, en
     - for [Annotation API](https://www.elastic.co/guide/en/apm/agent/java/current/public-api.html#api-annotation) see [OpenTelemetry Annotations](https://opentelemetry.io/docs/zero-code/java/agent/annotations/).
     - for [Transaction API](https://www.elastic.co/guide/en/apm/agent/java/current/public-api.html#api-transaction) see [OpenTelemetry API](https://opentelemetry.io/docs/zero-code/java/agent/api/).
 
-    {: .note}
+    :::note
     Migration of application code using these APIs and annotations is _not strictly required_ when deploying the EDOT agent. If not migrated, the spans, transactions and metrics that were previously explicitly created with those custom API calls and annotations, will no longer be generated. The broader OpenTelemetry instrumentation coverage may replace the need for some or all of these custom code changes.
+    :::
 1. **Replace configuration options** using the [Reference](#option-reference) below, see [Configuration](./configuration) for ways to provide those.
 1. **Replace Agent binary** 
     - Remove the `-javaagent:` argument containing [Elastic APM Java agent](https://www.elastic.co/guide/en/apm/agent/java/current/index.html) from the JVM arguments

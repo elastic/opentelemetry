@@ -1,9 +1,5 @@
 ---
-title: Console applications
-layout: default
-nav_order: 3
-parent: Setup
-grand_parent: EDOT .NET
+navigation_title: Console applications
 ---
 
 # Set up EDOT .NET for console applications
@@ -11,10 +7,11 @@ grand_parent: EDOT .NET
 Applications running without a [host](https://learn.microsoft.com/dotnet/core/extensions/generic-host) may initialize
 OpenTelemetry manually.
 
-{: .note }
-> When building console applications, consider using the features provided by
-> [`Microsoft.Extensions.Hosting`](https://www.nuget.org/packages/microsoft.extensions.hosting) as this enables
-> dependency injection and logging capabilities.
+:::{note}
+When building console applications, consider using the features provided by
+[`Microsoft.Extensions.Hosting`](https://www.nuget.org/packages/microsoft.extensions.hosting) as this enables
+dependency injection and logging capabilities.
+:::
 
 ```csharp
 using OpenTelemetry;
@@ -30,10 +27,11 @@ The preceding code:
 1. Configures the `IOpenTelemetryBuilder` by passing a lambda.
 1. Enables EDOT .NET and its [opinionated defaults](./../setup/edot-defaults) by calling `WithElasticDefaults` on the `IOpenTelemetryBuilder`.
 
-{: .warning }
-> The `using` keyword is applied to the `sdk` variable to define a using declaration, which ensures that the
-> `OpenTelemetrySdk` instance is disposed of when the application terminates. Disposing of the OpenTelemetry SDK gives the
-> SDK a chance to flush any telemetry held in memory. Skipping this step may result in data loss.
+:::{warning}
+The `using` keyword is applied to the `sdk` variable to define a using declaration, which ensures that the
+`OpenTelemetrySdk` instance is disposed of when the application terminates. Disposing of the OpenTelemetry SDK gives the
+SDK a chance to flush any telemetry held in memory. Skipping this step may result in data loss.
+:::
 
 The above code is sufficient for many applications to achieve a reasonable out-of-the-box experience. The
 `IOpenTelemetryBuilder` can be further configured as required within the target application. 
@@ -77,9 +75,10 @@ the environment variables used to configure the OTLP exporter using any suitable
 "OTEL_EXPORTER_OTLP_HEADERS" = "Authorization=ApiKey {MyEncodedApiKey}"
 ```
 
-{: .note }
-> Replace the `{MyServerlessEndpoint}` and `{MyEncodedApiKey}` placeholders above with the values provided
+:::{note}
+Replace the `{MyServerlessEndpoint}` and `{MyEncodedApiKey}` placeholders above with the values provided
 by your Elastic Observability backend.
+:::
 
 ### Configuring EDOT .NET
 

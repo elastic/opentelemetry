@@ -1,8 +1,6 @@
 ---
-title: Custom Collector
-layout: default
-nav_order: 2
-parent: Customization
+navigation_title: Custom Collector
+description: How to build a custom OpenTelemetry Collector distribution similar to EDOT.
 ---
 
 <!-- DO NOT DELETE THIS SECTION, TAGS ARE REQUIRED FOR GENERATION-->
@@ -27,8 +25,9 @@ Refer to the following sections to complete these steps.
 ### Step 1. Install the OpenTelemetry Collector builder
 Install the ocb using the command that aligns with your system from the [OpenTelemetry building a custom collector documentation](https://opentelemetry.io/docs/collector/custom-collector/#step-1---install-the-builder).
 
-{: .warning}
-Make sure to install **version 0.120.0** of the OpenTelemetry Collector Builder!
+:::{warning}
+Make sure to install **version <OCB_VERSION>** of the OpenTelemetry Collector Builder!
+:::
 
 ### Step 2. Create a builder configuration file
 Create a builder configuration file,`builder-config.yml`, to define the custom collector. This file specifies the components (extensions, exporters, processors, receivers, and connectors) included in your custom collector.

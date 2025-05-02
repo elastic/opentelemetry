@@ -1,9 +1,8 @@
 ---
-title: Components Description
-layout: default
-nav_order: 2
-parent: Monitoring on Kubernetes
-grand_parent: Use Cases
+navigation_title: Components Description
+description: Description of components involved in Kubernetes observability with OpenTelemetry, including Operator, Collectors, Helm Chart, and auto-instrumentation.
+applies_to:
+  serverless: all # Assuming default applicability, adjust if needed
 ---
 
 # Components description
