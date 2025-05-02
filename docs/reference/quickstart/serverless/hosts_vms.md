@@ -1,8 +1,9 @@
 ---
 navigation_title: Hosts & VMs
-layout: default
-nav_order: 2
-parent: Elastic Cloud Serverless
+applies_to:
+  stack:
+  serverless:
+    observability:
 ---
 
 # Quickstart

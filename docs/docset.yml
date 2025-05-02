@@ -1,5 +1,4 @@
 project: 'EDOT docs'
-exclude:
 external_hosts:
   - opentelemetry.io
   - github.com

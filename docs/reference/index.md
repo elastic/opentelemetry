@@ -66,3 +66,15 @@ These documentation pages are optimized for the following versions of the corres
 |EDOT iOS| <IOS_VERSION> |
 
 For other versions [visit the documentation sources](https://github.com/elastic/opentelemetry/tags) in the GitHub repository.
+
+## Demo
+
+A demo environment showcasing EDOT capabilities is available in the [opentelemetry-demo repository](https://github.com/elastic/opentelemetry-demo).
+
+This demo includes:
+
+*   Sample applications instrumented with OpenTelemetry SDKs.
+*   EDOT Collector configured for various scenarios (e.g., Kubernetes, hosts).
+*   Integration with an Elastic Stack deployment (Elasticsearch and Kibana).
+
+Follow the instructions in the repository's README to set up and run the demo.
