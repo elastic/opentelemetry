@@ -1,7 +1,10 @@
 ---
 navigation_title: Configure Data Ingestion
-parent: Configuration
-nav_order: 5
+
+
+applies_to:
+  stack:
+  serverless:
 ---
 
 🚧 Coming soon

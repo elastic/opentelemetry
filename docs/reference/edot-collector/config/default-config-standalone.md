@@ -1,7 +1,10 @@
 ---
 navigation_title: Default Config—Standalone
-parent: Configuration
-nav_order: 1
+
+
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Default Configuration - Standalone EDOT Collector
@@ -78,7 +81,7 @@ The [`elastictrace`] processor enriches trace data with additional attributes th
 >
 > * use the EDOT Collector with that configuration to ingest data into Elasticsearch
 > * **or** [build a custom, EDOT-like ](../custom-collector) for ingesting data into Elasticsearch
-> * **or** use Elastic's [managed OTLP endpoint](../../quickstart/serverless/index) that would do the enrichment for you
+> * **or** use Elastic's [managed OTLP endpoint](../../quickstart/serverless/index.md) that would do the enrichment for you
 :::
 
 Application-related OTel data is ingested into Elasticsearch in OTel-native format using the [`elasticsearch`] exporter.

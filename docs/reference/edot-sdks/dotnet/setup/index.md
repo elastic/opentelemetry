@@ -1,5 +1,8 @@
 ---
 navigation_title: Setup
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Setting up the EDOT .NET SDK

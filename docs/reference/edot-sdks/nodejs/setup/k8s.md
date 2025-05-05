@@ -1,6 +1,9 @@
 ---
 navigation_title: Kubernetes
 description: How to instrument Node.js applications on Kubernetes using the Elastic Distribution of OpenTelemetry (EDOT).
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Instrumenting Node.js applications with EDOT SDKs on Kubernetes

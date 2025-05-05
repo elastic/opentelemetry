@@ -1,6 +1,9 @@
 ---
 navigation_title: Customization
 description: Options for customizing the EDOT Collector, including building a custom collector or requesting new components.
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Customization

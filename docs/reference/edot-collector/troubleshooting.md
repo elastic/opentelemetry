@@ -1,6 +1,9 @@
 ---
 navigation_title: Troubleshooting
 description: Troubleshooting tips and resources for the EDOT Collector.
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Troubleshooting the EDOT Collector

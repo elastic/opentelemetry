@@ -6,7 +6,7 @@ description: Guide on instrumenting Java applications on Kubernetes using the Op
 
 This document focuses on instrumenting Java applications on Kubernetes, using the OpenTelemetry Operator, Elastic Distribution of OpenTelemetry (EDOT) Collectors, and the EDOT Java SDK.
 
-- For general knowledge about the EDOT Java SDK, refer to the [EDOT Java Intro page](../index).
+- For general knowledge about the EDOT Java SDK, refer to the [EDOT Java Intro page](../index.md).
 - For Java auto-instrumentation specifics, refer to [OpenTelemetry Operator Java auto-instrumentation](https://opentelemetry.io/docs/kubernetes/operator/automatic/#java).
 - For general information about instrumenting applications on Kubernetes, refer to [instrumenting applications on Kubernetes](../../../use-cases/kubernetes/instrumenting-applications).
 

@@ -1,6 +1,9 @@
 ---
 navigation_title: Configuration
-nav_order: 3
+
+applies_to:
+  stack:
+  serverless:
 ---
 
 # EDOT Collector - Configuration

@@ -1,6 +1,9 @@
 ---
 navigation_title: Limitations
 description: Limitations of EDOT compared to classic Elastic data collection mechanisms.
+applies_to:
+  stack:
+  serverless:
 ---
 
 # EDOT Limitations

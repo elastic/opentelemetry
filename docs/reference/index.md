@@ -1,80 +1,57 @@
 ---
-navigation_title: Reference
-description: EDOT reference documentation.
+navigation_title: Elastic Distributions of OpenTelemetry
+description: Reference documentation for the Elastic Distributions of OpenTelemetry (EDOT).
+applies_to:
+  stack:
+  serverless:
 ---
 
-# Reference
+# Elastic Distributions of OpenTelemetry (EDOT)
 
-The following sub-pages contain reference documentation for EDOT.
+Elastic Distributions of OpenTelemetry (EDOT) is an open-source ecosystem of [OpenTelemetry distributions](https://opentelemetry.io/docs/concepts/distributions/) tailored to Elastic. They include a customized OpenTelemetry Collector and several OpenTelemetry Language SDKs.
 
-## 🔭 What is OpenTelemetry?
-[OpenTelemetry](https://opentelemetry.io/docs/) is a vendor-neutral observability framework for collecting, processing, and exporting telemetry data. If you are new to OpenTelemetry we recommend reading OpenTelemetry [concepts](https://opentelemetry.io/docs/concepts/) and [components](https://opentelemetry.io/docs/concepts/components/).
-
-## 🇪 What is EDOT?
-
-**Elastic Distributions of OpenTelemetry (EDOT)** is an open-source ecosystem of tailored [OpenTelemetry distributions](https://opentelemetry.io/docs/concepts/distributions/), comprising an [OpenTelemetry Collector](https://opentelemetry.io/docs/collector/) and various OpenTelemetry [Language SDKs](https://opentelemetry.io/docs/languages/).
 ![EDOT-Distributions](./images/EDOT-SDKs-Collector.png)
-Each EDOT distribution is assembled with carefully curated OpenTelemetry components, then rigorously tested to ensure production readiness. This provides a reliable and optimized OpenTelemetry experience, enabling seamless adoption with confidence and expert support.
 
-## 🗂️ Available EDOT Distributions
+Each EDOT distribution is assembled with selected OpenTelemetry components ands tested to ensure production readiness. This provides a reliable and optimized OpenTelemetry experience, enabling seamless adoption with confidence and expert support.
 
-| EDOT Distribution | Status |
-|:-------------------|:---------------|
-| [EDOT Collector](./edot-collector/index) | GA |
-| [EDOT .NET](./edot-sdks/dotnet/index) | GA |
-| [EDOT Java](./edot-sdks/java/index) | GA |
-| [EDOT Node.js](./edot-sdks/nodejs/index) | GA |
-| [EDOT PHP](./edot-sdks/php/index) | GA |
-| [EDOT Python](./edot-sdks/python/index) | GA |
-| [EDOT Android](https://www.elastic.co/guide/en/apm/agent/android/current/intro.html) | GA |
-| [EDOT iOS](https://www.elastic.co/guide/en/apm/agent/swift/current/intro.html) | GA |
+[OpenTelemetry](https://opentelemetry.io/docs/) is a vendor-neutral observability framework for collecting, processing, and exporting telemetry data. If you are new to OpenTelemetry, refer to OpenTelemetry [concepts](https://opentelemetry.io/docs/concepts/) and [components](https://opentelemetry.io/docs/concepts/components/).
 
-<sup>(*)</sup> GA coming soon
+## Available OpenTelemetry distributions
 
-## 🟢 Production Readiness & Support
+The following Elastic OpenTelemetry distributions are available:
+
+- [EDOT Collector](./edot-collector/index.md)
+- [EDOT .NET](./edot-sdks/dotnet/index.md)
+- [EDOT Java](./edot-sdks/java/index.md)
+- [EDOT Node.js](./edot-sdks/nodejs/index.md)
+- [EDOT PHP](./edot-sdks/php/index.md)
+- [EDOT Python](./edot-sdks/python/index.md)
+- [EDOT Android](apm-agent-android://reference/intro.md)
+- [EDOT iOS](apm-agent-ios://reference/intro.md)
 
 Each EDOT distribution undergoes production-grade testing before being declared Generally Available (GA). Elastic provides full support for GA releases in accordance with our [support matrix](https://www.elastic.co/support/matrix) and SLAs.
 
 Technical Preview distributions receive best-effort support and are not covered under standard SLAs.
 
-## 🚀 Get Started
+## Get started
 
-Pick the right [Quickstart Guide](./quickstart/index) for your environment
+Pick the right [Quickstart guide](./quickstart/index.md) for your environment or select and observability use case:
 
-**or** choose your observability use case:
+- [Monitoring on Kubernetes](./use-cases/kubernetes/index.md)
+- [LLM Observability](./use-cases/llm/index.md)
 
-- [Monitoring on Kubernetes](./use-cases/kubernetes/index)
-- [LLM Observability](./use-cases/llm/index)
+## EDOT Demo environment
 
-## 📥 Report an issue or provide feedback
-To report an issue or provide feedback on EDOT, please [submit a github issue](https://github.com/elastic/opentelemetry/issues/new/choose).
+A demo environment that showcases EDOT capabilities is available in the [opentelemetry-demo repository](https://github.com/elastic/opentelemetry-demo).
 
-## Component Versions
-
-These documentation pages are optimized for the following versions of the corresponding EDOT components and Elastic Stack.
-
-| Component | Version |
-|:---|:---:|
-|Elastic Stack | <STACK_VERSION> |
-|EDOT Collector| <COLLECTOR_VERSION> |
-|EDOT .NET| <DOTNET_VERSION> |
-|EDOT Java| <JAVA_VERSION> |
-|EDOT Node.js| <NODEJS_VERSION> |
-|EDOT PHP| <PHP_VERSION> |
-|EDOT Python| <PYTHON_VERSION> |
-|EDOT Android| <ANDROID_VERSION> |
-|EDOT iOS| <IOS_VERSION> |
-
-For other versions [visit the documentation sources](https://github.com/elastic/opentelemetry/tags) in the GitHub repository.
-
-## Demo
-
-A demo environment showcasing EDOT capabilities is available in the [opentelemetry-demo repository](https://github.com/elastic/opentelemetry-demo).
-
-This demo includes:
+The EDOT demo includes:
 
 *   Sample applications instrumented with OpenTelemetry SDKs.
-*   EDOT Collector configured for various scenarios (e.g., Kubernetes, hosts).
-*   Integration with an Elastic Stack deployment (Elasticsearch and Kibana).
+*   EDOT Collector configured for various scenarios. For example, Kubernetes and hosts.
+*   Integration with an Elastic Stack deployment, such as Elasticsearch and Kibana.
 
-Follow the instructions in the repository's README to set up and run the demo.
+Follow the instructions in the demo repository to set up and run the demo.
+
+## Report an issue or provide feedback
+
+To report an issue or provide feedback on EDOT, [submit a GitHub issue](https://github.com/elastic/opentelemetry/issues/new/choose).

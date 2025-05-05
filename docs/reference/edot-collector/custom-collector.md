@@ -1,6 +1,9 @@
 ---
 navigation_title: Custom Collector
 description: How to build a custom OpenTelemetry Collector distribution similar to EDOT.
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Build a Custom EDOT-like Collector
@@ -8,7 +11,7 @@ description: How to build a custom OpenTelemetry Collector distribution similar 
 You can build and configure a [custom collector](https://opentelemetry.io/docs/collector/custom-collector/) or extend the [OpenTelemetry Collector Contrib ](https://github.com/open-telemetry/opentelemetry-collector-contrib) distribution to collect logs and metrics and send them to Elastic Observability.
 
 For a more seamless experience, use the Elastic Distribution of the OpenTelemetry Collector.
-Refer to the [configuration](./config/index) docs for more on configuring the EDOT Collector.
+Refer to the [configuration](./config/index.md) docs for more on configuring the EDOT Collector.
 
 ## Build a custom collector
 

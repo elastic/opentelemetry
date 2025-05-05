@@ -1,6 +1,9 @@
 ---
 navigation_title: Download
 description: Direct download links for EDOT Collector binaries for various operating systems and architectures.
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Download the EDOT Collector Binaries
@@ -25,4 +28,4 @@ Once downloaded you can get EDOT Collector running with the below command.
 sudo ./otelcol --config otel.yml
 ```
 
-For use case specific configuration follow the [Quickstart guide](../quickstart) or visit the [EDOT Collector Configuration](./config/index) page for more details.
+For use case specific configuration follow the [Quickstart guide](../quickstart) or visit the [EDOT Collector Configuration](./config/index.md) page for more details.

@@ -1,6 +1,9 @@
 ---
 navigation_title: Configuration
 description: How to configure the Elastic Distribution of OpenTelemetry Node.js (EDOT Node.js) using environment variables.
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Configuring the EDOT Node.js SDK

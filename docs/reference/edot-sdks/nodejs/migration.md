@@ -1,6 +1,9 @@
 ---
 navigation_title: Migration
 description: How to migrate from the Elastic APM Node.js agent to the Elastic Distribution of OpenTelemetry for Node.js (EDOT Node.js).
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Migrating to EDOT Node.js from the Elastic Node.js Agent

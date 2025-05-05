@@ -3,13 +3,16 @@ navigation_title: Kubernetes
 description: Instrumenting Python applications with EDOT SDKs on Kubernetes.
 applies_to:
   serverless: all
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Instrumenting Python applications with EDOT SDKs on Kubernetes
 
 This document focuses on instrumenting Python applications on Kubernetes, using the OpenTelemetry Operator, Elastic Distribution of OpenTelemetry (EDOT) Collectors, and the EDOT Python SDK.
 
-- For general knowledge about the EDOT Python SDK, refer to the [EDOT Java Intro page](../index).
+- For general knowledge about the EDOT Python SDK, refer to the [EDOT Java Intro page](../index.md).
 - For Python auto-instrumentation specifics, refer to [OpenTelemetry Operator Python auto-instrumentation](https://opentelemetry.io/docs/kubernetes/operator/automatic/#python).
 - To manually instrument your Python application code (by customizing spans and metrics), refer to [EDOT Python manual instrumentation](./manual-instrumentation).
 - For general information about instrumenting applications on Kubernetes, refer to [instrumenting applications on Kubernetes](../../../use-cases/kubernetes/instrumenting-applications).

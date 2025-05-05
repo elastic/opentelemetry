@@ -1,6 +1,9 @@
 ---
 navigation_title: Kubernetes Environments
 description: Recommended EDOT architecture for Kubernetes environments.
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Kubernetes Environments

@@ -1,7 +1,10 @@
 ---
 navigation_title: Configure Logs Collection
-parent: Configuration
-nav_order: 3
+
+
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Configure Logs Collection

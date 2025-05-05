@@ -1,6 +1,9 @@
 ---
 navigation_title: Components
 description: List of components included in the EDOT Collector, categorized as Core or Extended.
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Components included in the EDOT Collector

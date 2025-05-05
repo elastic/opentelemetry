@@ -1,6 +1,9 @@
 ---
 navigation_title: Supported Technologies
 description: Supported technologies for the Elastic Distribution of OpenTelemetry Node.js (EDOT Node.js).
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Technologies Supported by the EDOT Node.js SDK

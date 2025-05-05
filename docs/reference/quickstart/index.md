@@ -1,30 +1,21 @@
 ---
 navigation_title: Quickstart
-description: This guide helps you set up Elastic Distributions for OpenTelemetry (EDOT) to monitor Kubernetes, applications, and hosts. It covers installing the EDOT Collector, enabling auto-instrumentation, and configuring data collection for metrics, logs, and traces in Elastic Observability.
+description: Learn how to set up the Elastic Distributions for OpenTelemetry (EDOT) to monitor Kubernetes, applications, and hosts. The guides cover installing the EDOT Collector, enabling auto-instrumentation, and configuring data collection for metrics, logs, and traces in Elastic Observability.
+applies_to:
+   stack:
+   serverless:
 ---
 
-# EDOT Quickstart Guide
+# Quickstart guides
 
-This guide helps you set up Elastic Distributions for OpenTelemetry (EDOT) to monitor Kubernetes, applications, and hosts. It covers installing the EDOT Collector, enabling auto-instrumentation, and configuring data collection for metrics, logs, and traces in Elastic Observability.
+Learn how to set up the Elastic Distributions for OpenTelemetry (EDOT) to monitor Kubernetes, applications, and hosts. 
 
-:::note
-*By the end of this guide, you’ll have a fully operational EDOT-powered monitoring pipeline sending data to Elastic Observability.*
-:::
+The guides cover installing the EDOT Collector, enabling auto-instrumentation, and configuring data collection for metrics, logs, and traces in Elastic Observability.
 
-Choose the Quickstart guide based on the environment of your target system (`Kubernetes`, `Docker` or plain `Hosts / VMs`) and your Elastic deployment model (`Self-managed Elastic Stack`, `Elastic Cloud Serverless` or `Elastic Cloud Hosted`):
+Select a guide based on the environment of your target system and your Elastic deployment model.
 
-|                                    | ☸️ **Kubernetes**            | 🐳 **Docker**                 | 🖥 **Hosts / VMs**           |
-|------------------------------------|:---------------------------:|:-----------------------------:|:---------------------------:|
-| 🆂 **Self-managed Elastic Stack**  | [Quickstart 🆂 ☸️]   | [Quickstart 🆂 🐳 ]  | [Quickstart 🆂 🖥 ] |
-| ☁️ **Elastic Cloud Serverless**     | [Quickstart ☁️ ☸️]   | [Quickstart ☁️ 🐳 ]   | [Quickstart ☁️ 🖥 ]  |
-| 🗄️ **Elastic Cloud Hosted**        | [Quickstart 🗄️ ☸️]   | [Quickstart 🗄️ 🐳 ]  | [Quickstart 🗄️ 🖥 ] |
-
-[Quickstart 🆂 ☸️]: ./self-managed/k8s
-[Quickstart ☁️ ☸️]: ./serverless/k8s
-[Quickstart 🗄️ ☸️]: ./ech/k8s
-[Quickstart 🆂 🐳 ]: ./self-managed/docker
-[Quickstart ☁️ 🐳 ]: ./serverless/docker
-[Quickstart 🗄️ 🐳 ]: ./ech/docker
-[Quickstart 🆂 🖥 ]: ./self-managed/hosts_vms
-[Quickstart ☁️ 🖥 ]: ./serverless/hosts_vms
-[Quickstart 🗄️ 🖥 ]: ./ech/hosts_vms
+| Deployment Model       | Kubernetes                              | Docker                                  | Hosts or VMs                          |
+|-------------------------|-----------------------------------------|-----------------------------------------|---------------------------------------|
+| Self-managed Elastic Stack | [Kubernetes on self-managed](./self-managed/k8s.md) | [Docker on self-managed](./self-managed/docker.md) | [Hosts or VMs on self-managed](./self-managed/hosts_vms.md) |
+| Elastic Cloud Serverless  | [Kubernetes on serverless](./serverless/k8s.md)     | [Docker on serverless](./serverless/docker.md)     | [Hosts or VMs on serverless](./serverless/hosts_vms.md)     |
+| Elastic Cloud Hosted      | [Kubernetes on hosted](./ech/k8s.md)               | [Docker on hosted](./ech/docker.md)               | [Hosts or VMs on hosted](./ech/hosts_vms.md)               |

@@ -1,5 +1,8 @@
 ---
 navigation_title: EDOT .NET
+applies_to:
+  stack:
+  serverless:
 ---
 
 # EDOT .NET
@@ -16,7 +19,7 @@ To learn more about OpenTelemetry distributions in general, visit the [OpenTelem
 -------
 **Getting started**
 
-The quickest way to get started with EDOT .NET is to follow our [quickstart](./setup/index) guide. We also have guides for 
+The quickest way to get started with EDOT .NET is to follow our [quickstart](./setup/index.md) guide. We also have guides for 
 installing and using EDOT .NET in common application templates:
 
 * [ASP.NET Core](./setup/aspnetcore)
@@ -25,7 +28,10 @@ installing and using EDOT .NET in common application templates:
 * [Worker services](./setup/worker-services)
 * [Zero code](./setup/zero-code)
 
--------
+----applies_to:
+  stack:
+  serverless:
+---
 
 ## Features
 

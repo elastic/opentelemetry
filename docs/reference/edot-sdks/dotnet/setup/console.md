@@ -1,5 +1,8 @@
 ---
 navigation_title: Console applications
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Set up EDOT .NET for console applications

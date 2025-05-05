@@ -1,6 +1,9 @@
 ---
 navigation_title: Supported Technologies
 description: Supported technologies for the Elastic Distribution of OpenTelemetry PHP.
+applies_to:
+  stack:
+  serverless:
 ---
 
 # EDOT PHP supports the following technologies

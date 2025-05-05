@@ -3,6 +3,9 @@ navigation_title: Components Description
 description: Description of components involved in Kubernetes observability with OpenTelemetry, including Operator, Collectors, Helm Chart, and auto-instrumentation.
 applies_to:
   serverless: all # Assuming default applicability, adjust if needed
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Components description

@@ -1,5 +1,8 @@
 ---
 navigation_title: ASP.NET
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Set up EDOT .NET for ASP.NET applications on .NET Framework

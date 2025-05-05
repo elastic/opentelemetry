@@ -1,6 +1,9 @@
 ---
 navigation_title: EDOT Node.js
 description: Introduction to the Elastic Distribution of OpenTelemetry Node.js (EDOT Node.js).
+applies_to:
+  stack:
+  serverless:
 ---
 
 ## EDOT Node.js

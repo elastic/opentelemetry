@@ -6,7 +6,7 @@ description: Instructions for setting up the Elastic Distribution of OpenTelemet
 
 **Kubernetes**
 
-For Kubernetes we recommend using the OTel Kubernetes Operator that also manages the auto-instrumentation of Java applications. Follow the [Quickstart Guide](../../../quickstart/index) for Kubernetes or learn more about [instrumentation details on Kubernetes for Java](./k8s). 
+For Kubernetes we recommend using the OTel Kubernetes Operator that also manages the auto-instrumentation of Java applications. Follow the [Quickstart Guide](../../../quickstart/index.md) for Kubernetes or learn more about [instrumentation details on Kubernetes for Java](./k8s). 
 
 **All other environments**
 
@@ -55,14 +55,14 @@ If EDOT Collector requires authentication, `OTEL_EXPORTER_OTLP_HEADERS` should b
 
 ### Elastic Managed OTLP endpoint
 
-Use [these guides](../../../quickstart/serverless/index) to retrieve the `<ELASTIC_OTLP_ENDPOINT>` and the `<ELASTIC_API_KEY>`.
+Use [these guides](../../../quickstart/serverless/index.md) to retrieve the `<ELASTIC_OTLP_ENDPOINT>` and the `<ELASTIC_API_KEY>`.
 
 - `OTEL_EXPORTER_OTLP_ENDPOINT` should be set to `<ELASTIC_OTLP_ENDPOINT>`
 - `OTEL_EXPORTER_OTLP_HEADERS` should be set to include `Authorization=ApiKey <ELASTIC_API_KEY>` (comma-separated key=value list).
 
 ### Kubernetes
 
-Connection to the EDOT Collector is managed by the OTel Kubernetes Operator, [follow the Quickstart Guides](../../../quickstart/index) for Kubernetes.
+Connection to the EDOT Collector is managed by the OTel Kubernetes Operator, [follow the Quickstart Guides](../../../quickstart/index.md) for Kubernetes.
 
 ## Run the Java agent
 

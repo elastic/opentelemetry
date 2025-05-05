@@ -3,11 +3,14 @@ navigation_title: Instrumenting Applications
 description: Guidance on instrumenting applications with EDOT SDKs on Kubernetes using automatic or manual instrumentation.
 applies_to:
   serverless: all # Assuming default applicability, adjust if needed
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Instrumenting applications with EDOT SDKs on Kubernetes
 
-[Elastic Distributions of OpenTelemetry (EDOT) SDKs](../../edot-sdks/index) cover multiple languages. This section provides guidance and examples for applications instrumentation in a Kubernetes environment for all supported languages.
+[Elastic Distributions of OpenTelemetry (EDOT) SDKs](../../edot-sdks/index.md) cover multiple languages. This section provides guidance and examples for applications instrumentation in a Kubernetes environment for all supported languages.
 
 In Kubernetes environments with the OpenTelemetry Operator, [**automatic (or zero-code) instrumentation**](https://opentelemetry.io/docs/kubernetes/operator/automatic/) simplifies the process by injecting and configuring instrumentation libraries into the targeted Pods.
 

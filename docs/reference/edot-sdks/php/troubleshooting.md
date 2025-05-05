@@ -1,6 +1,9 @@
 ---
 navigation_title: Troubleshooting
 description: Troubleshooting the Elastic Distribution of OpenTelemetry PHP agent.
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Troubleshooting the EDOT PHP Agent

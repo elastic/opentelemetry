@@ -3,7 +3,6 @@ navigation_title: Hosts & VMs
 applies_to:
   stack:
   serverless:
-    observability:
 ---
 
 # Quickstart
@@ -97,3 +96,21 @@ logs and application traces and send the data through OTLP to your Elastic Serve
     - [Python](../../edot-sdks/python/setup)
 
     Configure your SDKs to send the data to the local EDOT Collector using OTLP/gRPC (`http://localhost:4317`) or OTLP/HTTP (`http://localhost:4318`).
+
+## Troubleshoot
+
+### Api Key prefix not found
+
+The following error is due to an improperly formatted API key:
+
+```txt
+Exporting failed. Dropping data.
+{"kind": "exporter", "data_type": }
+"Unauthenticated desc = ApiKey prefix not found"
+```
+
+Format your API key as `"Authorization": "ApiKey <api-key-value-here>"` or `"Authorization=ApiKey <api-key>"` depending on whether you're using a Collector or SDK.
+
+### Error: too many requests
+
+The managed endpoint has per-project rate limits in place. If you reach this limit, contact our [support team](https://support.elastic.co).

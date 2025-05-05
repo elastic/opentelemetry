@@ -1,5 +1,8 @@
 ---
 navigation_title: Supported Technologies
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Technologies Supported by EDOT .NET SDK

@@ -11,4 +11,4 @@ With EDOT Java you have access to all the features of the OpenTelemetry Java age
 - Access to SDK improvements and bug fixes contributed by the Elastic team before the changes are available upstream in OpenTelemetry repositories.
 - Access to optional features that can enhance OpenTelemetry data that is being sent to Elastic (for example, inferred spans and span stacktrace).
 
-**Ready to try out EDOT Java? Follow the step-by-step instructions in the [Setup page](./setup/index)**.
+**Ready to try out EDOT Java? Follow the step-by-step instructions in the [Setup page](./setup/index.md)**.

@@ -1,6 +1,9 @@
 ---
 navigation_title: Performance overhead
 description: Performance comparison of PHP instrumentation agents.
+applies_to:
+  stack:
+  serverless:
 ---
 
 ## Performance Comparison of PHP Instrumentation Agents

@@ -1,56 +1,65 @@
 ---
 navigation_title: Kubernetes
-description: The quick start for Kubernetes with Elastic Cloud Hosted covers the collection of OpenTelemetry data for infrastructure monitoring, logs collection and application monitoring.
+description: Learn how to set up the EDOT Collector and EDOT SDKs in a Kubernetes environment with Elastic Cloud Hosted to collect host metrics, logs and application traces.
+applies_to:
+  stack:
+  serverless:
 ---
 
-# Quickstart - Kubernetes - Hosted
+# Quickstart for Docker on Elastic Cloud Hosted
 
-The quick start for Kubernetes with Elastic Cloud Hosted covers the collection of OpenTelemetry data for infrastructure monitoring,
-logs collection and application monitoring.
+Learn how to set up the EDOT Collector and EDOT SDKs in a Kubernetes environment with Elastic Cloud Hosted (ECH) to collect host metrics, logs and application traces.
 
-1. **Add the OpenTelemetry repository to Helm**
+## Instructions
 
-    ```bash
-    helm repo add open-telemetry "https://open-telemetry.github.io/opentelemetry-helm-charts" --force-update
-    ```
+Follow these steps to deploy the EDOT Collector and EDOT OTel SDKs in Kubernetes with ECH.
 
-2. **Setup Credentials**
+### Add the repository to Helm
 
-    Retrieve the `Elasticsearch Endpoint` and the `Elastic API Key` for your Elastic Cloud deployment by [following these instructions](./#retrieving-connection-details-for-your-elastic-cloud-deployment).
+Run the following command to add the charts repository to Helm:
 
-    Replace both, `<ELASTICSEARCH_ENDPOINT>` and `<ELASTIC_API_KEY>` in the following command to create a namespace and a secret with your credentials.
+```bash
+helm repo add open-telemetry "https://open-telemetry.github.io/opentelemetry-helm-charts" --force-update
+```
 
-    ```bash
-    kubectl create namespace opentelemetry-operator-system
-    kubectl create secret generic elastic-secret-otel \
-    --namespace opentelemetry-operator-system \
-    --from-literal=elastic_endpoint='<ELASTICSEARCH_ENDPOINT>' \
-    --from-literal=elastic_api_key='<ELASTIC_API_KEY>'
-    ```
+### Configure your credentials
 
-    :::note
-    > On Windows PowerShell, replace backslashes (`\`) with backticks (`` ` ``) for line continuation and single quotes (`'`) with double quotes (`"`).
-    :::
+:::{include} ../../_snippets/retrieve-credentials.md
+:::
 
-3. **Install Operator**
+Replace both the `<ELASTICSEARCH_ENDPOINT>` and `<ELASTIC_API_KEY>` placeholders in the following command to create a namespace and a secret with your credentials.
 
-    Install the OpenTelemetry Operator using the kube-stack Helm chart with the pre-configured `values.yaml` file.
+```bash
+kubectl create namespace opentelemetry-operator-system
+kubectl create secret generic elastic-secret-otel \
+--namespace opentelemetry-operator-system \
+--from-literal=elastic_endpoint='<ELASTICSEARCH_ENDPOINT>' \
+--from-literal=elastic_api_key='<ELASTIC_API_KEY>'
+```
 
-    ```bash
-    helm install opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack \
-    --namespace opentelemetry-operator-system \
-    --values 'https://raw.githubusercontent.com/elastic/elastic-agent/main/deploy/helm/edot-collector/kube-stack/values.yaml' \
-    --version '0.3.9'
-    ```
+::::{note}
+On Windows PowerShell, replace backslashes (`\`) with backticks (`` ` ``) for line continuation and single quotes (`'`) with double quotes (`"`).
+::::
 
-4. **Auto-instrument Applications**
+### Install the Operator
 
-    Add a language-specific annotation to your namespace by replacing `<LANGUAGE>` with one of the supported values: `nodejs`, `java`, `python`, `dotnet` or `go`:
+Install the OpenTelemetry Operator using the `kube-stack` Helm chart with the configured `values.yaml` file.
 
-    ```bash
-    kubectl annotate namespace YOUR_NAMESPACE instrumentation.opentelemetry.io/inject-<LANGUAGE>="opentelemetry-operator-system/elastic-instrumentation"
-    ```
+```bash
+helm install opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack \
+--namespace opentelemetry-operator-system \
+--values 'https://raw.githubusercontent.com/elastic/elastic-agent/main/deploy/helm/edot-collector/kube-stack/values.yaml' \
+--version '0.3.9'
+```
 
-    Restart your deployment to ensure the annotations and auto-instrumentations are applied.
+### Auto-instrument applications
 
-    For languages where auto-instrumentation is not available, you need to manually instrument your application. See the [Setup section in the corresponding SDK](../../edot-sdks).
+Add a language-specific annotation to your namespace by replacing `<LANGUAGE>` with one of the supported values: `nodejs`, `java`, `python`, `dotnet` or `go`:
+
+```bash
+kubectl annotate namespace YOUR_NAMESPACE instrumentation.opentelemetry.io/inject-<LANGUAGE>="opentelemetry-operator-system/elastic-instrumentation"
+```
+
+Restart your deployment to ensure the annotations and auto-instrumentations are applied.
+
+For languages where auto-instrumentation is not available, you need to manually instrument your application. See the [Setup section for the corresponding SDK](../../edot-sdks).

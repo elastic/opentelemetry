@@ -3,18 +3,21 @@ navigation_title: Monitoring on Kubernetes
 description: Detailed description of the Kubernetes setup for EDOT, including components and customization guidance.
 applies_to:
   serverless: all # Assuming default applicability, adjust if needed
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Monitoring on Kubernetes with EDOT
 
-The [quickstart guides](../../quickstart/index) for Kubernetes install a set of different EDOT Collectors and EDOT SDKs to cover collection of OpenTelemetry data for infrastructure monitoring, logs collection and application monitoring. This page provides more detailed description about the Kubernetes setup as well as guidance on how to customize the setup. 
+The [quickstart guides](../../quickstart/index.md) for Kubernetes install a set of different EDOT Collectors and EDOT SDKs to cover collection of OpenTelemetry data for infrastructure monitoring, logs collection and application monitoring. This page provides more detailed description about the Kubernetes setup as well as guidance on how to customize the setup. 
 
 The Kubernetes setup utilizes the OpenTelemetry Operator preconfigured to automate orchestration of EDOT as below:
  
 * **EDOT Collector Cluster:** Collection of cluster metrics.
 * **EDOT Collector Daemon:** Collection of node metrics, logs and application telemetry.
 * **EDOT Collector Gateway:** Pre-processing, aggregation and ingestion of data into Elastic. 
-* **EDOT SDKs**: Annotated applications will be auto-instrumented with [EDOT SDKs](../../edot-sdks/index).
+* **EDOT SDKs**: Annotated applications will be auto-instrumented with [EDOT SDKs](../../edot-sdks/index.md).
   
 ![K8s-architecture](../../images/EDOT-K8s-architecture.png)
 

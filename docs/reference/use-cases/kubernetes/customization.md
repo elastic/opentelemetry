@@ -3,6 +3,9 @@ navigation_title: Customization
 description: Guide on customizing the EDOT installation parameters for Kubernetes monitoring.
 applies_to:
   serverless: all # Assuming default applicability, adjust if needed
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Customizing configuration

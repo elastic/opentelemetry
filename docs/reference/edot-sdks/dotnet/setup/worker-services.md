@@ -1,5 +1,8 @@
 ---
 navigation_title: .NET worker services
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Set up EDOT .NET for worker services
@@ -29,7 +32,7 @@ The preceding code:
 1. Builds and runs the `IHost` to execute the application workload.
 
 Because the worker service template is based on the generic host, shared with ASP.NET Core applications, 
-this is the same approach as shown in the [getting started](index) and [ASP.NET Core](aspnetcore) examples
+this is the same approach as shown in the [getting started](index.md) and [ASP.NET Core](aspnetcore) examples
 and the same techniques for configuration and usage apply.
 
 ## Instrumenting worker services

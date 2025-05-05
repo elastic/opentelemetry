@@ -1,6 +1,9 @@
 ---
 navigation_title: Nomenclature
 description: Explanation of compatibility and support states (Incompatible, Compatible, Supported) for EDOT components.
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Compatibility & Support Nomenclature

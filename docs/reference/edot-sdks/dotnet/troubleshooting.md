@@ -1,5 +1,8 @@
 ---
 navigation_title: Troubleshooting
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Troubleshooting the EDOT .NET SDK

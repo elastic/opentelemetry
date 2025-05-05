@@ -1,6 +1,9 @@
 ---
 navigation_title: Configuration
 description: Configure the Elastic Distribution of OpenTelemetry PHP (EDOT PHP) to send data to Elastic.
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Configuring the EDOT PHP SDK

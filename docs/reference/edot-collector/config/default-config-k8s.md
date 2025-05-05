@@ -1,12 +1,15 @@
 ---
 navigation_title: Default Config—Kubernetes
-parent: Configuration
-nav_order: 2
+
+
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Default Configuration - EDOT Collectors on Kubernetes
 
-The [Kubernetes setup](../../quickstart/index) utilizes the OpenTelemetry Operator to automate orchestration of EDOT Collectors:
+The [Kubernetes setup](../../quickstart/index.md) utilizes the OpenTelemetry Operator to automate orchestration of EDOT Collectors:
 
 * [EDOT Collector Cluster](#pipeline---cluster-collector): Collection of cluster metrics.
 * [EDOT Collector Daemon](#pipeline---daemonset-collectors): Collection of node metrics, logs and application telemetry.

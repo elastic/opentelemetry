@@ -3,6 +3,9 @@ navigation_title: Deployment
 description: Instructions for deploying EDOT components for Kubernetes monitoring, using guided onboarding or manual steps.
 applies_to:
   serverless: all # Assuming default applicability, adjust if needed
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Deployment

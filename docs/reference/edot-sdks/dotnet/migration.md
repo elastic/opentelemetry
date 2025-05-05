@@ -1,5 +1,8 @@
 ---
 navigation_title: Migration
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Migrating to EDOT .NET
@@ -22,7 +25,7 @@ directly export data to an Elastic Observability backend (both in Elastic Cloud 
 Elastic tooling may not be able to function as intended. For that reason, we provide Elastic distributions that
 provide a thin layer over the OpenTelemetry tools to provide our customers with the best compatibility, supportability and features. 
 We recommend using the Elastic Distribution of OpenTelemetry (EDOT) language SDK and the 
-[Elastic Distribution of OpenTelemetry collector](../../edot-collector/index) for the best experience.
+[Elastic Distribution of OpenTelemetry collector](../../edot-collector/index.md) for the best experience.
 
 This page guides migrating to EDOT .NET from either the existing 
 [Elastic APM Agent for .NET](https://www.elastic.co/guide/en/apm/agent/dotnet/current/index.html) or from the upstream
@@ -214,7 +217,7 @@ The required values for the endpoint and headers can be obtained from your Elast
 
 Once migrated, the Elastic APM Agent NuGet package can be removed from your application.
 
-For more details on registering and configuring EDOT. NET, see the [quickstart](./setup/index) documentation.
+For more details on registering and configuring EDOT. NET, see the [quickstart](./setup/index.md) documentation.
 
 ### Limitations
 

@@ -1,7 +1,10 @@
 ---
 navigation_title: Configure Metrics Collection
-parent: Configuration
-nav_order: 4
+
+
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Configure Metrics Collection

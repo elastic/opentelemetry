@@ -3,6 +3,9 @@ navigation_title: Setup
 description: Setting up EDOT Python.
 applies_to:
   serverless: all
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Setting up EDOT Python

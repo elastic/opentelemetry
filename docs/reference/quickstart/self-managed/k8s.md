@@ -1,8 +1,8 @@
 ---
 navigation_title: Kubernetes
-layout: default
-nav_order: 1
-parent: Self-managed
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Quickstart

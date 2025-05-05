@@ -44,15 +44,13 @@ toc:
       - file: edot-collector/index.md
         children:
           - file: edot-collector/download.md
-          - file: edot-collector/configuration.md
+          - file: edot-collector/config/index.md
             children:
-              - file: edot-collector/config/index.md
-                children:
-                  - file: edot-collector/config/default-config-standalone.md
-                  - file: edot-collector/config/default-config-k8s.md
-                  - file: edot-collector/config/configure-logs-collection.md
-                  - file: edot-collector/config/configure-metrics-collection.md
-                  - file: edot-collector/config/configure-data-ingestion.md
+              - file: edot-collector/config/default-config-standalone.md
+              - file: edot-collector/config/default-config-k8s.md
+              - file: edot-collector/config/configure-logs-collection.md
+              - file: edot-collector/config/configure-metrics-collection.md
+              - file: edot-collector/config/configure-data-ingestion.md
           - file: edot-collector/customization.md
             children:
               - file: edot-collector/components.md
@@ -65,6 +63,7 @@ toc:
               - file: edot-sdks/dotnet/setup/index.md
                 children:
                   - file: edot-sdks/dotnet/setup/aspnet.md
+                  - hidden: edot-sdks/dotnet/setup/aspnetcore.md
                   - file: edot-sdks/dotnet/setup/console.md
                   - file: edot-sdks/dotnet/setup/worker-services.md
                   - file: edot-sdks/dotnet/setup/zero-code.md
@@ -83,7 +82,7 @@ toc:
               - file: edot-sdks/java/supported-technologies.md
               - file: edot-sdks/java/troubleshooting.md
               - file: edot-sdks/java/migration.md
-              - file: edot-sdks/python/overhead.md
+              - file: edot-sdks/java/overhead.md
           - file: edot-sdks/nodejs/index.md
             children:
               - file: edot-sdks/nodejs/setup/index.md

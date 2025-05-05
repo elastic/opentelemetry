@@ -3,6 +3,9 @@ navigation_title: Prerequisites & Compatibility
 description: Prerequisites and compatibility matrix for monitoring Kubernetes with EDOT.
 applies_to:
   serverless: all # Assuming default applicability, adjust if needed
+applies_to:
+  stack:
+  serverless:
 ---
 
 ## Prerequisites

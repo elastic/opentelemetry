@@ -1,6 +1,9 @@
 ---
 navigation_title: Features
 description: Overview of Elastic features available with EDOT.
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Elastic Features available with EDOT

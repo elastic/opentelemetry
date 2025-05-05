@@ -1,6 +1,9 @@
 ---
 navigation_title: Migration
 description: Migrate from the legacy Elastic APM PHP agent to the Elastic Distribution of OpenTelemetry PHP.
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Migrating to EDOT PHP from the Elastic PHP Agent
@@ -29,6 +32,9 @@ sudo rpm -e elastic-apm-php
 sudo apk del elastic-apm-php
 ```
 
+applies_to:
+  stack:
+  serverless:
 ---
 
 ### 2. Install EDOT PHP
@@ -53,6 +59,9 @@ sudo rpm -ivh elastic-otel-php-<version>-1.x86_64.rpm
 sudo apk add --allow-untrusted elastic-otel-php-<version>.apk
 ```
 
+applies_to:
+  stack:
+  serverless:
 ---
 
 ### 3. Update configuration
@@ -71,6 +80,9 @@ Switch from `php.ini`-based configuration to environment variables. Below is a c
 EDOT PHP does not require changes to your code or Composer configuration — instrumentation works automatically after package installation.
 :::
 
+applies_to:
+  stack:
+  serverless:
 ---
 
 ### Full Configuration Mapping: Elastic APM PHP → EDOT PHP
@@ -106,6 +118,9 @@ EDOT PHP does not require changes to your code or Composer configuration — ins
 | `inferred_spans_min_duration`      | [`ELASTIC_OTEL_INFERRED_SPANS_MIN_DURATION`](./configuration#inferred-spans-configuration)                                                                                    | Minimum duration of inferred span (used to limit noise).                                                                     |
 
 
+applies_to:
+  stack:
+  serverless:
 ---
 
 ### 4. Restart your PHP environment
@@ -127,6 +142,9 @@ Restart the relevant PHP processes for changes to take effect. This could includ
   php script.php
   ```
 
+applies_to:
+  stack:
+  serverless:
 ---
 
 ✅ You’re now ready to start collecting traces and metrics using OpenTelemetry with Elastic!
@@ -158,9 +176,6 @@ Restart the relevant PHP processes for changes to take effect. This could includ
 ### Unified telemetry collection (traces + metrics)
 - EDOT PHP can be used in environments where **both tracing and metrics** are collected using OpenTelemetry.
 - The classic APM agent focuses solely on APM/tracing.
-
-
-
 ## ⚠️ Limitations Compared to the Elastic APM Agent
 
 - Lack of Span Compression

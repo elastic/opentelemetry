@@ -1,89 +1,102 @@
 ---
-navigation_title: Hosts & VMs
-description: The quick start for Hosts / VMs with with Elastic Cloud Hosted will guide you through setting up the EDOT Collector and EDOT SDKs to collect host metrics, logs and application traces.
+navigation_title: Hosts and VMs
+description: Learn how to set up the EDOT Collector and EDOT SDKs with Elastic Cloud Hosted to collect host metrics, logs and application traces.
+applies_to:
+  stack:
+  serverless:
 ---
 
-# Quickstart
+# Quickstart for hosts and VMs on Elastic Cloud Hosted
 
-The quick start for Hosts / VMs with with Elastic Cloud Hosted will guide you through setting up the EDOT Collector and EDOT SDKs to collect host metrics, logs and application traces.
+Learn how to set up the EDOT Collector and EDOT SDKs with Elastic Cloud Hosted (ECH) to collect host metrics, logs and application traces.
 
-1. **Download the EDOT Collector**
+## Instructions
 
-    [Download the EDOT Collector](../../edot-collector/download) for your operating system, extract the archive and move to the extracted directory.
+Follow these steps to deploy the EDOT Collector and EDOT OTel SDKs with ECH.
 
-2. **Configure the EDOT Collector**
+### Download the EDOT Collector
 
-    Retrieve the `Elasticsearch Endpoint` and the `Elastic API Key` for your Elastic Cloud deployment by [following these instructions](./#retrieving-connection-details-for-your-elastic-cloud-deployment).
+[Download the EDOT Collector](../../edot-collector/download) for your operating system, extract the file, and change directory to the extracted files.
 
-    Replace `<ELASTICSEARCH_ENDPOINT>` and `<ELASTIC_API_KEY>` before applying the below command.
+### Configure the EDOT Collector
 
-    *Linux*
+:::{include} ../../_snippets/retrieve-credentials.md
+:::
 
-    ```bash
-    ELASTICSEARCH_ENDPOINT=<ELASTICSEARCH_ENDPOINT> && \
-    ELASTIC_API_KEY=<ELASTIC_API_KEY> && \
-    cp ./otel_samples/logs_metrics_traces.yml ./otel.yml && \
-    mkdir -p ./data/otelcol && \
-    sed -i "s#\${env:STORAGE_DIR}#${PWD}/data/otelcol#g" ./otel.yml && \
-    sed -i "s#\${env:ELASTIC_ENDPOINT}#${ELASTICSEARCH_ENDPOINT}#g" ./otel.yml && \
-    sed -i "s#\${env:ELASTIC_API_KEY}#${ELASTIC_API_KEY}#g" ./otel.yml
-    ```
+Replace `<ELASTICSEARCH_ENDPOINT>` and `<ELASTIC_API_KEY>` before applying the following commands.
 
-    *MacOS*
+::::{tab-set}
 
-    ```bash
-    ELASTICSEARCH_ENDPOINT=<ELASTICSEARCH_ENDPOINT> && \
-    ELASTIC_API_KEY=<ELASTIC_API_KEY> && \
-    cp ./otel_samples/logs_metrics_traces.yml ./otel.yml && \
-    mkdir -p ./data/otelcol && \
-    sed -i '' "s#\${env:STORAGE_DIR}#${PWD}/data/otelcol#g" ./otel.yml && \
-    sed -i '' "s#\${env:ELASTIC_ENDPOINT}#${ELASTICSEARCH_ENDPOINT}#g" ./otel.yml && \
-    sed -i '' "s#\${env:ELASTIC_API_KEY}#${ELASTIC_API_KEY}#g" ./otel.yml
-    ```
+:::{tab-item} Linux
+```bash
+ELASTICSEARCH_ENDPOINT=<ELASTICSEARCH_ENDPOINT> && \
+ELASTIC_API_KEY=<ELASTIC_API_KEY> && \
+cp ./otel_samples/logs_metrics_traces.yml ./otel.yml && \
+mkdir -p ./data/otelcol && \
+sed -i "s#\${env:STORAGE_DIR}#${PWD}/data/otelcol#g" ./otel.yml && \
+sed -i "s#\${env:ELASTIC_ENDPOINT}#${ELASTICSEARCH_ENDPOINT}#g" ./otel.yml && \
+sed -i "s#\${env:ELASTIC_API_KEY}#${ELASTIC_API_KEY}#g" ./otel.yml
+```
+:::
 
-    *Windows*
+:::{tab-item} macOS
+```bash
+ELASTICSEARCH_ENDPOINT=<ELASTICSEARCH_ENDPOINT> && \
+ELASTIC_API_KEY=<ELASTIC_API_KEY> && \
+cp ./otel_samples/logs_metrics_traces.yml ./otel.yml && \
+mkdir -p ./data/otelcol && \
+sed -i '' "s#\${env:STORAGE_DIR}#${PWD}/data/otelcol#g" ./otel.yml && \
+sed -i '' "s#\${env:ELASTIC_ENDPOINT}#${ELASTICSEARCH_ENDPOINT}#g" ./otel.yml && \
+sed -i '' "s#\${env:ELASTIC_API_KEY}#${ELASTIC_API_KEY}#g" ./otel.yml
+```
+:::
 
-    ```powershell
-    Remove-Item -Path .\otel.yml -ErrorAction SilentlyContinue
-    Copy-Item .\otel_samples\logs_metrics_traces.yml .\otel.yml
-    New-Item -ItemType Directory -Force -Path .\data\otelcol | Out-Null
+:::{tab-item} Windows
+```powershell
+Remove-Item -Path .\otel.yml -ErrorAction SilentlyContinue
+Copy-Item .\otel_samples\logs_metrics_traces.yml .\otel.yml
+New-Item -ItemType Directory -Force -Path .\data\otelcol | Out-Null
 
-    $content = Get-Content .\otel.yml
-    $content = $content -replace '\${env:STORAGE_DIR}', "$PWD\data\otelcol"
-    $content = $content -replace '\${env:ELASTIC_ENDPOINT}', "<ELASTICSEARCH_ENDPOINT>"
-    $content = $content -replace '\${env:ELASTIC_API_KEY}', "<ELASTIC_API_KEY>"
-    $content | Set-Content .\otel.yml
-    ```
+$content = Get-Content .\otel.yml
+$content = $content -replace '\${env:STORAGE_DIR}', "$PWD\data\otelcol"
+$content = $content -replace '\${env:ELASTIC_ENDPOINT}', "<ELASTICSEARCH_ENDPOINT>"
+$content = $content -replace '\${env:ELASTIC_API_KEY}', "<ELASTIC_API_KEY>"
+$content | Set-Content .\otel.yml
+```
+:::
+::::
 
-3. **Run the EDOT Collector**
+###  Run the EDOT Collector
 
-    Execute the following command to run the EDOT Collector.
+Run the following command to run the EDOT Collector.
 
-    :::note
-    The Collector will open the ports `4317` and `4318` to receive application data from locally running OTel SDKs.
-    :::
+::::{tab-set}
 
-    *Linux / MacOS*
+:::{tab-item} Linux and macOS
+```bash
+sudo ./otelcol --config otel.yml
+```
+:::
 
-    ```bash
-    sudo ./otelcol --config otel.yml
-    ```
+:::{tab-item} Windows
+```powershell
+.\elastic-agent.exe otel --config otel.yml
+```
+:::
+::::
 
-    *Windows*
+:::{note}
+By default, the Collector opens ports `4317` and `4318` to receive application data from locally running OTel SDKs.
+::::
 
-    ```powershell
-    .\elastic-agent.exe otel --config otel.yml
-    ```
+### (Optional) Instrument your applications
 
-4. **(Optional) Instrument your applications**
+If you want to collect telemetry from applications running on the host where you installed the EDOT Collector, instrument your target applications.
 
-    If you would like to collect telemetry from applications running on the host where you installed the EDOT Collector,
-    you need to instrument your target applications according to the setup instructions for corresponding EDOT SDKs:
+- [.NET](../../edot-sdks/dotnet/setup)
+- [Java](../../edot-sdks/java/setup)
+- [Node.js](../../edot-sdks/nodejs/setup)
+- [PHP](../../edot-sdks/php/setup)
+- [Python](../../edot-sdks/python/setup)
 
-    - [.NET](../../edot-sdks/dotnet/setup)
-    - [Java](../../edot-sdks/java/setup)
-    - [Node.js](../../edot-sdks/nodejs/setup)
-    - [PHP](../../edot-sdks/php/setup)
-    - [Python](../../edot-sdks/python/setup)
-
-    Configure your SDKs to send the data to the local EDOT Collector using OTLP/gRPC (`http://localhost:4317`) or OTLP/HTTP (`http://localhost:4318`).
+Configure your SDKs to send the data to the local EDOT Collector using OTLP/gRPC (`http://localhost:4317`) or OTLP/HTTP (`http://localhost:4318`).

@@ -1,6 +1,9 @@
 ---
 navigation_title: Hosts / VMs Environments
 description: Recommended EDOT architecture for host or virtual machine environments.
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Hosts / VMs Environments

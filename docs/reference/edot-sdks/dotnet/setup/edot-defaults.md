@@ -1,5 +1,8 @@
 ---
 navigation_title: Opinionated defaults
+applies_to:
+  stack:
+  serverless:
 ---
 
 # EDOT .NET opinionated defaults

@@ -1,8 +1,8 @@
 ---
 navigation_title: Docker
-layout: default
-nav_order: 3
-parent: Elastic Cloud Serverless
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Quickstart - Docker - Serverless
@@ -25,7 +25,7 @@ Make sure the following requirements are present:
 
 ## Instructions
 
-1. Create a `otel-collector-config.yml` file with your EDOT collector configuration. See the [configuration reference](../../_edot-collector/config/default-config-standalone.md) for "Managed OTLP Endpoint" for more details.
+1. Create a `otel-collector-config.yml` file with your EDOT collector configuration. See the [configuration reference](../../edot-collector/config/default-config-standalone.md) for "Managed OTLP Endpoint" for more details.
 
 2. Retrieve the `Elastic OTLP Endpoint` and the `Elastic API Key` for your Serverless Project by [following these instructions](./#retrieve-connection-details-for-your-project).
 
@@ -86,3 +86,21 @@ Make sure the following requirements are present:
     - [Python](../../edot-sdks/python/setup)
 
     Configure your SDKs to send the data to the local EDOT Collector using OTLP/gRPC (`http://localhost:4317`) or OTLP/HTTP (`http://localhost:4318`).
+
+## Troubleshoot
+
+### Api Key prefix not found
+
+The following error is due to an improperly formatted API key:
+
+```txt
+Exporting failed. Dropping data.
+{"kind": "exporter", "data_type": }
+"Unauthenticated desc = ApiKey prefix not found"
+```
+
+Format your API key as `"Authorization": "ApiKey <api-key-value-here>"` or `"Authorization=ApiKey <api-key>"` depending on whether you're using a Collector or SDK.
+
+### Error: too many requests
+
+The managed endpoint has per-project rate limits in place. If you reach this limit, contact our [support team](https://support.elastic.co).

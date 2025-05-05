@@ -1,6 +1,9 @@
 ---
 navigation_title: EDOT PHP
 description: The Elastic Distribution of OpenTelemetry PHP (EDOT PHP) is a customized version of OpenTelemetry for PHP.
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Elastic Distribution of OpenTelemetry PHP
@@ -19,4 +22,4 @@ With EDOT PHP you have access to all the features of the OpenTelemetry PHP agent
 * Out-of-the-box auto-instrumentation — no need to modify your code. EDOT PHP takes care of enabling telemetry collection automatically.
 * Additional runtime features such as **automatic root span creation**, **URL grouping**, and **inferred spans** to provide richer and more structured trace data with minimal setup.
 
-**Ready to try out EDOT PHP?** Follow the step-by-step instructions in [Get started](./setup/index).
+**Ready to try out EDOT PHP?** Follow the step-by-step instructions in [Get started](./setup/index.md).

@@ -41,6 +41,8 @@ collections:
     output: true
   edot-sdks:
     output: true
+  redirects:
+    output: true
 
 callouts:
   note:

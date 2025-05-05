@@ -3,6 +3,9 @@ navigation_title: Troubleshooting
 description: Troubleshooting the EDOT Python Agent.
 applies_to:
   serverless: all
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Troubleshooting the EDOT Python Agent
@@ -56,3 +59,13 @@ to it a no-op. The side effect of this is that you won't see your application lo
 If you are already shipping logs by other means you don't need to enable this.
 
 <!-- TODO: when available add link to to propose other option  https://elastic.github.io/opentelemetry/use-cases/logs/ -->
+
+## Are semantic convention stable yet?
+
+Unfortunately not yet and so you should expect some changes between versions in order to stabilize them. For some semantic conventions
+like HTTP there is a migration path but the conversion to stable HTTP semantic conventions is not done yet for all the instrumentations.
+
+## Does EDOT Python require access to or modification of application code ?
+
+EDOT Python is distributed as a Python package and so must be installed in the same environment as your application. Once it is
+available in the path we can auto-instrument your application without changing the application code.

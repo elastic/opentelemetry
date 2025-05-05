@@ -1,6 +1,9 @@
 ---
 navigation_title: Hosts / VMs
 description: The quick start for Hosts / VMs with a self-managed Elastic Stack will guide you through setting up the EDOT Collector and EDOT SDKs to collect host metrics, logs and application traces.
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Quickstart

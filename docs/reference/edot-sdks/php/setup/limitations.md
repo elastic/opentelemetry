@@ -1,6 +1,9 @@
 ---
 navigation_title: Limitations
 description: Limitations of the Elastic Distribution of OpenTelemetry PHP.
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Limitations

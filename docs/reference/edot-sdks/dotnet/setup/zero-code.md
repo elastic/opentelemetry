@@ -1,5 +1,8 @@
 ---
 navigation_title: Zero-code instrumentation
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Using profiler-based zero-code instrumentation

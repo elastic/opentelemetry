@@ -3,6 +3,9 @@ navigation_title: EDOT Python
 description: The Elastic Distribution of OpenTelemetry Python (EDOT Python) is a customized version of OpenTelemetry Python.
 applies_to:
   serverless: all
+applies_to:
+  stack:
+  serverless:
 ---
 
 # EDOT Python
@@ -17,4 +20,4 @@ With EDOT Python you have access to all the features of the OpenTelemetry Python
 * Elastic-specific processors that ensure optimal compatibility when exporting OpenTelemetry signal data to an Elastic backend like an Elastic Observability deployment.
 * Preconfigured collection of tracing and metrics signals, applying some opinionated defaults, such as which sources are collected by default.
 
-**Ready to try out EDOT Python?** Follow the step-by-step instructions in [Setup](./setup/index).
+**Ready to try out EDOT Python?** Follow the step-by-step instructions in [Setup](./setup/index.md).

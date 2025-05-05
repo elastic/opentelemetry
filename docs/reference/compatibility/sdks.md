@@ -1,6 +1,9 @@
 ---
 navigation_title: SDK Distributions
 description: Compatibility and support information for EDOT SDK versions with EDOT Collector versions.
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Compatibility & Support - OTel SDKs
@@ -11,7 +14,7 @@ description: Compatibility and support information for EDOT SDK versions with ED
 | :----------------- | :--------------- | :-------------- |
 | ❌                 | 🟡               | ✅              |
 
-For the best experience, export data from EDOT SDKs using the [EDOT Collector](../edot-collector/index).
+For the best experience, export data from EDOT SDKs using the [EDOT Collector](../edot-collector/index.md).
 
 ## Compatibility with EDOT Collector
 

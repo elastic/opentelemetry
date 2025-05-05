@@ -3,6 +3,9 @@ navigation_title: Supported Technologies
 description: Technologies Supported by the EDOT Python SDK.
 applies_to:
   serverless: all
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Technologies Supported by the EDOT Python SDK

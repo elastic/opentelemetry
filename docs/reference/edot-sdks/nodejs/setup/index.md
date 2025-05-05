@@ -1,6 +1,9 @@
 ---
 navigation_title: Setup
 description: How to set up the Elastic Distribution of OpenTelemetry Node.js (EDOT Node.js).
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Setting up EDOT Node.js

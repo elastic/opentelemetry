@@ -1,6 +1,9 @@
 ---
 navigation_title: Docker
 description: Learn how to set up the EDOT Collector and EDOT SDKs in a Docker environment to collect host metrics, logs and application traces.
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Quickstart
@@ -18,7 +21,7 @@ Make sure the following requirements are present:
 
 Follow these steps to deploy the EDOT Collector and EDOT OTel SDKs in Docker.
 
-1. Create the `otel-collector-config.yml` file with your EDOT Collector configuration. Refer to the [configuration reference](../../_edot-collector/config/default-config-standalone.md).
+1. Create the `otel-collector-config.yml` file with your EDOT Collector configuration. Refer to the [configuration reference](../../edot-collector/config/default-config-standalone.md).
 
 2. Retrieve your [Elasticsearch endpoint](https://www.elastic.co/guide/en/kibana/current/search-space-connection-details.html) and [API key](https://www.elastic.co/guide/en/kibana/current/api-keys.html).
 

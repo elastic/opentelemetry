@@ -2,7 +2,8 @@
 navigation_title: Overview
 description: An overview of the features available in the Elastic Distribution of OpenTelemetry (EDOT) SDKs for various languages.
 applies_to:
-  serverless: all
+  stack:
+  serverless:
 ---
 
 # EDOT SDKs Feature Overview
@@ -34,7 +35,7 @@ This table provides an overview of the features available in the Elastic Distrib
 
 ## Elastic Support for EDOT SDKs
 
-Elastic provides technical support for EDOT Language SDKs according to Elastic's [Support Policy](https://www.elastic.co/support_policy). EDOT SDKs are meant to be used in combination with the [EDOT Collector](../edot-collector/index) or Elastic's managed OTLP endpoint (on Elastic Cloud Serverless) to ingest data into Elastic solutions from the EDOT SDKs. Other ingestion paths are not officially supported by Elastic.
+Elastic provides technical support for EDOT Language SDKs according to Elastic's [Support Policy](https://www.elastic.co/support_policy). EDOT SDKs are meant to be used in combination with the [EDOT Collector](../edot-collector/index.md) or Elastic's managed OTLP endpoint (on Elastic Cloud Serverless) to ingest data into Elastic solutions from the EDOT SDKs. Other ingestion paths are not officially supported by Elastic.
 
 ## License
 EDOT SDKs are licensed under the [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0).

@@ -3,6 +3,9 @@ navigation_title: Performance Overhead
 description: Performance overhead comparison between EDOT Python and Elastic APM Python Agent.
 applies_to:
   serverless: all
+applies_to:
+  stack:
+  serverless:
 ---
 
 ## Performance Overhead

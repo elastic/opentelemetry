@@ -1,17 +1,11 @@
 ---
 navigation_title: Kubernetes
-layout: default
-nav_order: 1
-parent: Elastic Cloud Serverless
+applies_to:
+  stack:
+  serverless:
 ---
 
 # Quickstart
-
-☸️ Kubernetes
-{: .label .label-purple }
-
-☁️ Elastic Cloud Serverless
-{: .label .label-green }
 
 The quick start for Kubernetes with Elastic Cloud Serverless covers the collection of OpenTelemetry data for infrastructure monitoring,
 logs collection and application monitoring.
@@ -62,3 +56,21 @@ logs collection and application monitoring.
     Restart your deployment to ensure the annotations and auto-instrumentations are applied.
 
     For languages where auto-instrumentation is not available, you will need to manually instrument your application. See the [Setup section in the corresponding SDK](../../edot-sdks).
+
+## Troubleshoot
+
+### Api Key prefix not found
+
+The following error is due to an improperly formatted API key:
+
+```txt
+Exporting failed. Dropping data.
+{"kind": "exporter", "data_type": }
+"Unauthenticated desc = ApiKey prefix not found"
+```
+
+Format your API key as `"Authorization": "ApiKey <api-key-value-here>"` or `"Authorization=ApiKey <api-key>"` depending on whether you're using a Collector or SDK.
+
+### Error: too many requests
+
+The managed endpoint has per-project rate limits in place. If you reach this limit, contact our [support team](https://support.elastic.co).
