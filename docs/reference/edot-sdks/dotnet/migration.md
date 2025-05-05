@@ -226,7 +226,9 @@ these are being assessed and may be included in contributions to OpenTelemetry o
 EDOT .NET in future releases.
 
 - Stacktrace capture
-- Central (dynamic) configuration
+- Central configuration
+- Dynamic configuration
+- Span compression
 
 ### Zero-code auto instrumentation
 

@@ -14,7 +14,7 @@ You can use the [guided onboarding](#deploy-components-using-the-guided-onboardi
 
 ## Deploy components using the guided onboarding
 
-The guided onboarding simplifies deploying your Kubernetes components by setting up an [API Key](https://www.elastic.co/guide/en/kibana/current/api-keys.html) and the needed [Integrations](https://www.elastic.co/docs/current/en/integrations) in the background. Follow these steps to use the guided onboarding:
+The guided onboarding simplifies deploying your Kubernetes components by setting up an [API Key](docs-content://deploy-manage/api-keys/elasticsearch-api-keys) and the needed [Integrations](https://www.elastic.co/docs/current/en/integrations) in the background. Follow these steps to use the guided onboarding:
 
 1. In Kibana, navigate to **Observability** → **Add data**.
 2. Select **Kubernetes**, then choose **Kubernetes monitoring with EDOT Collector**.
@@ -35,7 +35,7 @@ To automatically generate and renew certificates, refer to [cert-manager integra
 
 Before installing the operator follow these actions:
 
-1. Create an [API Key](https://www.elastic.co/guide/en/kibana/current/api-keys.html), and make note of its value.
+1. Create an [API Key](docs-content://deploy-manage/api-keys/elasticsearch-api-keys), and make note of its value.
 (TBD: details of API key permissions).
 
 2. Install the following integrations in Kibana:

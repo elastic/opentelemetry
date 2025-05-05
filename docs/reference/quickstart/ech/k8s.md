@@ -6,7 +6,7 @@ applies_to:
   serverless:
 ---
 
-# Quickstart for Docker on Elastic Cloud Hosted
+# Quickstart for Kubernetes on Elastic Cloud Hosted
 
 Learn how to set up the EDOT Collector and EDOT SDKs in a Kubernetes environment with Elastic Cloud Hosted (ECH) to collect host metrics, logs and application traces.
 
