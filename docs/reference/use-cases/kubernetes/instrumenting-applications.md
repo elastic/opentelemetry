@@ -2,29 +2,17 @@
 navigation_title: Instrumenting Applications
 description: Guidance on instrumenting applications with EDOT SDKs on Kubernetes using automatic or manual instrumentation.
 applies_to:
-  serverless: all # Assuming default applicability, adjust if needed
-applies_to:
   stack:
   serverless:
 ---
 
-# Instrumenting applications with EDOT SDKs on Kubernetes
+# Instrument applications with EDOT SDKs on Kubernetes
 
-[Elastic Distributions of OpenTelemetry (EDOT) SDKs](../../edot-sdks/index.md) cover multiple languages. This section provides guidance and examples for applications instrumentation in a Kubernetes environment for all supported languages.
+The [Elastic Distributions of OpenTelemetry (EDOT) SDKs](../../edot-sdks/index.md) cover multiple languages. Read on to learn how to instrument applications for APM in a Kubernetes environment for all supported languages.
 
-In Kubernetes environments with the OpenTelemetry Operator, [**automatic (or zero-code) instrumentation**](https://opentelemetry.io/docs/kubernetes/operator/automatic/) simplifies the process by injecting and configuring instrumentation libraries into the targeted Pods.
+In Kubernetes environments with the OpenTelemetry Operator, [automatic or zero-code instrumentation](https://opentelemetry.io/docs/kubernetes/operator/automatic/) simplifies the instrumentation process by injecting and configuring instrumentation libraries into the targeted Pods.
 
 On the other hand, **manual instrumentation** with OpenTelemetry allows you to customize trace spans, metrics, and logging directly in your application’s code. This approach provides more granular control over what and how data is captured.
-
-## Table of contents
-
-- [Prerequisites](#prerequisites)
-- [Auto-instrumentation basics](#auto-instrumentation-basics)
-- [Configuring auto-instrumentation](#configuring-auto-instrumentation)
-- [How auto-instrumentation works](#how-auto-instrumentation-works)
-- [Advanced configuration](#advanced-configuration)
-- [Troubleshooting auto-instrumentation](#troubleshooting-auto-instrumentation)
-- [Migrating from the Elastic APM Attacher for Kubernetes](#migrating-from-the-elastic-apm-attacher-for-kubernetes)
 
 ## Prerequisites
 
@@ -47,29 +35,31 @@ opentelemetry-operator-system   elastic-instrumentation   5d20h   http://opentel
 
 The `Instrumentation` object stores important parameters:
 
-- The **exporter endpoint** represents the destination for the traces, in this case the HTTP receiver configured in the EDOT DaemonSet Collector. That endpoint has to be reachable by the Pods being instrumented.
+- The exporter endpoint represents the destination for the traces, in this case the HTTP receiver configured in the EDOT DaemonSet Collector. That endpoint has to be reachable by the Pods being instrumented.
 
-```yaml
-  exporter:
-    endpoint: http://opentelemetry-kube-stack-daemon-collector.opentelemetry-operator-system.svc.cluster.local:4318
-```
+   ```yaml
+   exporter:
+      endpoint: http://opentelemetry-kube-stack-daemon-collector.opentelemetry-operator-system.svc.cluster.local:4318
+   ```
 
-- Language-specific **images** used by the operator to inject the appropriate library into each Pod.
+- Language-specific images used by the operator to inject the appropriate library into each Pod.
 
-```yaml
-  dotnet:
-    image: docker.elastic.co/observability/elastic-otel-dotnet:edge
-  java:
-    image: docker.elastic.co/observability/elastic-otel-javaagent:{{ site.edot_versions.java }}
-  nodejs:
-    image: docker.elastic.co/observability/elastic-otel-node:{{ site.edot_versions.nodejs }}
-  python:
-    image: docker.elastic.co/observability/elastic-otel-python:{{ site.edot_versions.python }}
-```
+   ```yaml
+   dotnet:
+      image: docker.elastic.co/observability/elastic-otel-dotnet:edge
+   java:
+      image: docker.elastic.co/observability/elastic-otel-javaagent:{{ site.edot_versions.java }}
+   nodejs:
+      image: docker.elastic.co/observability/elastic-otel-node:{{ site.edot_versions.nodejs }}
+   python:
+      image: docker.elastic.co/observability/elastic-otel-python:{{ site.edot_versions.python }}
+   ```
 
-## Configuring auto-instrumentation
+## Configure auto-instrumentation
 
-To enable auto-instrumentation, add the corresponding language annotation to the **Pods** template (`spec.template.metadata.annotations`) in your Deployment or relevant workload object (StatefulSet, Job, CronJob, etc.).
+To turn on auto-instrumentation, add the corresponding language annotation to the Pods template in your Deployment or relevant workload object, like StatefulSet, Job, CronJob, and so on.
+
+For example, the template would contain the following under `spec.template.metadata.annotations`:
 
 ```yaml
 apiVersion: apps/v1
@@ -90,14 +80,13 @@ spec:
       # ...
 ```
 
-where ``<LANGUAGE>`` is one of: `go` , `java`, `nodejs`, `python`, `dotnet`
+Where ``<LANGUAGE>`` is one of: `go` , `java`, `nodejs`, `python`, `dotnet`
 
-:::note
-> Ensure you add the annotations at Pod level and not directly at the workload `spec` level (Deployment, Job, etc.).
-> Ensure the annotation value points to an existing `Instrumentation` object.
-:::
+::::{note}
+Make sure you add the annotations at Pod level and not directly at the workload `spec` level.Annotation values must point to an existing `Instrumentation` object.
+::::
 
-Alternatively, you can enable auto-instrumentation by adding the annotation at **namespace level**. This approach automatically applies instrumentation to all Pods within the specified namespace.
+You can also turn on auto-instrumentation by adding the annotation at namespace level. This approach automatically applies instrumentation to all Pods within the specified namespace.
 
 ```yaml
 apiVersion: v1
@@ -108,13 +97,13 @@ metadata:
     instrumentation.opentelemetry.io/inject-<LANGUAGE>: "opentelemetry-operator-system/elastic-instrumentation"
 ```
 
-After adding annotations to Pods or Namespaces, the applications must be restarted for the instrumentation injection to take effect:
+After adding annotations to Pods or Namespaces, restart the applications for the instrumentation injection to take effect:
 
 ```bash
 kubectl rollout restart deployment/my-deployment
 ```
 
-In case you have multiple Instrumentation objects with different settings or images, ensure you point your Pods to the desired `Instrumentation` objects in the annotations.
+In case you have multiple Instrumentation objects with different settings or images, make sure you point your Pods to the desired `Instrumentation` objects in the annotations.
 
 The possible values for the annotation are detailed in the [Operator documentation](https://opentelemetry.io/docs/kubernetes/operator/automatic/#add-annotations-to-existing-deployments). For reference purposes, the values are:
 
@@ -128,7 +117,6 @@ For details on instrumenting specific languages, refer to:
 - [Instrumenting Java](../../edot-sdks/java/setup/k8s)
 - [Instrumenting Python](../../edot-sdks/python/setup/k8s)
 - [Instrumenting Node.js](../../edot-sdks/nodejs/setup/k8s)
-<!-- - [Instrumenting Dotnet](./instrumenting-dotnet.md) -->
 
 ### Namespace based annotations example
 
@@ -148,49 +136,49 @@ kubectl run otel-test -n java-apps --env OTEL_INSTRUMENTATION_METHODS_INCLUDE="t
 
 After adding the annotation and restarting the Pods, run `kubectl describe` on your application Pod to verify the SDK has been properly attached.
 
-Ensure that the `init container`, `volume`, and `environment variables` described in [how auto-instrumentation works](#how-auto-instrumentation-works) have been successfully injected into the Pod.
+Make sure that the `init container`, `volume`, and `environment variables` described in [how auto-instrumentation works](#how-auto-instrumentation-works) have been successfully injected into the Pod.
 
 ## How auto-instrumentation works
 
 The OpenTelemetry Operator automates the process of instrumenting applications by injecting the necessary libraries and configuration into the application Pods.
+
 The process may vary slightly depending on the language, but it generally involves the following steps:
 
-- **Creating a shared volume**:
+- Creating a shared volume: The operator declares an `emptyDir` shared volume within the Pod, and mounts it the app container and a new init container. This volume serves as the medium for sharing the instrumentation library between the new init container and the application container.
 
-  The operator declares an `emptyDir` shared volume within the Pod, and mounts it the app container and a new init container. This volume serves as the medium for sharing the instrumentation library between the new init container and the application container.
+- Adding an init container: The operator adds an init container into the Pod. This container is responsible for copying the OpenTelemetry instrumentation library to the shared volume.
 
-- **Adding an init container**:
+- Configuring the main container: The operator injects environment variables into the main application container to configure OpenTelemetry settings (for example, `OTEL_EXPORTER_OTLP_ENDPOINT` or `OTEL_TRACES_SAMPLER`). Additionally, it links the instrumentation library to the application using mechanisms specific to the language runtime, such as:
 
-  The operator adds an init container into the Pod. This container is responsible for copying the OpenTelemetry instrumentation library to the shared volume.
-
-- **Configuring the main container**:
-
-  The operator injects environment variables into the main application container to configure OpenTelemetry settings (for example, `OTEL_EXPORTER_OTLP_ENDPOINT` or `OTEL_TRACES_SAMPLER`). Additionally, it links the instrumentation library to the application using mechanisms specific to the language runtime, such as:
-    - **For Java**: The library is linked through the `javaagent` option using the JAVA_TOOL_OPTIONS environment variable.
-    - **For Node.js**: The library is linked through the `NODE_OPTIONS` environment variable.
-    - **For Python**: The operator uses the `PYTHONPATH` environment variable to load the library [sitecustomize](https://docs.python.org/es/dev/library/site.html#module-sitecustomize) module.
+    - Java: The library is linked through the `javaagent` option using the JAVA_TOOL_OPTIONS environment variable.
+    - Node.js: The library is linked through the `NODE_OPTIONS` environment variable.
+    - Python: The operator uses the `PYTHONPATH` environment variable to load the library [sitecustomize](https://docs.python.org/es/dev/library/site.html#module-sitecustomize) module.
 
 ## Advanced configuration
 
 You can apply OTel-specific configuration to your applications at two different levels:
+
 - At Pod/container level, by using OTel-related environment variables.
 - At `Instrumentation` object level, for example configuring different settings per language.
 
-Use cases:
+Use cases include the following:
+
 - Change the library to be injected.
 - Change the exporter endpoint.
 - Apply certain logging level settings (`OTEL_LOG_LEVEL`).
 
-### Adding extra Instrumentation objects
+### Additional Instrumentation objects
 
-Consider also the creation of different `Instrumentation` objects for different purposes, such as:
+Consider the creation of different `Instrumentation` objects for different purposes, such as:
 
 - Different configuration options for certain languages.
 - Trying out different versions of the SDKs.
 
 ## Troubleshooting auto-instrumentation
 
-1. Check the operator is running, eg
+When troubleshooting auto-instrumentation issues in a Kubernetes environment with the OpenTelemetry Operator, follow these steps:
+
+1. Check that the operator is running. For example:
 
     ```bash
     $ kubectl get pods -n opentelemetry-operator-system
@@ -199,7 +187,7 @@ Consider also the creation of different `Instrumentation` objects for different 
     ...
     ```
 
-2. Check the `Instrumentation` object has been deployed, eg
+2. Check that the `Instrumentation` object has been deployed. For example:
 
     ```bash
     $ kubectl describe Instrumentation -n opentelemetry-operator-system
@@ -223,7 +211,7 @@ Consider also the creation of different `Instrumentation` objects for different 
     ...
     ```
 
-3. Check your pod is running, eg (using example running in banana namespace)
+3. Check that your pod is running. The following example checks the `banana` namespace:
 
     ```bash
     $ kubectl get pods -n banana
@@ -231,7 +219,7 @@ Consider also the creation of different `Instrumentation` objects for different 
     example-otel-app   1/1     Running   0          104s
     ```
 
-4. Check the pod has had the instrumentation initcontainer installed (for golang, container not initcontainer) and that the events show the docker image was successfully pulled and containers started
+4. Check that the pod has the instrumentation `initcontainer` installed, or `container` for Go.The events must show that the Docker image was successfully pulled and containers started:
 
     ```bash
     $ kubectl describe pod/example-otel-app -n banana
@@ -261,7 +249,7 @@ Consider also the creation of different `Instrumentation` objects for different 
     Normal  Started    5m1s  kubelet            Started container example-otel-app
     ```
 
-5. check your pod logs - look for agent output eg
+5. Check your pod log for agent output. For example:
 
     ```bash
     $ kubectl logs example-otel-app -n banana
@@ -270,29 +258,26 @@ Consider also the creation of different `Instrumentation` objects for different 
     ...
     ```
 
-5. if there is no obvious agent log output, restart the pod with agent log level set to debug and look for agent debug output. Setting the agent to debug is different for the different language agents.
+6. If there is no obvious agent log output, restart the pod with agent log level set to debug and look for agent debug output. Setting the agent to debug is different for the different language agents. Add or set the `OTEL_LOG_LEVEL` environment variable to `debug`. For example:
 
-    - All langs: add/set environment variable `OTEL_LOG_LEVEL` set to debug, eg
+   ```yaml
+      env:
+      - name: OTEL_LOG_LEVEL
+            value: "debug"
+   ```
 
-        ```yaml
-            env:
-            - name: OTEL_LOG_LEVEL
-                value: "debug"
-        ```
+   For Java, you can set the `OTEL_JAVAAGENT_DEBUG` environment variable to `true`.
 
-    - Java: add/set environment variable OTEL_JAVAAGENT_DEBUG set to true
+## Migrate from the Elastic APM Attacher for Kubernetes
 
-## Migrating from the Elastic APM Attacher for Kubernetes
-
-While the Elastic APM Attacher for Kubernetes only supports the Elastic APM application agents, the OpenTelemetry operator can support both the
-Elastic APM application agents and the EDOT agents. The OpenTelemetry operator has more features and is being actively developed.
+While the Elastic APM Attacher for Kubernetes only supports the Elastic APM application agents, the OpenTelemetry operator can support both the Elastic APM application agents and the EDOT agents. The OpenTelemetry operator has more features and is being actively developed.
 
 Migrating from the Elastic APM Attacher for Kubernetes consists of the following steps:
 
 1. Install the OpenTelemetry operator.
 2. Define and install Instrumentation CRDs which correspond to the currently defined values in the existing Elastic APM Attacher for Kubernetes deployment.
 3. Change the annotations in deployment definitions from the `co.elastic.apm/attach: ...` to the `instrumentation.opentelemetry.io/inject-...` equivalents.
-4. Rollout the new deployment definitions.
+4. Deploy the new deployment definitions.
 
 ### Add instrumentation CRDs
 
@@ -337,13 +322,8 @@ kubectl apply -f elastic-apm-instrumentation.yaml
 
 ### Migrate your pods to the new Instrumentation
 
-After you've defined the new instrumentations, migrate your pods by replacing the annotation that currently applies to them
-with the new annotation for the instrumentation. 
+After you've defined the new instrumentations, migrate your pods by replacing the annotation that currently applies to them with the new annotation for the instrumentation. 
 
-For example if you had a Java application deployment definition which specified the Elastic APM Attacher for Kubernetes
-annotation of `co.elastic.apm/attach: java`, you can replace that annotation with the equivalent annotation for the
-OpenTelemetry operator using the new instrumentation names you have defined. For the above example Instrumentation, the annotation would be `instrumentation.opentelemetry.io/inject-java: "opentelemetry-operator-system/elastic-apm-instrumentation"`
+For example if you had a Java application deployment definition which specified the Elastic APM Attacher for Kubernetes annotation of `co.elastic.apm/attach: java`, you can replace that annotation with the equivalent annotation for the OpenTelemetry operator using the new instrumentation names you have defined. For the previous example Instrumentation, the annotation would be `instrumentation.opentelemetry.io/inject-java: "opentelemetry-operator-system/elastic-apm-instrumentation"`
 
-Subsequent rollouts of that deployment will use the new instrumentation. The pods themselves will be auto-instrumented in
-the same way as they were already being instrumented. Any `ELASTIC_*` environment variables and configuration options will
-continue to apply.
+Subsequent deployments will use the new instrumentation. The pods themselves will be auto-instrumented in the same way as they were already being instrumented. Any `ELASTIC_*` environment variables and configuration options will continue to apply.

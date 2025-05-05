@@ -6,6 +6,10 @@ applies_to:
   serverless:
 ---
 
-# Reference Architecture
+# Reference architecture
 
-The following sections outline the recommended architectures for EDOT with different Elastic deployment options.
+The following sections outline the recommended architectures for Elastic Distributions of OpenTelemetry (EDOT) with different Elastic deployment options.
+
+- [Hosts and VMs](hosts_vms.md)
+- [Kubernetes](k8s.md)
+

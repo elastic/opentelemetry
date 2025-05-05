@@ -8,10 +8,10 @@ applies_to:
   serverless:
 ---
 
-## Upgrade
+# Upgrade
 
-:::note
-> Before upgrading or updating the release configuration refer to [compatibility matrix](./prerequisites-compatibility#compatibility-matrix) for a list of supported versions and [customizing configuration](./customization#customizing-configuration) for a list of supported configurable parameters.
+:::{note}
+Before upgrading or updating the release configuration, refer to [compatibility matrix](./prerequisites-compatibility#compatibility-matrix) for a list of supported versions and [customizing configuration](./customization#customizing-configuration) for a list of supported configurable parameters.
 :::
 
 To upgrade an installed release, run a `helm upgrade` command providing the desired chart version and using the correct `values.yaml` for your environment. For example:

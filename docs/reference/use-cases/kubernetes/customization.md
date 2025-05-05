@@ -2,13 +2,11 @@
 navigation_title: Customization
 description: Guide on customizing the EDOT installation parameters for Kubernetes monitoring.
 applies_to:
-  serverless: all # Assuming default applicability, adjust if needed
-applies_to:
   stack:
   serverless:
 ---
 
-# Customizing configuration
+# Customize the configuration
 
 To customize the installation parameters, change the configuration values provided in `values.yaml` file, or override them using `--set parameter=value` during the installation.
 
@@ -26,18 +24,25 @@ The following table lists common parameters that might be relevant for your use 
 | `certManager.enabled`    | Defaults to `false`.<br>Refer to [cert-manager integrated installation](#cert-manager-integrated-installation) for more details. |
 
 For more information on all available parameters and their meaning, refer to:
+
 * The provided `values.yaml`, which includes the default settings for the EDOT installation.
 * The official OpenTelemetry `kube-stack` Helm chart [values file](https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{ site.edot_versions.collector }}/deploy/helm/edot-collector/kube-stack/values.yaml), with explanations of all parameters.
 
 ## Cert-manager integrated installation
 
-In Kubernetes, for the API server to communicate with the webhook component (created by the operator), the webhook requires a TLS certificate that the API server is configured to trust. The default provided configuration sets the Helm chart to auto generate the required certificate as a self-signed certificate with an expiration policy of 365 days. These certificates **won't be renewed** if the Helm chart's release is not manually updated. For production environments, we highly recommend using a certificate manager like [cert-manager](https://cert-manager.io/docs/installation/).
+In Kubernetes, for the API server to communicate with the webhook component created by the operator, the webhook requires a TLS certificate that the API server is configured to trust. The default provided configuration sets the Helm chart to auto generate the required certificate as a self-signed certificate with an expiration policy of 365 days. 
 
-Integrating the operator with [cert-manager](https://cert-manager.io/) enables automatic generation and renewal of the TLS certificate. This section assumes that cert-manager and its CRDs are already installed in your Kubernetes environment. If that's not the case, refer to the [cert-manager installation guide](https://cert-manager.io/docs/installation/) before continuing.
+These certificates won't be renewed if the Helm chart's release is not manually updated. For production environments, use a certificate manager like [cert-manager](https://cert-manager.io/docs/installation/).
 
-Follow any of the following options to install the `opentelemetry-kube-stack` Helm chart integrated with `cert-manager`:
+Integrating the operator with [cert-manager](https://cert-manager.io/) turns on automatic generation and renewal of the TLS certificate. Make sure that cert-manager and its CRDs are already installed in your Kubernetes environment. If that's not the case, refer to the [cert-manager installation guide](https://cert-manager.io/docs/installation/) before continuing.
 
-* Add `--set opentelemetry-operator.admissionWebhooks.certManager.enabled=true --set opentelemetry-operator.admissionWebhooks.autoGenerateCert=null` to the installation command. For example:
+Follow any of the following options to install the `opentelemetry-kube-stack` Helm chart integrated with `cert-manager`.
+
+### Install using the CLI
+
+Add `--set opentelemetry-operator.admissionWebhooks.certManager.enabled=true --set opentelemetry-operator.admissionWebhooks.autoGenerateCert=null` to the installation command.
+
+For example:
 
 ```bash
 helm upgrade --install --namespace opentelemetry-operator-system opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack \
@@ -45,7 +50,9 @@ helm upgrade --install --namespace opentelemetry-operator-system opentelemetry-k
 --set opentelemetry-operator.admissionWebhooks.certManager.enabled=true --set opentelemetry-operator.admissionWebhooks.autoGenerateCert=null
 ```
 
-* Keep an updated copy of the `values.yaml` file by following these steps:
+### Install using values.yaml
+
+Keep an updated copy of the `values.yaml` file by following these steps:
 
   1. **Update** the `values.yaml` file with the following changes:
 
@@ -69,7 +76,7 @@ helm upgrade --install --namespace opentelemetry-operator-system opentelemetry-k
 
   2. Run the installation (or upgrade) command pointing to the updated file. For example, assuming that the updated file has been saved as `values_cert-manager.yaml`:
 
-    ```bash
-    helm upgrade --install --namespace opentelemetry-operator-system opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack \
-    --values ./resources/kubernetes/operator/helm/values_cert-manager.yaml --version 0.3.3
-```
+      ```bash
+      helm upgrade --install --namespace opentelemetry-operator-system opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack \
+      --values ./resources/kubernetes/operator/helm/values_cert-manager.yaml --version 0.3.3
+      ```
