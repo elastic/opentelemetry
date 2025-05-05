@@ -1,11 +1,16 @@
 ---
-navigation_title: Use Cases
+navigation_title: Use cases
 description: Overview of different use cases for the Elastic Distribution of OpenTelemetry.
-applies_to:
-  serverless: all # Assuming default applicability, adjust if needed
 applies_to:
   stack:
   serverless:
 ---
 
-# Use Cases
+# Use cases
+
+Explore specific use cases for the Elastic Distribution of OpenTelemetry:
+
+- [Kubernetes observability](./kubernetes/index.md)
+- [LLM observability](./llms/index.md)
+
+

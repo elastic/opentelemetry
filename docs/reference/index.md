@@ -26,8 +26,8 @@ The following Elastic OpenTelemetry distributions are available:
 - [EDOT Node.js](./edot-sdks/nodejs/index.md)
 - [EDOT PHP](./edot-sdks/php/index.md)
 - [EDOT Python](./edot-sdks/python/index.md)
-- [EDOT Android](apm-agent-android://reference/intro.md)
-- [EDOT iOS](apm-agent-ios://reference/intro.md)
+- [EDOT Android](apm-agent-android://reference/index.md)
+- [EDOT iOS](apm-agent-ios://reference/index.md)
 
 Each EDOT distribution undergoes production-grade testing before being declared Generally Available (GA). Elastic provides full support for GA releases in accordance with our [support matrix](https://www.elastic.co/support/matrix) and SLAs.
 
@@ -38,7 +38,7 @@ Technical Preview distributions receive best-effort support and are not covered 
 Pick the right [Quickstart guide](./quickstart/index.md) for your environment or select and observability use case:
 
 - [Monitoring on Kubernetes](./use-cases/kubernetes/index.md)
-- [LLM Observability](./use-cases/llm/index.md)
+- [LLM Observability](./use-cases/llms/index.md)
 
 ## EDOT Demo environment
 

@@ -1,14 +1,12 @@
 ---
-navigation_title: Monitoring on Kubernetes
+navigation_title: Kubernetes observability
 description: Detailed description of the Kubernetes setup for EDOT, including components and customization guidance.
-applies_to:
-  serverless: all # Assuming default applicability, adjust if needed
 applies_to:
   stack:
   serverless:
 ---
 
-# Monitoring on Kubernetes with EDOT
+# Kubernetes observability with EDOT
 
 The [quickstart guides](../../quickstart/index.md) for Kubernetes install a set of different EDOT Collectors and EDOT SDKs to cover collection of OpenTelemetry data for infrastructure monitoring, logs collection and application monitoring. This page provides more detailed description about the Kubernetes setup as well as guidance on how to customize the setup. 
 

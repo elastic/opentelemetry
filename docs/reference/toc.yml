@@ -33,7 +33,7 @@ toc:
               - file: use-cases/kubernetes/instrumenting-applications.md
               - file: use-cases/kubernetes/upgrade.md
               - file: use-cases/kubernetes/customization.md
-          - file: use-cases/llm/index.md
+          - file: use-cases/llms/index.md
       - file: compatibility/index.md
         children:
           - file: compatibility/nomenclature.md
