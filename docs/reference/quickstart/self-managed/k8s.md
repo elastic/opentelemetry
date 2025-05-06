@@ -21,13 +21,16 @@ Make sure the following requirements are present:
 
 Follow these steps to deploy the EDOT Collector and EDOT OTel SDKs in Docker.
 
-### Add the OpenTelemetry repository to Helm
+:::::{stepper}
+
+::::{step} Add the OpenTelemetry repository to Helm
 
 ```bash
 helm repo add open-telemetry 'https://open-telemetry.github.io/opentelemetry-helm-charts' --force-update
 ```
+::::
 
-### Set up credentials
+::::{step} Set up credentials
 
 Retrieve your [Elasticsearch endpoint](docs-content://solutions/search/search-connection-details) and [API key](docs-content://deploy-manage/api-keys/elasticsearch-api-keys) and replace both in the following command to create a namespace and a secret with your credentials.
 
@@ -39,7 +42,9 @@ kubectl create secret generic elastic-secret-otel \
 --from-literal=elastic_api_key='<ELASTIC_API_KEY>'
 ```
 
-### Install the operator
+::::
+
+::::{step} Install the operator
 
 Install the OpenTelemetry Operator using the `kube-stack` Helm chart with the pre-configured `values.yaml` file.
 
@@ -50,7 +55,9 @@ helm install opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack \
 --version '0.3.9'
 ```
 
-### Auto-instrument applications
+::::
+
+::::{step} Auto-instrument applications
 
 Add a language-specific annotation to your namespace by replacing `<LANGUAGE>` with one of the supported values (`nodejs`, `java`, `python`, `dotnet` or `go`) in the following command. 
 
@@ -61,3 +68,5 @@ kubectl annotate namespace YOUR_NAMESPACE instrumentation.opentelemetry.io/injec
 Restart your deployment to ensure the annotations and auto-instrumentations are applied.
 
 For languages where auto-instrumentation is not available, you will need to manually instrument your application. See the [Setup section in the corresponding SDK](../../edot-sdks).
+::::
+:::::

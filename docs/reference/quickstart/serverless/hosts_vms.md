@@ -14,11 +14,15 @@ Learn how to set up the EDOT Collector and EDOT SDKs in a Docker environment wit
 
 Follow these steps to deploy the EDOT Collector and EDOT OTel SDKs with Elastic Cloud Serverless.
 
-### Download the EDOT Collector
+::::::{stepper}
+
+:::::{step} Download the EDOT Collector
 
 [Download the EDOT Collector](../../edot-collector/download) for your operating system.
 
-### Configure the EDOT Collector
+:::::
+
+:::::{step} Configure the EDOT Collector
 
 :::{include} ../../_snippets/retrieve-credentials.md
 :::
@@ -65,8 +69,9 @@ $content | Set-Content .\otel.yml
 ```
 :::
 ::::
+:::::
 
-### Run the EDOT Collector
+:::::{step} Run the EDOT Collector
     
 Run the following command to run the EDOT Collector.
 
@@ -89,8 +94,9 @@ sudo ./otelcol --config otel.yml
 ::::{note}
 The Collector opens ports `4317` and `4318` to receive application data from locally running OTel SDKs without authentication. This allows the SDKs to send data without any further configuration needed as they use this endpoint by default.
 ::::
+:::::
 
-### (Optional) Instrument your applications
+:::::{step} (Optional) Instrument your applications
 
 If you want to collect telemetry from applications running on the host where you installed the EDOT Collector, instrument your target applications:
 
@@ -101,6 +107,8 @@ If you want to collect telemetry from applications running on the host where you
 - [Python](../../edot-sdks/python/setup)
 
 Configure your SDKs to send the data to the local EDOT Collector using OTLP/gRPC (`http://localhost:4317`) or OTLP/HTTP (`http://localhost:4318`).
+:::::
+::::::
 
 ## Troubleshooting
 

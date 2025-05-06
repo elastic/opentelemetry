@@ -21,16 +21,20 @@ Make sure the following requirements are present:
 
 Follow these steps to deploy the EDOT Collector and EDOT OTel SDKs in Docker with ECH.
 
-### Create the config file
+:::::{stepper}
+
+::::{step} Create the config file
 
 Create the `otel-collector-config.yml` file with your EDOT Collector configuration. Refer to the [configuration reference](../../edot-collector/config/default-config-standalone.md).
+::::
 
-### Retrieve your settings
+::::{step} Retrieve your settings
 
 :::{include} ../../_snippets/retrieve-credentials.md
 :::
+::::
 
-### Create the .env file
+::::{step}Create the .env file
 
 Create an `.env` file with the following content. Replace the placeholder values with your Elastic Cloud credentials:
    
@@ -43,8 +47,9 @@ Create an `.env` file with the following content. Replace the placeholder values
    ELASTIC_ENDPOINT=<your_endpoint_here>
    OTEL_COLLECTOR_CONFIG=/path/to/otel-collector-config.yml
    ```
+::::
 
-### Create the compose file
+::::{step} Create the compose file
 
 Create a `compose.yml` file with the following content:
 
@@ -72,16 +77,18 @@ Create a `compose.yml` file with the following content:
         - ELASTIC_AGENT_OTEL
         - STORAGE_DIR=/usr/share/elastic-agent
    ```
+::::
 
-### Start the Collector
+::::{step} Start the Collector
 
 Start the Collector by running:
 
    ```bash
    docker compose up -d
    ```
+::::
 
-### (Optional) Instrument your applications
+::::{step} (Optional) Instrument your applications
 
 To collect telemetry from applications running on the host where you installed the EDOT Collector, 
 instrument your target applications following the setup instructions for the corresponding language:
@@ -93,3 +100,6 @@ instrument your target applications following the setup instructions for the cor
    - [Python](../../edot-sdks/python/setup)
 
    Configure your SDKs to send the data to the local EDOT Collector using OTLP/gRPC (`http://localhost:4317`) or OTLP/HTTP (`http://localhost:4318`).
+
+::::
+:::::

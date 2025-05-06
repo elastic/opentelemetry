@@ -14,11 +14,14 @@ Learn how to set up the EDOT Collector and EDOT SDKs to collect host metrics, lo
 
 Follow these steps to deploy the EDOT Collector and EDOT OTel SDKs.
 
-### Download the EDOT Collector
+::::::{stepper}
+
+:::::{step} Download the EDOT Collector
 
 [Download the EDOT Collector](../../edot-collector/download) for your operating system, extract the archive and move to the extracted directory.
+:::::
 
-### Configure the EDOT Collector
+:::::{step} Configure the EDOT Collector
 
 Retrieve your [Elasticsearch endpoint](docs-content://solutions/search/search-connection-details) and [API key](docs-content://deploy-manage/api-keys/elasticsearch-api-keys) and replace `<ELASTICSEARCH_ENDPOINT>` and `<ELASTIC_API_KEY>` before applying the following command.
 
@@ -61,13 +64,16 @@ $content = $content -replace '\${env:ELASTIC_API_KEY}', "<ELASTIC_API_KEY>"
 $content | Set-Content .\otel.yml
 ```
 :::
+
 ::::
 
-### Run the EDOT Collector
+:::::
+
+:::::{step} Run the EDOT Collector
 
 Run the following command to run the EDOT Collector.
 
-:::note
+:::{note}
 The Collector will open the ports `4317` and `4318` to receive application data from locally running OTel SDKs.
 :::
 
@@ -85,8 +91,9 @@ sudo ./otelcol --config otel.yml
 ```
 :::
 ::::
+:::::
 
-### (Optional) Instrument your applications
+:::::{step} (Optional) Instrument your applications
 
 If you want to collect telemetry from applications running on the host where you installed the EDOT Collector, instrument your target applications:
 
@@ -97,3 +104,6 @@ If you want to collect telemetry from applications running on the host where you
 - [Python](../../edot-sdks/python/setup)
 
 Configure your SDKs to send the data to the local EDOT Collector using OTLP/gRPC (`http://localhost:4317`) or OTLP/HTTP (`http://localhost:4318`).
+
+:::::
+::::::

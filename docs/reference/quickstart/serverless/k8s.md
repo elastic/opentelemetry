@@ -10,15 +10,22 @@ applies_to:
 
 Learn how to set up the EDOT Collector and EDOT SDKs in a Kubernetes environment with Elastic Cloud Serverless to collect host metrics, logs and application traces.
 
-### Add the OpenTelemetry repository to Helm
+## Instructions
+
+Follow these steps to deploy the EDOT Collector and EDOT OTel SDKs in Kubernetes.
+
+:::::{stepper}
+
+::::{step} Add the OpenTelemetry repository to Helm
 
 Run the following command to add the charts repository to Helm:
 
 ```bash
 helm repo add open-telemetry 'https://open-telemetry.github.io/opentelemetry-helm-charts' --force-update
 ```
+::::
 
-### Set up connection and credentials
+::::{step} Set up connection and credentials
 
 :::{include} ../../_snippets/retrieve-credentials.md
 :::
@@ -32,8 +39,9 @@ kubectl create secret generic elastic-secret-otel \
 --from-literal=elastic_otlp_endpoint='<ELASTIC_OTLP_ENDPOINT>' \
 --from-literal=elastic_api_key='<ELASTIC_API_KEY>'
 ```
+::::
 
-### Install the operator
+::::{step} Install the operator
 
 Install the OpenTelemetry Operator using the `kube-stack` Helm chart with the configured `values.yaml` file.
 
@@ -45,8 +53,9 @@ helm install opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack \
 ```
 
 The Operator provides a deployment of the EDOT Collector and configuration environment variables. This allows SDKs and instrumentation to send data to the EDOT Collector without further configuration.
+::::
 
-### Auto-instrument applications
+::::{step} Auto-instrument applications
 
 Add a language-specific annotation to your namespace by replacing `<LANGUAGE>` with one of the supported values (`nodejs`, `java`, `python`, `dotnet` or `go`) in the following command. 
 
@@ -54,11 +63,11 @@ Add a language-specific annotation to your namespace by replacing `<LANGUAGE>` w
 kubectl annotate namespace YOUR_NAMESPACE instrumentation.opentelemetry.io/inject-<LANGUAGE>="opentelemetry-operator-system/elastic-instrumentation"
 ```
 
-The OpenTelemetry Operator automatically provides the OTLP endpoint configuration and authentication to the SDKs through environment variables.
-
-Restart your deployment to ensure the annotations and auto-instrumentations are applied.
+The OpenTelemetry Operator automatically provides the OTLP endpoint configuration and authentication to the SDKs through environment variables. Restart your deployment to ensure the annotations and auto-instrumentations are applied.
 
 For languages where auto-instrumentation is not available, manually instrument your application. See the [Setup section in the corresponding SDK](../../edot-sdks).
+::::
+:::::
 
 ## Troubleshooting
 

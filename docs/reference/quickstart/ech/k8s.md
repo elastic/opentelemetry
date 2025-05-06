@@ -14,15 +14,18 @@ Learn how to set up the EDOT Collector and EDOT SDKs in a Kubernetes environment
 
 Follow these steps to deploy the EDOT Collector and EDOT OTel SDKs in Kubernetes with ECH.
 
-### Add the repository to Helm
+:::::{stepper}
+
+::::{step} Add the repository to Helm
 
 Run the following command to add the charts repository to Helm:
 
 ```bash
 helm repo add open-telemetry "https://open-telemetry.github.io/opentelemetry-helm-charts" --force-update
 ```
+::::
 
-### Configure your credentials
+::::{step} Configure your credentials
 
 :::{include} ../../_snippets/retrieve-credentials.md
 :::
@@ -37,11 +40,12 @@ kubectl create secret generic elastic-secret-otel \
 --from-literal=elastic_api_key='<ELASTIC_API_KEY>'
 ```
 
-::::{note}
+:::{note}
 On Windows PowerShell, replace backslashes (`\`) with backticks (`` ` ``) for line continuation and single quotes (`'`) with double quotes (`"`).
+:::
 ::::
 
-### Install the Operator
+::::{step} Install the Operator
 
 Install the OpenTelemetry Operator using the `kube-stack` Helm chart with the configured `values.yaml` file.
 
@@ -51,8 +55,9 @@ helm install opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack \
 --values 'https://raw.githubusercontent.com/elastic/elastic-agent/main/deploy/helm/edot-collector/kube-stack/values.yaml' \
 --version '0.3.9'
 ```
+::::
 
-### Auto-instrument applications
+::::{step} Auto-instrument applications
 
 Add a language-specific annotation to your namespace by replacing `<LANGUAGE>` with one of the supported values: `nodejs`, `java`, `python`, `dotnet` or `go`:
 
@@ -63,3 +68,5 @@ kubectl annotate namespace YOUR_NAMESPACE instrumentation.opentelemetry.io/injec
 Restart your deployment to ensure the annotations and auto-instrumentations are applied.
 
 For languages where auto-instrumentation is not available, you need to manually instrument your application. See the [Setup section for the corresponding SDK](../../edot-sdks).
+::::
+:::::
