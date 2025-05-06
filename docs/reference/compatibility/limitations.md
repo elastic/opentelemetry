@@ -1,78 +1,72 @@
 ---
 navigation_title: Limitations
-description: Limitations of EDOT compared to classic Elastic data collection mechanisms.
+description: Limitations of Elastic Distributions of OpenTelemetry (EDOT) compared to classic Elastic data collection mechanisms.
 applies_to:
   stack:
   serverless:
 ---
 
-# EDOT Limitations
+# Limitations of Elastic Distributions of OpenTelemetry
 
-The Elastic Distributions of OpenTelemetry come with a new way of ingesting data in OTel-native way and format.
-We are continuously working on providing a great experience with OTel-native data within Elastic solutions,
-are contributing popular Elastic features to the upstream OpenTelemetry projects and aligning concepts with OpenTelemetry.
-While EDOT and OTel-native data collection already covers most of the core Observability use cases, as of Elastic Stack version <STACK_VERSION> there are the following limitations compared to data collection with classic Elastic data collection mechanisms.
+The Elastic Distributions of OpenTelemetry (EDOT) come with a new way of ingesting data in OTel-native way and format. Elastic is continuously working on providing a great experience with OTel-native data within Elastic solutions, contributing popular Elastic features to the upstream OpenTelemetry projects and aligning concepts with OpenTelemetry.
 
-### Centralized Parsing and Processing of Data
+While EDOT and OTel-native data collection already covers most of the core Observability use cases, the following limitations apply compared to data collection with classic Elastic data collection mechanisms.
 
-With OTel-native ingestion of data (i.e. through the EDOT Collector or the Managed OTLP endpoint), [Elasticsearch Ingest Pipelines](https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest.html) are not supported as of version <STACK_VERSION> of the Elastic Stack.
-The OTel-native data format in Elasticsearch contains dotted fields. Ingest Pipeline processors cannot access fields that have a dot in their name without having previously transformed the dotted field into an object using the [`Dot expander processor`](https://www.elastic.co/guide/en/elasticsearch/reference/current/dot-expand-processor.html).
+## Centralized parsing and processing of data
 
-For processing your OTel data (e.g. parsing logs data, routing data to datastreams, etc.), we recommend using [OTel Collector processors](https://opentelemetry.io/docs/collector/configuration/#processors), [`filelogreceiver` operators](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/pkg/stanza/docs/operators/README.md#what-operators-are-available) or other OTel-native processing capabilities.
+With OTel-native ingestion of data, for example through the EDOT Collector or the Managed OTLP endpoint, [Elasticsearch Ingest Pipelines](docs-content://manage-data/ingest/transform-enrich/ingest-pipelines.md) are not supported.
 
-See [these examples](../edot-collector/config/configure-logs-collection) on how to process log data with the (EDOT) OTel Collector.
+The OTel-native data format in Elasticsearch contains dotted fields. Ingest Pipeline processors can't access fields that have a dot in their name without having previously transformed the dotted field into an object using the [`Dot expander processor`](elasticsearch://reference/enrich-processor/dot-expand-processor.md).
 
-### Infrastructure / Host Metrics
+To process your OTel data, for example to parse logs data, route data to datastreams, and so on, use [Collector processors](https://opentelemetry.io/docs/collector/configuration/#processors), [`filelogreceiver` operators](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/pkg/stanza/docs/operators/README.md#what-operators-are-available) and other OTel-native processing capabilities.
 
-Due to current limitations and gaps in data collection with the upstream OTel  [`hostmetrics` reciever](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver), there are corresponding limitations with the curated Infrastructure / Host metrics UIs in Elastic.
+Refer to [these examples](../edot-collector/config/configure-logs-collection.md) on how to process log data with the (EDOT) OTel Collector.
 
-- **Host network panels do not display data in some Elastic Observability UIs**
-  Due to an upstream limitation, `host.network.*` metrics are not available from OpenTelemetry.
+## Infrastructure and host metrics
 
-- **Process state is unavailable in OpenTelemetry host metrics**
-  The `process.state` metric is not present and is assigned a dummy value of **Unknown** in the **State** column of the host processes table.
+Due to limitations and gaps in data collection with the upstream OTel `hostmetrics`, there are corresponding limitations with the curated infrastructure and host metrics UIs in Elastic.
 
-- **Host OS version and operating system may show as "N/A"**
-  Although the Elasticsearch exporter processes resource attributes, it may not populate these values.
+| Limitation                                      | Explanation                                                                                                                                                                                                                     |
+|------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Host network panels do not display data in some Elastic Observability UIs. | Due to an upstream limitation, `host.network.*` metrics are not available from OpenTelemetry.                                                                                                                                   |
+| Process state is unavailable in OpenTelemetry host metrics. | The `process.state` metric is not present and is assigned a dummy value of "Unknown" in the State column of the host processes table.                                                                                           |
+| Host OS version and operating system may show as "N/A". | Although the Elasticsearch exporter processes resource attributes, it may not populate these values.                                                                                                                            |
+| Normalized Load data is missing unless the CPU scraper is enabled. | The `system.load.cores` metric is required for the Normalized Load column in the Hosts table and the Normalized Load visualization in the host detailed view.                                                                    |
+| MacOS collectors do not support CPU and disk metrics. | The `hostmetrics receiver` does not collect these metrics on macOS, leaving related fields empty.                    |
+| Permission issues may cause error logs for process metrics | The `hostmetrics receiver` logs errors if it cannot access certain process information due to insufficient permissions. |
 
-- **Normalized Load data is missing unless the CPU scraper is enabled**
-  The `system.load.cores` metric is required for the **Normalized Load** column in the **Hosts** table and the **Normalized Load** visualization in the host detailed view.
+When collecting host metrics through a distribution of the OTel Collector other than EDOT, make sure to enable required metrics that are otherwise disabled by default. Use the EDOT Collector [sample config](https://github.com/elastic/elastic-agent/blob/main/internal/pkg/otel/samples/linux/logs_metrics_traces.yml) for the `hostmetrics` receiver as reference.
 
-- **MacOS collectors do not support CPU and disk metrics**
-  The [`hostmetrics receiver`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver) does not collect these metrics on MacOS, leaving related fields empty.
+## Metrics data ingestion
 
-- **Permission issues may cause error logs for process metrics**
-  The [`hostmetrics receiver`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver) logs errors if it cannot access certain process information due to insufficient permissions.
+### Histograms in delta temporality only
 
-When collecting host metrics through a distribution of the OTel Collector other than EDOT, make sure to enable required metrics that are otherwise disabled by default. You can use the EDOT Collector [sample config](https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v<COLLECTOR_VERSION>/internal/pkg/otel/samples/linux/logs_metrics_traces.yml) for the `hostmetrics` receiver as a reference for the metrics required for Elastic UIs.
+Ingestion of OpenTelemetry metrics with the type [`Histogram`](https://opentelemetry.io/docs/specs/otel/metrics/data-model/#histogram) are only supported with [`delta temporality`](https://opentelemetry.io/docs/specs/otel/metrics/data-model/#temporality). Histograms with `cumulative` temporality are dropped before being ingested into Elasticsearch.
 
-### Ingestion of Metrics data
+Make sure to export histogram metrics with delta temporality or use the [`cumulativetodelta processor`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/cumulativetodeltaprocessor) as a workaround to convert the temporality for histogram metrics.
 
-**Histograms in Delta temporality only**
+### Timestamps precision
 
-Ingestion of OpenTelemetry metrics with the type [`Histogram`](https://opentelemetry.io/docs/specs/otel/metrics/data-model/#histogram) are *only supported* with [`delta temporality`](https://opentelemetry.io/docs/specs/otel/metrics/data-model/#temporality). Histograms with `cumulative`temporality will be dropped before being ingested into Elasticsearch.
+As of now, nanoseconds timestamps from the OTel signals are stored with microsecond precision in Elasticsearch.
 
-Make sure to export histogram metrics with the delta temporality or use the [`cumulativetodelta processor`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/cumulativetodeltaprocessor) as a workaround to convert the temporality for histogram metrics.
+## Limitations on managed Kubernetes environments
 
-**Timestamps Precision**
+Due to limitations with permissions on managed Kubernetes environments, such as GKE Autopilot or AWS Fargate, the default configurations and onboarding flows for EDOT don't fully work in those environments. This might result in decreased collection of data and certain observability views not showing that data.
 
-As of now, *nanoseconds* timestamps from the OTel signals are stored with a *microsecond* precision in Elasticsearch.
+## Limitations with APM
 
-### Limitations on managed Kubernetes environments
+### Allowed characters in service names
 
-Due to limitations with permissions on managed Kubernetes environments (such as GKE Autopilot or AWS Fargate), the default configurations and onboarding flows for EDOT do not fully work in those environments. This usually results in decreased collection of data and certain observability views not showing that data.
+The `service.name` must conform to this regular expression: `^[a-zA-Z0-9 _-]+$`. 
 
-### Limitations with APM
+Your service name must only contain characters from the ASCII alphabet, numbers, dashes, underscores and spaces.
 
-**Allowed characters in service names**
+### Runtime metrics
 
-The `service.name` must conform to this regular expression: `^[a-zA-Z0-9 _-]+$`. Your service name must only contain characters from the ASCII alphabet, numbers, dashes, underscores and spaces.
+Currently, there are limitations with visualizing language-specific runtime metrics in corresponding **Service > Metrics** tab.
 
-**Runtime metrics**
-
-Currently, there are limitations with visualizing language-specific runtime metrics in corresponding `Service > Metrics` tab.
 Runtime metrics can be ingested and used to create custom dashboards. As a temporary workaround users can create dashboards from the runtime metrics and attach them as custom dashboards to corresponding services.
 
 ## Additional information
 
-For backwards compatibility reasons K8s metrics and host metrics are ingested twice, once in OTel format and once in ECS format.
+For backwards compatibility reasons, Kubernetes metrics and host metrics are ingested twice, once in OTel format and once in Elastic Common Schema (ECS) format.

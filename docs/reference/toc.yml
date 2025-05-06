@@ -36,11 +36,11 @@ toc:
           - folder: use-cases/llms
       - file: compatibility/index.md
         children:
-          - file: compatibility/nomenclature.md
           - file: compatibility/features.md
           - file: compatibility/collectors.md
           - file: compatibility/sdks.md
           - file: compatibility/limitations.md
+          - file: compatibility/nomenclature.md
       - file: edot-collector/index.md
         children:
           - file: edot-collector/download.md

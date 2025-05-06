@@ -6,52 +6,44 @@ applies_to:
   serverless:
 ---
 
-# Compatibility & Support - OTel SDKs
+# Compatibility and support for OTel SDKs
 
-### Legend
+The following table provides an overview of compatibility and support of EDOT SDKs versions with the EDOT Collector versions:
 
-| **[Incompatible]** | **[Compatible]** | **[Supported]** |
-| :----------------- | :--------------- | :-------------- |
-| ❌                 | 🟡               | ✅              |
+|                    | **Collector < 8.16**   | **Collector 8.16 to 8.19** | **Collector 9.x**   |
+| :----------------- | :--------------- | :---------------- | :-------------- |
+| **EDOT .NET**      | [Incompatible]   | [Compatible]      | [Supported]     |
+| **EDOT Java**      | [Incompatible]   | [Compatible]      | [Supported]     |
+| **EDOT Node.js**   | [Incompatible]   | [Compatible]      | [Supported]     |
+| **EDOT PHP**       | [Incompatible]   | [Compatible]      | [Supported]     |
+| **EDOT Python**    | [Incompatible]   | [Compatible]      | [Supported]     |
+| **EDOT Android**   | [Incompatible]   | [Compatible]      | [Supported]     |
+| **EDOT iOS**       | [Incompatible]   | [Compatible]      | [Supported]     |
+
+Refer to the [EDOT Collector compatibility table](collectors.md#edot-collector-compatibility-with-elastic-stack) for compatibility with Elastic Stack versions.
 
 For the best experience, export data from EDOT SDKs using the [EDOT Collector](../edot-collector/index.md).
 
-## Compatibility with EDOT Collector
-
-The following table gives an overview of compatibility and support of EDOT SDKs versions with the EDOT Collector versions:
-
-| **EDOT SDK**     | **< 8.16** | **8.16 - 8.19** | **9.x** |
-| :--------------- | :--------- | :-------------- | :------ |
-| **EDOT .NET**    | ❌         | 🟡              | ✅      |
-| **EDOT Java**    | ❌         | 🟡              | ✅      |
-| **EDOT Node.js** | ❌         | 🟡              | ✅      |
-| **EDOT PHP**     | ❌         | 🟡              | ✅      |
-| **EDOT Python**  | ❌         | 🟡              | ✅      |
-| **EDOT Android** | ❌         | 🟡              | ✅      |
-| **EDOT iOS**     | ❌         | 🟡              | ✅      |
-
-Refer to the [EDOT Collector compatibility table](./collectors#edot-collector-compatibility-with-elastic-stack) for compatibility with Elastic Stack versions.
-
 :::{note}
-Ingesting data from EDOT SDKs through EDOT Collector into Elastic Stack versions 8.18 or higher is supported (✅).
+Ingesting data from EDOT SDKs through EDOT Collector into Elastic Stack versions 8.18 or higher is supported ([Supported]).
 :::
 
-## Supported Technologies per EDOT SDK
+## Supported technologies per EDOT SDK
 
 For compatibility of language-specific technologies check out the following pages for corresponding EDOT SDKs:
 
-- [Supported Technologies - .NET](../edot-sdks/dotnet/supported-technologies)
-- [Supported Technologies - Java](../edot-sdks/java/supported-technologies)
-- [Supported Technologies - Node.js](../edot-sdks/nodejs/supported-technologies)
-- [Supported Technologies - PHP](../edot-sdks/php/supported-technologies)
-- [Supported Technologies - Python](../edot-sdks/python/supported-technologies)
-- [Supported Technologies - Android](https://www.elastic.co/guide/en/apm/agent/android/current/intro.html)
-- [Supported Technologies - iOS](https://www.elastic.co/guide/en/apm/agent/swift/current/supported-technologies.html)
+- [Supported Technologies - .NET](../edot-sdks/dotnet/supported-technologies.md)
+- [Supported Technologies - Java](../edot-sdks/java/supported-technologies.md)
+- [Supported Technologies - Node.js](../edot-sdks/nodejs/supported-technologies.md)
+- [Supported Technologies - PHP](../edot-sdks/php/supported-technologies.md)
+- [Supported Technologies - Python](../edot-sdks/python/supported-technologies.md)
+- [Supported Technologies - Android](apm-agent-android://reference/index.md)
+- [Supported Technologies - iOS](apm-agent-ios://reference/index.md)
 
-## Other SDK Distributions
+## Other SDK distributions
 
-OTel SDK distributions other than the ones listed above are technically compatible (🟡) with Elastic but are not officially supported by Elastic (✅).
+OTel SDK distributions other than the ones listed above are technically compatible ([Compatible]) with Elastic but are not officially supported by Elastic ([Supported]).
 
-[Incompatible]: ./nomenclature
-[Compatible]: ./nomenclature
-[Supported]: ./nomenclature
+[Incompatible]: nomenclature.md
+[Compatible]: nomenclature.md
+[Supported]: nomenclature.md
