@@ -3,6 +3,10 @@ navigation_title: Elastic Cloud Serverless
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # Quickstart on Elastic Cloud Serverless

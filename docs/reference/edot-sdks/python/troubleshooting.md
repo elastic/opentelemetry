@@ -2,10 +2,18 @@
 navigation_title: Troubleshooting
 description: Troubleshooting the EDOT Python Agent.
 applies_to:
-  serverless: all
+  serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability all
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # Troubleshooting the EDOT Python Agent

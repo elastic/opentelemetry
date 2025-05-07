@@ -2,10 +2,18 @@
 navigation_title: Supported Technologies
 description: Technologies Supported by the EDOT Python SDK.
 applies_to:
-  serverless: all
+  serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability all
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # Technologies Supported by the EDOT Python SDK

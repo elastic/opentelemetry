@@ -2,10 +2,18 @@
 navigation_title: Setup
 description: Setting up EDOT Python.
 applies_to:
-  serverless: all
+  serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability all
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # Setting up EDOT Python

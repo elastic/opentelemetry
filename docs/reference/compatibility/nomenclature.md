@@ -4,6 +4,10 @@ description: Explanation of compatibility and support states (Incompatible, Comp
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # Compatibility and support nomenclature

@@ -4,6 +4,10 @@ description: Recommended architectures for EDOT with different Elastic deploymen
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # Reference architecture

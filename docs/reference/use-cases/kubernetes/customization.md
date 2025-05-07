@@ -4,6 +4,10 @@ description: Guide on customizing the EDOT installation parameters for Kubernete
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # Customize the configuration

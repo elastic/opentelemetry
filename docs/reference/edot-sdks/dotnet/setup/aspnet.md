@@ -3,6 +3,10 @@ navigation_title: ASP.NET
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # Set up EDOT .NET for ASP.NET applications on .NET Framework

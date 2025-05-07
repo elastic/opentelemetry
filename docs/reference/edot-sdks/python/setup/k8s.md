@@ -2,10 +2,18 @@
 navigation_title: Kubernetes
 description: Instrumenting Python applications with EDOT SDKs on Kubernetes.
 applies_to:
-  serverless: all
+  serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability all
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # Instrumenting Python applications with EDOT SDKs on Kubernetes

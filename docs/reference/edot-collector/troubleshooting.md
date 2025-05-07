@@ -4,6 +4,10 @@ description: Troubleshooting tips and resources for the EDOT Collector.
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # Troubleshooting the EDOT Collector

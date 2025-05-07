@@ -5,6 +5,10 @@ navigation_title: Configure Data Ingestion
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 🚧 Coming soon

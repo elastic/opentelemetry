@@ -4,6 +4,10 @@ description: Overview of different use cases for the Elastic Distribution of Ope
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # Use cases

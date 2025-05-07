@@ -3,6 +3,10 @@ navigation_title: Migration
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # Migrating to EDOT .NET

@@ -5,6 +5,10 @@ navigation_title: Configure Logs Collection
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # Configure Logs Collection

@@ -3,6 +3,10 @@ navigation_title: Zero-code instrumentation
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # Using profiler-based zero-code instrumentation

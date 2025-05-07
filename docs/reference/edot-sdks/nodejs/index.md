@@ -4,6 +4,10 @@ description: Introduction to the Elastic Distribution of OpenTelemetry Node.js (
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 ## EDOT Node.js

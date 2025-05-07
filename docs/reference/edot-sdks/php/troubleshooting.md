@@ -4,6 +4,10 @@ description: Troubleshooting the Elastic Distribution of OpenTelemetry PHP agent
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # Troubleshooting the EDOT PHP Agent

@@ -3,6 +3,10 @@ navigation_title: .NET worker services
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # Set up EDOT .NET for worker services

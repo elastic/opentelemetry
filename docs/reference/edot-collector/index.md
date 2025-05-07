@@ -1,9 +1,14 @@
 ---
-navigation_title: Overview
+navigation_title: EDOT Collector
 description: Introduction to the Elastic Distribution of OpenTelemetry (EDOT) Collector, a curated and supported distribution of the OpenTelemetry Collector.
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
+  - edot-collector
 ---
 
 # EDOT Collector

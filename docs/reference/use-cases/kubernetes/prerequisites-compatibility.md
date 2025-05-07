@@ -4,6 +4,10 @@ description: Prerequisites and compatibility information for monitoring Kubernet
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # Prerequisites

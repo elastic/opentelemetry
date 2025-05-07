@@ -3,6 +3,10 @@ navigation_title: Console applications
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # Set up EDOT .NET for console applications

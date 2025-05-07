@@ -4,6 +4,10 @@ description: Instructions for deploying EDOT components for Kubernetes monitorin
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # Deployment

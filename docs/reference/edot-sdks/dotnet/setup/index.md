@@ -3,6 +3,10 @@ navigation_title: Setup
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # Setting up the EDOT .NET SDK

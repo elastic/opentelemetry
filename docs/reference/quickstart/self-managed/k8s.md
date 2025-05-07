@@ -4,6 +4,10 @@ description: Learn how to set up the EDOT Collector and EDOT SDKs in a Kubernete
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # Quickstart for Kubernetes on self-managed deployments

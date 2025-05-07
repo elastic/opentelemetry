@@ -4,6 +4,10 @@ description: Compatibility and support information for EDOT SDK versions with ED
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # Compatibility and support for OTel SDKs

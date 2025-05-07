@@ -4,6 +4,10 @@ description: Overview of LLM observability with Elastic, including supported tec
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # LLM observability with EDOT

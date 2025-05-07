@@ -2,10 +2,18 @@
 navigation_title: Manual Instrumentation
 description: Manually instrumenting Python applications with EDOT Python.
 applies_to:
-  serverless: all
+  serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability all
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # Manual instrumentation

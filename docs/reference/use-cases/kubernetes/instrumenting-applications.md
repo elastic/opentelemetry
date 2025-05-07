@@ -4,6 +4,10 @@ description: Guidance on instrumenting applications with EDOT SDKs on Kubernetes
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # Instrument applications with EDOT SDKs on Kubernetes

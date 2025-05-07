@@ -4,6 +4,10 @@ description: Direct download links for EDOT Collector binaries for various opera
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # Download the EDOT Collector Binaries

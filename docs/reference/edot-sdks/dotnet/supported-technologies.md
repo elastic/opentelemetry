@@ -3,6 +3,10 @@ navigation_title: Supported Technologies
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # Technologies Supported by EDOT .NET SDK

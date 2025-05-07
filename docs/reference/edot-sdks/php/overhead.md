@@ -4,6 +4,10 @@ description: Performance comparison of PHP instrumentation agents.
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 ## Performance Comparison of PHP Instrumentation Agents

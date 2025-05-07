@@ -4,6 +4,10 @@ description: Compatibility and support information for EDOT Collector versions w
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # Compatibility and support for OTel Collectors

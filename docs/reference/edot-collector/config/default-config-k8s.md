@@ -5,6 +5,10 @@ navigation_title: Default Config—Kubernetes
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # Default Configuration - EDOT Collectors on Kubernetes

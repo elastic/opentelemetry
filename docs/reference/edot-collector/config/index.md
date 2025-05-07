@@ -4,6 +4,10 @@ navigation_title: Configuration
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # EDOT Collector - Configuration

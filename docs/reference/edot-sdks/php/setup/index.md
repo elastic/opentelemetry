@@ -4,6 +4,10 @@ description: Set up the Elastic Distribution of OpenTelemetry PHP to instrument 
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 <!-- TODO:

@@ -4,6 +4,10 @@ description: Overview of Elastic features available with EDOT.
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # Elastic features available with EDOT

@@ -4,6 +4,10 @@ description: The Elastic Distribution of OpenTelemetry PHP (EDOT PHP) is a custo
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # Elastic Distribution of OpenTelemetry PHP

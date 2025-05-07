@@ -2,10 +2,18 @@
 navigation_title: Configuration
 description: Configure the Elastic Distribution of OpenTelemetry Python (EDOT Python) to send data to Elastic.
 applies_to:
-  serverless: all
+  serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability all
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # Configuration

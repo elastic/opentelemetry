@@ -4,6 +4,10 @@ description: Learn how to set up the Elastic Distributions for OpenTelemetry (ED
 applies_to:
    stack:
    serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # Quickstart guides

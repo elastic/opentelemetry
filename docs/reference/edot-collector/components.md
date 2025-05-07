@@ -4,6 +4,10 @@ description: List of components included in the EDOT Collector, categorized as C
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # Components included in the EDOT Collector

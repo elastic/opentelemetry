@@ -1,9 +1,13 @@
 ---
-navigation_title: Overview
+navigation_title: EDOT SDKs
 description: An overview of the features available in the Elastic Distribution of OpenTelemetry (EDOT) SDKs for various languages.
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # EDOT SDKs Feature Overview

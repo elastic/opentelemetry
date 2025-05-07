@@ -4,6 +4,10 @@ description: Reference documentation for the Elastic Distributions of OpenTeleme
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # Elastic Distributions of OpenTelemetry (EDOT)

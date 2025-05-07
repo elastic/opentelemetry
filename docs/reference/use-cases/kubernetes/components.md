@@ -4,6 +4,10 @@ description: Description of components involved in Kubernetes observability with
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # Components description

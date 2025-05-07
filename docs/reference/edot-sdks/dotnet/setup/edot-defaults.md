@@ -3,6 +3,10 @@ navigation_title: Opinionated defaults
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # EDOT .NET opinionated defaults

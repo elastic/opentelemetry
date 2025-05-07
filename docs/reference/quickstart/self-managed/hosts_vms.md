@@ -4,6 +4,10 @@ description: Learn how to set up the EDOT Collector and EDOT SDKs to collect hos
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # Quickstart for hosts / VMs on self-managed deployments

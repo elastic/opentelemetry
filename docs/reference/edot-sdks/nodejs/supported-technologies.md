@@ -4,6 +4,10 @@ description: Supported technologies for the Elastic Distribution of OpenTelemetr
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # Technologies Supported by the EDOT Node.js SDK

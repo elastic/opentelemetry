@@ -4,6 +4,10 @@ description: Detailed description of the Kubernetes setup for EDOT, including co
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # Kubernetes observability with EDOT

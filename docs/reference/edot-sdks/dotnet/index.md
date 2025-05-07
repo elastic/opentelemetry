@@ -3,6 +3,10 @@ navigation_title: EDOT .NET
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # EDOT .NET
@@ -31,6 +35,10 @@ installing and using EDOT .NET in common application templates:
 ----applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 ## Features

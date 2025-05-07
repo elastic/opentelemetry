@@ -4,6 +4,10 @@ description: Learn how to set up the EDOT Collector and EDOT SDKs in a Docker en
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 #  Quickstart for hosts / VMs on Elastic Cloud Serverless
@@ -24,8 +28,13 @@ Follow these steps to deploy the EDOT Collector and EDOT OTel SDKs with Elastic 
 
 :::::{step} Configure the EDOT Collector
 
-:::{include} ../../_snippets/retrieve-credentials.md
-:::
+Follow these steps to retrieve the managed OTLP endpoint URL for your Serverless project:
+
+1. In Elastic Cloud, open your Observability project.
+2. Go to **Add data**, **Application**, **OpenTelemetry**.
+3. Select **Managed OTLP Endpoint** in the second step.
+4. Copy the OTLP endpoint configuration value.
+5. Select Create API Key to generate an API key.
 
 Replace `<ELASTIC_OTLP_ENDPOINT>` and `<ELASTIC_API_KEY>` before applying the following command.
 

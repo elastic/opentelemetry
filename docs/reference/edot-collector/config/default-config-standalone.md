@@ -5,6 +5,10 @@ navigation_title: Default Config—Standalone
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # Default Configuration - Standalone EDOT Collector

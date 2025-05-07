@@ -4,6 +4,10 @@ description: How to migrate from the Elastic APM Node.js agent to the Elastic Di
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # Migrating to EDOT Node.js from the Elastic Node.js Agent

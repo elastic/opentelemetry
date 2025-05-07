@@ -5,6 +5,10 @@ navigation_title: Configure Metrics Collection
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # Configure Metrics Collection

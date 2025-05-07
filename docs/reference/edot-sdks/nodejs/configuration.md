@@ -4,6 +4,10 @@ description: How to configure the Elastic Distribution of OpenTelemetry Node.js 
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # Configuring the EDOT Node.js SDK

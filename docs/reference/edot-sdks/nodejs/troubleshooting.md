@@ -4,6 +4,10 @@ description: Troubleshooting guide for the Elastic Distribution of OpenTelemetry
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # Troubleshooting the EDOT Node.js SDK

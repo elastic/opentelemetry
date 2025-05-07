@@ -4,6 +4,10 @@ description: Quickstart guide for setting up EDOT on Elastic Cloud Hosted.
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # Quickstart on Elastic Cloud Hosted

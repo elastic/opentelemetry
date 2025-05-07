@@ -4,6 +4,10 @@ description: Limitations of the Elastic Distribution of OpenTelemetry PHP.
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # Limitations

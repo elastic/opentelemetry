@@ -4,6 +4,10 @@ description: How to instrument Node.js applications on Kubernetes using the Elas
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # Instrumenting Node.js applications with EDOT SDKs on Kubernetes

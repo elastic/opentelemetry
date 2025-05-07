@@ -2,10 +2,18 @@
 navigation_title: Migration
 description: Migrating to EDOT Python from the Elastic APM Python Agent.
 applies_to:
-  serverless: all
+  serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability all
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # Migrating to EDOT Python from the Elastic APM Python Agent

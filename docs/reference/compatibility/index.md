@@ -4,6 +4,10 @@ description: Compatibility and support levels for different OpenTelemetry Distri
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # Compatibility and support

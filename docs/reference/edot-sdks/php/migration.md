@@ -4,6 +4,10 @@ description: Migrate from the legacy Elastic APM PHP agent to the Elastic Distri
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # Migrating to EDOT PHP from the Elastic PHP Agent
@@ -35,6 +39,10 @@ sudo apk del elastic-apm-php
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 ### 2. Install EDOT PHP
@@ -62,6 +70,10 @@ sudo apk add --allow-untrusted elastic-otel-php-<version>.apk
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 ### 3. Update configuration
@@ -83,6 +95,10 @@ EDOT PHP does not require changes to your code or Composer configuration — ins
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 ### Full Configuration Mapping: Elastic APM PHP → EDOT PHP
@@ -121,6 +137,10 @@ applies_to:
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 ### 4. Restart your PHP environment
@@ -145,6 +165,10 @@ Restart the relevant PHP processes for changes to take effect. This could includ
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 ✅ You’re now ready to start collecting traces and metrics using OpenTelemetry with Elastic!

@@ -4,6 +4,10 @@ description: How to build a custom OpenTelemetry Collector distribution similar 
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # Build a Custom EDOT-like Collector

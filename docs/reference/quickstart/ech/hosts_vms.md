@@ -4,6 +4,10 @@ description: Learn how to set up the EDOT Collector and EDOT SDKs with Elastic C
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # Quickstart for hosts and VMs on Elastic Cloud Hosted

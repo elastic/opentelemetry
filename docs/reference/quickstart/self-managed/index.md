@@ -4,6 +4,10 @@ description: Before following the quickstart guides to setup your EDOT deploymen
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # Quickstart with a self-managed Elastic Stack

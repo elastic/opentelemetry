@@ -4,6 +4,10 @@ description: Recommended EDOT architecture for Kubernetes environments.
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # Kubernetes Environments

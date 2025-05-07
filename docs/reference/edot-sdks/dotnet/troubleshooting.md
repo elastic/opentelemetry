@@ -3,6 +3,10 @@ navigation_title: Troubleshooting
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # Troubleshooting the EDOT .NET SDK

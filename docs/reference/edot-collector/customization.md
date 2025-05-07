@@ -4,6 +4,10 @@ description: Options for customizing the EDOT Collector, including building a cu
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # Customization

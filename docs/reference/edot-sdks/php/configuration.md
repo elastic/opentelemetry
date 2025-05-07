@@ -4,6 +4,10 @@ description: Configure the Elastic Distribution of OpenTelemetry PHP (EDOT PHP) 
 applies_to:
   stack:
   serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
 ---
 
 # Configuring the EDOT PHP SDK
