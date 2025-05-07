@@ -8,28 +8,31 @@ applies_to:
 products:
   - cloud-serverless
   - observability
+  - edot-collector
 ---
 
-# Download the EDOT Collector Binaries
+# Download the EDOT Collector
 
-EDOT is embedded in the Elastic Agent package, it is a separate binary that invokes only OpenTelemetry collector components.
-Below are the direct download links for **EDOT Collector version <COLLECTOR_VERSION>** for different operating systems and architectures.
+The Elastic Distribution of OpenTelemetry (EDOT) Collector is embedded in the Elastic Agent package as a separate binary that invokes OpenTelemetry collector components.
 
-| Platform      | Architecture | Download Link |
+The following table contains direct download links for the latest EDOT Collector version for different operating systems and architectures.
+
+| Platform      | Architecture | Download link |
 |--------------|--------------|---------------|
-| Windows      | x86_64       | [Download](https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-<COLLECTOR_VERSION>-windows-x86_64.zip) |
-| macOS        | x86_64       | [Download](https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-<COLLECTOR_VERSION>-darwin-x86_64.tar.gz) |
-| macOS        | aarch64      | [Download](https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-<COLLECTOR_VERSION>-darwin-aarch64.tar.gz) |
-| Linux        | x86_64       | [Download](https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-<COLLECTOR_VERSION>-linux-x86_64.tar.gz) |
-| Linux        | aarch64      | [Download](https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-<COLLECTOR_VERSION>-linux-arm64.tar.gz) |
-| Linux (DEB)  | x86_64       | [Download](https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-<COLLECTOR_VERSION>-amd64.deb) |
-| Linux (DEB)  | aarch64      | [Download](https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-<COLLECTOR_VERSION>-arm64.deb) |
-| Linux (RPM)  | x86_64       | [Download](https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-<COLLECTOR_VERSION>-x86_64.rpm) |
-| Linux (RPM)  | aarch64      | [Download](https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-<COLLECTOR_VERSION>-aarch64.rpm) |
+| Windows      | x86_64       | [Download (Zip)](https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-9.0.1-windows-x86_64.zip) |
+| macOS        | x86_64       | [Download (Tar.gz)](https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-9.0.1-darwin-x86_64.tar.gz) |
+| macOS        | aarch64      | [Download (Tar.gz)](https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-9.0.1-darwin-aarch64.tar.gz) |
+| Linux        | x86_64       | [Download (Tar.gz)](https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-9.0.1-linux-x86_64.tar.gz) |
+| Linux        | aarch64      | [Download (Tar.gz)](https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-9.0.1-linux-arm64.tar.gz) |
+| Linux (DEB)  | x86_64       | [Download (Deb)](https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-9.0.1-amd64.deb) |
+| Linux (DEB)  | aarch64      | [Download (Deb)](https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-9.0.1-arm64.deb) |
+| Linux (RPM)  | x86_64       | [Download (Rpm)](https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-9.0.1-x86_64.rpm) |
+| Linux (RPM)  | aarch64      | [Download (Rpm)](https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-9.0.1-aarch64.rpm) |
 
-Once downloaded you can get EDOT Collector running with the below command.
+After you've downloaded and uncompressed the file, you can get EDOT Collector running with the following command:
+
 ```
 sudo ./otelcol --config otel.yml
 ```
 
-For use case specific configuration follow the [Quickstart guide](../quickstart) or visit the [EDOT Collector Configuration](./config/index.md) page for more details.
+For specific configuration, refer to the [Quickstart guides](../quickstart) or refer to [Configuration](./config/index.md).

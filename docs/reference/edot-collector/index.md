@@ -11,30 +11,32 @@ products:
   - edot-collector
 ---
 
-# EDOT Collector
+# Elastic Distribution of OpenTelemetry Collector
 
-The **Elastic Distribution of OpenTelemetry (EDOT) Collector** is an open-source distribution of the [OpenTelemetry Collector](https://github.com/open-telemetry/opentelemetry-collector).
+The Elastic Distribution of OpenTelemetry (EDOT) Collector is an open-source distribution of the OpenTelemetry Collector. 
 
-Built on OpenTelemetry’s modular [architecture](https://opentelemetry.io/docs/collector/), the EDOT Collector offers a curated and fully supported selection of Receivers, Processors, Exporters, and Extensions. Designed for production-grade reliability.
+## Get started
 
-## 🚀 Get started
-The quickest way to get started with EDOT is to follow our [quickstart guide](../quickstart/index.md).
+To install the EDOT Collector with basic settings in your environment, follow the [quickstart guides](../quickstart/index.md).
 
-## 🎛️ Collector configuration
-The EDOT collector can be configured using the standard OTel collector configuration file or values.yml if you have deployed using Helm.
+## Configure the Collector
 
-For full details on each option visit [this page](./config/index.md)
+You can configure the EDOT Collector to use the standard OTel collector configuration file or `values.yml` file if you have deployed it using Helm.
 
-## 🧩 EDOT Collector components
+For full details on each option, see [Configuration](./config/index.md)
 
-The Elastic Distribution of OpenTelemetry (EDOT) Collector is built on OpenTelemetry’s modular architecture, integrating a carefully curated selection of Receivers, Processors, Exporters, and Extensions to ensure stability, scalability, and seamless observability.
+## Collector components
 
-Visit [this page](./components) for the full list of OTel Collector components embedded in the EDOT Collector.
+Built on OpenTelemetry’s modular architecture, the EDOT Collector offers a curated and fully supported selection of components designed for production-grade reliability.
 
-To request a component to be added to EDOT Collector, please submit a [GitHub issue here](https://github.com/elastic/opentelemetry/issues/new/choose).
+Refer to [Components](./components.md) for the full list of components embedded in the EDOT Collector.
 
-## Collector Limitations
-The EDOT collector has some limitations which are mostly inherited from the upstream components, see the [full list](../compatibility/limitations) here before troubleshooting.
+To request a component to be added to EDOT Collector, submit a [GitHub issue here](https://github.com/elastic/elastic-agent/issues/new/choose).
 
-### 📄 License
-View details of license for [EDOT Collector](https://github.com/elastic/elastic-agent/blob/main/LICENSE.txt).
+## Limitations 
+
+The EDOT collector inherits the same limitations from the upstream components. Refer to [Limitations](../compatibility/limitations.md) for a complete list.
+
+## License
+
+For details on the EDOT Collector license, see the [LICENSE.txt](https://github.com/elastic/elastic-agent/blob/main/LICENSE.txt) file.

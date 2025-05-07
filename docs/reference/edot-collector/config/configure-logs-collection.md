@@ -1,7 +1,6 @@
 ---
 navigation_title: Configure Logs Collection
-
-
+description: Learn how to configure and customize logs collection through the Elastic Distribution of OpenTelemetry Collector. 
 applies_to:
   stack:
   serverless:
@@ -9,26 +8,22 @@ applies_to:
 products:
   - cloud-serverless
   - observability
+  - edot-collector
 ---
 
-# Configure Logs Collection
+# Configure logs collection
 
-This page contains example and references for customizing logs collection.
+Learn how to configure and customize logs collection through the Elastic Distribution of OpenTelemetry Collector. 
 
 :::{note}
-As of Elastic Stack version <COLLECTOR_VERSION> Elasticsearch Ingest Pipelines are not (yet) applicable to OTel-native data, see [corresponding limitation documentation](../../compatibility/limitations#centralized-parsing-and-processing-of-data).
-Hence, we recommend using OTel collector processing pipelines for pre-processing and parsing of logs.
+Elasticsearch Ingest Pipelines are not yet applicable to OTel-native data. Use OTel collector processing pipelines for pre-processing and parsing of logs.
 :::
 
+## Parse JSON logs
 
-## Parsing JSON logs
-
-Parsing logs that come in json format can be achieved through
+You can parse logs that come in JSON format through
 [filelog](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.123.0/receiver/filelogreceiver/README.md)
-receiver's operators. Specifically, the
-[`router`](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.123.0/pkg/stanza/docs/operators/router.md)
-operator can be used in order to check if the format is json and route the logs to
-[`json-parser`](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.123.0/pkg/stanza/docs/operators/json_parser.md):
+receiver's operators. Use the [`router`](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.123.0/pkg/stanza/docs/operators/router.md) to check if the format is JSON and route the logs to [`json-parser`](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.123.0/pkg/stanza/docs/operators/json_parser.md). For example:
 
 ```yaml
 # ...
@@ -52,9 +47,9 @@ receivers:
     # ...
 ```
 
-## Parsing multiline logs
+## Parse multiline logs
 
-Parsing mutliline logs can be achieved using the
+You can parse multiline logs using the
 [`multiline`](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.123.0/receiver/filelogreceiver/README.md#multiline-configuration)
 option as in the following example:
 
@@ -67,8 +62,7 @@ receivers:
       line_start_pattern: ^Exception
 ```
 
-The above configuration can parse the following logs that span across multiple lines and recombine them
-properly into one single log message:
+The previous configuration can parse the following logs that span across multiple lines and recombine them properly into one single log message:
 
 ```log
 Exception in thread 1 "main" java.lang.NullPointerException
@@ -81,16 +75,13 @@ Exception in thread 2 "main" java.lang.NullPointerException
         at com.example.myproject.Bootstrap.main(Bootstrap.java:44)
 ```
 
-## Parsing OTLP logs in JSON format
+## Parse OTLP logs in JSON format
 
-Applications instrumented with OpenTelemetry SDKs can be tuned to write their logs in `OTLP/JSON` format
-in files that are stored on the disk. With that, the
-[filelog](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.123.0/receiver/filelogreceiver/README.md)
-receiver can be used to collect and parse these logs and
-forward them to the
-[`otlpjson`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.123.0/connector/otlpjsonconnector)
-connector which extracts the `OTLP` logs from the `OTLP/JSON` log lines.
-An example `OTLP/JSON` is the following:
+You can configure applications instrumented with OpenTelemetry SDKs to write their logs in `OTLP/JSON` format in files stored on disk. The [filelog](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.123.0/receiver/filelogreceiver/README.md) receiver can then collect and parse the logs and
+forward them to the [`otlpjson`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.123.0/connector/otlpjsonconnector)
+connector, which extracts the `OTLP` logs from the `OTLP/JSON` log lines.
+
+An example `OTLP/JSON` log is the following:
 
 ```json
 {
@@ -178,7 +169,7 @@ An example `OTLP/JSON` is the following:
 }
 ```
 
-The following configuration can be used to properly parse and extract the `OTLP` content from these log lines:
+You can use the following configuration to properly parse and extract the `OTLP` content from these log lines:
 
 ```yaml
 receivers:
@@ -201,12 +192,9 @@ service:
 ...
 ```
 
-## Parsing apache logs
+## Parse apache logs
 
-Parsing logs of a known technology, like Apache logs, can be achieved through filelog receiver's operators.
-Specifically, the
-[`regex_parser`](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.123.0/pkg/stanza/docs/operators/regex_parser.md)
-operator can be used in order to parse the logs that follow the specific pattern:
+You can parse logs of a known technology, like Apache logs, through filelog receiver's operators. Use the [`regex_parser`](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.123.0/pkg/stanza/docs/operators/regex_parser.md) operator to parse the logs that follow the specific pattern:
 
 ```yaml
 receivers:
@@ -223,20 +211,12 @@ receivers:
       regex: ^(?P<source_ip>\d+\.\d+.\d+\.\d+)\s+-\s+-\s+\[(?P<timestamp_log>\d+/\w+/\d+:\d+:\d+:\d+\s+\+\d+)\]\s"(?P<http_method>\w+)\s+(?P<http_path>.*)\s+(?P<http_version>.*)"\s+(?P<http_code>\d+)\s+(?P<http_size>\d+)$
 ```
 
-## Customizing logs parsing on Kubernetes
+## Customize logs parsing on Kubernetes
 
-The OpenTelemetry Collector also supports enabling log's collection dynamically for Kubernetes Pods
-by defining properly specific Pod's annotations.
+The OpenTelemetry Collector also supports dynamic logs collection for Kubernetes Pods by defining Pods annotations. For detailed examples refer to [Dynamic workload discovery on Kubernetes now supported with EDOT Collector](https://www.elastic.co/observability-labs/blog/k8s-discovery-with-EDOT-collector) and the
+[Collector documentation](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/receivercreator/README.md#supported-logs-annotations).
 
-Detailed examples can be found in the respective [blog post](https://www.elastic.co/observability-labs/blog/k8s-discovery-with-EDOT-collector)
-and the
-[Collector's documentation](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/receivercreator/README.md#supported-logs-annotations).
-
-The collector configuration should enable the
-[`k8s_observer`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.123.0/extension/observer/k8sobserver)
-and the
-[`receiver_creator`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.123.0/receiver/receivercreator)
-properly:
+Make sure that the Collector configuration includes the [`k8s_observer`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.123.0/extension/observer/k8sobserver) and the [`receiver_creator`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.123.0/receiver/receivercreator):
 
 ```yaml
 receivers:
@@ -260,9 +240,9 @@ service:
       receivers: [ receiver_creator/logs]
 ```
 
-In addition, make sure to remove / comment out any static filelog receiver (or restrict the log file pattern) to avoid log duplication.
+In addition, make sure to remove or comment out any static filelog receiver. Restrict the log file pattern to avoid log duplication.
 
-Then annotating the pod will enable custom log collection targeted only for this specific Pod.
+Annotating the pod activates custom log collection targeted only for the specific Pod.
 
 ```yaml
 # ...
@@ -293,14 +273,11 @@ spec:
     # ...
 ```
 
-Targeting a single container's scope is also possible by scoping the annotation using containers' names
-like `io.opentelemetry.discovery.logs.my-container/enabled: "true"`.
-Visit [Collector's documentation](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/receivercreator/README.md#supported-logs-annotations)
-for additional information.
+Targeting a single container's scope is also possible by scoping the annotation using containers' names, like `io.opentelemetry.discovery.logs.my-container/enabled: "true"`. Refer to the [Collector's documentation](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/receivercreator/README.md#supported-logs-annotations) for additional information.
 
-### Collecting Apache logs using annotations discovery
+### Collect Apache logs using annotations discovery
 
-The following example can be used in order to collect and parse Apache logs by annotating Apache containers:
+Use the following example to collect and parse Apache logs by annotating Apache containers:
 
 ```yaml
 metadata:
@@ -319,16 +296,14 @@ spec:
       # ...
 ```
 
-## Using Processors / OTTL for Logs processing
+## Use processors and OTTL for logs processing
 
-OTTL functions can be used in the transform processor to parse logs of a specific format or logs
-that follow a specific pattern. 
+You can use [OpenTelemetry Transform Language (OTTL)](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/pkg/ottl/README.md) functions in the transform processor to parse logs of a specific format or logs that follow a specific pattern. 
 
-### Parsing JSON logs using OTTL
+### Parse JSON logs using OTTL
 
-The following
-[`transform`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.123.0/processor/transformprocessor)
-processor can be used to parse logs that come in `JSON` format:
+Use the following [`transform`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.123.0/processor/transformprocessor)
+processor configuration to parse logs in `JSON` format:
 
 ```yaml
 processors:
@@ -343,7 +318,7 @@ processors:
           - set(body,cache["log"]) where cache["log"] != nil
 ```
 
-### Parsing Apache logs using OTTL
+### Parse Apache logs using OTTL
 
 The following configuration can parse Apache access log using OTTL and the transform processor:
 

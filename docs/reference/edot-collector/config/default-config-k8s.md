@@ -1,7 +1,6 @@
 ---
-navigation_title: Default Config—Kubernetes
-
-
+navigation_title: Default config (Kubernetes)
+description: Default configuration of the EDOT Collector for Kubernetes.
 applies_to:
   stack:
   serverless:
@@ -9,179 +8,61 @@ applies_to:
 products:
   - cloud-serverless
   - observability
+  - edot-collector
 ---
 
-# Default Configuration - EDOT Collectors on Kubernetes
+# Default configuration of the EDOT Collector (Kubernetes)
 
-The [Kubernetes setup](../../quickstart/index.md) utilizes the OpenTelemetry Operator to automate orchestration of EDOT Collectors:
+The [Kubernetes setup](../../quickstart/index.md) uses the OpenTelemetry Operator to automate orchestration of EDOT Collectors:
 
-* [EDOT Collector Cluster](#pipeline---cluster-collector): Collection of cluster metrics.
-* [EDOT Collector Daemon](#pipeline---daemonset-collectors): Collection of node metrics, logs and application telemetry.
-* [EDOT Collector Gateway](#pipeline---gateway-collectors): Pre-processing, aggregation and ingestion of data into Elastic.
+* [EDOT Collector Cluster](#cluster-collector-pipeline): Collection of cluster metrics.
+* [EDOT Collector Daemon](#daemonset-collectors-pipeline): Collection of node metrics, logs and application telemetry.
+* [EDOT Collector Gateway](#gateway-collectors-pipeline): Pre-processing, aggregation and ingestion of data into Elastic.
 
-| Direct ingestion into Elasticsearch | Managed OTLP Endpoint |
-|---|---|
-| ```mermaid
-flowchart LR
-    cluster@{ shape: proc, label: "Cluster\nCollector\nfa:fa-microchip"} -->|otlp| gateway@{ shape: procs, label: "Gateway\nCollectors\nfa:fa-microchip"}
+The following `values.yaml` files are used depending on the ingest scenario:
 
-    daemon@{ shape: procs, label: "Daemonset\nCollectors\nfa:fa-microchip"} -->|otlp| gateway
-
-    gateway ==>|_bulk| es@{ shape: db, label: "Elasticsearch" }
-
-    style es stroke:#33f,stroke-width:2px,color:#000;
-``` | ```mermaid
-flowchart LR
-    cluster@{ shape: proc, label: "Cluster\nCollector\nfa:fa-microchip"} -->|otlp| gateway@{ shape: procs, label: "Gateway\nCollectors\nfa:fa-microchip"}
-
-    daemon@{ shape: procs, label: "Daemonset\nCollectors\nfa:fa-microchip"} -->|otlp| gateway
-
-    gateway ==>|otlp| otlp@{ shape: display, label: "Managed\nOTLP endpoint" }
-
-    style otlp stroke:#33f,stroke-width:2px,color:#000;
-``` |
-| [📄 K8s - ES](https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v<COLLECTOR_VERSION>/deploy/helm/edot-collector/kube-stack/values.yaml) | [📄 K8s - OTLP](https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v<COLLECTOR_VERSION>/deploy/helm/edot-collector/kube-stack/managed_otlp/values.yaml) |
+* [Direct ingestion into Elasticsearch](https://github.com/elastic/elastic-agent/blob/main/deploy/helm/edot-collector/kube-stack/values.yaml)
+* [Managed OTLP Endpoint](https://github.com/elastic/elastic-agent/blob/main/deploy/helm/edot-collector/kube-stack/managed_otlp/values.yaml)
 
 The following sections describe the default pipelines for the different roles of EDOT collectors in a Kubernetes setup.
 
+## Cluster collector pipeline
 
-## Pipeline - Cluster Collector
+The main purpose of the Cluster collector is to collect Kubernetes cluster-level metrics and events using the [`k8s_cluster`] and the [`k8sobjects`] receivers.
 
-```mermaid
-flowchart LR
-    k8s_cluster@{ shape: proc, label: "k8s_cluster
-    fa:fa-right-to-bracket"} -->|M| k8sattributes@{ shape: proc, label: "k8sattributes
-    fa:fa-gears"}
+The [`resource`] and [`resourcedetection`] processors enrich the cluster-level data with corresponding meta information. Data then goes to the Gateway collector through `OTLP`. 
 
-    k8sattributes -->|M| resourcedetection@{ shape: procs, label: "resourcedetection
-    fa:fa-gears"}
+## Daemonset collectors pipeline
 
-    k8sobjects@{ shape: proc, label: "k8sobjects
-    fa:fa-right-to-bracket"} -->|L| resourcedetection
+The Daemonset collectors gather telemetry associated with corresponding, individual Kubernetes nodes:
 
-    resourcedetection -->|L/M| resource@{ shape: procs, label: "resource
-    fa:fa-gears"}
+### Host metrics and container logs
 
-    resource -->|L/M| otlp_exporter@{ shape: proc, label: "OTLP
-    fa:fa-right-from-bracket"}
-```
+The [`filelog`] and [`hostmetrics`] receivers are used to gather container logs and host metrics, respectively. The [`kubeletstats`] receiver collects additional Kubernetes Node, Pod and Container metrics.
 
-The main purpose of the `Cluster Collector` is to collect Kubernetes cluster-level metrics (using the [`k8s_cluster`] receiver) and cluster events ([`k8sobjects`] receiver) and forward them to the Gateway Collector through `OTLP`. The [`resource`] and [`resourcedetection`] processors enrich the cluster-level data with corresponding meta information.
+Logs and metrics are batched for better performance ([`batch`] processor) and then enriched with meta information using the [`k8sattributes`], [`resourcedetection`] and [`resource`] processors.
 
+### Application telemetry through OTLP from OTel SDKs
 
-## Pipeline - Daemonset Collectors
+The Daemonset collectors also receive the application telemetry from OTel SDKs that instrument services and pods running on corresponding Kubernetes nodes.
 
-```mermaid
-flowchart LR
-    otlp@{ shape: proc, label: "OTLP
-    fa:fa-right-to-bracket"} -->|T/L/M| batch@{ shape: proc, label: "batch
-    fa:fa-gears"}
+The Daemonset collectors receive that data through [`OTLP`], batch the data ([`batch`] processor) and pass it on to the Gateway Collector through the OTLP exporter.
 
-    batch -->|T/L/M| resource@{ shape: proc, label: "resource
-    fa:fa-right-from-bracket"}
+## Gateway collectors pipeline
 
-    resource -->|T/L/M| otlp_exporter@{ shape: proc, label: "OTLP
-    fa:fa-right-from-bracket"}
-
-%% logs pipeline
-    filelog@{ shape: proc, label: "filelog
-    fa:fa-right-to-bracket"} -->|L| batch_lm@{ shape: proc, label: "batch
-    fa:fa-gears"}
-
-    batch_lm -->|L/M| k8sattributes@{ shape: proc, label: "k8sattributes
-    fa:fa-gears"}
-
-    k8sattributes -->|L/M| resourcedetection@{ shape: procs, label: "resourcedetection
-    fa:fa-gears"}
-
-    resourcedetection -->|L/M| resource@{ shape: procs, label: "resource
-    fa:fa-gears"}
-
-    resource -->|L/M| otlp_exporter
-
-%% system metrics pipeline
-    kubeletstats@{ shape: proc, label: "kubeletstats
-    fa:fa-right-to-bracket"} -->|M| batch_lm
-    hostmetrics@{ shape: proc, label: "hostmetrics
-    fa:fa-right-to-bracket"} -->|M| batch_lm
-```
-
-The `Daemonset Collectors` gather telemetry associated with corresponding, individual Kubernetes nodes:
-
-1. *Host metrics and container logs*
-
-    [`filelog`] and [`hostmetrics`] receivers are used to gather container logs and host metrics, respectively.
-    The [`kubeletstats`] receiver collects additional Kubernetes Node, Pod and Container metrics.
-    The logs and metrics are batched for better performance ([`batch`] processor) and then enriched with meta information using the
-    [`k8sattributes`], [`resourcedetection`] and [`resource`] processors.
-
-2. *Application telemetry through OTLP from OTel SDKs*
-
-    The `Daemonset Collectors` also receive the application telemetry from OTel SDKs that instrument services / pods running on
-    corresponding Kubernetes nodes. The Daemonset Collectors receive that data through [`OTLP`], batch the data ([`batch`] processor)
-    and pass it on to the Gateway Collector through the OTLP exporter.
-
-## Pipeline - Gateway Collectors
-
-The `Gateway Collectors` pipelines differ fundamentally between the two different deployment use cases *'Direct ingestion into Elasticsearch'*
-and using Elastic's *'Managed OTLP Endpoint'*.
+The Gateway collectors pipelines differ between the two different deployment use cases, direct ingestion into Elasticsearch and using Elastic's Managed OTLP Endpoint.
 
 ### Direct ingestion into Elasticsearch
 
-In *self-managed* and *Elastic Cloud Hosted* Stack deployment use cases the main purpose of the `Gateway Collector` is the central enrichment of data
-before the OpenTelemetry data is being ingested directly into Elasticsearch using the [`elasticsearch`] exporter.
+In self-managed and Elastic Cloud Hosted Stack deployment use cases, the main purpose of the Gateway collector is the central enrichment of data before the OpenTelemetry data is being ingested directly into Elasticsearch using the [`elasticsearch`] exporter.
 
-```mermaid
-flowchart LR
-    otlp@{ shape: proc, label: "OTLP
-    fa:fa-right-to-bracket"} -->|T/L| batch@{ shape: proc, label: "batch
-    fa:fa-gears"}
-    batch -->|T| elastictrace@{ shape: proc, label: "elastictrace
-    fa:fa-gears"}
-    elastictrace -->|T| es_exporter@{ shape: proc, label: "elasticsearch
-    fa:fa-right-from-bracket"}
-    es_exporter -->|otel| otel@{ shape: framed-circle, label: "otel" }
-    elastictrace -->|T| elasticapm@{ shape: hex, label: "elasticapm
-    fa:fa-link"}
-    elasticapm -->|M| es_exporter
+The Gateway collector configuration comprises the pipelines for data enrichment of [application telemetry](./default-config-standalone#application--traces-collection-pipeline) and [host metrics](./default-config-standalone#host-metrics-collection-pipeline). For more details, refer to the linked descriptions of the corresponding standalone use cases.
 
-    batch -->|L| elasticapm
-
-    otlp -->|M| routing@{ shape: hex, label: "routing
-    fa:fa-link"}
-    routing -->|M| batch
-    batch -->|L/M| es_exporter
-
-    routing -->|"M (infra)"| elasticinframetrics@{ shape: proc, label: "elasticinframetrics
-    fa:fa-gears"}
-    elasticinframetrics -->|M| attributes@{ shape: proc, label: "attributes
-    fa:fa-gears"}
-    attributes -->|M| resource@{ shape: proc, label: "resource
-    fa:fa-gears"}
-    resource -->|M| batch_ecs@{ shape: proc, label: "batch
-    fa:fa-gears"}
-    batch_ecs -->|M| es_exporter_ecs@{ shape: proc, label: "elasticsearch
-    fa:fa-right-from-bracket"}
-    es_exporter_ecs -->|ecs| ecs@{ shape: framed-circle, label: "ecs" }
-```
-
-Hence, this Gateway Collector configuration comprises the pipelines for data enrichment of [application telemetry](./default-config-standalone#application--traces-collection-pipeline) and [host metrics](./default-config-standalone#host-metrics-collection-pipeline) (for details, refer to the linked descriptions of the corresponding standalone use cases).
-
-The [`routing`] connector separates the infrastructure metrics from other metrics and routes them into the ECS-based pipeline, with ECS-compatibility exporter mode.
-Other metrics are exported in OTel-native format to Elasticsearch.
+The [`routing`] connector separates the infrastructure metrics from other metrics and routes them into the ECS-based pipeline, with ECS-compatibility exporter mode. Other metrics are exported in OTel-native format to Elasticsearch.
 
 ### Managed OTLP Endpoint
 
-With the managed OTLP Endpoint, the Gateway Collector configuration simply pipes all the data from the [`OTLP`] receiver through a [`batch`] processor before the data is being exported through `OTLP` to the managed endpoint.
-
-```mermaid
-flowchart LR
-    otlp@{ shape: proc, label: "OTLP
-    fa:fa-right-to-bracket"} -->|T/L/M| batch@{ shape: proc, label: "batch
-    fa:fa-gears"}
-    batch -->|T/L/M| otlp_exporter@{ shape: proc, label: "OTLP
-    fa:fa-right-from-bracket"}
-```
+With the managed OTLP Endpoint, the Gateway collector configuration pipes all the data from the [`OTLP`] receiver through a [`batch`] processor before the data is being exported through `OTLP` to the managed endpoint.
 
 With this scenario there's no need to do any Elastic-specific enrichment in your Kubernetes cluster, as all of that happens behind the managed OTLP endpoint.
 

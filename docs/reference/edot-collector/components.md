@@ -8,16 +8,15 @@ applies_to:
 products:
   - cloud-serverless
   - observability
+  - edot-collector
 ---
 
 # Components included in the EDOT Collector
 
-The EDOT Collector comes with embedded Collector components from the [OTel Collector Core](https://github.com/open-telemetry/opentelemetry-collector),
+The Elastic Distribution of OpenTelemetry (EDOT) Collector includes embedded Collector components from the [OTel Collector Core](https://github.com/open-telemetry/opentelemetry-collector),
 [OTel Collector Contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib) and the [Elastic Collector Components](https://github.com/elastic/opentelemetry-collector-components) repositories.
 
-The components included in the EDOT Collector are categorized into **[Core]** and **[Extended]** components.
-
-**Version:** <COLLECTOR_VERSION>
+The components included in the EDOT Collector are categorized into **[Core]** and **[Extended]** components. The following table describes the current components included in the EDOT Collector, their source, and support status.
 
 | Component                                                                                                        | GitHub Repo                                                                          | Version   | EDOT Collector 9.x   |
 | :--------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------- | :-------- | :------------------- |
@@ -77,5 +76,5 @@ The components included in the EDOT Collector are categorized into **[Core]** an
 | [httpsprovider ](https://github.com/open-telemetry/opentelemetry-collector/tree/main/confmap/provider/httpsprovider) | [OTel Core Repo](https://github.com/open-telemetry/opentelemetry-collector) | v1.26.0 | |
 | [yamlprovider ](https://github.com/open-telemetry/opentelemetry-collector/tree/main/confmap/provider/yamlprovider) | [OTel Core Repo](https://github.com/open-telemetry/opentelemetry-collector) | v1.26.0 | |
 
-[Extended]: ../compatibility/nomenclature#extended-components
-[Core]: ../compatibility//nomenclature#core-components
+[Extended]: ../compatibility/nomenclature.md#extended-components
+[Core]: ../compatibility//nomenclature.md#core-components

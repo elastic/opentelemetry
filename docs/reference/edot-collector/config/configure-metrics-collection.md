@@ -1,7 +1,6 @@
 ---
 navigation_title: Configure Metrics Collection
-
-
+description: Learn how to configure and customize metrics collection through the Elastic Distribution of OpenTelemetry Collector. 
 applies_to:
   stack:
   serverless:
@@ -9,21 +8,20 @@ applies_to:
 products:
   - cloud-serverless
   - observability
+  - otel-collector
 ---
 
-# Configure Metrics Collection
+# Configure metrics collection
 
-This page contains examples and references for customizing metrics collection.
+Learn how to configure and customize metrics collection through the Elastic Distribution of OpenTelemetry Collector. 
 
 :::{note}
-As of Elastic Stack version <COLLECTOR_VERSION> Elasticsearch Ingest Pipelines are not (yet) applicable to OTel-native data; see [corresponding limitation documentation](../../compatibility/limitations#centralized-parsing-and-processing-of-data).
-Hence, we recommend using OTel collector processing pipelines for pre-processing metrics.
+Elasticsearch Ingest Pipelines are not yet applicable to OTel-native data. Use OTel collector processing pipelines for pre-processing metrics.
 :::
-
 
 ## OTLP metrics
 
-Any application emitting metrics through OTLP (OpenTelemetry Protocol) can forward them to the EDOT Collector using the OTLP receiver. This is the recommended method for collecting application-level telemetry.
+Any application emitting metrics through OpenTelemetry Protocol (OTLP) can forward them to the EDOT Collector using the OTLP receiver. This is the recommended method for collecting application-level telemetry.
 
 The following OTLP receiver configuration turns on both gRPC and HTTP protocols for incoming OTLP traffic:
 
@@ -104,9 +102,9 @@ hostmetrics:
         match_type: strict
 ```
 
-You must grant access to the /proc filesystem to the receiver by running the Collector with privileged access and mounting /proc and /sys appropriately. Refer to the hostmetrics container use [guide](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver#collecting-host-metrics-from-inside-a-container-linux-only) (Linux only).
+You must grant access to the `/proc` filesystem to the receiver by running the Collector with privileged access and mounting /proc and /sys appropriately. Refer to the hostmetrics container use [guide](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver#collecting-host-metrics-from-inside-a-container-linux-only) (Linux only).
 
-Enabling the process scraper might significantly increase the volume of scraped metrics, potentially impacting performance. Refer to the upstream issue [#39423](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/39423) for discussion.
+Turning on the process scraper might significantly increase the volume of scraped metrics, potentially impacting performance. Refer to the upstream issue [#39423](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/39423) for discussion.
 
 To ensure compatibility with Kibana's Infrastructure dashboards, include the [elasticinframetrics processor](https://github.com/elastic/opentelemetry-collector-components/tree/main/processor/elasticinframetricsprocessor) in your pipeline:
 

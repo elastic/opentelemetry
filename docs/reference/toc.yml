@@ -50,7 +50,6 @@ toc:
               - file: edot-collector/config/default-config-k8s.md
               - file: edot-collector/config/configure-logs-collection.md
               - file: edot-collector/config/configure-metrics-collection.md
-              - file: edot-collector/config/configure-data-ingestion.md
           - file: edot-collector/customization.md
             children:
               - file: edot-collector/components.md
