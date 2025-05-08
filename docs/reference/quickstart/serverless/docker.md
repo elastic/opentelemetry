@@ -23,7 +23,7 @@ Make sure the following requirements are present:
 
 ## Guided setup
 
-:::{include} .../_snippets/guided-instructions.md
+:::{include} ../_snippets/guided-instructions.md
 :::
 
 ## Manual installation
@@ -34,7 +34,7 @@ Follow these steps to deploy the EDOT Collector and EDOT OTel SDKs in Docker wit
 
 ::::{step} Create the config file
 
-Create a `otel-collector-config.yml` file with your EDOT collector configuration. Refer to the [configuration reference](.../edot-collector/config/default-config-standalone.md) for "Managed OTLP Endpoint" for more details.
+Create a `otel-collector-config.yml` file with your EDOT collector configuration. Refer to the [configuration reference](../edot-collector/config/default-config-standalone.md) for "Managed OTLP Endpoint" for more details.
 
 ::::
 
@@ -110,11 +110,11 @@ docker compose up -d
 
 To collect telemetry from applications running on the host where you installed the EDOT Collector, instrument your target applications:
 
-- [.NET](.../edot-sdks/dotnet/setup/index.md)
-- [Java](.../edot-sdks/java/setup/index.md)
-- [Node.js](.../edot-sdks/nodejs/setup/index.md)
-- [PHP](.../edot-sdks/php/setup/index.md)
-- [Python](.../edot-sdks/python/setup/index.md)
+- [.NET](../edot-sdks/dotnet/setup/index.md)
+- [Java](../edot-sdks/java/setup/index.md)
+- [Node.js](../edot-sdks/nodejs/setup/index.md)
+- [PHP](../edot-sdks/php/setup/index.md)
+- [Python](../edot-sdks/python/setup/index.md)
 
 Configure your SDKs to send the data to the local EDOT Collector using OTLP/gRPC (`http://localhost:4317`) or OTLP/HTTP (`http://localhost:4318`).
 
