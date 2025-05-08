@@ -21,6 +21,8 @@ Make sure the following requirements are present:
 - The **Kubernetes OpenTelemetry Assets** integration is installed in Kibana.
 - The **[System](https://www.elastic.co/docs/reference/integrations/system)** integration is installed in Kibana. Select **Add integration only** to skip the agent installation, as only the integration assets are required.
 
+## Guided setup
+
 :::{include} ../../_snippets/guided-instructions.md
 :::
 
