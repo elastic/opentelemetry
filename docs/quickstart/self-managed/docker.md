@@ -21,8 +21,9 @@ Make sure the following requirements are present:
 
 - Docker installed and running.
 - A Self-Managed Elasticsearch cluster up and running.
+- [System integration](https://www.elastic.co/docs/reference/integrations/system) is installed in Kibana. Select **Add integration only** to skip the agent installation, as only the integration assets are required.
 
-## Instructions
+## Manual installation
 
 Follow these steps to deploy the EDOT Collector and EDOT OTel SDKs in Docker.
 
