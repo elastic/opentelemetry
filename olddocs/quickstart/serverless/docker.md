@@ -22,6 +22,7 @@ Make sure the following requirements are present:
 
 - Docker installed and running.
 - An Elastic Serverless Project deployment.
+- [System integration](https://www.elastic.co/docs/reference/integrations/system) is installed.
 
 ## Instructions
 
