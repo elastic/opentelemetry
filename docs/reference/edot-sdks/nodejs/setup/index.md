@@ -35,7 +35,7 @@ This setup guide covers each of these steps. (If you are deploying in Kubernetes
 
 Before getting started, you'll need somewhere to send the gathered OpenTelemetry data, so it can be viewed and analyzed. This doc assumes you're using an Elastic Observability deployment. You can use an existing one or set up a new one.
 
-Follow the EDOT [Quickstart guide](.../../quickstart/index.md) to get a deployment and gather the `ELASTIC_OTLP_ENDPOINT` and `ELASTIC_API_KEY` pieces of data that you'll need to configure the EDOT Node.js SDK.
+Follow the EDOT [Quickstart guide](../../../quickstart/index.md) to get a deployment and gather the `ELASTIC_OTLP_ENDPOINT` and `ELASTIC_API_KEY` pieces of data that you'll need to configure the EDOT Node.js SDK.
 
 
 ## Installation
@@ -56,8 +56,8 @@ EDOT Node.js is configured with environment variables beginning with `OTEL_` or 
 
 To configure EDOT Node.js, as a typical minimum you will need:
 
-* `OTEL_EXPORTER_OTLP_ENDPOINT`: The full URL of an OpenTelemetry Collector where data will be sent. When using Elastic Observability, this will be the "ingest" endpoint of an Elastic Cloud Serverless project or the URL of a deployed [EDOT Collector](.../../edot-collector/index.md) **Set this to the `ELASTIC_OTLP_ENDPOINT` value as described in the [EDOT Quickstart pages](.../../quickstart/index.md).**
-* `OTEL_EXPORTER_OTLP_HEADERS`: A comma-separated list of HTTP headers used for exporting data, typically used to set the `Authorization` header with auth information. **Get an `ELASTIC_API_KEY` as described in the [EDOT Quickstart pages](.../../quickstart/index.md) and set this to `"Authorization=ApiKey ELASTIC_API_KEY"`.**
+* `OTEL_EXPORTER_OTLP_ENDPOINT`: The full URL of an OpenTelemetry Collector where data will be sent. When using Elastic Observability, this will be the "ingest" endpoint of an Elastic Cloud Serverless project or the URL of a deployed [EDOT Collector](../../../edot-collector/index.md) **Set this to the `ELASTIC_OTLP_ENDPOINT` value as described in the [EDOT Quickstart pages](../../../quickstart/index.md).**
+* `OTEL_EXPORTER_OTLP_HEADERS`: A comma-separated list of HTTP headers used for exporting data, typically used to set the `Authorization` header with auth information. **Get an `ELASTIC_API_KEY` as described in the [EDOT Quickstart pages](../../../quickstart/index.md) and set this to `"Authorization=ApiKey ELASTIC_API_KEY"`.**
 * `OTEL_SERVICE_NAME`: The name of your service, used to distinguish telemetry data from other services in your system. If not set, it will default to `unknown_service:node`.
 
 :::note

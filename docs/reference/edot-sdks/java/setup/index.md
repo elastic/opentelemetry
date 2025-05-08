@@ -14,7 +14,7 @@ products:
 
 **Kubernetes**
 
-For Kubernetes we recommend using the OTel Kubernetes Operator that also manages the auto-instrumentation of Java applications. Follow the [Quickstart Guide](.../../quickstart/index.md) for Kubernetes or learn more about [instrumentation details on Kubernetes for Java](./k8s.md). 
+For Kubernetes we recommend using the OTel Kubernetes Operator that also manages the auto-instrumentation of Java applications. Follow the [Quickstart Guide](../../../quickstart/index.md) for Kubernetes or learn more about [instrumentation details on Kubernetes for Java](./k8s.md). 
 
 **All other environments**
 
@@ -30,7 +30,7 @@ You can download the latest release version or snapshot version of the EDOT Java
 
 ## Prerequisites
 
-You need to have completed the steps in the [Quickstart](.../../quickstart/index.md) section that corresponds to your Elastic deployment model.
+You need to have completed the steps in the [Quickstart](../../../quickstart/index.md) section that corresponds to your Elastic deployment model.
 
 ##  Configure the Java agent
 
@@ -63,14 +63,14 @@ If EDOT Collector requires authentication, `OTEL_EXPORTER_OTLP_HEADERS` should b
 
 ### Elastic Managed OTLP endpoint
 
-Use [these guides](.../../quickstart/serverless/index.md) to retrieve the `<ELASTIC_OTLP_ENDPOINT>` and the `<ELASTIC_API_KEY>`.
+Use [these guides](../../../quickstart/serverless/index.md) to retrieve the `<ELASTIC_OTLP_ENDPOINT>` and the `<ELASTIC_API_KEY>`.
 
 - `OTEL_EXPORTER_OTLP_ENDPOINT` should be set to `<ELASTIC_OTLP_ENDPOINT>`
 - `OTEL_EXPORTER_OTLP_HEADERS` should be set to include `Authorization=ApiKey <ELASTIC_API_KEY>` (comma-separated key=value list).
 
 ### Kubernetes
 
-Connection to the EDOT Collector is managed by the OTel Kubernetes Operator, [follow the Quickstart Guides](.../../quickstart/index.md) for Kubernetes.
+Connection to the EDOT Collector is managed by the OTel Kubernetes Operator, [follow the Quickstart Guides](../../../quickstart/index.md) for Kubernetes.
 
 ## Run the Java agent
 

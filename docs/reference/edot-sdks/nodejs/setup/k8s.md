@@ -17,7 +17,7 @@ This document focuses on instrumenting Node.js applications on Kubernetes, using
 
 - For general knowledge about the EDOT Node.js SDK, refer to the [EDOT Node.js Intro page](../index.md) and [Configuration](../configuration.md).
 - For Node.js auto-instrumentation specifics, refer to [OpenTelemetry Operator Node.js auto-instrumentation](https://opentelemetry.io/docs/kubernetes/operator/automatic/#nodejs).
-- For general information about instrumenting applications on Kubernetes, refer to [instrumenting applications on Kubernetes](.../../use-cases/kubernetes/instrumenting-applications.md).
+- For general information about instrumenting applications on Kubernetes, refer to [instrumenting applications on Kubernetes](../../../use-cases/kubernetes/instrumenting-applications.md).
 
 ## Instrument a Node.js app with EDOT Node.js SDK on Kubernetes
 
@@ -31,7 +31,7 @@ In this example, you'll learn how to:
 
 For this example, we assume the application you're instrumenting is a deployment named `nodejs-app` running in the `nodejs-ns` namespace.
 
-1. Ensure you have successfully [installed the OpenTelemetry Operator](.../../use-cases/kubernetes/deployment.md), and confirm that the following `Instrumentation` object exists in the system:
+1. Ensure you have successfully [installed the OpenTelemetry Operator](../../../use-cases/kubernetes/deployment.md), and confirm that the following `Instrumentation` object exists in the system:
 
     ```bash
     $ kubectl get instrumentation -n opentelemetry-operator-system
@@ -76,7 +76,7 @@ For this example, we assume the application you're instrumenting is a deployment
       kubectl rollout restart deployment nodejs-app -n nodejs-ns
       ```
 
-4. Verify the [auto-instrumentation resources](.../../use-cases/kubernetes/instrumenting-applications.md#how-auto-instrumentation-works) are injected in the Pods:
+4. Verify the [auto-instrumentation resources](../../../use-cases/kubernetes/instrumenting-applications.md#how-auto-instrumentation-works) are injected in the Pods:
 
     Run a `kubectl describe` of one of your application Pods and check:
 
@@ -161,8 +161,8 @@ For this example, we assume the application you're instrumenting is a deployment
         - `k8s.deployment.name: "nodejs-app"` (**adapt the query filter to your use case**)
         - `k8s.pod.name: nodejs-app*` (**adapt the query filter to your use case**)
 
-    Note that the container logs are not provided by the instrumentation library, but by the DaemonSet collector deployed as part of the [operator installation](.../../use-cases/kubernetes/deployment.md).
+    Note that the container logs are not provided by the instrumentation library, but by the DaemonSet collector deployed as part of the [operator installation](../../../use-cases/kubernetes/deployment.md).
 
 ## Troubleshooting
 
-Refer to [troubleshoot auto-instrumentation](.../../use-cases/kubernetes/instrumenting-applications.md#troubleshooting-auto-instrumentation) for further analysis.
+Refer to [troubleshoot auto-instrumentation](../../../use-cases/kubernetes/instrumenting-applications.md#troubleshooting-auto-instrumentation) for further analysis.
