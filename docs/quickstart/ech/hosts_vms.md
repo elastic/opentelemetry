@@ -15,6 +15,14 @@ parent: Elastic Cloud Hosted
 
 The quick start for Hosts / VMs with with Elastic Cloud Hosted will guide you through setting up the EDOT Collector and EDOT SDKs to collect host metrics, logs and application traces.
 
+## Prerequisites
+
+Make sure the following requirements are present:
+
+- [System integration](https://www.elastic.co/docs/reference/integrations/system) is installed in Kibana. Select **Add integration only** to skip the agent installation, as only the integration assets are required.
+
+## Manual installation
+
 1. **Download the EDOT Collector**
 
     [Download the EDOT Collector](../../edot-collector/download) for your operating system, extract the archive and move to the extracted directory.

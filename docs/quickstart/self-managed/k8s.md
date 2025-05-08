@@ -16,6 +16,15 @@ parent: Self-managed
 The quick start for Kubernetes with a self-managed Elastic Stack covers the collection of OpenTelemetry data for infrastructure monitoring,
 logs collection and application monitoring.
 
+## Prerequisites
+
+Make sure the following requirements are present:
+
+- The **Kubernetes OpenTelemetry Assets** integration is installed in Kibana.
+- The **[System](https://www.elastic.co/docs/reference/integrations/system)** integration is installed in Kibana. Select **Add integration only** to skip the agent installation, as only the integration assets are required.
+
+## Manual installation
+
 1. **Add the OpenTelemetry repository to Helm**
 
     ```bash
