@@ -23,7 +23,7 @@ Make sure the following requirements are present:
 
 ## Guided setup
 
-:::{include} ../../_snippets/guided-instructions.md
+:::{include} .../_snippets/guided-instructions.md
 :::
 
 ## Manual installation
@@ -76,6 +76,6 @@ kubectl annotate namespace YOUR_NAMESPACE instrumentation.opentelemetry.io/injec
 
 Restart your deployment to ensure the annotations and auto-instrumentations are applied.
 
-For languages where auto-instrumentation is not available, you will need to manually instrument your application. See the [Setup section in the corresponding SDK](../../edot-sdks.md).
+For languages where auto-instrumentation is not available, you will need to manually instrument your application. See the [Setup section in the corresponding SDK](.../edot-sdks.md).
 ::::
 :::::

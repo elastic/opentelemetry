@@ -93,7 +93,7 @@ by your Elastic Observability backend.
 Several configuration settings are available to control the additional features offered by EDOT .NET.
 These may be configured using environment variables, `IConfiguration` and/or code-based configuration.
 
-See the [configuration](./../configuration) documentation for more details.
+See the [configuration](../configuration) documentation for more details.
 
 As an example, manual code-based configuration can be used to disable the instrumentation assembly scanning
 feature.

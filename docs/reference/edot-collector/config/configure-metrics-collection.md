@@ -8,7 +8,7 @@ applies_to:
 products:
   - cloud-serverless
   - observability
-  - otel-collector
+  - edot-collector
 ---
 
 # Configure metrics collection

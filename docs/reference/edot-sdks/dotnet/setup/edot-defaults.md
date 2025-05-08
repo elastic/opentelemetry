@@ -33,7 +33,7 @@ EDOT .NET enables:
 
 When sending data to an Elastic Observability backend, OTLP via the EDOT Collector is recommended for
 compatibility and is required for full support. EDOT .NET enables OTLP over gRPC as the default for all signals.
-This behaviour can be disabled using [configuration](./../configuration).
+This behaviour can be disabled using [configuration](../configuration).
 
 All signals are configured to apply EDOT .NET defaults for resource attributes via the `ResourceBuilder`.
 
@@ -269,7 +269,7 @@ OpenTelemetry SDK.
 | IncludeFormattedMessage  | `true`            | `false`                   |
 | IncludeScopes            | `false` (Since 1.0.2) *           | `false`                   |
 
-\* Since 1.0.2 `IncludeScopes` is no longer enabled by default. See [troubleshooting](./../troubleshooting/#missing-log-records).
+\* Since 1.0.2 `IncludeScopes` is no longer enabled by default. See [troubleshooting](../troubleshooting/#missing-log-records).
 1.0.0 and 1.0.1 default to `true`.
 
 ### Instrumentation assembly scanning
@@ -286,7 +286,7 @@ code you need to manage.
 :::
 
 Alternatively, if you need to configure advanced options when registering instrumentation,
-disable instrumentation assembly scanning via [configuration](./../configuration) and prefer manually registering
+disable instrumentation assembly scanning via [configuration](../configuration) and prefer manually registering
 all instrumentation in your application code.
 
 :::{warning}

@@ -16,13 +16,13 @@ from the [upstream SDK](https://github.com/open-telemetry/opentelemetry-dotnet).
 
 ## EDOT Collector / Elastic Stack versions
 
-EDOT .NET sends data via the OpenTelemetry protocol (OTLP). While OTLP ingest works with later 8.16+ versions of the EDOT Collector, for full support it is strongly recommended that you use either [EDOT Collector](../../edot-collector/index.md) versions 9.x or [Elastic Cloud Serverless](https://www.elastic.co/guide/en/serverless/current/intro.html) for OTLP ingest.
+EDOT .NET sends data via the OpenTelemetry protocol (OTLP). While OTLP ingest works with later 8.16+ versions of the EDOT Collector, for full support it is strongly recommended that you use either [EDOT Collector](.../edot-collector/index.md) versions 9.x or [Elastic Cloud Serverless](https://www.elastic.co/guide/en/serverless/current/intro.html) for OTLP ingest.
 
 :::{note}
 Ingesting data from EDOT SDKs through EDOT Collector 9.x into Elastic Stack versions 8.18+ *is supported*.
 :::
 
-See [EDOT SDKs compatibility](../../compatibility/sdks.md) for support details.
+See [EDOT SDKs compatibility](.../compatibility/sdks.md) for support details.
 
 ## .NET Frameworks
 
