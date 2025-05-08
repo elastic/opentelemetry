@@ -14,7 +14,16 @@ products:
 
 Learn how to set up the EDOT Collector and EDOT SDKs in a Docker environment with Elastic Cloud Serverless to collect host metrics, logs, and application traces. Send the data through OTLP to your Elastic Serverless Project.
 
-## Instructions
+## Prerequisites
+
+Make sure the following requirements are present:
+
+- The **[System](https://www.elastic.co/docs/reference/integrations/system)** integration is installed in Kibana. Select **Add integration only** to skip the agent installation, as only the integration assets are required.
+
+:::{include} ../../_snippets/guided-instructions.md
+:::
+
+## Manual installation
 
 Follow these steps to deploy the EDOT Collector and EDOT OTel SDKs with Elastic Cloud Serverless.
 

@@ -12,9 +12,20 @@ products:
 
 # Quickstart guides
 
-Learn how to set up the Elastic Distributions for OpenTelemetry (EDOT) to monitor Kubernetes, applications, and hosts. 
+Learn how to set up the Elastic Distributions for OpenTelemetry (EDOT) to monitor Kubernetes, applications, and hosts.
 
-The guides cover installing the EDOT Collector, enabling auto-instrumentation, and configuring data collection for metrics, logs, and traces in Elastic Observability.
+## Add data from the UI
+
+You can quickly add data from hosts, Kubernetes, applications, and cloud services from the Observability UI.
+
+1. Open Elastic Observability.
+2. Go to **Add data**.
+3. Select what you want to monitor.
+4. Follow the instructions.
+
+## Manual installation guides
+
+The guides cover how to install the EDOT Collector, turn on auto-instrumentation, and configure data collection for metrics, logs, and traces in Elastic Observability.
 
 Select a guide based on the environment of your target system and your Elastic deployment model.
 

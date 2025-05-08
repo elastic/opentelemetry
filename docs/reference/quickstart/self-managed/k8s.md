@@ -18,10 +18,13 @@ Learn how to set up the EDOT Collector and EDOT SDKs in a Kubernetes environment
 
 Make sure the following requirements are present:
 
-- Kubernetes and Helm.
-- A self-managed Elasticsearch cluster.
+- The **Kubernetes OpenTelemetry Assets** integration is installed in Kibana.
+- The **[System](https://www.elastic.co/docs/reference/integrations/system)** integration is installed in Kibana. Select **Add integration only** to skip the agent installation, as only the integration assets are required.
 
-## Instructions
+:::{include} ../../_snippets/guided-instructions.md
+:::
+
+## Manual installation
 
 Follow these steps to deploy the EDOT Collector and EDOT OTel SDKs in Docker.
 

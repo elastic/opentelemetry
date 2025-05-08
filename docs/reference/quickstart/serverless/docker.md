@@ -19,9 +19,12 @@ Learn how to set up the EDOT Collector and EDOT SDKs in a Docker environment wit
 Make sure the following requirements are present:
 
 - Docker installed and running.
-- An Elastic Serverless Project deployment.
+- The **[System](https://www.elastic.co/docs/reference/integrations/system)** integration is installed in Kibana. Select **Add integration only** to skip the agent installation, as only the integration assets are required.
 
-## Instructions
+:::{include} ../../_snippets/guided-instructions.md
+:::
+
+## Manual installation
 
 Follow these steps to deploy the EDOT Collector and EDOT OTel SDKs in Docker with Elastic Cloud Serverless.
 
