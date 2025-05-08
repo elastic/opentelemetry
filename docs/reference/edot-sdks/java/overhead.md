@@ -1,6 +1,14 @@
 ---
 navigation_title: Performance overhead
 description: Understand the performance overhead associated with the Elastic Distribution of OpenTelemetry (EDOT) Java Agent compared to the classic Elastic APM agent and no agent.
+applies_to:
+  stack:
+  serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
+  - edot-java
 ---
 # Performance overhead
 
@@ -52,9 +60,9 @@ use available memory to minimize memory allocation.
 
 With EDOT Java, the following resource attribute providers are enabled by default:
 
-- AWS: [`OTEL_RESOURCE_PROVIDERS_AWS_ENABLED`](./configuration#configuration-options) = `true`
-- GCP: [`OTEL_RESOURCE_PROVIDERS_GCP_ENABLED`](./configuration#configuration-options) = `true`
-- Azure: [`OTEL_RESOURCE_PROVIDERS_AZURE_ENABLED`](./configuration#configuration-options) = `true`
+- AWS: [`OTEL_RESOURCE_PROVIDERS_AWS_ENABLED`](./configuration.md#configuration-options) = `true`
+- GCP: [`OTEL_RESOURCE_PROVIDERS_GCP_ENABLED`](./configuration.md#configuration-options) = `true`
+- Azure: [`OTEL_RESOURCE_PROVIDERS_AZURE_ENABLED`](./configuration.md#configuration-options) = `true`
 
 Because those resource attributes providers rely on metadata endpoints, they may require a few HTTP requests.
 When the cloud provider is known or none is being used, it might be relevant to selectively disable them by setting

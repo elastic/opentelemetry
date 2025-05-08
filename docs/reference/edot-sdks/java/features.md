@@ -1,7 +1,16 @@
 ---
 navigation_title: Features
 description: Explore the features of the Elastic Distribution of OpenTelemetry (EDOT) Java Agent, including inherited OpenTelemetry features and exclusive Elastic enhancements like inferred spans and universal profiling integration.
+applies_to:
+  stack:
+  serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
+  - edot-java
 ---
+
 # Features of the EDOT Java Agent
 
 The EDOT Java agent is a [distribution](https://opentelemetry.io/docs/concepts/distributions/) of
@@ -13,7 +22,7 @@ The EDOT Java agent also provides:
 - exclusive features that are _not available_ in the [OpenTelemetry Java Instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation)
 - features of [OpenTelemetry Java Instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation) with [different default configuration](./configuration#configuration-options)
 
-In addition to the features listed here, see [supported technologies](./supported-technologies) for an overview of the supported technologies.
+In addition to the features listed here, see [supported technologies](./supported-technologies.md) for an overview of the supported technologies.
 
 ## Resource attributes
 

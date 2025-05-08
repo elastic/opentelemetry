@@ -7,6 +7,7 @@ applies_to:
 products:
   - cloud-serverless
   - observability
+  - edot-dotnet
 ---
 
 # Set up EDOT .NET for console applications
@@ -32,7 +33,7 @@ The preceding code:
 1. Imports the required types from the `OpenTelemetry` namespace.
 1. Creates an instance of the `OpenTelemetrySdk` using its factory `Create` method.
 1. Configures the `IOpenTelemetryBuilder` by passing a lambda.
-1. Enables EDOT .NET and its [opinionated defaults](./../setup/edot-defaults) by calling `WithElasticDefaults` on the `IOpenTelemetryBuilder`.
+1. Enables EDOT .NET and its [opinionated defaults](edot-defaults) by calling `WithElasticDefaults` on the `IOpenTelemetryBuilder`.
 
 :::{warning}
 The `using` keyword is applied to the `sdk` variable to define a using declaration, which ensures that the

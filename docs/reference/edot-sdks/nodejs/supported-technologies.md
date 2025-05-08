@@ -8,6 +8,7 @@ applies_to:
 products:
   - cloud-serverless
   - observability
+  - edot-nodejs
 ---
 
 # Technologies Supported by the EDOT Node.js SDK
@@ -16,7 +17,7 @@ products:
 
 The Elastic Distribution of OpenTelemetry Node.js (EDOT Node.js) sends data via the OpenTelemetry protocol (OTLP). While OTLP ingest works with later 8.16+ versions of the EDOT Collector, for full support it is strongly recommended that you use either [EDOT Collector](../../edot-collector/index.md) versions 9.x or [Elastic Cloud Serverless](https://www.elastic.co/guide/en/serverless/current/intro.html) for OTLP ingest.
 
-:::note
+:::{note}
 Ingesting data from EDOT SDKs through EDOT Collector 9.x into Elastic Stack versions 8.18+ *is supported*.
 :::
 
@@ -135,7 +136,7 @@ TODO: add this to the above paragraph once we have an esm.md doc:
 See the [ECMAScript module support](./esm.md) document for details.
 -->
 
-Limitations:
+### Limitations
 
 * ESM instrumentation is only support for Node.js versions `^18.19.0 || >=20.6.0`. These are the versions that include `module.register()` support. Using the older `node --experimental-loader=...` option is not supported.
 * Currently only a subset of instrumentations support ESM: `express`, `ioredis`, `koa`, `pg`, `pino`. See [this OpenTelemetry JS tracking issue](https://github.com/open-telemetry/opentelemetry-js-contrib/issues/1942) for progress.

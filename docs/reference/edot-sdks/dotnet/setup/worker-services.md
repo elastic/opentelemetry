@@ -7,6 +7,7 @@ applies_to:
 products:
   - cloud-serverless
   - observability
+  - edot-dotnet
 ---
 
 # Set up EDOT .NET for worker services

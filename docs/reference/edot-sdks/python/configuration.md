@@ -2,28 +2,21 @@
 navigation_title: Configuration
 description: Configure the Elastic Distribution of OpenTelemetry Python (EDOT Python) to send data to Elastic.
 applies_to:
-  serverless:
-    observability:
-products:
-  - cloud-serverless
-  - observability all
-applies_to:
   stack:
   serverless:
     observability:
 products:
   - cloud-serverless
   - observability
+  - edot-python
 ---
 
 # Configuration
 
 Configure the Elastic Distribution of OpenTelemetry Python (EDOT Python) to send data to Elastic.
 
-<!-- ✅ How users set configuration options -->
 ## Configuration method
 
-<!-- Is this the right link to OpenTelemetry docs? -->
 Configuration of the OpenTelemetry SDK should be performed through the mechanisms [documented on the OpenTelemetry website](https://opentelemetry.io/docs/zero-code/python/configuration/). EDOT Python is typically configured with `OTEL_*` environment variables defined by the OpenTelemetry spec. For example:
 
 ```sh
@@ -33,7 +26,6 @@ export OTEL_EXPORTER_OTLP_HEADERS="Authorization=ApiKey P....l"
 opentelemetry-instrument <command to start your service>
 ```
 
-<!-- ✅ List all available configuration options -->
 ## Configuration options
 
 Because the Elastic Distribution of OpenTelemetry Python is an extension of OpenTelemetry Python, it supports both:

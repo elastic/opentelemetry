@@ -1,6 +1,14 @@
 ---
 navigation_title: Setup
 description: Instructions for setting up the Elastic Distribution of OpenTelemetry (EDOT) Java Agent in various environments, including Kubernetes and others.
+applies_to:
+  stack:
+  serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
+  - edot-java
 ---
 # Setting up the EDOT Java Agent
 
@@ -22,7 +30,7 @@ You can download the latest release version or snapshot version of the EDOT Java
 
 ## Prerequisites
 
-You need to have completed the steps in the [Quickstart](/quickstart/) section that corresponds to your Elastic deployment model.
+You need to have completed the steps in the [Quickstart](../../../quickstart) section that corresponds to your Elastic deployment model.
 
 ##  Configure the Java agent
 
@@ -38,7 +46,7 @@ export OTEL_EXPORTER_OTLP_HEADERS="Authorization=ApiKey P....l"
 export OTEL_SERVICE_NAME="my-awesome-service"
 ```
 
-For more advanced configuration, see [Configuration](../configuration) section.
+For more advanced configuration, see [Configuration](../configuration.md) section.
 
 Configuration of those environment values depends on the deployment model:
 
@@ -49,7 +57,7 @@ The `OTEL_EXPORTER_OTLP_ENDPOINT` and `OTEL_EXPORTER_OTLP_HEADERS` environment v
 
 **Self-managed EDOT Collector**
 
-`OTEL_EXPORTER_OTLP_ENDPOINT` should be set to the OTLP endpoint of your selfmanaged EDOT Collector.
+`OTEL_EXPORTER_OTLP_ENDPOINT` should be set to the OTLP endpoint of your self-managed EDOT Collector.
     
 If EDOT Collector requires authentication, `OTEL_EXPORTER_OTLP_HEADERS` should be set to include `Authorization=ApiKey <ELASTIC_API_KEY>` (comma-separated key=value list).
 

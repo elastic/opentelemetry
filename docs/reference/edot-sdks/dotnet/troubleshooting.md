@@ -12,14 +12,14 @@ products:
 # Troubleshooting the EDOT .NET SDK
 
 Use the information in this section to troubleshoot common problems. As a first step, ensure your stack is 
-compatible with the [supported technologies](.//supported-technologies) for EDOT .NET and the OpenTelemetry SDK.
+compatible with the [supported technologies](.//supported-technologies.md) for EDOT .NET and the OpenTelemetry SDK.
 
 Don’t worry if you can’t figure out what the problem is; we’re here to help. If you are an existing
 Elastic customer with a support contract, please create a ticket in the [Elastic Support portal](https://support.elastic.co/customers/s/login/).
 If not, post in the [APM discuss forum](https://discuss.elastic.co/c/apm) or [open a GitHub issue](https://github.com/elastic/elastic-otel-dotnet/issues).
 
 For most problems, such as when no data is received in your Elastic Observability backend, it’s a good idea to first check
-the EDOT .NET logs which will provide initialisation details and OpenTelemetry SDK events. If you don’t see anything suspicious
+the EDOT .NET logs which will provide initialization details and OpenTelemetry SDK events. If you don’t see anything suspicious
  in the EDOT .NET logs (no warning or error), it’s recommended to switch the log level to `Trace` for further investigation.
 
 ## Known issues

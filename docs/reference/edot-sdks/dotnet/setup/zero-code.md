@@ -7,6 +7,7 @@ applies_to:
 products:
   - cloud-serverless
   - observability
+  - edot-dotnet
 ---
 
 # Using profiler-based zero-code instrumentation

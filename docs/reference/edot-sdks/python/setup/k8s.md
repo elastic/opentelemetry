@@ -2,18 +2,13 @@
 navigation_title: Kubernetes
 description: Instrumenting Python applications with EDOT SDKs on Kubernetes.
 applies_to:
-  serverless:
-    observability:
-products:
-  - cloud-serverless
-  - observability all
-applies_to:
   stack:
   serverless:
     observability:
 products:
   - cloud-serverless
   - observability
+  - edot-python
 ---
 
 # Instrumenting Python applications with EDOT SDKs on Kubernetes
@@ -22,8 +17,8 @@ This document focuses on instrumenting Python applications on Kubernetes, using 
 
 - For general knowledge about the EDOT Python SDK, refer to the [EDOT Java Intro page](../index.md).
 - For Python auto-instrumentation specifics, refer to [OpenTelemetry Operator Python auto-instrumentation](https://opentelemetry.io/docs/kubernetes/operator/automatic/#python).
-- To manually instrument your Python application code (by customizing spans and metrics), refer to [EDOT Python manual instrumentation](./manual-instrumentation).
-- For general information about instrumenting applications on Kubernetes, refer to [instrumenting applications on Kubernetes](../../../use-cases/kubernetes/instrumenting-applications).
+- To manually instrument your Python application code (by customizing spans and metrics), refer to [EDOT Python manual instrumentation](./manual-instrumentation.md).
+- For general information about instrumenting applications on Kubernetes, refer to [instrumenting applications on Kubernetes](../../../use-cases/kubernetes/instrumenting-applications.md).
 
 ## Supported environments and configuration
 
@@ -46,7 +41,7 @@ In this example, you'll learn how to:
 
 For this example, we assume the application you're instrumenting is a deployment named `python-app` running in the `python-ns` namespace.
 
-1. Ensure you have successfully [installed the OpenTelemetry Operator](../../../use-cases/kubernetes/deployment), and confirm that the following `Instrumentation` object exists in the system:
+1. Ensure you have successfully [installed the OpenTelemetry Operator](../../../use-cases/kubernetes/deployment.md), and confirm that the following `Instrumentation` object exists in the system:
 
     ```bash
     $ kubectl get instrumentation -n opentelemetry-operator-system
@@ -166,8 +161,8 @@ For this example, we assume the application you're instrumenting is a deployment
         - `k8s.deployment.name: "python-app"` (**adapt the query filter to your use case**)
         - `k8s.pod.name: python-app*` (**adapt the query filter to your use case**)
 
-    Note that the container logs are not provided by the instrumentation library, but by the DaemonSet collector deployed as part of the [operator installation](../../../use-cases/kubernetes/deployment).
+    Note that the container logs are not provided by the instrumentation library, but by the DaemonSet collector deployed as part of the [operator installation](../../../use-cases/kubernetes/deployment.md).
 
 ## Troubleshooting
 
-- Refer to [troubleshoot auto-instrumentation](../../../use-cases/kubernetes/instrumenting-applications#troubleshooting-auto-instrumentation) for further analysis.
+- Refer to [troubleshoot auto-instrumentation](../../../use-cases/kubernetes/instrumenting-applications.md#troubleshooting-auto-instrumentation) for further analysis.

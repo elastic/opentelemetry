@@ -8,6 +8,7 @@ applies_to:
 products:
   - cloud-serverless
   - observability
+  - edot-nodejs
 ---
 
 # Instrumenting Node.js applications with EDOT SDKs on Kubernetes
@@ -19,12 +20,6 @@ This document focuses on instrumenting Node.js applications on Kubernetes, using
 - For general information about instrumenting applications on Kubernetes, refer to [instrumenting applications on Kubernetes](../../../use-cases/kubernetes/instrumenting-applications.md).
 
 ## Instrument a Node.js app with EDOT Node.js SDK on Kubernetes
-
-<!--
-Useful links:
-- Example: https://github.com/elastic/elastic-otel-node/tree/main/examples/otel-operator/ documented at https://github.com/elastic/elastic-otel-node/blob/main/DEVELOPMENT.md#testing-k8s-auto-instrumentation-with-otel-operator
-(not user friendly, but we could use it in the future if we want to add a proper example here)
--->
 
 In this example, you'll learn how to:
 

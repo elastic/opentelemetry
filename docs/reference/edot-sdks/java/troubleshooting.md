@@ -1,7 +1,16 @@
 ---
 navigation_title: Troubleshooting
 description: Troubleshooting guide for the Elastic Distribution of OpenTelemetry (EDOT) Java Agent, covering connectivity, agent identification, and debugging.
+applies_to:
+  stack:
+  serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
+  - edot-java
 ---
+
 # Troubleshooting the EDOT Java Agent
 
 The sections below are in the order you should follow, unless you have already identified the section you need.

@@ -7,6 +7,7 @@ applies_to:
 products:
   - cloud-serverless
   - observability
+  - edot-dotnet
 ---
 
 # Configuring the EDOT .NET SDK

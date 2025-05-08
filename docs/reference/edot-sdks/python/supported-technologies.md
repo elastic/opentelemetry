@@ -2,18 +2,13 @@
 navigation_title: Supported Technologies
 description: Technologies Supported by the EDOT Python SDK.
 applies_to:
-  serverless:
-    observability:
-products:
-  - cloud-serverless
-  - observability all
-applies_to:
   stack:
   serverless:
     observability:
 products:
   - cloud-serverless
   - observability
+  - edot-python
 ---
 
 # Technologies Supported by the EDOT Python SDK
@@ -26,7 +21,7 @@ EDOT Python sends data via the OpenTelemetry protocol (OTLP). While OTLP ingest 
 > Ingesting data from EDOT SDKs through EDOT Collector 9.x into Elastic Stack versions 8.18+ *is supported*.
 :::
 
-See [EDOT SDKs compatibility](../../compatibility/sdks) for support details.
+See [EDOT SDKs compatibility](../../compatibility/sdks.md) for support details.
 
 ## Python versions
 
@@ -43,7 +38,7 @@ This follows the [OpenTelemetry Python Version Support](https://github.com/open-
 
 ## Instrumentations
 
-We don't install instrumentations by default and we suggest to use our [edot-bootstrap](./setup/index#install-the-available-instrumentation) command to automatically install the available instrumentations.
+We don't install instrumentations by default and we suggest to use our [edot-bootstrap](./setup/index.md#install-the-available-instrumentation) command to automatically install the available instrumentations.
 
 | Name | Packages instrumented | Semantic conventions status |
 |---|---|---|---|

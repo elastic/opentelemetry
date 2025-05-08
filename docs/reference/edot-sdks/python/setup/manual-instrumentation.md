@@ -2,18 +2,13 @@
 navigation_title: Manual Instrumentation
 description: Manually instrumenting Python applications with EDOT Python.
 applies_to:
-  serverless:
-    observability:
-products:
-  - cloud-serverless
-  - observability all
-applies_to:
   stack:
   serverless:
     observability:
 products:
   - cloud-serverless
   - observability
+  - edot-python
 ---
 
 # Manual instrumentation
@@ -24,12 +19,10 @@ This guide requires to have already added auto-instrumentation with OpenTelemetr
 
 **New to OpenTelemetry?** If your are new to OpenTelemetry we encourage you to take a look at our [Setup documentation](./index.md) instead, which will introduce you to auto-instrumentation.
 
-<!-- ✅ Provide _minimal_ configuration/setup -->
 ### Configure EDOT Python
 
-Refer to our [Setup](./index#configure-edot-python) page for more details.
+Refer to our [Setup](./index.md#configure-edot-python) page for more details.
 
-<!-- ✅ Manually instrument the application and start sending data to Elastic -->
 ### Manually instrument your auto instrumented Python application
 
 In this section we'll show how to add manual instrumentation to an already automatically instrumented application. A use case for
@@ -103,7 +96,6 @@ def hello():
     return f"Hello {choice}!"
 ```
 
-<!--  ✅ What success looks like -->
 ## Confirm that EDOT Python is working
 
 To confirm that EDOT Python has successfully connected to Elastic:

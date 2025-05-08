@@ -1,7 +1,16 @@
 ---
 navigation_title: Configuration
 description: Learn how to configure the Elastic Distribution of OpenTelemetry (EDOT) Java Agent, including minimal setup, configuration options, and methods like environment variables and system properties.
+applies_to:
+  stack:
+  serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
+  - edot-java
 ---
+
 # Configuring the EDOT Java Agent
 
 The [minimal configuration](#minimal-configuration) section provides a recommended starting point for EDOT Java configuration.
@@ -50,15 +59,15 @@ EDOT Java uses different defaults than the OpenTelemetry Java instrumentation fo
 
 (*) default value set to `delta` only if not already explicitly set.
 
-The EDOT Java instrumentation agent also provides configuration options for each of the [supported features](./features).
+The EDOT Java instrumentation agent also provides configuration options for each of the [supported features](./features.md).
 This table only contains minimal configuration, see each respective feature for exhaustive configuration options documentation.
 
 | Option                                                 | Default | Feature                                                                                              |
 |--------------------------------------------------------|---------|------------------------------------------------------------------------------------------------------|
-| `OTEL_INFERRED_SPANS_ENABLED`                          | `false` | [Inferred spans](./features#inferred-spans)                                                          |
-| `OTEL_JAVA_EXPERIMENTAL_SPAN_STACKTRACE_MIN_DURATION`  | `5ms`   | [Span stacktrace](./features#span-stacktrace)                                                        |
-| `ELASTIC_OTEL_UNIVERSAL_PROFILING_INTEGRATION_ENABLED` | `auto`  | [Elastic Universal profiling integration](./features#elastic-universal-profiling-integration)        |
-| `OTEL_INSTRUMENTATION_OPENAI_CLIENT_ENABLED`           | `true`  | [OpenAI client instrumentation](./supported-technologies#openai-client-instrumentation) |
+| `OTEL_INFERRED_SPANS_ENABLED`                          | `false` | [Inferred spans](./features.md#inferred-spans)                                                          |
+| `OTEL_JAVA_EXPERIMENTAL_SPAN_STACKTRACE_MIN_DURATION`  | `5ms`   | [Span stacktrace](./features.md#span-stacktrace)                                                        |
+| `ELASTIC_OTEL_UNIVERSAL_PROFILING_INTEGRATION_ENABLED` | `auto`  | [Elastic Universal profiling integration](./features.md#elastic-universal-profiling-integration)        |
+| `OTEL_INSTRUMENTATION_OPENAI_CLIENT_ENABLED`           | `true`  | [OpenAI client instrumentation](./supported-technologies.md#openai-client-instrumentation) |
 
 ## Configuration methods
 

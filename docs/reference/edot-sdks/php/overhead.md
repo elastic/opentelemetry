@@ -8,6 +8,7 @@ applies_to:
 products:
   - cloud-serverless
   - observability
+  - edot-php
 ---
 
 ## Performance Comparison of PHP Instrumentation Agents

@@ -7,6 +7,7 @@ applies_to:
 products:
   - cloud-serverless
   - observability
+  - edot-dotnet
 ---
 
 # Setting up the EDOT .NET SDK
@@ -41,8 +42,6 @@ technology-specific documentation for guidance with specific .NET application te
 This documentation assumes you're using [Elastic Cloud](https://www.elastic.co/cloud) with an [Elastic Observability](https://www.elastic.co/observability) 
 hosted deployment or serverless project. You can use an existing one or set up a new one.
 
-<details markdown="1">
-<summary><strong>Expand for Elastic Cloud setup instructions</strong></summary>
 To create your first Elastic Observability serverless project:
 
 1. Sign up for a [free Elastic Cloud trial](https://cloud.elastic.co/registration) or sign into an existing account.
@@ -55,7 +54,6 @@ To create your first Elastic Observability serverless project:
 1. Choose **Application** and select **OpenTelemetry**
 1. From step 2, select **Managed OTLP Endpoint**
 1. Follow the onboarding instructions in step 3 to create an API key and capture the endpoint URL that will be used when configuring application(s) using environment variables.
-</details>
 
 :::{warning}
 When using Serverless, you must use the Managed OTLP Endpoint URL (tech preview) for the best (and supported) experience when using EDOT .NET.

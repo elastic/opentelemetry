@@ -8,6 +8,7 @@ applies_to:
 products:
   - cloud-serverless
   - observability
+  - edot-php
 ---
 
 # Troubleshooting the EDOT PHP Agent
@@ -22,7 +23,7 @@ Other users can post in the [APM discuss forum](https://discuss.elastic.co/c/apm
 
 ## Enable logging
 
-In diagnosing issues with the agent's operation, logs play a key role. A detailed explanation of the logging configuration options can be found in the [configuration documentation](./configuration#logging-configuration).
+In diagnosing issues with the agent's operation, logs play a key role. A detailed explanation of the logging configuration options can be found in the [configuration documentation](./configuration.md#logging-configuration).
 
 In most cases, setting the logging level to `debug` is sufficient. In extreme cases, `trace` can be used, but keep in mind that the amount of generated data may be significant.
 
@@ -42,7 +43,7 @@ Please upload your complete debug logs to a service like [GitHub Gist](https://g
 In the unlikely event the agent causes disruptions to a production application,
 you can disable the agent while you troubleshoot.
 
-You can disable the agent by setting [`elastic_otel.enabled`](./configuration#general-configuration) to `false`.
+You can disable the agent by setting [`elastic_otel.enabled`](./configuration.md#general-configuration) to `false`.
 
 :::important
 You'll need to restart your application for the changes to apply.
@@ -79,7 +80,7 @@ When disabled, the agent falls back to a PHP-based serializer, which has lower p
 ### `open_basedir` PHP configuration option
 
 If you see a similar entry in the agent log, this indicates an incorrect open_basedir configuration.
-For more details please see [limitations documentation](./setup/limitations#open_basedir-php-configuration-option).
+For more details please see [limitations documentation](./setup/limitations.md#open_basedir-php-configuration-option).
 
 
 `EDOT PHP bootstrap file (...php/bootstrap_php_part.php) is located outside of paths allowed by open_basedir ini setting.`

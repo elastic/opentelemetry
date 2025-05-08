@@ -8,6 +8,7 @@ applies_to:
 products:
   - cloud-serverless
   - observability
+  - edot-nodejs
 ---
 
 # Configuring the EDOT Node.js SDK
@@ -17,7 +18,7 @@ The Elastic Distribution of OpenTelemetry Node.js (EDOT Node.js) is configured w
 
 ## Basic configuration
 
-If unconfigured, EDOT Node.js will send telemetry data to `http://localhost:4318` with no authentication information, and identify the running service as `unknown_service:node`. Typically a minimal configuration will include
+If not configured, EDOT Node.js will send telemetry data to `http://localhost:4318` with no authentication information, and identify the running service as `unknown_service:node`. Typically a minimal configuration will include
 
 * `OTEL_EXPORTER_OTLP_ENDPOINT`: The full URL of an OpenTelemetry Collector where data will be sent.
 * `OTEL_EXPORTER_OTLP_HEADERS`: A comma-separated list of HTTP headers used for exporting data, typically used to set the `Authorization` header with auth information.

@@ -2,18 +2,13 @@
 navigation_title: Setup
 description: Setting up EDOT Python.
 applies_to:
-  serverless:
-    observability:
-products:
-  - cloud-serverless
-  - observability all
-applies_to:
   stack:
   serverless:
     observability:
 products:
   - cloud-serverless
   - observability
+  - edot-python
 ---
 
 # Setting up EDOT Python
@@ -43,12 +38,10 @@ edot-bootstrap --action=install
 Add this command every time you deploy an updated version of your application (in other words, add it to your container image build process).
 :::
 
-<!-- ✅ Start-to-finish operation -->
 ## Send data to Elastic
 
 After installing EDOT Python, configure and initialize it to start sending data to Elastic.
 
-<!-- ✅ Provide _minimal_ configuration/setup -->
 ### Configure EDOT Python
 
 Refer to [Observability quickstart](https://elastic.github.io/opentelemetry/quickstart/) documentation on how to setup your environment.
@@ -77,7 +70,6 @@ For example, a web service running with gunicorn may look like this:
 opentelemetry-instrument gunicorn main:app
 ```
 
-<!--  ✅ What success looks like -->
 ## Confirm that EDOT Python is working
 
 To confirm that EDOT Python has successfully connected to Elastic:

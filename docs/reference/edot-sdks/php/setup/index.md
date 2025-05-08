@@ -8,12 +8,8 @@ applies_to:
 products:
   - cloud-serverless
   - observability
+  - edot-php
 ---
-
-<!-- TODO:
-- where to download
-- explicit description of basic setup here (even if it overlaps with upstream docs)
-- link to upstream docs for more advanced setup use cases -->
 
 # Setting up EDOT PHP
 
@@ -37,10 +33,10 @@ To quickly get up and running, follow the [Elastic OpenTelemetry Quickstart guid
 
 ### Operating system and PHP version
 
-Please refer to the [supported technologies](../supported-technologies) page for details about currently supported operating systems and PHP versions.
+Please refer to the [supported technologies](../supported-technologies.md) page for details about currently supported operating systems and PHP versions.
 
 ### Other limitations
-See [limitations](./limitations) about other limitations of EDOT PHP.
+See [limitations](./limitations.md) about other limitations of EDOT PHP.
 
 ## 2. Download and install packages
 
@@ -98,5 +94,5 @@ There may be no trace data to visualize unless you have _used_ your application 
 
 ## 5. Next steps
 
-* Reference all available [configuration options](../configuration).
+* Reference all available [configuration options](../configuration.md).
 * Learn more about viewing and interpreting data in the [Observability guide](https://www.elastic.co/guide/en/observability/current/apm.html).

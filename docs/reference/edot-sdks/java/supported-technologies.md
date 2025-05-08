@@ -1,18 +1,26 @@
 ---
 navigation_title: Supported Technologies
 description: Overview of technologies supported by the Elastic Distribution of OpenTelemetry (EDOT) Java Agent, including JVM versions, application servers, frameworks, and LLM instrumentations.
+applies_to:
+  stack:
+  serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
+  - edot-java
 ---
 # Technologies Supported by the EDOT Java Agent
 
 The EDOT Java agent is a [distribution](https://opentelemetry.io/docs/concepts/distributions/) of
 [OpenTelemetry Java Instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation) agent, it thus
-inherits all the [supported (✅)](../../compatibility/nomenclature#compatibility--support-nomenclature) technologies of the OpenTelemetry Java Instrumentation.
+inherits all the [supported (✅)](../../compatibility/nomenclature.md#compatibility--support-nomenclature) technologies of the OpenTelemetry Java Instrumentation.
 
 ## EDOT Collector / Elastic Stack versions
 
 The EDOT Java agent sends data via the OpenTelemetry protocol (OTLP). While OTLP ingest works with later 8.16+ versions of the EDOT Collector, for full support it is strongly recommended that you use either [EDOT Collector](../../edot-collector/) versions 9.x or [Elastic Cloud Serverless](https://www.elastic.co/guide/en/serverless/current/intro.html) for OTLP ingest.
 
-See [EDOT SDKs compatibility](../../compatibility/sdks) for support details.
+See [EDOT SDKs compatibility](../../compatibility/sdks.md) for support details.
 
 :::{note}
 > Ingesting data from EDOT SDKs through EDOT Collector 9.x into Elastic Stack versions 8.18+ *is supported*.
@@ -36,7 +44,7 @@ and need explicit configuration to be enabled.
 
 The EDOT Java agent also supports technologies listed here that are _not available_ in the [OpenTelemetry Java Instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation).
 
-See also the [EDOT Java agent configuration](./configuration#configuration-options) for defaults that might differ from the OpenTelemetry Java Instrumentation.
+See also the [EDOT Java agent configuration](./configuration.md#configuration-options) for defaults that might differ from the OpenTelemetry Java Instrumentation.
 
 ## LLM instrumentations
 

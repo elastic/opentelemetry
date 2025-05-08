@@ -8,6 +8,7 @@ applies_to:
 products:
   - cloud-serverless
   - observability
+  - edot-nodejs
 ---
 
 # Troubleshooting the EDOT Node.js SDK

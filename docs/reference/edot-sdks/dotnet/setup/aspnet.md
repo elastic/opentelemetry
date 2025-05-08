@@ -7,6 +7,7 @@ applies_to:
 products:
   - cloud-serverless
   - observability
+  - edot-dotnet
 ---
 
 # Set up EDOT .NET for ASP.NET applications on .NET Framework
@@ -107,7 +108,7 @@ The preceding code:
 1. Imports the required types from the `OpenTelemetry` namespace.
 1. Creates an instance of the `OpenTelemetrySdk` using its factory `Create` method.
 1. Configures the `IOpenTelemetryBuilder` by passing a lambda.
-1. Enables EDOT .NET and its [opinionated defaults](./../setup/edot-defaults) by calling `WithElasticDefaults` on the `IOpenTelemetryBuilder`.
+1. Enables EDOT .NET and its [opinionated defaults](edot-defaults.md) by calling `WithElasticDefaults` on the `IOpenTelemetryBuilder`.
 1. Calls `ConfigureResource` to configure the name for the service.
 
 By default, EDOT .NET uses instrumentation assembly scanning and will detect the `OpenTelemetry.Instrumentation.AspNet`

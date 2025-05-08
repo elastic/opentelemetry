@@ -8,6 +8,7 @@ applies_to:
 products:
   - cloud-serverless
   - observability
+  - edot-php
 ---
 
 # EDOT PHP supports the following technologies
@@ -20,7 +21,7 @@ EDOT PHP sends data via the OpenTelemetry protocol (OTLP). While OTLP ingest wor
 Ingesting data from EDOT SDKs through EDOT Collector 9.x into Elastic Stack versions 8.18+ *is supported*.
 :::
 
-See [EDOT SDKs compatibility](../../compatibility/sdks) for support details.
+See [EDOT SDKs compatibility](../../compatibility/sdks.md) for support details.
 
 ## PHP Versions
 - PHP 8.1 - 8.4

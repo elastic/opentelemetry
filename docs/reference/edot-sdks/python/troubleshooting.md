@@ -2,18 +2,13 @@
 navigation_title: Troubleshooting
 description: Troubleshooting the EDOT Python Agent.
 applies_to:
-  serverless:
-    observability:
-products:
-  - cloud-serverless
-  - observability all
-applies_to:
   stack:
   serverless:
     observability:
 products:
   - cloud-serverless
   - observability
+  - edot-python
 ---
 
 # Troubleshooting the EDOT Python Agent
@@ -65,8 +60,6 @@ Enabling the Python logging module auto-instrumentation with `OTEL_PYTHON_LOGGIN
 to it a no-op. The side effect of this is that you won't see your application logs in the console anymore.
 
 If you are already shipping logs by other means you don't need to enable this.
-
-<!-- TODO: when available add link to to propose other option  https://elastic.github.io/opentelemetry/use-cases/logs/ -->
 
 ## Are semantic convention stable yet?
 

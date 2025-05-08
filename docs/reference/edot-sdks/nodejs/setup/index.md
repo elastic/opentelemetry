@@ -8,6 +8,7 @@ applies_to:
 products:
   - cloud-serverless
   - observability
+  - edot-nodejs
 ---
 
 # Setting up EDOT Node.js
@@ -42,11 +43,10 @@ Follow the EDOT [Quickstart guide](../../../quickstart/index.md) to get a deploy
 EDOT Node.js is published to npm as the [`@elastic/opentelemetry-node` package](https://www.npmjs.com/package/@elastic/opentelemetry-node). Install it with your chosen package manager:
 
 ```bash
-npm install @elastic/opentelemetry-node  # OR
-yarn add @elastic/opentelemetry-node     # OR
+npm install @elastic/opentelemetry-node  
+yarn add @elastic/opentelemetry-node    
 pnpm add @elastic/opentelemetry-node
 ```
-
 
 ## Configuration
 
