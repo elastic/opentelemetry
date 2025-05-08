@@ -11,7 +11,7 @@ products:
   - edot-python
 ---
 
-## Performance Overhead
+# Performance Overhead
 
 Every instrumentation agent comes with performance overhead for your application. How much really depends on your application and on the instrumentations used.
 

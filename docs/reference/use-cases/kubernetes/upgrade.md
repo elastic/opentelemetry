@@ -13,7 +13,7 @@ products:
 # Upgrade
 
 :::{note}
-Before upgrading or updating the release configuration, refer to [compatibility matrix](./prerequisites-compatibility.md#compatibility-matrix) for a list of supported versions and [customizing configuration](./customization.md#customizing-configuration) for a list of supported configurable parameters.
+Before upgrading or updating the release configuration, refer to [compatibility matrix](./prerequisites-compatibility.md#compatibility-matrix) for a list of supported versions and [customizing configuration](./customization.md) for a list of supported configurable parameters.
 :::
 
 To upgrade an installed release, run a `helm upgrade` command providing the desired chart version and using the correct `values.yaml` for your environment. For example:

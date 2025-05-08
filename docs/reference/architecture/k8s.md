@@ -63,7 +63,7 @@ The Gateway Collector needs to do some preprocessing, aggregation of metrics and
 While the Daemon and Cluster collectors, as well as the OTel SDKs, can stay fully vendor agnostic or upstream, the Gateway Collector needs to be either an EDOT Collector or a [custom, EDOT-like collector](../edot-collector/custom-collector.md) containing the
 [required components and pre-processing pipelines](../edot-collector/config/default-config-k8s.md#direct-ingestion-into-elasticsearch).
 
-If required, users can build their custom, EDOT-like collector [following these instructions](../edot-collector/custom-collector.md#build-a-custom-edot-like-collector).
+If required, users can build their custom, EDOT-like collector [following these instructions](../edot-collector/custom-collector.md).
 
 ::::{note}
 The EDOT Gateway Collector does not send data through Elastic's Integration / APM Server on ECH to ingest data into Elasticsearch.

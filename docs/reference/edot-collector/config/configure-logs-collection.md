@@ -64,7 +64,7 @@ receivers:
 
 The previous configuration can parse the following logs that span across multiple lines and recombine them properly into one single log message:
 
-```log
+```
 Exception in thread 1 "main" java.lang.NullPointerException
         at com.example.myproject.Book.getTitle(Book.java:16)
         at com.example.myproject.Author.getBookTitles(Author.java:25)

@@ -12,7 +12,7 @@ products:
 
 # Instrument applications with EDOT SDKs on Kubernetes
 
-The [Elastic Distributions of OpenTelemetry (EDOT) SDKs](../edot-sdks/index.md) cover multiple languages. Read on to learn how to instrument applications for APM in a Kubernetes environment for all supported languages.
+The [Elastic Distributions of OpenTelemetry (EDOT) SDKs](../../edot-sdks/index.md) cover multiple languages. Read on to learn how to instrument applications for APM in a Kubernetes environment for all supported languages.
 
 In Kubernetes environments with the OpenTelemetry Operator, [automatic or zero-code instrumentation](https://opentelemetry.io/docs/kubernetes/operator/automatic/) simplifies the instrumentation process by injecting and configuring instrumentation libraries into the targeted Pods.
 
@@ -22,14 +22,14 @@ On the other hand, **manual instrumentation** with OpenTelemetry allows you to c
 
 Before starting with application auto-instrumentation, ensure the following prerequisites are in place for proper setup:
 
-- Install the OpenTelemetry operator and EDOT collectors following the [quickstart guide](../quickstart/index.md).
+- Install the OpenTelemetry operator and EDOT collectors following the [quickstart guide](../../quickstart/index.md).
 - Ensure a valid `kind: Instrumentation` object exists in the cluster.
 
 ## Auto-instrumentation basics
 
 Zero-code instrumentation is handled by the operator through `Instrumentation` objects, used to automatically inject the necessary SDKs and configuration into application workloads.
 
-If you followed the [quickstart guide](../quickstart/index.md) to install the operator, there should be an `Instrumentation` object with name `elastic-instrumentation` in namespace `opentelemetry-operator-system`:
+If you followed the [quickstart guide](../../quickstart/index.md) to install the operator, there should be an `Instrumentation` object with name `elastic-instrumentation` in namespace `opentelemetry-operator-system`:
 
 ```bash
 kubectl get instrumentation -A
@@ -118,9 +118,9 @@ The possible values for the annotation are detailed in the [Operator documentati
 
 For details on instrumenting specific languages, refer to:
 
-- [Instrumenting Java](../edot-sdks/java/setup/index.md/k8s)
-- [Instrumenting Python](../edot-sdks/python/setup/k8s.md)
-- [Instrumenting Node.js](../edot-sdks/nodejs/setup/index.md/k8s)
+- [Instrumenting Java](../../edot-sdks/java/setup/k8s.md)
+- [Instrumenting Python](../../edot-sdks/python/setup/index.md)
+- [Instrumenting Node.js](../../edot-sdks/nodejs/setup/index.md)
 
 ### Namespace based annotations example
 

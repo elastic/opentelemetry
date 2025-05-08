@@ -19,11 +19,11 @@ Learn how to set up the EDOT Collector and EDOT SDKs in a Kubernetes environment
 Make sure the following requirements are present:
 
 - The **Kubernetes OpenTelemetry Assets** integration is installed in Kibana.
-- The **[System](integrations://system/index.md)** integration is installed in Kibana. Select **Add integration only** to skip the agent installation, as only the integration assets are required.
+- The **[System](https://www.elastic.co/docs/reference/integrations/system)** integration is installed in Kibana. Select **Add integration only** to skip the agent installation, as only the integration assets are required.
 
 ## Guided setup
 
-:::{include} ../_snippets/guided-instructions.md
+:::{include} ../../_snippets/guided-instructions.md
 :::
 
 ## Manual installation
@@ -86,7 +86,7 @@ kubectl annotate namespace YOUR_NAMESPACE instrumentation.opentelemetry.io/injec
 
 The OpenTelemetry Operator automatically provides the OTLP endpoint configuration and authentication to the SDKs through environment variables. Restart your deployment to ensure the annotations and auto-instrumentations are applied.
 
-For languages where auto-instrumentation is not available, manually instrument your application. See the [Setup section in the corresponding SDK](../edot-sdks.md).
+For languages where auto-instrumentation is not available, manually instrument your application. See the [Setup section in the corresponding SDK](../../edot-sdks/index.md).
 ::::
 :::::
 

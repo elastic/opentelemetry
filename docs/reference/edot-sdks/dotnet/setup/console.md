@@ -33,7 +33,7 @@ The preceding code:
 1. Imports the required types from the `OpenTelemetry` namespace.
 1. Creates an instance of the `OpenTelemetrySdk` using its factory `Create` method.
 1. Configures the `IOpenTelemetryBuilder` by passing a lambda.
-1. Enables EDOT .NET and its [opinionated defaults](edot-defaults) by calling `WithElasticDefaults` on the `IOpenTelemetryBuilder`.
+1. Enables EDOT .NET and its [opinionated defaults](edot-defaults.md) by calling `WithElasticDefaults` on the `IOpenTelemetryBuilder`.
 
 :::{warning}
 The `using` keyword is applied to the `sdk` variable to define a using declaration, which ensures that the
@@ -93,7 +93,7 @@ by your Elastic Observability backend.
 Several configuration settings are available to control the additional features offered by EDOT .NET.
 These may be configured using environment variables, `IConfiguration` and/or code-based configuration.
 
-See the [configuration](../configuration) documentation for more details.
+See the [configuration](../configuration.md) documentation for more details.
 
 As an example, manual code-based configuration can be used to disable the instrumentation assembly scanning
 feature.

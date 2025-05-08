@@ -59,7 +59,7 @@ Both components, `elastictrace` and `elasticapm` are required for Elastic APM UI
 
 * Use the EDOT Collector with the available configuration to ingest data into Elasticsearch.
 * [Build a custom, EDOT-like Collector](../custom-collector.md) for ingesting data into Elasticsearch.
-* Use Elastic's [managed OTLP endpoint](../quickstart/serverless/index.md) that does the enrichment for you.
+* Use Elastic's [managed OTLP endpoint](../../quickstart/serverless/index.md) that does the enrichment for you.
 :::
 
 ### Host metrics collection pipeline

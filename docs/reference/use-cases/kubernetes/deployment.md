@@ -74,7 +74,7 @@ Follow these steps to install the operator:
    - `YOUR_ELASTICSEARCH_ENDPOINT`: Elasticsearch endpoint (**with `https://` prefix**). For example: `https://1234567.us-west2.gcp.elastic-cloud.com:443`.
    - `YOUR_ELASTICSEARCH_API_KEY`: Elasticsearch API Key created in the previous step.
 
-3. If you need to [customize the configuration](./customization.md#customizing-configuration), copy the `values.yaml` file and adapt it to your needs. Refer to the [compatibility matrix](./prerequisites-compatibility.md#compatibility-matrix) for a complete list of available manifests in the `release branches`. 
+3. If you need to [customize the configuration](./customization.md), copy the `values.yaml` file and adapt it to your needs. Refer to the [compatibility matrix](./prerequisites-compatibility.md#compatibility-matrix) for a complete list of available manifests in the `release branches`. 
 
 4. Run the following commands to deploy the `opentelemetry-kube-stack` Helm chart, using the appropriate values file:
 

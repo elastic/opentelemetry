@@ -18,16 +18,16 @@ EDOT .NET is designed to be straightforward to integrate into your applications.
 [OpenTelemetry SDK](https://opentelemetry.io/docs/languages/net/), those that are transitioning from the 
 [Elastic APM Agent](https://www.elastic.co/guide/en/apm/agent/dotnet/current/index.html) and those introducing observability instrumentation for
 the first time. When the OpenTelemetry SDK or Elastic APM Agent are already in use, minor code changes are required at the point of registration.
-See the [migration](../migration) documentation for more details.
+See the [migration](../migration.md) documentation for more details.
 
 This quickstart guide documents the introductory steps required to set up OpenTelemetry using EDOT .NET for an ASP.NET Core 
 [minimal API](https://learn.microsoft.com/aspnet/core/fundamentals/minimal-apis) application. For detailed, technology-specific steps, see:
 
-* [ASP.NET Core](./aspnetcore)
-* [ASP.NET (.NET Framework)](./aspnet)
-* [Console applications](./console)
-* [Worker services](./worker-services)
-* [Zero code](./zero-code)
+* ASP.NET Core
+* [ASP.NET (.NET Framework)](./aspnet.md)
+* [Console applications](./console.md)
+* [Worker services](./worker-services.md)
+* [Zero code](./zero-code.md)
 
 ### Prerequisites
 
@@ -106,7 +106,7 @@ builder.AddElasticOpenTelemetry();
 
 Immediately after creating the WebApplicationBuilder, which implements `IHostApplicationBuilder`, call the 
 `AddElasticOpenTelemetry` method. `AddElasticOpenTelemetry` registers the OpenTelemetry SDK for .NET, applying the Elastic
-[opiniated defaults](.///edot-defaults). The Elastic defaults enable tracing, metrics, log signals, and the OTLP exporter.
+[opiniated defaults](./edot-defaults.md). The Elastic defaults enable tracing, metrics, log signals, and the OTLP exporter.
 Additionally, the EDOT performs automatic instrumentation assembly scanning to enable the ASP.NET Core instrumentation
 that we added in the previous step. With the upstream "vanilla" SDK, additional lines of code would be required to register
 the instrumentation. EDOT .NET aims to simplify the experience of getting started.
@@ -164,7 +164,7 @@ the preceding code snippet.
 ### Configuring the OTLP endpoint
 
 The configuration documented so far ensures that when the application starts, the OpenTelemetry SDK is launched with the 
-[EDOT .NET defaults](./edot-defaults), enabling all signals and export via OTLP. Unless configured otherwise, the OTLP exporter in the SDK defaults to 
+[EDOT .NET defaults](./edot-defaults.md), enabling all signals and export via OTLP. Unless configured otherwise, the OTLP exporter in the SDK defaults to 
 sending data to `localhost` on the well-known port for OTLP over gRPC, 4317. If you are running a local collector, this may be 
 sufficient, but in most cases, you will need to configure the correct endpoint for exporting telemetry data.
 

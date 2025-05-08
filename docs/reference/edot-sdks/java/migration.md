@@ -77,7 +77,7 @@ By default, micrometer instrumentation is disabled and won't capture metrics, en
     :::note
     Migration of application code using these APIs and annotations is _not strictly required_ when deploying the EDOT agent. If not migrated, the spans, transactions and metrics that were previously explicitly created with those custom API calls and annotations, will no longer be generated. The broader OpenTelemetry instrumentation coverage may replace the need for some or all of these custom code changes.
     :::
-1. **Replace configuration options** using the [Reference](#option-reference) below, see [Configuration](./configuration) for ways to provide those.
+1. **Replace configuration options** using the [Reference](#option-reference) below, see [Configuration](./configuration.md) for ways to provide those.
 1. **Replace Agent binary** 
     - Remove the `-javaagent:` argument containing [Elastic APM Java agent](https://www.elastic.co/guide/en/apm/agent/java/current/index.html) from the JVM arguments
     - Add `-javaagent:` argument to the JVM arguments to use EDOT Java and restart the application or follow [Kubernetes instructions](./setup/k8s.md) if applicable
