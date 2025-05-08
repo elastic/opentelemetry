@@ -12,11 +12,11 @@ products:
 
 # Deployment
 
-You can use the [guided onboarding](#deploy-components-using-the-guided-onboarding) or [deploy all components manually](#manual-deployment-of-all-components)
+You can use the [guided onboarding](#deploy-using-the-guided-onboarding) or [deploy all components manually](#manual-deployment)
 
 ## Deploy using the guided onboarding
 
-The guided onboarding simplifies deploying your Kubernetes components by setting up an [API Key](docs-content://deploy-manage/api-keys/elasticsearch-api-keys) and the needed [Integrations](https://www.elastic.co/docs/current/en/integrations) in the background.
+The guided onboarding simplifies deploying your Kubernetes components by setting up an [API Key](docs-content://deploy-manage/api-keys/elasticsearch-api-keys.md) and the needed [Integrations](https://www.elastic.co/docs/current/en/integrations) in the background.
 
 Follow these steps to use the guided onboarding:
 
@@ -31,7 +31,7 @@ When installing the OpenTelemetry Operator:
 
 :::{note}
 The default installation deploys an OpenTelemetry Operator with a self-signed TLS certificate.
-To automatically generate and renew certificates, refer to [cert-manager integrated installation](./customization#cert-manager-integrated-installation) for instructions on customizing the `values.yaml` file before running the `helm install` command.
+To automatically generate and renew certificates, refer to [cert-manager integrated installation](./customization.md#cert-manager-integrated-installation) for instructions on customizing the `values.yaml` file before running the `helm install` command.
 :::
 
 ## Manual deployment
@@ -42,7 +42,7 @@ Follow these steps for a manual deployment of all components.
 
 Before installing the operator do the following:
 
-1. Create an [API Key](docs-content://deploy-manage/api-keys/elasticsearch-api-keys).
+1. Create an [API Key](docs-content://deploy-manage/api-keys/elasticsearch-api-keys.md).
 
 2. Install the following integrations in Kibana:
     - `System`
@@ -74,7 +74,7 @@ Follow these steps to install the operator:
    - `YOUR_ELASTICSEARCH_ENDPOINT`: Elasticsearch endpoint (**with `https://` prefix**). For example: `https://1234567.us-west2.gcp.elastic-cloud.com:443`.
    - `YOUR_ELASTICSEARCH_API_KEY`: Elasticsearch API Key created in the previous step.
 
-3. If you need to [customize the configuration](./customization#customizing-configuration), copy the `values.yaml` file and adapt it to your needs. Refer to the [compatibility matrix](./prerequisites-compatibility#compatibility-matrix) for a complete list of available manifests in the `release branches`. 
+3. If you need to [customize the configuration](./customization.md#customizing-configuration), copy the `values.yaml` file and adapt it to your needs. Refer to the [compatibility matrix](./prerequisites-compatibility.md#compatibility-matrix) for a complete list of available manifests in the `release branches`. 
 
 4. Run the following commands to deploy the `opentelemetry-kube-stack` Helm chart, using the appropriate values file:
 

@@ -39,11 +39,11 @@ The following table shows Elastic features and their level of support and compat
 | Central management of OTel SDKs                                                             | [Incompatible]   |
 
 
-^1^ Refer to [limitations on host metrics](limitations.md#infrastructure--host-metrics)
+^1^ Refer to [limitations on host metrics](limitations.md#infrastructure-and-host-metrics)
 
 ^2^ Refer to [limitations on Ingest Pipelines](limitations.md#centralized-parsing-and-processing-of-data)
 
-^3^ Refer to [limitations on metrics ingestion](limitations.md#ingestion-of-metrics-data)
+^3^ Refer to [limitations on metrics ingestion](limitations.md#metrics-data-ingestion)
 
 [Incompatible]: nomenclature.md
 [Compatible]: nomenclature.md

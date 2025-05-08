@@ -18,7 +18,7 @@ Learn how to set up the EDOT Collector and EDOT SDKs to collect host metrics, lo
 
 Make sure the following requirements are present:
 
-- The **[System](https://www.elastic.co/docs/reference/integrations/system)** integration is installed in Kibana. Select **Add integration only** to skip the agent installation, as only the integration assets are required.
+- The **[System](integrations://system/index.md)** integration is installed in Kibana. Select **Add integration only** to skip the agent installation, as only the integration assets are required.
 
 ## Guided setup
 
@@ -33,12 +33,12 @@ Follow these steps to deploy the EDOT Collector and EDOT OTel SDKs.
 
 :::::{step} Download the EDOT Collector
 
-[Download the EDOT Collector](../../edot-collector/download) for your operating system, extract the archive and move to the extracted directory.
+[Download the EDOT Collector](../../edot-collector/download.md) for your operating system, extract the archive and move to the extracted directory.
 :::::
 
 :::::{step} Configure the EDOT Collector
 
-Retrieve your [Elasticsearch endpoint](docs-content://solutions/search/search-connection-details) and [API key](docs-content://deploy-manage/api-keys/elasticsearch-api-keys) and replace `<ELASTICSEARCH_ENDPOINT>` and `<ELASTIC_API_KEY>` before applying the following command.
+Retrieve your [Elasticsearch endpoint](docs-content://solutions/search/search-connection-details.md) and [API key](docs-content://deploy-manage/api-keys/elasticsearch-api-keys.md) and replace `<ELASTICSEARCH_ENDPOINT>` and `<ELASTIC_API_KEY>` before applying the following command.
 
 ::::{tab-set}
 
@@ -112,11 +112,11 @@ sudo ./otelcol --config otel.yml
 
 If you want to collect telemetry from applications running on the host where you installed the EDOT Collector, instrument your target applications:
 
-- [.NET](../../edot-sdks/dotnet/setup)
-- [Java](../../edot-sdks/java/setup)
-- [Node.js](../../edot-sdks/nodejs/setup)
-- [PHP](../../edot-sdks/php/setup)
-- [Python](../../edot-sdks/python/setup)
+- [.NET](../../edot-sdks/dotnet/setup/index.md)
+- [Java](../../edot-sdks/java/setup/index.md)
+- [Node.js](../../edot-sdks/nodejs/setup/index.md)
+- [PHP](../../edot-sdks/php/setup/index.md)
+- [Python](../../edot-sdks/python/setup/index.md)
 
 Configure your SDKs to send the data to the local EDOT Collector using OTLP/gRPC (`http://localhost:4317`) or OTLP/HTTP (`http://localhost:4318`).
 

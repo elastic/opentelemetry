@@ -134,6 +134,6 @@ Updates of the OpenTelemetry API/SDK in the application and the EDOT Java agent 
 
 ### How to update
 
-Updating EDOT Java agent is done by replacing the agent binary `.jar` that has been [added during setup](./setup/).
+Updating EDOT Java agent is done by replacing the agent binary `.jar` that has been [added during setup](./setup/index.md).
 
 

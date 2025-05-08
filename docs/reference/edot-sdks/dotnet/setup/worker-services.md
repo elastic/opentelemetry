@@ -225,5 +225,5 @@ we wish to collect and export. The `AddMeter` method is called on the builder to
 
 With these changes in place, this sample application is now instrumented, and for each message processed, a
 span will be created and exported. We also increment a metric for which the value will be periodically sent.
-EDOT .NET configures the delta temporality [by default](../setup/edot-defaults), so each exported value for
+EDOT .NET configures the delta temporality [by default](../setup/edot-defaults.md), so each exported value for
 the counter will be the count since the last export.

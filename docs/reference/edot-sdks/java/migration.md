@@ -69,7 +69,7 @@ By default, micrometer instrumentation is disabled and won't capture metrics, en
 
 ## Migration steps
 
-1. **Review all pros/cons of this migration guide** including the [differences in performance overhead](./overhead).
+1. **Review all pros/cons of this migration guide** including the [differences in performance overhead](./overhead.md).
 1. **(Optional) Migrate manual instrumentation API:** Usages of the [Elastic APM Agent API](https://www.elastic.co/guide/en/apm/agent/java/current/public-api.html) require migration to OpenTelemetry API:
     - for [Annotation API](https://www.elastic.co/guide/en/apm/agent/java/current/public-api.html#api-annotation) see [OpenTelemetry Annotations](https://opentelemetry.io/docs/zero-code/java/agent/annotations/).
     - for [Transaction API](https://www.elastic.co/guide/en/apm/agent/java/current/public-api.html#api-transaction) see [OpenTelemetry API](https://opentelemetry.io/docs/zero-code/java/agent/api/).
@@ -80,7 +80,7 @@ By default, micrometer instrumentation is disabled and won't capture metrics, en
 1. **Replace configuration options** using the [Reference](#option-reference) below, see [Configuration](./configuration) for ways to provide those.
 1. **Replace Agent binary** 
     - Remove the `-javaagent:` argument containing [Elastic APM Java agent](https://www.elastic.co/guide/en/apm/agent/java/current/index.html) from the JVM arguments
-    - Add `-javaagent:` argument to the JVM arguments to use EDOT Java and restart the application or follow [Kubernetes instructions](./setup/k8s) if applicable
+    - Add `-javaagent:` argument to the JVM arguments to use EDOT Java and restart the application or follow [Kubernetes instructions](./setup/k8s.md) if applicable
 
 ## Option reference
 
@@ -181,7 +181,7 @@ Note that the `capture_headers` option is dyamically adjustable, while the `otel
 
 ### `span_stack_trace_min_duration`
 
-The Elastic `span_stack_trace_min_duration` option can be replaced with [`OTEL_JAVA_EXPERIMENTAL_SPAN_STACKTRACE_MIN_DURATION`](./features#span-stacktrace).
+The Elastic `span_stack_trace_min_duration` option can be replaced with [`OTEL_JAVA_EXPERIMENTAL_SPAN_STACKTRACE_MIN_DURATION`](./features.md#span-stacktrace).
 
 ### `disable_instrumentations`
 

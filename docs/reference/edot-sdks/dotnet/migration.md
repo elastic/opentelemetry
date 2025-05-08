@@ -41,7 +41,7 @@ OpenTelemetry SDK.
 - [Migrating to EDOT .NET from Elastic .NET Agent](#migrating-to-edot-net-from-elastic-net-agent)
 - [Migrating to EDOT .NET from the upstream OpenTelemetry .NET SDK](#migrating-to-edot-net-from-the-upstream-opentelemetry-net-sdk)
 
-## Migrating to EDOT .NET from Elastic .NET Agent
+## Migrating to EDOT .NET from Elastic .NET Agent [migrating-to-edot-net-from-elastic-net-agent]
 
 ### Migrating manual application instrumentation
 
@@ -190,7 +190,7 @@ builder.AddElasticOpenTelemetry(b => b
 
 Here, we prefer the `AddElasticOpenTelemetry` extension method for the `IHostApplicationBuilder`.
 By default, EDOT .NET is configured to observe the most common instrumentation and export data via OTLP.
-See [opinionated defaults](./setup/edot-defaults) for more information.
+See [opinionated defaults](./setup/edot-defaults.md) for more information.
 
 The preceding code snippet adds one additional source to be observed, which matches the name
 we gave to the `ActivitySource` defined earlier.
@@ -259,12 +259,12 @@ process, service, or IIS application pool.
 To switch to the EDOT .NET zero-code auto instrumentation, the `COR_*` and `CORECLR_*` environment variables must
 be updated to point to the Elastic redistribution of the OpenTelemetry autoinstrumentation profiler.
 
-Please follow the steps in [Using EDOT .NET zero-code instrumentation](./setup/zero-code) to configure the profiler.
+Please follow the steps in [Using EDOT .NET zero-code instrumentation](./setup/zero-code.md) to configure the profiler.
 
-## Migrating to EDOT .NET from the upstream OpenTelemetry .NET SDK
+## Migrating to EDOT .NET from the upstream OpenTelemetry .NET SDK [migrating-to-edot-net-from-the-upstream-opentelemetry-net-sdk]
 
 Our design goal for EDOT .NET has been to introduce no new concepts and require minimal code changes to migrate
-from the upstream OpenTelemetry SDK for .NET to EDOT .NET as easily as possible. Our [opinionated defaults](./setup/edot-defaults)
+from the upstream OpenTelemetry SDK for .NET to EDOT .NET as easily as possible. Our [opinionated defaults](./setup/edot-defaults.md)
 strive to simplify the amount of code required to get started with OpenTelemetry in .NET applications.
 
 In an application which already uses the upstream OpenTelemetry SDK, the following code is an example of how

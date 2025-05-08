@@ -19,7 +19,7 @@ Learn how to set up the EDOT Collector and EDOT SDKs in a Kubernetes environment
 Make sure the following requirements are present:
 
 - The **Kubernetes OpenTelemetry Assets** integration is installed in Kibana.
-- The **[System](https://www.elastic.co/docs/reference/integrations/system)** integration is installed in Kibana. Select **Add integration only** to skip the agent installation, as only the integration assets are required.
+- The **[System](integrations://system/index.md)** integration is installed in Kibana. Select **Add integration only** to skip the agent installation, as only the integration assets are required.
 
 ## Guided setup
 
@@ -41,7 +41,7 @@ helm repo add open-telemetry 'https://open-telemetry.github.io/opentelemetry-hel
 
 ::::{step} Set up credentials
 
-Retrieve your [Elasticsearch endpoint](docs-content://solutions/search/search-connection-details) and [API key](docs-content://deploy-manage/api-keys/elasticsearch-api-keys) and replace both in the following command to create a namespace and a secret with your credentials.
+Retrieve your [Elasticsearch endpoint](docs-content://solutions/search/search-connection-details.md) and [API key](docs-content://deploy-manage/api-keys/elasticsearch-api-keys.md) and replace both in the following command to create a namespace and a secret with your credentials.
 
 ```bash
 kubectl create namespace opentelemetry-operator-system
@@ -76,6 +76,6 @@ kubectl annotate namespace YOUR_NAMESPACE instrumentation.opentelemetry.io/injec
 
 Restart your deployment to ensure the annotations and auto-instrumentations are applied.
 
-For languages where auto-instrumentation is not available, you will need to manually instrument your application. See the [Setup section in the corresponding SDK](../../edot-sdks).
+For languages where auto-instrumentation is not available, you will need to manually instrument your application. See the [Setup section in the corresponding SDK](../../edot-sdks.md).
 ::::
 :::::
