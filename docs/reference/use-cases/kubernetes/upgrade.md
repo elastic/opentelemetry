@@ -2,12 +2,6 @@
 navigation_title: Upgrade
 description: Instructions for upgrading the EDOT Helm chart release for Kubernetes monitoring.
 applies_to:
-  serverless:
-    observability:
-products:
-  - cloud-serverless
-  - observability all # Assuming default applicability, adjust if needed
-applies_to:
   stack:
   serverless:
     observability:
