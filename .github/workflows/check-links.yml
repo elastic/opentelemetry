@@ -22,11 +22,11 @@ jobs:
           cache-version: 0
       - name: Install Dependencies
         run: |
-          cd docs
+          cd olddocs
           make install
       - name: Check Links
         run: |
-          cd docs
+          cd olddocs
           make check-links
 
   # This job detects if any files changed in a given path
@@ -42,7 +42,7 @@ jobs:
         with:
           filters: |
             docs:
-              - 'docs/**'
+              - 'olddocs/**'
   
       - name: Set output
         run: echo "docs_changed=${{ steps.filter.outputs.docs }}" >> $GITHUB_OUTPUT

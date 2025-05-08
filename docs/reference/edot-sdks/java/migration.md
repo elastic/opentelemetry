@@ -1,7 +1,17 @@
 ---
 navigation_title: Migration
-description: Guide for migrating from the Elastic APM Java agent to the Elastic Distribution of OpenTelemetry (EDOT) Java Agent, outlining advantages, limitations, and steps.
+description: Migrate from the Elastic APM Java agent to the Elastic Distribution of OpenTelemetry Java (EDOT Java).
+applies_to:
+  stack:
+  serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
+  - edot-java
+  - apm-java-agent
 ---
+
 # Migrating to EDOT Java from the Elastic Java Agent
  
 This documentation describes how to update applications that are currently using the [Elastic APM Java agent](https://www.elastic.co/guide/en/apm/agent/java/current/index.html) to use the Elastic Distribution of OpenTelemetry Java (EDOT Java).

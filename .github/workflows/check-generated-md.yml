@@ -6,7 +6,7 @@ on:
      - opened
      - synchronize
    paths:
-     - 'docs/**'
+     - 'olddocs/**'
 
 jobs:
  check-generated-markdown:
@@ -20,10 +20,10 @@ jobs:
          python-version: '3.10'
      - name: Install dependencies
        run: |
-         cd docs/gen_edot_col_components
+         cd olddocs/gen_edot_col_components
          python -m pip install --upgrade pip
          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
      - name: Check Markdown Generation
        run: |
-         cd docs
+         cd olddocs
          make check-md-gen

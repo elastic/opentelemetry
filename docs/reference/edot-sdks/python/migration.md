@@ -1,12 +1,6 @@
 ---
 navigation_title: Migration
-description: Migrating to EDOT Python from the Elastic APM Python Agent.
-applies_to:
-  serverless:
-    observability:
-products:
-  - cloud-serverless
-  - observability all
+description: Migrate from the Elastic APM Python agent to the Elastic Distribution of OpenTelemetry Python (EDOT Python).
 applies_to:
   stack:
   serverless:
@@ -14,12 +8,15 @@ applies_to:
 products:
   - cloud-serverless
   - observability
+  - edot-python
+  - apm-python-agent
 ---
 
 # Migrating to EDOT Python from the Elastic APM Python Agent
 
 This guide will highlight the major differences between the [Elastic APM Python agent](https://www.elastic.co/guide/en/apm/agent/python/current/getting-started.html) and the Elastic Distribution of OpenTelemetry Python (EDOT Python).
-For step-by-step instructions on setting up EDOT Python refer to the [Setup](./setup/index.md).
+
+For step-by-step instructions on setting up EDOT Python refer to [Setup](./setup/index.md).
 
 ## We are a distribution
 

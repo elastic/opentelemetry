@@ -14,13 +14,6 @@ products:
 
 This table provides an overview of the features available in the Elastic Distribution of OpenTelemetry (EDOT) SDKs across different programming languages.
 
-**Legend:**
-
-*   ✅ Generally available
-*   𝐓 In technical preview
-*   ➖ Not applicable
-*   ❌ Not available
-
 | Feature                       | .NET   | Java   | Node.js | PHP    | Python | Android | iOS    |
 | :---------------------------- | :----- | :----- | :------ | :----- | :----- | :------ | :----- |
 | **Distributed Tracing**       | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+  | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+  | ✅ 1.0+ |
@@ -37,9 +30,17 @@ This table provides an overview of the features available in the Elastic Distrib
 | Runtime Metrics               | ✅ 1.0+ | ✅ 1.0+ | 𝐓 1.0+  | ❌      | ❌      | ❌      | ❌      |
 | **Capturing Errors/Exceptions** | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+  | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+  | ✅ v1.0+ |
 
-## Elastic Support for EDOT SDKs
+**Legend:**
+
+*   ✅ Generally available
+*   𝐓 In technical preview
+*   ➖ Not applicable
+*   ❌ Not available
+
+## Elastic support for EDOT SDKs
 
 Elastic provides technical support for EDOT Language SDKs according to Elastic's [Support Policy](https://www.elastic.co/support_policy). EDOT SDKs are meant to be used in combination with the [EDOT Collector](../edot-collector/index.md) or Elastic's managed OTLP endpoint (on Elastic Cloud Serverless) to ingest data into Elastic solutions from the EDOT SDKs. Other ingestion paths are not officially supported by Elastic.
 
 ## License
+
 EDOT SDKs are licensed under the [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0).

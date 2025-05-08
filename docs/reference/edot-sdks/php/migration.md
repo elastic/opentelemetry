@@ -1,6 +1,6 @@
 ---
 navigation_title: Migration
-description: Migrate from the legacy Elastic APM PHP agent to the Elastic Distribution of OpenTelemetry PHP.
+description: Migrate from the Elastic APM PHP agent to the Elastic Distribution of OpenTelemetry PHP (EDOT PHP).
 applies_to:
   stack:
   serverless:
@@ -8,6 +8,8 @@ applies_to:
 products:
   - cloud-serverless
   - observability
+  - edot-python
+  - apm-php-agent
 ---
 
 # Migrating to EDOT PHP from the Elastic PHP Agent

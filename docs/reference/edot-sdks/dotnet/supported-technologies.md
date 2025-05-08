@@ -67,3 +67,20 @@ instrumentation. The current list supported upstream can be found in the
 
 See also the EDOT .NET [opinionated defaults](./setup/edot-defaults) for behaviour that might differ from the
 OpenTelemetry NET SDK defaults.
+
+
+:::{warning}
+Instrumentation assembly scanning is not supported for applications using native [AOT](https://learn.microsoft.com/dotnet/core/deploying/native-aot) compilation.
+:::
+
+## .NET runtime support
+
+EDOT .NET support all [officially supported](https://dotnet.microsoft.com/en-us/platform/support/policy) versions of [.NET](https://dotnet.microsoft.com/download/dotnet) and
+[.NET Framework](https://dotnet.microsoft.com/download/dotnet-framework)¹ (an older Windows-based .NET implementation), except `.NET Framework 3.5`.
+
+1. *Due to assembly binding issues introduced by Microsoft, we recommend at least .NET Framework 4.7.2 for best compatibility.*
+
+## Exporting Data to Elastic
+
+Data can be exported in the OpenTelemetry-native [OTLP (OpenTelemetry protocol)](https://opentelemetry.io/docs/specs/otlp) format via gRPC (recommended)
+and HTTP to self-managed, Elastic Cloud Hosted or Elastic Cloud Serverless observability backends.
