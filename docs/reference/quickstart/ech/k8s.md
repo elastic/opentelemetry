@@ -1,0 +1,88 @@
+---
+navigation_title: Kubernetes
+description: Learn how to set up the EDOT Collector and EDOT SDKs in a Kubernetes environment with Elastic Cloud Hosted to collect host metrics, logs and application traces.
+applies_to:
+  stack:
+  serverless:
+    observability:
+products:
+  - cloud-serverless
+  - observability
+---
+
+# Quickstart for Kubernetes on Elastic Cloud Hosted
+
+Learn how to set up the EDOT Collector and EDOT SDKs in a Kubernetes environment with Elastic Cloud Hosted (ECH) to collect host metrics, logs and application traces.
+
+## Prerequisites
+
+Make sure the following requirements are present:
+
+- The **Kubernetes OpenTelemetry Assets** integration is installed in Kibana.
+- The **[System](https://www.elastic.co/docs/reference/integrations/system)** integration is installed in Kibana. Select **Add integration only** to skip the agent installation, as only the integration assets are required.
+
+## Guided setup
+
+:::{include} ../../_snippets/guided-instructions.md
+:::
+
+## Manual installation
+
+Follow these steps to deploy the EDOT Collector and EDOT OTel SDKs in Kubernetes with ECH.
+
+:::::{stepper}
+
+::::{step} Add the repository to Helm
+
+Run the following command to add the charts repository to Helm:
+
+```bash
+helm repo add open-telemetry "https://open-telemetry.github.io/opentelemetry-helm-charts" --force-update
+```
+::::
+
+::::{step} Configure your credentials
+
+:::{include} ../../_snippets/retrieve-credentials.md
+:::
+
+Replace both the `<ELASTICSEARCH_ENDPOINT>` and `<ELASTIC_API_KEY>` placeholders in the following command to create a namespace and a secret with your credentials.
+
+```bash
+kubectl create namespace opentelemetry-operator-system
+kubectl create secret generic elastic-secret-otel \
+--namespace opentelemetry-operator-system \
+--from-literal=elastic_endpoint='<ELASTICSEARCH_ENDPOINT>' \
+--from-literal=elastic_api_key='<ELASTIC_API_KEY>'
+```
+
+:::{note}
+On Windows PowerShell, replace backslashes (`\`) with backticks (`` ` ``) for line continuation and single quotes (`'`) with double quotes (`"`).
+:::
+::::
+
+::::{step} Install the Operator
+
+Install the OpenTelemetry Operator using the `kube-stack` Helm chart with the configured `values.yaml` file.
+
+```bash
+helm install opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack \
+--namespace opentelemetry-operator-system \
+--values 'https://raw.githubusercontent.com/elastic/elastic-agent/main/deploy/helm/edot-collector/kube-stack/values.yaml' \
+--version '0.3.9'
+```
+::::
+
+::::{step} Auto-instrument applications
+
+Add a language-specific annotation to your namespace by replacing `<LANGUAGE>` with one of the supported values: `nodejs`, `java`, `python`, `dotnet` or `go`:
+
+```bash
+kubectl annotate namespace YOUR_NAMESPACE instrumentation.opentelemetry.io/inject-<LANGUAGE>="opentelemetry-operator-system/elastic-instrumentation"
+```
+
+Restart your deployment to ensure the annotations and auto-instrumentations are applied.
+
+For languages where auto-instrumentation is not available, you need to manually instrument your application. See the [Setup section for the corresponding SDK](../../edot-sdks).
+::::
+:::::
