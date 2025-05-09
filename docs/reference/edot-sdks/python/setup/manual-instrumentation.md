@@ -32,7 +32,7 @@ the hard work for us.
 As an example we'll use an application using the Flask framework that implements an endpoint mounted on `/hello` returning a friendly
 salute. This application is saved in a file named `app.py` that is the default module for Flask applications.
 
-```
+```python
 import random
 
 from flask import Flask
@@ -69,7 +69,7 @@ opentelemetry-instrument flask run
 We may not only need to add a custom span to our application but also want to use a custom metric, like in the example below where we
 are tracking how many times we are getting one of the possible choices for our salutes.
 
-```
+```python
 import random
 
 from flask import Flask
