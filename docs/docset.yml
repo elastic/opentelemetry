@@ -1,4 +1,4 @@
-project: 'EDOT docs'
+project: 'EDOT documentation'
 cross_links:
   - apm-agent-android
   - apm-agent-dotnet

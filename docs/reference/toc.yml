@@ -1,114 +1,113 @@
 project: 'Elastic Distributions of OpenTelemetry (EDOT)'
 toc:
   - file: index.md
+  - file: quickstart/index.md
     children:
-      - file: quickstart/index.md
+      - file: quickstart/self-managed/index.md
         children:
-          - file: quickstart/self-managed/index.md
-            children:
-              - file: quickstart/self-managed/k8s.md
-              - file: quickstart/self-managed/hosts_vms.md
-              - file: quickstart/self-managed/docker.md
-          - file: quickstart/serverless/index.md
-            children:
-              - file: quickstart/serverless/k8s.md
-              - file: quickstart/serverless/hosts_vms.md
-              - file: quickstart/serverless/docker.md
-          - file: quickstart/ech/index.md
-            children:
-              - file: quickstart/ech/k8s.md
-              - file: quickstart/ech/hosts_vms.md
-              - file: quickstart/ech/docker.md
-      - file: architecture/index.md
+          - file: quickstart/self-managed/k8s.md
+          - file: quickstart/self-managed/hosts_vms.md
+          - file: quickstart/self-managed/docker.md
+      - file: quickstart/serverless/index.md
         children:
-          - file: architecture/k8s.md
-          - file: architecture/hosts_vms.md
-      - file: use-cases/index.md
+          - file: quickstart/serverless/k8s.md
+          - file: quickstart/serverless/hosts_vms.md
+          - file: quickstart/serverless/docker.md
+      - file: quickstart/ech/index.md
         children:
-          - file: use-cases/kubernetes/index.md
-            children:
-              - file: use-cases/kubernetes/prerequisites-compatibility.md
-              - file: use-cases/kubernetes/components.md
-              - file: use-cases/kubernetes/deployment.md
-              - file: use-cases/kubernetes/instrumenting-applications.md
-              - file: use-cases/kubernetes/upgrade.md
-              - file: use-cases/kubernetes/customization.md
-          - folder: use-cases/llms
-      - file: compatibility/index.md
+          - file: quickstart/ech/k8s.md
+          - file: quickstart/ech/hosts_vms.md
+          - file: quickstart/ech/docker.md
+  - file: architecture/index.md
+    children:
+      - file: architecture/k8s.md
+      - file: architecture/hosts_vms.md
+  - file: use-cases/index.md
+    children:
+      - file: use-cases/kubernetes/index.md
         children:
-          - file: compatibility/features.md
-          - file: compatibility/collectors.md
-          - file: compatibility/sdks.md
-          - file: compatibility/limitations.md
-          - file: compatibility/nomenclature.md
-      - file: edot-collector/index.md
+          - file: use-cases/kubernetes/prerequisites-compatibility.md
+          - file: use-cases/kubernetes/components.md
+          - file: use-cases/kubernetes/deployment.md
+          - file: use-cases/kubernetes/instrumenting-applications.md
+          - file: use-cases/kubernetes/upgrade.md
+          - file: use-cases/kubernetes/customization.md
+      - folder: use-cases/llms
+  - file: compatibility/index.md
+    children:
+      - file: compatibility/features.md
+      - file: compatibility/collectors.md
+      - file: compatibility/sdks.md
+      - file: compatibility/limitations.md
+      - file: compatibility/nomenclature.md
+  - file: edot-collector/index.md
+    children:
+      - file: edot-collector/download.md
+      - file: edot-collector/config/index.md
         children:
-          - file: edot-collector/download.md
-          - file: edot-collector/config/index.md
-            children:
-              - file: edot-collector/config/default-config-standalone.md
-              - file: edot-collector/config/default-config-k8s.md
-              - file: edot-collector/config/configure-logs-collection.md
-              - file: edot-collector/config/configure-metrics-collection.md
-          - file: edot-collector/customization.md
-            children:
-              - file: edot-collector/components.md
-              - file: edot-collector/custom-collector.md
-          - file: edot-collector/troubleshooting.md
-      - file: edot-sdks/index.md
+          - file: edot-collector/config/default-config-standalone.md
+          - file: edot-collector/config/default-config-k8s.md
+          - file: edot-collector/config/configure-logs-collection.md
+          - file: edot-collector/config/configure-metrics-collection.md
+      - file: edot-collector/customization.md
         children:
-          - file: edot-sdks/dotnet/index.md
+          - file: edot-collector/components.md
+          - file: edot-collector/custom-collector.md
+      - file: edot-collector/troubleshooting.md
+  - file: edot-sdks/index.md
+    children:
+      - file: edot-sdks/dotnet/index.md
+        children:
+          - file: edot-sdks/dotnet/setup/index.md
             children:
-              - file: edot-sdks/dotnet/setup/index.md
-                children:
-                  - file: edot-sdks/dotnet/setup/aspnet.md
-                  - hidden: edot-sdks/dotnet/setup/aspnetcore.md
-                  - file: edot-sdks/dotnet/setup/console.md
-                  - file: edot-sdks/dotnet/setup/worker-services.md
-                  - file: edot-sdks/dotnet/setup/zero-code.md
-                  - file: edot-sdks/dotnet/setup/edot-defaults.md
-              - file: edot-sdks/dotnet/configuration.md
-              - file: edot-sdks/dotnet/supported-technologies.md
-              - file: edot-sdks/dotnet/troubleshooting.md
-              - file: edot-sdks/dotnet/migration.md
-          - file: edot-sdks/java/index.md
+              - file: edot-sdks/dotnet/setup/aspnet.md
+              - hidden: edot-sdks/dotnet/setup/aspnetcore.md
+              - file: edot-sdks/dotnet/setup/console.md
+              - file: edot-sdks/dotnet/setup/worker-services.md
+              - file: edot-sdks/dotnet/setup/zero-code.md
+              - file: edot-sdks/dotnet/setup/edot-defaults.md
+          - file: edot-sdks/dotnet/configuration.md
+          - file: edot-sdks/dotnet/supported-technologies.md
+          - file: edot-sdks/dotnet/troubleshooting.md
+          - file: edot-sdks/dotnet/migration.md
+      - file: edot-sdks/java/index.md
+        children:
+          - file: edot-sdks/java/setup/index.md
             children:
-              - file: edot-sdks/java/setup/index.md
-                children:
-                  - file: edot-sdks/java/setup/k8s.md
-              - file: edot-sdks/java/configuration.md
-              - file: edot-sdks/java/features.md
-              - file: edot-sdks/java/supported-technologies.md
-              - file: edot-sdks/java/troubleshooting.md
-              - file: edot-sdks/java/migration.md
-              - file: edot-sdks/java/overhead.md
-          - file: edot-sdks/nodejs/index.md
+              - file: edot-sdks/java/setup/k8s.md
+          - file: edot-sdks/java/configuration.md
+          - file: edot-sdks/java/features.md
+          - file: edot-sdks/java/supported-technologies.md
+          - file: edot-sdks/java/troubleshooting.md
+          - file: edot-sdks/java/migration.md
+          - file: edot-sdks/java/overhead.md
+      - file: edot-sdks/nodejs/index.md
+        children:
+          - file: edot-sdks/nodejs/setup/index.md
             children:
-              - file: edot-sdks/nodejs/setup/index.md
-                children:
-                  - file: edot-sdks/nodejs/setup/k8s.md
-              - file: edot-sdks/nodejs/configuration.md
-              - file: edot-sdks/nodejs/supported-technologies.md
-              - file: edot-sdks/nodejs/troubleshooting.md
-              - file: edot-sdks/nodejs/migration.md
-          - file: edot-sdks/php/index.md
+              - file: edot-sdks/nodejs/setup/k8s.md
+          - file: edot-sdks/nodejs/configuration.md
+          - file: edot-sdks/nodejs/supported-technologies.md
+          - file: edot-sdks/nodejs/troubleshooting.md
+          - file: edot-sdks/nodejs/migration.md
+      - file: edot-sdks/php/index.md
+        children:
+          - file: edot-sdks/php/setup/index.md
             children:
-              - file: edot-sdks/php/setup/index.md
-                children:
-                  - file: edot-sdks/php/setup/limitations.md
-              - file: edot-sdks/php/configuration.md
-              - file: edot-sdks/php/supported-technologies.md
-              - file: edot-sdks/php/troubleshooting.md
-              - file: edot-sdks/php/migration.md
-              - file: edot-sdks/php/overhead.md
-          - file: edot-sdks/python/index.md
+              - file: edot-sdks/php/setup/limitations.md
+          - file: edot-sdks/php/configuration.md
+          - file: edot-sdks/php/supported-technologies.md
+          - file: edot-sdks/php/troubleshooting.md
+          - file: edot-sdks/php/migration.md
+          - file: edot-sdks/php/overhead.md
+      - file: edot-sdks/python/index.md
+        children:
+          - file: edot-sdks/python/setup/index.md
             children:
-              - file: edot-sdks/python/setup/index.md
-                children:
-                  - file: edot-sdks/python/setup/k8s.md
-                  - file: edot-sdks/python/setup/manual-instrumentation.md
-              - file: edot-sdks/python/configuration.md
-              - file: edot-sdks/python/supported-technologies.md
-              - file: edot-sdks/python/troubleshooting.md
-              - file: edot-sdks/python/migration.md
-              - file: edot-sdks/python/overhead.md
+              - file: edot-sdks/python/setup/k8s.md
+              - file: edot-sdks/python/setup/manual-instrumentation.md
+          - file: edot-sdks/python/configuration.md
+          - file: edot-sdks/python/supported-technologies.md
+          - file: edot-sdks/python/troubleshooting.md
+          - file: edot-sdks/python/migration.md
+          - file: edot-sdks/python/overhead.md
