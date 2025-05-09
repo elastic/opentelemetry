@@ -1,5 +1,5 @@
 ---
-navigation_title: Elastic Distributions of OpenTelemetry
+navigation_title: Elastic Distributions of OpenTelemetry (EDOT)
 description: Reference documentation for the Elastic Distributions of OpenTelemetry (EDOT).
 applies_to:
   stack:
