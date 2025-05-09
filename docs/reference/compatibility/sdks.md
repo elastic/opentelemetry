@@ -24,7 +24,7 @@ The following table provides an overview of compatibility and support of EDOT SD
 | **EDOT Android**   | [Incompatible]   | [Compatible]      | [Supported]     |
 | **EDOT iOS**       | [Incompatible]   | [Compatible]      | [Supported]     |
 
-Refer to the [EDOT Collector compatibility table](collectors.md#edot-collector-compatibility-with-elastic-stack) for compatibility with Elastic Stack versions.
+Refer to the [EDOT Collector compatibility table](collectors.md) for compatibility with Elastic Stack versions.
 
 For the best experience, export data from EDOT SDKs using the [EDOT Collector](../edot-collector/index.md).
 

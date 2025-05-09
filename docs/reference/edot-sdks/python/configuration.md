@@ -31,7 +31,7 @@ opentelemetry-instrument <command to start your service>
 Because the Elastic Distribution of OpenTelemetry Python is an extension of OpenTelemetry Python, it supports both:
 
 * [General OpenTelemetry configuration options](#opentelemetry-configuration-options)
-* [Specific configuration options that are _only_ available in EDOT Python](#configuration-options-that-are-only-available-in-edot-python)
+* [Specific configuration options that are only available in EDOT Python](#configuration-options-only-available-in-edot-python)
 
 ### OpenTelemetry configuration options
 
@@ -64,7 +64,7 @@ EDOT Python uses different defaults than OpenTelemetry Python for the following 
 :::
 
 
-### Configuration options that are _only_ available in EDOT Python
+### Configuration options only available in EDOT Python
 
 `ELASTIC_OTEL_` options are specific to Elastic and will always live in EDOT Python (they will _not_ be added upstream):
 

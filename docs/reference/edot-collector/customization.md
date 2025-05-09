@@ -17,7 +17,7 @@ The EDOT Collector comes with a [curated list](./components.md) of OTel Collecto
 
 If your use case requires additional components, you have two options:
 
-1. [Build your custom, EDOT-like Collector](./custom-collector)
+1. [Build your custom, EDOT-like Collector](./custom-collector.md)
 2. [Open a request](https://github.com/elastic/elastic-agent/issues/new/choose) to add those components to EDOT.
 
 Requests for adding new components to the EDOT Collector will be reviewed and decided on the basis of the popularity of the requests, technical suitability and other criteria.

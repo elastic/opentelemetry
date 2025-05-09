@@ -102,11 +102,11 @@ Start the Collector by running:
 To collect telemetry from applications running on the host where you installed the EDOT Collector, 
 instrument your target applications following the setup instructions for the corresponding language:
 
-   - [.NET](../../edot-sdks/dotnet/setup)
-   - [Java](../../edot-sdks/java/setup)
-   - [Node.js](../../edot-sdks/nodejs/setup)
-   - [PHP](../../edot-sdks/php/setup)
-   - [Python](../../edot-sdks/python/setup)
+   - [.NET](../../edot-sdks/dotnet/setup/index.md)
+   - [Java](../../edot-sdks/java/setup/index.md)
+   - [Node.js](../../edot-sdks/nodejs/setup/index.md)
+   - [PHP](../../edot-sdks/php/setup/index.md)
+   - [Python](../../edot-sdks/python/setup/index.md)
 
    Configure your SDKs to send the data to the local EDOT Collector using OTLP/gRPC (`http://localhost:4317`) or OTLP/HTTP (`http://localhost:4318`).
 

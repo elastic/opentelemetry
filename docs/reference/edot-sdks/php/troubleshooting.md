@@ -15,7 +15,7 @@ products:
 
 Is something not working as expected?
 Don't worry if you can't figure out what the problem is; we’re here to help!
-As a first step, make sure your application is compatible with the [technologies supported by EDOT PHP](./supported-technologies).
+As a first step, make sure your application is compatible with the [technologies supported by EDOT PHP](./supported-technologies.md).
 
 If you're an existing Elastic customer with a support contract, please create a ticket in the
 [Elastic Support portal](https://support.elastic.co/customers/s/login/).

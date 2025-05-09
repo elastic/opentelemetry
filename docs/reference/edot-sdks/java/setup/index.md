@@ -14,7 +14,7 @@ products:
 
 **Kubernetes**
 
-For Kubernetes we recommend using the OTel Kubernetes Operator that also manages the auto-instrumentation of Java applications. Follow the [Quickstart Guide](../../../quickstart/index.md) for Kubernetes or learn more about [instrumentation details on Kubernetes for Java](./k8s). 
+For Kubernetes we recommend using the OTel Kubernetes Operator that also manages the auto-instrumentation of Java applications. Follow the [Quickstart Guide](../../../quickstart/index.md) for Kubernetes or learn more about [instrumentation details on Kubernetes for Java](./k8s.md). 
 
 **All other environments**
 
@@ -30,7 +30,7 @@ You can download the latest release version or snapshot version of the EDOT Java
 
 ## Prerequisites
 
-You need to have completed the steps in the [Quickstart](../../../quickstart) section that corresponds to your Elastic deployment model.
+You need to have completed the steps in the [Quickstart](../../../quickstart/index.md) section that corresponds to your Elastic deployment model.
 
 ##  Configure the Java agent
 
@@ -89,4 +89,4 @@ use it, thus special care should be taken to limit the scope to the relevant JVM
 
 Also, some application servers require manual steps or modification of their configuration files, see [dedicated instructions](https://opentelemetry.io/docs/zero-code/java/agent/server-config/) for more details.
 
-For applications deployed with Kubernetes, we recommend using [OpenTelemetry Operator](./k8s).
+For applications deployed with Kubernetes, we recommend using [OpenTelemetry Operator](./k8s.md).

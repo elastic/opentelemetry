@@ -12,7 +12,7 @@ products:
   - apm-node-agent
 ---
 
-## Elastic Distribution of OpenTelemetry Node.js
+# Elastic Distribution of OpenTelemetry Node.js
 
 The Elastic Distribution of OpenTelemetry (EDOT) Node.js is a light wrapper around the upstream [OpenTelemetry SDK for Node.js](https://opentelemetry.io/docs/languages/js), configured for the best experience with Elastic Observability. 
 

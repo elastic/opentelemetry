@@ -83,7 +83,7 @@ For this example, we assume the application you're instrumenting is a deployment
         kubectl rollout restart deployment python-app -n python-ns
         ```
 
-4. Verify the [auto-instrumentation resources](../../../use-cases/kubernetes/instrumenting-applications#how-auto-instrumentation-works) are injected in the Pod:
+4. Verify the [auto-instrumentation resources](../../../use-cases/kubernetes/instrumenting-applications.md#how-auto-instrumentation-works) are injected in the Pod:
 
     Run a `kubectl describe` of one of your application pods and check:
 

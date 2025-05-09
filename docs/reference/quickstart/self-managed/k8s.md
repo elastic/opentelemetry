@@ -41,7 +41,7 @@ helm repo add open-telemetry 'https://open-telemetry.github.io/opentelemetry-hel
 
 ::::{step} Set up credentials
 
-Retrieve your [Elasticsearch endpoint](docs-content://solutions/search/search-connection-details) and [API key](docs-content://deploy-manage/api-keys/elasticsearch-api-keys) and replace both in the following command to create a namespace and a secret with your credentials.
+Retrieve your [Elasticsearch endpoint](docs-content://solutions/search/search-connection-details.md) and [API key](docs-content://deploy-manage/api-keys/elasticsearch-api-keys.md) and replace both in the following command to create a namespace and a secret with your credentials.
 
 ```bash
 kubectl create namespace opentelemetry-operator-system
@@ -76,6 +76,6 @@ kubectl annotate namespace YOUR_NAMESPACE instrumentation.opentelemetry.io/injec
 
 Restart your deployment to ensure the annotations and auto-instrumentations are applied.
 
-For languages where auto-instrumentation is not available, you will need to manually instrument your application. See the [Setup section in the corresponding SDK](../../edot-sdks).
+For languages where auto-instrumentation is not available, you will need to manually instrument your application. See the [Setup section in the corresponding SDK](../../edot-sdks/index.md).
 ::::
 :::::

@@ -5,9 +5,9 @@ applies_to:
   stack:
   serverless:
     observability:
-  products:
-    - cloud-serverless
-    - observability
+products:
+   - cloud-serverless
+   - observability
 ---
 
 # Limitations of Elastic Distributions of OpenTelemetry

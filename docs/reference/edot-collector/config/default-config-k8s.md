@@ -56,7 +56,7 @@ The Gateway collectors pipelines differ between the two different deployment use
 
 In self-managed and Elastic Cloud Hosted Stack deployment use cases, the main purpose of the Gateway collector is the central enrichment of data before the OpenTelemetry data is being ingested directly into Elasticsearch using the [`elasticsearch`] exporter.
 
-The Gateway collector configuration comprises the pipelines for data enrichment of [application telemetry](./default-config-standalone#application--traces-collection-pipeline) and [host metrics](./default-config-standalone#host-metrics-collection-pipeline). For more details, refer to the linked descriptions of the corresponding standalone use cases.
+The Gateway collector configuration comprises the pipelines for data enrichment of [application telemetry](./default-config-standalone.md#application-and-traces-collection-pipeline) and [host metrics](./default-config-standalone.md#host-metrics-collection-pipeline). For more details, refer to the linked descriptions of the corresponding standalone use cases.
 
 The [`routing`] connector separates the infrastructure metrics from other metrics and routes them into the ECS-based pipeline, with ECS-compatibility exporter mode. Other metrics are exported in OTel-native format to Elasticsearch.
 

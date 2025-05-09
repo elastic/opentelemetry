@@ -20,7 +20,7 @@ inherits all the features of the OpenTelemetry Java Instrumentation to capture l
 The EDOT Java agent also provides:
 
 - exclusive features that are _not available_ in the [OpenTelemetry Java Instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation)
-- features of [OpenTelemetry Java Instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation) with [different default configuration](./configuration#configuration-options)
+- features of [OpenTelemetry Java Instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation) with [different default configuration](./configuration.md#configuration-options)
 
 In addition to the features listed here, see [supported technologies](./supported-technologies.md) for an overview of the supported technologies.
 

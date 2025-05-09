@@ -28,7 +28,7 @@ export OTEL_EXPORTER_OTLP_ENDPOINT="https://********.cloud.es.io:443/"
 Because the Elastic Distribution of OpenTelemetry PHP is an extension of the OpenTelemetry PHP SDK, it supports:
 
 * [OpenTelemetry configuration options](#opentelemetry-configuration-options)
-* [Configuration options that are _only_ available in EDOT PHP](#configuration-options-that-are-only-available-in-edot-php)
+* [Configuration options only available in EDOT PHP](#configuration-options-only-available-in-edot-php)
 
 ### OpenTelemetry configuration options
 
@@ -61,7 +61,7 @@ EDOT PHP supports background data transmission (non-blocking export), but **only
 If you change the exporter or the transport protocol (e.g., to gRPC or another format), telemetry data will be sent **synchronously**, potentially impacting request latency.
 :::
 
-### Configuration options that are _only_ available in EDOT PHP
+### Configuration options only available in EDOT PHP
 
 In addition to general OpenTelemetry configuration options, there are two kinds of configuration options that are _only_ available in EDOT PHP.
 
