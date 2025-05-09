@@ -17,3 +17,7 @@ spec:
         value: "true"
       - name: AGENT_HAS_STARTED_IF_YOU_SEE
         value: "javaagent.tooling.VersionLogger - opentelemetry-javaagent"
+      - name: OTEL_INSTRUMENTATION_METHODS_INCLUDE
+        value: "Hello[test]"
+      - name: OTEL_EXPORTER_OTLP_ENDPOINT
+        value: "http://collector:4318"
