@@ -6,9 +6,9 @@ applies_to:
   serverless:
     observability:
 products:
-  - cloud-serverless
-  - observability
-  - edot-collector
+  - id: cloud-serverless
+  - id: observability
+  - id: edot-collector
 ---
 
 # Default configuration of the EDOT Collector (Standalone)

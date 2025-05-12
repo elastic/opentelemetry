@@ -6,10 +6,10 @@ applies_to:
   serverless:
     observability:
 products:
-  - cloud-serverless
-  - observability
-  - edot-python
-  - apm-python-agent
+  - id: cloud-serverless
+  - id: observability
+  - id: edot-python
+  - id: apm-python-agent
 ---
 
 # Migrating to EDOT Python from the Elastic APM Python Agent

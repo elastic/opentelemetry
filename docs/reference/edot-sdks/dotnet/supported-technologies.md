@@ -5,8 +5,8 @@ applies_to:
   serverless:
     observability:
 products:
-  - cloud-serverless
-  - observability
+  - id: cloud-serverless
+  - id: observability
 ---
 
 # Technologies Supported by EDOT .NET SDK

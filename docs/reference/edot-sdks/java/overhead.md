@@ -6,9 +6,9 @@ applies_to:
   serverless:
     observability:
 products:
-  - cloud-serverless
-  - observability
-  - edot-java
+  - id: cloud-serverless
+  - id: observability
+  - id: edot-java
 ---
 # Performance overhead
 

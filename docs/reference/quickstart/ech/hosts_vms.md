@@ -6,8 +6,8 @@ applies_to:
   serverless:
     observability:
 products:
-  - cloud-serverless
-  - observability
+  - id: cloud-serverless
+  - id: observability
 ---
 
 # Quickstart for hosts and VMs on Elastic Cloud Hosted

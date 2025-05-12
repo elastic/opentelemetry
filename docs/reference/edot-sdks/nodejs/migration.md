@@ -6,10 +6,10 @@ applies_to:
   serverless:
     observability:
 products:
-  - cloud-serverless
-  - observability
-  - edot-nodejs
-  - apm-node-agent
+  - id: cloud-serverless
+  - id: observability
+  - id: edot-nodejs
+  - id: apm-node-agent
 ---
 
 # Migrating to EDOT Node.js from the Elastic Node.js Agent

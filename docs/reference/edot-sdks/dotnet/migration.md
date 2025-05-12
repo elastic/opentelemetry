@@ -6,10 +6,10 @@ applies_to:
   serverless:
     observability:
 products:
-  - cloud-serverless
-  - observability
-  - edot-dotnet
-  - apm-dotnet-agent
+  - id: cloud-serverless
+  - id: observability
+  - id: edot-dotnet
+  - id: apm-dotnet-agent
 ---
 
 # Migrating to EDOT .NET
