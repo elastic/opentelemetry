@@ -12,7 +12,7 @@ products:
   - id: apm-java-agent
 ---
 
-# Migrating to EDOT Java from the Elastic Java Agent
+# Migrate to EDOT Java from the Elastic APM Java agent
  
 This documentation describes how to update applications that are currently using the [Elastic APM Java agent](https://www.elastic.co/guide/en/apm/agent/java/current/index.html) to use the Elastic Distribution of OpenTelemetry Java (EDOT Java).
 

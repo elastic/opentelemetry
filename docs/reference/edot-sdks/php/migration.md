@@ -12,7 +12,7 @@ products:
   - id: apm-php-agent
 ---
 
-# Migrating to EDOT PHP from the Elastic PHP Agent
+# Migrating to EDOT PHP from the Elastic APM PHP agent
 
 Follow these steps to migrate from the legacy Elastic APM PHP agent (`elastic-apm-php`) to the Elastic Distribution of OpenTelemetry PHP (`elastic-otel-php`).
 

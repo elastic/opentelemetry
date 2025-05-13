@@ -12,7 +12,7 @@ products:
   - id: apm-dotnet-agent
 ---
 
-# Migrating to EDOT .NET
+# Migrate to EDOT .NET from the Elastic APM .NET agent
 
 The observability industry is shifting to adopt [OpenTelemetry](https://opentelemetry.io/). At Elastic, we are focused on
 contributing to help OpenTelemetry succeed, and OpenTelemetry-native support is being introduced across all Elastic
