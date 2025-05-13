@@ -71,3 +71,11 @@ EDOT Python uses different defaults than OpenTelemetry Python for the following 
 | Option(s) | Default | Description |
 |---|---|---|
 | `ELASTIC_OTEL_SYSTEM_METRICS_ENABLED` | `false` | When sets to `true`, sends *system namespace* metrics. |
+
+## LLM settings
+
+LLM instrumentations implement the following configuration options:
+
+| Option                                                | default | description               |
+|-------------------------------------------------------|---------|:--------------------------|
+| `OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT`  | `false`| If set to `true`, enables the capturing of request and response content in the log events outputted by the agent.

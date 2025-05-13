@@ -69,6 +69,17 @@ This table only contains minimal configuration, see each respective feature for 
 | `ELASTIC_OTEL_UNIVERSAL_PROFILING_INTEGRATION_ENABLED` | `auto`  | [Elastic Universal profiling integration](./features.md#elastic-universal-profiling-integration)        |
 | `OTEL_INSTRUMENTATION_OPENAI_CLIENT_ENABLED`           | `true`  | [OpenAI client instrumentation](./supported-technologies.md#openai-client-instrumentation) |
 
+## OpenAI Client settings
+
+The following settings are available:
+
+| Option                                                | default                                                       | description                                                                                                                                                                                                                                                                      |
+|-------------------------------------------------------|---------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `OTEL_INSTRUMENTATION_OPENAI_CLIENT_ENABLED`          | `true`                                                        | enables or disable OpenAI instrumentation                                                                                                                                                                                                                                        |
+| `ELASTIC_OTEL_JAVA_INSTRUMENTATION_GENAI_EMIT_EVENTS` | value of `OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT` | If set to `true`, the agent will generate log events for OpenAI requests and responses. Potentially sensitive content will only be included if `OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT` is `true`                                                                    |
+| `OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT`  | `false`                                                       | If set to `true`, enables the capturing of OpenAI request and response content in the log events outputted by the agent.                                                                                                                                                       ↪ |
+
+
 ## Configuration methods
 
 Configuration can be provided through multiple [configuration methods](#configuration-methods):
