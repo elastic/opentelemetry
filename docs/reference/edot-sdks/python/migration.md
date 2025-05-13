@@ -26,7 +26,7 @@ Follow these steps to migrate:
 2. Migrate any usage of Elastic APM Python Agent API to manual instrumentation with OpenTelemetry API in the application source code.
 3. Follow the [setup documentation](setup/index.md) on to install and configure EDOT Python.
 
-## Configuration migration
+## Configuration mapping
 
 The following are Elastic APM Python agent settings that you can migrate to EDOT Python.
 
