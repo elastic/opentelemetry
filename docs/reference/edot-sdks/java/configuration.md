@@ -11,7 +11,7 @@ products:
   - id: edot-java
 ---
 
-# Configuring the EDOT Java Agent
+# Configure the EDOT Java agent
 
 The [minimal configuration](#minimal-configuration) section provides a recommended starting point for EDOT Java configuration.
 

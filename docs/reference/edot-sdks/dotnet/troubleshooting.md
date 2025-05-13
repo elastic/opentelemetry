@@ -1,5 +1,6 @@
 ---
 navigation_title: Troubleshooting
+description: Use the information in this section to troubleshoot common problems affecting the Elastic Distribution of OpenTelemetry .NET.
 applies_to:
   stack:
   serverless:

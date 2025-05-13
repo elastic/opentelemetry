@@ -1,5 +1,6 @@
 ---
-navigation_title: Supported Technologies
+navigation_title: Supported technologies
+description: Technologies supported by the Elastic Distribution of OpenTelemetry .NET.
 applies_to:
   stack:
   serverless:
