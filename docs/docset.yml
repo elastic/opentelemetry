@@ -19,6 +19,7 @@ cross_links:
   - elasticsearch
   - kibana
   - integrations
+  - integration-docs
 toc:
   - toc: reference
 # - toc: release-notes
