@@ -19,7 +19,7 @@ The following instructions require to have already added auto-instrumentation wi
 
 ## Configure EDOT Python
 
-Refer to our [Setup](./index.md#configure-edot-python) page for more details.
+Refer to our [Setup](./index.md) page for more details.
 
 ## Manually instrument your auto-instrumented Python application
 

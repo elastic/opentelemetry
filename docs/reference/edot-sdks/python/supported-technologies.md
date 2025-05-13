@@ -17,7 +17,7 @@ EDOT Python is a [distribution](https://opentelemetry.io/docs/concepts/distribut
 
 ## EDOT Collector and Elastic Stack versions
 
-EDOT Python sends data through the OpenTelemetry protocol (OTLP). While OTLP ingest works with later 8.16+ versions of the EDOT Collector, for full support use either [EDOT Collector](../../edot-collector/index.md) versions 9.x or [Elastic Cloud Serverless](https://www.elastic.co/guide/en/serverless/current/intro.html) for OTLP ingest.
+EDOT Python sends data through the OpenTelemetry protocol (OTLP). While OTLP ingest works with later 8.16+ versions of the EDOT Collector, for full support use either [EDOT Collector](../../edot-collector/index.md) versions 9.x or Elastic Cloud Serverless for OTLP ingest.
 
 :::{note}
 Ingesting data from EDOT SDKs through EDOT Collector 9.x into Elastic Stack versions 8.18+ is supported.
@@ -40,7 +40,7 @@ This follows the [OpenTelemetry Python Version Support](https://github.com/open-
 
 ## Instrumentations
 
-Instrumentations are not installed by default. Use the [edot-bootstrap](./setup/index.md#install-the-available-instrumentation) command to automatically install the available instrumentations.
+Instrumentations are not installed by default. Use the [edot-bootstrap](./setup/index.md) command to automatically install the available instrumentations.
 
 | Name | Packages instrumented | Semantic conventions status |
 |---|---|---|---|

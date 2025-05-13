@@ -28,7 +28,7 @@ export OTEL_EXPORTER_OTLP_ENDPOINT="https://********.cloud.es.io:443/"
 Because the Elastic Distribution of OpenTelemetry PHP is an extension of the OpenTelemetry PHP SDK, it supports:
 
 * [OpenTelemetry configuration options](#opentelemetry-configuration-options)
-* [Configuration options only available in EDOT PHP](#configuration-options-only-available-in-edot-php)
+* [Configuration options only available in EDOT PHP](#options-only-available-in-edot-php)
 
 ### OpenTelemetry configuration options
 

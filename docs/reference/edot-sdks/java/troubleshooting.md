@@ -73,7 +73,7 @@ You can partially deactivate the agent, or only selectively activate a limited s
 
 There are a few ways you can detect if the agent has been attached to a JVM:
 
-- In JVM logs, agent startup log message (see [below](#how-to-identify-the-version-of-edot-agent-)) might be included.
+- In JVM logs, agent startup log message might be included.
 - In JVM arguments, Run `ps -ef|grep javaagent`.
 - In environment variables, for example `JAVA_TOOL_OPTIONS`. Check by inspecting the output of `export|grep javaagent`.
 
