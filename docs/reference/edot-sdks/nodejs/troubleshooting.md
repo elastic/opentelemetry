@@ -15,23 +15,17 @@ products:
 
 Use the information on this page to troubleshoot issues using EDOT Node.js.
 
-If you need help and you're an existing Elastic customer with a support contract, please create a ticket in the [Elastic Support portal](https://support.elastic.co/customers/s/login/). Other users can post in the [APM discuss forum](https://discuss.elastic.co/c/apm) or [open a GitHub issue](https://github.com/elastic/elastic-otel-node/issues).
+If you need help and you're an existing Elastic customer with a support contract, create a ticket in the [Elastic Support portal](https://support.elastic.co/customers/s/login/). Other users can post in the [APM discuss forum](https://discuss.elastic.co/c/apm) or [open a GitHub issue](https://github.com/elastic/elastic-otel-node/issues).
 
+As a first step, review the [supported technologies](./supported-technologies.md) to ensure your application is supported by the SDK. Are you using a Node.js version that the SDK supports? Are the versions of your dependencies in the [supported version range](./supported-technologies.md#instrumentations) to be instrumented?
 
-## Is your app compatible with the SDK's supported technologies?
+## Set a service name
 
-First, review the [supported technologies](./supported-technologies.md) to ensure your application is supported by the SDK. Are you using a Node.js version that the SDK supports? Are the versions of your dependencies in the [supported version range](./supported-technologies.md#instrumentations) to be instrumented?
+Make sure you have set a service name set using `OTEL_SERVICE_NAME=my-service` or through the `OTEL_RESOURCE_ATTRIBUTES=service.name=my-service` environment variables. Otherwisem by default the data is sent to the `unknown_service:node` service: you might be getting data but it might all be under that service.
 
+## Check connectivity
 
-## Have you set a service name?
-
-Ensure you have set a service name (via `OTEL_SERVICE_NAME=my-service`, or via `OTEL_RESOURCE_ATTRIBUTES=service.name=my-service`) otherwise by default the data (traces, metrics, logs) will be sent to the `unknown_service:node` service -- you may be getting data but it may all be under that service.
-
-
-## Can the application reach the OTLP endpoint?
-
-Check *from* the host/VM/pod/container running your application, that connectivity is available to the collector.
-Run:
+Check from the host, VM, pod, container running your application, that connectivity is available to the Collector. Run the following command:
 
 ```bash
 curl -i $ELASTIC_OTLP_ENDPOINT \
@@ -47,7 +41,7 @@ export OTEL_EXPORTER_OTLP_HEADERS="Authorization=ApiKey Zm9vO...mJhcg=="
 ...
 ```
 
-then you would run:
+Then you would run:
 
 ```bash
 curl -i https://my-deployment-abc123.ingest.us-west-2.aws.elastic.cloud \
@@ -55,7 +49,7 @@ curl -i https://my-deployment-abc123.ingest.us-west-2.aws.elastic.cloud \
     -H "Authorization: ApiKey Zm9vO...mJhcg=="
 ```
 
-If that works correctly, you should expect to see output similar to:
+If that works correctly, you should expect to see output similar to the following:
 
 ```
 HTTP/1.1 200 OK
@@ -67,32 +61,30 @@ Content-Length: 21
 ```
 
 
-## Is the SDK causing an application issue?
+## Deactivate the SDK
 
-If your application has an issue, but you are not sure if the EDOT Node.js SDK
-could be the cause, try disabling the SDK.
+If your application has an issue, but you are not sure if the EDOT Node.js SDK could be the cause, try deactivating the SDK.
 
-You can exclude the SDK by not starting it with your application:
+You can exclude the SDK by not starting it with your application by running the following command:
 
 ```bash
 node my-app.js   # instead of 'node --import @elastic/opentelemetry-node my-app.js'
 ```
 
-or by setting the `OTEL_SDK_DISABLED` environment variable:
+Or by setting the `OTEL_SDK_DISABLED` environment variable:
 
 ```bash
 export OTEL_SDK_DISABLED=true
 node --import @elastic/opentelemetry-node my-app.js
 ```
 
-
 ## SDK diagnostic logs [sdk-diagnostic-logs]
 
-Next, enable verbose diagnostic / debug logging from EDOT Node.js:
+Turn on verbose diagnostic or debug logging from EDOT Node.js:
 
-1. Set the `OTEL_LOG_LEVEL` environment varible to `verbose`.
-2. Restart your application, and reproduce the issue. (Note: If the issue is about not seeing telemetry that you expect to see, be sure to exercise your application -- e.g. send it HTTP requests -- so that telemetry data is generated.)
-3. Gather *the full verbose log from application start* until after the issue was reproduced.
+1. Set the `OTEL_LOG_LEVEL` environment variable to `verbose`.
+2. Restart your application, and reproduce the issue. If the issue is about not seeing telemetry that you expect to see, be sure to use your application so that telemetry data is generated.
+3. Gather the full verbose log from application start until after the issue was reproduced.
 
 The start of the diagnostic log will look something like this:
 
@@ -111,32 +103,12 @@ The start of the diagnostic log will look something like this:
 ```
 
 Look for warnings (`"level":40`) or errors (`"level":50`) in the log output that might indicate an issue.
-(This log output will be invaluable in Elastic support requests or for developers in support requests.)
 
+## Deactivate an instrumentation
 
-## Getting support
+To deactivate an instrumentation, set the [`OTEL_NODE_DISABLED_INSTRUMENTATIONS`](./configuration.md#otel_node_disabledenabled_instrumentations-details) environment variable.
 
-If you are stuck, you can ask for help.  If you're an existing Elastic customer with a support contract, please create a ticket in the [Elastic Support portal](https://support.elastic.co/customers/s/login/). Other users can post in the [APM discuss forum](https://discuss.elastic.co/c/apm) or [open a GitHub issue](https://github.com/elastic/elastic-otel-node/issues).
-
-When opening an issue:
-
-1. By far the best way to help get a quick resolution of your issue is if you can provide a small **reproduction** case. For example, create a small GitHub repository that reproduces the same problem you are seeing. We understand that creating a small reproduction is not always possible.
-2. **Describe your application/service/system architecture** as accurately as possible.
-3. Include as much **[diagnostic log output](#sdk-diagnostic-logs)** as possible.
-
-:::warning
-Though an effort is made to avoid it, verbose/debug diagnostic logs **can include sensitive information**. Therefore it is **not** recommended that the full log is included in public forums or GitHub issues. (This is less of a concern for private Elastic customer support.)
-:::
-
-## How to disable the SDK?
-
-Set the `OTEL_SDK_DISABLED` environment variable to `true`, and restart your application.
-
-## How to disable an instrumentation?
-
-Set the [`OTEL_NODE_DISABLED_INSTRUMENTATIONS`](./configuration.md#otel_node_disabledenabled_instrumentations-details) environment variable.
-
-For example, to disable `@opentelemetry/instrumentation-net` and `@opentelemetry/instrumentation-dns`:
+For example, to deactivate `@opentelemetry/instrumentation-net` and `@opentelemetry/instrumentation-dns` run the following commands:
 
 ```bash
 export OTEL_NODE_DISABLED_INSTRUMENTATIONS=dns,net
@@ -144,11 +116,11 @@ export OTEL_NODE_DISABLED_INSTRUMENTATIONS=dns,net
 node --import @elastic/opentelemetry-node my-app.js
 ```
 
-## How to tell if EDOT Node.js is running?
+## Check if EDOT Node.js is running
 
-Look for "start Elastic Distribution of OpenTelemetry Node.js" in the application log.
+Look for `start Elastic Distribution of OpenTelemetry Node.js` in the application log.
 
-As it is starting, EDOT Node.js always logs (at the "info" level) a preamble to indicate that it has started. For example, it looks like this:
+As it is starting, EDOT Node.js always logs at the "info" level a preamble to indicate that it has started. For example:
 
 ```json
 {"name":"elastic-otel-node","level":30,"preamble":true,"distroVersion":"0.7.0","env":{"os":"darwin 24.3.0","arch":"arm64","runtime":"Node.js v18.20.4"},"msg":"start Elastic Distribution of OpenTelemetry Node.js","time":"2025-03-27T22:14:08.288Z"}

@@ -11,13 +11,13 @@ products:
   - id: edot-python
 ---
 
-# Configuration
+# Configure the EDOT Python agent
 
 Configure the Elastic Distribution of OpenTelemetry Python (EDOT Python) to send data to Elastic.
 
 ## Configuration method
 
-Configuration of the OpenTelemetry SDK should be performed through the mechanisms [documented on the OpenTelemetry website](https://opentelemetry.io/docs/zero-code/python/configuration/). EDOT Python is typically configured with `OTEL_*` environment variables defined by the OpenTelemetry spec. For example:
+Configure the OpenTelemetry SDK through the mechanisms [documented on the OpenTelemetry website](https://opentelemetry.io/docs/zero-code/python/configuration/). EDOT Python is typically configured with `OTEL_*` environment variables defined by the OpenTelemetry spec. For example:
 
 ```sh
 export OTEL_RESOURCE_ATTRIBUTES=service.name=<app-name>
@@ -39,14 +39,14 @@ EDOT Python supports all configuration options listed in the [OpenTelemetry Gene
 
 #### Logs
 
-Instrument Python `logging` module to format and forward logs in OTLP format is disabled by default and gated under a configuration environment variable:
+Instrument Python `logging` module to format and forward logs in OTLP format is turned off by default and gated under a configuration environment variable:
 
 ```sh
 export OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED=true
 ```
 
 :::{note}
-Enabling this will make any call to [logging.basicConfig](https://docs.python.org/3/library/logging.html#logging.basicConfig) from your application a no-op.
+Turning this on will make any call to [logging.basicConfig](https://docs.python.org/3/library/logging.html#logging.basicConfig) from your application a no-op.
 :::
 
 #### Differences from OpenTelemetry Python
@@ -66,8 +66,16 @@ EDOT Python uses different defaults than OpenTelemetry Python for the following 
 
 ### Configuration options only available in EDOT Python
 
-`ELASTIC_OTEL_` options are specific to Elastic and will always live in EDOT Python (they will _not_ be added upstream):
+`ELASTIC_OTEL_` options are specific to Elastic and will always live in EDOT Python include the following.
 
 | Option(s) | Default | Description |
 |---|---|---|
 | `ELASTIC_OTEL_SYSTEM_METRICS_ENABLED` | `false` | When sets to `true`, sends *system namespace* metrics. |
+
+## LLM settings
+
+LLM instrumentations implement the following configuration options:
+
+| Option                                                | default | description               |
+|-------------------------------------------------------|---------|:--------------------------|
+| `OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT`  | `false`| If set to `true`, enables the capturing of request and response content in the log events outputted by the agent.

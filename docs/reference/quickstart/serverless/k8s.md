@@ -19,7 +19,7 @@ Learn how to set up the EDOT Collector and EDOT SDKs in a Kubernetes environment
 Make sure the following requirements are present:
 
 - The **Kubernetes OpenTelemetry Assets** integration is installed in Kibana.
-- The **[System](https://www.elastic.co/docs/reference/integrations/system)** integration is installed in Kibana. Select **Add integration only** to skip the agent installation, as only the integration assets are required.
+- The **[System](integration-docs://reference/system/index.md)** integration is installed in Kibana. Select **Add integration only** to skip the agent installation, as only the integration assets are required.
 
 ## Guided setup
 
@@ -106,6 +106,6 @@ Exporting failed. Dropping data.
 
 Format your API key as `"Authorization": "ApiKey <api-key-value-here>"` or `"Authorization=ApiKey <api-key>"` depending on whether you're using a Collector or SDK.
 
-### Error: too many requests
+### Error: too many requests
 
 The managed endpoint has per-project rate limits in place. If you reach this limit, contact our [support team](https://support.elastic.co).

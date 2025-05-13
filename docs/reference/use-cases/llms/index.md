@@ -20,7 +20,7 @@ Elastic currently supports LLM observability through the Elastic Distributions o
 
 The following LLM platforms are supported:
 
-| Technology | [EDOT Java](../../edot-sdks/java/supported-technologies.md#llm-instrumentations) | [EDOT Node.js](../../edot-sdks/nodejs/supported-technologies.md#llm-instrumentations) | [EDOT Python](../../edot-sdks/python/supported-technologies.md#llm-instrumentations) |
+| Technology | [EDOT Java](../../edot-sdks/java/supported-technologies.md#openai-client-instrumentation) | [EDOT Node.js](../../edot-sdks/nodejs/supported-technologies.md#llm-instrumentations) | [EDOT Python](../../edot-sdks/python/supported-technologies.md#llm-instrumentations) |
 |:-----------|:----------|:-------------|:------------|
 | OpenAI Client | ✅ | ✅ | ✅ |
 | AWS Bedrock | ❌ | ❌ | ✅ |

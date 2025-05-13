@@ -11,17 +11,19 @@ products:
   - id: edot-python
 ---
 
-# Technologies Supported by the EDOT Python SDK
+# Technologies supported by EDOT Python
 
-## EDOT Collector / Elastic Stack versions
+EDOT Python is a [distribution](https://opentelemetry.io/docs/concepts/distributions/) of OpenTelemetry Python. It inherits all the [supported](../../compatibility/nomenclature.md) technologies of the OpenTelemetry Python.
 
-EDOT Python sends data via the OpenTelemetry protocol (OTLP). While OTLP ingest works with later 8.16+ versions of the EDOT Collector, for full support it is strongly recommended that you use either [EDOT Collector](../../edot-collector/index.md) versions 9.x or [Elastic Cloud Serverless](https://www.elastic.co/guide/en/serverless/current/intro.html) for OTLP ingest.
+## EDOT Collector and Elastic Stack versions
+
+EDOT Python sends data through the OpenTelemetry protocol (OTLP). While OTLP ingest works with later 8.16+ versions of the EDOT Collector, for full support use either [EDOT Collector](../../edot-collector/index.md) versions 9.x or Elastic Cloud Serverless for OTLP ingest.
 
 :::{note}
-> Ingesting data from EDOT SDKs through EDOT Collector 9.x into Elastic Stack versions 8.18+ *is supported*.
+Ingesting data from EDOT SDKs through EDOT Collector 9.x into Elastic Stack versions 8.18+ is supported.
 :::
 
-See [EDOT SDKs compatibility](../../compatibility/sdks.md) for support details.
+Refer to [EDOT SDKs compatibility](../../compatibility/sdks.md) for support details.
 
 ## Python versions
 
@@ -38,7 +40,7 @@ This follows the [OpenTelemetry Python Version Support](https://github.com/open-
 
 ## Instrumentations
 
-We don't install instrumentations by default and we suggest to use our [edot-bootstrap](./setup/index.md#install-the-available-instrumentation) command to automatically install the available instrumentations.
+Instrumentations are not installed by default. Use the [edot-bootstrap](./setup/index.md) command to automatically install the available instrumentations.
 
 | Name | Packages instrumented | Semantic conventions status |
 |---|---|---|---|
@@ -96,35 +98,23 @@ We don't install instrumentations by default and we suggest to use our [edot-boo
 | [opentelemetry-instrumentation-wsgi](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-wsgi) | wsgi | migration
 
 The semantic conventions status tracks the stabilization of the semantic conventions used in the instrumentation:
-- stable, means they are stable and are not expected to change
-- development, means they are not stable yet and they may change in the future
-- migration, means there may be configuration knobs to switch between different semantic conventions
+
+- Stable means they are stable and are not expected to change.
+- Development means they are not stable yet and they may change in the future.
+- Migration means there may be configuration knobs to switch between different semantic conventions.
 
 ### Native Elasticsearch instrumentation
 
-Some libraries like the [Python Elasticsearch Client](https://www.elastic.co/guide/en/elasticsearch/client/python-api/current/index.html)
-natively supports OpenTelemetry instrumentation.
+Some libraries like the [Python Elasticsearch Client](https://www.elastic.co/guide/en/elasticsearch/client/python-api/current/index.html) natively supports OpenTelemetry instrumentation.
 
-The [elasticsearch](https://elasticsearch-py.readthedocs.io/en/latest/) package got native OpenTelemetry support since version 8.13.
+The [elasticsearch](https://elasticsearch-py.readthedocs.io/en/latest/) package has native OpenTelemetry support since version 8.13.
 
 ### LLM instrumentations
 
-We can instrument the following LLM (Large Language Model) libraries with instrumentations implementing the [OpenTelemetry GenAI Semantic Conventions](https://opentelemetry.io/docs/specs/semconv/gen-ai/):
+You can instrument the following LLM (Large Language Model) libraries with instrumentations implementing the [OpenTelemetry GenAI Semantic Conventions](https://opentelemetry.io/docs/specs/semconv/gen-ai/):
 
-| **SDK**                     | **Instrumentation**                          | **Traces** | **Metrics** | **Logs** | **Notes** |
-|-----------------------------|----------------------------------------------|------------|-------------|----------|-----------|
-| OpenAI                      | [elastic-opentelemetry-instrumentation-openai](https://github.com/elastic/elastic-otel-python-instrumentations/blob/main/instrumentation/elastic-opentelemetry-instrumentation-openai) | ✅         | ✅          | ✅       | 1.        |
-| AWS SDK for Python (Boto3)  | [opentelemetry-instrumentation-botocore](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-botocore)              | ✅         | ✅          | ✅       | 2.        |
-| Google Cloud AI Platform    | [opentelemetry-instrumentation-vertexai](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation-genai/opentelemetry-instrumentation-vertexai)        | ✅         | 🚧          | ✅       | 3.        |
-
-1. Support for sync and async [chat completions create](https://platform.openai.com/docs/guides/text?api-mode=chat) API and [embeddings](https://platform.openai.com/docs/guides/embeddings?lang=python) API.
-2. Support for [Bedrock Runtime](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/bedrock-runtime.html) [InvokeModel](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_runtime_InvokeModel.html), [InvokeModelWithResponseStream](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_runtime_InvokeModelWithResponseStream.html), [Converse](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_runtime_Converse.html) and [ConverseStream](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_runtime_ConverseStream.html) APIs. A subset of models are traced in InvokeModel and InvokeModelWithStreaming API, see [botocore instrumentation](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-botocore#bedrock-runtime).
-3. Instrumentation supports tracing and sending events for synchronous API calls, and currently doesn't support async APIs and streaming calls yet.
-
-#### Configuration
-
-These instrumentations implement the following configuration options:
-
-| Option                                                | default | description               |
-|-------------------------------------------------------|---------|:--------------------------|
-| `OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT`  | `false`| If set to `true`, enables the capturing of request and response content in the log events outputted by the agent.
+| **SDK**                     | **Instrumentation**                          | **Traces**   | **Metrics**     | **Logs**       | **Notes**                                                                                                                                                                                                                     |
+|-----------------------------|----------------------------------------------|--------------|-----------------|----------------|---------------------------------------------------------------------------------------------------------------------------------------------------|
+| OpenAI                      | [elastic-opentelemetry-instrumentation-openai](https://github.com/elastic/elastic-otel-python-instrumentations/blob/main/instrumentation/elastic-opentelemetry-instrumentation-openai) | Supported    | Supported       | Supported      | Supports sync and async [chat completions create](https://platform.openai.com/docs/guides/text?api-mode=chat) API and [embeddings](https://platform.openai.com/docs/guides/embeddings?lang=python) API.                      |
+| AWS SDK for Python (Boto3)  | [opentelemetry-instrumentation-botocore](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-botocore)              | Supported    | Supported       | Supported      | Supports [Bedrock Runtime](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/bedrock-runtime.html) APIs like [InvokeModel](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_runtime_InvokeModel.html), [InvokeModelWithResponseStream](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_runtime_InvokeModelWithResponseStream.html), [Converse](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_runtime_Converse.html), and [ConverseStream](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_runtime_ConverseStream.html). A subset of models are traced in InvokeModel and InvokeModelWithStreaming API. See [botocore instrumentation](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-botocore#bedrock-runtime). |
+| Google Cloud AI Platform    | [opentelemetry-instrumentation-vertexai](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation-genai/opentelemetry-instrumentation-vertexai)        | Supported    | Experimental    | Supported      | Instrumentation supports tracing and sending events for synchronous API calls. Currently, it doesn't support async APIs and streaming calls.                                           |
