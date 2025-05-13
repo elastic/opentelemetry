@@ -5,8 +5,8 @@ applies_to:
   serverless:
     observability:
 products:
-  - cloud-serverless
-  - observability
+  - id: cloud-serverless
+  - id: observability
 ---
 
 # Quickstart on Elastic Cloud Serverless

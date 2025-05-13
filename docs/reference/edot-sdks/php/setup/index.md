@@ -6,9 +6,9 @@ applies_to:
   serverless:
     observability:
 products:
-  - cloud-serverless
-  - observability
-  - edot-php
+  - id: cloud-serverless
+  - id: observability
+  - id: edot-php
 ---
 
 # Setting up EDOT PHP

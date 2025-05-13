@@ -6,9 +6,9 @@ applies_to:
   serverless:
     observability:
 products:
-  - cloud-serverless
-  - observability
-  - edot-python
+  - id: cloud-serverless
+  - id: observability
+  - id: edot-python
 ---
 
 # Troubleshooting the EDOT Python Agent

@@ -6,10 +6,10 @@ applies_to:
   serverless:
     observability:
 products:
-  - cloud-serverless
-  - observability
-  - edot-php
-  - apm-php-agent
+  - id: cloud-serverless
+  - id: observability
+  - id: edot-php
+  - id: apm-php-agent
 ---
 
 # Migrating to EDOT PHP from the Elastic PHP Agent
@@ -38,15 +38,6 @@ sudo rpm -e elastic-apm-php
 sudo apk del elastic-apm-php
 ```
 
-applies_to:
-  stack:
-  serverless:
-    observability:
-products:
-  - cloud-serverless
-  - observability
----
-
 ### 2. Install EDOT PHP
 
 Download the appropriate package for your system from the [GitHub releases page](https://github.com/elastic/elastic-otel-php/releases).
@@ -69,15 +60,6 @@ sudo rpm -ivh elastic-otel-php-<version>-1.x86_64.rpm
 sudo apk add --allow-untrusted elastic-otel-php-<version>.apk
 ```
 
-applies_to:
-  stack:
-  serverless:
-    observability:
-products:
-  - cloud-serverless
-  - observability
----
-
 ### 3. Update configuration
 
 Switch from `php.ini`-based configuration to environment variables. Below is a common mapping between old and new settings:
@@ -93,15 +75,6 @@ Switch from `php.ini`-based configuration to environment variables. Below is a c
 :::tip
 EDOT PHP does not require changes to your code or Composer configuration — instrumentation works automatically after package installation.
 :::
-
-applies_to:
-  stack:
-  serverless:
-    observability:
-products:
-  - cloud-serverless
-  - observability
----
 
 ### Full Configuration Mapping: Elastic APM PHP → EDOT PHP
 
@@ -135,16 +108,6 @@ products:
 | `inferred_spans_sampling_interval` | [`ELASTIC_OTEL_INFERRED_SPANS_SAMPLING_INTERVAL`](./configuration.md#inferred-spans-configuration)                                                                               | Sampling frequency for stack traces during inferred spans.                                                                   |
 | `inferred_spans_min_duration`      | [`ELASTIC_OTEL_INFERRED_SPANS_MIN_DURATION`](./configuration.md#inferred-spans-configuration)                                                                                    | Minimum duration of inferred span (used to limit noise).                                                                     |
 
-
-applies_to:
-  stack:
-  serverless:
-    observability:
-products:
-  - cloud-serverless
-  - observability
----
-
 ### 4. Restart your PHP environment
 
 Restart the relevant PHP processes for changes to take effect. This could include:
@@ -164,16 +127,7 @@ Restart the relevant PHP processes for changes to take effect. This could includ
   php script.php
   ```
 
-applies_to:
-  stack:
-  serverless:
-    observability:
-products:
-  - cloud-serverless
-  - observability
----
-
-✅ You’re now ready to start collecting traces and metrics using OpenTelemetry with Elastic!
+You’re now ready to start collecting traces and metrics using OpenTelemetry with Elastic!
 
 ## Advantages of EDOT PHP over the Classic Elastic APM Agent
 
@@ -202,7 +156,7 @@ products:
 ### Unified telemetry collection (traces + metrics)
 - EDOT PHP can be used in environments where **both tracing and metrics** are collected using OpenTelemetry.
 - The classic APM agent focuses solely on APM/tracing.
-## ⚠️ Limitations Compared to the Elastic APM Agent
+## Limitations Compared to the Elastic APM Agent
 
 - Lack of Span Compression
 
