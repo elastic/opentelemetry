@@ -60,7 +60,7 @@ To configure EDOT Node.js, as a typical minimum you will need:
 * `OTEL_EXPORTER_OTLP_HEADERS`: A comma-separated list of HTTP headers used for exporting data, typically used to set the `Authorization` header with auth information. **Get an `ELASTIC_API_KEY` as described in the [EDOT Quickstart pages](../../../quickstart/index.md) and set this to `"Authorization=ApiKey ELASTIC_API_KEY"`.**
 * `OTEL_SERVICE_NAME`: The name of your service, used to distinguish telemetry data from other services in your system. If not set, it will default to `unknown_service:node`.
 
-:::note
+:::{note}
 In some environments, for example in some Kubernetes setups, a *local* OpenTelemetry Collector (e.g. EDOT Collector) is deployed with an endpoint of `http://localhost:4318`. This is the default exporter endpoint used by EDOT Node.js. In this case the `OTEL_EXPORTER_OTLP_ENDPOINT` environment variable does not need to be set.
 :::
 

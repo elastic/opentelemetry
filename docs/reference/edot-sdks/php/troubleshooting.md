@@ -33,7 +33,7 @@ Additionally, it is recommended to enable logging for OpenTelemetry components, 
 export OTEL_LOG_LEVEL=DEBUG
 ```
 
-:::important
+:::{note}
 Please upload your complete debug logs to a service like [GitHub Gist](https://gist.github.com) so that we can analyze the problem. Logs should include everything from when the application starts up until the first request executes. It is important to note that logs may contain sensitive data — be sure to review and sanitize them before sharing.
 :::
 
@@ -45,7 +45,7 @@ you can disable the agent while you troubleshoot.
 
 You can disable the agent by setting [`elastic_otel.enabled`](./configuration.md#general-configuration) to `false`.
 
-:::important
+:::{note}
 You'll need to restart your application for the changes to apply.
 :::
 
@@ -72,7 +72,7 @@ export ELASTIC_OTEL_NATIVE_OTLP_SERIALIZER_ENABLED=false
 
 Restart your application and check if spans/logs/metrics start appearing correctly.
 
-:::note
+:::{note}
 When disabled, the agent falls back to a PHP-based serializer, which has lower performance.
 :::
 
@@ -111,7 +111,7 @@ If there are multiple PHP processes in your system, we allow you to specify dire
 
 - `%t` - In this place, the agent will substitute the UNIX timestamp.
 
-:::warning IMPORTANT
+:::{warning} IMPORTANT
 After setting the path, remember to _fully restart the process_ for which you are collecting diagnostic information. This may vary depending on the context, such as PHP, PHP-FPM, Apache, or PHP-CGI. Diagnostic information will be recorded after the first HTTP request is made or at the beginning of script execution for PHP-CLI.
 
 Please also be aware that the information contained in the output file may include sensitive data, such as passwords, security tokens or environment variables from your system. Make sure to review the data and mask sensitive information before sharing the file publicly.

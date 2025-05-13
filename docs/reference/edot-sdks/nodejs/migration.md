@@ -99,7 +99,7 @@ The Elastic APM Node.js agent [`secretToken`](https://www.elastic.co/guide/en/ap
 
 For example: `OTEL_EXPORTER_OTLP_HEADERS="Authorization=Bearer an_apm_secret_token"`.
 
-:::note
+:::{note}
 Secret token usage is discouraged and Elastic recomends the usage of API keys for authentication.
 :::
 

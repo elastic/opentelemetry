@@ -39,7 +39,7 @@ For this example, we assume the application you're instrumenting is a deployment
     elastic-instrumentation   107s   http://opentelemetry-kube-stack-daemon-collector.opentelemetry-operator-system.svc.cluster.local:4318
     ```
 
-    :::note
+    :::{note}
     If your `Instrumentation` object has a different name or is created in a different namespace, you will have to adapt the annotation value in the next step.
     :::
 
@@ -153,7 +153,7 @@ For this example, we assume the application you're instrumenting is a deployment
         - The application shows transactions and metrics.
 
 
-        :::note
+        :::{note}
         You may need to generate traffic to your application to see spans and metrics.
         :::
 

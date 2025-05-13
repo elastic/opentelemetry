@@ -37,7 +37,7 @@ export OTEL_SERVICE_NAME=my-app
 
 This section attempts to list all environment variables that can be used to configure EDOT Node.js. Some settings also have a section below discussing behavior that is interesting and/or specific to EDOT Node.js.
 
-:::warning
+:::{warning}
 The behavior of `OTEL_` environment variables are typically defined by upstream OpenTelemetry dependencies of EDOT Node.js. In some cases, these dependencies have a "development" status (`0.x` versions). This means that their behavior can be broken in a minor release of EDOT Node.js.
 :::
 

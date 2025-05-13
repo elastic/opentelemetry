@@ -106,6 +106,6 @@ Exporting failed. Dropping data.
 
 Format your API key as `"Authorization": "ApiKey <api-key-value-here>"` or `"Authorization=ApiKey <api-key>"` depending on whether you're using a Collector or SDK.
 
-### Error: too many requests
+### Error: too many requests
 
 The managed endpoint has per-project rate limits in place. If you reach this limit, contact our [support team](https://support.elastic.co).

@@ -128,7 +128,6 @@ builder.AddElasticOpenTelemetry(b => b
   .ConfigureResource(r => r.AddService("MyAppName")));
 ```
 
-{: .note }
 The preceding code requires two additional `using` directives:
 
 ```csharp

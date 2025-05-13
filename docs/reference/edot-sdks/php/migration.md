@@ -72,7 +72,7 @@ Switch from `php.ini`-based configuration to environment variables. Below is a c
 | `elastic_apm.secret_token = token123`  | `OTEL_EXPORTER_OTLP_HEADERS="Authorization=Bearer token123"` | Sets auth header for OTLP exporter             |
 | `elastic_apm.environment = production` | `OTEL_RESOURCE_ATTRIBUTES=deployment.environment=production` | Adds environment context to exported data      |
 
-:::tip
+:::{tip}
 EDOT PHP does not require changes to your code or Composer configuration — instrumentation works automatically after package installation.
 :::
 
@@ -164,6 +164,6 @@ You’re now ready to start collecting traces and metrics using OpenTelemetry wi
 
     EDOT PHP does not currently support span compression. As a result, traces may be more verbose and produce higher cardinality, especially in loop-heavy code.
 
-:::note
+:::{note}
 For a broader overview of known limitations — including technical constraints related to PHP runtime and extensions — see the [Limitations](./setup/limitations.md) page.
 :::

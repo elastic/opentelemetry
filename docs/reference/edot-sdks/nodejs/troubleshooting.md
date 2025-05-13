@@ -124,7 +124,7 @@ When opening an issue:
 2. **Describe your application/service/system architecture** as accurately as possible.
 3. Include as much **[diagnostic log output](#sdk-diagnostic-logs)** as possible.
 
-:::warning
+:::{warning}
 Though an effort is made to avoid it, verbose/debug diagnostic logs **can include sensitive information**. Therefore it is **not** recommended that the full log is included in public forums or GitHub issues. (This is less of a concern for private Elastic customer support.)
 :::
 
