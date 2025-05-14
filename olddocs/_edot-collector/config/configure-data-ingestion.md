@@ -1,14 +1,5 @@
 ---
-title: Configure Data Ingestion
-parent: Configuration
-layout: default
-nav_order: 5
+layout: redirection
+permalink: /edot-collector/config/configure-data-ingestion.html
+redirect: https://www.elastic.co/docs/reference/opentelemetry/edot-collector/config/configure-data-ingestion.html
 ---
-
-🚧 Coming soon
-
-- data routing (example split data by K8s namespace into different data streams)
-- ECS mode (though not officially supported)
-- what do users need to do if they only want certain logs / certain metrics / certain application telemetry
-    - enable / disable exporters on SDKs
-    - add / remove pipelines in the collector 

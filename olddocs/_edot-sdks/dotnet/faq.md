@@ -1,11 +1,5 @@
 ---
-title: Frequently Asked Questions
-layout: default
-nav_order: 6
-parent: EDOT .NET
-nav_exclude: true
+layout: redirection
+permalink: /edot-sdks/dotnet/faq.html
+redirect: https://www.elastic.co/docs/reference/opentelemetry/edot-sdks/dotnet/index.html
 ---
-
-# Frequently Asked Questions on EDOT .NET
-
-TODO

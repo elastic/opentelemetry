@@ -1,11 +1,5 @@
 ---
-title: ASP.NET Core
-layout: default
-nav_order: 1
-parent: Setup
-grand_parent: EDOT .NET
-nav_exclude: true
+layout: redirection
+permalink: /edot-sdks/dotnet/setup/aspnetcore.html
+redirect: https://www.elastic.co/docs/reference/opentelemetry/edot-sdks/dotnet/setup/index.html
 ---
-
-# Set up EDOT .NET for ASP.NET Core applications
-

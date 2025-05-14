@@ -1,8 +1,5 @@
 ---
-title: Use Cases
-layout: default
-nav_order: 4
-fa_icon_key: fa-solid fa-layer-group
+layout: redirection
+permalink: /use-cases/index.html
+redirect: https://www.elastic.co/docs/reference/opentelemetry/use-cases/index.html
 ---
-
-# Use Cases
