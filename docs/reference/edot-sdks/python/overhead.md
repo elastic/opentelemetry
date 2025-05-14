@@ -6,20 +6,20 @@ applies_to:
   serverless:
     observability:
 products:
-  - cloud-serverless
-  - observability
-  - edot-python
+  - id: cloud-serverless
+  - id: observability
+  - id: edot-python
 ---
 
-# Performance Overhead
+# Performance overhead
 
-Every instrumentation agent comes with performance overhead for your application. How much really depends on your application and on the instrumentations used.
+While designed to have minimal performance overhead, the EDOT Java agent, like any instrumentation agent, executes within the application process and thus has a small influence on the application performance. 
 
-While we can't provide generically applicable, accurate numbers about the performance overhead, here you can find some measurement taken
-from a sample web application which allows to provide a comparison between agents and an order of magnitude of the effective overhead.
+This performance overhead depends on the application's technical architecture, its configuration and environment, and the load. These factors are not easy to reproduce on their own, and all applications are different, so it is not possible to provide a simple answer.
 
-Those numbers are only provided as indicators, and you should not attempt to extrapolate them. You should however use
-them as a framework to evaluate and measure the overhead on your applications.
+## Benchmark 
+
+The following numbers are only provided as indicators, and you should not attempt to extrapolate them. Use them as a framework to evaluate and measure the overhead on your applications.
 
 The following table compares the response times of a sample web application without an agent, with Elastic APM Python Agent and with EDOT Python Agent in two situations: without data loaded and serialized to measure the minimal overhead of agents and with some data loaded and then serialized to provide a more common scenario.
 

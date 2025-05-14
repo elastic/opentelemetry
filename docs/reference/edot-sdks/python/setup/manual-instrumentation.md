@@ -6,33 +6,28 @@ applies_to:
   serverless:
     observability:
 products:
-  - cloud-serverless
-  - observability
-  - edot-python
+  - id: cloud-serverless
+  - id: observability
+  - id: edot-python
 ---
 
 # Manual instrumentation
 
-This guide shows you how to use the Elastic Distribution of OpenTelemetry Python (EDOT Python) to manually instrument your Python application and send OpenTelemetry data to an Elastic Observability deployment.
+Learn how to use the Elastic Distribution of OpenTelemetry Python (EDOT Python) to manually instrument your Python application and send OpenTelemetry data to an Elastic Observability deployment.
 
-This guide requires to have already added auto-instrumentation with OpenTelemetry to your application per [Setup](./index.md).
+The following instructions require to have already added auto-instrumentation with OpenTelemetry to your application per [Setup](./index.md).
 
-**New to OpenTelemetry?** If your are new to OpenTelemetry we encourage you to take a look at our [Setup documentation](./index.md) instead, which will introduce you to auto-instrumentation.
+## Configure EDOT Python
 
-### Configure EDOT Python
+Refer to our [Setup](./index.md) page for more details.
 
-Refer to our [Setup](./index.md#configure-edot-python) page for more details.
+## Manually instrument your auto-instrumented Python application
 
-### Manually instrument your auto instrumented Python application
+The following example shows how to add manual instrumentation to an already automatically instrumented application. A use case for this setup would be to trace something in particular while keeping the benefits of the simplicity of the automatic instrumentation doing the hard work for you.
 
-In this section we'll show how to add manual instrumentation to an already automatically instrumented application. A use case for
-this setup would be to trace something in particular while keeping the benefits of the simplicity of the automatic instrumentation doing
-the hard work for us.
+As an example we'll use an application using the Flask framework that implements an endpoint mounted on `/hello` returning a friendly salute. This application is saved in a file named `app.py` that is the default module for Flask applications.
 
-As an example we'll use an application using the Flask framework that implements an endpoint mounted on `/hello` returning a friendly
-salute. This application is saved in a file named `app.py` that is the default module for Flask applications.
-
-```
+```python
 import random
 
 from flask import Flask
@@ -52,24 +47,22 @@ def hello():
     return f"Hello {choice}!"
 ```
 
-
-We need to make sure to have Flask and the Flask OpenTelemetry instrumentation installed:
+Make sure to have Flask and the Flask OpenTelemetry instrumentation installed:
 
 ```bash
 pip install flask
 edot-bootstrap --action=install
 ```
 
-And then we can run this application with the following command:
+Then run this application with the following command:
 
 ```bash
 opentelemetry-instrument flask run
 ```
 
-We may not only need to add a custom span to our application but also want to use a custom metric, like in the example below where we
-are tracking how many times we are getting one of the possible choices for our salutes.
+You might not only need to add a custom span to our application but also want to use a custom metric, like in the next example, where you are tracking how many times we are getting one of the possible choices for our salutes:
 
-```
+```python
 import random
 
 from flask import Flask
@@ -100,10 +93,10 @@ def hello():
 
 To confirm that EDOT Python has successfully connected to Elastic:
 
-1. Go to **Observability** → **Applications** → **Service Inventory**
-1. You should see the name of the service to which you just added EDOT Python. It can take several minutes after initializing EDOT Python for the service to show up in this list.
-1. Click on the name in the list to see trace data.
+1. Go to **Observability**, **Applications**, **Service Inventory**
+1. Find the name of the service to which you just added EDOT Python. It can take several minutes after initializing EDOT Python for the service to show up in this list.
+1. Select the name in the list to see trace data.
 
 :::{note}
-There may be no trace data to visualize unless you have _used_ your application since initializing EDOT Python.
+There might be no trace data to visualize unless you have used your application since initializing EDOT Python.
 :::

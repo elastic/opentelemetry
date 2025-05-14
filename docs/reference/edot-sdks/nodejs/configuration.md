@@ -6,12 +6,12 @@ applies_to:
   serverless:
     observability:
 products:
-  - cloud-serverless
-  - observability
-  - edot-nodejs
+  - id: cloud-serverless
+  - id: observability
+  - id: edot-nodejs
 ---
 
-# Configuring the EDOT Node.js SDK
+# Configure the EDOT Node.js SDK
 
 The Elastic Distribution of OpenTelemetry Node.js (EDOT Node.js) is configured with environment variables beginning with `OTEL_` or `ELASTIC_OTEL_`. Any `OTEL_*` environment variables behave the same as with the upstream OpenTelemetry SDK. For example, all the OpenTelemetry [General SDK Configuration env vars](https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#general-sdk-configuration) are supported. If EDOT Node.js provides a configuration setting specific to the Elastic distribution, it will begin with `ELASTIC_OTEL_`.
 
@@ -37,7 +37,7 @@ export OTEL_SERVICE_NAME=my-app
 
 This section attempts to list all environment variables that can be used to configure EDOT Node.js. Some settings also have a section below discussing behavior that is interesting and/or specific to EDOT Node.js.
 
-:::warning
+:::{warning}
 The behavior of `OTEL_` environment variables are typically defined by upstream OpenTelemetry dependencies of EDOT Node.js. In some cases, these dependencies have a "development" status (`0.x` versions). This means that their behavior can be broken in a minor release of EDOT Node.js.
 :::
 

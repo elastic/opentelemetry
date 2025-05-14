@@ -6,24 +6,30 @@ applies_to:
   serverless:
     observability:
 products:
-  - cloud-serverless
-  - observability
-  - edot-php
+  - id: cloud-serverless
+  - id: observability
+  - id: edot-php
 ---
 
-# Performance Comparison of PHP Instrumentation Agents
+# Performance overhead
 
-The following benchmarks compare the performance overhead of various PHP observability agents, including **EDOT PHP**, **Elastic APM**, and the official **OpenTelemetry PHP** agent. All tests were executed in a local Docker-based environment (PHP-FPM 8.2 + NGINX). In configurations that include a collector, it was also running locally, consuming shared CPU resources.
+While designed to have minimal performance overhead, the EDOT PHP agent, like any instrumentation agent, executes within the application process and thus has a small influence on the application performance. 
 
-## Benchmark Setup
+This performance overhead depends on the application's technical architecture, its configuration and environment, and the load. These factors are not easy to reproduce on their own, and all applications are different, so it is not possible to provide a simple answer.
 
-- **Application**: Laravel/Aimeos running under PHP-FPM 8.2
-- **Environment**: Local Docker with NGINX
-- **Telemetry Backends**:
+The following benchmarks compare the performance overhead of various PHP observability agents, including EDOT PHP, Elastic APM and the official OpenTelemetry PHP agent. All tests were executed in a local Docker-based environment (PHP-FPM 8.2 + NGINX). In configurations that include a Collector, it was also running locally, consuming shared CPU resources.
+
+## Benchmark
+
+The benchmark uses the following components:
+
+- Application: Laravel/Aimeos running under PHP-FPM 8.2
+- Environment: Local Docker with NGINX
+- Telemetry backends:
   - Elastic Cloud APM endpoint (for ElasticAPM and EDOT)
   - EDOT Collector (locally for EDOT PHP and for vanilla OTEL PHP agents)
 
-## Results Summary
+## Results
 
 | Variant                                                   | Avg. Time per Request [ms] | Overhead [ms] |
 | --------------------------------------------------------- | -------------------------- | ------------- |
@@ -35,14 +41,14 @@ The following benchmarks compare the performance overhead of various PHP observa
 | **Vanilla OTEL PHP pure PHP protobuf export + Collector** | 49.02                      | 31.66         |
 | **Vanilla OTEL PHP pure PHP protobuf export**             | 2158.58                    | 2141.22       |
 
-## Key Findings
+## Key findings
 
-- **EDOT PHP delivers the best balance** of performance and observability, with low overhead and full compatibility with Elastic and OpenTelemetry ecosystems.
-- The **Elastic APM agent** provides slightly lower latency but is limited to the Elastic stack.
-- **Vanilla OTEL PHP with Protobuf via C extension** improves significantly over pure PHP, but still trails behind EDOT PHP.
-- The **pure PHP implementation of Protobuf export in Vanilla OTEL PHP** leads to extreme performance degradation, rendering it impractical for real-world use.
-- Running a local collector increases CPU load, especially when colocated with the application container.
+EDOT PHP delivers the best balance of performance and observability, with low overhead and full compatibility with Elastic and OpenTelemetry ecosystems. The Elastic APM agent provides slightly lower latency but is limited to the Elastic stack.
 
-## Recommendation
+Upstream OTEL PHP with Protobuf via C extension improves significantly over pure PHP, but still trails behind EDOT PHP. The pure PHP implementation of Protobuf export in upstream OTEL PHP leads to extreme performance degradation, rendering it impractical for real-world use.
 
-For modern, production-ready PHP observability, **EDOT PHP is the top recommendation**. It offers strong OpenTelemetry support and excellent performance, significantly outperforming the official OpenTelemetry PHP implementation while remaining flexible and standards-compliant.
+ Running a local Collector increases CPU load, especially when colocated with the application container.
+
+## Recommendations
+
+For modern, production-ready PHP observability, EDOT PHP is the top recommendation. It offers strong OpenTelemetry support and excellent performance, significantly outperforming the official OpenTelemetry PHP implementation while remaining flexible and standards-compliant.

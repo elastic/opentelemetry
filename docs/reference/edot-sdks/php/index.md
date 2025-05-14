@@ -6,9 +6,9 @@ applies_to:
   serverless:
     observability:
 products:
-  - cloud-serverless
-  - observability
-  - edot-php
+  - id: cloud-serverless
+  - id: observability
+  - id: edot-php
 ---
 
 # Elastic Distribution of OpenTelemetry PHP
@@ -19,7 +19,7 @@ Use EDOT PHP to start the OpenTelemetry SDK with your PHP application, and autom
 
 A goal of this distribution is to avoid introducing proprietary concepts in addition to those defined by the wider OpenTelemetry community. For any additional features introduced, Elastic aims at contributing them back to the upstream OpenTelemetry project.
 
-## Features
+## Features
 
 In addition to all the features of OpenTelemetry PHP, with EDOT PHP you have access to the following:
 

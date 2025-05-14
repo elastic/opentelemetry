@@ -6,18 +6,18 @@ applies_to:
   serverless:
     observability:
 products:
-  - cloud-serverless
-  - observability
-  - edot-php
+  - id: cloud-serverless
+  - id: observability
+  - id: edot-php
 ---
 
-# Configuring the EDOT PHP SDK
+# Configure the EDOT PHP SDK
 
-Configure the Elastic Distribution of OpenTelemetry PHP (EDOT PHP) to send data to Elastic.
+Learn how to configure the Elastic Distribution of OpenTelemetry PHP (EDOT PHP) to send data to Elastic.
 
 ## Configuration method
 
-Configuration of the OpenTelemetry SDK should be performed through the mechanisms [documented on the OpenTelemetry website](https://opentelemetry.io/docs/zero-code/php#configuration). EDOT PHP is typically configured with `OTEL_*` environment variables defined by the OpenTelemetry spec. For example:
+You can configure the OpenTelemetry SDK through the mechanisms [documented on the OpenTelemetry website](https://opentelemetry.io/docs/zero-code/php#configuration). EDOT PHP is typically configured with `OTEL_*` environment variables defined by the OpenTelemetry spec. For example:
 
 ```bash
 export OTEL_EXPORTER_OTLP_ENDPOINT="https://********.cloud.es.io:443/"
@@ -28,7 +28,7 @@ export OTEL_EXPORTER_OTLP_ENDPOINT="https://********.cloud.es.io:443/"
 Because the Elastic Distribution of OpenTelemetry PHP is an extension of the OpenTelemetry PHP SDK, it supports:
 
 * [OpenTelemetry configuration options](#opentelemetry-configuration-options)
-* [Configuration options only available in EDOT PHP](#configuration-options-only-available-in-edot-php)
+* [Configuration options only available in EDOT PHP](#options-only-available-in-edot-php)
 
 ### OpenTelemetry configuration options
 
@@ -46,59 +46,50 @@ The most important OpenTelemetry options you should be aware of include:
 | [OTEL_TRACES_SAMPLER_ARG](https://opentelemetry.io/docs/languages/sdk-configuration/general/#otel_traces_sampler_arg)         |                         | string or number                                | Provides an argument to the configured traces sampler, such as the sampling ratio for `traceidratio` (e.g., `0.25` for 25% sampling).                                                                      |
 | [OTEL_LOG_LEVEL](https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#general-sdk-configuration)                           | "info"                  | "error", "warn", "info", "debug"                | Sets the verbosity level of the OpenTelemetry SDK’s internal logging. Useful for debugging configuration or troubleshooting instrumentation.                                                               |
 
-:::{note} Reference
 For full configuration options of PHP SDK, see the official [OpenTelemetry PHP SDK Configuration documentation](https://opentelemetry.io/docs/languages/php/sdk/#configuration).
-:::
 
-:::{note}
-EDOT PHP sets the `OTEL_PHP_AUTOLOAD_ENABLED` option to `true` by default.
-This enables automatic instrumentation without requiring any changes to your application code.
-Modifying this option will have no effect — EDOT will override it and enforce it as `true`.
-:::
+### Special considerations
 
-:::{note} Note on EDOT PHP background sending
-EDOT PHP supports background data transmission (non-blocking export), but **only when the exporter is set to `http/protobuf` (OTLP over HTTP)** — which is the default configuration.
-If you change the exporter or the transport protocol (e.g., to gRPC or another format), telemetry data will be sent **synchronously**, potentially impacting request latency.
-:::
+EDOT PHP supports background data transmission (non-blocking export), but only when the exporter is set to `http/protobuf` (OTLP over HTTP), which is the default configuration.
+If you change the exporter or the transport protocol, for example to gRPC or another format, telemetry data will be sent synchronously, potentially impacting request latency.
 
-### Configuration options only available in EDOT PHP
+EDOT PHP also sets the `OTEL_PHP_AUTOLOAD_ENABLED` option to `true` by default. This turns on automatic instrumentation without requiring any changes to your application code.
+Modifying this option will have no effect: EDOT will override it and enforce it as `true`.
 
-In addition to general OpenTelemetry configuration options, there are two kinds of configuration options that are _only_ available in EDOT PHP.
+### Options only available in EDOT PHP
 
-**Elastic-authored options that are not yet available upstream**
-
-Additional `OTEL_` options that Elastic plans to contribute upstream to the OpenTelemetry PHP SDK, but are not yet available in the OpenTelemetry PHP SDK.
-
-_Currently there are no additional `OTEL_` options waiting to be contributed upstream._
-
-**Elastic-specific options**
+In addition to general OpenTelemetry configuration options, there are two kinds of configuration options that are only available in EDOT PHP.
 
 Each option listed in this document that starts with the `ELASTIC_OTEL_` prefix can be set using either an environment variable or the `php.ini` file.
 
 When using the `php.ini` file, replace the `ELASTIC_OTEL_` prefix with `elastic_otel.` and convert the rest of the option name to lowercase, for example:
 
-Configuration using an environment variable:
+::::{tab-set}
 
+:::{tab-item} Environment variable
 ```bash
 export ELASTIC_OTEL_ENABLED=true
 ```
+:::
 
-Configuration using php.ini:
-
+:::{tab-item} php.ini
 ```ini
 elastic_otel.enabled=true
 ```
+:::
 
-`ELASTIC_OTEL_` options that are specific to Elastic and will always live in EDOT PHP (in other words, they will _not_ be added upstream):
+::::
 
-#### General configuration ####
+`ELASTIC_OTEL_` options that are specific to Elastic and always live in EDOT PHP, meaning they will not be added to upstream, include the following.
+
+#### General configuration
 
 | Option(s)            | Default | Accepted values | Description                                                 |
 | -------------------- | ------- | --------------- | ----------------------------------------------------------- |
 | ELASTIC_OTEL_ENABLED | true    | true or false   | Enables the automatic bootstrapping of instrumentation code |
 | ELASTIC_OTEL_NATIVE_OTLP_SERIALIZER_ENABLED   | true    | true or false   | Enables the native built-in OTLP Protobuf serializer for maximum performance |
 
-#### Asynchronous data sending configuration ####
+#### Asynchronous data sending configuration
 
 | Option(s)                                     | Default | Accepted values                                                                                         | Description                                                                                                                          |
 | --------------------------------------------- | ------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
@@ -107,7 +98,7 @@ elastic_otel.enabled=true
 | ELASTIC_OTEL_MAX_SEND_QUEUE_SIZE              | 2MB     | integer number with optional units: B, MB or GB                                                         | Set the maximum buffer size for asynchronous (background) transfer. It is set per worker process.                                    |
 | ELASTIC_OTEL_VERIFY_SERVER_CERT               | true    | true or false                                                                                           | Enables server certificate verification for asynchronous sending                                                                     |
 
-#### Logging configuration ####
+#### Logging configuration
 
 | Option(s)                     | Default | Accepted values                                                                                                                               | Description                                                                                                                                                                                                                                                                                                                      |
 | ----------------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -117,7 +108,7 @@ elastic_otel.enabled=true
 | ELASTIC_OTEL_LOG_LEVEL_SYSLOG | OFF     | OFF, CRITICAL, ERROR, WARNING, INFO, DEBUG, TRACE                                                                                             | Log level for file sink. Set to OFF if you don't want to log to file. This sink is recommended when you don't have write access to file system.                                                                                                                                                                                  |
 | ELASTIC_OTEL_LOG_FEATURES     |         | Comma separated string with FEATURE=LEVEL pairs.<br>Supported features:<br>ALL, MODULE, REQUEST, TRANSPORT, BOOTSTRAP, HOOKS, INSTRUMENTATION | Allows selective setting of log level for features. For example, "ALL=info,TRANSPORT=trace" will result in all other features logging at the info level, while the TRANSPORT feature logs at the trace level. It should be noted that the appropriate log level must be set for the sink - for our example, this would be TRACE. |
 
-#### Transaction span configuration ####
+#### Transaction span configuration
 
 | Option(s)                                 | Default         | Accepted values                              | Description                                                                                                                                                                    |
 | ----------------------------------------- | --------------- | -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -126,7 +117,7 @@ elastic_otel.enabled=true
 | ELASTIC_OTEL_TRANSACTION_URL_GROUPS       |                 | Comma-separated list of wildcard expressions | Allows grouping multiple URL paths using wildcard expressions, such as `/user/*`. For example, `/user/Alice` and `/user/Bob` will be mapped to the transaction name `/user/*`. |
 | <option>                                  | <default value> | <description>                                |
 
-#### Inferred spans configuration ####
+#### Inferred spans configuration
 
 | Option(s)                                      | Default | Accepted values                                                                                 | Description                                                                                                                                                                                                                                                                                                                                |
 | ---------------------------------------------- | ------- | ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |

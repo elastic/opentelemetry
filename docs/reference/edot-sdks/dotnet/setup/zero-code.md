@@ -1,28 +1,25 @@
 ---
 navigation_title: Zero-code instrumentation
+description: Use the EDOT .NET automatic instrumentation to send traces and metrics from .NET applications and services to observability backends without having to modify source code.
 applies_to:
   stack:
   serverless:
     observability:
 products:
-  - cloud-serverless
-  - observability
-  - edot-dotnet
+  - id: cloud-serverless
+  - id: observability
+  - id: edot-dotnet
 ---
 
 # Using profiler-based zero-code instrumentation
 
-EDOT .NET includes a redistribution of the zero-code installer scripts so most of the documentation
-in the upstream [.NET zero-code instrumentation documentation](https://opentelemetry.io/docs/zero-code/dotnet/) applies.
+EDOT .NET includes a redistribution of the zero-code installer scripts so most of the documentation in the upstream [.NET zero-code instrumentation documentation](https://opentelemetry.io/docs/zero-code/dotnet/) applies.
 
-Use the EDOT .NET automatic instrumentation to send traces and metrics from .NET applications and services to observability 
-backends without having to modify source code.
+Use the EDOT .NET automatic instrumentation to send traces and metrics from .NET applications and services to observability backends without having to modify source code.
 
 ## Compatibility
 
-EDOT .NET automatic instrumentation should work with all officially supported operating systems and versions of .NET.
-
-The minimal supported version of .NET Framework is 4.6.2.
+EDOT .NET automatic instrumentation should work with all officially supported operating systems and versions of .NET. The minimal supported version of .NET Framework is 4.6.2.
 
 Supported processor architectures are:
 
@@ -92,4 +89,4 @@ Get-Command -Module OpenTelemetry.DotNet.Auto
 Get-Help Install-OpenTelemetryCore -Detailed
 ```
 
-For more information on instrumenting specific applicatin types visit the [upstream OpenTelemetry documentation](https://opentelemetry.io/docs/zero-code/dotnet/).
+For more information on instrumenting specific application types visit the [upstream OpenTelemetry documentation](https://opentelemetry.io/docs/zero-code/dotnet/).

@@ -6,12 +6,12 @@ applies_to:
   serverless:
     observability:
 products:
-  - cloud-serverless
-  - observability
-  - edot-java
+  - id: cloud-serverless
+  - id: observability
+  - id: edot-java
 ---
 
-# Configuring the EDOT Java Agent
+# Configure the EDOT Java agent
 
 The [minimal configuration](#minimal-configuration) section provides a recommended starting point for EDOT Java configuration.
 
@@ -68,6 +68,17 @@ This table only contains minimal configuration, see each respective feature for 
 | `OTEL_JAVA_EXPERIMENTAL_SPAN_STACKTRACE_MIN_DURATION`  | `5ms`   | [Span stacktrace](./features.md#span-stacktrace)                                                        |
 | `ELASTIC_OTEL_UNIVERSAL_PROFILING_INTEGRATION_ENABLED` | `auto`  | [Elastic Universal profiling integration](./features.md#elastic-universal-profiling-integration)        |
 | `OTEL_INSTRUMENTATION_OPENAI_CLIENT_ENABLED`           | `true`  | [OpenAI client instrumentation](./supported-technologies.md#openai-client-instrumentation) |
+
+## OpenAI Client settings
+
+The following settings are available:
+
+| Option                                                | default                                                       | description                                                                                                                                                                                                                                                                      |
+|-------------------------------------------------------|---------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `OTEL_INSTRUMENTATION_OPENAI_CLIENT_ENABLED`          | `true`                                                        | enables or disable OpenAI instrumentation                                                                                                                                                                                                                                        |
+| `ELASTIC_OTEL_JAVA_INSTRUMENTATION_GENAI_EMIT_EVENTS` | value of `OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT` | If set to `true`, the agent will generate log events for OpenAI requests and responses. Potentially sensitive content will only be included if `OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT` is `true`                                                                    |
+| `OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT`  | `false`                                                       | If set to `true`, enables the capturing of OpenAI request and response content in the log events outputted by the agent.                                                                                                                                                       ↪ |
+
 
 ## Configuration methods
 

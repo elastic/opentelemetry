@@ -6,8 +6,8 @@ applies_to:
   serverless:
     observability:
 products:
-  - cloud-serverless
-  - observability
+  - id: cloud-serverless
+  - id: observability
 ---
 
 #  Quickstart for hosts / VMs on Elastic Cloud Serverless
@@ -18,7 +18,7 @@ Learn how to set up the EDOT Collector and EDOT SDKs in a Docker environment wit
 
 Make sure the following requirements are present:
 
-- The **[System](https://www.elastic.co/docs/reference/integrations/system)** integration is installed in Kibana. Select **Add integration only** to skip the agent installation, as only the integration assets are required.
+- The **[System](integration-docs://reference/system/index.md)** integration is installed in Kibana. Select **Add integration only** to skip the agent installation, as only the integration assets are required.
 
 ## Guided setup
 

@@ -1,13 +1,14 @@
 ---
 navigation_title: EDOT .NET
+description: The Elastic Distribution of OpenTelemetry (EDOT) .NET provides an extension of the OpenTelemetry SDK for .NET, configured for the best experience with Elastic Observability. 
 applies_to:
   stack:
   serverless:
     observability:
 products:
-  - cloud-serverless
-  - observability
-  - edot-dotnet
+  - id: cloud-serverless
+  - id: observability
+  - id: edot-dotnet
 ---
 
 # Elastic Distribution of OpenTelemetry .NET

@@ -6,35 +6,36 @@ applies_to:
   serverless:
     observability:
 products:
-  - cloud-serverless
-  - observability
-  - edot-java
+  - id: cloud-serverless
+  - id: observability
+  - id: edot-java
 ---
+
 # Instrumenting Java applications with EDOT SDKs on Kubernetes
 
-This document focuses on instrumenting Java applications on Kubernetes, using the OpenTelemetry Operator, Elastic Distribution of OpenTelemetry (EDOT) Collectors, and the EDOT Java SDK.
+Learn how to instrument Java applications on Kubernetes using the OpenTelemetry Operator, the Elastic Distribution of OpenTelemetry (EDOT) Collectors, and the EDOT Java SDK.
 
 - For general knowledge about the EDOT Java SDK, refer to the [EDOT Java Intro page](../index.md).
 - For Java auto-instrumentation specifics, refer to [OpenTelemetry Operator Java auto-instrumentation](https://opentelemetry.io/docs/kubernetes/operator/automatic/#java).
 - For general information about instrumenting applications on Kubernetes, refer to [instrumenting applications on Kubernetes](../../../use-cases/kubernetes/instrumenting-applications.md).
 
-## Java agent extensions consideration
+## Extensions consideration
 
 The operator supports a configuration that installs [Java agent extensions](https://opentelemetry.io/docs/zero-code/java/agent/extensions/) in `Instrumentation` objects. The extension needs to be available in an image. Refer to [using extensions with the OpenTelemetry Java agent](https://www.elastic.co/observability-labs/blog/using-the-otel-operator-for-injecting-elastic-agents#using-an-extension-with-the-opentelemetry-java-agent) for an example of adding an extension to an agent.
 
-## Instrument a Java app with EDOT Java SDK on Kubernetes
+## Instrument a Java app
 
-In this example, you'll learn how to:
+Following this example, you can learn how to:
 
-- Enable auto-instrumentation of a Java application using one of the following supported methods:
+- Turn on auto-instrumentation of a Java application using one of the following supported methods:
   - Adding an annotation to the deployment Pods.
   - Adding an annotation to the namespace.
 - Verify that auto-instrumentation libraries are injected and configured correctly.
-- Confirm data is flowing to **Kibana Observability**.
+- Confirm data is flowing to Kibana Observability.
 
-For this example, we assume the application you're instrumenting is a deployment named `java-app` running in the `java-ns` namespace.
+In this example, the application you're instrumenting is a deployment named `java-app` running in the `java-ns` namespace.
 
-1. Ensure you have successfully [installed the OpenTelemetry Operator](../../../use-cases/kubernetes/deployment.md), and confirm that the following `Instrumentation` object exists in the system:
+1. Ensure you have successfully [installed the OpenTelemetry Operator](../../../use-cases/kubernetes/deployment.md) and confirm that the following `Instrumentation` object exists in the system:
 
     ```sh
     $ kubectl get instrumentation -n opentelemetry-operator-system
@@ -42,11 +43,11 @@ For this example, we assume the application you're instrumenting is a deployment
     elastic-instrumentation   107s   http://opentelemetry-kube-stack-daemon-collector.opentelemetry-operator-system.svc.cluster.local:4318
     ```
 
-:::{note}
-> If your `Instrumentation` object has a different name or is created in a different namespace, you will have to adapt the annotation value in the next step.
-:::
+   :::{note}
+   If your `Instrumentation` object has a different name or is created in a different namespace, you will have to adapt the annotation value in the next step.
+   :::
 
-2. Enable auto-instrumentation of your Java application using one of the following methods:
+2. Turn on auto-instrumentation of your Java application using one of the following methods:
 
     - Edit your application workload definition and include the annotation under `spec.template.metadata.annotations`:
 
@@ -71,9 +72,9 @@ For this example, we assume the application you're instrumenting is a deployment
         kubectl annotate namespace java-ns instrumentation.opentelemetry.io/inject-java=opentelemetry-operator-system/elastic-instrumentation
         ```
 
-3. Restart application
+3. Restart the application
 
-    Once the annotation has been set, restart the application to create new Pods and inject the instrumentation libraries:
+    After the annotation has been set, restart the application to create new Pods and inject the instrumentation libraries:
 
     ```sh
     kubectl rollout restart deployment java-app -n java-ns
@@ -151,15 +152,15 @@ For this example, we assume the application you're instrumenting is a deployment
 
     Ensure the environment variable `OTEL_EXPORTER_OTLP_ENDPOINT` points to a valid endpoint and there's network communication between the Pod and the endpoint.
 
-5. Confirm data is flowing to **Kibana**:
+5. Confirm data is flowing to Kibana:
 
-    - Open **Observability** -> **Applications** -> **Service inventory**, and determine if:
+    - Open **Observability**, **Applications**, **Service inventory**, and determine if:
         - The application appears in the list of services.
         - The application shows transactions and metrics.
 
-    - For application container logs, open **Kibana Discover** and filter for your Pods' logs. In the provided example, we could filter for them with either of the following:
-        - `k8s.deployment.name: "java-app"` (**adapt the query filter to your use case**)
-        - `k8s.pod.name: java-app*` (**adapt the query filter to your use case**)
+    - For application container logs, open Kibana Discover and filter for your Pods' logs. In the provided example, we could filter for them with either of the following:
+        - `k8s.deployment.name: "java-app"` (adapt the query filter to your use case)
+        - `k8s.pod.name: java-app*` (adapt the query filter to your use case)
 
     Note that the container logs are not provided by the instrumentation library, but by the DaemonSet collector deployed as part of the [operator installation](../../../use-cases/kubernetes/deployment.md).
 
