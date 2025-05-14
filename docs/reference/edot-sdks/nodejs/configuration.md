@@ -47,6 +47,8 @@ The behavior of `OTEL_` environment variables are typically defined by upstream 
 🔹
 : Marks settings with a default value or behavior that differs between EDOT Node.js and upstream OTel JS, or that only exists in EDOT Node.js.
 
+<!-- TODO: another symbol for deprecated vars??? -->
+
 | Name | Notes |
 | :--- | :---- |
 | `OTEL_SDK_DISABLED` ❇ | [(Ref)][otel-sdk-envvars] Disable the SDK. |
@@ -70,7 +72,8 @@ The behavior of `OTEL_` environment variables are typically defined by upstream 
 | `OTEL_NODE_ENABLED_INSTRUMENTATIONS` 🔹 | [(EDOT Ref)](#otel_node_disabledenabled_instrumentations-details) Comma-separated list of instrumentations to enable. |
 | `OTEL_NODE_DISABLED_INSTRUMENTATIONS` 🔹 | [(EDOT Ref)](#otel_node_disabledenabled_instrumentations-details) Comma-separated list of instrumentations to disable. |
 | | |
-| `ELASTIC_OTEL_METRICS_DISABLED` 🔹 | [(EDOT Ref)](#elastic_otel_metrics_disabled-details) Disable any metrics being sent by the SDK. |
+| `ELASTIC_OTEL_METRICS_DISABLED` 🔹 | [(EDOT Ref)](#elastic_otel_metrics_disabled-details) Disable any metrics being sent by the SDK. This var is deprecated. |
+| `ELASTIC_OTEL_HOST_METRICS_DISABLED` 🔹 | [(EDOT Ref)](#elastic_otel_host_metrics_disabled-details) Disable collection of metrics done by `@opentelemetry/host-metrics` package. |
 | `OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE` 🔹 | [(EDOT Ref)](#otel_exporter_otlp_metrics_temporality_preference-details) The metrics exporter's default aggregation `temporality`. Default `delta`. (Note: The upstream OTel default is `cumulative`.) |
 | | |
 | `OTEL_SEMCONV_STABILITY_OPT_IN` 🔹 | [(EDOT Ref)](#otel_semconv_stability_opt_in-details) Control which HTTP semantic conventions are use by `@opentelemetry/instrumentation-http`. Default 'http'. (Note: The upstream OTel default is an empty value.) |
@@ -174,6 +177,13 @@ EDOT Node.js enables the collection and export of metrics by default. If you wis
 
 Setting `ELASTIC_OTEL_METRICS_DISABLED=true` is similar to setting `OTEL_METRICS_EXPORTER=none`, in that it ensures no metrics are exported by the SDK. However, this setting will also disable the collection of metrics by the `@opentelemetry/host-metrics` and `@opentelemetry/instrumentation-runtime-node` packages, which can be a minor performace improvement.
 
+This environment variable is deprecated. Same control on the metrics can be achieved by setting `OTEL_NODE_{DISABLED,ENABLED}_INSTRUMENTATIONS` for 
+`@opentelemetry/instrumentation-runtime-node` pacakge and setting `ELASTIC_OTEL_HOST_METRICS_DISABLED` for `@opentelemetry/host-metrics`.
+
+### `ELASTIC_OTEL_HOST_METRICS_DISABLED` details [elastic_otel_host_etrics_disabled-details]
+
+EDOT Node.js enables the collection and export of metrics by default. If you wish to only disable metrics collected from by the `@opentelemetry/host-metrics` 
+package you can by setting the environment variable `ELASTIC_HOST_OTEL_METRICS_DISABLED` to the string `true`.
 
 ### `OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE` details [otel_exporter_otlp_metrics_temporality_preference-details]
 
@@ -182,9 +192,6 @@ Therefore, the EDOT Node.js changes the default value of `OTEL_EXPORTER_OTLP_MET
 You can override this default if needed, note though that some provided Kibana dashboards will not work correctly in this case.
 
 Upstream OpenTelemetry defaults the temporality preference to `cumulative`. See https://opentelemetry.io/docs/specs/otel/metrics/sdk_exporters/otlp/#additional-environment-variable-configuration
-
-<!-- TODO: assumes https://github.com/elastic/elastic-otel-node/pull/670 will be merged -->
-
 
 ### `OTEL_SEMCONV_STABILITY_OPT_IN` details [otel_semconv_stability_opt_in-details]
 
