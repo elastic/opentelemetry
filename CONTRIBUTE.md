@@ -123,3 +123,30 @@ bundle exec jekyll serve
 ```
 
 Access your local site under http://localhost:4000/opentelemetry/
+
+### Terms
+
+| Term | Description | Alias<sup>1</sup> | Example |
+|---|---|---|---|
+| **Elastic Distributions of OpenTelemetry** | Use to describe all distributions built by Elastic collectively | EDOTs | Use one of the Elastic Distributions of OpenTelemetry (EDOTs) in your application. EDOTs include... |
+| **Elastic Distributions of OpenTelemetry language SDKs** | Use to describe the collection of all the Elastic distributions that extend language SDKs (i.e. the APM-related distros) | EDOT language SDKs | With the Elastic Distributions of OpenTelemetry (EDOT) language SDKs you have access to all the features of the OpenTelemetry SDK that it customizes, plus... |
+| **Elastic Distribution of OpenTelemetry {language}** | Use to refer to a specific language distribution | EDOT {language} | The Elastic Distribution of OpenTelemetry (EDOT) Java is a Java package that provides an easy way to instrument your application with OpenTelemetry and configuration defaults for best usage. EDOT Java is a wrapper around... |
+| **Elastic Distribution of OpenTelemetry Collector** | Use to describe the customized version of the OpenTelemetry Collector that is built and maintained by Elastic | EDOT Collector | This guide shows you how to use the Elastic Distribution of OpenTelemetry (EDOT) Collector. The EDOT Collector sends logs and host metrics to Elastic Cloud. |
+
+<sup>1</sup> _Only use after establishing that it is a replacement for the product name._
+
+### Guidelines
+
+* Always use the full product name the first time you refer to the product on each page.
+* Always establish the acronym for the product name (i.e. EDOT) the first time it is mentioned in the body text.
+  * Note: Do *not* establish the acronym for the first time in the page title or in a heading. If a heading comes *after* the first time the acronym is established in the body text, then it's ok to use the acronym instead of the full product name in the heading.
+* Avoid overusing the full product name. Use the shorter, already-established alias.
+
+### Relationship between products
+
+* The general **OpenTelemetry SDK** is the *implementation of* the API provided by the OpenTelemetry project.
+* The **OpenTelemetry SDK for {language}** is an *implementation of* the general **OpenTelemetry SDK**. It is built and maintained by OpenTelemetry.
+* The **Elastic Distribution of OpenTelemetry {language}** is *a customized version of* the **OpenTelemetry SDK/Agent for {language}**. It is built and maintained by Elastic.
+* The **Elastic Distribution of OpenTelemetry Collector** is *a customized version of* the **OpenTelemetry Collector**.
+
+We write our docs in Markdown. See our [syntax guide](https://elastic.github.io/docs-builder/syntax/index.html) for examples and additional functionality.
