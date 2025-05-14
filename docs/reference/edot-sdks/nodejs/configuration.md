@@ -175,10 +175,13 @@ export OTEL_NODE_ENABLED_INSTRUMENTATIONS=http,fastify,pino,@elastic/opentelemet
 
 EDOT Node.js enables the collection and export of metrics by default. If you wish to disable metrics you can by setting the environment variable `ELASTIC_OTEL_METRICS_DISABLED` to the string `true`.
 
-Setting `ELASTIC_OTEL_METRICS_DISABLED=true` is similar to setting `OTEL_METRICS_EXPORTER=none`, in that it ensures no metrics are exported by the SDK. However, this setting will also disable the collection of metrics by the `@opentelemetry/host-metrics` and `@opentelemetry/instrumentation-runtime-node` packages, which can be a minor performace improvement.
+Setting `ELASTIC_OTEL_METRICS_DISABLED=true` is similar to setting `OTEL_METRICS_EXPORTER=none`, in that it ensures no metrics are exported by the SDK. However, this setting will also disable the collection of metrics by the `@opentelemetry/host-metrics` package, which can be a minor performace improvement.
 
-This environment variable is deprecated. Same control on the metrics can be achieved by setting `OTEL_NODE_{DISABLED,ENABLED}_INSTRUMENTATIONS` for 
-`@opentelemetry/instrumentation-runtime-node` pacakge and setting `ELASTIC_OTEL_HOST_METRICS_DISABLED` for `@opentelemetry/host-metrics`.
+This environment variable is deprecated since a better control of the metrics can be achieved by setting the appropiate values in
+`OTEL_NODE_{DISABLED,ENABLED}_INSTRUMENTATIONS` and `ELASTIC_OTEL_HOST_METRICS_DISABLED` vars.
+
+- If you wish to disable collection for `@opentelemetry/host-metrics` package, set `ELASTIC_OTEL_HOST_METRICS_DISABLED` var to `false`.
+- If you wish to disable collection for `@opentelemetry/instrumentation-runtime-node` package, set `OTEL_NODE_{DISABLED,ENABLED}_INSTRUMENTATIONS` var to exclude that instrumentation. [(EDOT Ref)](#otel_node_disabledenabled_instrumentations-details)
 
 ### `ELASTIC_OTEL_HOST_METRICS_DISABLED` details [elastic_otel_host_etrics_disabled-details]
 
