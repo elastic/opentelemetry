@@ -21,10 +21,10 @@ The docs are organized in the following directories:
     ├── architecture       # Architecture section
     ├── compatibility      # Compatibility and support
     ├── edot-collector     # EDOT Collector
-    ├── edot-sdks          # EDOT SDKs
+    ├── edot-sdks          # EDOT SDKs
     ├── images             # Images
     ├── quickstart         # Quickstarts
-    └── use-cases          # Use cases
+    └── use-cases          # Use cases
 ```
 
 This structure might evolve as we refine the EDOT documentation according to the new V3 information architecture.
@@ -57,7 +57,7 @@ Keep these rules in mind when using EDOT terms:
   * Note: Do *not* establish the acronym for the first time in the page title or in a heading. If a heading comes *after* the first time the acronym is established in the body text, then it's ok to use the acronym instead of the full product name in the heading.
 * Avoid overusing the full product name. Use the shorter, already-established alias.
 
-## Frontmatter
+## Frontmatter
 
 Each document must have the following frontmatter fields defined:
 
@@ -69,7 +69,7 @@ applies_to:  # See https://docs-v3-preview.elastic.dev/elastic/docs-builder/tree
   stack:
   serverless:
     observability:
-products: # See https://docs-v3-preview.elastic.dev/elastic/docs-builder/tree/main/syntax/frontmatter#products
+products: # See https://docs-v3-preview.elastic.dev/elastic/docs-builder/tree/main/syntax/frontmatter#products
   - id: cloud-serverless
   - id: observability
 ---
