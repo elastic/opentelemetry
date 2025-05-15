@@ -165,7 +165,7 @@ EDOT Node.js handles these settings the same as the upstream [`@opentelemetry/au
 ```bash
 export OTEL_NODE_ENABLED_INSTRUMENTATIONS=http,fastify,pino,@elastic/opentelemetry-instrumentation-openai
 ```
-### (Deprecated) `ELASTIC_OTEL_METRICS_DISABLED` details [elastic_otel_metrics_disabled-details]
+### (Deprecated) `ELASTIC_OTEL_METRICS_DISABLED` details [deprecated-elastic_otel_metrics_disabled-details]
 
 EDOT Node.js allows to collect and export metrics by default. If you want to turn off metrics, you can do so by setting the `ELASTIC_OTEL_METRICS_DISABLED` environment variable to `true`.
 
@@ -176,7 +176,7 @@ You can achieve better control of the metrics by setting the appropiate values t
 - To turn off collection for the `@opentelemetry/host-metrics` package, set `ELASTIC_OTEL_HOST_METRICS_DISABLED` to `false`.
 - To turn off collection for the `@opentelemetry/instrumentation-runtime-node` package, set `OTEL_NODE_{DISABLED,ENABLED}_INSTRUMENTATIONS` to exclude that instrumentation. [(EDOT Ref)](#otel_node_disabledenabled_instrumentations-details)
 
-### `ELASTIC_OTEL_HOST_METRICS_DISABLED` details [elastic_otel_host_etrics_disabled-details]
+### `ELASTIC_OTEL_HOST_METRICS_DISABLED` details [elastic_otel_host_metrics_disabled-details]
 
 EDOT Node.js allows to collect and export metrics by default. To turn off only metrics collected through the `@opentelemetry/host-metrics` package, set the `ELASTIC_HOST_OTEL_METRICS_DISABLED` environment variable to `true`.
 
