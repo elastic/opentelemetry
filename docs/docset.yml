@@ -1,5 +1,7 @@
 project: 'EDOT documentation'
 products:
+  - id: cloud-serverless
+  - id: observability
   - id: edot-collector
   - id: edot-sdk
 cross_links:
