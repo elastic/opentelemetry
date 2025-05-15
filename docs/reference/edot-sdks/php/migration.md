@@ -8,8 +8,8 @@ applies_to:
 products:
   - id: cloud-serverless
   - id: observability
-  - id: edot-php
-  - id: apm-php-agent
+  - id: edot-sdk
+  - id: apm-agent
 ---
 
 # Migrate to EDOT PHP from the Elastic APM PHP agent

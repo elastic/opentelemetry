@@ -8,7 +8,7 @@ applies_to:
 products:
   - id: cloud-serverless
   - id: observability
-  - id: edot-dotnet
+  - id: edot-sdk
 ---
 
 # EDOT .NET opinionated defaults
