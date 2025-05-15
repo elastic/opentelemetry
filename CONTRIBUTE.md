@@ -15,8 +15,8 @@ All docs live in the `./docs` directory. The `./olddocs` repository contains red
 The docs are organized in the following directories:
 
 ```
-.
-└── reference
+docs
+└── reference              # Contains reference docs
     ├── _snippets          # Reusable snippets
     ├── architecture       # Architecture section
     ├── compatibility      # Compatibility and support
