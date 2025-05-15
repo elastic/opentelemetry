@@ -4,21 +4,21 @@
 
 **Elastic Distributions of OpenTelemetry (EDOT)** is an open-source ecosystem of [OpenTelemetry distributions](https://opentelemetry.io/docs/concepts/distributions/), comprising an [OpenTelemetry Collector](https://opentelemetry.io/docs/collector/) and various OpenTelemetry [Language SDKs](https://opentelemetry.io/docs/languages/), all tailored to Elastic.
 
-## Documentation
+This repository contains the EDOT documentation. Go to the [Elastic Documentation pages](https://www.elastic.co/docs/reference/opentelemetry) to browse it.
 
-Learn more in the [Elastic Documentation pages](https://www.elastic.co/docs/reference/opentelemetry).
-
-### Contribute to the documentation
+## Contribute to the documentation
 
 If you find any bugs in our documentation, or want to request an enhancement, [open an issue](https://github.com/elastic/opentelemetry/issues). We also welcome contributions in the form of PRs. Before you submit a PR, make sure that you have signed our [Contributor License Agreement](https://www.elastic.co/contributor-agreement/).
 
 For guidance on how to contribute to the documentation, refer to [CONTRIBUTE](./CONTRIBUTE.md).
 
-### Preview your changes
+## Preview your changes
 
 When you open a PR, your changes are built, deployed, and ready to be previewed within minutes.
 
 ## EDOT components and repositories
+
+The following repositories contain the code of each Elastic Distribution of OpenTelemetry.
 
 ### Collector
 
