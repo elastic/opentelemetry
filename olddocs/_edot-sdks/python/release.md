@@ -1,7 +1,5 @@
 ---
-title: Release Notes
-layout: default
-nav_order: 9
-parent: EDOT Python
-ext_link: https://github.com/elastic/elastic-otel-python/releases
+layout: redirection
+permalink: /edot-sdks/python/release.html
+redirect: https://www.elastic.co/docs/reference/opentelemetry/edot-sdks/python/release.html
 ---

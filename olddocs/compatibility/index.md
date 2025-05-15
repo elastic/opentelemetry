@@ -1,10 +1,5 @@
 ---
-title: Compatibility & Support
-layout: default
-nav_order: 5
-fa_icon_key: fa-solid fa-puzzle-piece
+layout: redirection
+permalink: /compatibility/index.html
+redirect: https://www.elastic.co/docs/reference/opentelemetry/compatibility/index.html
 ---
-
-# Compatibility & Support
-
-The following sub-pages describe the compatibility and support levels for different OpenTelemetry Distributions.

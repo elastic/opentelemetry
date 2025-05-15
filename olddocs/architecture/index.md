@@ -1,11 +1,5 @@
 ---
-title: Reference Architecture
-layout: default
-nav_order: 3
-fa_icon_key: fa-solid fa-sitemap
+layout: redirection
+permalink: /architecture/index.html
+redirect: https://www.elastic.co/docs/reference/opentelemetry/architecture/index.html
 ---
-
-# Reference Architecture
-{: .no_toc }
-
-The following sections outline the recommended architectures for EDOT with different Elastic deployment options.

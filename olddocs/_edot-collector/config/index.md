@@ -1,12 +1,5 @@
 ---
-title: Configuration
-layout: default
-nav_order: 3
+layout: redirection
+permalink: /edot-collector/config/index.html
+redirect: https://www.elastic.co/docs/reference/opentelemetry/edot-collector/config/index.html
 ---
-
-# EDOT Collector - Configuration
-
-The following sub-pages provide some insights into 
-
-- the default configurations of the EDOT Collector in different environments and scenarios 
-- ways and examples of customizing the EDOT Collector configuration for different custom use cases

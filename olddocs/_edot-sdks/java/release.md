@@ -1,7 +1,5 @@
 ---
-title: Release Notes
-layout: default
-nav_order: 9
-parent: EDOT Java
-ext_link: https://github.com/elastic/elastic-otel-java/releases
+layout: redirection
+permalink: /edot-sdks/java/release.html
+redirect: https://www.elastic.co/docs/reference/opentelemetry/edot-sdks/java/index.html
 ---

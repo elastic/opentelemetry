@@ -1,7 +1,5 @@
 ---
-title: Release Notes
-layout: default
-nav_order: 7
-parent: EDOT .NET
-ext_link: https://github.com/elastic/elastic-otel-dotnet/releases
+layout: redirection
+permalink: /edot-sdks/dotnet/release.html
+redirect: https://www.elastic.co/docs/reference/opentelemetry/edot-sdks/dotnet/index.html
 ---
