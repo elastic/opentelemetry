@@ -8,8 +8,8 @@ applies_to:
 products:
   - id: cloud-serverless
   - id: observability
-  - id: edot-java
-  - id: apm-java-agent
+  - id: edot-sdk
+  - id: apm-agent
 ---
 
 # Migrate to EDOT Java from the Elastic APM Java agent
