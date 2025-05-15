@@ -1,4 +1,7 @@
 project: 'EDOT documentation'
+products:
+  - id: edot-collector
+  - id: edot-sdk
 cross_links:
   - apm-agent-android
   - apm-agent-dotnet
