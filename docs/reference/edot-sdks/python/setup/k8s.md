@@ -8,7 +8,7 @@ applies_to:
 products:
   - id: cloud-serverless
   - id: observability
-  - id: edot-python
+  - id: edot-sdk
 ---
 
 # Instrumenting Python applications with EDOT SDKs on Kubernetes
