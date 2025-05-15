@@ -15,8 +15,8 @@ All docs live in the `./docs` directory. The `./olddocs` repository contains red
 The docs are organized in the following directories:
 
 ```
-.
-└── reference
+docs
+└── reference              # Contains reference docs
     ├── _snippets          # Reusable snippets
     ├── architecture       # Architecture section
     ├── compatibility      # Compatibility and support
@@ -57,7 +57,7 @@ Keep these rules in mind when using EDOT terms:
   * Note: Do *not* establish the acronym for the first time in the page title or in a heading. If a heading comes *after* the first time the acronym is established in the body text, then it's ok to use the acronym instead of the full product name in the heading.
 * Avoid overusing the full product name. Use the shorter, already-established alias.
 
-## Frontmatter
+## Frontmatter
 
 Each document must have the following frontmatter fields defined:
 
