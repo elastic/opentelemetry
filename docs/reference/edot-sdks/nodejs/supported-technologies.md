@@ -8,7 +8,7 @@ applies_to:
 products:
   - id: cloud-serverless
   - id: observability
-  - id: edot-nodejs
+  - id: edot-sdk
 ---
 
 # Technologies supported by the EDOT Node.js SDK

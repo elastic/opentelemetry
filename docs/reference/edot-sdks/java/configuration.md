@@ -8,7 +8,7 @@ applies_to:
 products:
   - id: cloud-serverless
   - id: observability
-  - id: edot-java
+  - id: edot-sdk
 ---
 
 # Configure the EDOT Java agent

@@ -7,7 +7,7 @@ applies_to:
 products:
   - id: cloud-serverless
   - id: observability
-  - id: edot-dotnet
+  - id: edot-sdk
 ---
 
 # Set up EDOT .NET for ASP.NET Core applications
