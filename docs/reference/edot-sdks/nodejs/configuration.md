@@ -70,7 +70,7 @@ The behavior of `OTEL_` environment variables are typically defined by upstream 
 | `OTEL_NODE_ENABLED_INSTRUMENTATIONS` 🔹 | [(EDOT Ref)](#otel_node_disabledenabled_instrumentations-details) Comma-separated list of instrumentations to enable. |
 | `OTEL_NODE_DISABLED_INSTRUMENTATIONS` 🔹 | [(EDOT Ref)](#otel_node_disabledenabled_instrumentations-details) Comma-separated list of instrumentations to disable. |
 | | |
-| `ELASTIC_OTEL_METRICS_DISABLED` 🔹 | [(EDOT Ref)](#elastic_otel_metrics_disabled-details) Disable any metrics being sent by the SDK. This var is deprecated. |
+| `ELASTIC_OTEL_METRICS_DISABLED` 🔹 | [(EDOT Ref)](#deprecated-elastic_otel_metrics_disabled-details) Disable any metrics being sent by the SDK. This var is deprecated. |
 | `ELASTIC_OTEL_HOST_METRICS_DISABLED` 🔹 | [(EDOT Ref)](#elastic_otel_host_metrics_disabled-details) Disable collection of metrics done by `@opentelemetry/host-metrics` package. |
 | `OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE` 🔹 | [(EDOT Ref)](#otel_exporter_otlp_metrics_temporality_preference-details) The metrics exporter's default aggregation `temporality`. Default value is `delta`. The upstream OTel default is `cumulative`. |
 | | |
@@ -165,8 +165,6 @@ EDOT Node.js handles these settings the same as the upstream [`@opentelemetry/au
 ```bash
 export OTEL_NODE_ENABLED_INSTRUMENTATIONS=http,fastify,pino,@elastic/opentelemetry-instrumentation-openai
 ```
-
-
 ### (Deprecated) `ELASTIC_OTEL_METRICS_DISABLED` details [elastic_otel_metrics_disabled-details]
 
 EDOT Node.js allows to collect and export metrics by default. If you want to turn off metrics, you can do so by setting the `ELASTIC_OTEL_METRICS_DISABLED` environment variable to `true`.
