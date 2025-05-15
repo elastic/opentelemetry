@@ -8,8 +8,8 @@ applies_to:
 products:
   - id: cloud-serverless
   - id: observability
-  - id: edot-dotnet
-  - id: apm-dotnet-agent
+  - id: edot-sdk
+  - id: apm-agent
 ---
 
 # Migrate to EDOT .NET from the Elastic APM .NET agent

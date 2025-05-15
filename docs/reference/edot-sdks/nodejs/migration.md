@@ -8,8 +8,8 @@ applies_to:
 products:
   - id: cloud-serverless
   - id: observability
-  - id: edot-nodejs
-  - id: apm-node-agent
+  - id: edot-sdk
+  - id: apm-agent
 ---
 
 # Migrate to EDOT Node.js from the Elastic APM Node.js agent

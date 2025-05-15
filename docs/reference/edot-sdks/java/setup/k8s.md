@@ -8,7 +8,7 @@ applies_to:
 products:
   - id: cloud-serverless
   - id: observability
-  - id: edot-java
+  - id: edot-sdk
 ---
 
 # Instrumenting Java applications with EDOT SDKs on Kubernetes
