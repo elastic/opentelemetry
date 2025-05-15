@@ -8,8 +8,8 @@ applies_to:
 products:
   - id: cloud-serverless
   - id: observability
-  - id: edot-python
-  - id: apm-python-agent
+  - id: edot-sdk
+  - id: apm-agent
 ---
 
 # Migrate to EDOT Python from the Elastic APM Python agent

@@ -8,8 +8,8 @@ applies_to:
 products:
   - id: cloud-serverless
   - id: observability
-  - id: edot-nodejs
-  - id: apm-node-agent
+  - id: edot-sdk
+  - id: apm-agent
 ---
 
 # Elastic Distribution of OpenTelemetry Node.js
