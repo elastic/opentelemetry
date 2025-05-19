@@ -1,7 +1,5 @@
 ---
-title: Release Notes
-layout: default
-nav_order: 7
-parent: EDOT PHP
-ext_link: https://github.com/elastic/elastic-otel-php/releases
+layout: redirection
+permalink: /edot-sdks/php/release.html
+redirect: https://www.elastic.co/docs/reference/opentelemetry/edot-sdks/php/index.html
 ---
