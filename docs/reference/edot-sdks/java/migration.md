@@ -149,6 +149,18 @@ The `enable_instrumentations` option allows to disable all instrumentation enabl
 - `OTEL_INSTRUMENTATION_COMMON_DEFAULT_ENABLED` = `false` to disable instrumentations enabled by default.
 - `OTEL_INSTRUMENTATION_<name>_ENABLED` = `true` where `<name>` is the name of the instrumentation to enable. See [OpenTelemetry documentation](https://opentelemetry.io/docs/zero-code/java/agent/disable/) for reference and values.
 
+### `hostname`
+
+The Elastic [`hostname`](apm-agent-java://reference/config-core.md#config-hostname) option corresponds to setting the `host.name` key in [OTEL_RESOURCE_ATTRIBUTES](https://opentelemetry.io/docs/concepts/sdk-configuration/general-sdk-configuration/#otel_resource_attributes).
+
+For example: `OTEL_RESOURCE_ATTRIBUTES=host.name=myhost`.
+
+### `service_node_name`
+
+The Elastic [`service_node_name`](apm-agent-java://reference/config-core.md#config-service-node-name) option corresponds to setting the `service.instance.id` key in [OTEL_RESOURCE_ATTRIBUTES](https://opentelemetry.io/docs/concepts/sdk-configuration/general-sdk-configuration/#otel_resource_attributes). Warning: by default this is a generated unique ID; if you set this it must be a unique value for each JVM otherwise metric views cannot be correctly aggregated nor disambiguated
+
+For example: `OTEL_RESOURCE_ATTRIBUTES=service.instance.id=myserviceinstance001`.
+
 ## Limitations
 
 The following limitations apply to EDOT Java.
