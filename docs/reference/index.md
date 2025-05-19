@@ -16,7 +16,7 @@ Elastic Distributions of OpenTelemetry (EDOT) is an open-source ecosystem of [Op
 
 ![EDOT-Distributions](images/EDOT-SDKs-Collector.png)
 
-Each EDOT distribution is assembled with selected OpenTelemetry components ands tested to ensure production readiness. This provides a reliable and optimized OpenTelemetry experience, enabling seamless adoption with confidence and expert support.
+Each EDOT distribution is assembled with selected OpenTelemetry components and tested to ensure production readiness. This provides a reliable and optimized OpenTelemetry experience, enabling seamless adoption with confidence and expert support.
 
 [OpenTelemetry](https://opentelemetry.io/docs/) is a vendor-neutral observability framework for collecting, processing, and exporting telemetry data. If you are new to OpenTelemetry, refer to OpenTelemetry [concepts](https://opentelemetry.io/docs/concepts/) and [components](https://opentelemetry.io/docs/concepts/components/).
 
@@ -39,7 +39,7 @@ Technical Preview distributions receive best-effort support and are not covered 
 
 ## Get started
 
-Pick the right [Quickstart guide](./quickstart/index.md) for your environment or select and observability use case:
+Pick the right [Quickstart guide](./quickstart/index.md) for your environment or select an observability use case:
 
 - [Monitoring on Kubernetes](./use-cases/kubernetes/index.md)
 - [LLM Observability](./use-cases/llms/index.md)
