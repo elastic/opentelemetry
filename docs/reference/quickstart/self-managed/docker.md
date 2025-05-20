@@ -96,7 +96,7 @@ docker compose up -d
 ```
 ::::
 
-::::{step} (Optional) Instrument your applications
+::::{step} (Optional) Instrument your applications
 
 If you want to collect telemetry from applications running on the host where you installed the EDOT Collector, instrument your target applications:
 

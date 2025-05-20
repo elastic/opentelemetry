@@ -18,7 +18,7 @@ Compared to the Elastic APM Node.js agent, the Elastic Distribution of OpenTelem
 
 - Fully automatic instrumentation with zero code changes. No need to modify application code.
 - EDOT Node.js is built on top of OpenTelemetry SDK and conventions, ensuring compatibility with community tools, vendor-neutral backends, and so on.
-- Modular, extensible architecture based on the OpenTelemetry SDK. You can add custom exporters, processors, and samplers.
+- Modular, extensible architecture based on the OpenTelemetry SDK. You can add custom exporters, processors, and samplers.
 - You can use EDOT Node.js in environments where both tracing and metrics are collected using OpenTelemetry.
 
 

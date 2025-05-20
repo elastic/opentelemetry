@@ -292,7 +292,7 @@ with your credentials:
 
 ```yaml
 #
-# Filename: elastic-apm-instrumentation.yaml
+# Filename: elastic-apm-instrumentation.yaml
 #
 apiVersion: opentelemetry.io/v1alpha1
 kind: Instrumentation
