@@ -20,9 +20,11 @@ cross_links:
   - kibana
   - integrations
   - integration-docs
+
 toc:
   - toc: reference
 # - toc: release-notes
+
 subs:
   edot: Elastic Distribution of OpenTelemetry
   ecloud:   "Elastic Cloud"

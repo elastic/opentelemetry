@@ -56,6 +56,14 @@ toc:
       - file: edot-collector/troubleshooting.md
   - file: edot-sdks/index.md
     children:
+      - file: edot-sdks/android/index.md
+        children:
+          - file: edot-sdks/android/getting-started.md
+          - file: edot-sdks/android/configuration.md
+          - file: edot-sdks/android/manual-instrumentation.md
+          - file: edot-sdks/android/automatic-instrumentation.md
+          - file: edot-sdks/android/how-tos.md
+          - file: edot-sdks/android/troubleshooting.md
       - file: edot-sdks/dotnet/index.md
         children:
           - file: edot-sdks/dotnet/setup/index.md
@@ -70,6 +78,12 @@ toc:
           - file: edot-sdks/dotnet/supported-technologies.md
           - file: edot-sdks/dotnet/troubleshooting.md
           - file: edot-sdks/dotnet/migration.md
+      - file: edot-sdks/ios/index.md
+        children:
+          - file: edot-sdks/ios/set-up-apm-ios-agent.md
+          - file: edot-sdks/ios/supported-technologies.md
+          - file: edot-sdks/ios/instrumentation.md
+          - file: edot-sdks/ios/configuration.md
       - file: edot-sdks/java/index.md
         children:
           - file: edot-sdks/java/setup/index.md
