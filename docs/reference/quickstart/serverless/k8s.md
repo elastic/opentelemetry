@@ -32,7 +32,7 @@ Follow these steps to deploy the EDOT Collector and EDOT OTel SDKs in Kubernetes
 
 :::::{stepper}
 
-::::{step} Add the OpenTelemetry repository to Helm
+::::{step} Add the OpenTelemetry repository to Helm
 
 Run the following command to add the charts repository to Helm:
 
