@@ -62,7 +62,7 @@ The following attributes are added in all scenarios (NuGet and zero code install
 
 | Attribute                  | Details                                                                     |
 | -------------------------- | --------------------------------------------------------------------------- |
-| `service.instance.id`      | Set with a random GUID to ensure runtime metrics dashboard can be filtered. |
+| `service.instance.id`      | Set with a random GUID to ensure runtime metrics dashboard can be filtered. |
 | `telemetry.distro.name`    | Set as `elastic`.                                                           |
 | `telemetry.distro.version` | Set as the version of the EDOT .NET.                                        |
 

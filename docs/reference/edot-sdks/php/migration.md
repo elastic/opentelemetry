@@ -18,7 +18,7 @@ Compared to the Elastic APM PHP agent, the Elastic Distribution of OpenTelemetry
 
 - Fully automatic instrumentation with zero code changes. No need to modify application code, add Composer packages, or wrap bootstrap files.
 - EDOT PHP is built on top of OpenTelemetry SDK and conventions, ensuring compatibility with community tools, vendor-neutral backends, and so on.
-- Modular, extensible architecture based on the OpenTelemetry SDK. You can add custom exporters, processors, and samplers.
+- Modular, extensible architecture based on the OpenTelemetry SDK. You can add custom exporters, processors, and samplers.
 - You can use EDOT PHP in environments where both tracing and metrics are collected using OpenTelemetry.
 
 ## Migration steps
