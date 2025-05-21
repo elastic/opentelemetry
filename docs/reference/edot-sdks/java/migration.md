@@ -17,8 +17,8 @@ products:
 Compared to the Elastic APM Java agent, the Elastic Distribution of OpenTelemetry Java presents a number of advantages:
 
 - Fully automatic instrumentation with zero code changes. No need to modify application code.
-- Capture, send, transform and store data in an OpenTelemetry native way. This includes for example the ability to use all features of the OpenTelemetry SDK for manual tracing, data following semantic conventions or ability to use intermediate collectors and processors.
-- OpenTelemetry Java Instrumentation provides a [broad coverage of libraries, frameworks and applications](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md).
+- Capture, send, transform, and store data in an OpenTelemetry native way. This includes for example the ability to use all features of the OpenTelemetry SDK for manual tracing, data following semantic conventions, or ability to use intermediate collectors and processors.
+- OpenTelemetry Java Instrumentation provides a [broad coverage of libraries, frameworks, and applications](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md).
 - EDOT Java is built on top of OpenTelemetry SDK and conventions, ensuring compatibility with community tools, vendor-neutral backends, and so on.
 
 ## Migration steps
@@ -45,7 +45,7 @@ Refer to the [Configuration mapping](#configuration-mapping). Refer to [Configur
 
 ::::{step} Replace the agent binary
 
-Remove the `-javaagent:` argument that contains the Elastic APM Java agent from the JVM arguments. Then add the `-javaagent:` argument to the JVM arguments to use EDOT Java, and restart the application or follow [Kubernetes instructions](./setup/k8s.md) if applicable. Refer to [Setup](./setup/index.md)
+Remove the `-javaagent:` argument that contains the Elastic APM Java agent from the JVM arguments. Then add the `-javaagent:` argument to the JVM arguments to use EDOT Java, and restart the application or follow [Kubernetes instructions](./setup/k8s.md) or [Runtime attach instructions](./setup/runtime-attach) if applicable. Refer to [Setup](./setup/index.md).
 ::::
 
 ::::::
