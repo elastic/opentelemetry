@@ -11,38 +11,36 @@ products:
   - id: edot-sdk
 ---
 
-# Instrumenting Java applications with EDOT Java runtime attach
-
-% TODO do we have a global definition of what "tech preview" means that we could link to ?
+# Instrumenting Java applications using the EDOT Java runtime attach
 
 :::{warning}
 This feature is currently in *tech preview*.
 :::
 
-Runtime attach allows including the EDOT instrumentation agent in the application binary, doing so provides some setup [features](#features)
-and also comes with [limitations](#limitations) that must be reviewed beforehand.
+Runtime attach includes the EDOT instrumentation agent in the application binary. This allows deploying the agent when access to JVM arguments or configuration is not possible, for example, with some managed services. The application development team can control the agent deployment and update cycle without having to modify the execution environment. Runtime attach only requires a minor modification of the application main entry point and one additional dependency.
 
-Adding runtime attach to an application is a 3-step process:
-- [add runtime attach to the application dependencies](#adding-runtime-attach-to-application-dependencies)
-- [minor code modification of the application main method](#minor-code-modification)
-- package and re-deploy the application
+Adding runtime attach to an application requires the following steps:
 
-## Features
-
-- Allows deploying the agent when access to JVM arguments or configuration is not possible, for example, with some managed services.
-- Agent deployment and update cycle can be controlled by the application development team, without needing modifications to the run environment.
+- [Add runtime attach to the application dependencies](#adding-runtime-attach-to-application-dependencies).
+- [Edit the code of the application's main method](#minor-code-modification)
+- Package and redeploy the application.
 
 ## Limitations
 
-- It can't be used with multiple applications that share a JVM, for example, with web-applications and application servers, in this case only the `-javaagent` setup option is supported
-- Agent update is tied to the application development and deployment lifecycle, it is not possible to update application and agent independently.
-- It requires minor modification of the application main entry point and adding one extra dependency.
-- Agent can only be attached at application start, it can't be used to attach later during application runtime.
-- Recent JVMs issue [warnings in standard error](#jvm-runtime-attach-warnings) and the feature might require explicit opt-in with JVM settings in the future
- 
-## Adding runtime attach to application dependencies
+The following limitations apply:
 
-% TODO: can we replace ${VERSION} with the actual latest published version for an easier copy/paste experience ? 
+- Runtime attach can't be used with multiple applications that share a JVM, for example, with web-applications and application servers. In this case, only the `-javaagent` setup option is supported.
+- Agent update is tied to the application development and deployment lifecycle. You can't update application and agent independently.
+- Agent can only be attached at application start; it can't be used to attach later during application runtime.
+- Recent JVMs issue [warnings in standard error](#jvm-runtime-attach-warnings) and the feature might require explicit opt-in with JVM settings in the future.
+
+## Instrument a Java app
+
+Follow these steps to instrument your Java application using runtime attach.
+
+::::::{stepper}
+
+:::::{step} Add runtime attach to application dependencies
 
 ::::{tab-set}
 
@@ -63,10 +61,11 @@ implementation("co.elastic.otel:elastic-otel-runtime-attach:${VERSION}")
 :::
 
 ::::
+:::::
 
-## Minor code modification
+:::::{step} Modify the main method
 
-A single call to `RuntimeAttach.attachJavaagentToCurrentJvm()` must be added early at the start of the `main` method body. Here is an example of a simple spring-boot application:
+Add a single call to `RuntimeAttach.attachJavaagentToCurrentJvm()` at the start of the `main` method body. Here is an example of a simple spring-boot application:
 
 ```java
 @SpringBootApplication
@@ -78,10 +77,12 @@ public class MyApplication {
     }
 }
 ```
+:::::
+::::::
 
-## JVM Runtime attach warnings
+## JVM runtime attach warnings
 
-With recent JVMs, the following warning may be issued in the process standard error output:
+The following warning might appear in the process standard error output:
 
 ```
 WARNING: A Java agent has been loaded dynamically (/tmp/otel-agent6227828786286549290/agent.jar)
@@ -90,6 +91,6 @@ WARNING: If a serviceability tool is not in use, please run with -Djdk.instrumen
 WARNING: Dynamic loading of agents will be disallowed by default in a future release
 ```
 
-This message indicates that the dynamic agent attachment will be disabled by in the future, adding `-XX:+EnableDynamicAgentLoading` to the JVM arguments (or `JAVA_TOOL_OPTIONS` env variable) will allow to get rid of it.
+This message indicates that the dynamic agent attachment will be disabled by in the future. Add `-XX:+EnableDynamicAgentLoading` to the JVM arguments, or to the `JAVA_TOOL_OPTIONS` environment variable, to silence it.
 
-It is also safe to ignore it until the runtime attach feature is disabled by default in a newer JVM version and the JVM version used to run the application is updated to it.
+The runtime attach feature will be turned off by default in future JVM versions. Until then, you can ignore the warning.
