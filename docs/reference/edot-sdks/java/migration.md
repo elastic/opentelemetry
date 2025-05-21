@@ -191,8 +191,8 @@ EDOT Java is not sending metrics that power the [Breakdown metrics](docs-content
 
 There is currently no EDOT Java equivalent for starting the agent with the [remote attach](apm-agent-java://reference/setup-attach-cli.md) capability. The `-javaagent:` option is the preferred startup mechanism. 
 
-There is a migration path for starting the agent with [self attach](apm-agent-java://reference/setup-attach-api.md), which is to use [runtime attachment](./setup/runtime-attach.md), there are, however, [limitations](./setup/runtime-attach.md#limitations)
-and the agent must be started early during application startup.
+A migration path is available for starting the agent with [self attach](apm-agent-java://reference/setup-attach-api.md), which is to use [runtime attachment](./setup/runtime-attach.md). Some [limitations](./setup/runtime-attach.md#limitations)
+apply, and the agent must be started early during application startup.
 
 ### Micrometer turned off by default
 
