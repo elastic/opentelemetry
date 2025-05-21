@@ -19,12 +19,6 @@ This feature is currently in *tech preview*.
 
 Runtime attach includes the EDOT instrumentation agent in the application binary. This allows deploying the agent when access to JVM arguments or configuration is not possible, for example, with some managed services. The application development team can control the agent deployment and update cycle without having to modify the execution environment. Runtime attach only requires a minor modification of the application main entry point and one additional dependency.
 
-Adding runtime attach to an application requires the following steps:
-
-- [Add runtime attach to the application dependencies](#adding-runtime-attach-to-application-dependencies).
-- [Edit the code of the application's main method](#minor-code-modification)
-- Package and redeploy the application.
-
 ## Limitations
 
 The following limitations apply:
@@ -49,14 +43,14 @@ Follow these steps to instrument your Java application using runtime attach.
 <dependency>
   <groupId>co.elastic.otel</groupId>
   <artifactId>elastic-otel-runtime-attach</artifactId>
-  <version>${VERSION}</version>
+  <version>1.4.1</version>
 </dependency>
 ```
 :::
 
 :::{tab-item} Gradle
 ```kotlin
-implementation("co.elastic.otel:elastic-otel-runtime-attach:${VERSION}")
+implementation("co.elastic.otel:elastic-otel-runtime-attach:1.4.1")
 ```
 :::
 
@@ -77,6 +71,12 @@ public class MyApplication {
     }
 }
 ```
+:::::
+
+:::::{step} Package and redeploy the application
+
+After you've added the new dependency and modified the `main` method, package and redeploy your application.
+
 :::::
 ::::::
 
