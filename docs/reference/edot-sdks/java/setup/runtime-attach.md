@@ -47,15 +47,19 @@ Adding runtime attach to an application is a 3-step process:
 ::::{tab-set}
 
 :::{tab-item} Maven
+```xml
 <dependency>
   <groupId>co.elastic.otel</groupId>
   <artifactId>elastic-otel-runtime-attach</artifactId>
   <version>${VERSION}</version>
 </dependency>
+```
 :::
 
 :::{tab-item} Gradle
+```kotlin
 implementation("co.elastic.otel:elastic-otel-runtime-attach:${VERSION}")
+```
 :::
 
 ::::
