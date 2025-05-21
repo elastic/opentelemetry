@@ -45,7 +45,7 @@ Refer to the [Configuration mapping](#configuration-mapping). Refer to [Configur
 
 ::::{step} Replace the agent binary
 
-Remove the `-javaagent:` argument that contains the Elastic APM Java agent from the JVM arguments. Then add the `-javaagent:` argument to the JVM arguments to use EDOT Java, and restart the application or follow [Kubernetes instructions](./setup/k8s.md) or [Runtime attach instructions](./setup/runtime-attach) if applicable. Refer to [Setup](./setup/index.md).
+Remove the `-javaagent:` argument that contains the Elastic APM Java agent from the JVM arguments. Then add the `-javaagent:` argument to the JVM arguments to use EDOT Java, and restart the application or follow [Kubernetes instructions](./setup/k8s.md) or [Runtime attach instructions](./setup/runtime-attach.md) if applicable. Refer to [Setup](./setup/index.md).
 ::::
 
 ::::::
@@ -191,7 +191,7 @@ EDOT Java is not sending metrics that power the [Breakdown metrics](docs-content
 
 There is currently no EDOT Java equivalent for starting the agent with the [remote attach](apm-agent-java://reference/setup-attach-cli.md) capability. The `-javaagent:` option is the preferred startup mechanism. 
 
-There is a migration path for starting the agent with [self attach](apm-agent-java://reference/setup-attach-api.md), which is to use [runtime attachment](https://github.com/open-telemetry/opentelemetry-java-contrib/blob/main/runtime-attach/README.md).
+There is a migration path for starting the agent with [self attach](apm-agent-java://reference/setup-attach-api.md), which is to use [runtime attachment](./setup/runtime-attach.md).
 
 ### Micrometer turned off by default
 
