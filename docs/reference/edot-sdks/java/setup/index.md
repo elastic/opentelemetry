@@ -21,7 +21,7 @@ For Kubernetes, use the OTel Kubernetes Operator. The Operator also manages the 
 
 ## Runtime attach
 
-For environments where modifying the JVM arguments or configuration is not possible, or when including the EDOT Java in the application binary is necessary or preferred, the [runtime attach](./runtime-attach) setup option should be used.
+For environments where modifying the JVM arguments or configuration is not possible, or when including the EDOT Java in the application binary is necessary or preferred, the [runtime attach](./runtime-attach.md) setup option should be used.
 
 ## All other environments
 

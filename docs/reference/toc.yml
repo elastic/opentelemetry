@@ -75,6 +75,7 @@ toc:
           - file: edot-sdks/java/setup/index.md
             children:
               - file: edot-sdks/java/setup/k8s.md
+              - file: edot-sdks/java/setup/runtime-attach.md
           - file: edot-sdks/java/configuration.md
           - file: edot-sdks/java/features.md
           - file: edot-sdks/java/supported-technologies.md
