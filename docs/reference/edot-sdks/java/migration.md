@@ -165,9 +165,9 @@ For example: `OTEL_RESOURCE_ATTRIBUTES=service.instance.id=myserviceinstance001`
 
 The Elastic [`cloud_provider`](apm-agent-java://reference/config-core.md#config-cloud-provider) option corresponds to the per-provider `otel.resource.providers.{provider}.enabled` configuration options.
 
-By default, with EDOT `otel.resource.providers.{provider}.enabled` is set to `true` (which differs from upstream OpenTelemetry distribution, see [configuration](./configuration.md#configuration-options)), this is equivalent to `cloud_provider` default value which is `auto` to automatically detect cloud providers.
+By default, with EDOT `otel.resource.providers.{provider}.enabled` is set to `true`, this is equivalent to the `cloud_provider` default valuem which is `auto`, or automatically detect cloud providers. Notice that this behavior differs from upstream OpenTelemetry distribution.
 
-When the cloud provider is known (or there is none), disabling the non-relevant providers with `otel.resource.providers.{provider}.enabled` = `false` allows to [minimize the application startup overhead](./overhead.md#optimizing-application-startup).
+When the cloud provider is known, or there is none, turning off the non-relevant providers with `otel.resource.providers.{provider}.enabled = false` allows to [minimize the application startup overhead](./overhead.md#optimizing-application-startup).
 
 ## Limitations
 
