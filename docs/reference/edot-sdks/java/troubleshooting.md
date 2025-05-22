@@ -13,7 +13,7 @@ products:
 
 # Troubleshooting the EDOT Java Agent
 
-Use the information in this section to troubleshoot common problems. As a first step, make sure your stack is compatible with the [supported technologies](.//supported-technologies.md) for EDOT Java and the OpenTelemetry SDK.
+Use the information in this section to troubleshoot common problems. As a first step, make sure your stack is compatible with the [supported technologies](./supported-technologies.md) for EDOT Java and the OpenTelemetry SDK.
 
 If you need help and you're an existing Elastic customer with a support contract, create a ticket in the [Elastic Support portal](https://support.elastic.co/customers/s/login/). Other users can post in the [APM discuss forum](https://discuss.elastic.co/c/apm) or [open a GitHub issue](https://github.com/elastic/elastic-otel-node/issues)
 
