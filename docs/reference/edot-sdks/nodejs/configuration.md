@@ -41,92 +41,79 @@ This section attempts to list all environment variables that can be used to conf
 The behavior of `OTEL_` environment variables are typically defined by upstream OpenTelemetry dependencies of EDOT Node.js. In some cases, these dependencies have a "development" status (`0.x` versions). This means that their behavior can be broken in a minor release of EDOT Node.js.
 :::
 
-❇
-: Marks settings that are more commonly used.
-
-🔹
-: Marks settings with a default value or behavior that differs between EDOT Node.js and upstream OTel JS, or that only exists in EDOT Node.js.
+The 🔹 symbol denotes settings with a default value or behavior that differs between EDOT Node.js and upstream OTel JS, or that only exists in EDOT Node.js.
 
 | Name | Notes |
 | :--- | :---- |
-| `OTEL_SDK_DISABLED` ❇ | [(Ref)][otel-sdk-envvars] Disable the SDK. |
-| `OTEL_RESOURCE_ATTRIBUTES` ❇ | [(Ref)][otel-sdk-envvars] Key-value pairs to be used as resource attributes. |
-| `OTEL_SERVICE_NAME` ❇ | [(Ref)][otel-sdk-envvars] Set the `service.name` resource attribute. |
-| `OTEL_LOG_LEVEL` ❇ | [(Ref)][otel-sdk-envvars] Log level used by the SDK internal logger. Default "info". Use `export OTEL_LOG_LEVEL=verbose` for troubleshooting. One of "all", "verbose", "debug", "info", "warn", "error", "none". |
-| `OTEL_PROPAGATORS` | [(Ref)][otel-sdk-envvars] Propagators to use for distributed tracing. Default "tracecontent,baggage". |
-| `OTEL_TRACES_SAMPLER` | [(Ref)][otel-sdk-envvars] Sampler to use for traces. Default `parentbased_always_on`. |
+| `OTEL_SDK_DISABLED`   | [(Ref)][otel-sdk-envvars] Turn off the SDK. |
+| `OTEL_RESOURCE_ATTRIBUTES`   | [(Ref)][otel-sdk-envvars] Key-value pairs to be used as resource attributes. |
+| `OTEL_SERVICE_NAME`   | [(Ref)][otel-sdk-envvars] Set the `service.name` resource attribute. |
+| `OTEL_LOG_LEVEL`   | [(Ref)][otel-sdk-envvars] Log level used by the SDK internal logger. The default value is `info`. Use `export OTEL_LOG_LEVEL=verbose` for troubleshooting. One of `all`, `verbose`, `debug`, `info`, `warn`, `error`, `none`. |
+| `OTEL_PROPAGATORS` | [(Ref)][otel-sdk-envvars] Propagators to use for distributed tracing. The default value is `tracecontent,baggage`. |
+| `OTEL_TRACES_SAMPLER` | [(Ref)][otel-sdk-envvars] Sampler to use for traces. The default value is `parentbased_always_on`. |
 | `OTEL_TRACES_SAMPLER_ARG` | [(Ref)][otel-sdk-envvars] Meaning depends on `OTEL_TRACES_SAMPLER`. |
 | | |
-| `OTEL_EXPORTER_OTLP_ENDPOINT` ❇ | [(Ref)][otel-exporter-envvars] URL to which to send spans, metrics, or logs. Also supports signal-specific `OTEL_EXPORTER_OTLP_{signal}_ENDPOINT`. |
-| `OTEL_EXPORTER_OTLP_HEADERS` ❇ | [(Ref)][otel-exporter-envvars] Key-value pairs for headers to be used in HTTP or gRPC requests. Also supports signal-specific `OTEL_EXPORTER_OTLP_{signal}_HEADERS`. |
-| `OTEL_EXPORTER_OTLP_PROTOCOL` | [(Ref)][otel-exporter-envvars] OTLP transport protocol. Default `http/protobuf`. One of `http/protobuf`, `grpc`, `http/json`. Also supports signal-specific `OTEL_EXPORTER_OTLP_{signal}_PROTOCOL`. |
-| `OTEL_EXPORTER_OTLP_TIMEOUT` | [(Ref)][otel-exporter-envvars] Max time (ms) exporter will way for a batch export. Also supports signal-specific `OTEL_EXPORTER_OTLP_{signal}_TIMEOUT`. |
-| `OTEL_EXPORTER_OTLP_COMPRESSION` | [(Ref)][otel-exporter-envvars] Default `gzip`. Also supports signal-specific `OTEL_EXPORTER_OTLP_{signal}_COMPRESSION`. |
-| `OTEL_EXPORTER_OTLP_INSECURE` | [(Ref)][otel-exporter-envvars] Whether to disable client transport security for gRPC connections. Default false. Also supports signal-specific `OTEL_EXPORTER_OTLP_{signal}_INSECURE`. |
+| `OTEL_EXPORTER_OTLP_ENDPOINT`   | [(Ref)][otel-exporter-envvars] URL to which to send spans, metrics, or logs. Also supports signal-specific `OTEL_EXPORTER_OTLP_{signal}_ENDPOINT`. |
+| `OTEL_EXPORTER_OTLP_HEADERS`   | [(Ref)][otel-exporter-envvars] Key-value pairs for headers to be used in HTTP or gRPC requests. Also supports signal-specific `OTEL_EXPORTER_OTLP_{signal}_HEADERS`. |
+| `OTEL_EXPORTER_OTLP_PROTOCOL` | [(Ref)][otel-exporter-envvars] OTLP transport protocol. The default value is `http/protobuf`. One of `http/protobuf`, `grpc`, `http/json`. Also supports signal-specific `OTEL_EXPORTER_OTLP_{signal}_PROTOCOL`. |
+| `OTEL_EXPORTER_OTLP_TIMEOUT` | [(Ref)][otel-exporter-envvars] Maximum time, in milliseconds, exporter will wait for a batch export. Also supports signal-specific `OTEL_EXPORTER_OTLP_{signal}_TIMEOUT`. |
+| `OTEL_EXPORTER_OTLP_COMPRESSION` | [(Ref)][otel-exporter-envvars] The default value is `gzip`. Also supports signal-specific `OTEL_EXPORTER_OTLP_{signal}_COMPRESSION`. |
+| `OTEL_EXPORTER_OTLP_INSECURE` | [(Ref)][otel-exporter-envvars] Whether to turn off client transport security for gRPC connections. The default value is `false`. Also supports signal-specific `OTEL_EXPORTER_OTLP_{signal}_INSECURE`. |
 | `OTEL_EXPORTER_OTLP_CLIENT_KEY` | [(Ref)][otel-exporter-envvars] Client private key for mTLS communication. Also supports signal-specific `OTEL_EXPORTER_OTLP_{signal}_CLIENT_KEY`. |
-| `OTEL_EXPORTER_OTLP_CLIENT_CERTIFICATE` | [(Ref)][otel-exporter-envvars] The trusted certificate to use when verifying a server’s TLS credentials. Also supports signal-specific `OTEL_EXPORTER_OTLP_{signal}_CLIENT_CERTIFICATE`. |
+| `OTEL_EXPORTER_OTLP_CLIENT_CERTIFICATE` | [(Ref)][otel-exporter-envvars] The trusted certificate to use when verifying a server's TLS credentials. Also supports signal-specific `OTEL_EXPORTER_OTLP_{signal}_CLIENT_CERTIFICATE`. |
 | | |
 | `OTEL_NODE_RESOURCE_DETECTORS` | [(EDOT Ref)](#otel_node_resource_detectors-details) Comma-separated list of resource detectors to use. |
-| `OTEL_NODE_ENABLED_INSTRUMENTATIONS` 🔹 | [(EDOT Ref)](#otel_node_disabledenabled_instrumentations-details) Comma-separated list of instrumentations to enable. |
-| `OTEL_NODE_DISABLED_INSTRUMENTATIONS` 🔹 | [(EDOT Ref)](#otel_node_disabledenabled_instrumentations-details) Comma-separated list of instrumentations to disable. |
+| `OTEL_NODE_ENABLED_INSTRUMENTATIONS` 🔹 | [(EDOT Ref)](#otel_node_disabledenabled_instrumentations-details) Comma-separated list of instrumentations to turn on. |
+| `OTEL_NODE_DISABLED_INSTRUMENTATIONS` 🔹 | [(EDOT Ref)](#otel_node_disabledenabled_instrumentations-details) Comma-separated list of instrumentations to turn off. |
 | | |
-| `ELASTIC_OTEL_METRICS_DISABLED` 🔹 | [(EDOT Ref)](#elastic_otel_metrics_disabled-details) Disable any metrics being sent by the SDK. |
-| `OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE` 🔹 | [(EDOT Ref)](#otel_exporter_otlp_metrics_temporality_preference-details) The metrics exporter's default aggregation `temporality`. Default `delta`. (Note: The upstream OTel default is `cumulative`.) |
+| `OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE` 🔹 | [(EDOT Ref)](#otel_exporter_otlp_metrics_temporality_preference-details) The metrics exporter's default aggregation `temporality`. The default value is `delta`. The upstream OTel default is `cumulative`. |
 | | |
-| `OTEL_SEMCONV_STABILITY_OPT_IN` 🔹 | [(EDOT Ref)](#otel_semconv_stability_opt_in-details) Control which HTTP semantic conventions are use by `@opentelemetry/instrumentation-http`. Default 'http'. (Note: The upstream OTel default is an empty value.) |
+| `OTEL_SEMCONV_STABILITY_OPT_IN` 🔹 | [(EDOT Ref)](#otel_semconv_stability_opt_in-details) Control which HTTP semantic conventions are used by `@opentelemetry/instrumentation-http`. The default value is `http`. The upstream OTel default is an empty value. |
 | | |
 | `OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT` | [(EDOT Ref)](#otel_instrumentation_genai_capture_message_content-details) A boolean to control whether message content should be included in GenAI-related telemetry. |
 | | |
-| `OTEL_BSP_SCHEDULE_DELAY` | [(Ref)][otel-sdk-envvars-bsp] Duration (ms) between consecutive BatchSpanProcessor exports. Default 5000. |
-| `OTEL_BSP_EXPORT_TIMEOUT` | [(Ref)][otel-sdk-envvars-bsp] Maximum allowed time (ms) for BatchSpanProcessor to export. Default 30000. |
-| `OTEL_BSP_MAX_QUEUE_SIZE` | [(Ref)][otel-sdk-envvars-bsp] Maximum BatchSpanProcessor queue size. Default 2048. |
-| `OTEL_BSP_MAX_EXPORT_BATCH_SIZE` | [(Ref)][otel-sdk-envvars-bsp] Maximum BatchSpanProcessor batch size. Default 512. |
+| `OTEL_BSP_SCHEDULE_DELAY` | [(Ref)][otel-sdk-envvars-bsp] Duration, in milliseconds, between consecutive BatchSpanProcessor exports. The default value is `5000`. |
+| `OTEL_BSP_EXPORT_TIMEOUT` | [(Ref)][otel-sdk-envvars-bsp] Maximum allowed time, in milliseconds, for BatchSpanProcessor to export. The default value is `30000`. |
+| `OTEL_BSP_MAX_QUEUE_SIZE` | [(Ref)][otel-sdk-envvars-bsp] Maximum BatchSpanProcessor queue size. The default value is `2048`. |
+| `OTEL_BSP_MAX_EXPORT_BATCH_SIZE` | [(Ref)][otel-sdk-envvars-bsp] Maximum BatchSpanProcessor batch size. The default value is `512`. |
 | | |
-| `OTEL_BLRP_SCHEDULE_DELAY` | [(Ref)][otel-sdk-envvars-blrp] Duration (ms) between consecutive BatchLogRecordProcessor exports. Default 1000. |
-| `OTEL_BLRP_EXPORT_TIMEOUT` | [(Ref)][otel-sdk-envvars-blrp] Maximum allowed time (ms) for BatchLogRecordProcessor to export. Default 30000. |
-| `OTEL_BLRP_MAX_QUEUE_SIZE` | [(Ref)][otel-sdk-envvars-blrp] Maximum BatchLogRecordProcessor queue size. Default 2048. |
-| `OTEL_BLRP_MAX_EXPORT_BATCH_SIZE` | [(Ref)][otel-sdk-envvars-blrp] Maximum BatchLogRecordProcessor batch size. Default 512. |
+| `OTEL_BLRP_SCHEDULE_DELAY` | [(Ref)][otel-sdk-envvars-blrp] Duration, in milliseconds, between consecutive BatchLogRecordProcessor exports. The default value is `1000`. |
+| `OTEL_BLRP_EXPORT_TIMEOUT` | [(Ref)][otel-sdk-envvars-blrp] Maximum allowed time, in milliseconds, for BatchLogRecordProcessor to export. The default value is `30000`. |
+| `OTEL_BLRP_MAX_QUEUE_SIZE` | [(Ref)][otel-sdk-envvars-blrp] Maximum BatchLogRecordProcessor queue size. The default value is `2048`. |
+| `OTEL_BLRP_MAX_EXPORT_BATCH_SIZE` | [(Ref)][otel-sdk-envvars-blrp] Maximum BatchLogRecordProcessor batch size. The default value is `512`. |
 | | |
-| `OTEL_ATTRIBUTE_VALUE_LENGTH_LIMIT` | [(Ref)][otel-sdk-envvars-attr-limits] Maximum allowed attribute value size. Default: no limit. |
-| `OTEL_ATTRIBUTE_COUNT_LIMIT` | [(Ref)][otel-sdk-envvars-attr-limits] Maximum allowed attribute count. Default 128. |
+| `OTEL_ATTRIBUTE_VALUE_LENGTH_LIMIT` | [(Ref)][otel-sdk-envvars-attr-limits] Maximum allowed attribute value size. The default is no limit. |
+| `OTEL_ATTRIBUTE_COUNT_LIMIT` | [(Ref)][otel-sdk-envvars-attr-limits] Maximum allowed attribute count. The default value is `128`. |
+| `OTEL_SPAN_ATTRIBUTE_VALUE_LENGTH_LIMIT` | [(Ref)][otel-sdk-envvars-span-limits] Maximum allowed span attribute value size. The default is no limit. |
+| `OTEL_SPAN_ATTRIBUTE_COUNT_LIMIT` | [(Ref)][otel-sdk-envvars-span-limits] Maximum allowed span attribute count. The default value is `128`. |
+| `OTEL_SPAN_EVENT_COUNT_LIMIT` | [(Ref)][otel-sdk-envvars-span-limits] Maximum allowed span event count. The default value is `128`. |
+| `OTEL_SPAN_LINK_COUNT_LIMIT` | [(Ref)][otel-sdk-envvars-span-limits] Maximum allowed span link count. The default value is `128`. |
+| `OTEL_EVENT_ATTRIBUTE_COUNT_LIMIT` | [(Ref)][otel-sdk-envvars-span-limits] Maximum allowed attribute count per span event. The default value is `128`. |
+| `OTEL_LINK_ATTRIBUTE_COUNT_LIMIT` | [(Ref)][otel-sdk-envvars-span-limits] Maximum allowed attribute count per span link. The default value is `128`. |
 | | |
-| `OTEL_SPAN_ATTRIBUTE_VALUE_LENGTH_LIMIT` | [(Ref)][otel-sdk-envvars-span-limits] Max allowed span attribute value size. Default: no limit. |
-| `OTEL_SPAN_ATTRIBUTE_COUNT_LIMIT` | [(Ref)][otel-sdk-envvars-span-limits] Max allowed span attribute count. Default 128. |
-| `OTEL_SPAN_EVENT_COUNT_LIMIT` | [(Ref)][otel-sdk-envvars-span-limits] Max allowed span event count. Default 128. |
-| `OTEL_SPAN_LINK_COUNT_LIMIT` | [(Ref)][otel-sdk-envvars-span-limits] Max allowed span link count. Default 128. |
-| `OTEL_EVENT_ATTRIBUTE_COUNT_LIMIT` | [(Ref)][otel-sdk-envvars-span-limits] Max allowed attribute count per span event. Default 128. |
-| `OTEL_LINK_ATTRIBUTE_COUNT_LIMIT` | [(Ref)][otel-sdk-envvars-span-limits] Max allowed attribute count per span link. Default 128. |
+| `OTEL_LOGRECORD_ATTRIBUTE_VALUE_LENGTH_LIMIT` | [(Ref)][otel-sdk-envvars-logrecord-limits] Maximum allowed log record attribute value size. The default is no limit. |
+| `OTEL_LOGRECORD_ATTRIBUTE_COUNT_LIMIT` | [(Ref)][otel-sdk-envvars-logrecord-limits] Maximum allowed log record attribute count. The default value is `128`. |
 | | |
-| `OTEL_LOGRECORD_ATTRIBUTE_VALUE_LENGTH_LIMIT` | [(Ref)][otel-sdk-envvars-logrecord-limits] Max allowed log record attribute value size. Default: no limit. |
-| `OTEL_LOGRECORD_ATTRIBUTE_COUNT_LIMIT` | [(Ref)][otel-sdk-envvars-logrecord-limits] Max allowed log record attribute count. Default 128. |
+| `OTEL_EXPORTER_PROMETHEUS_HOST` | [(Ref)][otel-sdk-envvars-prom] Host used by the Prometheus exporter. The default value is `localhost`. |
+| `OTEL_EXPORTER_PROMETHEUS_PORT` | [(Ref)][otel-sdk-envvars-prom] Port used by the Prometheus exporter. The default value is `9464`. |
 | | |
-| `OTEL_EXPORTER_PROMETHEUS_HOST` | [(Ref)][otel-sdk-envvars-prom] Host used by the Prometheus exporter. Default "localhost". |
-| `OTEL_EXPORTER_PROMETHEUS_PORT` | [(Ref)][otel-sdk-envvars-prom] Port used by the Prometheus exporter. Default 9464. |
+| `OTEL_TRACES_EXPORTER` | [(Ref)][otel-sdk-envvars-exp-sel] Trace exporters to use. The default value is `otlp`. Supports: `otlp`, `console`, `zipkin`, `none`. |
+| `OTEL_METRICS_EXPORTER` | [(Ref)][otel-sdk-envvars-exp-sel] Metrics exporters to use. The default value is `otlp`. Supports: `otlp`, `console`, `prometheus`, `none`. |
+| `OTEL_LOGS_EXPORTER` | [(Ref)][otel-sdk-envvars-exp-sel] Logs exporters to use. The default value is `otlp`. Supports: `otlp`, `console`, `none`. |
 | | |
-| `OTEL_TRACES_EXPORTER` | [(Ref)][otel-sdk-envvars-exp-sel] Trace exporter(s) to use. Default `otlp`. Supports: otlp, console, zipkin, none. |
-| `OTEL_METRICS_EXPORTER` | [(Ref)][otel-sdk-envvars-exp-sel] Metrics exporter(s) to use. Default `otlp`. Supports: otlp, console, prometheus, none.|
-| `OTEL_LOGS_EXPORTER` | [(Ref)][otel-sdk-envvars-exp-sel] Logs exporter(s) to use. Default `otlp`. Supports: otlp, console, none. |
-| | |
-| `OTEL_METRICS_EXEMPLAR_FILTER` | [(Ref)][otel-sdk-envvars-metrics] Filter for which measurements can become Exemplars. Default `trace_based`. One of `always_on`, `always_off`, `trace_based`. |
-| `OTEL_METRIC_EXPORT_INTERVAL` | [(Ref)][otel-sdk-envvars-metrics] Interval (ms) between consecutive PeriodicExportingMetricReader exports. Default 60000. |
-| `OTEL_METRIC_EXPORT_TIMEOUT` | [(Ref)][otel-sdk-envvars-metrics] Max allowed time (ms) for PeriodicExportingMetricReader to export data. Default 30000. |
+| `OTEL_METRICS_EXEMPLAR_FILTER` | [(Ref)][otel-sdk-envvars-metrics] Filter for which measurements can become Exemplars. The default value is `trace_based`. One of `always_on`, `always_off`, `trace_based`. |
+| `OTEL_METRIC_EXPORT_INTERVAL` | [(Ref)][otel-sdk-envvars-metrics] Interval, in milliseconds, between consecutive PeriodicExportingMetricReader exports. The default value is `60000`. |
+| `OTEL_METRIC_EXPORT_TIMEOUT` | [(Ref)][otel-sdk-envvars-metrics] Maximum allowed time, in milliseconds, for PeriodicExportingMetricReader to export data. The default value is `30000`. |
 
-[otel-sdk-envvars]: https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#general-sdk-configuration
-[otel-sdk-envvars-bsp]: https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#batch-span-processor
-[otel-sdk-envvars-blrp]: https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#batch-logrecord-processor
-[otel-sdk-envvars-attr-limits]: https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#attribute-limits
-[otel-sdk-envvars-span-limits]: https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#span-limits
-[otel-sdk-envvars-logrecord-limits]: https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#logrecord-limits
-[otel-sdk-envvars-prom]: https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#prometheus-exporter
-[otel-sdk-envvars-exp-sel]: https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#exporter-selection
-[otel-sdk-envvars-metrics]: https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#metrics-sdk-configuration
-[otel-exporter-envvars]: https://opentelemetry.io/docs/specs/otel/protocol/exporter/
+The following settings are deprecated:
 
+| Name | Notes |
+| :--- | :---- |
+| `ELASTIC_OTEL_HOST_METRICS_DISABLED` 🔹 | [(EDOT Ref)](#elastic_otel_host_metrics_disabled-details) Turns off collection of metrics done by `@opentelemetry/host-metrics` package. |
 
-## EDOT Configuration Details
+## EDOT configuration details
 
 This section includes additional details on some configuration settings that merit more explanation, or that have behavior that differs in EDOT Node.js when compared to upstream OpenTelemetry JS.
-
 
 ### `OTEL_NODE_RESOURCE_DETECTORS` details [otel_node_resource_detectors-details]
 
@@ -166,14 +153,20 @@ EDOT Node.js handles these settings the same as the upstream [`@opentelemetry/au
 ```bash
 export OTEL_NODE_ENABLED_INSTRUMENTATIONS=http,fastify,pino,@elastic/opentelemetry-instrumentation-openai
 ```
-
-
-### `ELASTIC_OTEL_METRICS_DISABLED` details [elastic_otel_metrics_disabled-details]
+### (Deprecated) `ELASTIC_OTEL_METRICS_DISABLED` details [deprecated-elastic_otel_metrics_disabled-details]
 
 EDOT Node.js enables the collection and export of metrics by default. If you wish to disable metrics you can by setting the environment variable `ELASTIC_OTEL_METRICS_DISABLED` to the string `true`.
 
 Setting `ELASTIC_OTEL_METRICS_DISABLED=true` is similar to setting `OTEL_METRICS_EXPORTER=none`, in that it ensures no metrics are exported by the SDK. However, this setting will also disable the collection of metrics by the `@opentelemetry/host-metrics` and `@opentelemetry/instrumentation-runtime-node` packages, which can be a minor performace improvement.
 
+You can achieve better control of the metrics by setting the appropiate values through the `OTEL_NODE_{DISABLED,ENABLED}_INSTRUMENTATIONS` and `ELASTIC_OTEL_HOST_METRICS_DISABLED` environment variables.
+
+- To turn off collection for the `@opentelemetry/host-metrics` package, set `ELASTIC_OTEL_HOST_METRICS_DISABLED` to `false`.
+- To turn off collection for the `@opentelemetry/instrumentation-runtime-node` package, set `OTEL_NODE_{DISABLED,ENABLED}_INSTRUMENTATIONS` to exclude that instrumentation. [(EDOT Ref)](#otel_node_disabledenabled_instrumentations-details)
+
+### `ELASTIC_OTEL_HOST_METRICS_DISABLED` details [elastic_otel_host_metrics_disabled-details]
+
+EDOT Node.js collects and export host metrics by default. To turn off metrics collected through the `@opentelemetry/host-metrics` package, set the `ELASTIC_HOST_OTEL_METRICS_DISABLED` environment variable to `true`.
 
 ### `OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE` details [otel_exporter_otlp_metrics_temporality_preference-details]
 
@@ -182,9 +175,6 @@ Therefore, the EDOT Node.js changes the default value of `OTEL_EXPORTER_OTLP_MET
 You can override this default if needed, note though that some provided Kibana dashboards will not work correctly in this case.
 
 Upstream OpenTelemetry defaults the temporality preference to `cumulative`. See https://opentelemetry.io/docs/specs/otel/metrics/sdk_exporters/otlp/#additional-environment-variable-configuration
-
-<!-- TODO: assumes https://github.com/elastic/elastic-otel-node/pull/670 will be merged -->
-
 
 ### `OTEL_SEMCONV_STABILITY_OPT_IN` details [otel_semconv_stability_opt_in-details]
 
@@ -204,3 +194,15 @@ Set `OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT` to `true` to
 enable capture of content data, such as prompt and completion content, in GenAI telemetry. Currently this applies to the [`@elastic/opentelemetry-instrumentation-openai` instrumentation for the OpenAI Node.js client](https://github.com/elastic/elastic-otel-node/tree/main/packages/instrumentation-openai/#configuration) that is included in EDOT Node.js
 
 The `OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT` boolean environment variable is a convention established by the OpenTelemetry GenAI SIG. It is referenced in <https://opentelemetry.io/blog/2024/otel-generative-ai/>.
+
+
+[otel-sdk-envvars]: https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#general-sdk-configuration
+[otel-sdk-envvars-bsp]: https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#batch-span-processor
+[otel-sdk-envvars-blrp]: https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#batch-logrecord-processor
+[otel-sdk-envvars-attr-limits]: https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#attribute-limits
+[otel-sdk-envvars-span-limits]: https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#span-limits
+[otel-sdk-envvars-logrecord-limits]: https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#logrecord-limits
+[otel-sdk-envvars-prom]: https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#prometheus-exporter
+[otel-sdk-envvars-exp-sel]: https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#exporter-selection
+[otel-sdk-envvars-metrics]: https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#metrics-sdk-configuration
+[otel-exporter-envvars]: https://opentelemetry.io/docs/specs/otel/protocol/exporter/
