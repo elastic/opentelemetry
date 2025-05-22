@@ -78,11 +78,11 @@ Follow these steps to install the operator:
 
 4. Run the following commands to deploy the `opentelemetry-kube-stack` Helm chart, using the appropriate values file:
 
-    ```bash
+    ```bash subs=true
     helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm-charts
     helm repo update
     helm upgrade --install --namespace opentelemetry-operator-system opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack \
-          --values 'https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{ site.edot_versions.collector }}/deploy/helm/edot-collector/kube-stack/values.yaml' \
+          --values 'https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{edot-collector-version}}/deploy/helm/edot-collector/kube-stack/values.yaml' \
           --version 0.3.3
     ```
 

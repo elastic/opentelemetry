@@ -19,15 +19,15 @@ The following table contains direct download links for the latest EDOT Collector
 
 | Platform      | Architecture | Download link |
 |--------------|--------------|---------------|
-| Windows      | x86_64       | [Download (Zip)](https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-9.0.1-windows-x86_64.zip) |
-| macOS        | x86_64       | [Download (Tar.gz)](https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-9.0.1-darwin-x86_64.tar.gz) |
-| macOS        | aarch64      | [Download (Tar.gz)](https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-9.0.1-darwin-aarch64.tar.gz) |
-| Linux        | x86_64       | [Download (Tar.gz)](https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-9.0.1-linux-x86_64.tar.gz) |
-| Linux        | aarch64      | [Download (Tar.gz)](https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-9.0.1-linux-arm64.tar.gz) |
-| Linux (DEB)  | x86_64       | [Download (Deb)](https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-9.0.1-amd64.deb) |
-| Linux (DEB)  | aarch64      | [Download (Deb)](https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-9.0.1-arm64.deb) |
-| Linux (RPM)  | x86_64       | [Download (Rpm)](https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-9.0.1-x86_64.rpm) |
-| Linux (RPM)  | aarch64      | [Download (Rpm)](https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-9.0.1-aarch64.rpm) |
+| Windows      | x86_64       | [Download (Zip)](https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{edot-collector-version}}-windows-x86_64.zip) |
+| macOS        | x86_64       | [Download (Tar.gz)](https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{edot-collector-version}}-darwin-x86_64.tar.gz) |
+| macOS        | aarch64      | [Download (Tar.gz)](https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{edot-collector-version}}-darwin-aarch64.tar.gz) |
+| Linux        | x86_64       | [Download (Tar.gz)](https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{edot-collector-version}}-linux-x86_64.tar.gz) |
+| Linux        | aarch64      | [Download (Tar.gz)](https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{edot-collector-version}}-linux-arm64.tar.gz) |
+| Linux (DEB)  | x86_64       | [Download (Deb)](https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{edot-collector-version}}-amd64.deb) |
+| Linux (DEB)  | aarch64      | [Download (Deb)](https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{edot-collector-version}}-arm64.deb) |
+| Linux (RPM)  | x86_64       | [Download (Rpm)](https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{edot-collector-version}}-x86_64.rpm) |
+| Linux (RPM)  | aarch64      | [Download (Rpm)](https://artifacts.elastic.co/downloads/beats/elastic-agent/elastic-agent-{{edot-collector-version}}-aarch64.rpm) |
 
 After you've downloaded and uncompressed the file, you can get EDOT Collector running with the following command:
 
