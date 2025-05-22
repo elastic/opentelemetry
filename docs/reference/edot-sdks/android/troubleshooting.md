@@ -1,9 +1,23 @@
 ---
+navigation_title: Troubleshooting
+description: Use the information in this section to troubleshoot common problems affecting the Elastic Distribution of OpenTelemetry Android.
+applies_to:
+  stack:
+  serverless:
+    observability:
+products:
+  - id: cloud-serverless
+  - id: observability
+  - id: edot-sdk
 mapped_pages:
   - https://www.elastic.co/guide/en/apm/agent/android/current/faq.html
 ---
 
-# Troubleshooting
+# Troubleshooting the EDOT Android SDK
+
+Use the information in this section to troubleshoot common problems. As a first step, make sure your stack is compatible with the [supported technologies](./getting-started.md#requirements) for EDOT Android and the OpenTelemetry SDK.
+
+If you have an Elastic support contract, create a ticket in the [Elastic Support portal](https://support.elastic.co/customers/s/login/). If you don't, post in the [APM discuss forum](https://discuss.elastic.co/c/apm) or [open a GitHub issue](https://github.com/elastic/apm-agent-android).
 
 ## General
 
@@ -36,3 +50,39 @@ To prevent these kinds of issues on devices using Android OS older than 8.0, you
 ## App referred to as service [why-service]
 
 For historic reasons, `service` has been the default way of referring to "an entity that produces telemetry". This term made its way into OpenTelemetry to a point where it was marked as one of the first "stable" resource names, meaning that it was no longer possible/feasible to make a change to another name that would better represent any kind of telemetry source. This has been debated several times within the community. A recent discussion attempts to [explain the `service` description](https://github.com/open-telemetry/semantic-conventions/pull/630) and what it should represent in an effort to reduce confusion. However, there doesn't seem to be a consensus.
+
+
+
+
+## How to configure SSL/TLS? [how-ssl]
+
+Note that the Elastic Agent does not handle SSL/TLS configs internally. Therefore, you should manage these types of configurations as part of your app’s network security configurations, as explained in Android’s official [security guidelines](https://developer.android.com/privacy-and-security/security-ssl). Below we show a set of common use cases and quick tips on what could be done on each one. However, each case might be different, so please refer to Android’s [official docs](https://developer.android.com/privacy-and-security/security-config) on this topic if you need more details.
+
+### Connecting to Elastic Cloud [how-ssl-elastic-cloud]
+
+If your {{stack}} is hosted in {{ecloud}}, you shouldn’t need to add any SSL/TLS config changes in your app. It should work out of the box.
+
+### Connecting to an on-prem server [how-ssl-on-prem]
+
+If your {{stack}} is hosted on-prem, then it depends on the type of CA your host uses to sign its certificates. If it’s a commonly trusted CA, you shouldn’t have to worry about changing your app’s SSL/TLS configuration as it all should work well out of the box. However, if your CAs are unknown/private or your server uses a self-signed certificate, then you would need to configure your app to trust custom CAs by following [Android’s guide](https://developer.android.com/privacy-and-security/security-config).
+
+### Debugging purposes [how-ssl-debug]
+
+If you’re running a local server and need to connect to it without using https in order to run a quick test, then you could temporarily [enable cleartext traffic](https://developer.android.com/guide/topics/manifest/application-element#usesCleartextTraffic) within your `AndroidManifest.xml` file, inside the `<application>` tag. As shown below:
+
+```xml
+<application
+    ...
+    android:usesCleartextTraffic="true">
+    ...
+</application>
+```
+
+::::{note}
+You should only enable cleartext traffic for debugging purposes and not for production code.
+::::
+
+If enabling cleartext traffic isn’t a valid option for your debugging use case, you should refer to Android’s guide on [configuring CAs for debugging](https://developer.android.com/privacy-and-security/security-config#TrustingDebugCa).
+
+For more information on how Android handles network security, please refer to the official [Android docs](https://developer.android.com/privacy-and-security/security-ssl).
+

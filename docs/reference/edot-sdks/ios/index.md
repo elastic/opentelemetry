@@ -1,4 +1,14 @@
 ---
+navigation_title: EDOT iOS
+description: The Elastic Distribution of OpenTelemetry iOS (EDOT iOS) is an APM agent based on OpenTelemetry. It provides built-in tools and configurations to make the OpenTelemetry SDK work with Elastic using as little code as possible while fully leveraging the combined forces of Elasticsearch and Kibana for your iOS application.
+applies_to:
+  stack:
+  serverless:
+    observability:
+products:
+  - id: cloud-serverless
+  - id: observability
+  - id: edot-sdk
 mapped_pages:
   - https://www.elastic.co/guide/en/apm/agent/swift/current/intro.html
   - https://www.elastic.co/guide/en/apm/agent/swift/current/index.html

@@ -62,7 +62,6 @@ toc:
           - file: edot-sdks/android/configuration.md
           - file: edot-sdks/android/manual-instrumentation.md
           - file: edot-sdks/android/automatic-instrumentation.md
-          - file: edot-sdks/android/how-tos.md
           - file: edot-sdks/android/troubleshooting.md
       - file: edot-sdks/dotnet/index.md
         children:

@@ -1,4 +1,13 @@
 ---
+navigation_title: Supported technologies
+description: Technologies supported by the Elastic Distribution of OpenTelemetry iOS.
+applies_to:
+  stack:
+  serverless:
+    observability:
+products:
+  - id: cloud-serverless
+  - id: observability
 mapped_pages:
   - https://www.elastic.co/guide/en/apm/agent/swift/current/supported-technologies.html
 ---

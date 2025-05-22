@@ -26,6 +26,7 @@ toc:
 # - toc: release-notes
 
 subs:
+  edot-collector-version: "9.0.1"
   edot: Elastic Distribution of OpenTelemetry
   ecloud:   "Elastic Cloud"
   ech:   "Elastic Cloud Hosted"

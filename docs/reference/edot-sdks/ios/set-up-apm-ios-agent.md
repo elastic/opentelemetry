@@ -1,4 +1,14 @@
 ---
+navigation_title: Setup
+description: Set up the Elastic Distribution of OpenTelemetry iOS (EDOT iOS) to send data to Elastic.
+applies_to:
+  stack:
+  serverless:
+    observability:
+products:
+  - id: cloud-serverless
+  - id: observability
+  - id: edot-sdk
 mapped_pages:
   - https://www.elastic.co/guide/en/apm/agent/swift/current/setup.html
 ---
