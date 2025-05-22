@@ -15,6 +15,7 @@ mapped_pages:
 
 # Set up the APM iOS Agent [setup]
 
+Learn how to set up and configure the Elastic Distribution of OpenTelemetry iOS (EDOT iOS) to instrument your application.
 
 ## Requirements [requirements]
 
@@ -30,13 +31,13 @@ Other platform requires:
 | `watchOS` | `3` |
 
 
-## Add the Agent dependency [add-agent-dependency]
+## Add the SDK dependency [add-agent-dependency]
 
-Add the Elastic APM iOS Agent to your Xcode project or your `Package.swift`.
+Add the Elastic Distribution of OpenTelemetry iOS to your Xcode project or your `Package.swift`.
 
-Here are instructions for adding a [package dependency](https://developer.apple.com/documentation/swift_packages/adding_package_dependencies_to_your_app) to a standard Xcode poject.
+Here are instructions for adding a [package dependency](https://developer.apple.com/documentation/swift_packages/adding_package_dependencies_to_your_app) to a standard Xcode project.
 
-Details of adding dependencies to your Package.swift can be found on [*Add a Dependency on Another Swift Package*](https://developer.apple.com/documentation/xcode/creating_a_standalone_swift_package_with_xcode#3578941). Below is a helpful code-snippet:
+Details of adding dependencies to your Package.swift can be found on [*Add a Dependency on Another Swift Package*](https://developer.apple.com/documentation/xcode/creating_a_standalone_swift_package_with_xcode#3578941). The following is a helpful code snippet:
 
 `package.swift`:
 
@@ -56,9 +57,9 @@ Package(
 ```
 
 
-## Initialize the agent [initialize]
+## Initialize the SDK [initialize]
 
-Once the Agent has been added as a dependency, it must be initialized.
+After you've added the SDK as a dependency, initialize it.
 
 If you’re using `SwiftUI` to build your app add the following to your `App.swift`:
 
@@ -92,8 +93,7 @@ struct MyApp: App {
 ```
 
 1. APM Server URL
-2. Set secret token for APM server connection
-
+2. Set the secret token for APM server connection
 
 If you’re not using `SwiftUI` you can alternatively add the same thing to your AppDelegate file:
 
@@ -116,6 +116,6 @@ var config = AgentConfigBuilder()
 ```
 
 1. APM Server URL
-2. Set secret token for APM server connection
+2. Set the secret token for APM server connection
 
 
