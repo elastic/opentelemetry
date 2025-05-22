@@ -54,11 +54,11 @@ Follow these steps to retrieve the managed OTLP endpoint URL for your Serverless
 
 Create a `.env` file with the following content, replacing the placeholder values with your actual Elastic Cloud credentials:
 
-```bash
+```bash subs=true
 HOST_FILESYSTEM=/
 DOCKER_SOCK=/var/run/docker.sock
 ELASTIC_AGENT_OTEL=true
-COLLECTOR_CONTRIB_IMAGE=elastic/elastic-agent:9.0.0
+COLLECTOR_CONTRIB_IMAGE=elastic/elastic-agent:{{edot-collector-version}}
 ELASTIC_API_KEY=<your_api_key_here>
 ELASTIC_OTLP_ENDPOINT=<your_endpoint_here>
 OTEL_COLLECTOR_CONFIG=/path/to/otel-collector-config.yml
