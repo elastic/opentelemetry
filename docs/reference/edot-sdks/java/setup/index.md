@@ -17,7 +17,11 @@ Learn how to set up the Elastic Distribution of OpenTelemetry (EDOT) Java in var
 
 ## Kubernetes
 
-For Kubernetes, use the OTel Kubernetes Operator. The Operator also manages the auto-instrumentation of Java applications. Follow the [Quickstart Guide](../../../quickstart/index.md) for Kubernetes or learn more about [instrumentation details on Kubernetes for Java](./k8s.md). 
+For Kubernetes, use the OTel Kubernetes Operator. The Operator also manages the auto-instrumentation of Java applications. Follow the [quickstart guide](../../../quickstart/index.md) for Kubernetes or learn more about [instrumentation details on Kubernetes for Java](./k8s.md).
+
+## Runtime attach
+
+For environments where modifying the JVM arguments or configuration is not possible, or when including the EDOT Java in the application binary is necessary or preferred, use the [runtime attach](./runtime-attach.md) setup option.
 
 ## All other environments
 
