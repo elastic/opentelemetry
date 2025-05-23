@@ -89,6 +89,7 @@ toc:
               - file: edot-sdks/nodejs/setup/k8s.md
           - file: edot-sdks/nodejs/configuration.md
           - file: edot-sdks/nodejs/supported-technologies.md
+          - file: edot-sdks/nodejs/metrics.md
           - file: edot-sdks/nodejs/troubleshooting.md
           - file: edot-sdks/nodejs/migration.md
       - file: edot-sdks/php/index.md
