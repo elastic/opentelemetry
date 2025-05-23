@@ -43,7 +43,7 @@ Follow these steps to instrument your Java application using runtime attach.
 <dependency>
   <groupId>co.elastic.otel</groupId>
   <artifactId>elastic-otel-runtime-attach</artifactId>
-  <version>1.4.1</version>
+  <version>{{edot-java-version}}</version>
 </dependency>
 ```
 :::
