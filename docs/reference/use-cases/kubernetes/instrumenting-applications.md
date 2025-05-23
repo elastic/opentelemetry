@@ -16,7 +16,7 @@ The [Elastic Distributions of OpenTelemetry (EDOT) SDKs](../../edot-sdks/index.m
 
 In Kubernetes environments with the OpenTelemetry Operator, [automatic or zero-code instrumentation](https://opentelemetry.io/docs/kubernetes/operator/automatic/) simplifies the instrumentation process by injecting and configuring instrumentation libraries into the targeted Pods.
 
-On the other hand, **manual instrumentation** with OpenTelemetry allows you to customize trace spans, metrics, and logging directly in your application’s code. This approach provides more granular control over what and how data is captured.
+On the other hand, manual instrumentation with OpenTelemetry allows you to customize trace spans, metrics, and logging directly in your application’s code. This approach provides more granular control over what and how data is captured.
 
 ## Prerequisites
 
@@ -48,15 +48,15 @@ The `Instrumentation` object stores important parameters:
 
 - Language-specific images used by the operator to inject the appropriate library into each Pod.
 
-   ```yaml
+   ```yaml subs=true
    dotnet:
       image: docker.elastic.co/observability/elastic-otel-dotnet:edge
    java:
-      image: docker.elastic.co/observability/elastic-otel-javaagent:{{ site.edot_versions.java }}
+      image: docker.elastic.co/observability/elastic-otel-javaagent:{{edot-java-version}}
    nodejs:
-      image: docker.elastic.co/observability/elastic-otel-node:{{ site.edot_versions.nodejs }}
+      image: docker.elastic.co/observability/elastic-otel-node:{{edot-nodejs-version}}
    python:
-      image: docker.elastic.co/observability/elastic-otel-python:{{ site.edot_versions.python }}
+      image: docker.elastic.co/observability/elastic-otel-python:{{edot-python-version}}
    ```
 
 ## Configure auto-instrumentation
