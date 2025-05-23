@@ -12,49 +12,21 @@
 {%- endmacro %}
 {% macro title(feature) -%}
 {%- if 'link' in feature and feature['link'] -%}
-<a href="{{ feature['link'] }}">{{ feature['name'] }}</a>
+[{{ feature['name'] }}]({{ feature['link'] }})
 {%- else -%}
 {{ feature['name'] }}
 {%- endif -%}
 {%- endmacro -%}
-<table class="features-table"> 
-    <thead>
-        <tr> 
-            <th class="l" colspan="8">
-                <div>
-                    <div>✅ generally available</div>
-                    <div>𝐓 in technical preview</div>
-                    <div>➖ not applicable</div>
-                    <div>❌ not available</div>
-                </div>
-            </th> 
-        </tr>
-        <tr> 
-            <th class="f"><div>Feature</div></th> 
-            <th class="r s"><div>.NET </div></th> 
-            <th class="r s"><div>Java</div></th> 
-            <th class="r s"><div>Node.js</div></th> 
-            <th class="r s"><div>PHP</div></th> 
-            <th class="r s"><div>Python</div></th> 
-            <th class="r s"><div>Android</div></th> 
-            <th class="r s"><div>iOS</div></th> 
-        </tr> 
-    </thead> 
-    <tbody>
+
+| Feature | .NET | Java | Node.js | PHP | Python | Android | iOS |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 {%- for feature in features %}
-        <!-- Feature: {{ feature['name'] }} -->
-        <tr>
-            <td {% if feature.is_sub_feature %}class="f sub"{% else %}class="f bold"{% endif %}>{{ title(feature) }}</td>
-{%- for lang in [".NET", "Java", "Node.js", "PHP", "Python", "Android", "iOS"] %}
-            <td class="s tooltip"> <!-- {{ lang }} -->
-                <div>{{ icon(feature[lang]['status']) }}</div>
-{%- if feature[lang]['min_version'] %}
-                <div class="xs">{{ feature[lang]['min_version'] }}+</div>
-                <div class="tooltiptext">'{{ feature['name'] }}' is available in EDOT {{ lang }} since version {{ feature[lang]['min_version'] }}</div>
-{%- endif%}
-            </td>
+| {% if feature.is_sub_feature %}{{ title(feature) }}{% else %}**{{ title(feature) }}**{% endif %} | {% for lang in [".NET", "Java", "Node.js", "PHP", "Python", "Android", "iOS"] %}{{ icon(feature[lang]['status']) }} {% if feature[lang]['min_version'] %}{{ feature[lang]['min_version'] }}+{% endif %} | {% endfor %}
 {%- endfor %}
-        </tr>
-{%- endfor %}
-    </tbody> 
-</table>
+
+**Legend:**
+
+* ✅ Generally available
+* 𝐓 In technical preview
+* ➖ Not applicable
+* ❌ Not available
