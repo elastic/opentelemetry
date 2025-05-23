@@ -9,15 +9,16 @@ TABLE_TAG = 'edot-collector-components-table'
 DEPS_TAG = 'edot-collector-components-ocb'
 FEATURES_TAG = 'edot-features'
 
-EDOT_COLLECTOR_DIR = '../_edot-collector'
-EDOT_SDKS_DIR = '../_edot-sdks'
+EDOT_COLLECTOR_DIR = '../docs/reference/edot-collector'
+EDOT_SDKS_DIR = '../docs/reference/edot-sdks'
 TEMPLATE_COLLECTOR_COMPONENTS_TABLE = 'templates/components-table.jinja2'
 TEMPLATE_COLLECTOR_OCB_FILE = 'templates/ocb.jinja2'
 TEMPLATE_SDK_FEATURES = 'templates/features.jinja2'
-SDK_FEATURES_YAML = '../_edot-sdks/features.yml'
+SDK_FEATURES_YAML = '../docs/reference/edot-sdks/features.yml'
 
 def fetch_url_content(url):
     try:
+        print(f"Attempting to fetch: {url}")
         with urllib.request.urlopen(url) as response:
             # Read and decode the response
             content = response.read().decode('utf-8')
@@ -68,17 +69,18 @@ def get_collector_version(filePath):
         content = file.read()
         
     lines = content.splitlines()
-    versions_section = False
     for line in lines:
-        if line.startswith('edot_versions'):
-            versions_section = True
-        if versions_section and 'collector' in line:
-            return line[(line.rfind(':') + 1):].strip()
+        if line.strip().startswith('edot-collector-version:'):
+            return line.split(':', 1)[1].strip()
             
     return 'main'
     
 def get_otel_components(url):
     elastic_agent_go_mod = fetch_url_content(url)
+    
+    if elastic_agent_go_mod is None:
+        print(f"Could not fetch content from {url}")
+        return None
 
     lines = elastic_agent_go_mod.splitlines()
     components_type = ['receiver', 'connector', 'processor', 'exporter', 'extension', 'provider']
@@ -132,8 +134,8 @@ def render_markdown(data, template):
 
 def render_components_into_file(dir, data, template, tag):    
     output = render_markdown(data, template)
-    start_tag = f'<!-- start:{tag} -->'
-    end_tag = f'<!-- end:{tag} -->'
+    start_tag = f'% start:{tag}'
+    end_tag = f'% end:{tag}'
     
     filesPaths = find_files_with_substring(dir, start_tag)
     
@@ -150,8 +152,8 @@ def render_components_into_file(dir, data, template, tag):
 
 def check_markdown_generation(dir, data, template, tag):
     output = render_markdown(data, template)
-    start_tag = f'<!-- start:{tag} -->'
-    end_tag = f'<!-- end:{tag} -->'
+    start_tag = f'% start:{tag}'
+    end_tag = f'% end:{tag}'
     
     filesPaths = find_files_with_substring(dir, start_tag)
     
@@ -179,9 +181,25 @@ def get_features_data(source_file):
             exit(1)
 
 def check_markdown():
-    col_version = get_collector_version('../_config.yml')
-    url = f'https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{col_version}/go.mod'
+    col_version = get_collector_version('../docs/docset.yml')
+    print(f"Collector version: {col_version}")
+    # Try different URL formats
+    url = f'https://raw.githubusercontent.com/elastic/elastic-agent/v{col_version}/go.mod'
+    print(f"Trying URL: {url}")
     components = get_otel_components(url)
+    
+    # If first attempt fails, try without the 'v' prefix
+    if components is None:
+        url = f'https://raw.githubusercontent.com/elastic/elastic-agent/{col_version}/go.mod'
+        print(f"Retrying with URL: {url}")
+        components = get_otel_components(url)
+    
+    # If that fails too, try with main branch
+    if components is None:
+        url = 'https://raw.githubusercontent.com/elastic/elastic-agent/main/go.mod'
+        print(f"Falling back to main branch: {url}")
+        components = get_otel_components(url)
+        
     otel_col_version = get_otel_col_upstream_version(url)
     data = {
         'grouped_components': components,
@@ -195,9 +213,25 @@ def check_markdown():
     return tables and ocb and features
 
 def generate_markdown():
-    col_version = get_collector_version('../_config.yml')
-    url = f'https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{col_version}/go.mod'
+    col_version = get_collector_version('../docs/docset.yml')
+    print(f"Collector version: {col_version}")
+    # Try different URL formats
+    url = f'https://raw.githubusercontent.com/elastic/elastic-agent/v{col_version}/go.mod'
+    print(f"Trying URL: {url}")
     components = get_otel_components(url)
+    
+    # If first attempt fails, try without the 'v' prefix
+    if components is None:
+        url = f'https://raw.githubusercontent.com/elastic/elastic-agent/{col_version}/go.mod'
+        print(f"Retrying with URL: {url}")
+        components = get_otel_components(url)
+    
+    # If that fails too, try with main branch
+    if components is None:
+        url = 'https://raw.githubusercontent.com/elastic/elastic-agent/main/go.mod'
+        print(f"Falling back to main branch: {url}")
+        components = get_otel_components(url)
+        
     otel_col_version = get_otel_col_upstream_version(url)
     data = {
         'grouped_components': components,

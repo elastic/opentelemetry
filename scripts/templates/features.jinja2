@@ -1,0 +1,32 @@
+{%- macro icon(value) -%}
+{%- if value == "ga" -%}
+✅
+{%- elif value == "not-available" -%}
+❌
+{%- elif value == "not-applicable" -%}
+➖
+{%- elif value == "tech-preview" -%}
+𝐓
+{%- else %}
+{%- endif -%}
+{%- endmacro %}
+{% macro title(feature) -%}
+{%- if 'link' in feature and feature['link'] -%}
+[{{ feature['name'] }}]({{ feature['link'] }})
+{%- else -%}
+{{ feature['name'] }}
+{%- endif -%}
+{%- endmacro -%}
+
+| Feature | .NET | Java | Node.js | PHP | Python | Android | iOS |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+{%- for feature in features %}
+| {% if feature.is_sub_feature %}{{ title(feature) }}{% else %}**{{ title(feature) }}**{% endif %} | {% for lang in [".NET", "Java", "Node.js", "PHP", "Python", "Android", "iOS"] %}{{ icon(feature[lang]['status']) }} {% if feature[lang]['min_version'] %}{{ feature[lang]['min_version'] }}+{% endif %} | {% endfor %}
+{%- endfor %}
+
+**Legend:**
+
+* ✅ Generally available
+* 𝐓 In technical preview
+* ➖ Not applicable
+* ❌ Not available

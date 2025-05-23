@@ -24,7 +24,7 @@ features:
       status: ga
       min_version: 1.0
   - name: Service Map
-    link: https://www.elastic.co/guide/en/observability/current/apm-service-maps.html
+    link: docs-content://solutions/observability/apm/service-map.md
     is_sub_feature: true
     min_stack_version:
     .NET:
@@ -124,7 +124,7 @@ features:
       status: ga
       min_version: v1.0
   - name: Inferred Spans
-    link: ../edot-sdks/java/features#inferred-spans
+    link: ./java/features.md#inferred-spans
     min_stack_version:
     is_sub_feature: true
     .NET:
@@ -370,7 +370,7 @@ features:
       status: not-available
       min_version: 
   - name: Profiling Integration
-    link: ../edot-sdks/java/features#elastic-universal-profiling-integration
+    link: ./java/features.md#elastic-universal-profiling-integration
     min_stack_version:
     .NET:
       status: not-available
