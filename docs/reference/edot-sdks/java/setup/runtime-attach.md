@@ -39,7 +39,7 @@ Follow these steps to instrument your Java application using runtime attach.
 ::::{tab-set}
 
 :::{tab-item} Maven
-```xml
+```xml subs=true
 <dependency>
   <groupId>co.elastic.otel</groupId>
   <artifactId>elastic-otel-runtime-attach</artifactId>
