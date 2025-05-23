@@ -49,7 +49,7 @@ Follow these steps to instrument your Java application using runtime attach.
 :::
 
 :::{tab-item} Gradle
-```kotlin
+```kotlin subs=true
 implementation("co.elastic.otel:elastic-otel-runtime-attach:{{edot-java-version}}")
 ```
 :::
