@@ -1,6 +1,6 @@
 ---
 navigation_title: Metrics
-description: Metrics for the Elastic Distribution of OpenTelemetry Node.js (EDOT Node.js).
+description: Metrics produced by the Elastic Distribution of OpenTelemetry Node.js (EDOT Node.js).
 applies_to:
   stack:
   serverless:
