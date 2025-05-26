@@ -1,6 +1,6 @@
 ---
 navigation_title: Hosts and VMs
-description: Learn how to set up the EDOT Collector and EDOT SDKs with Elastic Cloud Hosted to collect host metrics, logs and application traces.
+description: Learn how to set up the EDOT Collector and EDOT SDKs with {{ech}} to collect host metrics, logs and application traces.
 applies_to:
   stack:
   serverless:
@@ -12,13 +12,13 @@ products:
 
 # Quickstart for hosts and VMs on Elastic Cloud Hosted
 
-Learn how to set up the EDOT Collector and EDOT SDKs with Elastic Cloud Hosted (ECH) to collect host metrics, logs and application traces.
+Learn how to set up the EDOT Collector and EDOT SDKs with {{ech}} (ECH) to collect host metrics, logs and application traces.
 
 ## Prerequisites
 
 Make sure the following requirements are present:
 
-- The **[System](integration-docs://reference/system/index.md)** integration is installed in Kibana. Select **Add integration only** to skip the agent installation, as only the integration assets are required.
+- The **[System](integration-docs://reference/system/index.md)** integration is installed in {{kib}}. Select **Add integration only** to skip the agent installation, as only the integration assets are required.
 
 ## Guided setup
 

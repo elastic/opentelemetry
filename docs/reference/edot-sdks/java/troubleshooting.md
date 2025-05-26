@@ -27,8 +27,8 @@ Check from the host, VM, pod, container, or image running the app that connectiv
 
 The following examples use a default URL, `http://127.0.0.1:4318/, which you should replace with the endpoint you are using:
 
-- OpenTelemetry or EDOT collector without authentication: `curl -i http://127.0.0.1:4318/v1/traces -X POST -d '{}' -H content-type:application/json`
-- OpenTelemetry or EDOT collector with API key authentication: `curl -i http://127.0.0.1:4318/v1/traces -X POST -d '{}' -H content-type:application/json -H "Authorization:ApiKey <api_key>"`
+- OpenTelemetry or EDOT Collector without authentication: `curl -i http://127.0.0.1:4318/v1/traces -X POST -d '{}' -H content-type:application/json`
+- OpenTelemetry or EDOT Collector with API key authentication: `curl -i http://127.0.0.1:4318/v1/traces -X POST -d '{}' -H content-type:application/json -H "Authorization:ApiKey <api_key>"`
 
 The Collector should produce output similar to the following:
 

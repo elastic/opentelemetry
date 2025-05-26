@@ -17,7 +17,7 @@ The EDOT Java agent is a [distribution](https://opentelemetry.io/docs/concepts/d
 
 ## EDOT Collector and Elastic Stack versions
 
-The EDOT Java agent sends data through the OpenTelemetry protocol (OTLP). While OTLP ingest works with later 8.16+ versions of the EDOT Collector, for full support use either [EDOT Collector](../../edot-collector/index.md) versions 9.x or [Elastic Cloud Serverless](https://www.elastic.co/guide/en/serverless/current/intro.html) for OTLP ingest.
+The EDOT Java agent sends data through the OpenTelemetry protocol (OTLP). While OTLP ingest works with later 8.16+ versions of the EDOT Collector, for full support use either [EDOT Collector](../../edot-collector/index.md) versions 9.x or [{{serverless-full}}](https://www.elastic.co/guide/en/serverless/current/intro.html) for OTLP ingest.
 
 Refer to [EDOT SDKs compatibility](../../compatibility/sdks.md) for support details.
 

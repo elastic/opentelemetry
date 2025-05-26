@@ -18,8 +18,8 @@ Learn how to set up the EDOT Collector and EDOT SDKs in a Kubernetes environment
 
 Make sure the following requirements are present:
 
-- The **Kubernetes OpenTelemetry Assets** integration is installed in Kibana.
-- The **[System](integration-docs://reference/system/index.md)** integration is installed in Kibana. Select **Add integration only** to skip the agent installation, as only the integration assets are required.
+- The **Kubernetes OpenTelemetry Assets** integration is installed in {{kib}}.
+- The **[System](integration-docs://reference/system/index.md)** integration is installed in {{kib}}. Select **Add integration only** to skip the agent installation, as only the integration assets are required.
 
 ## Guided setup
 
@@ -41,7 +41,7 @@ helm repo add open-telemetry 'https://open-telemetry.github.io/opentelemetry-hel
 
 ::::{step} Set up credentials
 
-Retrieve your [Elasticsearch endpoint](docs-content://solutions/search/search-connection-details.md) and [API key](docs-content://deploy-manage/api-keys/elasticsearch-api-keys.md) and replace both in the following command to create a namespace and a secret with your credentials.
+Retrieve your [{{es}} endpoint](docs-content://solutions/search/search-connection-details.md) and [API key](docs-content://deploy-manage/api-keys/elasticsearch-api-keys.md) and replace both in the following command to create a namespace and a secret with your credentials.
 
 ```bash
 kubectl create namespace opentelemetry-operator-system

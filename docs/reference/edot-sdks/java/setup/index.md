@@ -13,7 +13,7 @@ products:
 
 # Set up the EDOT Java Agent
 
-Learn how to set up the Elastic Distribution of OpenTelemetry (EDOT) Java in various environments, including Kubernetes and others.
+Learn how to set up the {{edot}} (EDOT) Java in various environments, including Kubernetes and others.
 
 ## Kubernetes
 

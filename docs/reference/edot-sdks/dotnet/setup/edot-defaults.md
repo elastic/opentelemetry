@@ -113,7 +113,7 @@ All scenarios register the SQL client when instrumentation assembly scanning is 
 
 ### Additional sources
 
-EDOT .NET observes the `Elastic.Transport` source to collect traces from Elastic client libraries, such as `Elastic.Clients.Elasticsearch`, which is built upon the [Elastic transport](https://github.com/elastic/elastic-transport-net) layer.
+EDOT .NET observes the `Elastic.Transport` source to collect traces from Elastic client libraries, such as `Elastic.Clients.{{es}}`, which is built upon the [Elastic transport](https://github.com/elastic/elastic-transport-net) layer.
 
 ### Instrumentation assembly scanning
 
@@ -125,7 +125,7 @@ registering them when present.
 - [OpenTelemetry.Instrumentation.AWS](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.AWS)
 - [OpenTelemetry.Instrumentation.ConfluentKafka](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.ConfluentKafka) :
  Instrumentation is registered for both Kafka consumers and producers.
-- [OpenTelemetry.Instrumentation.ElasticsearchClient](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.ElasticsearchClient)
+- [OpenTelemetry.Instrumentation.{{es}}Client](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.{{es}}Client)
 - [OpenTelemetry.Instrumentation.EntityFrameworkCore](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.EntityFrameworkCore)
 - [OpenTelemetry.Instrumentation.GrpcNetClient](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.GrpcNetClient)
 - [OpenTelemetry.Instrumentation.GrpcCore](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.GrpcCore)

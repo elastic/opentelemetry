@@ -43,4 +43,4 @@ A subset of them are useful to detect issues when doing an overview of the instr
   measures how much memory the process is allocating.
 
 If your service is instrumented by EDOT Node.js, or by custom instrumentation that includes the packages previously mentioned,
-Kibana shows them as part of the [service metrics](docs-content://solutions/observability/apm/metrics-ui.md).
+{{kib}} shows them as part of the [service metrics](docs-content://solutions/observability/apm/metrics-ui.md).

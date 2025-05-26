@@ -14,7 +14,7 @@ products:
 
 Before setting up observability for Kubernetes, make sure you have the following:
 
-- Elastic Stack (self-managed or [Elastic Cloud](https://www.elastic.co/cloud)) version 8.16.0 or higher, or an [Elasticsearch serverless](docs-content://solutions/search/serverless-elasticsearch-get-started.md) project.
+- Elastic Stack (self-managed or [Elastic Cloud](https://www.elastic.co/cloud)) version 8.16.0 or higher, or an [{{es}} serverless](docs-content://solutions/search/serverless-elasticsearch-get-started.md) project.
 
 - A Kubernetes version supported by the OpenTelemetry Operator. Refer to the operator's [compatibility matrix](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/compatibility.md#compatibility-matrix) for more details.
 

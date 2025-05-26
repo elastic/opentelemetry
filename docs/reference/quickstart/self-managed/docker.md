@@ -19,7 +19,7 @@ Learn how to set up the EDOT Collector and EDOT SDKs in a Docker environment to 
 Make sure the following requirements are present:
 
 - Docker installed and running.
-- The **[System](integration-docs://reference/system/index.md)** integration is installed in Kibana. Select **Add integration only** to skip the agent installation, as only the integration assets are required.
+- The **[System](integration-docs://reference/system/index.md)** integration is installed in {{kib}}. Select **Add integration only** to skip the agent installation, as only the integration assets are required.
 
 ## Guided setup
 
@@ -39,7 +39,7 @@ Create the `otel-collector-config.yml` file with your EDOT Collector configurati
 
 ::::{step} Retrieve your settings
 
-Retrieve your [Elasticsearch endpoint](docs-content://solutions/search/search-connection-details.md) and [API key](docs-content://deploy-manage/api-keys/elasticsearch-api-keys.md).
+Retrieve your [{{es}} endpoint](docs-content://solutions/search/search-connection-details.md) and [API key](docs-content://deploy-manage/api-keys/elasticsearch-api-keys.md).
 ::::
 
 ::::{step} Create the .env file

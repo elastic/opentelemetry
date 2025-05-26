@@ -20,14 +20,14 @@ The guided onboarding simplifies deploying your Kubernetes components by setting
 
 Follow these steps to use the guided onboarding:
 
-1. In Kibana, navigate to **Observability**, **Add data**.
+1. In {{kib}}, navigate to **Observability**, **Add data**.
 2. Select **Kubernetes**, then choose **Kubernetes monitoring with EDOT Collector**.
 3. Follow the instructions to install the OpenTelemetry Operator using the Helm chart and the provided `values.yaml`.
 
 When installing the OpenTelemetry Operator:
 
-- Make sure the `elastic_endpoint` shown in the installation command is valid for your environment. If not, replace it with the correct Elasticsearch endpoint.
-- The `elastic_api_key` shown in the installation command corresponds to an API key created by Kibana when the onboarding process is initiated.
+- Make sure the `elastic_endpoint` shown in the installation command is valid for your environment. If not, replace it with the correct {{es}} endpoint.
+- The `elastic_api_key` shown in the installation command corresponds to an API key created by {{kib}} when the onboarding process is initiated.
 
 :::{note}
 The default installation deploys an OpenTelemetry Operator with a self-signed TLS certificate.
@@ -44,12 +44,12 @@ Before installing the operator do the following:
 
 1. Create an [API Key](docs-content://deploy-manage/api-keys/elasticsearch-api-keys.md).
 
-2. Install the following integrations in Kibana:
+2. Install the following integrations in {{kib}}:
     - `System`
     - `Kubernetes`
     - `Kubernetes OpenTelemetry Assets`
 
-When using the [Kibana onboarding UX](#deploy-using-the-guided-onboarding), the previous actions are automatically handled by Kibana.
+When using the [{{kib}} onboarding UX](#deploy-using-the-guided-onboarding), the previous actions are automatically handled by {{kib}}.
 
 ### Operator installation
 
@@ -71,8 +71,8 @@ Follow these steps to install the operator:
 
    Don't forget to replace:
 
-   - `YOUR_ELASTICSEARCH_ENDPOINT`: Elasticsearch endpoint (**with `https://` prefix**). For example: `https://1234567.us-west2.gcp.elastic-cloud.com:443`.
-   - `YOUR_ELASTICSEARCH_API_KEY`: Elasticsearch API Key created in the previous step.
+   - `YOUR_ELASTICSEARCH_ENDPOINT`: {{es}} endpoint (**with `https://` prefix**). For example: `https://1234567.us-west2.gcp.elastic-cloud.com:443`.
+   - `YOUR_ELASTICSEARCH_API_KEY`: {{es}} API Key created in the previous step.
 
 3. If you need to [customize the configuration](./customization.md), copy the `values.yaml` file and adapt it to your needs. Refer to the [compatibility matrix](./prerequisites-compatibility.md#compatibility-matrix) for a complete list of available manifests in the `release branches`. 
 
@@ -104,12 +104,12 @@ Confirm that the Instrumentation object is deployed and configured with a valid 
 
 ### Kibana dashboard check
 
-Verify that the **[OTEL][Metrics Kubernetes] Cluster Overview** dashboard in Kibana is displaying data correctly.
+Verify that the **[OTEL][Metrics Kubernetes] Cluster Overview** dashboard in {{kib}} is displaying data correctly.
 
 ### Log data availability in Kibana
 
-In **Kibana Discover**, confirm the availability of data under the `__logs-*__` data view.
+In **{{kib}} Discover**, confirm the availability of data under the `__logs-*__` data view.
 
 ### Metrics data availability in Kibana
 
-In **Kibana Discover**, ensure data is available under the `__metrics-*__` data view.
+In **{{kib}} Discover**, ensure data is available under the `__metrics-*__` data view.

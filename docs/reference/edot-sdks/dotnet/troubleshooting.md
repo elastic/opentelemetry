@@ -1,6 +1,6 @@
 ---
 navigation_title: Troubleshooting
-description: Use the information in this section to troubleshoot common problems affecting the Elastic Distribution of OpenTelemetry .NET.
+description: Use the information in this section to troubleshoot common problems affecting the {{edot}} .NET.
 applies_to:
   stack:
   serverless:
@@ -20,11 +20,11 @@ If you have an Elastic support contract, create a ticket in the [Elastic Support
 
 For most problems, such as when you don't see data in your Elastic Observability backend, first check the EDOT .NET logs. These logs show initialization details and OpenTelemetry SDK events. If you don't see any warnings or errors in the EDOT .NET logs, switch the log level to `Trace` to investigate further.
 
-The Elastic Distribution of OpenTelemetry .NET includes built-in diagnostic logging. You can direct logs to a file, STDOUT, or, in common scenarios, an `ILogger` instance. EDOT .NET also observes the built-in diagnostics events from the upstream OpenTelemetry SDK and includes those in its logging output. You can collect the log output and use it to diagnose issues locally during development or when working with Elastic support channels.
+The {{edot}} .NET includes built-in diagnostic logging. You can direct logs to a file, STDOUT, or, in common scenarios, an `ILogger` instance. EDOT .NET also observes the built-in diagnostics events from the upstream OpenTelemetry SDK and includes those in its logging output. You can collect the log output and use it to diagnose issues locally during development or when working with Elastic support channels.
 
 ## ASP.NET Core (generic host) logging integration
 
-When you build applications based on the generic host, such as those created by the [ASP.NET Core](https://learn.microsoft.com/aspnet/core/introduction-to-aspnet-core) and [worker service](https://learn.microsoft.com/dotnet/core/extensions/workers) templates, the Elastic Distribution of OpenTelemetry .NET will try to automatically register with the built-in logging components when you use the `IHostApplicationBuilder.AddElasticOpenTelemetry` extension method to register EDOT .NET.
+When you build applications based on the generic host, such as those created by the [ASP.NET Core](https://learn.microsoft.com/aspnet/core/introduction-to-aspnet-core) and [worker service](https://learn.microsoft.com/dotnet/core/extensions/workers) templates, the {{edot}} .NET will try to automatically register with the built-in logging components when you use the `IHostApplicationBuilder.AddElasticOpenTelemetry` extension method to register EDOT .NET.
 
 ```csharp
 var builder = WebApplication.CreateBuilder(args);

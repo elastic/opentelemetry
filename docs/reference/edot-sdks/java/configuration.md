@@ -28,7 +28,7 @@ OTEL_SERVICE_NAME=my-service
 # resource attributes: recommended for integration in UI and correlation, can also include service.name
 OTEL_RESOURCE_ATTRIBUTES='service.version=1.0,deployment.environment.name=production'
 
-# exporter endpoint: mandatory if not using a local collector accessible on http://localhost:4317
+# exporter endpoint: mandatory if not using a local Collector accessible on http://localhost:4317
 OTEL_EXPORTER_OTLP_ENDPOINT=https://my-otel-collector
 
 # exporter authentication: mandatory if endpoint requires authentication

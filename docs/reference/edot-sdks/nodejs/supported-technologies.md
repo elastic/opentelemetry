@@ -17,7 +17,7 @@ The EDOT Node.js agent is a [distribution](https://opentelemetry.io/docs/concept
 
 ## EDOT Collector and Elastic Stack versions
 
-The Elastic Distribution of OpenTelemetry Node.js (EDOT Node.js) sends data through the OpenTelemetry protocol (OTLP). While OTLP ingest works with later 8.16+ versions of the EDOT Collector, for full support use either [EDOT Collector](../../edot-collector/index.md) versions 9.x or [Elastic Cloud Serverless](https://www.elastic.co/guide/en/serverless/current/intro.html) for OTLP ingest.
+The {{edot}} Node.js (EDOT Node.js) sends data through the OpenTelemetry protocol (OTLP). While OTLP ingest works with later 8.16+ versions of the EDOT Collector, for full support use either [EDOT Collector](../../edot-collector/index.md) versions 9.x or [{{serverless-full}}](https://www.elastic.co/guide/en/serverless/current/intro.html) for OTLP ingest.
 
 :::{note}
 Ingesting data from EDOT SDKs through EDOT Collector 9.x into Elastic Stack versions 8.18+ is supported.
@@ -118,7 +118,7 @@ node --import @elastic/opentelemetry-node my-app.js
 
 | Packages instrumented | Reference |
 |---|---|
-| `@elastic/elasticsearch` version range `>=8.15.0` | [Elasticsearch JavaScript Client docs](https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/observability.html) |
+| `@elastic/elasticsearch` version range `>=8.15.0` | [{{es}} JavaScript Client docs](https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/observability.html) |
 
 ## ECMAScript Modules (ESM)
 

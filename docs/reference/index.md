@@ -52,7 +52,7 @@ The EDOT demo includes:
 
 *   Sample applications instrumented with OpenTelemetry SDKs.
 *   EDOT Collector configured for various scenarios. For example, Kubernetes and hosts.
-*   Integration with an Elastic Stack deployment, such as Elasticsearch and Kibana.
+*   Integration with an Elastic Stack deployment, such as {{es}} and {{kib}}.
 
 Follow the instructions in the demo repository to set up and run the demo.
 

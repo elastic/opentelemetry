@@ -13,7 +13,7 @@ products:
 
 # Set up EDOT PHP
 
-Learn how to use the Elastic Distribution of OpenTelemetry PHP (EDOT PHP) to instrument your PHP application and send OpenTelemetry data to an Elastic Observability deployment.
+Learn how to use the {{edot}} PHP (EDOT PHP) to instrument your PHP application and send OpenTelemetry data to an Elastic Observability deployment.
 
 ## Prerequisites
 
@@ -23,7 +23,7 @@ To quickly get up and running, follow the [Elastic OpenTelemetry Quickstart guid
 
 - Creating a free Elastic Cloud deployment.
 - Configuring your OpenTelemetry agent.
-- Exploring traces and metrics in Kibana.
+- Exploring traces and metrics in {{kib}}.
 
 ### Operating system and PHP version
 
