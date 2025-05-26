@@ -49,10 +49,6 @@ Ingestion of OpenTelemetry metrics with the type [`Histogram`](https://opentelem
 
 Make sure to export histogram metrics with delta temporality or use the [`cumulativetodelta processor`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/cumulativetodeltaprocessor) as a workaround to convert the temporality for histogram metrics.
 
-### Timestamps precision
-
-As of now, nanoseconds timestamps from the OTel signals are stored with microsecond precision in Elasticsearch.
-
 ## Limitations on managed Kubernetes environments
 
 Due to limitations with permissions on managed Kubernetes environments, such as GKE Autopilot or AWS Fargate, the default configurations and onboarding flows for EDOT don't fully work in those environments. This might result in decreased collection of data and certain observability views not showing that data.
