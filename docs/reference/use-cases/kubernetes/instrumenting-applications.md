@@ -50,7 +50,7 @@ The `Instrumentation` object stores important parameters:
 
    ```yaml subs=true
    dotnet:
-      image: docker.elastic.co/observability/elastic-otel-dotnet:edge
+      image: docker.elastic.co/observability/elastic-otel-dotnet:{{edot-dotnet-version}}
    java:
       image: docker.elastic.co/observability/elastic-otel-javaagent:{{edot-java-version}}
    nodejs:
