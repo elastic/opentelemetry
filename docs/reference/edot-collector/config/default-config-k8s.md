@@ -26,11 +26,11 @@ The following `values.yaml` files are used depending on the ingest scenario:
 
 The following sections describe the default pipelines for the different roles of EDOT collectors in a Kubernetes setup.
 
-## Cluster collector pipeline
+## Cluster Collector pipeline
 
 The main purpose of the Cluster collector is to collect Kubernetes cluster-level metrics and events using the [`k8s_cluster`] and the [`k8sobjects`] receivers.
 
-The [`resource`] and [`resourcedetection`] processors enrich the cluster-level data with corresponding meta information. Data then goes to the Gateway collector through `OTLP`. 
+The [`resource`] and [`resourcedetection`] processors enrich the cluster-level data with corresponding meta information. Data then goes to the Gateway Collector through `OTLP`. 
 
 ## Daemonset collectors pipeline
 
@@ -50,19 +50,19 @@ The Daemonset collectors receive that data through [`OTLP`], batch the data ([`b
 
 ## Gateway collectors pipeline
 
-The Gateway collectors pipelines differ between the two different deployment use cases, direct ingestion into Elasticsearch and using Elastic's Managed OTLP Endpoint.
+The Gateway collectors pipelines differ between the two different deployment use cases, direct ingestion into {{es}} and using Elastic's Managed OTLP Endpoint.
 
 ### Direct ingestion into Elasticsearch
 
-In self-managed and Elastic Cloud Hosted Stack deployment use cases, the main purpose of the Gateway collector is the central enrichment of data before the OpenTelemetry data is being ingested directly into Elasticsearch using the [`elasticsearch`] exporter.
+In self-managed and {{ech}} Stack deployment use cases, the main purpose of the Gateway Collector is the central enrichment of data before the OpenTelemetry data is being ingested directly into {{es}} using the [`elasticsearch`] exporter.
 
-The Gateway collector configuration comprises the pipelines for data enrichment of [application telemetry](./default-config-standalone.md#application-and-traces-collection-pipeline) and [host metrics](./default-config-standalone.md#host-metrics-collection-pipeline). For more details, refer to the linked descriptions of the corresponding standalone use cases.
+The Gateway Collector configuration comprises the pipelines for data enrichment of [application telemetry](./default-config-standalone.md#application-and-traces-collection-pipeline) and [host metrics](./default-config-standalone.md#host-metrics-collection-pipeline). For more details, refer to the linked descriptions of the corresponding standalone use cases.
 
-The [`routing`] connector separates the infrastructure metrics from other metrics and routes them into the ECS-based pipeline, with ECS-compatibility exporter mode. Other metrics are exported in OTel-native format to Elasticsearch.
+The [`routing`] connector separates the infrastructure metrics from other metrics and routes them into the ECS-based pipeline, with ECS-compatibility exporter mode. Other metrics are exported in OTel-native format to {{es}}.
 
 ### Managed OTLP Endpoint
 
-With the managed OTLP Endpoint, the Gateway collector configuration pipes all the data from the [`OTLP`] receiver through a [`batch`] processor before the data is being exported through `OTLP` to the managed endpoint.
+With the managed OTLP Endpoint, the Gateway Collector configuration pipes all the data from the [`OTLP`] receiver through a [`batch`] processor before the data is being exported through `OTLP` to the managed endpoint.
 
 With this scenario there's no need to do any Elastic-specific enrichment in your Kubernetes cluster, as all of that happens behind the managed OTLP endpoint.
 

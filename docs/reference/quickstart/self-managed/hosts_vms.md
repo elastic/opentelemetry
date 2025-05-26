@@ -18,7 +18,7 @@ Learn how to set up the EDOT Collector and EDOT SDKs to collect host metrics, lo
 
 Make sure the following requirements are present:
 
-- The **[System](integration-docs://reference/system/index.md)** integration is installed in Kibana. Select **Add integration only** to skip the agent installation, as only the integration assets are required.
+- The **[System](integration-docs://reference/system/index.md)** integration is installed in {{kib}}. Select **Add integration only** to skip the agent installation, as only the integration assets are required.
 
 ## Guided setup
 
@@ -38,7 +38,7 @@ Follow these steps to deploy the EDOT Collector and EDOT OTel SDKs.
 
 :::::{step} Configure the EDOT Collector
 
-Retrieve your [Elasticsearch endpoint](docs-content://solutions/search/search-connection-details.md) and [API key](docs-content://deploy-manage/api-keys/elasticsearch-api-keys.md) and replace `<ELASTICSEARCH_ENDPOINT>` and `<ELASTIC_API_KEY>` before applying the following command.
+Retrieve your [{{es}} endpoint](docs-content://solutions/search/search-connection-details.md) and [API key](docs-content://deploy-manage/api-keys/elasticsearch-api-keys.md) and replace `<ELASTICSEARCH_ENDPOINT>` and `<ELASTIC_API_KEY>` before applying the following command.
 
 ::::{tab-set}
 

@@ -13,7 +13,7 @@ products:
 
 # Elastic Distribution of OpenTelemetry PHP
 
-The Elastic Distribution of OpenTelemetry (EDOT) PHP is a customized version of [OpenTelemetry for PHP](https://opentelemetry.io/docs/languages/php), configured for the best experience with Elastic Observability. 
+The {{edot}} (EDOT) PHP is a customized version of [OpenTelemetry for PHP](https://opentelemetry.io/docs/languages/php), configured for the best experience with Elastic Observability. 
 
 Use EDOT PHP to start the OpenTelemetry SDK with your PHP application, and automatically capture tracing data, performance metrics, and logs. Traces, metrics, and logs can be sent to any OpenTelemetry Protocol (OTLP) Collector you choose.
 

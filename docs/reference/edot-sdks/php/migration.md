@@ -14,7 +14,7 @@ products:
 
 # Migrate to EDOT PHP from the Elastic APM PHP agent
 
-Compared to the Elastic APM PHP agent, the Elastic Distribution of OpenTelemetry PHP presents a number of advantages:
+Compared to the Elastic APM PHP agent, the {{edot}} PHP presents a number of advantages:
 
 - Fully automatic instrumentation with zero code changes. No need to modify application code, add Composer packages, or wrap bootstrap files.
 - EDOT PHP is built on top of OpenTelemetry SDK and conventions, ensuring compatibility with community tools, vendor-neutral backends, and so on.
@@ -23,7 +23,7 @@ Compared to the Elastic APM PHP agent, the Elastic Distribution of OpenTelemetry
 
 ## Migration steps
 
-Follow these steps to migrate from the legacy Elastic APM PHP agent (`elastic-apm-php`) to the Elastic Distribution of OpenTelemetry PHP (`elastic-otel-php`).
+Follow these steps to migrate from the legacy Elastic APM PHP agent (`elastic-apm-php`) to the {{edot}} PHP (`elastic-otel-php`).
 
 ::::::{stepper}
 

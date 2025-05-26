@@ -13,9 +13,9 @@ products:
 
 # Elastic Distribution of OpenTelemetry Java
 
-The Elastic Distribution of OpenTelemetry (EDOT) Java is a customized version of the upstream [OpenTelemetry Java agent](https://github.com/open-telemetry/opentelemetry-java-instrumentation), configured for the best experience with Elastic Observability. 
+The {{edot}} (EDOT) Java is a customized version of the upstream [OpenTelemetry Java agent](https://github.com/open-telemetry/opentelemetry-java-instrumentation), configured for the best experience with Elastic Observability. 
 
-Use EDOT Java to start the OpenTelemetry SDK with your Java application, and automatically capture tracing data, performance metrics, and logs. Traces, metrics, and logs can be sent to any OpenTelemetry Protocol (OTLP) collector you choose.
+Use EDOT Java to start the OpenTelemetry SDK with your Java application, and automatically capture tracing data, performance metrics, and logs. Traces, metrics, and logs can be sent to any OpenTelemetry Protocol (OTLP) Collector you choose.
 
 A goal of this distribution is to avoid introducing proprietary concepts in addition to those defined by the wider OpenTelemetry community. For any additional features introduced, Elastic aims at contributing them back to the upstream OpenTelemetry project.
 

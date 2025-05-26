@@ -19,7 +19,7 @@ For a more seamless experience, use the Elastic Distribution of the OpenTelemetr
 
 ## Build a custom Collector
 
-To build a custom collector to collect your telemetry data and send it to Elastic Observability, you need to:
+To build a custom Collector to collect your telemetry data and send it to Elastic Observability, you need to:
 
 1. Install the OpenTelemetry Collector builder, `ocb`.
 1. Create a builder configuration file.
@@ -29,7 +29,7 @@ Refer to the following sections to complete these steps.
 
 ### Install the OpenTelemetry Collector builder
 
-Install `ocb` using the command that aligns with your system from the [OpenTelemetry building a custom collector documentation](https://opentelemetry.io/docs/collector/custom-collector/#step-1---install-the-builder).
+Install `ocb` using the command that aligns with your system from the [OpenTelemetry building a custom Collector documentation](https://opentelemetry.io/docs/collector/custom-collector/#step-1---install-the-builder).
 
 :::{warning}
 Make sure to install version 0.120.1 of the OpenTelemetry Collector Builder.

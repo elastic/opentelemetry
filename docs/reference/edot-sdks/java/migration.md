@@ -14,7 +14,7 @@ products:
 
 # Migrate to EDOT Java from the Elastic APM Java agent
 
-Compared to the Elastic APM Java agent, the Elastic Distribution of OpenTelemetry Java presents a number of advantages:
+Compared to the Elastic APM Java agent, the {{edot}} Java presents a number of advantages:
 
 - Fully automatic instrumentation with zero code changes. No need to modify application code.
 - Capture, send, transform, and store data in an OpenTelemetry native way. This includes for example the ability to use all features of the OpenTelemetry SDK for manual tracing, data following semantic conventions, or ability to use intermediate collectors and processors.
@@ -23,7 +23,7 @@ Compared to the Elastic APM Java agent, the Elastic Distribution of OpenTelemetr
 
 ## Migration steps
 
-Follow these steps to migrate from the legacy Elastic APM Java agent to the Elastic Distribution of OpenTelemetry Java.
+Follow these steps to migrate from the legacy Elastic APM Java agent to the {{edot}} Java.
 
 ::::::{stepper}
 

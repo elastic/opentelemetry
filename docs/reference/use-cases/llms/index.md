@@ -40,4 +40,4 @@ Select the environment and target system from the [quick start overview](../../q
 
 See the [Configuration section in the corresponding EDOT SDK](../../edot-sdks/index.md) to turn on or off specific instrumentations and check which instrumentation is active by default.
 
-When you complete the setup and configuration of the EDOT SDK and there is a workload on your application, start checking for telemetry data in Kibana. If there's no data showing up, see the troubleshooting of the corresponding EDOT SDK.
+When you complete the setup and configuration of the EDOT SDK and there is a workload on your application, start checking for telemetry data in {{kib}}. If there's no data showing up, see the troubleshooting of the corresponding EDOT SDK.

@@ -13,7 +13,7 @@ products:
 
 # Configure the EDOT Node.js SDK
 
-The Elastic Distribution of OpenTelemetry Node.js (EDOT Node.js) is configured with environment variables beginning with `OTEL_` or `ELASTIC_OTEL_`. Any `OTEL_*` environment variables behave the same as with the upstream OpenTelemetry SDK. For example, all the OpenTelemetry [General SDK Configuration env vars](https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#general-sdk-configuration) are supported. If EDOT Node.js provides a configuration setting specific to the Elastic distribution, it will begin with `ELASTIC_OTEL_`.
+The {{edot}} Node.js (EDOT Node.js) is configured with environment variables beginning with `OTEL_` or `ELASTIC_OTEL_`. Any `OTEL_*` environment variables behave the same as with the upstream OpenTelemetry SDK. For example, all the OpenTelemetry [General SDK Configuration env vars](https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#general-sdk-configuration) are supported. If EDOT Node.js provides a configuration setting specific to the Elastic distribution, it will begin with `ELASTIC_OTEL_`.
 
 
 ## Basic configuration
@@ -24,7 +24,7 @@ If not configured, EDOT Node.js will send telemetry data to `http://localhost:43
 * `OTEL_EXPORTER_OTLP_HEADERS`: A comma-separated list of HTTP headers used for exporting data, typically used to set the `Authorization` header with auth information.
 * `OTEL_SERVICE_NAME`: The name of your service, used to distinguish telemetry data from other services in your system.
 
-For example, when using an Elastic Cloud Serverless deployment this might be:
+For example, when using an {{serverless-full}} deployment this might be:
 
 ```bash
 export OTEL_EXPORTER_OTLP_ENDPOINT="https://my-deployment-abc123.ingest.us-west-2.aws.elastic.cloud"
@@ -141,7 +141,7 @@ export OTEL_NODE_RESOURCE_DETECTORS=env,host,os,process,serviceinstance,containe
 In addition, EDOT Node.js always includes the [`telemetry.distro.*` resource attributes](https://opentelemetry.io/docs/specs/semconv/attributes-registry/telemetry/).
 
 :::{note}
-Kibana relies on the `service.instance.id` resource attribute to query and break down data to be shown in [service metrics](https://www.elastic.co/guide/en/observability/current/apm-metrics.html). If you turn off the `serviceinstance` resource detector, the dashboard won't display any data.
+{{kib}} relies on the `service.instance.id` resource attribute to query and break down data to be shown in [service metrics](https://www.elastic.co/guide/en/observability/current/apm-metrics.html). If you turn off the `serviceinstance` resource detector, the dashboard won't display any data.
 :::
 
 
@@ -174,9 +174,9 @@ EDOT Node.js collects and export host metrics by default. To turn off metrics co
 
 ### `OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE` details [otel_exporter_otlp_metrics_temporality_preference-details]
 
-Elasticsearch and Kibana work best with metrics provided in delta-temporality.
+{{es}} and {{kib}} work best with metrics provided in delta-temporality.
 Therefore, the EDOT Node.js changes the default value of `OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE` to `delta`.
-You can override this default if needed, note though that some provided Kibana dashboards will not work correctly in this case.
+You can override this default if needed, note though that some provided {{kib}} dashboards will not work correctly in this case.
 
 Upstream OpenTelemetry defaults the temporality preference to `cumulative`. See https://opentelemetry.io/docs/specs/otel/metrics/sdk_exporters/otlp/#additional-environment-variable-configuration
 

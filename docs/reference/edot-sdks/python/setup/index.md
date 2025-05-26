@@ -13,7 +13,7 @@ products:
 
 # Set up the EDOT Python agent
 
-Learn how to set up the Elastic Distribution of OpenTelemetry (EDOT) Python in various environments, including Kubernetes and others.
+Learn how to set up the {{edot}} (EDOT) Python in various environments, including Kubernetes and others.
 
 Follow these steps to get started.
 

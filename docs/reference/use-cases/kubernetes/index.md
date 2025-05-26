@@ -28,5 +28,5 @@ The following diagram summarizes the previous components and how they interact w
 Read on to learn how to:
 
 - Install the [OpenTelemetry Operator](https://github.com/open-telemetry/opentelemetry-operator/) using the [kube-stack Helm chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-kube-stack).
-- Use the EDOT Collectors to send Kubernetes logs, metrics, and application traces to an Elasticsearch cluster.
+- Use the EDOT Collectors to send Kubernetes logs, metrics, and application traces to an {{es}} cluster.
 - Use the operator for applications [auto-instrumentation](https://opentelemetry.io/docs/kubernetes/operator/automatic/) in all supported languages.

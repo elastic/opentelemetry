@@ -13,23 +13,23 @@ products:
 
 # Default configuration of the EDOT Collector (Standalone)
 
-The default configuration of the Elastic Distribution of OpenTelemetry (EDOT) Collector includes pipelines for the collection of logs, host metrics, and data from OpenTelemetry SDKs.
+The default configuration of the {{edot}} (EDOT) Collector includes pipelines for the collection of logs, host metrics, and data from OpenTelemetry SDKs.
 
 The following sampling files are available:
 
-| Use Cases | Direct ingestion into Elasticsearch | Managed OTLP Endpoint |
+| Use Cases | Direct ingestion into {{es}} | Managed OTLP Endpoint |
 |---|---|---|
 | Platform logs | [Logs - ES] | [Logs - OTLP] |
 | Platform logs and host metrics | [Logs &#124; Metrics - ES] | [Logs &#124; Metrics - OTLP] |
 | Platform logs, host metrics, <br> and application telemetry | [Logs &#124; Metrics &#124; App - ES]<br>(*default*) | [Logs &#124; Metrics &#124; App - OTLP]<br>(*default*) |
 
-Use the previous example configurations as a reference when configuring your upstream collector or customizing your EDOT Collector configuration.
+Use the previous example configurations as a reference when configuring your upstream Collector or customizing your EDOT Collector configuration.
 
 The following sections describe the default pipelines by use cases.
 
 ## Direct ingestion into Elasticsearch
 
-For self-managed and Elastic Cloud Hosted stack deployment use cases, ingest OpenTelemetry data from the EDOT Collector directly into Elasticsearch using the [`elasticsearch`] exporter.
+For self-managed and {{ech}} stack deployment use cases, ingest OpenTelemetry data from the EDOT Collector directly into {{es}} using the [`elasticsearch`] exporter.
 
 Learn more about the configuration options for the `elasticsearch` exporter in the [corresponding documentation](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/elasticsearchexporter/README.md#configuration-options).
 
@@ -44,21 +44,21 @@ The goal of EDOT is to preserve OTel data formats and semantics as much as possi
 
 For logs collection, the default configuration uses the [`filelog`] receiver to read log entries from files.  In addition, the [`resourcedetection`] processor enriches the log entries with metadata about the corresponding host and operating system.
 
-Data is exported directly to Elasticsearch using the [`elasticsearch`] exporter in `OTel-native` mode.
+Data is exported directly to {{es}} using the [`elasticsearch`] exporter in `OTel-native` mode.
 
 ### Application and traces collection pipeline
 
-The application pipeline in the EDOT Collector receives data from OTel SDKs through the [`OTLP`] receiver. While logs and metrics are exported verbatim into Elasticsearch, traces require two additional components.
+The application pipeline in the EDOT Collector receives data from OTel SDKs through the [`OTLP`] receiver. While logs and metrics are exported verbatim into {{es}}, traces require two additional components.
 
 The [`elastictrace`] processor enriches trace data with additional attributes that improve the user experience in the Elastic Observability UIs. In addition, the [`elasticapm`] connector generates pre-aggregated APM metrics from tracing data.
 
-Application-related OTel data is ingested into Elasticsearch in OTel-native format using the [`elasticsearch`] exporter.
+Application-related OTel data is ingested into {{es}} in OTel-native format using the [`elasticsearch`] exporter.
 
 :::{note}
 Both components, `elastictrace` and `elasticapm` are required for Elastic APM UIs to work properly. As they aren't included in the OpenTelemetry [Collector Contrib repository](https://github.com/open-telemetry/opentelemetry-collector-contrib), you can:
 
-* Use the EDOT Collector with the available configuration to ingest data into Elasticsearch.
-* [Build a custom, EDOT-like Collector](../custom-collector.md) for ingesting data into Elasticsearch.
+* Use the EDOT Collector with the available configuration to ingest data into {{es}}.
+* [Build a custom, EDOT-like Collector](../custom-collector.md) for ingesting data into {{es}}.
 * Use Elastic's [managed OTLP endpoint](../../quickstart/serverless/index.md) that does the enrichment for you.
 :::
 
@@ -68,7 +68,7 @@ The host metrics pipeline uses the [`hostmetrics`] receiver to collect `disk`, `
 
 For backwards compatibility, host metrics are translated into ECS-compatible system metrics using the [`elasticinframetrics`] processor. Finally, metrics are ingested in `ecs` format through the [`elasticsearch`] exporter.
 
-The [`resourcedetection`] processor enriches the metrics with meta information about the corresponding host and operating system. The [`attributes`] and [`resource`] processor are used to set some fields for proper routing of the ECS-based system metrics data into corresponding Elasticsearch data streams.
+The [`resourcedetection`] processor enriches the metrics with meta information about the corresponding host and operating system. The [`attributes`] and [`resource`] processor are used to set some fields for proper routing of the ECS-based system metrics data into corresponding {{es}} data streams.
 
 ## Using the Managed OTLP Endpoint
 

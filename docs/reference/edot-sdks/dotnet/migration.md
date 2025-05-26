@@ -14,18 +14,18 @@ products:
 
 # Migrate to EDOT .NET from the Elastic APM .NET agent
 
-Compared to the Elastic APM .NET agent, the Elastic Distribution of OpenTelemetry .NET presents a number of advantages:
+Compared to the Elastic APM .NET agent, the {{edot}} .NET presents a number of advantages:
 
 - No vendor lock-in through standardized concepts, supporting the use of multiple backend vendors or switching between them.
 - A single set of application APIs are required to instrument applications.
 - A wider pool of knowledge, experience and support is available across the OpenTelemetry community.
 - Efficient data collection and advanced data processing opportunities.
 
-While you can use the upstream [OpenTelemetry SDK for .NET](https://github.com/open-telemetry/opentelemetry-dotnet) to directly export data to an Elastic Observability backend, some capabilities of the Elastic tooling might not be able to function as intended. Use the Elastic Distribution of OpenTelemetry (EDOT) language SDK and the [Elastic Distribution of OpenTelemetry collector](../../edot-collector/index.md) for the best experience.
+While you can use the upstream [OpenTelemetry SDK for .NET](https://github.com/open-telemetry/opentelemetry-dotnet) to directly export data to an Elastic Observability backend, some capabilities of the Elastic tooling might not be able to function as intended. Use the {{edot}} (EDOT) language SDK and the [{{edot}} Collector](../../edot-collector/index.md) for the best experience.
 
 ## Migrating from Elastic .NET Agent [migrating-to-edot-net-from-elastic-net-agent]
 
-Follow these steps to migrate from the legacy Elastic APM .NET agent to the Elastic Distribution of OpenTelemetry .NET.
+Follow these steps to migrate from the legacy Elastic APM .NET agent to the {{edot}} .NET.
 
 ### Manual instrumentation
 
@@ -239,7 +239,7 @@ In the previous code, `AddOpenTelemetry` extension method for the `IServiceColle
 Register each contrib instrumentation library manually when using the SDK.
 :::
 
-To get started with the Elastic Distribution of OpenTelemetry .NET, add the `Elastic.OpenTelemetry` [NuGet package](https://www.nuget.org/packages/Elastic.OpenTelemetry)
+To get started with the {{edot}} .NET, add the `Elastic.OpenTelemetry` [NuGet package](https://www.nuget.org/packages/Elastic.OpenTelemetry)
 reference to your project file:
 
 ```xml

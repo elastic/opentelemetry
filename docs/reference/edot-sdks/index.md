@@ -12,7 +12,7 @@ products:
 
 # EDOT SDKs Feature Overview
 
-This table provides an overview of the features available in the Elastic Distribution of OpenTelemetry (EDOT) SDKs across different programming languages.
+This table provides an overview of the features available in the {{edot}} (EDOT) SDKs across different programming languages.
 
 % start:edot-features
 
@@ -45,7 +45,7 @@ This table provides an overview of the features available in the Elastic Distrib
 
 ## Elastic support for EDOT SDKs
 
-Elastic provides technical support for EDOT Language SDKs according to Elastic's [Support Policy](https://www.elastic.co/support_policy). EDOT SDKs are meant to be used in combination with the [EDOT Collector](../edot-collector/index.md) or Elastic's managed OTLP endpoint (on Elastic Cloud Serverless) to ingest data into Elastic solutions from the EDOT SDKs. Other ingestion paths are not officially supported by Elastic.
+Elastic provides technical support for EDOT Language SDKs according to Elastic's [Support Policy](https://www.elastic.co/support_policy). EDOT SDKs are meant to be used in combination with the [EDOT Collector](../edot-collector/index.md) or Elastic's managed OTLP endpoint (on {{serverless-full}}) to ingest data into Elastic solutions from the EDOT SDKs. Other ingestion paths are not officially supported by Elastic.
 
 ## License
 

@@ -21,15 +21,15 @@ The following table shows Elastic features and their level of support and compat
 | [Distributed Tracing]                                                                       | [Supported]      |
 | [Head-based Sampling (HBS)]                                                                 | [Supported]      |
 | *[Tail-based Sampling (TBS)]*                                                               | [Compatible]     |
-| [Self-managed, OTel collector-based TBS]                                                    | [Compatible]     |
-| TBS managed / hosted in Elastic Cloud                                                       | [Incompatible]   |
+| [Self-managed, OTel Collector-based TBS]                                                    | [Compatible]     |
+| TBS managed / hosted in {{ecloud}}                                                       | [Incompatible]   |
 | Runtime metrics                                                                             | [See language-specific overview](../edot-sdks/index.md) |
 | **Infrastructure Monitoring**                                                               | [Supported]      |
 | Host view^1^                                                                                | [Supported]      |
 | Kubernetes dashboard                                                                        | [Supported]      |
 | **Logs Collection**                                                                         | [Supported]      |
-| OTel-native, collector-based logs parsing & processing                                      | [Supported]      |
-| OTel-native, collector-based data routing                                                   | [Supported]      |
+| OTel-native, Collector-based logs parsing & processing                                      | [Supported]      |
+| OTel-native, Collector-based data routing                                                   | [Supported]      |
 | Managed, centralized processing^2^                                                          | [Incompatible]   |
 | **Metrics Collection**^3^                                                                   | [Supported]      |
 | Automatic metrics mapping                                                                   | [Supported]      |
@@ -53,5 +53,5 @@ The following table shows Elastic features and their level of support and compat
 [Distributed Tracing]: docs-content://solutions/observability/apm/traces-ui.md
 [Head-based Sampling (HBS)]: docs-content://solutions/observability/apm/transaction-sampling.md#apm-head-based-sampling
 [Tail-based Sampling (TBS)]: docs-content://solutions/observability/apm/transaction-sampling.md#apm-tail-based-sampling
-[Self-managed, OTel collector-based TBS]: https://opentelemetry.io/blog/2022/tail-sampling/
+[Self-managed, OTel Collector-based TBS]: https://opentelemetry.io/blog/2022/tail-sampling/
 [Time Series Data Streams]: docs-content://manage-data/data-store/data-streams/time-series-data-stream-tsds.md

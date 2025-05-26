@@ -13,7 +13,7 @@ products:
 
 # Set up the EDOT .NET SDK
 
-Learn how to set up and configure the Elastic Distribution of OpenTelemetry .NET to instrument your application or service.
+Learn how to set up and configure the {{edot}} .NET to instrument your application or service.
 
 ## Quickstart guide
 
@@ -41,7 +41,7 @@ When using Serverless, use the Managed OTLP Endpoint UR for the best experience 
 
 ### Installing the NuGet packages
 
-To get started with the Elastic Distribution of OpenTelemetry .NET, add the `Elastic.OpenTelemetry` [NuGet package](https://www.nuget.org/packages/Elastic.OpenTelemetry)
+To get started with the {{edot}} .NET, add the `Elastic.OpenTelemetry` [NuGet package](https://www.nuget.org/packages/Elastic.OpenTelemetry)
 reference to your project file:
 
 ```xml
@@ -125,9 +125,9 @@ OpenTelemetry configuration environment variables should be specified as a top-l
 
 ### Configure the OTLP endpoint
 
-The configuration documented so far ensures that when the application starts, the OpenTelemetry SDK is launched with the [EDOT .NET defaults](./edot-defaults.md), activating all signals and exporting telemetry through OTLP. Unless configured otherwise, the OTLP exporter in the SDK defaults to sending data to `localhost` on the default port for OTLP over gRPC, 4317. If you are running a local collector, this might be sufficient, but in most cases you will need to configure the correct endpoint for exporting telemetry data.
+The configuration documented so far ensures that when the application starts, the OpenTelemetry SDK is launched with the [EDOT .NET defaults](./edot-defaults.md), activating all signals and exporting telemetry through OTLP. Unless configured otherwise, the OTLP exporter in the SDK defaults to sending data to `localhost` on the default port for OTLP over gRPC, 4317. If you are running a local Collector, this might be sufficient, but in most cases you will need to configure the correct endpoint for exporting telemetry data.
 
-In this quickstart guide, Elastic Cloud Serverless is the backend. The onboarding **Add data** page of Elastic Observability provides the environment variables required to send telemetry data to the Elastic Observability backend. This information includes the endpoint URL and API key that should be used when exporting data. The application must be configured to use the endpoint and authorization header when exporting telemetry data.
+In this quickstart guide, {{serverless-full}} is the backend. The onboarding **Add data** page of Elastic Observability provides the environment variables required to send telemetry data to the Elastic Observability backend. This information includes the endpoint URL and API key that should be used when exporting data. The application must be configured to use the endpoint and authorization header when exporting telemetry data.
 
 As with most OpenTelemetry configuration, you can also configure the endpoint through environment variables, including providing them through application configuration. The values are sensitive and should be secured. Use the [Secret Manager](https://learn.microsoft.com/aspnet/core/security/app-secrets) feature during local development. Once enabled
 for your application, add `OTEL_EXPORTER_OTLP_ENDPOINT` and `OTEL_EXPORTER_OTLP_HEADERS` as keys with their respective values.

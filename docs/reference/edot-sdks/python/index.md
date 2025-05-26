@@ -13,7 +13,7 @@ products:
 
 # Elastic Distribution of OpenTelemetry Python
 
-The [Elastic Distribution of OpenTelemetry (EDOT) Python](https://github.com/elastic/elastic-otel-python) is a customized version of [OpenTelemetry Python](https://opentelemetry.io/docs/languages/python), configured for the best experience with Elastic Observability. 
+The [{{edot}} (EDOT) Python](https://github.com/elastic/elastic-otel-python) is a customized version of [OpenTelemetry Python](https://opentelemetry.io/docs/languages/python), configured for the best experience with Elastic Observability. 
 
 Use EDOT Python to start the OpenTelemetry SDK with your Python application, and automatically capture tracing data, performance metrics, and logs. Traces, metrics, and logs can be sent to any OpenTelemetry Protocol (OTLP) Collector you choose.
 

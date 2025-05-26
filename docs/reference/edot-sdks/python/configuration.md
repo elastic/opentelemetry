@@ -13,7 +13,7 @@ products:
 
 # Configure the EDOT Python agent
 
-Configure the Elastic Distribution of OpenTelemetry Python (EDOT Python) to send data to Elastic.
+Configure the {{edot}} Python (EDOT Python) to send data to Elastic.
 
 ## Configuration method
 
@@ -28,7 +28,7 @@ opentelemetry-instrument <command to start your service>
 
 ## Configuration options
 
-Because the Elastic Distribution of OpenTelemetry Python is an extension of OpenTelemetry Python, it supports both:
+Because the {{edot}} Python is an extension of OpenTelemetry Python, it supports both:
 
 * [General OpenTelemetry configuration options](#opentelemetry-configuration-options)
 * [Specific configuration options that are only available in EDOT Python](#configuration-options-only-available-in-edot-python)

@@ -13,7 +13,7 @@ products:
 
 # Configure the EDOT .NET SDK
 
-Configure the Elastic Distribution of OpenTelemetry .NET (EDOT .NET) to send data to Elastic.
+Configure the {{edot}} .NET (EDOT .NET) to send data to Elastic.
 
 ## Configuration methods
 
@@ -47,9 +47,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.AddElasticOpenTelemetry();
 ```
 
-By default, at this stage the configuration is populated from the default configuration sources, including the `appsettings.json` file(s) and command-line arguments. You can use these sources to define the configuration for the Elastic Distribution of OpenTelemetry .NET.
+By default, at this stage the configuration is populated from the default configuration sources, including the `appsettings.json` file(s) and command-line arguments. You can use these sources to define the configuration for the {{edot}} .NET.
 
-For example, you can define the configuration for the Elastic Distribution of OpenTelemetry .NET in the `appsettings.json` file:
+For example, you can define the configuration for the {{edot}} .NET in the `appsettings.json` file:
 
 ```json
 {
@@ -89,7 +89,7 @@ In all other scenarios, you can configure EDOT .NET manually in code.
 
 Create an instance of `ElasticOpenTelemetryOptions` and pass it to an overload of the `WithElasticDefaults` extension methods available on the `IHostApplicationBuilder`, the `IServiceCollection` and the specific signal providers such as `TracerProviderBuilder`.
 
-For example, in traditional console applications, you can configure the Elastic Distribution of OpenTelemetry .NET like this:
+For example, in traditional console applications, you can configure the {{edot}} .NET like this:
 
 ```csharp
 using OpenTelemetry;
@@ -112,7 +112,7 @@ using var sdk = OpenTelemetrySdk.Create(builder => builder
 
 ## Configuration options
 
-Because the Elastic Distribution of OpenTelemetry .NET (EDOT .NET) is an extension of the [OpenTelemetry .NET SDK](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation), it supports both:
+Because the {{edot}} .NET (EDOT .NET) is an extension of the [OpenTelemetry .NET SDK](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation), it supports both:
 
 * General OpenTelemetry SDK configuration options
 * Elastic-specific configuration options that are only available when using EDOT .NET
@@ -130,7 +130,7 @@ EDOT .NET supports the following Elastic-specific options.
 * Type: String
 * Default: `string.Empty`
 
-A string specifying the output directory where the Elastic Distribution of OpenTelemetry .NET writes diagnostic log files. When not provided, no file logging occurs. Each new .NET process creates a new log file in the specified directory.
+A string specifying the output directory where the {{edot}} .NET writes diagnostic log files. When not provided, no file logging occurs. Each new .NET process creates a new log file in the specified directory.
 
 | Configuration method | Key |
 |---|---|

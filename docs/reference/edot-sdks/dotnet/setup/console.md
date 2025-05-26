@@ -13,7 +13,7 @@ products:
 
 # Set up EDOT .NET for console applications
 
-You can instrument console applications using the Elastic Distribution of OpenTelemetry .NET. Applications running without a [host](https://learn.microsoft.com/dotnet/core/extensions/generic-host) can initialize OpenTelemetry manually. For example:
+You can instrument console applications using the {{edot}} .NET. Applications running without a [host](https://learn.microsoft.com/dotnet/core/extensions/generic-host) can initialize OpenTelemetry manually. For example:
 
 ```csharp
 using OpenTelemetry;

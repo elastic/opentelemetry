@@ -13,7 +13,7 @@ products:
 
 # Download the EDOT Collector
 
-The Elastic Distribution of OpenTelemetry (EDOT) Collector is embedded in the Elastic Agent package as a separate binary that invokes OpenTelemetry collector components.
+The {{edot}} (EDOT) Collector is embedded in the {{agent}} package as a separate binary that invokes OpenTelemetry Collector components.
 
 The following table contains direct download links for the latest EDOT Collector version for different operating systems and architectures.
 
