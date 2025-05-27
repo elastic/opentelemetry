@@ -1,0 +1,143 @@
+---
+name: Bump release versions in the docs/docset.yml
+
+scms:
+  githubConfig:
+    kind: github
+    spec:
+      user: '{{ requiredEnv "GITHUB_ACTOR" }}'
+      username: '{{ requiredEnv "GITHUB_ACTOR" }}'
+      owner: '{{ .scm.owner }}'
+      repository: '{{ .scm.repository }}'
+      token: '{{ requiredEnv "GITHUB_TOKEN" }}'
+      commitusingapi: true
+      branch: '{{ .scm.branch }}'
+      force: false
+
+actions:
+  elastic-agent:
+    kind: github/pullrequest
+    scmid: githubConfig
+    sourceid: latestGoVersion
+    spec:
+      automerge: false
+      labels:
+        - dependencies
+      title: '[Automation] Bump EDOT versions'
+
+sources:
+  latest-edot-dotnet-version:
+    name: Get latest release version for the elastic-otel-dotnet
+    kind: githubrelease
+    transformers:
+      - trimprefix: v
+    spec:
+      owner: elastic
+      repository: elastic-otel-dotnet
+      token: '{{ requiredEnv "GITHUB_TOKEN" }}'
+      username: '{{ requiredEnv "GITHUB_ACTOR" }}'
+      versionfilter:
+        kind: latest
+
+  latest-edot-java-version:
+    name: Get latest release version for the elastic-otel-java
+    kind: githubrelease
+    transformers:
+      - trimprefix: v
+    spec:
+      owner: elastic
+      repository: elastic-otel-java
+      token: '{{ requiredEnv "GITHUB_TOKEN" }}'
+      username: '{{ requiredEnv "GITHUB_ACTOR" }}'
+      versionfilter:
+        kind: latest
+
+  latest-edot-node-version:
+    name: Get latest release version for the elastic-otel-node
+    kind: githubrelease
+    transformers:
+      - trimprefix: v
+    spec:
+      owner: elastic
+      repository: elastic-otel-node
+      token: '{{ requiredEnv "GITHUB_TOKEN" }}'
+      username: '{{ requiredEnv "GITHUB_ACTOR" }}'
+      versionfilter:
+        kind: latest
+
+  latest-edot-php-version:
+    name: Get latest release version for the elastic-otel-php
+    kind: githubrelease
+    transformers:
+      - trimprefix: v
+    spec:
+      owner: elastic
+      repository: elastic-otel-php
+      token: '{{ requiredEnv "GITHUB_TOKEN" }}'
+      username: '{{ requiredEnv "GITHUB_ACTOR" }}'
+      versionfilter:
+        kind: latest
+
+  latest-edot-python-version:
+    name: Get latest release version for the elastic-otel-python
+    kind: githubrelease
+    transformers:
+      - trimprefix: v
+    spec:
+      owner: elastic
+      repository: elastic-otel-python
+      token: '{{ requiredEnv "GITHUB_TOKEN" }}'
+      username: '{{ requiredEnv "GITHUB_ACTOR" }}'
+      versionfilter:
+        kind: latest
+
+targets:
+  update-docs-docset-dotnet:
+    name: 'Update docs/docset.yml edot-dotnet {{ source "latest-edot-dotnet-version" }}'
+    scmid: githubConfig
+    sourceid: latest-edot-dotnet-version
+    kind: file
+    spec:
+      file: docs/docset.yml
+      matchpattern: '(edot-dotnet-version): (.+)'
+      replacepattern: '$1: {{ source "latest-edot-dotnet-version" }}'
+
+  update-docs-docset-java:
+    name: 'Update docs/docset.yml edot-java {{ source "latest-edot-java-version" }}'
+    scmid: githubConfig
+    sourceid: latest-edot-java-version
+    kind: file
+    spec:
+      file: docs/docset.yml
+      matchpattern: '(edot-java-version): (.+)'
+      replacepattern: '$1: {{ source "latest-edot-java-version" }}'
+
+  update-docs-docset-node:
+    name: 'Update docs/docset.yml edot-node {{ source "latest-edot-node-version" }}'
+    scmid: githubConfig
+    sourceid: latest-edot-node-version
+    kind: file
+    spec:
+      file: docs/docset.yml
+      matchpattern: '(edot-nodejs-version): (.+)'
+      replacepattern: '$1: {{ source "latest-edot-node-version" }}'
+
+  update-docs-docset-php:
+    name: 'Update docs/docset.yml edot-php {{ source "latest-edot-php-version" }}'
+    scmid: githubConfig
+    sourceid: latest-edot-php-version
+    kind: file
+    spec:
+      file: docs/docset.yml
+      matchpattern: '(edot-php-version): (.+)'
+      replacepattern: '$1: {{ source "latest-edot-php-version" }}'
+
+  update-docs-docset-python:
+    name: 'Update docs/docset.yml edot-python {{ source "latest-edot-python-version" }}'
+    scmid: githubConfig
+    sourceid: latest-edot-python-version
+    kind: file
+    spec:
+      file: docs/docset.yml
+      matchpattern: '(edot-python-version): (.+)'
+      replacepattern: '$1: {{ source "latest-edot-python-version" }}'

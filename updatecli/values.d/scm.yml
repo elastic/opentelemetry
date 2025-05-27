@@ -1,0 +1,5 @@
+scm:
+  enabled: true
+  owner: elastic
+  repository: opentelemetry
+  branch: main
