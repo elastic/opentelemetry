@@ -18,7 +18,6 @@ actions:
   elastic-agent:
     kind: github/pullrequest
     scmid: githubConfig
-    sourceid: latestGoVersion
     spec:
       automerge: false
       labels:
