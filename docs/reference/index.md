@@ -24,14 +24,16 @@ Each EDOT distribution is assembled with selected OpenTelemetry components and t
 
 The following Elastic OpenTelemetry distributions are available:
 
-- [EDOT Collector](./edot-collector/index.md)
-- [EDOT .NET](./edot-sdks/dotnet/index.md)
-- [EDOT Java](./edot-sdks/java/index.md)
-- [EDOT Node.js](./edot-sdks/nodejs/index.md)
-- [EDOT PHP](./edot-sdks/php/index.md)
-- [EDOT Python](./edot-sdks/python/index.md)
-- [EDOT Android](apm-agent-android://reference/index.md)
-- [EDOT iOS](apm-agent-ios://reference/index.md)
+| Distribution | Version | Status |
+| ------------ | ------- | ------ |
+| [EDOT Collector](./edot-collector/index.md) | {{edot-collector-version}} | GA |
+| [EDOT .NET](./edot-sdks/dotnet/index.md) | {{edot-dotnet-version}} | GA |
+| [EDOT Java](./edot-sdks/java/index.md) | {{edot-java-version}} | GA |
+| [EDOT Node.js](./edot-sdks/nodejs/index.md) | {{edot-nodejs-version}} | GA |
+| [EDOT PHP](./edot-sdks/php/index.md) | {{edot-php-version}} | GA |
+| [EDOT Python](./edot-sdks/python/index.md) | {{edot-python-version}} | GA |
+| [EDOT Android](apm-agent-android://reference/index.md) | {{edot-android-version}} | GA |
+| [EDOT iOS](apm-agent-ios://reference/index.md) | {{edot-ios-version}} | GA |
 
 Each EDOT distribution undergoes production-grade testing before being declared Generally Available (GA). Elastic provides full support for GA releases in accordance with our [support matrix](https://www.elastic.co/support/matrix) and SLAs.
 
