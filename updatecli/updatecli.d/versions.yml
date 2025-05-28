@@ -25,6 +25,33 @@ actions:
       title: '[Automation] Bump EDOT versions'
 
 sources:
+  latest-edot-android-version:
+    name: Get latest release version for the apm-agent-android
+    kind: githubrelease
+    transformers:
+      - trimprefix: v
+    spec:
+      owner: elastic
+      repository: apm-agent-android
+      token: '{{ requiredEnv "GITHUB_TOKEN" }}'
+      username: '{{ requiredEnv "GITHUB_ACTOR" }}'
+      versionfilter:
+        kind: latest
+
+  latest-edot-collector-version:
+    name: Get latest major release version for the elastic-agent
+    kind: githubrelease
+    transformers:
+      - trimprefix: v
+    spec:
+      owner: elastic
+      repository: elastic-agent
+      token: '{{ requiredEnv "GITHUB_TOKEN" }}'
+      username: '{{ requiredEnv "GITHUB_ACTOR" }}'
+      versionFilter:
+        kind: regex
+        pattern: "v9.(\\d*).(\\d*)$"
+
   latest-edot-dotnet-version:
     name: Get latest release version for the elastic-otel-dotnet
     kind: githubrelease
@@ -33,6 +60,19 @@ sources:
     spec:
       owner: elastic
       repository: elastic-otel-dotnet
+      token: '{{ requiredEnv "GITHUB_TOKEN" }}'
+      username: '{{ requiredEnv "GITHUB_ACTOR" }}'
+      versionfilter:
+        kind: latest
+
+  latest-edot-ios-version:
+    name: Get latest release version for the apm-agent-ios
+    kind: githubrelease
+    transformers:
+      - trimprefix: v
+    spec:
+      owner: elastic
+      repository: apm-agent-ios
       token: '{{ requiredEnv "GITHUB_TOKEN" }}'
       username: '{{ requiredEnv "GITHUB_ACTOR" }}'
       versionfilter:
@@ -91,6 +131,26 @@ sources:
         kind: latest
 
 targets:
+  update-docs-docset-android:
+    name: 'Update docs/docset.yml edot-android {{ source "latest-edot-android-version" }}'
+    scmid: githubConfig
+    sourceid: latest-edot-android-version
+    kind: file
+    spec:
+      file: docs/docset.yml
+      matchpattern: '(edot-android-version): (.+)'
+      replacepattern: '$1: {{ source "latest-edot-android-version" }}'
+
+  update-docs-docset-collector:
+    name: 'Update docs/docset.yml edot-collector {{ source "latest-edot-collector-version" }}'
+    scmid: githubConfig
+    sourceid: latest-edot-collector-version
+    kind: file
+    spec:
+      file: docs/docset.yml
+      matchpattern: '(edot-collector-version): (.+)'
+      replacepattern: '$1: {{ source "latest-edot-collector-version" }}'
+
   update-docs-docset-dotnet:
     name: 'Update docs/docset.yml edot-dotnet {{ source "latest-edot-dotnet-version" }}'
     scmid: githubConfig
@@ -100,6 +160,16 @@ targets:
       file: docs/docset.yml
       matchpattern: '(edot-dotnet-version): (.+)'
       replacepattern: '$1: {{ source "latest-edot-dotnet-version" }}'
+
+  update-docs-docset-ios:
+    name: 'Update docs/docset.yml edot-android {{ source "latest-edot-ios-version" }}'
+    scmid: githubConfig
+    sourceid: latest-edot-ios-version
+    kind: file
+    spec:
+      file: docs/docset.yml
+      matchpattern: '(edot-ios-version): (.+)'
+      replacepattern: '$1: {{ source "latest-edot-ios-version" }}'
 
   update-docs-docset-java:
     name: 'Update docs/docset.yml edot-java {{ source "latest-edot-java-version" }}'
