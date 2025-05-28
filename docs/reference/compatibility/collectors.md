@@ -22,7 +22,7 @@ The following table provides an overview of compatibility and support of {{edot}
 | **Level of support**        | [Not supported] | [Not supported]    | [Supported]         | [Supported] |
 
 :::{note}
-EDOT Collector supports {{stack}} versions 8.18 and higher. Use the generally available 9.x versions and higher of the EDOT Collector to ingest data into {{stack}} versions 8.18 or higher under Elastic's official support ([Supported]).
+If you're on {{stack}} 8.18 or 8.19 and require Elastic support, use EDOT Collector version 9.x, as this combination is officially [Supported].
 :::
 
 ## Operating Systems
