@@ -12,17 +12,22 @@ products:
 
 # Compatibility and support for OTel SDKs
 
-The following table provides an overview of compatibility and support of EDOT SDKs versions with the EDOT Collector versions:
+The following table provides an overview of compatibility and support of EDOT SDKs with EDOT Collector versions:
 
-|                    | **Collector < 8.16**   | **Collector 8.16 to 8.19** | **Collector 9.x**   |
-| :----------------- | :--------------- | :---------------- | :-------------- |
-| **EDOT .NET**      | [Incompatible]   | [Compatible]      | [Supported]     |
-| **EDOT Java**      | [Incompatible]   | [Compatible]      | [Supported]     |
-| **EDOT Node.js**   | [Incompatible]   | [Compatible]      | [Supported]     |
-| **EDOT PHP**       | [Incompatible]   | [Compatible]      | [Supported]     |
-| **EDOT Python**    | [Incompatible]   | [Compatible]      | [Supported]     |
-| **EDOT Android**   | [Incompatible]   | [Compatible]      | [Supported]     |
-| **EDOT iOS**       | [Incompatible]   | [Compatible]      | [Supported]     |
+| Collector version        | **< 8.16**         | **8.16 to 8.19**    | **9.x**            |
+| :----------------------- | :----------------- | :------------------ | :----------------- |
+| **Compatibility**        | [Incompatible]     | [Compatible]        | [Compatible]       |
+| **Level of support**     | [Not supported]    | [Not supported]     | [Supported]        |
+
+This applies to all EDOT SDKs:
+
+- EDOT .NET
+- EDOT Java
+- EDOT Node.js
+- EDOT PHP
+- EDOT Python
+- EDOT Android
+- EDOT iOS
 
 Refer to the [EDOT Collector compatibility table](collectors.md) for compatibility with Elastic Stack versions.
 
@@ -50,4 +55,5 @@ OTel SDK distributions other than the ones listed above are technically compatib
 
 [Incompatible]: nomenclature.md
 [Compatible]: nomenclature.md
+[Not supported]: nomenclature.md
 [Supported]: nomenclature.md

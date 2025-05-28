@@ -14,29 +14,29 @@ products:
 
 The following table shows Elastic features and their level of support and compatibility with Elastic Distributions of OpenTelemetry (EDOT). Refer to the [SDKs Overview](../edot-sdks/index.md) for SDK-specific features.
 
-| Feature                                                                                     | Availability     |
-| :------------------------------------------------------------------------------------------ | :--------------- |
-| **APM**                                                                                     | [Supported]      |
-| [Service Maps]                                                                              | [Supported]      |
-| [Distributed Tracing]                                                                       | [Supported]      |
-| [Head-based Sampling (HBS)]                                                                 | [Supported]      |
-| *[Tail-based Sampling (TBS)]*                                                               | [Compatible]     |
-| [Self-managed, OTel Collector-based TBS]                                                    | [Compatible]     |
-| TBS managed / hosted in {{ecloud}}                                                       | [Incompatible]   |
-| Runtime metrics                                                                             | [See language-specific overview](../edot-sdks/index.md) |
-| **Infrastructure Monitoring**                                                               | [Supported]      |
-| Host view^1^                                                                                | [Supported]      |
-| Kubernetes dashboard                                                                        | [Supported]      |
-| **Logs Collection**                                                                         | [Supported]      |
-| OTel-native, Collector-based logs parsing & processing                                      | [Supported]      |
-| OTel-native, Collector-based data routing                                                   | [Supported]      |
-| Managed, centralized processing^2^                                                          | [Incompatible]   |
-| **Metrics Collection**^3^                                                                   | [Supported]      |
-| Automatic metrics mapping                                                                   | [Supported]      |
-| Usage of [Time Series Data Streams]                                                         | [Supported]      |
-| **Central Management**                                                                      | [Incompatible]   |
-| Central management of OTel collectors                                                       | [Incompatible]   |
-| Central management of OTel SDKs                                                             | [Incompatible]   |
+| Feature                                                     | Compatibility    | Support level    |
+| :-----------------------------------------------------------| :--------------- | :--------------- |
+| **APM**                                                     | [Compatible]     | [Supported]      |
+| [Service Maps]                                              | [Compatible]     | [Supported]      |
+| [Distributed Tracing]                                       | [Compatible]     | [Supported]      |
+| [Head-based Sampling (HBS)]                                 | [Compatible]     | [Supported]      |
+| *[Tail-based Sampling (TBS)]*                               | [Compatible]     | [Not supported]  |
+| [Self-managed, OTel Collector-based TBS]                    | [Compatible]     | [Not supported]  |
+| TBS managed / hosted in {{ecloud}}                          | [Incompatible]   | [Not supported]  |
+| Runtime metrics                                             | [See language-specific overview](../edot-sdks/index.md) | -                |
+| **Infrastructure Monitoring**                               | [Compatible]     | [Supported]      |
+| Host view^1^                                                | [Compatible]     | [Supported]      |
+| Kubernetes dashboard                                        | [Compatible]     | [Supported]      |
+| **Logs Collection**                                         | [Compatible]     | [Supported]      |
+| OTel-native, Collector-based logs parsing & processing      | [Compatible]     | [Supported]      |
+| OTel-native, Collector-based data routing                   | [Compatible]     | [Supported]      |
+| Managed, centralized processing^2^                          | [Incompatible]   | [Not supported]  |
+| **Metrics Collection**^3^                                   | [Compatible]     | [Supported]      |
+| Automatic metrics mapping                                   | [Compatible]     | [Supported]      |
+| Usage of [Time Series Data Streams]                         | [Compatible]     | [Supported]      |
+| **Central Management**                                      | [Incompatible]   | [Not supported]  |
+| Central management of OTel collectors                       | [Incompatible]   | [Not supported]  |
+| Central management of OTel SDKs                             | [Incompatible]   | [Not supported]  |
 
 
 ^1^ Refer to [limitations on host metrics](limitations.md#infrastructure-and-host-metrics)
@@ -47,6 +47,7 @@ The following table shows Elastic features and their level of support and compat
 
 [Incompatible]: nomenclature.md
 [Compatible]: nomenclature.md
+[Not supported]: nomenclature.md
 [Supported]: nomenclature.md
 
 [Service Maps]: docs-content://solutions/observability/apm/service-map.md
