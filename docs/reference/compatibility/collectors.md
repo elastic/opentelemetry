@@ -12,7 +12,7 @@ products:
 
 # Compatibility and support for OTel Collectors
 
-The following table provides an overview of compatibility and support of {{edot}} Collector versions with Elastic Stack (ELK) versions.
+The following table provides an overview of compatibility and support of {{edot}} Collector versions with {{stack}} (ELK) versions.
 
 #### EDOT Collector 9.x
 
