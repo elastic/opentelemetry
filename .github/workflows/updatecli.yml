@@ -31,5 +31,5 @@ jobs:
         uses: elastic/oblt-actions/slack/send@v1
         with:
           bot-token: ${{ secrets.SLACK_BOT_TOKEN }}
-          channel-id: "#my-channel"
+          channel-id: "#obs-docs-automation-alerts"
           message: ":traffic_cone: updatecli failed for `${{ github.repository }}@${{ github.ref_name }}`, please look what's going on <${{ env.JOB_URL }}|here>"
