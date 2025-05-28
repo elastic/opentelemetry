@@ -14,7 +14,7 @@ products:
 
 The following table provides an overview of compatibility and support of EDOT SDKs with EDOT Collector versions:
 
-| Collector version        | **< 8.16**         | **8.16 to 8.19**    | **9.x**            |
+| EDOT Collector version        | **< 8.16**         | **8.16 to 8.19**    | **9.x**            |
 | :----------------------- | :----------------- | :------------------ | :----------------- |
 | **Compatibility**        | [Incompatible]     | [Compatible]        | [Compatible]       |
 | **Level of support**     | [Not supported]    | [Not supported]     | [Supported]        |
