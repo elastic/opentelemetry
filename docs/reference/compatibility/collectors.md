@@ -12,11 +12,14 @@ products:
 
 # Compatibility and support for OTel Collectors
 
-The following table provides an overview of compatibility and support of EDOT Collector versions with Elastic Stack (ELK) versions.
+The following table provides an overview of compatibility and support of {{edot}} Collector versions with Elastic Stack (ELK) versions.
 
-|                             | **ELK < 8.16** | **ELK 8.16 - 8.17** | **ELK 8.18 - 8.19** | **ELK 9.0** |
+#### EDOT Collector 9.0
+
+| ELK stack version           | **ELK < 8.16** | **ELK 8.16 - 8.17** | **ELK 8.18 - 8.19** | **ELK 9.0** |
 | :-------------------------- | :------------- | :------------------ | :------------------ | :---------- |
-| **EDOT Collector 9.0**      | [Incompatible] | [Compatible]        | [Supported]         | [Supported] |
+| **Compatibility**           | [Incompatible] | [Compatible]        | [Compatible]        | [Compatible] |
+| **Level of support**        | Not supported  | Not supported       | [Supported]         | [Supported] |
 
 :::{note}
 EDOT Collector supports Elastic Stack versions 8.18 and higher. Use the generally available 9.x versions and higher of the EDOT Collector to ingest data into Elastic Stack versions 8.18 or higher under Elastic's official support ([Supported]).
