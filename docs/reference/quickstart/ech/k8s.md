@@ -65,10 +65,10 @@ On Windows PowerShell, replace backslashes (`\`) with backticks (`` ` ``) for li
 
 Install the OpenTelemetry Operator using the `kube-stack` Helm chart with the configured `values.yaml` file.
 
-```bash
+```bash subs=true
 helm install opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack \
 --namespace opentelemetry-operator-system \
---values 'https://raw.githubusercontent.com/elastic/elastic-agent/main/deploy/helm/edot-collector/kube-stack/values.yaml' \
+--values 'https://raw.githubusercontent.com/elastic/elastic-agent/{{edot-collector-version}}/deploy/helm/edot-collector/kube-stack/values.yaml' \
 --version '0.3.9'
 ```
 ::::
