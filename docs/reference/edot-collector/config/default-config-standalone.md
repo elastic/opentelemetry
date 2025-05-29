@@ -18,7 +18,7 @@ The default configuration of the {{edot}} (EDOT) Collector includes pipelines fo
 The EDOT Collector can run in [Agent](https://opentelemetry.io/docs/collector/deployment/agent/) or [Gateway](https://opentelemetry.io/docs/collector/deployment/gateway/) mode:
 
 - Agent mode: The EDOT Collector ingests data from infrastructure and SDKs and forwards it to Elastic or to another collector running in Gateway mode.
-- Gateway mode: The EDOT Collector ingests data from other collectors running in Agent mode and forward it to Elastic.
+- Gateway mode: The EDOT Collector ingests data from other collectors running in Agent mode and forwards it to Elastic.
 
 ## Agent mode
 
