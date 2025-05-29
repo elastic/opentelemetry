@@ -12,23 +12,29 @@ products:
 
 # Compatibility and support for OTel Collectors
 
-The following table provides an overview of compatibility and support of EDOT Collector versions with Elastic Stack (ELK) versions.
+The following table provides an overview of compatibility and support of {{edot}} Collector versions with {{stack}} (ELK) versions.
 
-|                             | **ELK < 8.16** | **ELK 8.16 - 8.17** | **ELK 8.18 - 8.19** | **ELK 9.0** |
+#### EDOT Collector 9.x
+
+| ELK stack version           | **ELK < 8.16** | **ELK 8.16 - 8.17** | **ELK 8.18 - 8.19** | **ELK 9.0** |
 | :-------------------------- | :------------- | :------------------ | :------------------ | :---------- |
-| **EDOT Collector 9.0**      | [Incompatible] | [Compatible]        | [Supported]         | [Supported] |
+| **Compatibility**           | [Incompatible] | [Compatible]        | [Compatible]        | [Compatible]|
+| **Level of support**        | [Not supported] | [Not supported]    | [Supported]         | [Supported] |
 
 :::{note}
-EDOT Collector supports Elastic Stack versions 8.18 and higher. Use the generally available 9.x versions and higher of the EDOT Collector to ingest data into Elastic Stack versions 8.18 or higher under Elastic's official support ([Supported]).
+If you're on {{stack}} 8.18 or 8.19 and require Elastic support, use EDOT Collector version 9.x, as this combination is officially [Supported].
 :::
 
 ## Operating Systems
 
 The following table provides an overview of compatibility and support of EDOT Collector versions with different operating systems.
 
-|                            | **Linux/arm64** | **Linux/amd64** | **Windows** | **macOS** |
-| :------------------------- | :-------------- | :-------------- | :---------- | :-------- |
-| **EDOT Collector 9.x**     | [Supported]     | [Supported]     | [Compatible] | [Compatible] |
+#### EDOT Collector 9.x
+
+| Operating system           | **Linux/arm64** | **Linux/amd64** | **Windows**   | **macOS**     |
+| :------------------------- | :-------------- | :-------------- | :----------   | :--------     |
+| **Compatibility**          | [Compatible]    | [Compatible]    | [Compatible]  | [Compatible]  |
+| **Level of support**       | [Supported]     | [Supported]     | [Not supported] | [Not supported] |
 
 ## EDOT Collector components
 
@@ -42,6 +48,7 @@ You can retrieve required components and configuration options from the [sample 
 
 [Incompatible]: nomenclature.md
 [Compatible]: nomenclature.md
+[Not supported]: nomenclature.md
 [Supported]: nomenclature.md
 [Extended]: nomenclature.md#extended-components
 [Core]: nomenclature.md#core-components
