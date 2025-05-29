@@ -29,6 +29,8 @@ jobs:
               "contents": "write",
               "pull_requests": "write"
             }
+          repositories: >-
+            ["opentelemetry"]
 
       - uses: elastic/oblt-actions/updatecli/run@v1
         with:
