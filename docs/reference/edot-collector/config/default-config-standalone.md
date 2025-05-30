@@ -205,4 +205,4 @@ Each pipeline connects specific receivers, processors, and exporters to handle d
 [Logs &#124; Metrics - OTLP]: https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{edot-collector-version}}/internal/pkg/otel/samples/linux/managed_otlp/platformlogs_hostmetrics.yml
 [Logs &#124; Metrics &#124; App - ES]: https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{edot-collector-version}}/internal/pkg/otel/samples/linux/logs_metrics_traces.yml
 [Logs &#124; Metrics &#124; App - OTLP]: https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{edot-collector-version}}/internal/pkg/otel/samples/linux/managed_otlp/logs_metrics_traces.yml
-[Gateway mode]: https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{edot-collector-version}}/internal/pkg/otel/samples/linux/gateway.yml
+[Gateway mode]: https://raw.githubusercontent.com/elastic/elastic-agent/refs/heads/main/internal/pkg/otel/samples/linux/gateway.yml
