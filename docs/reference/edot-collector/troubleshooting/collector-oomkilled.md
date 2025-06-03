@@ -1,0 +1,109 @@
+---
+navigation_title: EDOT Collector is out of memory
+description: Diagnose and resolve out-of-memory issues in the EDOT Collector using Go’s Performance Profiler.
+applies_to:
+  stack:
+  serverless:
+    observability:
+products:
+  - id: cloud-serverless
+  - id: observability
+  - id: edot-collector
+---
+
+# EDOT Collector is out of memory
+
+If your EDOT Collector is being terminated with an `OOMKilled` status, this usually indicates a memory leak or sustained memory pressure. You can use the Performance Profiler (`pprof`) tool to collect and analyze memory profiles, helping you identify the root cause.
+
+## Symptoms
+
+- EDOT Collector pod restarts with an `OOMKilled` status in Kubernetes.
+- Memory usage steadily increases before the crash.
+- The collector's logs don't show clear errors before termination.
+
+## Resolution
+
+Enable runtime profiling using the `pprof` extension and then gather memory heap profiles from the affected pod:
+
+:::::{stepper}
+
+::::{step}
+**Enable `pprof` in the Collector**
+
+Edit the EDOT Collector Daemonset configuration and include the `pprof` extension:
+
+```yaml
+exporters:
+  ...
+processors:
+  ...
+receivers:
+  ...
+extensions:
+  pprof:
+
+service:
+  extensions:
+   - pprof
+   - ...
+  pipelines:
+    metrics:
+      receivers: [ ... ]
+      processors: [ ... ]
+      exporters: [ ... ]
+```
+
+Restart the Collector after applying these changes. When the Daemonset is deployed again, spot the pod that is getting restarted.
+::::
+
+::::{step}
+**Access the affected pod and collect a heap dump**
+
+When a pod starts exhibiting high memory usage or restarts due to OOM, run the following to enter a debug shell:
+
+```console
+kubectl debug -it <collector-pod-name> --image=ubuntu:latest
+```
+
+In the debug container:
+
+```console
+apt update
+apt install -y curl
+curl http://localhost:1777/debug/pprof/heap > heap.out
+```
+::::
+
+::::{step}
+**Copy the heap file from the pod**
+
+From your local machine, copy the heap file using:
+
+```bash
+kubectl cp <collector-pod-name>:heap.out ./heap.out -c <debug-container-name>
+```
+::::{note}
+Replace `<debug-container-name>` with the name assigned to the debug container. Without the `-c` flag, Kubernetes will show the list of available containers.
+::::
+::::
+
+::::{step}
+**Convert the heap profile for analysis**
+
+You can now generate a visual representation, for example PNG:
+
+```bash
+go tool pprof -png heap.out > heap.png
+```
+::::
+
+## Best practices
+
+- Collect multiple heap profiles over time (for example, every few minutes) to observe memory trends before the crash.
+
+- Consider automating heap profile collection at intervals to observe trends over time.
+
+## Resources
+
+- [Go's pprof documentation](https://pkg.go.dev/net/http/pprof)
+- [OpenTelemetry Collector troubleshooting documentation](https://opentelemetry.io/docs/collector/troubleshooting/#performance-profiler-pprof)
