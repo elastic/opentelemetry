@@ -45,7 +45,7 @@ Determine if the issue is related to the agent by following these steps:
 
 ## Agent debug output
 
-Turn on debug output with `-Dotel.javaagent.debug=true` or by setting the `OTEL_JAVAAGENT_DEBUG` environment variable to `true`. That adds noticeable overhead. A less intensive option is to set the `otel.traces.exporter` JVM property or the `OTEL_TRACES_EXPORTER` environment variable to the value `otlp,logging-otlp`. This will configure the agent to send the traces both to the collector and to also print it to the standardoutput in JSON format.
+Turn on debug output with `-Dotel.javaagent.debug=true` or by setting the `OTEL_JAVAAGENT_DEBUG` environment variable to `true`. That adds noticeable overhead. A lower overhead option is to set the `otel.traces.exporter` JVM property or the `OTEL_TRACES_EXPORTER` environment variable to the value `otlp,logging-otlp`. This will configure the agent to send the traces both to the collector and to also print it to the standardoutput in JSON format.
 
 After debug is activated, look for:
 
