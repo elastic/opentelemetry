@@ -41,11 +41,11 @@ The Collector should produce output similar to the following:
 Determine if the issue is related to the agent by following these steps:
 
 1. Start the application with no agent and see if the issue is not present. Observe if the issue is again present when restarting with the agent.
-2. Check end-to-end connectivity without the agent by running one or more of the example apps in https://github.com/elastic/elastic-otel-java/blob/main/examples/troubleshooting/README.md . These use the OpenTelemetry SDK rather than the auto-instrumentation. They can confirmation that the issue is specific to the agent or can otherwise identify that the issue is something else.
+2. Check end-to-end connectivity without the agent by running one or more of the example apps in [elastic-otel-java](https://github.com/elastic/elastic-otel-java/blob/main/examples/troubleshooting/README.md). These use the OpenTelemetry SDK rather than the auto-instrumentation. They can confirm that the issue is specific to the Java agent or can otherwise identify that the issue is caused by something else.
 
 ## Agent debug output
 
-Turn on debug output with `-Dotel.javaagent.debug=true` or by setting the `OTEL_JAVAAGENT_DEBUG` environment variable to `true`. 
+Turn on debug output with `-Dotel.javaagent.debug=true` or by setting the `OTEL_JAVAAGENT_DEBUG` environment variable to `true`. Turning debug output on might add noticeable overhead. A lower overhead option is to set the `otel.traces.exporter` JVM property or the `OTEL_TRACES_EXPORTER` environment variable to the value `otlp,logging-otlp`: this configures the agent to send the traces both to the Collector and to also print it to the standard output in JSON format.
 
 After debug is activated, look for:
 
