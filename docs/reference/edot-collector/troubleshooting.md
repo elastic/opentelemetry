@@ -9,9 +9,11 @@ products:
   - id: cloud-serverless
   - id: observability
   - id: edot-collector
-layout: redirection
-permalink: /edot-collector/troubleshooting.html
-redirect: https://www.elastic.co/docs/reference/opentelemetry/edot-collector/troubleshooting/index.html
 ---
 
 # Troubleshooting
+
+This section provides guidance for resolving common issues with the EDOT Collector:
+
+- For general troubleshooting steps, refer to [Troubleshoot the EDOT Collector](troubleshooting/index.md).
+- If your EDOT Collector is running out of memory and pods are terminating with an `OOMKilled` status, refer to [EDOT Collector is out of memory](troubleshooting/collector-oomkilled.md).
