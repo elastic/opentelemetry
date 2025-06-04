@@ -13,7 +13,7 @@ products:
 
 # EDOT Collector is out of memory
 
-If your EDOT Collector pods terminate with an `OOMKilled` status, this usually indicates sustained memory pressure or potentially a memory leak due to an introduced regression or bug. You can use the Performance Profiler (`pprof`) extension to collect and analyze memory profiles, helping you identify the root cause of the issue.
+If your EDOT Collector pods terminate with an `OOMKilled` status, this usually indicates sustained memory pressure or potentially a memory leak due to an introduced regression or a bug. You can use the Performance Profiler (`pprof`) extension to collect and analyze memory profiles, helping you identify the root cause of the issue.
 
 ## Symptoms
 
