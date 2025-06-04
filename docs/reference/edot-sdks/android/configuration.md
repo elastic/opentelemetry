@@ -110,7 +110,7 @@ class MyApp : android.app.Application {
 
 ### Session behavior
 
-You can configure how [sessions](index.md#session) work. For example:
+You can configure how sessions work. For example:
 
 ```kotlin
 class MyApp : android.app.Application {
