@@ -127,6 +127,24 @@ class MyApp : android.app.Application {
 
 1. From version 1.1.0, you can provide your sample rate value. The value gets evaluated on every new session creation to determine whether the next session is sampled or not. When a session is not sampled, none of its signals are exported. Default value is `1.0`.
 
+### Disk buffering behavior
+
+You can configure how [disk buffering](index.md#disk-buffering) works. For example:
+
+```kotlin
+class MyApp : android.app.Application {
+
+    override fun onCreate() {
+        super.onCreate()
+        val agent = ElasticApmAgent.builder(this)
+            .setDiskBufferingConfiguration(DiskBufferingConfiguration.enabled()) // <1>
+            // ...
+            .build()
+    }
+}
+```
+
+1. From version 1.1.0, you can configure whether the disk-buffering feature is turned on or off. It's turned on by default.
 ### Intercept resources
 
 The agent creates a [resource](https://opentelemetry.io/docs/specs/otel/overview/#resources) for your signals, which is a set of static global attributes. These attributes help {{kib}} properly display your application's data.
@@ -170,6 +188,8 @@ class MyApp : android.app.Application {
     }
 }
 ```
+
+
 
 ### Intercept HTTP spans
 
