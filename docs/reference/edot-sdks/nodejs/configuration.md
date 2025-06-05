@@ -170,7 +170,7 @@ Setting `ELASTIC_OTEL_METRICS_DISABLED` to `true` will disable metrics export by
 
 ### `ELASTIC_OTEL_HOST_METRICS_DISABLED` details [elastic_otel_host_metrics_disabled-details]
 
-EDOT Node.js collects and exports [host metrics](./metrics#process-and-runtime-metrics) by default, using the `@opentelemetry/host-metrics` package. To disable this, set the `ELASTIC_HOST_OTEL_METRICS_DISABLED` environment variable to `true`.
+EDOT Node.js collects and exports [host metrics](./metrics.md#process-and-runtime-metrics) by default, using the `@opentelemetry/host-metrics` package. To disable this, set the `ELASTIC_HOST_OTEL_METRICS_DISABLED` environment variable to `true`.
 
 ### `OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE` details [otel_exporter_otlp_metrics_temporality_preference-details]
 

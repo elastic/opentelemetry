@@ -13,7 +13,7 @@ products:
 
 # Metrics
 
-In the Elastic Distribution of OpenTelemetry for Node.js (EDOT Node.js) the collection of metrics is turned on by default. See the [settings with `METRIC` in the name](./configuration) for all options for configuring metric collection.
+In the Elastic Distribution of OpenTelemetry for Node.js (EDOT Node.js) the collection of metrics is turned on by default. See the [settings with `METRIC` in the name](./configuration.md) for all options for configuring metric collection.
 
 ## Process and runtime metrics
 
