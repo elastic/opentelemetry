@@ -1,0 +1,15 @@
+project: 'Elastic Distribution of OpenTelemetry Collector'
+toc:  
+  - file: index.md
+  - file: download.md
+  - file: config/index.md
+    children:
+      - file: config/default-config-standalone.md
+      - file: config/default-config-k8s.md
+      - file: config/configure-logs-collection.md
+      - file: config/configure-metrics-collection.md
+  - file: customization.md
+    children:
+      - file: components.md
+      - file: custom-collector.md
+  - file: troubleshooting.md

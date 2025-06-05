@@ -1,0 +1,13 @@
+project: 'Elastic Distribution of OpenTelemetry SDKs - Java'
+toc:
+  - file: index.md
+  - file: setup/index.md
+    children:
+      - file: setup/k8s.md
+      - file: setup/runtime-attach.md
+  - file: configuration.md
+  - file: features.md
+  - file: supported-technologies.md
+  - file: troubleshooting.md
+  - file: migration.md
+  - file: overhead.md

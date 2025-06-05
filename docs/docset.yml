@@ -1,4 +1,5 @@
 project: 'EDOT documentation'
+max_toc_depth: 3
 cross_links:
   - apm-agent-android
   - apm-agent-dotnet

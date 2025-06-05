@@ -1,0 +1,12 @@
+project: 'Elastic Distribution of OpenTelemetry Use Cases'
+toc:
+  - file: index.md
+  - file: kubernetes/index.md
+    children:
+      - file: kubernetes/prerequisites-compatibility.md
+      - file: kubernetes/components.md
+      - file: kubernetes/deployment.md
+      - file: kubernetes/instrumenting-applications.md
+      - file: kubernetes/upgrade.md
+      - file: kubernetes/customization.md
+  - folder: llms

@@ -1,0 +1,11 @@
+project: 'Elastic Distribution of OpenTelemetry SDKs - PHP'
+toc:
+  - file: index.md
+  - file: setup/index.md
+    children:
+      - file: setup/limitations.md
+  - file: configuration.md
+  - file: supported-technologies.md
+  - file: troubleshooting.md
+  - file: migration.md
+  - file: overhead.md

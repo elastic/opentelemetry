@@ -1,0 +1,18 @@
+project: 'Elastic Distribution of OpenTelemetry Quickstart'
+toc:
+  - file: index.md
+  - file: self-managed/index.md
+    children:
+      - file: self-managed/k8s.md
+      - file: self-managed/hosts_vms.md
+      - file: self-managed/docker.md
+  - file: serverless/index.md
+    children:
+      - file: serverless/k8s.md
+      - file: serverless/hosts_vms.md
+      - file: serverless/docker.md
+  - file: ech/index.md
+    children:
+      - file: ech/k8s.md
+      - file: ech/hosts_vms.md
+      - file: ech/docker.md
