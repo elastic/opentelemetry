@@ -63,22 +63,22 @@ Create a `compose.yml` file with the following content:
 
 ```yaml
 services:
-   otel-collector:
-   image: ${COLLECTOR_CONTRIB_IMAGE}
-   container_name: otel-collector
-   deploy:
+  otel-collector:
+    image: ${COLLECTOR_CONTRIB_IMAGE}
+    container_name: otel-collector
+    deploy:
       resources:
-         limits:
-         memory: 1.5G
-   restart: unless-stopped
-   command: ["--config", "/etc/otelcol-config.yml" ]
-   network_mode: host
-   user: 0:0
-   volumes:
+        limits:
+          memory: 1.5G
+    restart: unless-stopped
+    command: ["--config", "/etc/otelcol-config.yml" ]
+    network_mode: host
+    user: 0:0
+    volumes:
       - ${HOST_FILESYSTEM}:/hostfs:ro
       - ${DOCKER_SOCK}:/var/run/docker.sock:ro
       - ${OTEL_COLLECTOR_CONFIG}:/etc/otelcol-config.yml
-   environment:
+    environment:
       - HOST_FILESYSTEM
       - ELASTIC_AGENT_OTEL
       - ELASTIC_API_KEY
