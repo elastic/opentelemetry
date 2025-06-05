@@ -1,0 +1,8 @@
+project: 'Elastic Distribution of OpenTelemetry SDKs'
+toc:  
+  - file: index.md
+  - toc: dotnet
+  - toc: java
+  - toc: nodejs
+  - toc: php
+  - toc: python

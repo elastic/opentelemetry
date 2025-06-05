@@ -1,0 +1,8 @@
+project: 'Elastic Distribution of OpenTelemetry Compatibility'
+toc:
+  - file: index.md
+  - file: features.md
+  - file: collectors.md
+  - file: sdks.md
+  - file: limitations.md
+  - file: nomenclature.md
