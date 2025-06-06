@@ -110,7 +110,7 @@ The following settings are deprecated:
 
 | Name | Notes |
 | :--- | :---- |
-| `ELASTIC_OTEL_METRICS_DISABLED` 🔹 | [(EDOT Ref)](#deprecated-elastic_otel_metrics_disabled-details) Turn off metrics export and some metrics collection by the SDK. {applies_to}`deprecated 1.1.0` |
+| `ELASTIC_OTEL_METRICS_DISABLED` 🔹 | [(EDOT Ref)](#deprecated-elastic_otel_metrics_disabled-details) Turn off metrics export and some metrics collection by the SDK. {applies_to}`product: deprecated 1.1.0` |
 
 
 ## EDOT configuration details
@@ -163,7 +163,7 @@ export OTEL_NODE_ENABLED_INSTRUMENTATIONS=http,fastify,pino,@elastic/opentelemet
 ### `ELASTIC_OTEL_METRICS_DISABLED` details [deprecated-elastic_otel_metrics_disabled-details]
 
 ```{applies_to}
-deprecated 1.1.0
+product: deprecated 1.1.0
 ```
 
 Setting `ELASTIC_OTEL_METRICS_DISABLED` to `true` turns off metrics export by the SDK and some metrics collection.  This configuration setting is deprecated as of v1.1.0 in favor of using the following settings for finer control:
