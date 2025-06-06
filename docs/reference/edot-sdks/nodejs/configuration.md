@@ -110,7 +110,7 @@ The following settings are deprecated:
 
 | Name | Notes |
 | :--- | :---- |
-| `ELASTIC_OTEL_METRICS_DISABLED` 🔹 | [(EDOT Ref)](#deprecated-elastic_otel_metrics_disabled-details) Turn off metrics export and some metrics collection by the SDK. |
+| `ELASTIC_OTEL_METRICS_DISABLED` 🔹 | [(EDOT Ref)](#deprecated-elastic_otel_metrics_disabled-details) Turn off metrics export and some metrics collection by the SDK. {applies_to}`section: deprecated 1.1.0` |
 
 
 ## EDOT configuration details
