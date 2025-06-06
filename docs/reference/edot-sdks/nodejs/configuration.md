@@ -66,7 +66,7 @@ The 🔹 symbol denotes settings with a default value or behavior that differs b
 | `OTEL_NODE_ENABLED_INSTRUMENTATIONS` 🔹 | [(EDOT Ref)](#otel_node_disabledenabled_instrumentations-details) Comma-separated list of instrumentations to turn on. |
 | `OTEL_NODE_DISABLED_INSTRUMENTATIONS` 🔹 | [(EDOT Ref)](#otel_node_disabledenabled_instrumentations-details) Comma-separated list of instrumentations to turn off. |
 | | |
-| `ELASTIC_OTEL_HOST_METRICS_DISABLED` 🔹 | [(EDOT Ref)](#elastic_otel_host_metrics_disabled-details) Disable collection of metrics done by `@opentelemetry/host-metrics` package. |
+| `ELASTIC_OTEL_HOST_METRICS_DISABLED` 🔹 | [(EDOT Ref)](#elastic_otel_host_metrics_disabled-details) Turn off collection of metrics done by `@opentelemetry/host-metrics` package. |
 | `OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE` 🔹 | [(EDOT Ref)](#otel_exporter_otlp_metrics_temporality_preference-details) The metrics exporter's default aggregation `temporality`. The default value is `delta`. The upstream OTel default is `cumulative`. |
 | | |
 | `OTEL_SEMCONV_STABILITY_OPT_IN` 🔹 | [(EDOT Ref)](#otel_semconv_stability_opt_in-details) Control which HTTP semantic conventions are used by `@opentelemetry/instrumentation-http`. The default value is `http`. The upstream OTel default is an empty value. |
