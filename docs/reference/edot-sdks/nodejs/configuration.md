@@ -162,7 +162,7 @@ export OTEL_NODE_ENABLED_INSTRUMENTATIONS=http,fastify,pino,@elastic/opentelemet
 
 ### (Deprecated) `ELASTIC_OTEL_METRICS_DISABLED` details [deprecated-elastic_otel_metrics_disabled-details]
 
-Setting `ELASTIC_OTEL_METRICS_DISABLED` to `true` will disable metrics export by the SDK and some metrics collection.  This configuration setting is deprecated (as of v1.1.0), in favor of using the following settings for finer control:
+Setting `ELASTIC_OTEL_METRICS_DISABLED` to `true` turns off metrics export by the SDK and some metrics collection.  This configuration setting is deprecated as of v1.1.0 in favor of using the following settings for finer control:
 
 - To turn off the export of *any and all* metrics, set `OTEL_METRICS_EXPORTER=none`.
 - To turn off collection by the `@opentelemetry/instrumentation-runtime-node` package, set `OTEL_NODE_{DISABLED,ENABLED}_INSTRUMENTATIONS` to exclude that instrumentation. For example, `OTEL_NODE_DISABLED_INSTRUMENTATIONS=runtime-node`. [(EDOT Ref)](#otel_node_disabledenabled_instrumentations-details)
