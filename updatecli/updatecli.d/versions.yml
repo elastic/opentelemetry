@@ -103,7 +103,7 @@ sources:
       username: '{{ requiredEnv "GITHUB_ACTOR" }}'
       versionFilter:
         kind: regex
-        pattern: "v(\\d*).(\\d*).(\\d*)$"
+        pattern: "^v(\\d*).(\\d*).(\\d*)$"
 
   latest-edot-php-version:
     name: Get latest release version for the elastic-otel-php
