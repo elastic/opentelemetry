@@ -30,7 +30,7 @@ To install a supported automatic instrumentation, follow these steps:
 Automatic instrumentations will get installed during the SDK initialization.
 
 ```{tip}
-You can use instrumentations from [OpenTelemetry Android](https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation) through the [Android Instrumentation Adapter](#opentelemetry-android-instrumentation-adapter).
+You can use instrumentations from [OpenTelemetry Android](https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation) through the Android instrumentation adapter(#android-instrumentation-adapter).
 ```
 
 ## Compilation behavior
@@ -86,7 +86,7 @@ plugins {
 ## Android instrumentation adapter
 
 ```{applies_to}
-product: technical preview
+product: preview
 ```
 
 You can use instrumentation from the OpenTelemetry Android [available instrumentations](https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation) through the OTel instrumentation adapter by following these steps.
@@ -104,10 +104,6 @@ plugins {
 ```
 
 1. You can find the latest version [here](https://plugins.gradle.org/plugin/co.elastic.otel.android.instrumentation.oteladapter).
-
-```{important}
-This is an [experimental](component-stability.md#experimental) feature.
-```
 ::::
 
 ::::{step} Use an OTel Android instrumentation
