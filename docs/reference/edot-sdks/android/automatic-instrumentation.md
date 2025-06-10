@@ -17,7 +17,7 @@ mapped_pages:
 
 The SDK can automatically generate telemetry on your behalf. This allows you to get telemetry data for supported targets without having to write [manual instrumentation](manual-instrumentation.md).
 
-## Installation
+## Installation [supported-instrumentations-installation]
 
 The first step is to install the automatic instrumentations you'd like to use. Specific targets are supported for automatic instrumentation, each with its own Gradle plugin for installation. 
 
@@ -28,6 +28,10 @@ To install a supported automatic instrumentation, follow these steps:
 3. [Initialize the agent](getting-started.md#agent-setup) the same way you would without using automatic instrumentation.
 
 Automatic instrumentations will get installed during the SDK initialization.
+
+```{tip}
+You can use instrumentations from [OpenTelemetry Android](https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation) through the [Android Instrumentation Adapter](#opentelemetry-android-instrumentation-adapter).
+```
 
 ## Compilation behavior
 
@@ -78,3 +82,60 @@ plugins {
 ```
 
 1. You can find the latest version [here](https://plugins.gradle.org/plugin/co.elastic.otel.android.instrumentation.okhttp).
+
+## Android instrumentation adapter
+
+```{applies_to}
+product: technical preview
+```
+
+You can use instrumentation from the OpenTelemetry Android [available instrumentations](https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation) through the OTel instrumentation adapter by following these steps.
+
+:::::{stepper}
+
+::::{step} Add the adapter to your project
+
+Add the Gradle plugin it to your project by including it in your app's `plugins` block. This is the same block where the [agent's plugin](getting-started.md#gradle-setup) should also be added.
+
+```kotlin
+plugins {
+    id("co.elastic.otel.android.instrumentation.oteladapter") version "[latest_version]" // <1>
+}
+```
+
+1. You can find the latest version [here](https://plugins.gradle.org/plugin/co.elastic.otel.android.instrumentation.oteladapter).
+
+```{important}
+This is an [experimental](component-stability.md#experimental) feature.
+```
+::::
+
+::::{step} Use an OTel Android instrumentation
+
+After including the adapter in your project, install the desired OTel Android instrumentation by following the installation instructions from its README file.
+
+::::
+:::::
+
+### Example use case
+
+For example, consider the [HttpURLConnection instrumentation](https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation/httpurlconnection), which automatically instruments HTTP requests made with HttpURLConnection.
+
+Your app's `build.gradle.kts` file should look like this:
+
+```kotlin
+plugins {
+    // ...
+    id("co.elastic.otel.android.instrumentation.oteladapter")
+}
+
+// ...
+
+dependencies {
+    // ...
+    implementation("io.opentelemetry.android.instrumentation:httpurlconnection-library:AUTO_HTTP_URL_INSTRUMENTATION_VERSION") // <1>
+    byteBuddy("io.opentelemetry.android.instrumentation:httpurlconnection-agent:AUTO_HTTP_URL_INSTRUMENTATION_VERSION")
+}
+```
+
+1. Some instrumentations require `byteBuddy` to perform byte code weaving, as mentioned earlier in [Compilation behavior](#compilation-behavior). EDOT Android automatically adds the `byteBuddy` dependency.
