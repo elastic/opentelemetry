@@ -1,5 +1,5 @@
 ---
-navigation_title: EDOT Collector is out of memory
+navigation_title: Collector out of memory
 description: Diagnose and resolve out-of-memory issues in the EDOT Collector using Go’s Performance Profiler.
 applies_to:
   stack:
@@ -11,7 +11,7 @@ products:
   - id: edot-collector
 ---
 
-# EDOT Collector is out of memory
+# Troubleshoot an out-of-memory EDOT Collector
 
 If your EDOT Collector pods terminate with an `OOMKilled` status, this usually indicates sustained memory pressure or potentially a memory leak due to an introduced regression or a bug. You can use the Performance Profiler (`pprof`) extension to collect and analyze memory profiles, helping you identify the root cause of the issue.
 
