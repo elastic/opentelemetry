@@ -89,7 +89,7 @@ plugins {
 product: preview
 ```
 
-You can use instrumentation from the OpenTelemetry Android [available instrumentations](https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation) through the OTel instrumentation adapter by following these steps.
+You can use instrumentation from the OpenTelemetry Android [available instrumentations](https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation) through the OTel instrumentation adapter by following these steps. The adapter is an [extended](../../compatibility/nomenclature.md#extended-components) component.
 
 :::::{stepper}
 
@@ -103,7 +103,7 @@ plugins {
 }
 ```
 
-1. You can find the latest version [here](https://plugins.gradle.org/plugin/co.elastic.otel.android.instrumentation.oteladapter).
+1. To find the latest version, refer to [Gradle plugins](https://plugins.gradle.org/plugin/co.elastic.otel.android.instrumentation.oteladapter).
 ::::
 
 ::::{step} Use an OTel Android instrumentation
