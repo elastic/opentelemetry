@@ -1,5 +1,5 @@
 ---
-navigation_title: Troubleshooting
+navigation_title: Troubleshoot the EDOT Collector
 description: Troubleshooting tips and resources for the EDOT Collector.
 applies_to:
   stack:
@@ -13,18 +13,7 @@ products:
 
 # Troubleshoot the EDOT Collector
 
-Perform these checks when troubleshooting Collector issues:
+This section provides guidance for solving common issues with the EDOT Collector:
 
-* Check Logs: Review the Collector’s logs for error messages.
-* Validate Configuration: Use the `--dry-run` option to test configurations.
-* Enable Debug Logging: Run the Collector with `--log-level=debug` for detailed logs.
-* Check Service Status: Ensure the Collector is running with `systemctl status <collector-service>` (Linux) or `tasklist` (Windows).
-* Test Connectivity: Use `telnet <endpoint> <port>` or `curl` to verify backend availability.
-* Check Open Ports: Run netstat `-tulnp or lsof -i` to confirm the Collector is listening.
-* Monitor Resource Usage: Use top/htop (Linux) or Task Manager (Windows) to check CPU & memory.
-* Validate Exporters: Ensure exporters are properly configured and reachable.
-* Verify Pipelines: Use `otelctl` diagnose (if available) to check pipeline health.
-* Check Permissions: Ensure the Collector has the right file and network permissions.
-* Review Recent Changes: Roll back recent config updates if the issue started after changes.
-
-For in-depth details on troubleshooting refer to the [OpenTelemetry Collector troubleshooting documentation](https://opentelemetry.io/docs/collector/troubleshooting/)
+- For general troubleshooting steps, refer to [Troubleshoot the EDOT Collector](troubleshooting/index.md).
+- If your EDOT Collector is running out of memory and pods are terminating with an `OOMKilled` status, refer to [EDOT Collector is out of memory](troubleshooting/collector-oomkilled.md).
