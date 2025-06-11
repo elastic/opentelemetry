@@ -1,0 +1,11 @@
+project: 'Elastic Distribution of OpenTelemetry SDKs - Node.js'
+toc:
+  - file: index.md
+  - file: setup/index.md
+    children:
+      - file: setup/k8s.md
+  - file: configuration.md
+  - file: supported-technologies.md
+  - file: metrics.md
+  - file: troubleshooting.md
+  - file: migration.md

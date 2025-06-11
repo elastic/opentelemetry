@@ -1,0 +1,5 @@
+project: 'Elastic Distribution of OpenTelemetry Architecture'
+toc:
+  - file: index.md
+  - file: k8s.md
+  - file: hosts_vms.md
