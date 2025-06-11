@@ -112,7 +112,7 @@ The Elastic [`trace_methods`] option can be replaced by the [`OTEL_INSTRUMENTATI
 
 ### `capture_jmx_metrics`
 
-The Elastic [`capture_jmx_metrics`](https://www.elastic.co/guide/en/apm/agent/java/current/config-jmx.html#config-capture-jmx-metrics) option can be replaced by 
+The Elastic [`capture_jmx_metrics`](apm-agent-java://reference/config-jmx.md#config-capture-jmx-metrics) option can be replaced by 
 [OpenTelemetry JMX Insight](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/javaagent/) feature which is included in EDOT Java.
 
 The JMX Insight feature provides the following benefits:

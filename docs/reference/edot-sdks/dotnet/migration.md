@@ -29,11 +29,11 @@ Follow these steps to migrate from the legacy Elastic APM .NET agent to the {{ed
 
 ### Manual instrumentation
 
-The Elastic APM Agent supports OTel-native trace instrumentation through its [OpenTelemetry Bridge](https://www.elastic.co/guide/en/apm/agent/dotnet/current/opentelemetry-bridge.html) feature, which is active by default.
+The Elastic APM Agent supports OTel-native trace instrumentation through its [OpenTelemetry Bridge](apm-agent-dotnet://reference/opentelemetry-bridge.md) feature, which is active by default.
 
 The bridge subscribes to instrumentation created using the [`Activity`](https://learn.microsoft.com/dotnet/api/system.diagnostics.activity) API in .NET. An `Activity` represents a unit of work and aligns with the OpenTelemetry "span" concept. The API name is used for historical backward compatibility. The `Activity` API is the recommended approach to introduce tracing when instrumenting applications.
 
-For applications which are instrumented using the [public API](https://www.elastic.co/guide/en/apm/agent/dotnet/current/public-api.html), a recommended first step of the existing APM Agent is to consider migrating instrumentation over to the `Activity` API. For example, in an ASP.NET Core Razor pages application, you might have manually created a child span after the parent transaction for the ASP.NET Core request:
+For applications which are instrumented using the [public API](apm-agent-dotnet://reference/public-api.md), a recommended first step of the existing APM Agent is to consider migrating instrumentation over to the `Activity` API. For example, in an ASP.NET Core Razor pages application, you might have manually created a child span after the parent transaction for the ASP.NET Core request:
 
 ```csharp
 using Elastic.Apm.Api;

@@ -53,7 +53,7 @@ The EDOT Gateway Collector does not send data through Elastic's Integration / AP
 :::
 
 :::{important}
-If self-managing an EDOT Gateway is not a valid option for you, refer to [Elastic's classic ingestion path for OTel data on ECH](https://www.elastic.co/guide/en/observability/current/apm-open-telemetry.html).
+If self-managing an EDOT Gateway is not a valid option for you, refer to [Elastic's classic ingestion path for OTel data on ECH](docs-content://solutions/observability/apm/use-opentelemetry-with-apm.md).
 :::
 
 ### Self-managed
@@ -63,5 +63,5 @@ In a self-managed deployment scenario, you need to host an EDOT Collector in Gat
 ![VM-self-managed](../images/arch-vm-self-managed.png)
 
 :::{note}
-Compared to [Elastic's classic ingestion paths](https://www.elastic.co/guide/en/observability/current/apm-open-telemetry.html) for OTel data, with the EDOT Gateway Collector there is no need for an APM Server anymore.
+Compared to [Elastic's classic ingestion paths](docs-content://solutions/observability/apm/use-opentelemetry-with-apm.md) for OTel data, with the EDOT Gateway Collector there is no need for an APM Server anymore.
 :::

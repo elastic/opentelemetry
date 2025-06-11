@@ -17,7 +17,7 @@ Learn how to set up and configure the {{edot}} .NET to instrument your applicati
 
 ## Quickstart guide
 
-EDOT .NET is designed to be straightforward to integrate into your applications. Integration includes applications that have previously used the [OpenTelemetry SDK](https://opentelemetry.io/docs/languages/net/), those that are transitioning from the [Elastic APM Agent](https://www.elastic.co/guide/en/apm/agent/dotnet/current/index.html) and those introducing observability instrumentation for the first time. When the OpenTelemetry SDK or Elastic APM Agent are already in use, minor code changes are required at the point of registration. Refer to [Migration](../migration.md) for more details.
+EDOT .NET is designed to be straightforward to integrate into your applications. Integration includes applications that have previously used the [OpenTelemetry SDK](https://opentelemetry.io/docs/languages/net/), those that are transitioning from the [Elastic APM Agent](apm-agent-dotnet://reference/index.md) and those introducing observability instrumentation for the first time. When the OpenTelemetry SDK or Elastic APM Agent are already in use, minor code changes are required at the point of registration. Refer to [Migration](../migration.md) for more details.
 
 This quickstart guide documents the introductory steps required to set up OpenTelemetry using EDOT .NET for an ASP.NET Core 
 [minimal API](https://learn.microsoft.com/aspnet/core/fundamentals/minimal-apis) application. For detailed, technology-specific steps, see:
