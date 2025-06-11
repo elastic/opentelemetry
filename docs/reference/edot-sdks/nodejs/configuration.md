@@ -143,7 +143,7 @@ export OTEL_NODE_RESOURCE_DETECTORS=env,host,os,process,serviceinstance,containe
 In addition, EDOT Node.js always includes the [`telemetry.distro.*` resource attributes](https://opentelemetry.io/docs/specs/semconv/attributes-registry/telemetry/).
 
 :::{note}
-{{kib}} relies on the `service.instance.id` resource attribute to query and break down data to be shown in [service metrics](https://www.elastic.co/guide/en/observability/current/apm-metrics.html). If you turn off the `serviceinstance` resource detector, the dashboard won't display any data.
+{{kib}} relies on the `service.instance.id` resource attribute to query and break down data to be shown in [service metrics](docs-content://solutions/observability/apm/metrics-ui.md). If you turn off the `serviceinstance` resource detector, the dashboard won't display any data.
 :::
 
 

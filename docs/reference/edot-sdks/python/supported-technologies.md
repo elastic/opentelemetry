@@ -105,7 +105,7 @@ The semantic conventions status tracks the stabilization of the semantic convent
 
 ### Native Elasticsearch instrumentation
 
-Some libraries like the [Python {{es}} Client](https://www.elastic.co/guide/en/elasticsearch/client/python-api/current/index.html) natively supports OpenTelemetry instrumentation.
+Some libraries like the Python {{es}} Client natively supports OpenTelemetry instrumentation.
 
 The [elasticsearch](https://elasticsearch-py.readthedocs.io/en/latest/) package has native OpenTelemetry support since version 8.13.
 
