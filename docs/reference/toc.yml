@@ -57,6 +57,9 @@ toc:
       - file: edot-collector/troubleshooting/index.md
         children:
         - file: edot-collector/troubleshooting/collector-oomkilled.md
+  - file: edot-cloud-forwarder/index.md
+    children:
+      - file: edot-cloud-forwarder/aws.md
   - file: edot-sdks/index.md
     children:
       - file: edot-sdks/dotnet/index.md

@@ -43,13 +43,8 @@ helm repo add open-telemetry 'https://open-telemetry.github.io/opentelemetry-hel
 
 ::::{step} Set up connection and credentials
 
-Follow these steps to retrieve the managed OTLP endpoint URL for your Serverless project:
-
-1. In Elastic Cloud, open your Observability project.
-2. Go to **Add data**, **Application**, **OpenTelemetry**.
-3. Select **Managed OTLP Endpoint** in the second step.
-4. Copy the OTLP endpoint configuration value.
-5. Select Create API Key to generate an API key.
+:::{include} ../../_snippets/serverless-endpoint-api.md
+:::
 
 Replace `<ELASTIC_OTLP_ENDPOINT>` and `<ELASTIC_API_KEY>` in the following command to create a namespace and a secret with your credentials.
 
