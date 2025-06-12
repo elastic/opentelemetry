@@ -28,7 +28,7 @@ Here are some key differences and considerations when using EDOT compared to ups
 | Updates | Future updates aligned with Elastic Stack releases. | Updates depend on upstream OpenTelemetry release cycle. |
 | Custom components | Includes custom components optimized for Elastic. | Uses standard OpenTelemetry components. |
 
-EDOT offers a streamlined experience with less configuration burden compared to upstream OpenTelemetry. While you can use upstream components with Elastic, these components aren't covered under official Elastic support SLAs.
+EDOT offers a streamlined experience with less configuration burden compared to upstream or "vanilla" OpenTelemetry. While you can use upstream components with Elastic, these components aren't covered under official Elastic support SLAs.
 
 ## EDOT Collector compared to upstream OTel Collector
 
