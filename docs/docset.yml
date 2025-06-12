@@ -43,6 +43,7 @@ subs:
 
   edot: Elastic Distribution of OpenTelemetry
   ecloud:   "Elastic Cloud"
+  edot-cf:   "EDOT Cloud Forwarder"
   ech:   "Elastic Cloud Hosted"
   ess:   "Elasticsearch Service"
   ece:   "Elastic Cloud Enterprise"
