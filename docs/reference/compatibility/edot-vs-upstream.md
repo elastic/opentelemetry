@@ -24,7 +24,7 @@ Here are some key differences and considerations when using EDOT compared to ups
 | Components | Curated list of components for Elastic Observability. | Generic components that may not support all Elastic features. |
 | Deployment | Easier to deploy with Elastic Stack. | Requires manual setup and configuration. |
 | Compatibility | Fully compatible with Elastic Stack components. | Compatible but may require additional configuration. |
-| Self-managed/ECH | Required for full functionality | Compatible but without guaranteed support |
+| Self-managed/ECH | Required for full functionality. | Compatible but without guaranteed support. |
 | Updates | Future updates aligned with Elastic Stack releases. | Updates depend on upstream OpenTelemetry release cycle. |
 | Custom components | Includes custom components optimized for Elastic. | Uses standard OpenTelemetry components. |
 
