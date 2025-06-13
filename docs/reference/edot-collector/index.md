@@ -21,7 +21,7 @@ To install the EDOT Collector with basic settings in your environment, follow th
 
 ## Deployment modes
  
-You can deploy EDOT Collector in different modes to meet your architectural needs. The two primary deployment modes are Agent and Gateway. Depending on whether you're using Elastic self-managed, {{ecloud}}, or {{serverless-full}}, various EDOT Collector instances, deployed in each mode may be required to support the target architecture. Refer to [Deployment modes](./modes.md) for more details.
+You can deploy the EDOT Collector in different modes to meet your architectural needs. The two primary deployment modes are Agent and Gateway. Depending on your deployment type — Elastic self-managed, {{ecloud}}, or {{serverless-full}} — various EDOT Collector instances may be required in each mode to support the target architecture. Refer to [Deployment modes](./modes.md) for more details.
 
 ## Configure the Collector
 
