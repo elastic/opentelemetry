@@ -13,7 +13,7 @@ products:
 
 # EDOT Collector deployment modes
 
-You can deploy the EDOT Collector in different modes to meet your architectural needs. The two primary deployment modes are Agent and Gateway. Depending on your deployment type — Elastic self-managed, {{ecloud}}, or {{serverless-full}} — various EDOT Collector instances may be required in each mode to support the target architecture.
+You can deploy the EDOT Collector in different modes to meet your architectural needs. The two primary Collector modes are Agent and Gateway. Depending on your Elastic deployment type — Elastic self-managed, {{ecloud}}, or {{serverless-full}} — various EDOT Collector instances may be required in each mode to support the target architecture.
 
 Use the information in the following sections to better understand deployment modes and patterns for your specific environment.
 
