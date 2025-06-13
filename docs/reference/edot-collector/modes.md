@@ -59,7 +59,7 @@ The following components are required for APM functionality in self-managed Elas
 - The `elastictrace` processor enriches trace data with additional attributes that improve the user experience in Elastic Observability UIs.
 - The `elasticapm` connector generates pre-aggregated APM metrics from tracing data.
 
-In this case EDOT Collector as a Gateway also handles the routing the different types of telemetry data to the relevant indices.
+In this case, EDOT Collector as a Gateway also handles routing of the different types of telemetry data to the relevant indices.
 
 ## Deployment in Kubernetes environments
 
