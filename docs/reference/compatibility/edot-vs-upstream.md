@@ -26,7 +26,7 @@ Here are some key differences and considerations when using EDOT compared to ups
 | Compatibility | Fully compatible with Elastic Stack components. | Compatible but may require additional configuration. |
 | Self-managed/ECH | Required for full functionality. | Compatible but without guaranteed support. |
 | Updates | Future updates aligned with Elastic Stack releases. | Updates depend on upstream OpenTelemetry release cycle. |
-| Custom components | Includes custom components optimized for Elastic. | Uses standard OpenTelemetry components. |
+| EDOT-specific components | Includes custom components optimized for Elastic. | Uses standard OpenTelemetry components. |
 
 EDOT offers a streamlined experience with less configuration burden compared to upstream OpenTelemetry. While you can use upstream components with Elastic, these components aren't covered under official Elastic support SLAs.
 
@@ -34,6 +34,6 @@ EDOT offers a streamlined experience with less configuration burden compared to 
 
 The OpenTelemetry project does not provide a single, recommended distribution of the OpenTelemetry Collector for production use. Instead, it offers a variety of components that can be assembled into a custom Collector. Using the upstream Collector requires careful selection and configuration of components, which can be complex and time-consuming.
 
-EDOT Collector is a customized version of the OpenTelemetry Collector that includes specific components and configurations optimized for Elastic Observability. It is designed to work seamlessly with Elastic Stack components, such as Elasticsearch and Kibana, and provides additional features that are not available in the upstream OpenTelemetry Collector.
+EDOT Collector is a curated version of the OpenTelemetry Collector that includes specific components and configurations optimized for Elastic Observability. It is designed to work seamlessly with Elastic Stack components, such as Elasticsearch and Kibana, and provides additional features that are not available in the upstream OpenTelemetry Collector.
 
 For a complete list of components included in the EDOT Collector, refer to [EDOT Collector components](../edot-collector/components.md).
