@@ -41,7 +41,7 @@ Use the EDOT Collector in Agent mode when:
 
 ## EDOT Collector as Gateway
 
-In Gateway mode, the EDOT Collector acts as a central aggregation point, receiving data from multiple Agent collectors or instrumented applications before forwarding it to Elastic. The flexibility of the Gateway mode allows it to perform different operations at different stages of the data pipeline.
+In Gateway mode, the EDOT Collector acts as a central aggregation point, receiving data from multiple EDOT Agent collectors or instrumented applications before forwarding it to Elastic. The flexibility of the Gateway mode allows it to centralize scaling needs and data transformation operations of the data pipeline.
 
 Use the EDOT Collector in Gateway mode when:
 
