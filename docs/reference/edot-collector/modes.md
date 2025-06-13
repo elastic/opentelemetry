@@ -19,7 +19,7 @@ Use the information in the following sections to better understand deployment mo
 
 ## Deployment patterns by Elastic deployment type
 
-The following table shows the recommended deployment patterns for different Elastic deployment types:
+The following table shows the recommended EDOT collector deployment patterns for each Elastic deployment type:
 
 | Deployment type | Recommended pattern | Gateway requirements | Notes |
 |----------------|---------------------|---------------------|-------|
