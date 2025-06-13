@@ -50,6 +50,7 @@ Use the EDOT Collector in Gateway mode when:
 - You want to reduce the number of connections to your Elastic backend.
 - You need advanced pre-processing before data reaches Elastic.
 - You're using a self-managed Elasticsearch deployment (required for APM functionality).
+- You want to filter telemetry before it is shipped over the network to Elastic
 
 ### Gateway requirements for self-managed environments
 
