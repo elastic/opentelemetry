@@ -17,16 +17,6 @@ You can deploy EDOT Collector in different modes to meet your architectural requ
 
 Use the information in the following sections to better understand deployment modes and patterns for your specific environment.
 
-## Deployment patterns by Elastic deployment type
-
-The following table shows the recommended EDOT collector deployment patterns for each Elastic deployment type:
-
-| Deployment type | Recommended pattern | Gateway requirements | Notes |
-|----------------|---------------------|---------------------|-------|
-| Serverless | Agent mode with direct export to Managed OTLP Endpoint. | None. The Managed OTLP Endpoint handles all necessary enrichment. You can use Gateway mode when you need to add custom processing or filtering, or to load balance data from multiple Collectors. | Simplest deployment model with minimal configuration. |
-| Elastic Cloud Hosted (ECH) | Both Agent and Gateway mode. | Required for APM functionality until Managed OTLP Endpoint is available. | Future option: Agent mode with direct export to Managed OTLP Endpoint (when available). |
-| Self-Managed Elasticsearch | Both Agent and Gateway mode. | Required for APM functionality and proper data formatting. | The Gateway must include the `elastictrace` processor, `elasticapm` connector, and Elasticsearch exporter. |
-
 ## EDOT Collector as Agent
 
 In Agent mode, the EDOT Collector runs close to the data source, collecting telemetry data directly from the local environment. A Collector in Agent mode usually runs on the same host or virtual machine as the application or infrastructure component it is monitoring, or as a sidecar container or daemonset in Kubernetes.
@@ -49,6 +39,13 @@ Use the EDOT Collector in Gateway mode when:
 - You're using a self-managed Elasticsearch deployment (required for APM functionality).
 - You want to filter telemetry before it is shipped over the network to Elastic
 
+The Gateway pattern isn't exclusive to self-managed Elastic deployments. It's a general OpenTelemetry pattern that provides benefits in various scenarios:
+
+- Kubernetes deployments: A Gateway collector centralizes cluster-level telemetry from multiple node-level Agent collectors.
+- Multi-Region deployments: Regional Gateway collectors aggregate data from multiple Agents before sending to a central destination.
+- High-Volume Environments: Gateway collectors provide buffering and batching to handle high volumes of telemetry data.
+- Complex Processing: When advanced data transformation or filtering is needed before data reaches its destination.
+
 ### Gateway requirements for self-managed environments
 
 For self-managed Elastic environments, you need a Gateway Collector deployed alongside your Elastic Stack. The EDOT Collector in Gateway mode exposes a scalable OTLP endpoint and performs data processing required for APM functionality.
@@ -63,15 +60,6 @@ The following components are required for APM functionality in self-managed Elas
 - The `elasticapm` connector generates pre-aggregated APM metrics from tracing data.
 
 In this case EDOT Collector as a Gateway also handles the routing the different types of telemetry data to the relevant indices.
-
-### Gateway pattern beyond self-managed deployments
-
-The Gateway pattern isn't exclusive to self-managed Elastic deployments. It's a general OpenTelemetry pattern that provides benefits in various scenarios:
-
-- Kubernetes deployments: A Gateway collector centralizes cluster-level telemetry from multiple node-level Agent collectors.
-- Multi-Region deployments: Regional Gateway collectors aggregate data from multiple Agents before sending to a central destination.
-- High-Volume Environments: Gateway collectors provide buffering and batching to handle high volumes of telemetry data.
-- Complex Processing: When advanced data transformation or filtering is needed before data reaches its destination.
 
 ## Deployment in Kubernetes environments
 
