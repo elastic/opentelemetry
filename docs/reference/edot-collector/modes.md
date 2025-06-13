@@ -31,12 +31,9 @@ The following table shows the recommended EDOT collector deployment patterns for
 
 In Agent mode, the EDOT Collector runs close to the data source, collecting telemetry data directly from the local environment. A Collector in Agent mode usually runs on the same host or virtual machine as the application or infrastructure component it is monitoring, or as a sidecar container or daemonset in Kubernetes.
 
-The Collector in Agent mode can also perform initial processing, filtering, and batching of data before sending the data to a Collector running in Gateway mode or directly to a Managed OTLP Endpoint.
-
 Use the EDOT Collector in Agent mode when:
 
 - You need to collect data directly from hosts or applications.
-- You want to minimize network traffic by performing initial filtering at the source.
 - You have a simple deployment with a small number of hosts.
 
 ## EDOT Collector as Gateway
@@ -57,6 +54,10 @@ Use the EDOT Collector in Gateway mode when:
 For self-managed Elastic environments, you need a Gateway Collector deployed alongside your Elastic Stack. The EDOT Collector in Gateway mode exposes a scalable OTLP endpoint and performs data processing required for APM functionality.
 
 This is the only case where using the Elasticsearch exporter is recommended. In all other EDOT Collector deployments described in this guide, use the OTLP exporter.
+
+#### Required components for APM functionality in self-managed Elastic
+
+The following components are required for APM functionality in self-managed Elastic:
 
 - The `elastictrace` processor enriches trace data with additional attributes that improve the user experience in Elastic Observability UIs.
 - The `elasticapm` connector generates pre-aggregated APM metrics from tracing data.
