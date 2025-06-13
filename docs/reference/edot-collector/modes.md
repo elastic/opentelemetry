@@ -76,7 +76,7 @@ In Kubernetes, the Agent mode is implemented in two forms:
 
 ### Gateway mode in Kubernetes
 
-The Gateway Collector in Kubernetes receives data from all Daemon and Cluster collectors. The Gateway performs additional pre-processing and aggregation for self-managed and Elastic Cloud Hosted deployments, and handles the final export to the appropriate Elastic backend.
+The Gateway Collector in Kubernetes receives data from all Daemon and Cluster collectors. The Gateway performs additional pre-processing and aggregation for self-managed and {{ech}} deployments, and handles the final export to the appropriate Elastic backend.
 
 This multi-tier architecture in Kubernetes provides an efficient way to collect and process telemetry data at different levels of the infrastructure while minimizing resource usage and network traffic.
 
