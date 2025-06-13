@@ -53,7 +53,9 @@ Use the EDOT Collector in Gateway mode when:
 
 ### Gateway requirements for self-managed environments
 
-For self-managed Elastic environments, you need a Gateway Collector configured with the Elasticsearch exporter. This is because the Gateway includes essential components for APM functionality:
+For self-managed Elastic environments, you need a Gateway Collector deployed alongside your Elastic Stack. The EDOT Collector in Gateway mode exposes a scalable OTLP endpoint and performs data processing required for APM functionality.
+
+This is the only case where using the Elasticsearch exporter is recommended. In all other EDOT Collector deployments described in this guide, use the OTLP exporter.
 
 - The `elastictrace` processor enriches trace data with additional attributes that improve the user experience in Elastic Observability UIs.
 - The `elasticapm` connector generates pre-aggregated APM metrics from tracing data.
