@@ -42,7 +42,7 @@ Use the EDOT Collector in Gateway mode when:
 The Gateway pattern isn't exclusive to self-managed Elastic deployments. It's a general OpenTelemetry pattern that provides benefits in various scenarios:
 
 - Kubernetes deployments: A Gateway collector centralizes cluster-level telemetry from multiple node-level Agent collectors.
-- Multi-Region deployments: Regional Gateway collectors aggregate data from multiple Agents before sending to a central destination.
+- Multi-region deployments: Regional Gateway collectors aggregate data from multiple Agents before sending to a central destination.
 - High-Volume Environments: Gateway collectors provide buffering and batching to handle high volumes of telemetry data.
 - Complex Processing: When advanced data transformation or filtering is needed before data reaches its destination.
 
