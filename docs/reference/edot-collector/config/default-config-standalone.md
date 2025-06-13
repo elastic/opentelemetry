@@ -91,6 +91,10 @@ With the managed OTLP Endpoint there is no need for configuring any Elastic-spec
 
 ## Gateway mode
 
+In Gateway mode, the Collector ingests data from other Collectors running in Agent mode and forwards it to Elastic.
+
+## Sample configuration
+
 The following sample configuration file is available for the Gateway mode:
 
 - [Gateway mode]

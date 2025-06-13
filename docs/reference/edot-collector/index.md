@@ -19,6 +19,10 @@ The {{edot}} (EDOT) Collector is an open-source distribution of the OpenTelemetr
 
 To install the EDOT Collector with basic settings in your environment, follow the [quickstart guides](../quickstart/index.md).
 
+## Deployment modes
+ 
+You can deploy the EDOT Collector in different modes to meet your architectural needs. The two primary Collector modes are Agent and Gateway. Depending on your Elastic deployment type, various EDOT Collector instances might be required in each mode to support the target architecture. Refer to [Deployment modes](./modes.md) for more details.
+
 ## Configure the Collector
 
 You can configure the EDOT Collector to use the standard OTel Collector configuration file or `values.yml` file if you have deployed it using Helm.
