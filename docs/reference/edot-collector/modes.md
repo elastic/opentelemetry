@@ -89,6 +89,6 @@ In some scenarios, you don't need a Collector at all. EDOT SDKs can send telemet
 Use direct SDK export to Managed OTLP when:
 
 - You're sending data to the Managed OTLP Endpoint.
-- You only need to collect application telemetry.
+- You only need to collect application telemetry data.
 - You want the simplest possible deployment.
 - You don't need local data processing or filtering.
