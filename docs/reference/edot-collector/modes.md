@@ -72,7 +72,7 @@ In Kubernetes, the Agent mode is implemented in two forms:
 | Mode | Deployment | Functions |
 |------|------------|-----------|
 | Daemon mode | DaemonSet on every node. | - Collects node-local logs and host metrics.<br>- Receives telemetry from applications instrumented with OpenTelemetry SDKs running on the node.<br>- Enriches application telemetry with resource information such as host and Kubernetes metadata.<br>- Forwards all data to the Gateway Collector using the OTLP protocol. |
-| Cluster mode | Centralized service. | - Collects Kubernetes cluster-level metrics from the Kubernetes API.<br>- Monitors cluster-wide resources that aren't specific to individual nodes.<br>- Forwards collected data to the Gateway Collector using the OTLP protocol. |
+| Cluster mode | Centralized service | - Collects Kubernetes cluster-level metrics from the Kubernetes API.<br>- Monitors cluster-wide resources that aren't specific to individual nodes.<br>- Forwards collected data to the Gateway Collector using the OTLP protocol. |
 
 ### Gateway mode in Kubernetes
 
