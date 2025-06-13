@@ -60,7 +60,7 @@ This is the only case where using the Elasticsearch exporter is recommended. In 
 - The `elastictrace` processor enriches trace data with additional attributes that improve the user experience in Elastic Observability UIs.
 - The `elasticapm` connector generates pre-aggregated APM metrics from tracing data.
 
-The Gateway also handles the translation between OpenTelemetry data formats and Elastics-compatible formats when needed, and uses the routing connector to direct different types of telemetry data to the appropriate pipelines.
+In this case EDOT Collector as a Gateway also handles the routing the different types of telemetry data to the relevant indices.
 
 ### Gateway pattern beyond self-managed deployments
 
