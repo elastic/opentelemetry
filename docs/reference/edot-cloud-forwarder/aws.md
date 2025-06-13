@@ -121,7 +121,7 @@ These are optional parameters you can set in the CloudFormation template:
 
 | Parameter | Description |
 | --- | --- |
-| `EdotCloudForwarderLambdaName` | Set a custom name for the Lambda function. Default value is `edot-cloud-forwarder`. |
+| `EdotCloudForwarderLambdaName` | Set a custom name for the Lambda function. Default value is `edot-cloud-forwarder`. Do not use the same name for different sources. |
 | `EdotCloudForwarderTimeout` | Maximum execution time for the Lambda function, measured in seconds. Default value is `300` seconds. Maximum value is `900` seconds. Minimum value is `1` second. |
 | `EdotCloudForwarderMemorySize` | Set the allocated memory for the Lambda function, measured in megabytes. Default value is `1024` MB. Maximum value is `10240` MB. Minimum value is `128` MB. | 
 
