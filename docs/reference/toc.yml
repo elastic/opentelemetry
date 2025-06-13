@@ -44,6 +44,7 @@ toc:
   - file: edot-collector/index.md
     children:
       - file: edot-collector/download.md
+      - file: edot-collector/modes.md
       - file: edot-collector/config/index.md
         children:
           - file: edot-collector/config/default-config-standalone.md
