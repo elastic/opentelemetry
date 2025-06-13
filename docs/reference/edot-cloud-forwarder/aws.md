@@ -54,6 +54,13 @@ In addition, you need to know the URL of the managed OTLP endpoint and the API k
 :::{include} ../_snippets/serverless-endpoint-api.md
 :::
 
+## Deployment considerations
+
+Before deploying {{edot-cf}} for AWS, keep these points in mind:
+
+- Deploy a separate stack for each log type, for example VPC Flow Logs, ELB Logs, or CloudWatch Logs. Each CloudFormation stack can only process one log source and format at a time.
+- Logs stored in S3 must be placed in separate buckets. Each log type should reside in its own dedicated bucket. 
+
 ## Configure the CloudFormation template
 
 {{edot-cf}} for AWS uses a CloudFormation template to deploy the EDOT Collector as a Lambda function.
@@ -116,7 +123,7 @@ These are optional parameters you can set in the CloudFormation template:
 | --- | --- |
 | `EdotCloudForwarderLambdaName` | Set a custom name for the Lambda function. Default value is `edot-cloud-forwarder`. |
 | `EdotCloudForwarderTimeout` | Maximum execution time for the Lambda function, measured in seconds. Default value is `300` seconds. Maximum value is `900` seconds. Minimum value is `1` second. |
-| `EdotCloudForwarderMemorySize` | Set the allocated memory for the Lambda function, measured in megabytes. Default value is `1024` MB. Maximum value is `10240` MB. Minimum value is `128` MB. |
+| `EdotCloudForwarderMemorySize` | Set the allocated memory for the Lambda function, measured in megabytes. Default value is `1024` MB. Maximum value is `10240` MB. Minimum value is `128` MB. | 
 
 ## Deployment examples
 
