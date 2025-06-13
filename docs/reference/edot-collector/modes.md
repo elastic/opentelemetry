@@ -24,7 +24,7 @@ In Agent mode, the EDOT Collector runs close to the data source, collecting tele
 Use the EDOT Collector in Agent mode when:
 
 - You need to collect data directly from hosts or applications.
-- You have a simple deployment with a small number of hosts.
+- You have a deployment with a small number of hosts.
 
 ## EDOT Collector as Gateway
 
