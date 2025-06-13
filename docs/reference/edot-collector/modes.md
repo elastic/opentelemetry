@@ -48,7 +48,7 @@ The Gateway pattern isn't exclusive to self-managed Elastic deployments. It's a 
 
 ### Gateway requirements for self-managed environments
 
-For self-managed Elastic environments, you need a Gateway Collector deployed alongside your {{sack}}. The EDOT Collector in Gateway mode exposes a scalable OTLP endpoint, and performs data processing required for APM functionality.
+For self-managed Elastic environments, you need a Gateway Collector deployed alongside your {{stack}}. The EDOT Collector in Gateway mode exposes a scalable OTLP endpoint, and performs data processing required for APM functionality.
 
 This is the only case where using the {{es}} exporter is recommended. In all other EDOT Collector deployments described in this guide, use the OTLP exporter.
 
