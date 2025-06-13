@@ -45,7 +45,7 @@ In Gateway mode, the EDOT Collector acts as a central aggregation point, receivi
 
 Use the EDOT Collector in Gateway mode when:
 
-- You have multiple data sources or agents that need centralized processing.
+- You have multiple data sources or agents that need centralized processing or enrichment.
 - You need to implement organization-wide processing rules.
 - You want to reduce the number of connections to your Elastic backend.
 - You need advanced pre-processing before data reaches Elastic.
