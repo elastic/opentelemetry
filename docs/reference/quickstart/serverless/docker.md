@@ -40,7 +40,7 @@ Create a `otel-collector-config.yml` file with your EDOT collector configuration
 
 ::::{step}  Retrieve your settings
 
-Follow these steps to retrieve the [Elastic Cloud Managed OTLP endpoint](../../motlp.md) URL for your Serverless project:
+Follow these steps to retrieve the [{{motlp}}](../../motlp.md) URL for your Serverless project:
 
 1. In Elastic Cloud, open your Observability project.
 2. Go to **Add data**, **Application**, **OpenTelemetry**.

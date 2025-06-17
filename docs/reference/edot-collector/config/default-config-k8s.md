@@ -50,7 +50,7 @@ The Daemonset collectors receive that data through [`OTLP`], batch the data ([`b
 
 ## Gateway collectors pipeline
 
-The Gateway collectors pipelines differ between the two different deployment use cases, direct ingestion into {{es}} and using the [Elastic Cloud Managed OTLP Endpoint](../../motlp.md).
+The Gateway collectors pipelines differ between the two different deployment use cases, direct ingestion into {{es}} and using the [{{motlp}}](../../motlp.md).
 
 ### Direct ingestion into Elasticsearch
 

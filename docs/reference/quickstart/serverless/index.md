@@ -12,7 +12,7 @@ products:
 
 # Quickstart on Elastic Cloud Serverless
 
-The [Elastic Cloud Managed OTLP endpoint](../../motlp.md) simplifies OpenTelemetry data ingestion. It provides an endpoint for OpenTelemetry SDKs and Collectors to send telemetry data, with Elastic handling scaling, data processing, and storage. The endpoint is exclusively for Elastic Cloud users, initially available in {{serverless-full}} only.
+The [{{motlp}}](../../motlp.md) simplifies OpenTelemetry data ingestion. It provides an endpoint for OpenTelemetry SDKs and Collectors to send telemetry data, with Elastic handling scaling, data processing, and storage. The endpoint is exclusively for Elastic Cloud users, initially available in {{serverless-full}} only.
 
 The {{motlp}} is designed for the following use cases:
 
