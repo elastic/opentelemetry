@@ -154,7 +154,7 @@ In this example, the application you're instrumenting is a deployment named `jav
 
 5. Confirm data is flowing to {{kib}}:
 
-    - Open **Observability**, **Applications**, **Service inventory**, and determine if:
+    - Open **Observability** → **Applications** → **Service inventory**, and determine if:
         - The application appears in the list of services.
         - The application shows transactions and metrics.
 

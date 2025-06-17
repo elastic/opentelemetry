@@ -154,7 +154,7 @@ For this example, we assume the application you're instrumenting is a deployment
 
 5. Confirm data is flowing to **{{kib}}**:
 
-    - Open **Observability**, **Applications**, **Service inventory**, and determine if:
+    - Open **Observability** → **Applications** → **Service inventory**, and determine if:
         - The application appears in the list of services.
         - The application shows transactions and metrics.
         - If [python logs instrumentation](https://opentelemetry.io/docs/kubernetes/operator/automatic/#auto-instrumenting-python-logs) is enabled, the application logs should  appear in the Logs tab.

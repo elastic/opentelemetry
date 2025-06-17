@@ -147,7 +147,7 @@ Run a `kubectl describe` of one of your application Pods and check:
 ::::{step} Confirm data is flowing to {{kib}}
 Confirm data is flowing to **{{kib}}**:
 
-- Open **Observability**, **Applications**, **Service inventory**, and determine if:
+- Open **Observability** → **Applications** → **Service inventory**, and determine if:
     - The application appears in the list of services (`nodejs-app` in the example).
     - The application shows transactions and metrics.
 
