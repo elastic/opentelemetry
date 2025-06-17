@@ -1,6 +1,6 @@
 ---
 navigation_title: Managed OTLP Endpoint
-description: Reference documentation for the Elastic Managed OTLP Endpoint.
+description: Reference documentation for the Elastic Cloud Managed OTLP Endpoint.
 applies_to:
   deployment:
     ess: development
@@ -17,8 +17,8 @@ The {{motlp}} is a managed endpoint for sending OpenTelemetry signals to Elastic
 
 This endpoint is designed for the following use cases:
 
-* Logs and Infrastructure Monitoring: Logs forwarded in OTLP format and host and Kubernetes metrics in OTLP format.
-* APM: Application telemetry in OTLP format.
+* Logs and infrastructure monitoring: Logs forwarded in OTLP format and host and Kubernetes metrics in OTLP format
+* APM: Application telemetry in OTLP format
 
 ## Differences from the Elastic APM Endpoint
 
@@ -39,8 +39,8 @@ To send data to the {{motlp}}, you need:
 
 To retrieve your {{motlp}} endpoint address and an API key, follow these steps:
 
-   1. In Elastic Cloud, open your Observability project.
-   2. Go to **Add data**, **Application**, **OpenTelemetry**.
+   1. In {{ecloud}}, open your Observability project.
+   2. Go to **Add data** → **Application** → **OpenTelemetry**.
    3. Select **Managed OTLP Endpoint** in the second step.
    4. Copy the OTLP endpoint configuration value.
    5. Select **Create API Key** to generate an API key.
@@ -50,3 +50,10 @@ To retrieve your {{motlp}} endpoint address and an API key, follow these steps:
 To send data in OTLP format to the {{motlp}}, you need to configure your {{edot}} or any system that can forward logs, metrics, or traces in OTLP format. 
 
 Refer to the [Quickstart guides](./quickstart/index.md) for more information.
+
+## Compatibility
+
+The {{motlp}} does not yet support these features:
+
+* Tail-based sampling (TBS)
+* Universal Profiling
