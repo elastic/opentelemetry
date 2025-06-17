@@ -32,10 +32,6 @@ You also need to retrieve your OTLP endpoint address and an API key. Follow thes
    4. Copy the OTLP endpoint configuration value.
    5. Select **Create API Key** to generate an API key.
 
-::::{warning}
-> The previous instructions use a managed OTLP endpoint on {{serverless-full}}. This feature is in **Technical Preview** and shouldn't be used in production.
-::::
-
 ## Quickstart guides
 
 Select the quickstart guide for your environment from the following list:
