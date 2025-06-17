@@ -81,7 +81,7 @@ The [`resourcedetection`] processor enriches the metrics with meta information a
 
 When ingesting OTel data through the [Elastic Cloud Managed OTLP Endpoint](../../motlp.md), all the enrichment that is required for an optimal experience in the Elastic solutions happens at the endpoint level and is transparent to users. 
 
-The Collector configuration for all the use cases involving the {{motlp}} is only concerned with local data collection and context enrichment.
+The Collector configuration for all use cases that involve the {{motlp}} is only concerned with local data collection and context enrichment.
 
 Platform logs are scraped with the [`filelog`] receiver, host metrics are collected through the [`hostmetrics`] receiver and both signals are enriched with meta information through the [`resourcedetection`] processor.
 
