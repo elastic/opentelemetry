@@ -79,15 +79,15 @@ The [`resourcedetection`] processor enriches the metrics with meta information a
 
 ### Using the Managed OTLP Endpoint
 
-When ingesting OTel data through Elastics Managed OTLP endpoint, all the enrichment that is required for an optimal experience in the Elastic solutions happens at the managed OTLP endpoint level and is transparent to users. 
+When ingesting OTel data through the [Elastic Cloud Managed OTLP Endpoint](../../motlp.md), all the enrichment that is required for an optimal experience in the Elastic solutions happens at the endpoint level and is transparent to users. 
 
-The Collector configuration for all the use cases involving the Managed OTLP endpoint is only concerned with local data collection and context enrichment.
+The Collector configuration for all the use cases involving the {{motlp}} is only concerned with local data collection and context enrichment.
 
 Platform logs are scraped with the [`filelog`] receiver, host metrics are collected through the [`hostmetrics`] receiver and both signals are enriched with meta information through the [`resourcedetection`] processor.
 
-Data from OTel SDKs is piped through the [`OTLP`] receiver directly to the OTLP exporter that sends data for all the signals to the managed OTLP endpoint.
+Data from OTel SDKs is piped through the [`OTLP`] receiver directly to the OTLP exporter that sends data for all the signals to the {{motlp}}.
 
-With the managed OTLP Endpoint there is no need for configuring any Elastic-specific components, such as [`elasticinframetrics`], [`elastictrace`] processors, [`elasticapm`] connector or the [`elasticsearch`] exporter. Edge setup and configuration can be 100% vendor agnostic.
+With the {{motlp}} there is no need for configuring any Elastic-specific components, such as [`elasticinframetrics`], [`elastictrace`] processors, [`elasticapm`] connector or the [`elasticsearch`] exporter. Edge setup and configuration can be 100% vendor agnostic.
 
 ## Gateway mode
 

@@ -72,7 +72,7 @@ This list contains Elastic APM Node.js agent configuration options that can be m
 
 The Elastic APM Node.js agent [`serverUrl`](apm-agent-nodejs://reference/configuration.md#server-url) option corresponds to the OpenTelemetry [`OTEL_EXPORTER_OTLP_ENDPOINT`](https://opentelemetry.io/docs/concepts/sdk-configuration/otlp-exporter-configuration/#otel_exporter_otlp_endpoint) option.
 
-- If using {{serverless-full}}, set `OTEL_EXPORTER_OTLP_ENDPOINT` to the managed OTLP endpoint URL for your Serverless project. For example, `OTEL_EXPORTER_OTLP_ENDPOINT=https://my-prj-a1b2c3.ingest.eu-west-1.aws.elastic.cloud`. Refer to the [Quickstart for {{serverless-full}}](../../quickstart/serverless/index.md).
+- If using {{serverless-full}}, set `OTEL_EXPORTER_OTLP_ENDPOINT` to the [Elastic Cloud Managed OTLP endpoint](../../motlp.md) URL for your Serverless project. For example, `OTEL_EXPORTER_OTLP_ENDPOINT=https://my-prj-a1b2c3.ingest.eu-west-1.aws.elastic.cloud`. Refer to the [Quickstart for {{serverless-full}}](../../quickstart/serverless/index.md).
 
 - If using {{ech}} or Self-managed, set `OTEL_EXPORTER_OTLP_ENDPOINT` to the endpoint URL of your EDOT Collector. Refer to the [Quickstart for {{ech}}](../../quickstart/ech/hosts_vms.md) or the [Quickstart for Self-managed](../../quickstart/self-managed/hosts_vms.md).
 
