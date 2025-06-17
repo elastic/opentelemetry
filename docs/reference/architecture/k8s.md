@@ -12,13 +12,13 @@ products:
 
 # Kubernetes Environments
 
-The recommended OTel architecture for Kubernetes clusters includes a set of OpenTelemetry collectors in different modes. The following diagram shows the different modes:
+The recommended OTel architecture for Kubernetes clusters includes a set of OpenTelemetry collectors in different forms. The following diagram shows the different forms:
 
 ![K8s-Cluster](../images/arch-k8s-cluster.png)
 
-## Daemon mode
+## Daemon form
 
-The Collector in Daemon mode is deployed on each Kubernetes node to collect nodes-local logs and host metrics.
+The Collector in Daemon form is deployed on each Kubernetes node to collect nodes-local logs and host metrics.
 
 The daemon collector also receives telemetry from applications instrumented with OTel SDKs and running on corresponding nodes.
 
@@ -26,13 +26,13 @@ That Collector enriches the application telemetry with resource information such
 
 All data is then being sent through OTLP to the OTel or EDOT Gateway Collector.
 
-## Cluster mode
+## Cluster form
 
-The Collector in Cluster mode collects Kubernetes cluster-level metrics and sends them to the OTel or EDOT Gateway Collector using OTLP.
+The Collector in Cluster form collects Kubernetes cluster-level metrics and sends them to the OTel or EDOT Gateway Collector using OTLP.
 
-## Gateway mode
+## Gateway form
 
-The OTel or EDOT Collector in Gateway mode gathers the OTel data from all other collectors and ingests it into the Elastic backend.
+The OTel or EDOT Collector in Gateway form gathers the OTel data from all other collectors and ingests it into the Elastic backend.
 
 For self-managed and {{ech}} deployment models the Gateway Collector does some additional pre-processing of data.
 
