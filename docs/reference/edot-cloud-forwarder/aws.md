@@ -61,43 +61,42 @@ Before deploying {{edot-cf}} for AWS, keep these points in mind:
 - Deploy a separate stack for each log type, for example VPC Flow Logs, ELB Logs, or CloudWatch Logs. Each CloudFormation stack can only process one log source and format at a time.
 - Logs stored in S3 must be placed in separate buckets. Each log type should reside in its own dedicated bucket.
 
-## Download the CloudFormation template
+## Download the template
 
-To deploy the appropriate stack based on your log source:
+Download the CloudFormation template to deploy the appropriate stack based on your log source:
 
-| Log Source | CloudFormation Template |
+| Log Source | CloudFormation template |
 | --- | --- |
 | S3 logs | `s3_logs-cloudformation.yaml` |
 | CloudWatch logs | `cloudwatch_logs-cloudformation.yaml` |
-
 
 ## Configure the template
 
 {{edot-cf}} for AWS uses a CloudFormation template to deploy the EDOT Collector as a Lambda function.
 
-::::::{stepper}
+### Required settings
 
-:::::{step} Edit the common settings in the template
+These are the required settings you need to set in the CloudFormation templates:
 
-These are the required parameters you need to set in the CloudFormation templates:
+| Setting            | Description |
+| ------------------------- | --- |
+| `region`            | AWS region where the CloudFormation stack is to be deployed. |
+| `stack-name`        | Name of the CloudFormation stack. For example, `vpc-edot-cf`. Do not use the same name for different sources. |
+| `OTLPEndpoint`      | The OTLP endpoint URL used for data ingestion. |
+| `ElasticApiKey`     | API key for authentication with Elastic. |
 
-| Parameter | Description |
-| --- | --- |
-| `region` | AWS region where the CloudFormation stack is to be deployed. |
-| `stack-name` | Name of the CloudFormation stack. For example, `vpc-edot-cf`. Do not use the same name for different sources. |
-| `OTLPEndpoint` | The OTLP endpoint URL used for data ingestion. |
-| `ElasticApiKey` | API key for authentication with Elastic. |
+### Log source settings
 
-Additionally, you need to set the following parameters based on the log source:
+Set the following settings based on the log source:
 
 ::::{tab-set}
 
 :::{tab-item} S3
 
-In the `s3_logs-cloudformation.yaml` template, set the following parameters:
+In the `s3_logs-cloudformation.yaml` template, set the following settings:
 
-| Parameter | Description |
-| --- | --- |
+| Setting            | Description |
+| ------------------- | --- |
 | `SourceS3BucketARN` | Amazon Resource Name (ARN) of the S3 bucket where logs are stored. This bucket will trigger the `edot-cloud-forwarder` Lambda function automatically. |
 | `EdotCloudForwarderS3LogsEncoding` | The encoding format for logs in the S3 bucket. Supported options:<br>• `vpc_flow_log` – VPC Flow Logs<br>• `elb_access_log` – Elastic Load Balancer (ELB) Access Logs<br>• `s3_access_log` – S3 Access Logs<br>• `json` – JSON-formatted logs |
 | `S3LogsJsonEncodingMode` | *(Required if `EdotCloudForwarderS3LogsEncoding` is `json`)*<br>Defines how JSON logs are structured:<br>• `body` *(default)* – Stores logs in the request body<br>• `body_with_inline_attributes` – Logs include inline attributes |
@@ -106,23 +105,21 @@ In the `s3_logs-cloudformation.yaml` template, set the following parameters:
 
 :::{tab-item} CloudWatch
 
-In the `cloudwatch_logs-cloudformation.yaml` template, set the following parameters:
+In the `cloudwatch_logs-cloudformation.yaml` template, set the following settings:
 
-| Parameter | Description |
-| --- | --- |
+| Setting            | Description |
+| ------------------- | --- |
 | `SourceCloudWatchLogGroup` | Name of the CloudWatch Log Group where the subscription filter will be created. This Log Group serves as the primary storage location for logs. |
 
 :::
 ::::
-:::::
-::::::
 
 ### Optional settings
 
-These are optional parameters you can set in the CloudFormation template:
+These are optional settings you can set in the CloudFormation template:
 
-| Parameter | Description |
-| --- | --- |
+| Setting            | Description |
+| ------------------- | --- |
 | `EdotCloudForwarderVersion` | Version of the EDOT Cloud Forwarder. Expected format is is `0-1-2`, with hyphens replacing periods. |
 | `EdotCloudForwarderTimeout` | Maximum execution time for the Lambda function, measured in seconds. Default value is `300` seconds. Maximum value is `900` seconds. Minimum value is `1` second. |
 | `EdotCloudForwarderMemorySize` | Set the allocated memory for the Lambda function, measured in megabytes. Default value is `1024` MB. Maximum value is `10240` MB. Minimum value is `128` MB. | 
@@ -132,7 +129,9 @@ These are optional parameters you can set in the CloudFormation template:
 
 The following examples use the default CloudFormation templates.
 
-### VPC Flow logs collection
+::::{tab-set}
+
+:::{tab-item} VPC Flow logs
 
 This example deploys a CloudFormation stack to collect VPC Flow Logs stored in an S3 bucket.
 
@@ -146,10 +145,11 @@ aws cloudformation deploy \
     SourceS3BucketARN=your-s3-vpc-bucket-arn \
     OTLPEndpoint="<placeholder>" \
     ElasticAPIKey="<placeholder>" \
-    EdotCloudForwardeS3LogsEncoding="vpc_flow_log"
+    EdotCloudForwarderS3LogsEncoding="vpc_flow_log"
 ```
+:::
 
-### ALB Access logs collection
+:::{tab-item} ELB Access logs
 
 This example deploys a CloudFormation stack to collect ALB Access Logs stored in an S3 bucket.
 
@@ -163,10 +163,11 @@ aws cloudformation deploy \
     SourceS3BucketARN=your-s3-alb-bucket-arn \
     OTLPEndpoint="<placeholder>" \
     ElasticAPIKey="<placeholder>" \
-    EdotCloudForwardeS3LogsEncoding="elb_access_log"
+    EdotCloudForwarderS3LogsEncoding="elb_access_log"
 ```
+:::
 
-### CloudWatch logs collection
+:::{tab-item} CloudWatch logs
 
 This example deploys a CloudFormation stack to collect CloudWatch logs sent to a Log Group.
 
@@ -181,6 +182,8 @@ aws cloudformation deploy \
     ElasticAPIKey="<placeholder>" \
     SourceCloudWatchLogGroup="your-log-group"
 ```
+:::
+::::
 
 ## Update a CloudFormation stack
 
@@ -247,11 +250,11 @@ aws cloudformation describe-stacks --stack-name <stack-name>
 :::::
 ::::::
 
-## Deploy manually using the CloudFormation Console
+## Manual deployment using the CloudFormation Console
 
 You can deploy the stack manually using the AWS Management Console by following these steps:
 
-1. Navigate to CloudFormation** in the AWS Console.  
+1. Navigate to CloudFormation in the AWS Console.  
 2. Select **Create Stack** and choose one of the following options:  
    - **Amazon S3 URL** to use a pre-hosted CloudFormation template.  
    - **Upload a template file** to select the appropriate CloudFormation template based on your log source.  
