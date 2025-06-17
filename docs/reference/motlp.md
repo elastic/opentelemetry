@@ -53,7 +53,7 @@ Refer to the [Quickstart guides](./quickstart/index.md) for more information.
 
 ## Compatibility
 
-The {{motlp}} does not yet support these features:
+The {{motlp}} does not currently support these features:
 
 * Tail-based sampling (TBS)
 * Universal Profiling
