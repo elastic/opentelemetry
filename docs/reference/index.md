@@ -35,7 +35,7 @@ The following Elastic OpenTelemetry distributions are available:
 | [EDOT Python](./edot-sdks/python/index.md) | {{edot-python-version}} | GA |
 | [EDOT Android](apm-agent-android://reference/index.md) | {{edot-android-version}} | GA |
 | [EDOT iOS](apm-agent-ios://reference/index.md) | {{edot-ios-version}} | GA |
-| [EDOT Cloud Forwarder for AWS](./edot-cloud-forwarder/aws.md) | {{edot-cf-version}} | Technical Preview |
+| [EDOT Cloud Forwarder for AWS](./edot-cloud-forwarder/aws.md) | 0.1.3 | Technical Preview |
 
 Each EDOT distribution undergoes production-grade testing before being declared Generally Available (GA). Elastic provides full support for GA releases in accordance with our [support matrix](https://www.elastic.co/support/matrix) and SLAs.
 

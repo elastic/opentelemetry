@@ -59,31 +59,33 @@ In addition, you need to know the URL of the managed OTLP endpoint and the API k
 Before deploying {{edot-cf}} for AWS, keep these points in mind:
 
 - Deploy a separate stack for each log type, for example VPC Flow Logs, ELB Logs, or CloudWatch Logs. Each CloudFormation stack can only process one log source and format at a time.
-- Logs stored in S3 must be placed in separate buckets. Each log type should reside in its own dedicated bucket. 
+- Logs stored in S3 must be placed in separate buckets. Each log type should reside in its own dedicated bucket.
 
-## Configure the CloudFormation template
+## Download the CloudFormation template
+
+To deploy the appropriate stack based on your log source:
+
+| Log Source | CloudFormation Template |
+| --- | --- |
+| S3 logs | `s3_logs-cloudformation.yaml` |
+| CloudWatch logs | `cloudwatch_logs-cloudformation.yaml` |
+
+
+## Configure the template
 
 {{edot-cf}} for AWS uses a CloudFormation template to deploy the EDOT Collector as a Lambda function.
 
 ::::::{stepper}
 
-:::::{step} Download the CloudFormation template
+:::::{step} Edit the common settings in the template
 
-Download the `cloudformation.yaml` file from the [{{edot-cf}} for AWS GitHub repository](https://github.com/elastic/edot-cloud-forwarder-aws/blob/main/cloudformation.yaml).
-
-:::::
-
-:::::{step} Edit the settings in the template
-
-These are the required parameters you need to set in the CloudFormation template:
+These are the required parameters you need to set in the CloudFormation templates:
 
 | Parameter | Description |
 | --- | --- |
 | `region` | AWS region where the CloudFormation stack is to be deployed. |
 | `stack-name` | Name of the CloudFormation stack. For example, `vpc-edot-cf`. Do not use the same name for different sources. |
-| `EdotCloudForwarderSource` | Source of logs to be processed. Available options are `s3_logs` and `cloudwatch_logs`. |
-| `EdotCloudForwarderVersion` | Version of the EDOT Cloud Forwarder. Expected format is `0-1-2`, with hyphens replacing dots. Check available versions in the [GitHub repository](https://github.com/elastic/edot-cloud-forwarder-aws/releases). |
-| `ElasticOtlpEndpoint` | The Elastic OTLP endpoint URL used for data ingestion. |
+| `OTLPEndpoint` | The OTLP endpoint URL used for data ingestion. |
 | `ElasticApiKey` | API key for authentication with Elastic. |
 
 Additionally, you need to set the following parameters based on the log source:
@@ -92,23 +94,23 @@ Additionally, you need to set the following parameters based on the log source:
 
 :::{tab-item} S3
 
-If `EdotCloudForwarderSource` is `s3_logs`, set these options:
+In the `s3_logs-cloudformation.yaml` template, set the following parameters:
 
 | Parameter | Description |
 | --- | --- |
-| `EdotCloudForwarderS3Bucket` | The S3 bucket where logs are stored. This bucket will trigger the `edot-cloud-forwarder` Lambda function automatically. |
-| `EdotCloudForwardeS3LogsEncoding` | The encoding format for logs in the S3 bucket. Supported options:<br>• `vpc_flow_log` – VPC Flow Logs<br>• `elb_access_log` – Elastic Load Balancer (ELB) Access Logs<br>• `s3_access_log` – S3 Access Logs<br>• `json` – JSON-formatted logs |
-| `EdotCloudForwardeS3LogsJsonMode` | *(Required if `EdotCloudForwardeS3LogsEncoding` is `json`)*<br>Defines how JSON logs are structured:<br>• `body` *(default)* – Stores logs in the request body<br>• `body_with_inline_attributes` – Logs include inline attributes |
+| `SourceS3BucketARN` | Amazon Resource Name (ARN) of the S3 bucket where logs are stored. This bucket will trigger the `edot-cloud-forwarder` Lambda function automatically. |
+| `EdotCloudForwarderS3LogsEncoding` | The encoding format for logs in the S3 bucket. Supported options:<br>• `vpc_flow_log` – VPC Flow Logs<br>• `elb_access_log` – Elastic Load Balancer (ELB) Access Logs<br>• `s3_access_log` – S3 Access Logs<br>• `json` – JSON-formatted logs |
+| `S3LogsJsonEncodingMode` | *(Required if `EdotCloudForwarderS3LogsEncoding` is `json`)*<br>Defines how JSON logs are structured:<br>• `body` *(default)* – Stores logs in the request body<br>• `body_with_inline_attributes` – Logs include inline attributes |
 
 :::
 
 :::{tab-item} CloudWatch
 
-If `EdotCloudForwarderSource` is `cloudwatch_logs`, set the following options:
+In the `cloudwatch_logs-cloudformation.yaml` template, set the following parameters:
 
 | Parameter | Description |
 | --- | --- |
-| `EdotCloudForwarderCloudWatchLogGroup` | Name of the CloudWatch Log Group where the subscription filter will be created. |
+| `SourceCloudWatchLogGroup` | Name of the CloudWatch Log Group where the subscription filter will be created. This Log Group serves as the primary storage location for logs. |
 
 :::
 ::::
@@ -121,13 +123,14 @@ These are optional parameters you can set in the CloudFormation template:
 
 | Parameter | Description |
 | --- | --- |
-| `EdotCloudForwarderLambdaName` | Set a custom name for the Lambda function. Default value is `edot-cloud-forwarder`. Do not use the same name for different sources. |
+| `EdotCloudForwarderVersion` | Version of the EDOT Cloud Forwarder. Expected format is is `0-1-2`, with hyphens replacing periods. |
 | `EdotCloudForwarderTimeout` | Maximum execution time for the Lambda function, measured in seconds. Default value is `300` seconds. Maximum value is `900` seconds. Minimum value is `1` second. |
 | `EdotCloudForwarderMemorySize` | Set the allocated memory for the Lambda function, measured in megabytes. Default value is `1024` MB. Maximum value is `10240` MB. Minimum value is `128` MB. | 
+| `EdotCloudForwarderConcurrentExecutions` | Set the maximum number of reserved concurrent executions for the Lambda function. Default value is `50`. Make sure this value doesn't exceed your AWS account's concurrency limit. |
 
 ## Deployment examples
 
-The following examples use the `cloudformation.yaml` file included in the {{edot-cf}} for AWS repository.
+The following examples use the default CloudFormation templates.
 
 ### VPC Flow logs collection
 
@@ -135,17 +138,14 @@ This example deploys a CloudFormation stack to collect VPC Flow Logs stored in a
 
 ```sh
 aws cloudformation deploy \
-  --template-file cloudformation.yaml \
+  --template-file templates/s3_logs-cloudformation.yaml \
   --stack-name edot-cloud-forwarder-vpc \
   --capabilities CAPABILITY_NAMED_IAM \
   --region eu-central-1 \
   --parameter-overrides \
-    EdotCloudForwarderLambdaName=your-ecf-vpc \
-    EdotCloudForwarderS3Bucket=your-s3-vpc-bucket \
-    ElasticOtlpEndpoint="<placeholder>" \
-    ElasticApiKey="<placeholder>" \
-    EdotCloudForwarderVersion=0-1-2 \
-    EdotCloudForwarderSource=s3_logs \
+    SourceS3BucketARN=your-s3-vpc-bucket-arn \
+    OTLPEndpoint="<placeholder>" \
+    ElasticAPIKey="<placeholder>" \
     EdotCloudForwardeS3LogsEncoding="vpc_flow_log"
 ```
 
@@ -155,17 +155,14 @@ This example deploys a CloudFormation stack to collect ALB Access Logs stored in
 
 ```sh
 aws cloudformation deploy \
-  --template-file cloudformation.yaml \
+  --template-file templates/s3_logs-cloudformation.yaml \
   --stack-name edot-cloud-forwarder-alb \
   --capabilities CAPABILITY_NAMED_IAM \
   --region eu-central-1 \
   --parameter-overrides \
-    EdotCloudForwarderLambdaName=your-ecf-alb \
-    EdotCloudForwarderS3Bucket=your-s3-alb-bucket \
-    ElasticOtlpEndpoint="<placeholder>" \
-    ElasticApiKey="<placeholder>" \
-    EdotCloudForwarderVersion=0-1-2 \
-    EdotCloudForwarderSource=s3_logs \
+    SourceS3BucketARN=your-s3-alb-bucket-arn \
+    OTLPEndpoint="<placeholder>" \
+    ElasticAPIKey="<placeholder>" \
     EdotCloudForwardeS3LogsEncoding="elb_access_log"
 ```
 
@@ -175,15 +172,90 @@ This example deploys a CloudFormation stack to collect CloudWatch logs sent to a
 
 ```sh
 aws cloudformation deploy \
-  --template-file cloudformation.yaml \
+  --template-file templates/cloudwatch_logs-cloudformation.yaml \
   --stack-name edot-cloud-forwarder-cw \
   --capabilities CAPABILITY_NAMED_IAM \
   --region eu-central-1 \
   --parameter-overrides \
-    EdotCloudForwarderLambdaName=your-ecf-cw \
-    ElasticOtlpEndpoint="<placeholder>" \
-    ElasticApiKey="<placeholder>" \
-    EdotCloudForwarderVersion=0-1-2 \
-    EdotCloudForwarderSource=cloudwatch_logs \
-    EdotCloudForwarderCloudWatchLogGroup="your-log-group"
+    OTLPEndpoint="<placeholder>" \
+    ElasticAPIKey="<placeholder>" \
+    SourceCloudWatchLogGroup="your-log-group"
 ```
+
+## Update a CloudFormation stack
+
+To update an existing CloudFormation stack while preserving unchanged parameters, follow these steps:
+
+::::::{stepper}
+
+:::::{step} Identify the stack to update
+
+Determine the name of the CloudFormation stack you want to modify.
+
+:::::
+
+:::::{step} Prepare the update command
+
+Use the following structure for your update command:
+
+- Include all required parameters.
+- Use `UsePreviousValue=true` for parameters that should remain unchanged.
+- Specify `ParameterValue=<new-value>` for parameters that need to be updated.
+
+:::::
+
+:::::{step} Run the update-stack command
+
+Run the command with the following parameters:
+
+```sh
+aws cloudformation update-stack \
+  --template-body file://<path-to-cloudformation-template-file> \
+  --stack-name <stack-name> \
+  --capabilities CAPABILITY_NAMED_IAM \
+  --region eu-central-1 \
+  --parameters \
+      ParameterKey=Param1,UsePreviousValue=true \
+      ParameterKey=Param2,UsePreviousValue=true \
+      ParameterKey=Param3,UsePreviousValue=true \
+      ParameterKey=Param4,ParameterValue=<new-value>
+```
+
+For example, to modify the S3 bucket ARN for the `edot-cloud-forwarder-vpc` stack while keeping other parameters unchanged:
+
+```sh
+aws cloudformation update-stack \
+  --template-body file://templates/s3_logs-cloudformation.yaml \
+  --stack-name edot-cloud-forwarder-vpc \
+  --capabilities CAPABILITY_NAMED_IAM \
+  --region eu-central-1 \
+  --parameters \
+      ParameterKey=OTLPEndpoint,UsePreviousValue=true \
+      ParameterKey=ElasticAPIKey,UsePreviousValue=true \
+      ParameterKey=EdotCloudForwarderS3LogsEncoding,UsePreviousValue=true \
+      ParameterKey=SourceS3BucketARN,ParameterValue=your-new-s3-vpc-bucket-arn
+```
+:::::
+
+:::::{step} Verify the update
+
+After running the command, check the stack status in the AWS Management Console under **CloudFormation** → **Stacks**. Then, run this command to confirm the updated parameter values:
+
+```sh
+aws cloudformation describe-stacks --stack-name <stack-name>
+```
+:::::
+::::::
+
+## Deploy manually using the CloudFormation Console
+
+You can deploy the stack manually using the AWS Management Console by following these steps:
+
+1. Navigate to CloudFormation** in the AWS Console.  
+2. Select **Create Stack** and choose one of the following options:  
+   - **Amazon S3 URL** to use a pre-hosted CloudFormation template.  
+   - **Upload a template file** to select the appropriate CloudFormation template based on your log source.  
+3. Select **Next** and configure all required parameters.  
+4. Select **Next** again and check the **"Acknowledge IAM capabilities"** box.  
+5. Review your settings and select **Submit** to deploy the stack.  
+6. Monitor the stack creation process until it reaches the `CREATE_COMPLETE` state.  
