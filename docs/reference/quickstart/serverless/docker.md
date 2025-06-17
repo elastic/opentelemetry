@@ -34,7 +34,7 @@ Follow these steps to deploy the EDOT Collector and EDOT OTel SDKs in Docker wit
 
 ::::{step} Create the config file
 
-Create a `otel-collector-config.yml` file with your EDOT collector configuration. Refer to the [configuration reference](../../edot-collector/config/default-config-standalone.md) for {{motlp}} for more details.
+Create a `otel-collector-config.yml` file with your EDOT collector configuration. For more details, refer to the [configuration reference](../../edot-collector/config/default-config-standalone.md) for {{motlp}}.
 
 ::::
 
