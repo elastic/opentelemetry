@@ -36,7 +36,7 @@ Before getting started:
 * Set up Elastic Observability. You need somewhere to send the gathered OpenTelemetry data so that it can be viewed and analyzed. This documentation assumes you're using [Elastic Cloud](https://www.elastic.co/cloud) with an [Elastic Observability](https://www.elastic.co/observability) hosted deployment or serverless project. You can use an existing one or set up a new one.
 
 :::{tip}
-When using Serverless, use the Managed OTLP Endpoint UR for the best experience when using EDOT .NET.
+When using Serverless, use the [{{motlp}}](../../../motlp.md) for the best experience when using EDOT .NET.
 :::
 
 ### Installing the NuGet packages

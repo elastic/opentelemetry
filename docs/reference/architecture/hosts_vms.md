@@ -31,7 +31,7 @@ Elastic's Observability solution is technically compatible with edge setups that
 
 ### Elastic Cloud Serverless
 
-{{serverless-full}} provides a managed OTLP endpoint for ingestion of OpenTelemetry data.
+{{serverless-full}} provides a [Managed OTLP Endpoint](../motlp.md) for ingestion of OpenTelemetry data.
 
 ![VM-Serverless](../images/arch-vm-serverless.png)
 
