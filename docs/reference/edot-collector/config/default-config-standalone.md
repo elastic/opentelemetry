@@ -87,7 +87,7 @@ Platform logs are scraped with the [`filelog`] receiver, host metrics are collec
 
 Data from OTel SDKs is piped through the [`OTLP`] receiver directly to the OTLP exporter that sends data for all the signals to the {{motlp}}.
 
-With the {{motlp}} there is no need for configuring any Elastic-specific components, such as [`elasticinframetrics`], [`elastictrace`] processors, [`elasticapm`] connector or the [`elasticsearch`] exporter. Edge setup and configuration can be 100% vendor agnostic.
+With the {{motlp}}, there is no need to configure any Elastic-specific components, such as [`elasticinframetrics`], [`elastictrace`] processors, the [`elasticapm`] connector, or the [`elasticsearch`] exporter. Edge setup and configuration can be 100% vendor agnostic.
 
 ## Gateway mode
 
