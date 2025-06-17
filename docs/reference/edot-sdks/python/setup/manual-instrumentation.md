@@ -93,7 +93,7 @@ def hello():
 
 To confirm that EDOT Python has successfully connected to Elastic:
 
-1. Go to **Observability**, **Applications**, **Service Inventory**
+1. Go to **Observability** → **Applications** → **Service Inventory**
 1. Find the name of the service to which you just added EDOT Python. It can take several minutes after initializing EDOT Python for the service to show up in this list.
 1. Select the name in the list to see trace data.
 

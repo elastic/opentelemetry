@@ -121,3 +121,4 @@ toc:
           - file: edot-sdks/python/troubleshooting.md
           - file: edot-sdks/python/migration.md
           - file: edot-sdks/python/overhead.md
+  - file: motlp.md
