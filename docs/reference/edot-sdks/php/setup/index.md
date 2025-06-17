@@ -85,7 +85,7 @@ After completing the configuration, you should restart the PHP process. If you a
 
 To confirm that EDOT PHP has successfully connected to Elastic:
 
-1. Go to **APM**, **Traces** in Elastic Observability.
+1. Go to **APM** → **Traces** in Elastic Observability.
 2. Find the name of the service to which you just added EDOT PHP. It can take several minutes after initializing EDOT PHP for the service to show up in this list.
 3. Select the name in the list to see trace data.
 
