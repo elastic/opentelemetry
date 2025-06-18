@@ -47,6 +47,14 @@ To collect ELB (Elastic Load Balancer) Access logs, you need:
 - Access logging enabled, with the bucket as the destination.
 
 :::
+
+:::{tab-item} CloudWatch
+
+To collect CloudWatch logs, you need:
+
+- A CloudWatch Log Group where logs are stored.
+
+:::
 ::::
 
 In addition, you need to know the URL of the managed OTLP endpoint and the API key for authentication.
@@ -98,8 +106,8 @@ In the `s3_logs-cloudformation.yaml` template, set the following settings:
 | Setting            | Description |
 | ------------------- | --- |
 | `SourceS3BucketARN` | Amazon Resource Name (ARN) of the S3 bucket where logs are stored. This bucket will trigger the `edot-cloud-forwarder` Lambda function automatically. |
-| `EdotCloudForwarderS3LogsEncoding` | The encoding format for logs in the S3 bucket. Supported options:<br>• `vpc_flow_log` – VPC Flow Logs<br>• `elb_access_log` – Elastic Load Balancer (ELB) Access Logs<br>• `s3_access_log` – S3 Access Logs<br>• `json` – JSON-formatted logs |
-| `S3LogsJsonEncodingMode` | *(Required if `EdotCloudForwarderS3LogsEncoding` is `json`)*<br>Defines how JSON logs are structured:<br>• `body` *(default)* – Stores logs in the request body<br>• `body_with_inline_attributes` – Logs include inline attributes |
+| `EdotCloudForwarderS3LogsType` | The encoding format for logs in the S3 bucket. Supported options:<br>• `vpc_flow_log` – VPC Flow Logs<br>• `elb_access_log` – Elastic Load Balancer (ELB) Access Logs<br>• `s3_access_log` – S3 Access Logs<br>• `json` – JSON-formatted logs |
+| `S3LogsJsonEncodingMode` | *(Required if `EdotCloudForwarderS3LogsType` is `json`)*<br>Defines how JSON logs are structured:<br>• `body` *(default)* – Stores logs in the request body<br>• `body_with_inline_attributes` – Logs include inline attributes |
 
 :::
 
@@ -120,7 +128,7 @@ These are optional settings you can set in the CloudFormation template:
 
 | Setting            | Description |
 | ------------------- | --- |
-| `EdotCloudForwarderVersion` | Version of the EDOT Cloud Forwarder. Expected format is is `0-1-2`, with hyphens replacing periods. |
+| `EdotCloudForwarderVersion` | Version of the EDOT Cloud Forwarder. Expected format is is `0-1-2`, with hyphens replacing periods. Defaults to the latest available patch version. Don't change this value unless advised by Elastic Support. |
 | `EdotCloudForwarderTimeout` | Maximum execution time for the Lambda function, measured in seconds. Default value is `300` seconds. Maximum value is `900` seconds. Minimum value is `1` second. |
 | `EdotCloudForwarderMemorySize` | Set the allocated memory for the Lambda function, measured in megabytes. Default value is `1024` MB. Maximum value is `10240` MB. Minimum value is `128` MB. | 
 | `EdotCloudForwarderConcurrentExecutions` | Set the maximum number of reserved concurrent executions for the Lambda function. Default value is `50`. Make sure this value doesn't exceed your AWS account's concurrency limit. |
@@ -145,7 +153,7 @@ aws cloudformation deploy \
     SourceS3BucketARN=your-s3-vpc-bucket-arn \
     OTLPEndpoint="<placeholder>" \
     ElasticAPIKey="<placeholder>" \
-    EdotCloudForwarderS3LogsEncoding="vpc_flow_log"
+    EdotCloudForwarderS3LogsType="vpc_flow_log"
 ```
 :::
 
@@ -163,7 +171,7 @@ aws cloudformation deploy \
     SourceS3BucketARN=your-s3-alb-bucket-arn \
     OTLPEndpoint="<placeholder>" \
     ElasticAPIKey="<placeholder>" \
-    EdotCloudForwarderS3LogsEncoding="elb_access_log"
+    EdotCloudForwarderS3LogsType="elb_access_log"
 ```
 :::
 
@@ -235,7 +243,7 @@ aws cloudformation update-stack \
   --parameters \
       ParameterKey=OTLPEndpoint,UsePreviousValue=true \
       ParameterKey=ElasticAPIKey,UsePreviousValue=true \
-      ParameterKey=EdotCloudForwarderS3LogsEncoding,UsePreviousValue=true \
+      ParameterKey=EdotCloudForwarderS3LogsType,UsePreviousValue=true \
       ParameterKey=SourceS3BucketARN,ParameterValue=your-new-s3-vpc-bucket-arn
 ```
 :::::
@@ -262,3 +270,46 @@ You can deploy the stack manually using the AWS Management Console by following 
 4. Select **Next** again and check the **"Acknowledge IAM capabilities"** box.  
 5. Review your settings and select **Submit** to deploy the stack.  
 6. Monitor the stack creation process until it reaches the `CREATE_COMPLETE` state.  
+
+## CloudFormation stack resources
+
+The CloudFormation templates create a number of resources to process logs from a specific log source.
+
+### Resources for S3 logs
+
+This is a list of resources created by the stack when processing S3 logs.
+
+| Resource name               | Type                             | Description |
+|---------------------------|--------------------------------------|----------------|
+| `CustomNotificationUpdater` | `AWS::CloudFormation::CustomResource` | Custom resource used to manage S3 event notifications dynamically. |
+| `LambdaExecutionRole`       | `AWS::IAM::Role`                   | IAM role granting permissions needed for the Lambda function to interact with S3 and other AWS services. |
+| `LambdaFunction`            | `AWS::Lambda::Function`            | Core Lambda function responsible for processing incoming logs from S3. This is a key resource in the stack. |
+| `LambdaInvokeConfig`        | `AWS::Lambda::EventInvokeConfig`   | Configures error handling and invocation settings for the Lambda function. |
+| `LambdaLogGroup`            | `AWS::Logs::LogGroup`               | CloudWatch log group storing logs for the main Lambda function. Useful for debugging and monitoring. |
+| `LambdaPermissionS3Bucket`  | `AWS::Lambda::Permission`          | Grants permission for S3 to invoke the Lambda function when new logs arrive. |
+| `LambdaS3TriggerPolicy`     | `AWS::IAM::Policy`                 | IAM policy allowing the Lambda function to process events triggered by S3. |
+| `NotificationUpdaterLambda` | `AWS::Lambda::Function`            | Utility Lambda function handling S3 event notification updates dynamically. |
+| `NotificationUpdaterLambdaLogGroup` | `AWS::Logs::LogGroup`         | CloudWatch log group storing logs for the `NotificationUpdaterLambda` function. |
+| `S3FailureBucket`               | `AWS::S3::Bucket`                   | Dedicated bucket for storing failed log processing events, preventing data loss. This is an important safeguard resource. |
+
+The main Lambda function, `LambdaFunction`, is the core component for processing S3 logs. S3 event notifications are handled dynamically using `CustomNotificationUpdater` and `NotificationUpdaterLambda`. 
+
+CloudWatch logs ensure detailed monitoring of Lambda executions. IAM roles and permissions control access between S3 and Lambda functions, while `S3FailureBucket` prevents data loss by capturing unprocessed logs.
+
+### Resources for CloudWatch Logs
+
+This is a list of resources created by the stack when CloudWatch logs are the source.
+
+| Resource name                  | Type                             | Description |
+|------------------------------------|--------------------------------------|----------------|
+| `CloudWatchLogSubscriptionFilter` | `AWS::Logs::SubscriptionFilter` | Defines a filter that forwards logs from a CloudWatch Log Group to the Lambda function. Critical for log processing. |
+| `LambdaExecutionRole`              | `AWS::IAM::Role`                   | IAM role granting necessary permissions for the Lambda function to interact with CloudWatch Logs and other AWS services. |
+| `LambdaFunction`                   | `AWS::Lambda::Function`            | Core Lambda function responsible for processing incoming logs from CloudWatch. This is a key resource in the stack. |
+| `LambdaInvokeConfig`               | `AWS::Lambda::EventInvokeConfig`   | Configures event invocation settings, including error handling and retry behavior. |
+| `LambdaLogGroup`                   | `AWS::Logs::LogGroup`               | CloudWatch log group that stores execution logs for the main Lambda function, aiding monitoring and debugging. |
+| `LambdaPermissionCloudWatch`       | `AWS::Lambda::Permission`          | Grants permission for CloudWatch Logs to invoke the Lambda function, enabling real-time log streaming. |
+| `S3FailureBucket`                  | `AWS::S3::Bucket`                   | Dedicated S3 bucket for storing failed log events to prevent data loss. An important safeguard resource. |
+
+The CloudWatch Log Subscription Filter, `CloudWatchLogSubscriptionFilter`, ensures logs are correctly forwarded to the Lambda function. The Lambda function, `LambdaFunction`, serves as the core processing unit for CloudWatch logs. 
+
+CloudWatch Log Groups help monitor execution performance and debug issues. IAM permissions (`LambdaExecutionRole`, `LambdaPermissionCloudWatch`) control interactions between CloudWatch and Lambda, while the failure bucket, `S3FailureBucket`, helps prevent data loss in case of processing errors.
