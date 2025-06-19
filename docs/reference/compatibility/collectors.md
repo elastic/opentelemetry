@@ -33,7 +33,7 @@ The following table provides an overview of compatibility and support of EDOT Co
 
 These operating systems and distributions are [compatible] with EDOT Collector 9.x:
 
-| OS Type | Architecture | Distribution or version                                  | **Level of support** |
+| OS Type | Architecture | Distribution or version                                  | Level of support     |
 | :------ | :----------- | :------------------------------------------------------- | :------------------- |
 | Linux   | amd64        | Ubuntu 24.04, 22.04, 20.04                               | [Supported]          |
 | Linux   | arm64        | Ubuntu 24.04, 22.04, 20.04                               | [Supported]          |
