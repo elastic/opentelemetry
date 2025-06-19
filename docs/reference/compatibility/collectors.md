@@ -31,10 +31,26 @@ The following table provides an overview of compatibility and support of EDOT Co
 
 #### EDOT Collector 9.x
 
-| Operating system           | **Linux/arm64** | **Linux/amd64** | **Windows**   | **macOS**     |
-| :------------------------- | :-------------- | :-------------- | :----------   | :--------     |
-| **Compatibility**          | [Compatible]    | [Compatible]    | [Compatible]  | [Compatible]  |
-| **Level of support**       | [Supported]     | [Supported]     | [Not supported] | [Not supported] |
+These operating systems and distributions are [compatible] with EDOT Collector 9.x:
+
+| OS Type | Architecture | Distribution or version                                  | **Level of support** |
+| :------ | :----------- | :------------------------------------------------------- | :------------------- |
+| Linux   | amd64        | Ubuntu 24.04, 22.04, 20.04                               | [Supported]          |
+| Linux   | arm64        | Ubuntu 24.04, 22.04, 20.04                               | [Supported]          |
+| Linux   | amd64        | RHEL 8                                                   | [Supported]          |
+| macOS   | amd64        | macOS 10.x and higher                                    | [Not supported]      |
+| macOS   | arm64        | macOS 10.x and higher                                    | [Not supported]      |
+| Windows | amd64        | Server 2022, 2022 Core, 2019, 2019 Core, 2016, 2016 Core | [Not supported]      |
+
+The following Kubernetes distributions are [compatible] with EDOT Collector 9.x:
+
+| Kubernetes  | Architecture     | Version                                                  |
+| :---------- | :--------------- | :------------------------------------------------------- |
+| Kubernetes  | amd64, arm64     | 1.33.0, 1.32.0, 1.31.0, 1.30.2, 1.29.4, 1.28.9, 1.27.16  |
+
+::::{note}
+The EDOT Collector is compatible with GKE, EKS and AKS. Refer to [Limitations on managed Kubernetes environments](./limitations,md#limitations-on-managed-kubernetes-environments) for more information.
+::::
 
 ## EDOT Collector components
 
