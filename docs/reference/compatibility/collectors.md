@@ -49,7 +49,7 @@ The following Kubernetes distributions are [compatible] with EDOT Collector 9.x:
 | Kubernetes  | amd64, arm64     | 1.33.0, 1.32.0, 1.31.0, 1.30.2, 1.29.4, 1.28.9, 1.27.16  |
 
 ::::{note}
-The EDOT Collector is compatible with GKE, EKS and AKS. Refer to [Limitations on managed Kubernetes environments](./limitations,md#limitations-on-managed-kubernetes-environments) for more information.
+The EDOT Collector is compatible with GKE, EKS and AKS. Refer to [Limitations on managed Kubernetes environments](./limitations.md#limitations-on-managed-kubernetes-environments) for more information.
 ::::
 
 ## EDOT Collector components
