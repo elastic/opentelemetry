@@ -119,3 +119,4 @@ toc:
           - file: edot-sdks/python/migration.md
           - file: edot-sdks/python/overhead.md
   - file: motlp.md
+  - file: central-configuration.md

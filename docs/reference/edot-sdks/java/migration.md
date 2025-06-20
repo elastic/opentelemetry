@@ -185,7 +185,7 @@ Support for LDAP client instrumentation is not currently available in EDOT Java.
 
 You can manage EDOT Java configurations through the [central configuration feature](docs-content://solutions/observability/apm/apm-agent-central-configuration.md) in the Applications UI.
 
-Refer to [Central configuration](../central-configuration.md) for more information.
+Refer to [Central configuration](../../central-configuration.md) for more information.
 
 ### Span compression
 
