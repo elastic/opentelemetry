@@ -54,6 +54,12 @@ Set `OTEL_INSTRUMENTATION_RUNTIME_TELEMETRY_EMIT_EXPERIMENTAL_TELEMETRY` to `fal
 
 {{es}} and {{kib}} work best with metrics provided in delta-temporality. Therefore, the EDOT Java changes the default value of `OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE` to `DELTA`. You can override this default if needed, though some provided {{kib}} dashboards will not work correctly if you do it.
 
+## Central configuration management
+
+You can manage EDOT Java configurations through the [central configuration feature](docs-content://solutions/observability/apm/apm-agent-central-configuration.md) in the Applications UI.
+
+Refer to [Central configuration](../central-configuration.md) for more information.
+
 ## Elastic Universal Profiling integration
 
 [Universal Profiling](https://www.elastic.co/observability/universal-profiling) integration provides the ability to correlate traces with profiling data from the Elastic universal profiler. This feature is turned on by default on supported systems, and turned off otherwise.

@@ -160,6 +160,12 @@ The following are Elastic APM PHP agent settings that you can migrate to EDOT PH
 | `inferred_spans_sampling_interval` | [`ELASTIC_OTEL_INFERRED_SPANS_SAMPLING_INTERVAL`](./configuration.md#inferred-spans-configuration)                                                                               | Sampling frequency for stack traces during inferred spans.                                                                   |
 | `inferred_spans_min_duration`      | [`ELASTIC_OTEL_INFERRED_SPANS_MIN_DURATION`](./configuration.md#inferred-spans-configuration)                                                                                    | Minimum duration of inferred span (used to limit noise). 
 
+## Central configuration
+
+You can manage EDOT PHP configurations through the [central configuration feature](docs-content://solutions/observability/apm/apm-agent-central-configuration.md) in the Applications UI.
+
+Refer to [Central configuration](../central-configuration.md) for more information.
+
 ## Limitations
 
 The following limitations apply to EDOT PHP:

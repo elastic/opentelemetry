@@ -30,6 +30,7 @@ In addition to all the features of OpenTelemetry Node.js, with EDOT Node.js you 
 * Optional features that can enhance OpenTelemetry data that is being sent to Elastic.
 * Elastic-specific processors that ensure optimal compatibility when exporting OpenTelemetry signal data to an Elastic backend like an Elastic Observability deployment.
 * Pre-configured collection of tracing and metrics signals, applying some opinionated defaults, such as which sources are collected by default. Additional metrics are collected by default: `process.cpu.*` and `process.memory.*` metrics from the [host-metrics package](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/opentelemetry-host-metrics/).
+* Central configuration management to modify the settings of the EDOT Node.js agent without having to restart the application.
 
 Use EDOT Node.js with your Node.js application to automatically capture distributed tracing data, performance metrics, and logs. EDOT Node.js automatically instruments [popular modules](./supported-technologies.md#instrumentations) used by your service.
 
