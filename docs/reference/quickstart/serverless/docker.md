@@ -34,16 +34,16 @@ Follow these steps to deploy the EDOT Collector and EDOT OTel SDKs in Docker wit
 
 ::::{step} Create the config file
 
-Create a `otel-collector-config.yml` file with your EDOT collector configuration. Refer to the [configuration reference](../../edot-collector/config/default-config-standalone.md) for "Managed OTLP Endpoint" for more details.
+Create a `otel-collector-config.yml` file with your EDOT collector configuration. For more details, refer to the [configuration reference](../../edot-collector/config/default-config-standalone.md) for {{motlp}}.
 
 ::::
 
 ::::{step}  Retrieve your settings
 
-Follow these steps to retrieve the managed OTLP endpoint URL for your Serverless project:
+Follow these steps to retrieve the [{{motlp}}](../../motlp.md) URL for your Serverless project:
 
 1. In Elastic Cloud, open your Observability project.
-2. Go to **Add data**, **Application**, **OpenTelemetry**.
+2. Go to **Add data** → **Application** → **OpenTelemetry**.
 3. Select **Managed OTLP Endpoint** in the second step.
 4. Copy the OTLP endpoint configuration value.
 5. Select Create API Key to generate an API key.

@@ -46,7 +46,7 @@ Elastic's Observability solution is technically compatible with setups that are 
 
 ### Elastic Cloud Serverless
 
-{{serverless-full}} provides a managed OTLP endpoint for ingestion of OpenTelemetry data.
+{{serverless-full}} provides a [Managed OTLP Endpoint](../motlp.md) for ingestion of OpenTelemetry data.
 
 ![K8s-Serverless](../images/arch-k8s-serverless.png)
 

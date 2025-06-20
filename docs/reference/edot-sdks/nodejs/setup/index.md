@@ -101,7 +101,7 @@ EDOT Node.js automatically instruments popular modules, listed in [Supported tec
 To confirm that EDOT Node.js has be setup successfully:
 
 1. Call your running service to ensure it has had some activity that EDOT Node.js can trace.
-2. Go to **Applications**, **Service Inventory** in your Elastic Observability deployment.
+2. Go to **Applications** → **Service Inventory** in your Elastic Observability deployment.
 3. Find the name of your service. It can take a minute or two after starting your service with EDOT Node.js for the service to show up in this list.
 
 If you do not see your service, work through [the Troubleshooting guide](../troubleshooting.md).
