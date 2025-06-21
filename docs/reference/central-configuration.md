@@ -13,7 +13,7 @@ products:
 
 # Central configuration for EDOT SDKs
 
-You can manage {{edot}} (EDOT) SDKs through the APM central configuration feature in the Applications UI. Changes are automatically propagated to the deployed [EDOT SDKs](./edot-sdks/index.md). Refer to [APM central configuration](docs-content://solutions/observability/apm/apm-agent-central-configuration.md) for more information.
+Manage {{edot}} (EDOT) SDKs through the APM central configuration feature in the Applications UI. Changes are automatically propagated to the deployed [EDOT SDKs](./edot-sdks/index.md). Refer to [APM central configuration](docs-content://solutions/observability/apm/apm-agent-central-configuration.md) for more information.
 
 ## Prerequisites
 
@@ -25,9 +25,9 @@ To use central configuration for EDOT SDKs, you need:
 
 The following versions of EDOT support central configuration:
 
-| Component | Minimum Version |
+| Component | Minimum version |
 |-----------|----------------|
-| EDOT Collector | 9.1 / 8.19 or higher |
+| EDOT Collector | 8.19, 9.1 or higher |
 | EDOT Java | 1.5.0 or higher |
 | EDOT Node.js | 1.2.0 or higher |
 | EDOT PHP | 1.1.0 or higher |
