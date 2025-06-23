@@ -13,6 +13,8 @@ products:
 
 # Configure the EDOT Java agent
 
+:::{note} [Declarative config](https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#declarative-configuration) is not yet supported, and using it will disable many agent features :::
+
 The [minimal configuration](#minimal-configuration) section provides a recommended starting point for EDOT Java configuration.
 
 See [configuration options](#configuration-options) for details on the supported configuration options and [configuration methods](#configuration-methods) for how to provide them.
