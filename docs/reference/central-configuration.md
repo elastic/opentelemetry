@@ -53,7 +53,7 @@ Restart the Elastic Agent to apply the changes.
 
 ::::{step} Edit the EDOT SDK configuration
 
-Edit the EDOT SDK configuration file to use central configuration. Refer to each EDOT SDK documentation for more information:
+Activate the OpAMP client by setting the `ELASTIC_OTEL_OPAMP_ENDPOINT` environment variable to the URL endpoint that was configured in the EDOT collector in the previous step. Refer to each EDOT SDK documentation for more information:
 
 - [EDOT Java](./edot-sdks/java/configuration.md#central-configuration)
 - [EDOT Node.js](./edot-sdks/nodejs/configuration.md#central-configuration)
