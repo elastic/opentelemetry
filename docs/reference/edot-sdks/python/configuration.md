@@ -20,7 +20,7 @@ Configure the {{edot}} Python (EDOT Python) to send data to Elastic.
 Configure the OpenTelemetry SDK through the mechanisms [documented on the OpenTelemetry website](https://opentelemetry.io/docs/zero-code/python/configuration/). EDOT Python is typically configured with `OTEL_*` environment variables defined by the OpenTelemetry spec. For example:
 
 ```sh
-export OTEL_RESOURCE_ATTRIBUTES=service.name=<app-name>
+export OTEL_RESOURCE_ATTRIBUTES=service.name=<app-name>,deployment.environment.name=<env-name>
 export OTEL_EXPORTER_OTLP_ENDPOINT=https://my-deployment.ingest.us-west1.gcp.cloud.es.io
 export OTEL_EXPORTER_OTLP_HEADERS="Authorization=ApiKey P....l"
 opentelemetry-instrument <command to start your service>
@@ -32,6 +32,17 @@ Because the {{edot}} Python is an extension of OpenTelemetry Python, it supports
 
 * [General OpenTelemetry configuration options](#opentelemetry-configuration-options)
 * [Specific configuration options that are only available in EDOT Python](#configuration-options-only-available-in-edot-python)
+
+## Central configuration
+
+Central configuration lets you configure EDOT Python instances remotely, see [Central configuration docs](../../central-configuration.md) for more details.
+Central configuration uses `service.name` and `deployment.environment.name` OpenTelemetry resource attributes in order to target specific instances with a configuration.
+
+The OpAMP agent that is needed to interact with the central configuration backend is *opt-in* and is enabled via the `ELASTIC_OTEL_OPAMP_ENDPOINT` environment variable, refer to [Central configuration docs](../../central-configuration.md) on how to setup central configuration and get the url.
+
+The following configurations are supported for EDOT Python:
+
+- *Logging level* to configure EDOT Python agent logging level. This configuration is dynamic and does not require the application to be reloaded.
 
 ### OpenTelemetry configuration options
 
