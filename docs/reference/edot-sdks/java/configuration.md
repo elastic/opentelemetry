@@ -97,6 +97,8 @@ Configuration options are applied with the following priorities:
 - [environment variables](#system-properties) take precedence over [system properties](#system-properties) and [properties configuration file](#properties-configuration-file).
 - [system properties](#system-properties) take precedence on [properties configuration file](#properties-configuration-file).
 
+Currently, the [declarative configuration](https://opentelemetry.io/docs/specs/otel/configuration/#declarative-configuration) is NOT supported.
+
 ### Environment variables
 
 Environment variables provide a cross-platform way to configure EDOT Java and is especially useful in containerized environments.
