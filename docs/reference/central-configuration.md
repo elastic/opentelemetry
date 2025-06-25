@@ -15,6 +15,9 @@ products:
 
 Manage {{edot}} (EDOT) SDKs through the APM Agent Central Configuration feature in the Applications UI. Changes are automatically propagated to the deployed [EDOT SDKs](./edot-sdks/index.md). Refer to [APM Agent Central Configuration](docs-content://solutions/observability/apm/apm-agent-central-configuration.md) for more information.
 
+This feature implements the Open Agent Management Protocol (OpAMP). Refer to [Open Agent Management Protocol
+](https://opentelemetry.io/docs/specs/opamp/) for more information.
+
 ## Prerequisites
 
 To use APM Agent Central Configuration for EDOT SDKs, you need:
@@ -73,9 +76,9 @@ Restart the Elastic Agent to also restart the Collector and apply the changes. R
 
 ::::
 
-::::{step} Edit the EDOT SDK configuration
+::::{step} Set the environment variable for the SDKs
 
-Activate the OpAMP client by setting the `ELASTIC_OTEL_OPAMP_ENDPOINT` environment variable to the URL endpoint of the `apmconfig` extension that you configured in the previous step. For example:
+Activate the central configuration feature in the SDKs by setting the `ELASTIC_OTEL_OPAMP_ENDPOINT` environment variable to the URL endpoint of the `apmconfig` extension that you configured in the previous step. For example:
 
 ```sh
 export ELASTIC_OTEL_OPAMP_ENDPOINT="http://localhost:4320"
