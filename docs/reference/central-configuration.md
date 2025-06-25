@@ -99,3 +99,12 @@ Your application must produce and send telemetry data for the EDOT SDK to appear
 ::::
 
 :::::{stepper}
+
+## Supported settings
+
+For a list of settings that you can configure through APM Agent Central Configuration, refer to the configuration reference of each EDOT SDK:
+
+- [EDOT Java](./edot-sdks/java/configuration.md#central-configuration)
+- [EDOT Node.js](./edot-sdks/nodejs/configuration.md#central-configuration)
+- [EDOT PHP](./edot-sdks/php/configuration.md#central-configuration)
+- [EDOT Python](./edot-sdks/python/configuration.md#central-configuration)
