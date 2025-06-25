@@ -22,6 +22,10 @@ products:
 
 Read on to learn how to set up {{edot-cf}} for AWS.
 
+::::{important}
+{{edot-cf}} for AWS is not supported on {{ech}} or self-managed {{stack}}.
+::::
+
 ## Prerequisites
 
 To collect logs using {{edot-cf}} for AWS you need:
@@ -66,7 +70,7 @@ In addition, you need to know the URL of the managed OTLP endpoint and the API k
 
 Before deploying {{edot-cf}} for AWS, keep these points in mind:
 
-- Deploy a separate stack for each log type, for example VPC Flow Logs, ELB Logs, or CloudWatch Logs. Each CloudFormation stack can only process one log source and format at a time.
+- Deploy a separate CloudFormation stack for each log type, for example VPC Flow Logs, ELB Logs, or CloudWatch Logs. Each CloudFormation stack can only process one log source and format at a time.
 - Logs stored in S3 must be placed in separate buckets. Each log type should reside in its own dedicated bucket.
 
 ## Download the template
@@ -117,7 +121,7 @@ In the `cloudwatch_logs-cloudformation.yaml` template, set the following setting
 
 | Setting            | Description |
 | ------------------- | --- |
-| `SourceCloudWatchLogGroup` | Name of the CloudWatch Log Group where the subscription filter will be created. This Log Group serves as the primary storage location for logs. |
+| `SourceCloudWatchLogGroupARN` | Amazon Resource Name (ARN) of the CloudWatch Log Group where the subscription filter will be created. This Log Group serves as the primary storage location for logs. |
 
 :::
 ::::
