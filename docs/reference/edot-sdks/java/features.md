@@ -71,3 +71,7 @@ For [troubleshooting](./troubleshooting.md#agent-debug-logging), the `ELASTIC_OT
 This feature relies on the `OTEL_JAVAAGENT_LOGGING` configuration option to be set to `elastic` (default), the `simple` value from upstream is not supported.
 
 Setting `OTEL_JAVAAGENT_LOGGING=none` or `ELASTIC_OTEL_JAVAAGENT_LOG_LEVEL=OFF` disables agent logging feature.
+
+Setting `OTEL_JAVAAGENT_LOGGING=application` will disable EDOT agent logging feature and attempt to use the application logger.
+As [documented here in the upstream documentation](https://opentelemetry.io/docs/zero-code/java/agent/configuration/#java-agent-logging-output),
+support for this depends on the application and logging libraries used.
