@@ -70,4 +70,4 @@ For [troubleshooting](./troubleshooting.md#agent-debug-logging), the `ELASTIC_OT
 
 This feature relies on the `OTEL_JAVAAGENT_LOGGING` configuration option to be set to `elastic` (default), the `simple` value from upstream is not supported.
 
-Setting `OTEL_JAVAAGENT_LOGGING=none` or `ELASTIC_OTEL_JAVAAGENT_LOG_LEVEL=OFF` disables agent logging.
+Setting `OTEL_JAVAAGENT_LOGGING=none` or `ELASTIC_OTEL_JAVAAGENT_LOG_LEVEL=OFF` disables agent logging feature.
