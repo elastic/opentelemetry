@@ -193,6 +193,111 @@ The service section defines separate pipelines for different telemetry types:
 
 Each pipeline connects specific receivers, processors, and exporters to handle different data types appropriately.
 
+
+## Central configuration
+
+The EDOT Collector can be configured to use [APM Agent Central Configuration](docs-content://solutions/observability/apm/apm-agent-central-configuration.md). Refer to [Central configuration docs](../../central-configuration.md) for more details.
+
+### Activate the apmconfig extension
+
+To activate the central configuration feature, uncomment the [`apmconfig`](https://github.com/elastic/opentelemetry-collector-components/blob/main/extension/apmconfigextension/README.md) and [`bearertokenauth`](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/extension/bearertokenauthextension/README.md) extensions and provide the necessary configuration, or add the configuration manually. For example:
+
+```yaml
+extensions:
+  bearertokenauth:
+    scheme: "APIKey"
+    token: "<ENCODED_ELASTICSEARCH_APIKEY>"
+
+  apmconfig:
+    source:
+     elasticsearch:
+       endpoint: "<ELASTICSEARCH_ENDPOINT>"
+       auth:
+         authenticator: bearertokenauth
+    opamp:
+      protocols:
+        http:
+          # Default is localhost:4320
+          # endpoint: "<CUSTOM_OPAMP_ENDPOINT> 
+```
+
+### TLS configuration
+
+You can turn on TLS or mutual TLS to encrypt data in transit between EDOT SDKs and the extension. Refer to [OpenTelemetry TLS server configuration](https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/configtls/README.md#server-configuration) for more details.
+
+For example:
+
+```yaml
+extensions:
+  apmconfig:
+    opamp:
+      protocols:
+        http:
+          endpoint: ":4320"
+          tls:
+            cert_file: server.crt
+            key_file: server.key
+   ...
+```
+
+### Authentication settings
+
+In addition to TLS, you can configure authentication to ensure that only authorized agents can communicate with the extension and retrieve their corresponding remote configurations.
+
+The `apmconfig` extension supports any configauth authenticator. Use the `apikeyauth` extension to authenticate with Elasticsearch API keys:
+
+```yaml
+extensions:
+  apikeyauth:
+    endpoint: "<YOUR_ELASTICSEARCH_ENDPOINT>"
+    application_privileges:
+      - application: "apm"
+        privileges:
+          - "config_agent:read"
+        resources:
+          - "-"
+  apmconfig:
+    opamp:
+      protocols:
+        http:
+          auth:
+            authenticator: apikeyauth
+   ...
+```
+
+The server expects incoming HTTP requests to include an API key with sufficient privileges, using the following header format: `Authorization: ApiKey <base64(id:api_key)>`.
+
+You can create an API key with the minimum required application permissions through Kibana by going to **Observability** → **Applications** → **Settings** → **Agent Keys**, or by using the Elasticsearch Security API:
+
+```sh
+POST /_security/api_key
+{
+  "name": "apmconfig-opamp-test-sdk",
+  "metadata": {
+    "application": "apm"
+  },
+  "role_descriptors": {
+    "apm": {
+      "cluster": [],
+      "indices": [],
+      "applications": [
+        {
+          "application": "apm",
+          "privileges": [
+            "config_agent:read"
+          ],
+          "resources": [
+            "*"
+          ]
+        }
+      ],
+      "run_as": [],
+      "metadata": {}
+    }
+  }
+}
+```
+
 [`attributes`]: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/attributesprocessor
 [`filelog`]: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/filelogreceiver
 [`hostmetrics`]: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver
