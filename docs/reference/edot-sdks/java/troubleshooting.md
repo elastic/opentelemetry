@@ -43,14 +43,44 @@ Determine if the issue is related to the agent by following these steps:
 1. Start the application with no agent and see if the issue is not present. Observe if the issue is again present when restarting with the agent.
 2. Check end-to-end connectivity without the agent by running one or more of the example apps in [elastic-otel-java](https://github.com/elastic/elastic-otel-java/blob/main/examples/troubleshooting/README.md). These use the OpenTelemetry SDK rather than the auto-instrumentation. They can confirm that the issue is specific to the Java agent or can otherwise identify that the issue is caused by something else.
 
-## Agent debug output
+## Agent debug logging
 
-Turn on debug output with `-Dotel.javaagent.debug=true` or by setting the `OTEL_JAVAAGENT_DEBUG` environment variable to `true`. Turning debug output on might add noticeable overhead. A lower overhead option is to set the `otel.traces.exporter` JVM property or the `OTEL_TRACES_EXPORTER` environment variable to the value `otlp,logging-otlp`: this configures the agent to send the traces both to the Collector and to also print it to the standard output in JSON format.
+Debugging output is verbose and might produce noticeable overhead on the application, there are two main strategies to use:
+- in case of a technical issue or exception with the agent, use [agent debugging](#agent-debugging)
+- if you need details on the captured data, use [per-signal debugging](#per-signal-debugging)
 
-After debug is activated, look for:
+In case of missing data, you should first check that the technology used in the application is supported:
+- in [upstream OpenTelemetry Java Instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md)
+- in [EDOT Java](supported-technologies.md)
 
-- Errors and exceptions.
-- For the expected traces or metrics, or the lack of them. Perhaps the [technology isn't instrumented](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md).
+### Agent debugging
+
+Turning on agent debug logging  
+
+- set `ELASTIC_OTEL_JAVAAGENT_LOG_LEVEL` environment variable (or `elastic.otel.javaagent.log_level` JVM system property) to `debug` (recommended)
+- set `OTEL_JAVAAGENT_DEBUG` environment variable (or `otel.javaagent.debug` JVM system property) to `true`
+
+All of those options require a JVM restart.
+
+The `otel.javaagent.debug` / `OTEL_JAVAAGENT_DEBUG` configuration options are inherited from the upstream
+agent, setting them to `true` will also produce span information in plaintext format.
+
+When using `elastic.otel.javaagent.log_level` / `ELASTIC_OTEL_JAVAAGENT_LOG_LEVEL` set to `debug`, the span information
+will also be included in JSON format, which makes it easier to parse and use for troubleshooting.
+
+In case only the detail of captured data is needed, using [per-signal debugging](#per-signal-debugging) is a more lightweight alternative.
+
+### Per-signal debugging
+
+Each supported signal can be logged independently, this allows limiting the amount of captured data and reducing the overhead compared
+to [agent debugging](#agent-debugging).
+
+This is configured through the `OTEL_{SIGNAL}_EXPORTER` environment variable or `otel.{signal}.exporter` JVM system property
+from the [OpenTelemetry SDK](https://opentelemetry.io/docs/languages/java/configuration/#properties-exporters) by adding any of the following exporters to the default `otlp` value:
+- `otlp,logging-otlp`: JSON logging (recommended)
+- `otlp,logging`: plain text logging
+
+All of those options require a JVM restart.
 
 ## Access or modification of application code
 
@@ -133,5 +163,3 @@ Updates of the OpenTelemetry API/SDK in the application and the EDOT Java agent 
 ### How to update
 
 Updating EDOT Java agent is done by replacing the agent binary `.jar` that has been [added during setup](./setup/index.md).
-
-
