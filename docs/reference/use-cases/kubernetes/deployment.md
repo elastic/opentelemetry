@@ -20,7 +20,7 @@ The guided onboarding simplifies deploying your Kubernetes components by setting
 
 Follow these steps to use the guided onboarding:
 
-1. In {{kib}}, navigate to **Observability**, **Add data**.
+1. In {{kib}}, navigate to **Observability** → **Add data**.
 2. Select **Kubernetes**, then choose **Kubernetes monitoring with EDOT Collector**.
 3. Follow the instructions to install the OpenTelemetry Operator using the Helm chart and the provided `values.yaml`.
 

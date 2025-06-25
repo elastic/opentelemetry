@@ -79,9 +79,13 @@ EDOT PHP automatically creates the root span for each incoming request, providin
 
 Transaction spans are grouped by URL patterns to reduce cardinality and improve readability in dashboards and trace views.
 
-### Inferred Spans (preview version)
+### Inferred Spans
 
-EDOT PHP automatically detects and generates spans for common operations like database queries or HTTP calls, even when no manual instrumentation is present. This feature is currently in preview.
+```{applies_to}
+product: preview
+```
+
+EDOT PHP automatically detects and generates spans for common operations like database queries or HTTP calls, even when no manual instrumentation is present.
 
 ### Asynchronous data sending
 
