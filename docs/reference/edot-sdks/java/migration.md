@@ -172,11 +172,11 @@ When the cloud provider is known, or there is none, turning off the non-relevant
 ### `log_sending`
 
 The Elastic [`log_sending`](apm-agent-java://reference/config-logging.md#config-log-sending) option allows capturing and
-sending application logs directly to the APM server without storing them on disk and ingesting them with a separate tool.
+sending application logs directly to APM Server without storing them on disk and ingesting them with a separate tool.
 
 With EDOT, application logs are automatically captured and sent by default.
 
-This feature is controlled by `otel.logs.exporter` (set to `otlp` by default) and can be disabled by setting `otel.logs.exporter=none`.
+This feature is controlled by `otel.logs.exporter`, which is set to `otlp` by default. You can turn it off by setting `otel.logs.exporter` to `none`.
 
 ## Limitations
 
