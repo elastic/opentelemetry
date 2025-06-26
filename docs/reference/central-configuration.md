@@ -23,10 +23,10 @@ This feature implements the Open Agent Management Protocol (OpAMP). Refer to [Op
 To use APM Agent Central Configuration for EDOT SDKs, you need:
 
 * An Elastic self-managed or {{ecloud}} deployment, version 9.1 or higher.
-* [EDOT Collector](./edot-collector/index.md) in standalone mode.
+* A standalone [EDOT Collector](./edot-collector/index.md), in either Agent or Collector mode.
 * [EDOT SDKs](./edot-sdks/index.md) instrumenting your application.
 
-The following versions of EDOT support central configuration:
+The following versions of EDOT and {{stack}} support central configuration:
 
 | Component | Minimum version |
 |-----------|----------------|
@@ -49,7 +49,10 @@ To activate APM Agent Central Configuration for EDOT SDKs, follow these steps.
 
 ::::{step} Edit the EDOT Collector configuration
 
-Edit the EDOT Collector configuration file to use the `apmconfig` extension. You need a valid {{es}} API key to authenticate to the {{es}} endpoint.
+Edit the EDOT Collector configuration file to use the `apmconfig` extension. You need a valid {{es}} API key to authenticate to the {{es}} endpoint. 
+
+:::{include} _snippets/retrieve-credentials.md
+:::
 
 The sample configuration is:
 
