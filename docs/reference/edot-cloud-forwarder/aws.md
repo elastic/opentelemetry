@@ -312,8 +312,8 @@ This is a list of resources created by the stack when CloudWatch logs are the so
 | `LambdaInvokeConfig`               | `AWS::Lambda::EventInvokeConfig`   | Configures event invocation settings, including error handling and retry behavior. |
 | `LambdaLogGroup`                   | `AWS::Logs::LogGroup`               | CloudWatch log group that stores execution logs for the main Lambda function, aiding monitoring and debugging. |
 | `LambdaPermissionCloudWatch`       | `AWS::Lambda::Permission`          | Grants permission for CloudWatch Logs to invoke the Lambda function, enabling real-time log streaming. |
-| `S3FailureBucket`                  | `AWS::S3::Bucket`                   | Dedicated S3 bucket for storing failed log events to prevent data loss. An important safeguard resource. |
+| `S3FailureBucketArn`                  | `AWS::S3::Bucket`                   | ARN of the bucket for storing failed log events to prevent data loss, in the format `arn:aws:s3:::your-bucket-name`. |
 
 The CloudWatch Log Subscription Filter, `CloudWatchLogSubscriptionFilter`, ensures logs are correctly forwarded to the Lambda function. The Lambda function, `LambdaFunction`, serves as the core processing unit for CloudWatch logs. 
 
-CloudWatch Log Groups help monitor execution performance and debug issues. IAM permissions (`LambdaExecutionRole`, `LambdaPermissionCloudWatch`) control interactions between CloudWatch and Lambda, while the failure bucket, `S3FailureBucket`, helps prevent data loss in case of processing errors.
+CloudWatch Log Groups help monitor execution performance and debug issues. IAM permissions (`LambdaExecutionRole`, `LambdaPermissionCloudWatch`) control interactions between CloudWatch and Lambda, while the failure bucket, `S3FailureBucketArn`, helps prevent data loss in case of processing errors.
