@@ -221,6 +221,10 @@ extensions:
           # endpoint: "<CUSTOM_OPAMP_ENDPOINT> 
 ```
 
+:::{note}
+Create an API Key following [these instructions](docs-content://deploy-manage/api-keys/elasticsearch-api-keys.md).
+:::
+
 ### TLS configuration
 
 You can turn on TLS or mutual TLS to encrypt data in transit between EDOT SDKs and the extension. Refer to [OpenTelemetry TLS server configuration](https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/configtls/README.md#server-configuration) for more details.

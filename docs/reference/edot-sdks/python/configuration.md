@@ -37,10 +37,6 @@ Because the {{edot}} Python is an extension of OpenTelemetry Python, it supports
 
 APM Agent Central Configuration lets you configure EDOT Python instances remotely, see [Central configuration docs](../../central-configuration.md) for more details.
 
-Central configuration uses the `service.name` and `deployment.environment.name` OpenTelemetry resource attributes to target specific instances with a configuration. The OpAMP agent needed to interact with APM Agent Central Configuration is optional and is activated through the `ELASTIC_OTEL_OPAMP_ENDPOINT` environment variable. 
-
-Refer to [Central configuration docs](../../central-configuration.md) on how to setup central configuration and get the url.
-
 ### Central configuration settings
 
 You can modify the following settings for EDOT Python through APM Agent Central Configuration:

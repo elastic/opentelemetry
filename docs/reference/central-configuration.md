@@ -6,7 +6,6 @@ applies_to:
       ess: preview 9.1
   stack: preview 9.1
 products:
-  - id: cloud
   - id: observability
   - id: kibana
 ---
@@ -32,6 +31,8 @@ The following versions of EDOT and {{stack}} support central configuration:
 |-----------|----------------|
 | Kibana | 9.1 or higher |
 | EDOT Collector | 8.19, 9.1 or higher |
+| EDOT Android | 1.2.0 or higher |
+| EDOT iOS | 1.3.0 or higher |
 | EDOT Java | 1.5.0 or higher |
 | EDOT Node.js | 1.2.0 or higher |
 | EDOT PHP | 1.1.0 or higher |
@@ -89,6 +90,10 @@ export ELASTIC_OTEL_OPAMP_ENDPOINT="http://localhost:4320"
 
 Restart the instrumented application to apply the changes.
 
+:::{note}
+Central configuration uses the `service.name` and `deployment.environment.name` OpenTelemetry resource attributes to target specific instances with a configuration. If no environment is specified, the central configuration feature will match `All` as the environment.
+:::
+
 ::::
 
 ::::{step} Check that the EDOT SDK appears in central configuration
@@ -110,6 +115,8 @@ Your application must produce and send telemetry data for the EDOT SDK to appear
 
 For a list of settings that you can configure through APM Agent Central Configuration, refer to the configuration reference of each EDOT SDK:
 
+- [EDOT Android](./edot-sdks/android/configuration.md#central-configuration)
+- [EDOT iOS](./edot-sdks/ios/configuration.md#central-configuration)
 - [EDOT Java](./edot-sdks/java/configuration.md#central-configuration)
 - [EDOT Node.js](./edot-sdks/nodejs/configuration.md#central-configuration)
 - [EDOT PHP](./edot-sdks/php/configuration.md#central-configuration)
