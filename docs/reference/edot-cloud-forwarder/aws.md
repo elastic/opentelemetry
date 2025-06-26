@@ -123,6 +123,10 @@ In the `cloudwatch_logs-cloudformation.yaml` template, set the following setting
 | ------------------- | --- |
 | `SourceCloudWatchLogGroupARN` | Amazon Resource Name (ARN) of the CloudWatch Log Group where the subscription filter will be created. This Log Group serves as the primary storage location for logs. |
 
+:::{note}
+The log group must already exist in your AWS account and region. If the ARN points to a non-existent log group, stack deployment or updates might fail.
+:::
+
 :::
 ::::
 
