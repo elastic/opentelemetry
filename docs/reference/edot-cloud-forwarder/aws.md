@@ -298,7 +298,7 @@ This is a list of resources created by the stack when processing S3 logs.
 
 The main Lambda function, `LambdaFunction`, is the core component for processing S3 logs. S3 event notifications are handled dynamically using `CustomNotificationUpdater` and `NotificationUpdaterLambda`. 
 
-CloudWatch logs ensure detailed monitoring of Lambda executions. IAM roles and permissions control access between S3 and Lambda functions, while `S3FailureBucket` prevents data loss by capturing unprocessed logs.
+CloudWatch logs ensure detailed monitoring of Lambda executions. IAM roles and permissions control access between S3 and Lambda functions, while `S3FailureBucketArn` prevents data loss by capturing unprocessed logs.
 
 ### Resources for CloudWatch Logs
 
