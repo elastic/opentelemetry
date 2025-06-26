@@ -17,6 +17,10 @@ The [minimal configuration](#minimal-configuration) section provides a recommend
 
 See [configuration options](#configuration-options) for details on the supported configuration options and [configuration methods](#configuration-methods) for how to provide them.
 
+:::{note} 
+[Declarative configuration](https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#declarative-configuration) is not supported. Using it deactivates many agent features.
+:::
+
 ## Minimal configuration
 
 This configuration is provided using [environment variables](#environment-variables), other [configuration methods](#configuration-methods) are also supported.

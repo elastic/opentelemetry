@@ -55,7 +55,7 @@ toc:
         children:
           - file: edot-collector/components.md
           - file: edot-collector/custom-collector.md
-      - hidden: edot-collector/troubleshooting.md
+      - hidden: edot-collector/troubleshooting-edot-collector.md
       - file: edot-collector/troubleshooting/index.md
         children:
         - file: edot-collector/troubleshooting/collector-oomkilled.md
