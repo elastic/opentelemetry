@@ -294,7 +294,7 @@ This is a list of resources created by the stack when processing S3 logs.
 | `LambdaS3TriggerPolicy`     | `AWS::IAM::Policy`                 | IAM policy allowing the Lambda function to process events triggered by S3. |
 | `NotificationUpdaterLambda` | `AWS::Lambda::Function`            | Utility Lambda function handling S3 event notification updates dynamically. |
 | `NotificationUpdaterLambdaLogGroup` | `AWS::Logs::LogGroup`         | CloudWatch log group storing logs for the `NotificationUpdaterLambda` function. |
-| `S3FailureBucket`               | `AWS::S3::Bucket`                   | Dedicated bucket for storing failed log processing events, preventing data loss. This is an important safeguard resource. |
+| `S3FailureBucketArn`               | `AWS::S3::Bucket`                   | ARN of the bucket for storing failed invocations from the `edot-cloud-forwarder` Lambda function, preventing data loss, in the format `arn:aws:s3:::your-bucket-name`. If not defined, the template creates a dedicated failure bucket automatically. |
 
 The main Lambda function, `LambdaFunction`, is the core component for processing S3 logs. S3 event notifications are handled dynamically using `CustomNotificationUpdater` and `NotificationUpdaterLambda`. 
 
