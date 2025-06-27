@@ -63,12 +63,11 @@ Refer to [universal-profiling-integration](https://github.com/elastic/elastic-ot
 ## Baggage
 
 [Baggage](https://opentelemetry.io/docs/concepts/signals/baggage/) provides a key-value store that allows to store
-and propagate contextual information to traces, metrics and logs across services.
+and propagate contextual information to traces, metrics, and logs across services.
 
-This feature requires minimal code changes for creating and accessing the baggage using the [OpenTelemetry Java API](https://github.com/open-telemetry/opentelemetry-java).
-Baggage entries can be automatically added to spans and logs through [configuration](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/baggage-processor#usage-with-sdk-auto-configuration):
+This feature requires minimal code changes for creating and accessing the baggage using the [OpenTelemetry Java API](https://github.com/open-telemetry/opentelemetry-java). Baggage entries can be automatically added to spans and logs through these [configuration](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/baggage-processor#usage-with-sdk-auto-configuration) settings:
 
 - `OTEL_JAVA_EXPERIMENTAL_SPAN_ATTRIBUTES_COPY_FROM_BAGGAGE_INCLUDE`
 - `OTEL_JAVA_EXPERIMENTAL_LOG_ATTRIBUTES_COPY_FROM_BAGGAGE_INCLUDE`
 
-See [baggage-processor](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/baggage-processor) and [example](https://github.com/elastic/elastic-otel-java/tree/main/examples/baggage) for more details.
+Refer to [baggage-processor](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/baggage-processor) and the [baggage example](https://github.com/elastic/elastic-otel-java/tree/main/examples/baggage) for more details.
