@@ -75,4 +75,4 @@ The SDK allows you to modify some values after the initialization has finished. 
 
 ### Automatic instrumentation
 
-The SDK provides extensions that automatically generate telemetry for common tools and use cases. Refer to [Automatic Instrumentation](automatic-instrumentation.md).
+The SDK provides extensions that automatically generate telemetry for common tools and use cases. Refer to [Automatic Instrumentation](automatic-instrumentation.md) for more details.
