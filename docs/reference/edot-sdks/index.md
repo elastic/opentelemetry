@@ -10,7 +10,7 @@ products:
   - id: observability
 ---
 
-# EDOT SDKs Feature Overview
+# EDOT SDKs feature overview
 
 This table provides an overview of the features available in the {{edot}} (EDOT) SDKs across different programming languages.
 
