@@ -45,34 +45,32 @@ Determine if the issue is related to the agent by following these steps:
 
 ## Agent debug logging
 
-Debugging output is verbose and might produce noticeable overhead on the application, there are two main strategies to use:
-- in case of a technical issue or exception with the agent, use [agent debugging](#agent-debugging)
-- if you need details on the captured data, use [per-signal debugging](#per-signal-debugging)
+As debugging output is verbose and might produce noticeable overhead on the application, follow one of these strategies when you need logging:
 
-In case of missing data, you should first check that the technology used in the application is supported:
-- in [upstream OpenTelemetry Java Instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md)
-- in [EDOT Java](supported-technologies.md)
+- In case of a technical issue or exception with the agent, use [agent debugging](#agent-debugging).
+- If you need details on the captured data, use [per-signal debugging](#per-signal-debugging).
+
+In case of missing data, check first that the technology used in the application is supported in [upstream OpenTelemetry Java Instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md) and in [EDOT Java](supported-technologies.md).
 
 ### Agent debugging
 
-Turning on agent debug logging  
+To turn on agent debug logging you can either:
 
-- set `ELASTIC_OTEL_JAVAAGENT_LOG_LEVEL` environment variable (or `elastic.otel.javaagent.log_level` JVM system property) to `debug` (recommended)
-- set `OTEL_JAVAAGENT_DEBUG` environment variable (or `otel.javaagent.debug` JVM system property) to `true`
+- Set the `ELASTIC_OTEL_JAVAAGENT_LOG_LEVEL` environment variable or the `elastic.otel.javaagent.log_level` JVM system property to `debug`.
+- Set the `OTEL_JAVAAGENT_DEBUG` environment variable or the `otel.javaagent.debug` JVM system property to `true`
 
-All of those options require a JVM restart.
+Both options require a JVM restart.
 
 The `otel.javaagent.debug` / `OTEL_JAVAAGENT_DEBUG` configuration options are inherited from the upstream
-agent, setting them to `true` will also produce span information in plaintext format.
+agent. Setting them to `true` also produce span information in plain text format.
 
-When using `elastic.otel.javaagent.log_level` / `ELASTIC_OTEL_JAVAAGENT_LOG_LEVEL` set to `debug`, the span information
-will also be included in JSON format, which makes it easier to parse and use for troubleshooting.
+When `elastic.otel.javaagent.log_level` or `ELASTIC_OTEL_JAVAAGENT_LOG_LEVEL` are set to `debug`, the span information is included in JSON format.
 
-In case only the detail of captured data is needed, using [per-signal debugging](#per-signal-debugging) is a more lightweight alternative.
+If only captured data details are needed, [per-signal debugging](#per-signal-debugging) is a lighter alternative.
 
 ### Per-signal debugging
 
-Each supported signal can be logged independently, this allows limiting the amount of captured data and reducing the overhead compared
+Each supported signal can be logged independently. This allows limiting the amount of captured data and reducing the overhead compared
 to [agent debugging](#agent-debugging).
 
 This is configured through the `OTEL_{SIGNAL}_EXPORTER` environment variable or `otel.{signal}.exporter` JVM system property
@@ -80,7 +78,7 @@ from the [OpenTelemetry SDK](https://opentelemetry.io/docs/languages/java/config
 - `otlp,logging-otlp`: JSON logging (recommended)
 - `otlp,logging`: plain text logging
 
-All of those options require a JVM restart.
+Both options require a JVM restart.
 
 ## Access or modification of application code
 
