@@ -66,6 +66,8 @@ In addition, you need to know the URL of the managed OTLP endpoint and the API k
 :::{include} ../_snippets/serverless-endpoint-api.md
 :::
 
+In the CloudFormation templates, the OTLP endpoint is set as `OTLPEndpoint`, and the API key is set as `ElasticAPIKey`.
+
 ## Deployment considerations
 
 Before deploying {{edot-cf}} for AWS, keep these points in mind:
@@ -73,14 +75,16 @@ Before deploying {{edot-cf}} for AWS, keep these points in mind:
 - Deploy a separate CloudFormation stack for each log type, for example VPC Flow Logs, ELB Logs, or CloudWatch Logs. Each CloudFormation stack can only process one log source and format at a time.
 - Logs stored in S3 must be placed in separate buckets. Each log type should reside in its own dedicated bucket.
 
-## Download the template
+## Download the template [download-templates]
 
 Download the CloudFormation template to deploy the appropriate stack based on your log source:
 
 | Log Source | CloudFormation template |
-| --- | --- |
-| S3 logs | `s3_logs-cloudformation.yaml` |
-| CloudWatch logs | `cloudwatch_logs-cloudformation.yaml` |
+| --- | ------------------------------------------------ |
+| S3 logs | `s3://edot-cloud-forwarder/v0/latest/cloudformation/s3_logs-cloudformation.yaml` |
+| CloudWatch logs | `s3://edot-cloud-forwarder/v0/latest/cloudformation/cloudwatch_logs-cloudformation.yaml` |
+
+For specific versions, edit `latest` in the path to `vX.Y.Z`.
 
 ## Configure the template
 
@@ -105,7 +109,7 @@ Set the following settings based on the log source:
 
 :::{tab-item} S3
 
-In the `s3_logs-cloudformation.yaml` template, set the following settings:
+For S3 logs, use the following settings:
 
 | Setting            | Description |
 | ------------------- | --- |
@@ -117,7 +121,7 @@ In the `s3_logs-cloudformation.yaml` template, set the following settings:
 
 :::{tab-item} CloudWatch
 
-In the `cloudwatch_logs-cloudformation.yaml` template, set the following settings:
+For CloudWatch logs, use the following settings:
 
 | Setting            | Description |
 | ------------------- | --- |
@@ -136,14 +140,22 @@ These are optional settings you can set in the CloudFormation template:
 
 | Setting            | Description |
 | ------------------- | --- |
-| `EdotCloudForwarderVersion` | Version of the EDOT Cloud Forwarder. Expected format is is `0-1-2`, with hyphens replacing periods. Defaults to the latest available patch version. Don't change this value unless advised by Elastic Support. |
+| `EdotCloudForwarderVersion` | Version of the EDOT Cloud Forwarder. Expected format is semantic versioning, for example `0.1.5`. Defaults to the latest available patch version. Don't change this value unless advised by Elastic Support. |
 | `EdotCloudForwarderTimeout` | Maximum execution time for the Lambda function, measured in seconds. Default value is `300` seconds. Maximum value is `900` seconds. Minimum value is `1` second. |
 | `EdotCloudForwarderMemorySize` | Set the allocated memory for the Lambda function, measured in megabytes. Default value is `1024` MB. Maximum value is `10240` MB. Minimum value is `128` MB. | 
 | `EdotCloudForwarderConcurrentExecutions` | Set the maximum number of reserved concurrent executions for the Lambda function. Default value is `50`. Make sure this value doesn't exceed your AWS account's concurrency limit. |
 
 ## Deployment examples
 
-The following examples use the default CloudFormation templates.
+The following examples use the CloudFormation template files hosted in the [public S3 bucket](#download-templates).
+
+- Use the `--template-url` flag to reference a template hosted on S3. 
+- To always use the most recent stable templates, use the `latest` path. For example, `v0/latest`.  
+- To pin a specific version, replace `latest` with the desired version tag. For example, `v0/v0.1.5`.  
+
+Alternatively, if you have downloaded the template file, you can use the `--template-body file://<path>` option with a local template file.
+
+::::
 
 ::::{tab-set}
 
@@ -152,16 +164,16 @@ The following examples use the default CloudFormation templates.
 This example deploys a CloudFormation stack to collect VPC Flow Logs stored in an S3 bucket.
 
 ```sh
-aws cloudformation deploy \
-  --template-file templates/s3_logs-cloudformation.yaml \
+aws cloudformation create-stack \
   --stack-name edot-cloud-forwarder-vpc \
+  --template-url https://s3.amazonaws.com/edot-cloud-forwarder/v0/latest/cloudformation/s3_logs-cloudformation.yaml \
   --capabilities CAPABILITY_NAMED_IAM \
   --region eu-central-1 \
-  --parameter-overrides \
-    SourceS3BucketARN=your-s3-vpc-bucket-arn \
-    OTLPEndpoint="<placeholder>" \
-    ElasticAPIKey="<placeholder>" \
-    EdotCloudForwarderS3LogsType="vpc_flow_log"
+  --parameters \
+    ParameterKey=SourceS3BucketARN,ParameterValue=your-s3-vpc-bucket-arn \
+    ParameterKey=OTLPEndpoint,ParameterValue="<placeholder>" \
+    ParameterKey=ElasticAPIKey,ParameterValue="<placeholder>" \
+    ParameterKey=EdotCloudForwarderS3LogsType,ParameterValue="vpc_flow_log"
 ```
 :::
 
@@ -170,16 +182,16 @@ aws cloudformation deploy \
 This example deploys a CloudFormation stack to collect ALB Access Logs stored in an S3 bucket.
 
 ```sh
-aws cloudformation deploy \
-  --template-file templates/s3_logs-cloudformation.yaml \
+aws cloudformation create-stack \
   --stack-name edot-cloud-forwarder-alb \
+  --template-url https://s3.amazonaws.com/edot-cloud-forwarder/v0/latest/cloudformation/s3_logs-cloudformation.yaml \
   --capabilities CAPABILITY_NAMED_IAM \
   --region eu-central-1 \
-  --parameter-overrides \
-    SourceS3BucketARN=your-s3-alb-bucket-arn \
-    OTLPEndpoint="<placeholder>" \
-    ElasticAPIKey="<placeholder>" \
-    EdotCloudForwarderS3LogsType="elb_access_log"
+  --parameters \
+    ParameterKey=SourceS3BucketARN,ParameterValue=your-s3-alb-bucket-arn \
+    ParameterKey=OTLPEndpoint,ParameterValue="<placeholder>" \
+    ParameterKey=ElasticAPIKey,ParameterValue="<placeholder>" \
+    ParameterKey=EdotCloudForwarderS3LogsType,ParameterValue="elb_access_log"
 ```
 :::
 
@@ -188,16 +200,21 @@ aws cloudformation deploy \
 This example deploys a CloudFormation stack to collect CloudWatch logs sent to a Log Group.
 
 ```sh
-aws cloudformation deploy \
-  --template-file templates/cloudwatch_logs-cloudformation.yaml \
+aws cloudformation create-stack \
   --stack-name edot-cloud-forwarder-cw \
+  --template-url https://s3.amazonaws.com/edot-cloud-forwarder/v0/latest/cloudformation/cloudwatch_logs-cloudformation.yaml \
   --capabilities CAPABILITY_NAMED_IAM \
   --region eu-central-1 \
-  --parameter-overrides \
-    OTLPEndpoint="<placeholder>" \
-    ElasticAPIKey="<placeholder>" \
-    SourceCloudWatchLogGroupARN="your-log-group"
+  --parameters \
+    ParameterKey=OTLPEndpoint,ParameterValue="<placeholder>" \
+    ParameterKey=ElasticAPIKey,ParameterValue="<placeholder>" \
+    ParameterKey=SourceCloudWatchLogGroupARN,ParameterValue="<your-log-group-arn>"
 ```
+
+:::{note}
+The `--capabilities CAPABILITY_NAMED_IAM` flag is required because this CloudFormation template creates AWS Identity and Access Management (IAM) resources. More specifically, it creates a named IAM role (`LambdaExecutionRole`) for the Lambda function. To acknowledge that AWS CloudFormation might create or modify IAM resources with custom names, you must specify the `CAPABILITY_NAMED_IAM` capability. 
+:::
+
 :::
 ::::
 
@@ -229,7 +246,7 @@ Run the command with the following parameters:
 
 ```sh
 aws cloudformation update-stack \
-  --template-body file://<path-to-cloudformation-template-file> \
+  --template-url https://s3.amazonaws.com/edot-cloud-forwarder/v0/latest/cloudformation/<template-file-name>.yaml \
   --stack-name <stack-name> \
   --capabilities CAPABILITY_NAMED_IAM \
   --region eu-central-1 \
@@ -244,7 +261,7 @@ For example, to modify the S3 bucket ARN for the `edot-cloud-forwarder-vpc` stac
 
 ```sh
 aws cloudformation update-stack \
-  --template-body file://templates/s3_logs-cloudformation.yaml \
+  --template-url https://s3.amazonaws.com/edot-cloud-forwarder/v0/latest/cloudformation/s3_logs-cloudformation.yaml \
   --stack-name edot-cloud-forwarder-vpc \
   --capabilities CAPABILITY_NAMED_IAM \
   --region eu-central-1 \
@@ -271,13 +288,14 @@ aws cloudformation describe-stacks --stack-name <stack-name>
 You can deploy the stack manually using the AWS Management Console by following these steps:
 
 1. Navigate to CloudFormation in the AWS Console.  
-2. Select **Create Stack** and choose one of the following options:  
-   - **Amazon S3 URL** to use a pre-hosted CloudFormation template.  
-   - **Upload a template file** to select the appropriate CloudFormation template based on your log source.  
-3. Select **Next** and configure all required parameters.  
-4. Select **Next** again and check the **"Acknowledge IAM capabilities"** box.  
-5. Review your settings and select **Submit** to deploy the stack.  
-6. Monitor the stack creation process until it reaches the `CREATE_COMPLETE` state.  
+2. Select **Create Stack** and choose **With new resources (standard)** to start a fresh deployment.
+3. Select one of the following options under **Specify template**:  
+   - **Amazon S3 URL (Recommended)**: Use the pre-hosted CloudFormation template stored in the [public S3 bucket](#download-templates).  
+   - **Upload a template file** – Alternatively, download the template from the S3 bucket and upload it manually.
+4. Select **Next** and configure all required parameters.  
+5. Select **Next** again and check **Acknowledge IAM capabilities**. This is required because the template creates named IAM roles with permissions to access S3 and CloudWatch.  
+6. Review your configuration and select **Submit** to deploy the stack.  
+7. Monitor the progress until the stack reaches the `CREATE_COMPLETE` state. 
 
 ## CloudFormation stack resources
 
@@ -321,3 +339,46 @@ This is a list of resources created by the stack when CloudWatch logs are the so
 The CloudWatch Log Subscription Filter, `CloudWatchLogSubscriptionFilter`, ensures logs are correctly forwarded to the Lambda function. The Lambda function, `LambdaFunction`, serves as the core processing unit for CloudWatch logs. 
 
 CloudWatch Log Groups help monitor execution performance and debug issues. IAM permissions (`LambdaExecutionRole`, `LambdaPermissionCloudWatch`) control interactions between CloudWatch and Lambda, while the failure bucket, `S3FailureBucketARN`, helps prevent data loss in case of processing errors.
+
+## **Delete a CloudFormation stack**
+
+If you no longer need a deployed stack and want to clean up all associated resources, you can delete it using the following command:
+
+```sh
+aws cloudformation delete-stack \
+  --stack-name <stack-name> \
+  --region <stack-region>
+```
+
+Deleting a stack will remove all AWS resources created by that stack. However, if you allowed the stack to automatically create a dedicated S3 bucket for failed Lambda invocations, that bucket will not be deleted if it contains objects, because CloudFormation doesn't force-delete non-empty buckets. To remove the bucket entirely, you must empty it manually prior to deletion.
+
+If you specified an existing bucket through the `S3FailureBucketARN` parameter instead, that bucket is not managed by the stack and will not be affected by the deletion.
+
+### Example: Deleting the `edot-cloud-forwarder-vpc` stack
+
+The following command deletes the `edot-cloud-forwarder-vpc` stack:
+
+```sh
+aws cloudformation delete-stack \
+  --stack-name edot-cloud-forwarder-vpc \
+  --region eu-central-1
+```
+
+You can monitor the deletion progress in the AWS Console under **CloudFormation → Stacks**, or through this command:
+
+```sh
+aws cloudformation describe-stacks \
+  --stack-name <stack-name> \
+  --region <stack-region>
+```
+
+If the stack deletion fails and remains in a `DELETE_FAILED` state, you can retry the deletion with force mode:
+
+```sh
+aws cloudformation delete-stack \
+  --stack-name edot-cloud-forwarder-vpc \
+  --region eu-central-1 \
+  --deletion-mode FORCE_DELETE_STACK
+```
+
+This will forcibly delete the stack's resources except any that cannot be deleted, such as the failure S3 bucket if it still contains objects. For a complete cleanup, empty the bucket manually before retrying deletion.
