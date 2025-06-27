@@ -140,3 +140,19 @@ Before starting the JVM, create and populate the configuration file and specify 
 echo otel.service.name=my-service > my.properties
 java -Dotel.javaagent.configuration-file=my.properties ...
 ```
+
+## Agent logging
+
+The EDOT Java agent provides the ability to control the agent log verbosity by setting the log level with the `ELASTIC_OTEL_JAVAAGENT_LOG_LEVEL` configuration option (`INFO` by default).
+
+The following log levels are supported: `TRACE`, `DEBUG`, `INFO`, `WARN`, `ERROR`, `FATAL` and `OFF`.
+
+For [troubleshooting](./troubleshooting.md#agent-debug-logging), the `ELASTIC_OTEL_JAVAAGENT_LOG_LEVEL=DEBUG` is a recommended alternative to `OTEL_JAVAAGENT_DEBUG=true` as it provides span information in JSON format.
+
+This feature relies on the `OTEL_JAVAAGENT_LOGGING` configuration option to be set to `elastic` (default), the `simple` value from upstream is not supported.
+
+Setting `OTEL_JAVAAGENT_LOGGING=none` or `ELASTIC_OTEL_JAVAAGENT_LOG_LEVEL=OFF` disables agent logging feature.
+
+Setting `OTEL_JAVAAGENT_LOGGING=application` will disable EDOT agent logging feature and attempt to use the application logger.
+As [documented here in the upstream documentation](https://opentelemetry.io/docs/zero-code/java/agent/configuration/#java-agent-logging-output),
+support for this depends on the application and logging libraries used.
