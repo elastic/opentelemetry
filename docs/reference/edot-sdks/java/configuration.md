@@ -72,7 +72,7 @@ This table only contains minimal configuration, see each respective feature for 
 | `OTEL_JAVA_EXPERIMENTAL_SPAN_STACKTRACE_MIN_DURATION`  | `5ms`   | [Span stacktrace](./features.md#span-stacktrace)                                                 |
 | `ELASTIC_OTEL_UNIVERSAL_PROFILING_INTEGRATION_ENABLED` | `auto`  | [Elastic Universal profiling integration](./features.md#elastic-universal-profiling-integration) |
 | `OTEL_INSTRUMENTATION_OPENAI_CLIENT_ENABLED`           | `true`  | [OpenAI client instrumentation](./supported-technologies.md#openai-client-instrumentation)       |
-| `ELASTIC_OTEL_JAVAAGENT_LOG_LEVEL`                     | `INFO`  | [Agent logging](./features.md#agent-logging)                                                     |
+| `ELASTIC_OTEL_JAVAAGENT_LOG_LEVEL`                     | `INFO`  | [Agent logging](./configuration.md#agent-logging)                                                |
 
 ## OpenAI Client settings
 
