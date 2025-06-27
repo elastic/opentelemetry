@@ -59,3 +59,16 @@ Set `OTEL_INSTRUMENTATION_RUNTIME_TELEMETRY_EMIT_EXPERIMENTAL_TELEMETRY` to `fal
 [Universal Profiling](https://www.elastic.co/observability/universal-profiling) integration provides the ability to correlate traces with profiling data from the Elastic universal profiler. This feature is turned on by default on supported systems, and turned off otherwise.
 
 Refer to [universal-profiling-integration](https://github.com/elastic/elastic-otel-java/tree/main/universal-profiling-integration) for details and configuration options.
+
+## Baggage
+
+[Baggage](https://opentelemetry.io/docs/concepts/signals/baggage/) provides a key-value store that allows to store
+and propagate contextual information to traces, metrics and logs across services.
+
+This feature requires minimal code changes for creating and accessing the baggage using the [OpenTelemetry Java API](https://github.com/open-telemetry/opentelemetry-java).
+Baggage entries can be automatically added to spans and logs through [configuration](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/baggage-processor#usage-with-sdk-auto-configuration):
+
+- `OTEL_JAVA_EXPERIMENTAL_SPAN_ATTRIBUTES_COPY_FROM_BAGGAGE_INCLUDE`
+- `OTEL_JAVA_EXPERIMENTAL_LOG_ATTRIBUTES_COPY_FROM_BAGGAGE_INCLUDE`
+
+See [baggage-processor](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/baggage-processor) and [example](https://github.com/elastic/elastic-otel-java/tree/main/examples/baggage) for more details.
