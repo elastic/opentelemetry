@@ -112,6 +112,19 @@ The following settings are deprecated:
 | :--- | :---- |
 | `ELASTIC_OTEL_METRICS_DISABLED` 🔹 | [(EDOT Ref)](#deprecated-elastic_otel_metrics_disabled-details) Turn off metrics export and some metrics collection by the SDK. {applies_to}`product: deprecated 1.1.0` |
 
+## Central configuration
+
+APM Agent Central Configuration lets you configure EDOT Node.js instances remotely, see [Central configuration docs](../../central-configuration.md) for more details.
+
+### Central configuration settings
+
+You can modify the following settings for EDOT Node.js through APM Agent Central Configuration:
+
+| Setting | Central configuration name | Type |
+|---------|--------------------------|------|
+| Logging level | `logging_level` | Dynamic |
+| Turn off instrumentations | `deactivate_instrumentations` | Dynamic |
+| Turn off all instrumentations | `deactivate_all_instrumentations` | Dynamic |
 
 ## EDOT configuration details
 

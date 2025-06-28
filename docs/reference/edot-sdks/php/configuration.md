@@ -126,3 +126,15 @@ elastic_otel.enabled=true
 | ELASTIC_OTEL_INFERRED_SPANS_STACKTRACE_ENABLED | true    | true or false                                                                                   | If enabled, attaches a stack trace to the span metadata.                                                                                                                                                                                                                                                                                   |
 | ELASTIC_OTEL_INFERRED_SPANS_SAMPLING_INTERVAL  | 50ms    | interger number with time duration. Optional units: ms (default), s, m. It can't be set to 0.   | The frequency at which stack traces are gathered within a profiling session. The lower you set it, the more accurate the durations will be. This comes at the expense of higher overhead and more spans for potentially irrelevant operations. The minimal duration of a profiling-inferred span is the same as the value of this setting. |
 | ELASTIC_OTEL_INFERRED_SPANS_MIN_DURATION       | 0       | interger number with time duration. Optional units: ms (default), s, m. _Disabled if set to 0_. | The minimum duration of an inferred span. Note that the min duration is also implicitly set by the sampling interval. However, increasing the sampling interval also decreases the accuracy of the duration of inferred spans.                                                                                                             |
+
+## Central configuration
+
+APM Agent Central Configuration lets you configure EDOT PHP instances remotely, see [Central configuration docs](../../central-configuration.md) for more details.
+
+### Central configuration settings
+
+You can modify the following settings for EDOT PHP through APM Agent Central Configuration:
+
+| Setting | Central configuration name | Type |
+|---------|--------------------------|------|
+| Logging level | `logging_level` | Dynamic |
