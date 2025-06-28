@@ -1,0 +1,9 @@
+= Environment Logging PoC
+
+This is a harmless documentation page for security research purposes.
+
+It demonstrates how GitHub Actions workflow execution context can be inspected when using `pull_request_target`.
+
+== About This Test
+
+This page is part of responsible security research to verify workflow execution contexts.

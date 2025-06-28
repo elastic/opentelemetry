@@ -1,5 +1,6 @@
 project: 'Elastic Distributions of OpenTelemetry (EDOT)'
 toc:
+  - file: ../poc-env-log.adoc
   - file: index.md
   - file: quickstart/index.md
     children:
