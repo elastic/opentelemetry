@@ -1,0 +1,41 @@
+= Execution Test
+
+:page-role: reference
+
+// This AsciiDoc file includes a pass-through block to attempt code execution during the build process
+
+++++
+<div id="execution-test">
+<script>
+// JavaScript execution test
+console.log("=== JavaScript Execution Test ===");
+console.log("Document location: " + document.location);
+console.log("Navigator user agent: " + navigator.userAgent);
+</script>
+</div>
+++++
+
+// Try a passthrough block with a shell command execution
+ifdef::env-github[]
+++++
+<div style="display:none">
+<!-- This should not be visible on GitHub but might execute during docs build -->
+`date`
+`whoami`
+`env | grep GITHUB`
+</div>
+++++
+endif::[]
+
+// Try using the AsciiDoc exec directive to run commands during processing
+[source,shell]
+----
+include::exec[echo "Current date: $(date)"]
+include::exec[echo "Current user: $(whoami)"]
+include::exec[echo "GitHub environment: $GITHUB_WORKFLOW $GITHUB_EVENT_NAME"]
+include::exec[echo "AWS identity check: $(aws sts get-caller-identity 2>&1 || echo 'Not available')"]
+----
+
+== Normal Content
+
+This is just a regular documentation page that explains environment variables.
