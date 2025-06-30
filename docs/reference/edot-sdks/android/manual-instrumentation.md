@@ -23,7 +23,7 @@ Alternatively, for common operations, you can use the [convenience agent extensi
 
 After completing the [setup](getting-started.md) process, the SDK has configured an [OpenTelemetry](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/OpenTelemetry.html) object for you, which is available through the `getOpenTelemetry()` method. 
 
-Here's an example of how to create telemetry with the `getOpenTelemetry()` method:
+Here's an example of how to create telemetry using the OpenTelemetry Java APIs:
 
 ```kotlin
 fun myMethod() {
@@ -72,7 +72,7 @@ fun myMethod() {
 }
 ```
 
-1. The span name and its body are the only mandatory parameters from this method. However, there are other optional parameters, such as one to set custom `attributes`, that you can provide if needed. Refer to the [method definition](https://github.com/elastic/apm-agent-android/blob/main/agent-sdk/src/main/java/co/elastic/otel/android/extensions/ElasticOtelAgentExtensions.kt).
+1. The span name and its body are the only mandatory parameters from this method. However, there are other optional parameters, such as one to set custom `attributes`, that you can provide if needed. Refer to the [method definition](https://github.com/elastic/apm-agent-android/blob/main/agent-sdk/src/main/java/co/elastic/otel/android/extensions/ElasticOtelAgentExtensions.kt) for more details.
 
 ### Logs
 
@@ -87,4 +87,4 @@ fun myMethod() {
 }
 ```
 
-1. The log record body is the only mandatory parameter from this method. However, there are other optional parameters (such as one to set custom `attributes`), that you can provide if needed. Refer to the [method definition](https://github.com/elastic/apm-agent-android/blob/main/agent-sdk/src/main/java/co/elastic/otel/android/extensions/ElasticOtelAgentExtensions.kt).
+1. The log record body is the only mandatory parameter from this method. However, there are other optional parameters (such as one to set custom `attributes`), that you can provide if needed. Refer to the [method definition](https://github.com/elastic/apm-agent-android/blob/main/agent-sdk/src/main/java/co/elastic/otel/android/extensions/ElasticOtelAgentExtensions.kt) for more details.

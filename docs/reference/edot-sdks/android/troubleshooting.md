@@ -87,3 +87,78 @@ To prevent these kinds of issues on devices using Android OS older than 8.0, you
 
 For historic reasons, `service` has been the default way of referring to "an entity that produces telemetry". This term made its way into OpenTelemetry to a point where it was marked as one of the first "stable" resource names, meaning that it was no longer possible/feasible to make a change to another name that would better represent any kind of telemetry source. This has been debated several times within the community. A recent discussion attempts to [explain the `service` description](https://github.com/open-telemetry/semantic-conventions/pull/630) and what it should represent in an effort to reduce confusion. However, there doesn't seem to be a consensus.
 
+## Get your Android application instance [get-application]
+
+Your [Application](https://developer.android.com/reference/android/app/Application) instance is needed to initialize the agent. There are a couple of ways you can get yours.
+
+#### From within your custom Application implementation (Recommended)
+
+The agent should get initialized as soon as your application is launched to make sure that it can start collecting telemetry from the very beginning.
+
+An ideal place to do so is from within your own custom [Application.onCreate](https://developer.android.com/reference/android/app/Application#onCreate()) method implementation, as shown in the following snippet:
+
+```kotlin
+package my.app
+
+class MyApp : Application() {
+    override fun onCreate() {
+        super.onCreate()
+        val agent = ElasticApmAgent.builder(this) // <1>
+            //...
+            .build()
+    }
+}
+```
+1. `this` is your application.
+
+:::{important}
+You must register your custom application in your `AndroidManifest.xml` file, like so:
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <application
+        android:name="my.app.MyApp"
+        ...
+    </application>
+</manifest>
+```
+:::
+
+### From an Activity
+
+You can get your application from an [Activity](https://developer.android.com/reference/android/app/Activity) by calling its [getApplication()](https://developer.android.com/reference/android/app/Activity#getApplication()) method.
+
+### From a Fragment
+
+From a [Fragment](https://developer.android.com/reference/androidx/fragment/app/Fragment.html) instance, you can get the [Activity](https://developer.android.com/reference/android/app/Activity) that it is associated to by calling its [requireActivity()](https://developer.android.com/reference/androidx/fragment/app/Fragment.html#requireActivity()) method. After you get the Activity object, you can get your application from it as [explained above](#from-an-activity).
+
+## Get your {{stack}} export endpoint [get-export-endpoint]
+
+The export endpoint is where your app's telemetry is sent. The endpoint is required to initialize the agent. The way to find the endpoint in your {{stack}} depends on the type of deployment you use.
+
+### Serverless deployments
+
+On a [Serverless deployment](https://www.elastic.co/guide/en/serverless/current/intro.html), follow these steps:
+
+1. Open {{kib}} and find **Add data** in the main menu. Alternatively, you can use the [global search field](docs-content://explore-analyze/find-and-organize/find-apps-and-objects.md) and search for `Observability Onboarding`.
+2. Select **Application**, **OpenTelemetry**.
+3. Select the **OpenTelemetry** tab, followed by **Managed OTLP Endpoint** under **Configure the OpenTelemetry SDK**.
+
+Your export endpoint URL is the value for the `OTEL_EXPORTER_OTLP_ENDPOINT` configuration setting.
+
+### Cloud hosted and self-managed deployments
+
+For Elastic Cloud Hosted (ECH) and self-managed deployments, the export endpoint, also known as [EDOT Collector](../../edot-collector/index.md), is not available out of the box at the moment. You can still create your own service by following [creating and configuring a standalone EDOT Collector](../../edot-collector/config/default-config-standalone.md).
+
+## Create an API key [create-api-key]
+
+API keys are the recommended way of authenticating the agent with your {{stack}}. There's a couple of ways you can create one.
+
+### Use {{kib}}'s Applications UI
+
+Follow [this quick guide](docs-content://solutions/observability/apm/api-keys.md#apm-create-an-api-key) and leave all the settings with their default values.
+
+### Use REST APIs
+
+Follow [this guide](https://www.elastic.co/docs/api/doc/kibana/operation/operation-createagentkey) to create an API Key with a set of privileges that are scoped for the APM Agent use case only.

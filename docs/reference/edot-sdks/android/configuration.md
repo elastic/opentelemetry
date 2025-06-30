@@ -1,6 +1,6 @@
 ---
 navigation_title: Configuration
-description: Configure the Elastic Distribution of OpenTelemetry Android (EDOT Android) to send data to Elastic.
+description: Comprehensive list of configuration parameters for the Elastic Distribution of OpenTelemetry Android (EDOT Android).
 applies_to:
   stack:
   serverless:
@@ -15,7 +15,7 @@ mapped_pages:
 
 # Configure the EDOT Android SDK [configuration]
 
-The following sections contain a comprehensive list of all the configurable parameters available for the SDK, including those you can set during initialization and those you can adjust dynamically afterward.
+This section contains a comprehensive list of all the configurable parameters available for the SDK, including those you can set during initialization and those you can adjust dynamically afterward.
 
 ## Initialization configuration 
 
@@ -63,12 +63,12 @@ class MyApp : android.app.Application {
 }
 ```
 
-1. Your endpoint URL. If you don't have one yet, refer to [Get the export endpoint](getting-started.md#get-export-endpoint).
-2. Your authentication method. You can use either an [API key](docs-content://solutions/observability/apm/api-keys.md), a [Secret token](docs-content://solutions/observability/apm/secret-token.md), or none. Defaults to `None`. API keys are the recommended method, if you don't have one yet, refer to [Create an API key](getting-started.md#create-api-key).
+1. Your endpoint URL. If you don't have one yet, refer to [Get the export endpoint](troubleshooting.md#get-export-endpoint).
+2. Your authentication method. You can use either an [API key](docs-content://solutions/observability/apm/api-keys.md), a [Secret token](docs-content://solutions/observability/apm/secret-token.md), or none. Defaults to `None`. API keys are the recommended method, if you don't have one yet, refer to [Create an API key](troubleshooting.md#create-api-key).
 3. The protocol used to communicate with your endpoint. It can be either `HTTP` or `gRPC`. Defaults to `HTTP`.
 
 :::{tip}
-If you'd like to provide these values from outside of your code, using an environment variable or a properties file for example, refer to [Provide config values outside of your code](configuration.md#provide-config-values-from-outside-of-your-code).
+To provide these values from outside of your code, using an environment variable or a properties file for example, refer to [Provide config values outside of your code](configuration.md#provide-config-values-from-outside-of-your-code).
 :::
 
 ### Intercept export request headers
@@ -110,7 +110,7 @@ class MyApp : android.app.Application {
 
 ### Session behavior
 
-You can configure how sessions work. For example:
+You can configure how [sessions](index.md#sessions) work. For example:
 
 ```kotlin
 class MyApp : android.app.Application {
@@ -145,6 +145,7 @@ class MyApp : android.app.Application {
 ```
 
 1. From version 1.1.0, you can configure whether the disk-buffering feature is turned on or off. It's turned on by default.
+
 ### Intercept resources
 
 The agent creates a [resource](https://opentelemetry.io/docs/specs/otel/overview/#resources) for your signals, which is a set of static global attributes. These attributes help {{kib}} properly display your application's data.
@@ -170,7 +171,7 @@ The resource interceptor is only applied during initialization, as this is the o
 
 ### Intercept exporters
 
-The SDK configures exporters for each signal to manage features like [disk buffering](index.md#disk-buffering) and also to establish a connection with the Elastic export endpoint based on the provided [export connectivity](#export-connectivity).
+The SDK configures exporters for each signal ([spans](https://opentelemetry.io/docs/languages/java/sdk/#spanexporter), [logs](https://opentelemetry.io/docs/languages/java/sdk/#logrecordexporter), and [metrics](https://opentelemetry.io/docs/languages/java/sdk/#metricexporter)) to manage features like [disk buffering](index.md#disk-buffering) and also to establish a connection with the Elastic export endpoint based on the provided [export connectivity](#export-connectivity) values.
 
 You can intercept exporters to add your own logic, such as logging each signal that gets exported, or filtering some items that don't make sense for you to export. For example:
 
@@ -188,8 +189,6 @@ class MyApp : android.app.Application {
     }
 }
 ```
-
-
 
 ### Intercept HTTP spans
 
