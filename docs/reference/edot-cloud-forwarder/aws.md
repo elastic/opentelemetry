@@ -66,7 +66,11 @@ In addition, you need to know the URL of the managed OTLP endpoint and the API k
 :::{include} ../_snippets/serverless-endpoint-api.md
 :::
 
-In the CloudFormation templates, the OTLP endpoint is set as `OTLPEndpoint`, and the API key is set as `ElasticAPIKey`.
+In the CloudFormation templates, the OTLP endpoint is set as `OTLPEndpoint`, and the API key is set as `ElasticAPIKey`. 
+
+:::{important}
+Trim the API key from `Authorization=ApiKey MYKEYVALUE...` to just `MYKEYVALUE...` before using it as the argument to the `ElasticAPIKey` parameter.
+:::
 
 ## Deployment considerations
 
