@@ -81,8 +81,8 @@ Download the CloudFormation template to deploy the appropriate stack based on yo
 
 | Log Source | CloudFormation template |
 | --- | ------------------------------------------------ |
-| S3 logs | `s3://edot-cloud-forwarder/v0/latest/cloudformation/s3_logs-cloudformation.yaml` |
-| CloudWatch logs | `s3://edot-cloud-forwarder/v0/latest/cloudformation/cloudwatch_logs-cloudformation.yaml` |
+| S3 logs | `https://edot-cloud-forwarder.s3.amazonaws.com/v0/latest/cloudformation/s3_logs-cloudformation.yaml` |
+| CloudWatch logs | `https://edot-cloud-forwarder.s3.amazonaws.com/v0/latest/cloudformation/cloudwatch_logs-cloudformation.yaml` |
 
 For specific versions, edit `latest` in the path to `vX.Y.Z`.
 
@@ -92,7 +92,7 @@ For specific versions, edit `latest` in the path to `vX.Y.Z`.
 
 ### Required settings
 
-These are the required settings you need to set in the CloudFormation templates:
+These are the required settings you need:
 
 | Setting            | Description |
 | ------------------------- | --- |
@@ -166,7 +166,7 @@ This example deploys a CloudFormation stack to collect VPC Flow Logs stored in a
 ```sh
 aws cloudformation create-stack \
   --stack-name edot-cloud-forwarder-vpc \
-  --template-url https://s3.amazonaws.com/edot-cloud-forwarder/v0/latest/cloudformation/s3_logs-cloudformation.yaml \
+  --template-url https://edot-cloud-forwarder.s3.amazonaws.com/v0/latest/cloudformation/s3_logs-cloudformation.yaml \
   --capabilities CAPABILITY_NAMED_IAM \
   --region eu-central-1 \
   --parameters \
@@ -184,7 +184,7 @@ This example deploys a CloudFormation stack to collect ALB Access Logs stored in
 ```sh
 aws cloudformation create-stack \
   --stack-name edot-cloud-forwarder-alb \
-  --template-url https://s3.amazonaws.com/edot-cloud-forwarder/v0/latest/cloudformation/s3_logs-cloudformation.yaml \
+  --template-url https://edot-cloud-forwarder.s3.amazonaws.com/v0/latest/cloudformation/s3_logs-cloudformation.yaml \
   --capabilities CAPABILITY_NAMED_IAM \
   --region eu-central-1 \
   --parameters \
@@ -202,7 +202,7 @@ This example deploys a CloudFormation stack to collect CloudWatch logs sent to a
 ```sh
 aws cloudformation create-stack \
   --stack-name edot-cloud-forwarder-cw \
-  --template-url https://s3.amazonaws.com/edot-cloud-forwarder/v0/latest/cloudformation/cloudwatch_logs-cloudformation.yaml \
+  --template-url https://edot-cloud-forwarder.s3.amazonaws.com/v0/latest/cloudformation/cloudwatch_logs-cloudformation.yaml \
   --capabilities CAPABILITY_NAMED_IAM \
   --region eu-central-1 \
   --parameters \
@@ -246,7 +246,7 @@ Run the command with the following parameters:
 
 ```sh
 aws cloudformation update-stack \
-  --template-url https://s3.amazonaws.com/edot-cloud-forwarder/v0/latest/cloudformation/<template-file-name>.yaml \
+  --template-url https://edot-cloud-forwarder.s3.amazonaws.com/v0/latest/cloudformation/<template-file-name>.yaml \
   --stack-name <stack-name> \
   --capabilities CAPABILITY_NAMED_IAM \
   --region eu-central-1 \
@@ -261,7 +261,7 @@ For example, to modify the S3 bucket ARN for the `edot-cloud-forwarder-vpc` stac
 
 ```sh
 aws cloudformation update-stack \
-  --template-url https://s3.amazonaws.com/edot-cloud-forwarder/v0/latest/cloudformation/s3_logs-cloudformation.yaml \
+  --template-url https://edot-cloud-forwarder.s3.amazonaws.com/v0/latest/cloudformation/s3_logs-cloudformation.yaml \
   --stack-name edot-cloud-forwarder-vpc \
   --capabilities CAPABILITY_NAMED_IAM \
   --region eu-central-1 \
