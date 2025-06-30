@@ -29,3 +29,7 @@ In addition to all the features of the OpenTelemetry Python agent, with EDOT Pyt
 * Preconfigured collection of tracing and metrics signals, applying some opinionated defaults, such as which sources are collected by default.
 
 Follow the step-by-step instructions in [Setup](./setup/index.md) to get started.
+
+## Release notes
+
+For the latest release notes, including known issues, deprecations, and breaking changes, refer to [EDOT Python release notes](elastic-otel-python://release-notes/index.md)

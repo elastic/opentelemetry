@@ -34,3 +34,7 @@ In addition to all the features of OpenTelemetry Node.js, with EDOT Node.js you 
 Use EDOT Node.js with your Node.js application to automatically capture distributed tracing data, performance metrics, and logs. EDOT Node.js automatically instruments [popular modules](./supported-technologies.md#instrumentations) used by your service.
 
 Follow the step-by-step instructions in [Setup](./setup/index.md) to get started.
+
+## Release notes
+
+For the latest release notes, including known issues, deprecations, and breaking changes, refer to [EDOT Node.js release notes](elastic-otel-node://release-notes/index.md)
