@@ -87,6 +87,7 @@ exporters:
 processors:
   - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/processor/attributesprocessor v0.121.0
   - gomod: go.opentelemetry.io/collector/processor/batchprocessor v0.121.0
+  - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/processor/cumulativetodeltaprocessor v0.121.0
   - gomod: github.com/elastic/opentelemetry-collector-components/processor/elasticinframetricsprocessor v0.13.0
   - gomod: github.com/elastic/opentelemetry-collector-components/processor/elastictraceprocessor v0.4.1
   - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/processor/filterprocessor v0.121.0
