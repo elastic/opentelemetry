@@ -129,7 +129,7 @@ Because EDOT Java is a distribution of [OpenTelemetry Java instrumentation](http
 - [Semantic Conventions Java mappings](https://github.com/open-telemetry/semantic-conventions-java)
 - [OpenTelemetry Java Contrib](https://github.com/open-telemetry/opentelemetry-java-contrib)
 
-The versions of those included in EDOT are usually aligned with the OpenTelemetry Java Instrumentation. For reference, check the [release notes](https://github.com/elastic/elastic-otel-java/releases) details of versions included in each release.
+The versions of those included in EDOT are usually aligned with the OpenTelemetry Java Instrumentation. For reference, check the [elastic-otel-java://release-notes/index.md](https://github.com/elastic/elastic-otel-java/releases) details of versions included in each release.
 
 ## When and how to update EDOT
 
@@ -147,7 +147,7 @@ Updating to the latest EDOT version involves reviewing changes of the included d
 - [Semantic Conventions Java mappings](https://github.com/open-telemetry/semantic-conventions-java)
 - [OpenTelemetry Java Contrib](https://github.com/open-telemetry/opentelemetry-java-contrib)
 
-To review each of those individually, you can use the [EDOT release notes](https://github.com/elastic/elastic-otel-java/releases) for links to the respective versions of each component.
+To review each of those individually, you can use the [EDOT Java release notes](elastic-otel-java://release-notes/index.md) for links to the respective versions of each component.
 
 ### OpenTelemetry API/SDK update
 

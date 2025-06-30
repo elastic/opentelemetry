@@ -31,3 +31,6 @@ In addition to all the features of OpenTelemetry .NET, with EDOT .NET you have a
 
 Follow the step-by-step instructions in [Setup](./setup/index.md) to get started.
 
+## Release notes
+
+For the latest release notes, including known issues, deprecations, and breaking changes, refer to [EDOT .NET release notes](elastic-otel-dotnet://release-notes/index.md)
