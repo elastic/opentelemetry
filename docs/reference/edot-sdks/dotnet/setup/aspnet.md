@@ -17,7 +17,7 @@ You can use EDOT .NET with ASP.NET applications by registering the OpenTelemetry
 
 ## Install the NuGet packages
 
-To get started with the Elastic Distribution of OpenTelemetry .NET, add the `Elastic.OpenTelemetry` [NuGet package](https://www.nuget.org/packages/Elastic.OpenTelemetry)
+To get started with the {{edot}} .NET, add the `Elastic.OpenTelemetry` [NuGet package](https://www.nuget.org/packages/Elastic.OpenTelemetry)
 reference to your project file:
 
 ```xml

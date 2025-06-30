@@ -1,6 +1,6 @@
 ---
 navigation_title: Kubernetes
-description: Learn how to set up the EDOT Collector and EDOT SDKs in a Kubernetes environment with Elastic Cloud Hosted to collect host metrics, logs and application traces.
+description: Learn how to set up the EDOT Collector and EDOT SDKs in a Kubernetes environment with {{ech}} to collect host metrics, logs and application traces.
 applies_to:
   stack:
   serverless:
@@ -12,14 +12,14 @@ products:
 
 # Quickstart for Kubernetes on Elastic Cloud Hosted
 
-Learn how to set up the EDOT Collector and EDOT SDKs in a Kubernetes environment with Elastic Cloud Hosted (ECH) to collect host metrics, logs and application traces.
+Learn how to set up the EDOT Collector and EDOT SDKs in a Kubernetes environment with {{ech}} (ECH) to collect host metrics, logs and application traces.
 
 ## Prerequisites
 
 Make sure the following requirements are present:
 
-- The **Kubernetes OpenTelemetry Assets** integration is installed in Kibana.
-- The **[System](integration-docs://reference/system/index.md)** integration is installed in Kibana. Select **Add integration only** to skip the agent installation, as only the integration assets are required.
+- The **Kubernetes OpenTelemetry Assets** integration is installed in {{kib}}.
+- The **[System](integration-docs://reference/system/index.md)** integration is installed in {{kib}}. Select **Add integration only** to skip the agent installation, as only the integration assets are required.
 
 ## Guided setup
 
@@ -65,10 +65,10 @@ On Windows PowerShell, replace backslashes (`\`) with backticks (`` ` ``) for li
 
 Install the OpenTelemetry Operator using the `kube-stack` Helm chart with the configured `values.yaml` file.
 
-```bash
+```bash subs=true
 helm install opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack \
 --namespace opentelemetry-operator-system \
---values 'https://raw.githubusercontent.com/elastic/elastic-agent/main/deploy/helm/edot-collector/kube-stack/values.yaml' \
+--values 'https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{edot-collector-version}}/deploy/helm/edot-collector/kube-stack/values.yaml' \
 --version '0.3.9'
 ```
 ::::

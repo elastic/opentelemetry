@@ -13,7 +13,7 @@ products:
 
 # Set up the EDOT Python agent
 
-Learn how to set up the Elastic Distribution of OpenTelemetry (EDOT) Python in various environments, including Kubernetes and others.
+Learn how to set up the {{edot}} (EDOT) Python in various environments, including Kubernetes and others.
 
 Follow these steps to get started.
 
@@ -63,7 +63,7 @@ opentelemetry-instrument gunicorn main:app
 ::::{step} Confirm that EDOT Python is working
 To confirm that EDOT Python has successfully connected to Elastic:
 
-1. Go to **Observability**, **Applications**, **Service Inventory**
+1. Go to **Observability** → **Applications** → **Service Inventory**
 2. Find the name of the service to which you just added EDOT Python. It can take several minutes after initializing EDOT Python for the service to show up in this list.
 3. Select the name in the list to see trace data.
 

@@ -13,7 +13,7 @@ products:
 
 # Configure the EDOT PHP SDK
 
-Learn how to configure the Elastic Distribution of OpenTelemetry PHP (EDOT PHP) to send data to Elastic.
+Learn how to configure the {{edot}} PHP (EDOT PHP) to send data to Elastic.
 
 ## Configuration method
 
@@ -25,7 +25,7 @@ export OTEL_EXPORTER_OTLP_ENDPOINT="https://********.cloud.es.io:443/"
 
 ## Configuration options
 
-Because the Elastic Distribution of OpenTelemetry PHP is an extension of the OpenTelemetry PHP SDK, it supports:
+Because the {{edot}} PHP is an extension of the OpenTelemetry PHP SDK, it supports:
 
 * [OpenTelemetry configuration options](#opentelemetry-configuration-options)
 * [Configuration options only available in EDOT PHP](#options-only-available-in-edot-php)

@@ -13,9 +13,9 @@ products:
 
 # Elastic Distribution of OpenTelemetry .NET
 
-The Elastic Distribution of OpenTelemetry (EDOT) .NET provides an extension of the [OpenTelemetry SDK for .NET](https://opentelemetry.io/docs/languages/net), configured for the best experience with Elastic Observability. 
+The {{edot}} (EDOT) .NET provides an extension of the [OpenTelemetry SDK for .NET](https://opentelemetry.io/docs/languages/net), configured for the best experience with Elastic Observability. 
 
-Use EDOT .NET to start the OpenTelemetry SDK with your .NET application, and automatically capture tracing data, performance metrics, and logs. Traces, metrics, and logs can be sent to any OpenTelemetry Protocol (OTLP) collector you choose.
+Use EDOT .NET to start the OpenTelemetry SDK with your .NET application, and automatically capture tracing data, performance metrics, and logs. Traces, metrics, and logs can be sent to any OpenTelemetry Protocol (OTLP) Collector you choose.
 
 A goal of this distribution is to avoid introducing proprietary concepts in addition to those defined by the wider OpenTelemetry community. For any additional features introduced, Elastic aims at contributing them back to the upstream OpenTelemetry project.
 

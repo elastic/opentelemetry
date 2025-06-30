@@ -18,20 +18,23 @@ Elastic Distributions of OpenTelemetry (EDOT) is an open-source ecosystem of [Op
 
 Each EDOT distribution is assembled with selected OpenTelemetry components and tested to ensure production readiness. This provides a reliable and optimized OpenTelemetry experience, enabling seamless adoption with confidence and expert support.
 
-[OpenTelemetry](https://opentelemetry.io/docs/) is a vendor-neutral observability framework for collecting, processing, and exporting telemetry data. If you are new to OpenTelemetry, refer to OpenTelemetry [concepts](https://opentelemetry.io/docs/concepts/) and [components](https://opentelemetry.io/docs/concepts/components/).
+[OpenTelemetry](https://opentelemetry.io/docs/) is a vendor-neutral observability framework for collecting, processing, and exporting telemetry data. If you are new to OpenTelemetry, refer to OpenTelemetry [concepts](https://opentelemetry.io/docs/concepts/) and [components](https://opentelemetry.io/docs/concepts/components/). Refer to [EDOT compared to upstream OpenTelemetry](./compatibility/edot-vs-upstream.md) for more information on how EDOT differs from upstream OpenTelemetry.
+
 
 ## Available OpenTelemetry distributions
 
 The following Elastic OpenTelemetry distributions are available:
 
-- [EDOT Collector](./edot-collector/index.md)
-- [EDOT .NET](./edot-sdks/dotnet/index.md)
-- [EDOT Java](./edot-sdks/java/index.md)
-- [EDOT Node.js](./edot-sdks/nodejs/index.md)
-- [EDOT PHP](./edot-sdks/php/index.md)
-- [EDOT Python](./edot-sdks/python/index.md)
-- [EDOT Android](apm-agent-android://reference/index.md)
-- [EDOT iOS](apm-agent-ios://reference/index.md)
+| Distribution | Version | Status |
+| ------------ | ------- | ------ |
+| [EDOT Collector](./edot-collector/index.md) | {{edot-collector-version}} | GA |
+| [EDOT .NET](./edot-sdks/dotnet/index.md) | {{edot-dotnet-version}} | GA |
+| [EDOT Java](./edot-sdks/java/index.md) | {{edot-java-version}} | GA |
+| [EDOT Node.js](./edot-sdks/nodejs/index.md) | {{edot-nodejs-version}} | GA |
+| [EDOT PHP](./edot-sdks/php/index.md) | {{edot-php-version}} | GA |
+| [EDOT Python](./edot-sdks/python/index.md) | {{edot-python-version}} | GA |
+| [EDOT Android](apm-agent-android://reference/index.md) | {{edot-android-version}} | GA |
+| [EDOT iOS](apm-agent-ios://reference/index.md) | {{edot-ios-version}} | GA |
 
 Each EDOT distribution undergoes production-grade testing before being declared Generally Available (GA). Elastic provides full support for GA releases in accordance with our [support matrix](https://www.elastic.co/support/matrix) and SLAs.
 
@@ -52,7 +55,7 @@ The EDOT demo includes:
 
 *   Sample applications instrumented with OpenTelemetry SDKs.
 *   EDOT Collector configured for various scenarios. For example, Kubernetes and hosts.
-*   Integration with an Elastic Stack deployment, such as Elasticsearch and Kibana.
+*   Integration with an Elastic Stack deployment, such as {{es}} and {{kib}}.
 
 Follow the instructions in the demo repository to set up and run the demo.
 

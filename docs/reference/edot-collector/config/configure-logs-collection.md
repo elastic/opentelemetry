@@ -13,10 +13,10 @@ products:
 
 # Configure logs collection
 
-Learn how to configure and customize logs collection through the Elastic Distribution of OpenTelemetry Collector. 
+Learn how to configure and customize logs collection through the {{edot}} Collector. 
 
 :::{note}
-Elasticsearch Ingest Pipelines are not yet applicable to OTel-native data. Use OTel collector processing pipelines for pre-processing and parsing of logs.
+{{es}} Ingest Pipelines are not yet applicable to OTel-native data. Use OTel Collector processing pipelines for pre-processing and parsing of logs.
 :::
 
 ## Parse JSON logs

@@ -17,7 +17,7 @@ EDOT PHP is a [distribution](https://opentelemetry.io/docs/concepts/distribution
 
 ## EDOT Collector and Elastic Stack versions
 
-EDOT PHP sends data through the OpenTelemetry protocol (OTLP). While OTLP ingest works with later 8.16+ versions of the EDOT Collector, for full support use either [EDOT Collector](../../edot-collector/index.md) versions 9.x or [Elastic Cloud Serverless](https://www.elastic.co/guide/en/serverless/current/intro.html) for OTLP ingest.
+EDOT PHP sends data through the OpenTelemetry protocol (OTLP). While OTLP ingest works with later 8.16+ versions of the EDOT Collector, for full support use either [EDOT Collector](../../edot-collector/index.md) versions 9.x or [{{serverless-full}}](docs-content://deploy-manage/deploy/elastic-cloud/serverless.md) for OTLP ingest.
 
 :::{note}
 Ingesting data from EDOT SDKs through EDOT Collector 9.x into Elastic Stack versions 8.18+ is supported.
@@ -79,9 +79,13 @@ EDOT PHP automatically creates the root span for each incoming request, providin
 
 Transaction spans are grouped by URL patterns to reduce cardinality and improve readability in dashboards and trace views.
 
-### Inferred Spans (preview version)
+### Inferred Spans
 
-EDOT PHP automatically detects and generates spans for common operations like database queries or HTTP calls, even when no manual instrumentation is present. This feature is currently in preview.
+```{applies_to}
+product: preview
+```
+
+EDOT PHP automatically detects and generates spans for common operations like database queries or HTTP calls, even when no manual instrumentation is present.
 
 ### Asynchronous data sending
 

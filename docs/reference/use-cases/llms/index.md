@@ -12,6 +12,10 @@ products:
 
 # LLM observability with EDOT
 
+```{applies_to}
+product: preview
+```
+
 Applications make more and more use of Generative Artificial Intelligence (GenAI). Telemetry data in terms of spans, metrics and logs when communicating with the GenAI APIs becomes more and more important to operate the application in production and understand the application's behavior and health state.
 
 Elastic currently supports LLM observability through the Elastic Distributions of Opentelemetry (EDOT). The EDOT Java, EDOT Node.js, and EDOT Python distributions support LLM observability as a tech preview.
@@ -40,4 +44,4 @@ Select the environment and target system from the [quick start overview](../../q
 
 See the [Configuration section in the corresponding EDOT SDK](../../edot-sdks/index.md) to turn on or off specific instrumentations and check which instrumentation is active by default.
 
-When you complete the setup and configuration of the EDOT SDK and there is a workload on your application, start checking for telemetry data in Kibana. If there's no data showing up, see the troubleshooting of the corresponding EDOT SDK.
+When you complete the setup and configuration of the EDOT SDK and there is a workload on your application, start checking for telemetry data in {{kib}}. If there's no data showing up, see the troubleshooting of the corresponding EDOT SDK.

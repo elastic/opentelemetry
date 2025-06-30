@@ -1,0 +1,49 @@
+``` yaml
+dist:
+  name: otelcol-dev
+  description: Basic OTel Collector distribution for Developers
+  output_path: ./otelcol-dev
+  otelcol_version: {{ otel_col_version }}
+
+{% if grouped_components['Extensions'] -%}
+extensions:
+{%- for comp in grouped_components['Extensions'] %}
+  - gomod: {{ comp['dep'] }}
+{%- endfor %}
+{%- endif %}
+
+{% if grouped_components['Receivers'] -%}
+receivers:
+{%- for comp in grouped_components['Receivers'] %}
+  - gomod: {{ comp['dep'] }}
+{%- endfor %}
+{%- endif %}
+
+{% if grouped_components['Exporters'] -%}
+exporters:
+{%- for comp in grouped_components['Exporters'] %}
+  - gomod: {{ comp['dep'] }}
+{%- endfor %}
+{%- endif %}
+
+{% if grouped_components['Processors'] -%}
+processors:
+{%- for comp in grouped_components['Processors'] %}
+  - gomod: {{ comp['dep'] }}
+{%- endfor %}
+{%- endif %}
+
+{% if grouped_components['Connectors'] -%}
+connectors:
+{%- for comp in grouped_components['Connectors'] %}
+  - gomod: {{ comp['dep'] }}
+{%- endfor %}
+{%- endif %}
+
+{% if grouped_components['Providers'] -%}
+providers:
+{%- for comp in grouped_components['Providers'] %}
+  - gomod: {{ comp['dep'] }}
+{%- endfor %}
+{%- endif %}
+```

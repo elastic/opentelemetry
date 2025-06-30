@@ -13,7 +13,7 @@ products:
 
 # Instrumenting Node.js applications with EDOT SDKs on Kubernetes
 
-Learn how to instrument Node.js applications on Kubernetes, using the OpenTelemetry Operator, the Elastic Distribution of OpenTelemetry (EDOT) Collectors, and the EDOT Node.js SDK.
+Learn how to instrument Node.js applications on Kubernetes, using the OpenTelemetry Operator, the {{edot}} (EDOT) Collectors, and the EDOT Node.js SDK.
 
 - For general knowledge about the EDOT Node.js SDK, refer to the [EDOT Node.js Intro page](../index.md) and [Configuration](../configuration.md).
 - For Node.js auto-instrumentation specifics, refer to [OpenTelemetry Operator Node.js auto-instrumentation](https://opentelemetry.io/docs/kubernetes/operator/automatic/#nodejs).
@@ -144,10 +144,10 @@ Run a `kubectl describe` of one of your application Pods and check:
   ```
 ::::
 
-::::{step} Confirm data is flowing to Kibana
-Confirm data is flowing to **Kibana**:
+::::{step} Confirm data is flowing to {{kib}}
+Confirm data is flowing to **{{kib}}**:
 
-- Open **Observability**, **Applications**, **Service inventory**, and determine if:
+- Open **Observability** → **Applications** → **Service inventory**, and determine if:
     - The application appears in the list of services (`nodejs-app` in the example).
     - The application shows transactions and metrics.
 
@@ -155,7 +155,7 @@ Confirm data is flowing to **Kibana**:
     You may need to generate traffic to your application to see spans and metrics.
     :::
 
-- For application container logs, open **Kibana Discover** and filter for your Pods' logs. In the provided example, you could filter for them with either of the following:
+- For application container logs, open **{{kib}} Discover** and filter for your Pods' logs. In the provided example, you could filter for them with either of the following:
     - `k8s.deployment.name: "nodejs-app"` (adapt the query filter to your use case).
     - `k8s.pod.name: nodejs-app*` (adapt the query filter to your use case).
 

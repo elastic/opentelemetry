@@ -13,7 +13,7 @@ products:
 
 # Instrumenting Java applications with EDOT SDKs on Kubernetes
 
-Learn how to instrument Java applications on Kubernetes using the OpenTelemetry Operator, the Elastic Distribution of OpenTelemetry (EDOT) Collectors, and the EDOT Java SDK.
+Learn how to instrument Java applications on Kubernetes using the OpenTelemetry Operator, the {{edot}} (EDOT) Collectors, and the EDOT Java SDK.
 
 - For general knowledge about the EDOT Java SDK, refer to the [EDOT Java Intro page](../index.md).
 - For Java auto-instrumentation specifics, refer to [OpenTelemetry Operator Java auto-instrumentation](https://opentelemetry.io/docs/kubernetes/operator/automatic/#java).
@@ -31,7 +31,7 @@ Following this example, you can learn how to:
   - Adding an annotation to the deployment Pods.
   - Adding an annotation to the namespace.
 - Verify that auto-instrumentation libraries are injected and configured correctly.
-- Confirm data is flowing to Kibana Observability.
+- Confirm data is flowing to {{kib}} Observability.
 
 In this example, the application you're instrumenting is a deployment named `java-app` running in the `java-ns` namespace.
 
@@ -152,13 +152,13 @@ In this example, the application you're instrumenting is a deployment named `jav
 
     Ensure the environment variable `OTEL_EXPORTER_OTLP_ENDPOINT` points to a valid endpoint and there's network communication between the Pod and the endpoint.
 
-5. Confirm data is flowing to Kibana:
+5. Confirm data is flowing to {{kib}}:
 
-    - Open **Observability**, **Applications**, **Service inventory**, and determine if:
+    - Open **Observability** → **Applications** → **Service inventory**, and determine if:
         - The application appears in the list of services.
         - The application shows transactions and metrics.
 
-    - For application container logs, open Kibana Discover and filter for your Pods' logs. In the provided example, we could filter for them with either of the following:
+    - For application container logs, open {{kib}} Discover and filter for your Pods' logs. In the provided example, we could filter for them with either of the following:
         - `k8s.deployment.name: "java-app"` (adapt the query filter to your use case)
         - `k8s.pod.name: java-app*` (adapt the query filter to your use case)
 

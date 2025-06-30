@@ -13,7 +13,7 @@ products:
 
 # Manual instrumentation
 
-Learn how to use the Elastic Distribution of OpenTelemetry Python (EDOT Python) to manually instrument your Python application and send OpenTelemetry data to an Elastic Observability deployment.
+Learn how to use the {{edot}} Python (EDOT Python) to manually instrument your Python application and send OpenTelemetry data to an Elastic Observability deployment.
 
 The following instructions require to have already added auto-instrumentation with OpenTelemetry to your application per [Setup](./index.md).
 
@@ -93,7 +93,7 @@ def hello():
 
 To confirm that EDOT Python has successfully connected to Elastic:
 
-1. Go to **Observability**, **Applications**, **Service Inventory**
+1. Go to **Observability** → **Applications** → **Service Inventory**
 1. Find the name of the service to which you just added EDOT Python. It can take several minutes after initializing EDOT Python for the service to show up in this list.
 1. Select the name in the list to see trace data.
 

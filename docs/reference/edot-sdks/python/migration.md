@@ -14,7 +14,7 @@ products:
 
 # Migrate to EDOT Python from the Elastic APM Python agent
 
-Learn the differences between the [Elastic APM Python agent](apm-agent-python://reference/index.md) and the Elastic Distribution of OpenTelemetry Python (EDOT Python).
+Learn the differences between the [Elastic APM Python agent](apm-agent-python://reference/index.md) and the {{edot}} Python (EDOT Python).
 
 Follow the steps to migrate your instrumentation and settings. For step-by-step instructions on setting up EDOT Python refer to [Setup](./setup/index.md).
 
@@ -96,7 +96,7 @@ EDOT Python lacks an equivalent to the [central configuration feature](docs-cont
 
 ### AWS Lambda
 
-A custom lambda layer for the Elastic Distribution of OpenTelemetry Python is not currently available. Refer to the upstream [Lambda Auto-Instrumentation](https://opentelemetry.io/docs/faas/lambda-auto-instrument/).
+A custom lambda layer for the {{edot}} Python is not currently available. Refer to the upstream [Lambda Auto-Instrumentation](https://opentelemetry.io/docs/faas/lambda-auto-instrument/).
 
 ### Missing instrumentations
 

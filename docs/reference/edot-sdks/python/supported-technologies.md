@@ -17,7 +17,7 @@ EDOT Python is a [distribution](https://opentelemetry.io/docs/concepts/distribut
 
 ## EDOT Collector and Elastic Stack versions
 
-EDOT Python sends data through the OpenTelemetry protocol (OTLP). While OTLP ingest works with later 8.16+ versions of the EDOT Collector, for full support use either [EDOT Collector](../../edot-collector/index.md) versions 9.x or Elastic Cloud Serverless for OTLP ingest.
+EDOT Python sends data through the OpenTelemetry protocol (OTLP). While OTLP ingest works with later 8.16+ versions of the EDOT Collector, for full support use either [EDOT Collector](../../edot-collector/index.md) versions 9.x or {{serverless-full}} for OTLP ingest.
 
 :::{note}
 Ingesting data from EDOT SDKs through EDOT Collector 9.x into Elastic Stack versions 8.18+ is supported.
@@ -29,7 +29,6 @@ Refer to [EDOT SDKs compatibility](../../compatibility/sdks.md) for support deta
 
 The following Python versions are supported:
 
- * 3.8
  * 3.9
  * 3.10
  * 3.11
@@ -51,6 +50,7 @@ Instrumentations are not installed by default. Use the [edot-bootstrap](./setup/
 | [opentelemetry-instrumentation-aiokafka](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-aiokafka) | aiokafka >= 0.8, < 1.0 | development
 | [opentelemetry-instrumentation-aiopg](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-aiopg) | aiopg >= 0.13.0, < 2.0.0 | development
 | [opentelemetry-instrumentation-asgi](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-asgi) | asgiref ~= 3.0 | migration
+| [opentelemetry-instrumentation-asyncclick](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-asyncclick) | asyncclick ~= 8.0 | development
 | [opentelemetry-instrumentation-asyncio](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-asyncio) | asyncio | development
 | [opentelemetry-instrumentation-asyncpg](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-asyncpg) | asyncpg >= 0.12.0 | development
 | [opentelemetry-instrumentation-aws-lambda](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-aws-lambda) | | development
@@ -65,7 +65,7 @@ Instrumentations are not installed by default. Use the [edot-bootstrap](./setup/
 | [opentelemetry-instrumentation-django](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-django) | django >= 1.10 | development
 | [opentelemetry-instrumentation-elasticsearch](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-elasticsearch) | elasticsearch >= 6.0 | development
 | [opentelemetry-instrumentation-falcon](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-falcon) | falcon >= 1.4.1, < 5.0.0 | migration
-| [opentelemetry-instrumentation-fastapi](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-fastapi) | fastapi ~= 0.58 | migration
+| [opentelemetry-instrumentation-fastapi](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-fastapi) | fastapi ~= 0.92 | migration
 | [opentelemetry-instrumentation-flask](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-flask) | flask >= 1.0 | migration
 | [opentelemetry-instrumentation-grpc](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-grpc) | grpcio >= 1.42.0 | development
 | [opentelemetry-instrumentation-httpx](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-httpx) | httpx >= 0.18.0 | migration
@@ -87,7 +87,7 @@ Instrumentations are not installed by default. Use the [edot-bootstrap](./setup/
 | [opentelemetry-instrumentation-requests](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-requests) | requests ~= 2.0 | migration
 | [opentelemetry-instrumentation-sqlalchemy](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-sqlalchemy) | sqlalchemy >= 1.0.0, < 2.1.0 | development
 | [opentelemetry-instrumentation-sqlite3](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-sqlite3) | sqlite3 | development
-| [opentelemetry-instrumentation-starlette](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-starlette) | starlette >= 0.13, <0.15 | development
+| [opentelemetry-instrumentation-starlette](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-starlette) | starlette >= 0.13 | development
 | [opentelemetry-instrumentation-system-metrics](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-system-metrics) | psutil >= 5 | development
 | [opentelemetry-instrumentation-threading](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-threading) | threading | development
 | [opentelemetry-instrumentation-tornado](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-tornado) | tornado >= 5.1.1 | development
@@ -105,7 +105,7 @@ The semantic conventions status tracks the stabilization of the semantic convent
 
 ### Native Elasticsearch instrumentation
 
-Some libraries like the [Python Elasticsearch Client](https://www.elastic.co/guide/en/elasticsearch/client/python-api/current/index.html) natively supports OpenTelemetry instrumentation.
+Some libraries like the Python {{es}} Client natively supports OpenTelemetry instrumentation.
 
 The [elasticsearch](https://elasticsearch-py.readthedocs.io/en/latest/) package has native OpenTelemetry support since version 8.13.
 

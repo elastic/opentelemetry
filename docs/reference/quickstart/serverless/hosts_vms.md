@@ -1,6 +1,6 @@
 ---
 navigation_title: Hosts and VMs
-description: Learn how to set up the EDOT Collector and EDOT SDKs in a Docker environment with Elastic Cloud Serverless to collect host metrics, logs, and application traces. Send the data through OTLP to your Elastic Serverless Project.
+description: Learn how to set up the EDOT Collector and EDOT SDKs in a Docker environment with {{serverless-full}} to collect host metrics, logs, and application traces. Send the data through OTLP to your Elastic Serverless Project.
 applies_to:
   stack:
   serverless:
@@ -12,13 +12,13 @@ products:
 
 #  Quickstart for hosts / VMs on Elastic Cloud Serverless
 
-Learn how to set up the EDOT Collector and EDOT SDKs in a Docker environment with Elastic Cloud Serverless to collect host metrics, logs, and application traces. Send the data through OTLP to your Elastic Serverless Project.
+Learn how to set up the EDOT Collector and EDOT SDKs in a Docker environment with {{serverless-full}} to collect host metrics, logs, and application traces. Send the data through OTLP to your Elastic Serverless Project.
 
 ## Prerequisites
 
 Make sure the following requirements are present:
 
-- The **[System](integration-docs://reference/system/index.md)** integration is installed in Kibana. Select **Add integration only** to skip the agent installation, as only the integration assets are required.
+- The **[System](integration-docs://reference/system/index.md)** integration is installed in {{kib}}. Select **Add integration only** to skip the agent installation, as only the integration assets are required.
 
 ## Guided setup
 
@@ -27,7 +27,7 @@ Make sure the following requirements are present:
 
 ## Manual installation
 
-Follow these steps to deploy the EDOT Collector and EDOT OTel SDKs with Elastic Cloud Serverless.
+Follow these steps to deploy the EDOT Collector and EDOT OTel SDKs with {{serverless-full}}.
 
 ::::::{stepper}
 
@@ -39,10 +39,10 @@ Follow these steps to deploy the EDOT Collector and EDOT OTel SDKs with Elastic 
 
 :::::{step} Configure the EDOT Collector
 
-Follow these steps to retrieve the managed OTLP endpoint URL for your Serverless project:
+Follow these steps to retrieve the [{{motlp}}](../../motlp.md) for your Serverless project:
 
 1. In Elastic Cloud, open your Observability project.
-2. Go to **Add data**, **Application**, **OpenTelemetry**.
+2. Go to **Add data** → **Application** → **OpenTelemetry**.
 3. Select **Managed OTLP Endpoint** in the second step.
 4. Copy the OTLP endpoint configuration value.
 5. Select Create API Key to generate an API key.

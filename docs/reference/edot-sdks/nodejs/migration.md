@@ -14,7 +14,7 @@ products:
 
 # Migrate to EDOT Node.js from the Elastic APM Node.js agent
 
-Compared to the Elastic APM Node.js agent, the Elastic Distribution of OpenTelemetry Node.js presents a number of advantages:
+Compared to the Elastic APM Node.js agent, the {{edot}} Node.js presents a number of advantages:
 
 - Fully automatic instrumentation with zero code changes. No need to modify application code.
 - EDOT Node.js is built on top of OpenTelemetry SDK and conventions, ensuring compatibility with community tools, vendor-neutral backends, and so on.
@@ -24,7 +24,7 @@ Compared to the Elastic APM Node.js agent, the Elastic Distribution of OpenTelem
 
 ## Migration steps
 
-Follow these steps to migrate from the legacy Elastic APM PHP agent (`elastic-apm-node`) to the Elastic Distribution of OpenTelemetry PHP (`@elastic/opentelemetry-node`).
+Follow these steps to migrate from the legacy Elastic APM PHP agent (`elastic-apm-node`) to the {{edot}} PHP (`@elastic/opentelemetry-node`).
 
 ::::::{stepper}
 
@@ -72,9 +72,9 @@ This list contains Elastic APM Node.js agent configuration options that can be m
 
 The Elastic APM Node.js agent [`serverUrl`](apm-agent-nodejs://reference/configuration.md#server-url) option corresponds to the OpenTelemetry [`OTEL_EXPORTER_OTLP_ENDPOINT`](https://opentelemetry.io/docs/concepts/sdk-configuration/otlp-exporter-configuration/#otel_exporter_otlp_endpoint) option.
 
-- If using Elastic Cloud Serverless, set `OTEL_EXPORTER_OTLP_ENDPOINT` to the managed OTLP endpoint URL for your Serverless project. For example, `OTEL_EXPORTER_OTLP_ENDPOINT=https://my-prj-a1b2c3.ingest.eu-west-1.aws.elastic.cloud`. Refer to the [Quickstart for Elastic Cloud Serverless](../../quickstart/serverless/index.md).
+- If using {{serverless-full}}, set `OTEL_EXPORTER_OTLP_ENDPOINT` to the [{{motlp}}](../../motlp.md) URL for your Serverless project. For example, `OTEL_EXPORTER_OTLP_ENDPOINT=https://my-prj-a1b2c3.ingest.eu-west-1.aws.elastic.cloud`. Refer to the [Quickstart for {{serverless-full}}](../../quickstart/serverless/index.md).
 
-- If using Elastic Cloud Hosted or Self-managed, set `OTEL_EXPORTER_OTLP_ENDPOINT` to the endpoint URL of your EDOT Collector. Refer to the [Quickstart for Elastic Cloud Hosted](../../quickstart/ech/hosts_vms.md) or the [Quickstart for Self-managed](../../quickstart/self-managed/hosts_vms.md).
+- If using {{ech}} or Self-managed, set `OTEL_EXPORTER_OTLP_ENDPOINT` to the endpoint URL of your EDOT Collector. Refer to the [Quickstart for {{ech}}](../../quickstart/ech/hosts_vms.md) or the [Quickstart for Self-managed](../../quickstart/self-managed/hosts_vms.md).
 
 ### `secretToken`
 

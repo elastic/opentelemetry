@@ -13,10 +13,10 @@ products:
 
 # Configure metrics collection
 
-Learn how to configure and customize metrics collection through the Elastic Distribution of OpenTelemetry Collector. 
+Learn how to configure and customize metrics collection through the {{edot}} Collector. 
 
 :::{note}
-Elasticsearch Ingest Pipelines are not yet applicable to OTel-native data. Use OTel collector processing pipelines for pre-processing metrics.
+{{es}} Ingest Pipelines are not yet applicable to OTel-native data. Use OTel Collector processing pipelines for pre-processing metrics.
 :::
 
 ## OTLP metrics
@@ -42,7 +42,7 @@ Configure your application to export metrics using the OTLP protocol, targeting 
 
 The [hostmetrics receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver) turns on the collection of host-level metrics such as CPU use, memory use, and filesystem stats.
 
-The following configuration collects a standard set of host metrics that aligns with Elastic's Infrastructure dashboards in Kibana:
+The following configuration collects a standard set of host metrics that aligns with Elastic's Infrastructure dashboards in {{kib}}:
 
 ```yaml
 hostmetrics:
@@ -106,7 +106,7 @@ You must grant access to the `/proc` filesystem to the receiver by running the C
 
 Turning on the process scraper might significantly increase the volume of scraped metrics, potentially impacting performance. Refer to the upstream issue [#39423](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/39423) for discussion.
 
-To ensure compatibility with Kibana's Infrastructure dashboards, include the [elasticinframetrics processor](https://github.com/elastic/opentelemetry-collector-components/tree/main/processor/elasticinframetricsprocessor) in your pipeline:
+To ensure compatibility with {{kib}}'s Infrastructure dashboards, include the [elasticinframetrics processor](https://github.com/elastic/opentelemetry-collector-components/tree/main/processor/elasticinframetricsprocessor) in your pipeline:
 
  ```yaml
       service:
@@ -122,7 +122,7 @@ To ensure compatibility with Kibana's Infrastructure dashboards, include the [el
 
 You can collect Kubernetes metrics using multiple receivers depending on the type and source of the metrics. Each receiver might require specific Kubernetes permissions and require a deployment as DaemonSets or singletons.
 
-As with host metrics, use the [elasticinframetrics processor](https://github.com/elastic/opentelemetry-collector-components/tree/main/processor/elasticinframetricsprocessor) to ensure metrics align with the Kibana Infrastructure inventory.
+As with host metrics, use the [elasticinframetrics processor](https://github.com/elastic/opentelemetry-collector-components/tree/main/processor/elasticinframetricsprocessor) to ensure metrics align with the {{kib}} Infrastructure inventory.
 
 ### Kubelet metrics
 

@@ -16,7 +16,7 @@ EDOT .NET is a distribution of OpenTelemetry .NET SDK. It inherits all the [supp
 
 ## EDOT Collector and Elastic Stack versions
 
-EDOT .NET sends data through the OpenTelemetry protocol (OTLP). While OTLP ingest works with later 8.16+ versions of the EDOT Collector, for full support use either the [EDOT Collector](../../edot-collector/index.md) versions 9.x or [Elastic Cloud Serverless](https://www.elastic.co/guide/en/serverless/current/intro.html) for OTLP ingest.
+EDOT .NET sends data through the OpenTelemetry protocol (OTLP). While OTLP ingest works with later 8.16+ versions of the EDOT Collector, for full support use either the [EDOT Collector](../../edot-collector/index.md) versions 9.x or [{{serverless-full}}](docs-content://deploy-manage/deploy/elastic-cloud/serverless.md) for OTLP ingest.
 
 :::{note}
 Ingesting data from EDOT SDKs through EDOT Collector 9.x into Elastic Stack versions 8.18+ is supported.
@@ -68,4 +68,4 @@ EDOT .NET support all [officially supported](https://dotnet.microsoft.com/en-us/
 
 ## Exporting data to Elastic
 
-You can export data in the OpenTelemetry-native [OTLP (OpenTelemetry protocol)](https://opentelemetry.io/docs/specs/otlp) format through gRPC and HTTP to self-managed, Elastic Cloud Hosted, or Elastic Cloud Serverless observability.
+You can export data in the OpenTelemetry-native [OTLP (OpenTelemetry protocol)](https://opentelemetry.io/docs/specs/otlp) format through gRPC and HTTP to self-managed, {{ech}}, or {{serverless-full}} observability.

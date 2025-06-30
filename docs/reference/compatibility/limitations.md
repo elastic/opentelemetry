@@ -18,11 +18,11 @@ While EDOT and OTel-native data collection already covers most of the core Obser
 
 ## Centralized parsing and processing of data
 
-With OTel-native ingestion of data, for example through the EDOT Collector or the Managed OTLP endpoint, [Elasticsearch Ingest Pipelines](docs-content://manage-data/ingest/transform-enrich/ingest-pipelines.md) are not supported.
+With OTel-native ingestion of data, for example through the EDOT Collector or the [Managed OTLP endpoint](../motlp.md), [{{es}} Ingest Pipelines](docs-content://manage-data/ingest/transform-enrich/ingest-pipelines.md) are not supported.
 
-The OTel-native data format in Elasticsearch contains dotted fields. Ingest Pipeline processors can't access fields that have a dot in their name without having previously transformed the dotted field into an object using the [`Dot expander processor`](elasticsearch://reference/enrich-processor/dot-expand-processor.md).
+The OTel-native data format in {{es}} contains dotted fields. Ingest Pipeline processors can't access fields that have a dot in their name without having previously transformed the dotted field into an object using the [`Dot expander processor`](elasticsearch://reference/enrich-processor/dot-expand-processor.md).
 
-To process your OTel data, for example to parse logs data, route data to datastreams, and so on, use [Collector processors](https://opentelemetry.io/docs/collector/configuration/#processors), [`filelogreceiver` operators](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/pkg/stanza/docs/operators/README.md#what-operators-are-available) and other OTel-native processing capabilities.
+To process your OTel data, for example to parse logs data, route data to data streams, and so on, use [Collector processors](https://opentelemetry.io/docs/collector/configuration/#processors), [`filelogreceiver` operators](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/pkg/stanza/docs/operators/README.md#what-operators-are-available) and other OTel-native processing capabilities.
 
 Refer to [these examples](../edot-collector/config/configure-logs-collection.md) on how to process log data with the (EDOT) OTel Collector.
 
@@ -34,7 +34,7 @@ Due to limitations and gaps in data collection with the upstream OTel `hostmetri
 |------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Host network panels do not display data in some Elastic Observability UIs. | Due to an upstream limitation, `host.network.*` metrics are not available from OpenTelemetry.                                                                                                                                   |
 | Process state is unavailable in OpenTelemetry host metrics. | The `process.state` metric is not present and is assigned a dummy value of "Unknown" in the State column of the host processes table.                                                                                           |
-| Host OS version and operating system may show as "N/A". | Although the Elasticsearch exporter processes resource attributes, it may not populate these values.                                                                                                                            |
+| Host OS version and operating system may show as "N/A". | Although the {{es}} exporter processes resource attributes, it may not populate these values.                                                                                                                            |
 | Normalized Load data is missing unless the CPU scraper is enabled. | The `system.load.cores` metric is required for the Normalized Load column in the Hosts table and the Normalized Load visualization in the host detailed view.                                                                    |
 | MacOS collectors do not support CPU and disk metrics. | The `hostmetrics receiver` does not collect these metrics on macOS, leaving related fields empty.                    |
 | Permission issues may cause error logs for process metrics | The `hostmetrics receiver` logs errors if it cannot access certain process information due to insufficient permissions. |
@@ -45,13 +45,9 @@ When collecting host metrics through a distribution of the OTel Collector other 
 
 ### Histograms in delta temporality only
 
-Ingestion of OpenTelemetry metrics with the type [`Histogram`](https://opentelemetry.io/docs/specs/otel/metrics/data-model/#histogram) are only supported with [`delta temporality`](https://opentelemetry.io/docs/specs/otel/metrics/data-model/#temporality). Histograms with `cumulative` temporality are dropped before being ingested into Elasticsearch.
+Ingestion of OpenTelemetry metrics with the type [`Histogram`](https://opentelemetry.io/docs/specs/otel/metrics/data-model/#histogram) are only supported with [`delta temporality`](https://opentelemetry.io/docs/specs/otel/metrics/data-model/#temporality). Histograms with `cumulative` temporality are dropped before being ingested into {{es}}.
 
 Make sure to export histogram metrics with delta temporality or use the [`cumulativetodelta processor`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/cumulativetodeltaprocessor) as a workaround to convert the temporality for histogram metrics.
-
-### Timestamps precision
-
-As of now, nanoseconds timestamps from the OTel signals are stored with microsecond precision in Elasticsearch.
 
 ## Limitations on managed Kubernetes environments
 

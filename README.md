@@ -35,7 +35,7 @@ The following repositories contain the code of each Elastic Distribution of Open
 - [EDOT Android](https://github.com/elastic/apm-agent-android)
 - [EDOT iOS](https://github.com/elastic/apm-agent-ios)
 
-## License
+## License
 
 [![CC BY-NC-ND 4.0][cc-by-nc-nd-image]][cc-by-nc-nd] [![CC BY-NC-ND 4.0][cc-by-nc-nd-shield]][cc-by-nc-nd]
 
