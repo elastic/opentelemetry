@@ -64,6 +64,8 @@ To collect CloudWatch logs, you need:
 
 In addition, you need to know the URL of the managed OTLP endpoint and the API key for authentication.
 
+::::{dropdown} Steps to retrieve the OTLP endpoint and API key
+
 :::{include} ../_snippets/serverless-endpoint-api.md
 :::
 
@@ -72,6 +74,7 @@ In the CloudFormation templates, the OTLP endpoint is set as `OTLPEndpoint`, and
 :::{important}
 Trim the API key from `Authorization=ApiKey MYKEYVALUE...` to just `MYKEYVALUE...` before using it as the argument to the `ElasticAPIKey` parameter.
 :::
+::::
 
 ## Deployment considerations
 
@@ -99,12 +102,12 @@ For specific versions, edit `latest` in the path to `vX.Y.Z`.
 
 These are the required settings you need:
 
-| Setting            | Description |
-| ------------------------- | --- |
-| `region`            | AWS region where the CloudFormation stack is to be deployed. |
-| `stack-name`        | Name of the CloudFormation stack. For example, `vpc-edot-cf`. Do not use the same name for different sources. |
-| `OTLPEndpoint`      | The OTLP endpoint URL used for data ingestion. |
-| `ElasticApiKey`     | API key for authentication with Elastic. |
+| Setting                   | Description |
+| ------------------------- | ----------- |
+| `region`                  | AWS region where the CloudFormation stack is to be deployed. |
+| `stack-name`              | Name of the CloudFormation stack. For example, `vpc-edot-cf`. Do not use the same name for different sources. |
+| `OTLPEndpoint`            | The OTLP endpoint URL used for data ingestion. |
+| `ElasticApiKey`           | API key for authentication with Elastic. |
 
 ### Log source settings
 
@@ -259,7 +262,7 @@ aws cloudformation update-stack \
       ParameterKey=Param3,UsePreviousValue=true \
       ParameterKey=Param4,ParameterValue=<new-value>
 ```
-
+::::{dropdown} Example using S3 logs template
 For example, to modify the S3 bucket ARN for the `edot-cloud-forwarder-vpc` stack while keeping other parameters unchanged:
 
 ```sh
@@ -274,6 +277,7 @@ aws cloudformation update-stack \
       ParameterKey=EdotCloudForwarderS3LogsType,UsePreviousValue=true \
       ParameterKey=SourceS3BucketARN,ParameterValue=your-new-s3-vpc-bucket-arn
 ```
+::::
 :::::
 
 :::::{step} Verify the update
@@ -357,7 +361,7 @@ Deleting a stack will remove all AWS resources created by that stack. However, i
 
 If you specified an existing bucket through the `S3FailureBucketARN` parameter instead, that bucket is not managed by the stack and will not be affected by the deletion.
 
-### Example: Deleting the `edot-cloud-forwarder-vpc` stack
+:::{dropdown} Example: Deleting a stack
 
 The following command deletes the `edot-cloud-forwarder-vpc` stack:
 
@@ -385,3 +389,4 @@ aws cloudformation delete-stack \
 ```
 
 This forcibly deletes the stack's resources, except any that cannot be deleted, like the failure S3 bucket if it still contains objects. For a complete cleanup, empty the bucket manually before retrying deletion.
+:::
