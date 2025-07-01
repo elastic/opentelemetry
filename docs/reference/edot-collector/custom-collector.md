@@ -31,10 +31,6 @@ Refer to the following sections to complete these steps.
 
 Install `ocb` using the command that aligns with your system from the [OpenTelemetry building a custom Collector documentation](https://opentelemetry.io/docs/collector/custom-collector/#step-1---install-the-builder).
 
-:::{warning}
-Make sure to install version 0.120.1 of the OpenTelemetry Collector Builder.
-:::
-
 ### Create a builder configuration file
 
 Create a builder configuration file,`builder-config.yml`, to define the custom Collector. This file specifies the components, such as extensions, exporters, processors, receivers, and connectors, included in your custom Collector.
@@ -47,7 +43,6 @@ dist:
   name: otelcol-dev
   description: Basic OTel Collector distribution for Developers
   output_path: ./otelcol-dev
-  otelcol_version: 0.121.0
 
 extensions:
   - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/extension/storage/filestorage v0.121.0
