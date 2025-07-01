@@ -31,6 +31,10 @@ Refer to the following sections to complete these steps.
 
 Install `ocb` using the command that aligns with your system from the [OpenTelemetry building a custom Collector documentation](https://opentelemetry.io/docs/collector/custom-collector/#step-1---install-the-builder).
 
+:::{important}
+Make sure to install the version of OpenTelemetry Collector Builder that matches the desired components' version. Currently, {{ otel_col_version }} for EDOT.
+:::
+
 ### Create a builder configuration file
 
 Create a builder configuration file,`builder-config.yml`, to define the custom Collector. This file specifies the components, such as extensions, exporters, processors, receivers, and connectors, included in your custom Collector.
