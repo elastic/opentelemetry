@@ -23,7 +23,7 @@ products:
 Read on to learn how to set up {{edot-cf}} for AWS.
 
 ::::{note}
-We are working to support other popular log types and sources. Get in touch to let us know of any have specific requirements that could influence our plans.
+We are working to support other popular log types and sources. Get in touch to let us know of any specific requirements that could influence our plans.
 ::::
 
 ## Prerequisites
