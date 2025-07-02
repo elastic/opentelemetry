@@ -155,7 +155,6 @@ These are optional settings you can set in the CloudFormation template:
 | ------------------- | --- |
 | `EdotCloudForwarderTimeout` | Maximum execution time for the Lambda function, measured in seconds. Default value is `300` seconds. Minimum value is `1` second. Maximum value is `900` seconds. |
 | `EdotCloudForwarderVersion` | Version of the EDOT Cloud Forwarder. Expected format is semantic versioning, for example `0.1.5`. Defaults to the latest available patch version. Don't change this value unless advised by Elastic Support. |
-| `EdotCloudForwarderTimeout` | Maximum execution time for the Lambda function, measured in seconds. Default value is `300` seconds. Minimum value is `1` second. Maximum value is `900` seconds. |
 | `EdotCloudForwarderMemorySize` | Set the allocated memory for the Lambda function, measured in megabytes. Default value is `1024` MB. Minimum value is `128` MB. Maximum value is `10240` MB. | 
 | `EdotCloudForwarderConcurrentExecutions` | Set the maximum number of reserved concurrent executions for the Lambda function. Default value is `50`. Make sure this value doesn't exceed your AWS account's concurrency limit. |
 
