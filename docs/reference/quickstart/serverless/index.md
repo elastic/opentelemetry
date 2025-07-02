@@ -24,7 +24,7 @@ The {{motlp}} is designed for the following use cases:
 * An Elastic Observability Serverless project.
 * An {{edot}} or any system that can forward logs, metrics, or traces in OTLP format.
 
-You also need to retrieve your OTLP endpoint address and an API key. Follow these steps to retrieve the managed OTLP endpoint URL for your Serverless project.
+You also need to retrieve your OTLP endpoint address and an API key.
 
 :::{include} ../../_snippets/serverless-endpoint-api.md
 :::

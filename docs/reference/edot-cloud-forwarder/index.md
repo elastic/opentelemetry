@@ -1,6 +1,6 @@
 ---
 navigation_title: EDOT Cloud Forwarder
-description: Introduction to the EDOT Cloud Forward, the Elastic Distribution of OpenTelemetry (EDOT) Collector for Cloud providers. Send your telemetry data to Elastic Stack from AWS, GCP, and Azure.
+description: Introduction to the EDOT Cloud Forwarder, the Elastic Distribution of OpenTelemetry (EDOT) Collector for Cloud providers. Send your telemetry data to Elastic Stack from AWS, GCP, and Azure.
 applies_to:
   serverless:
     observability: preview
@@ -28,7 +28,7 @@ The Elastic Distribution of OpenTelemetry (EDOT) Cloud Forwarder provides the ED
 
 ## Get started
 
-To get started with {{edot-cf}}, select the set up guide for your cloud provider:
+To get started with {{edot-cf}}, select the setup guide for your cloud provider:
 
 - [AWS](./aws.md)
 
