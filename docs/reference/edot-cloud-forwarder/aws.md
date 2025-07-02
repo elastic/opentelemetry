@@ -124,6 +124,8 @@ Set the following settings based on the log source:
 
 For S3 logs, use the following settings:
 
+| Setting            | Description |
+| ------------------ | --- |
 | `EdotCloudForwarderS3LogsType` | The encoding format for logs in the S3 bucket. Supported options:<br>- `vpc_flow_log`: VPC Flow logs<br>- `elb_access_log`: Elastic Load Balancer (ELB) Access logs<br>- `s3_access_log`: S3 Access logs<br>- `json`: JSON-formatted logs |
 | `S3LogsJsonEncodingMode` | _(Required if `EdotCloudForwarderS3LogsType` is `json`)_<br>Defines how JSON logs are structured:<br>- `body` _(default)_: Stores logs in the request body<br>- `body_with_inline_attributes`: Logs include inline attributes |
 | `SourceS3BucketARN` | Amazon Resource Name (ARN) of the S3 bucket where logs are stored. This bucket will trigger the `edot-cloud-forwarder` Lambda function automatically. |
