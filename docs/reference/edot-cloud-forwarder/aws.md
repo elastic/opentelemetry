@@ -29,7 +29,7 @@ We are working to support other popular log types and sources. Get in touch to l
 ## Prerequisites
 
 ::::{important}
-{{edot-cf}} for AWS is not supported on {{ech}} or self-managed {{stack}}.
+{{edot-cf}} for AWS is not currently supported on {{ech}} or self-managed {{stack}}.
 ::::
 
 
