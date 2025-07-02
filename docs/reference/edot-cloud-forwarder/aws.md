@@ -108,9 +108,6 @@ These are the required settings you need:
 | `stack-name`                           | Name of the CloudFormation stack, for example, `vpc-edot-cf`<br>Do not use the same name for different sources. |
 | `OTLPEndpoint`                         | The OTLP endpoint URL used for data ingestion |
 | `ElasticApiKey`                        | API key for authentication with Elastic |
-| `stack-name`                           | Name of the CloudFormation stack. For example, `vpc-edot-cf`. Do not use the same name for different sources. |
-| `OTLPEndpoint`                         | The OTLP endpoint URL used for data ingestion. |
-| `ElasticApiKey`                        | API key for authentication with Elastic. |
 
 ### Log source settings
 
@@ -125,8 +122,6 @@ For S3 logs, use the following settings:
 | `EdotCloudForwarderS3LogsType` | The encoding format for logs in the S3 bucket. Supported options:<br>- `vpc_flow_log`: VPC Flow logs<br>- `elb_access_log`: Elastic Load Balancer (ELB) Access logs<br>- `s3_access_log`: S3 Access logs<br>- `json`: JSON-formatted logs |
 | `S3LogsJsonEncodingMode` | _(Required if `EdotCloudForwarderS3LogsType` is `json`)_<br>Defines how JSON logs are structured:<br>- `body` _(default)_: Stores logs in the request body<br>- `body_with_inline_attributes`: Logs include inline attributes |
 | `SourceS3BucketARN` | Amazon Resource Name (ARN) of the S3 bucket where logs are stored. This bucket will trigger the `edot-cloud-forwarder` Lambda function automatically. |
-| `EdotCloudForwarderS3LogsType` | The encoding format for logs in the S3 bucket. Supported options:<br>• `vpc_flow_log` – VPC Flow Logs<br>• `elb_access_log` – Elastic Load Balancer (ELB) Access Logs<br>• `s3_access_log` – S3 Access Logs<br>• `json` – JSON-formatted logs |
-| `S3LogsJsonEncodingMode` | *(Required if `EdotCloudForwarderS3LogsType` is `json`)*<br>Defines how JSON logs are structured:<br>• `body` *(default)* – Stores logs in the request body<br>• `body_with_inline_attributes` – Logs include inline attributes |
 
 ::::
 <!--
@@ -149,12 +144,13 @@ The log group must already exist in your AWS account and region. If the ARN poin
 
 These are optional settings you can set in the CloudFormation template:
 
-| `EdotCloudForwarderTimeout` | Maximum execution time for the Lambda function, measured in seconds. Default value is `300` seconds. Minimum value is `1` second. Maximum value is `900` seconds. |
+| Setting            | Description |
 | ------------------- | --- |
+| `EdotCloudForwarderTimeout` | Maximum execution time for the Lambda function, measured in seconds. Default value is `300` seconds. Minimum value is `1` second. Maximum value is `900` seconds. |
 | `EdotCloudForwarderVersion` | Version of the EDOT Cloud Forwarder. Expected format is semantic versioning, for example `0.1.5`. Defaults to the latest available patch version. Don't change this value unless advised by Elastic Support. |
 | `EdotCloudForwarderTimeout` | Maximum execution time for the Lambda function, measured in seconds. Default value is `300` seconds. Minimum value is `1` second. Maximum value is `900` seconds. |
 | `EdotCloudForwarderMemorySize` | Set the allocated memory for the Lambda function, measured in megabytes. Default value is `1024` MB. Minimum value is `128` MB. Maximum value is `10240` MB. | 
-| `EdotCloudForwarderConcurrentExecutions` | Set the maximum number of reserved concurrent executions for the Lambda function. Default value is `50`. Make sure this value doesn't exceed your AWS account's concurrency limit. |
+
 
 ## Deployment examples
 
@@ -191,7 +187,6 @@ This example deploys a CloudFormation stack to collect ALB Access logs stored in
 
 ```sh
 aws cloudformation create-stack \
-  --stack-name edot-cloud-forwarder-alb \
   --template-url https://edot-cloud-forwarder.s3.amazonaws.com/v0/latest/cloudformation/s3_logs-cloudformation.yaml \
   --capabilities CAPABILITY_NAMED_IAM \
   --region eu-central-1 \
