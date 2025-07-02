@@ -106,6 +106,20 @@ Adds an anonymous function that will be executed on each metric in the span proc
 
 Adds an anonymous function that will be executed on each log in the span processor to decide if that log should be sent to the back end.
 
+#### `addSpanAttributeInterceptor` [addSpanAttributeInterceptor]
+
+* **Type:** any Interceptor<[String:AttributeValue>]
+* **Default:** nil
+
+You can provide interceptors for all spans attributes, which will be executed on every span created, where you can read/modify them if needed.
+
+#### `addLogRecordAttributeInterceptor` [addLogRecordAttributeInterceptor]
+
+* **Type:** any Interceptor<[String:AttributeValue>]
+* **Default:** nil
+
+You can provide interceptors for all LogRecord attributes, which will be executed on every span created, where you can read or modify them if needed.
+
 ## Instrumentation configuration [instrumentationConfiguration]
 
 The `ElasticApmAgent.start` provides an additional optional parameter for configuring instrumentation. In the following example, an instrumentation configuration is passed to `Agent.start` with default values. This is equivalent to calling `ElasticApmAgent.start` with no instrumentation configuration passed.
@@ -117,7 +131,6 @@ let instrumentationConfig = InstrumentationConfigBuilder().build()
 
 ElasticApmAgent.start(with:config, instrumentationConfig)
 ```
-
 
 ### Instrumentation config options [instrumentationConfigOptions]
 

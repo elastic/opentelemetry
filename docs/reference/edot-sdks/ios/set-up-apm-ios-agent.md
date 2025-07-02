@@ -19,16 +19,16 @@ Learn how to set up and configure the Elastic Distribution of OpenTelemetry iOS 
 
 ## Requirements [requirements]
 
-This project requires Swift `5.7`, and is intended for use in Swift-base mobile apps.
+This project requires Swift `5.10`, and is intended for use in Swift-base mobile apps.
 
 Other platform requires:
 
 | platform | version |
 | --- | --- |
-| `iOS` | `11` |
-| `macOS` | `10.13` |
-| `tvOS` | `v11` |
-| `watchOS` | `3` |
+| `iOS` | `16` |
+| `macOS` | `13` |
+| `tvOS` | `16` |
+| `watchOS` | `10` |
 
 
 ## Add the SDK dependency [add-agent-dependency]
