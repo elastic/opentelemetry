@@ -2,8 +2,6 @@
 navigation_title: Managed OTLP Endpoint
 description: Reference documentation for the Elastic Cloud Managed OTLP Endpoint.
 applies_to:
-  deployment:
-    ess: development
   serverless:
     observability: preview
 products:
@@ -20,6 +18,10 @@ This endpoint is designed for the following use cases:
 * Logs and infrastructure monitoring: Logs forwarded in OTLP format and host and Kubernetes metrics in OTLP format
 * APM: Application telemetry in OTLP format
 
+::::{important}
+{{motlp}} is not currently available for {{ech}} deployments.
+::::
+
 ## Differences from the Elastic APM Endpoint
 
 The {{motlp}} ensures that OpenTelemetry data is stored without any schema translation, preserving both OpenTelemetry semantic conventions and resource attributes. It supports ingesting OTLP logs, metrics, and traces in a unified manner, ensuring consistent treatment across all telemetry data.
@@ -30,10 +32,6 @@ To send data to the {{motlp}}, you need:
 
 * An Elastic Observability Serverless project.
 * An {{edot}} or any system that can forward logs, metrics, or traces in OTLP format.
-
-::::{important}
-{{motlp}} is not currently available for {{ech}} deployments.
-::::
 
 ## Find your OTLP Endpoint
 
