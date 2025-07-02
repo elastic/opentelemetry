@@ -187,7 +187,7 @@ aws cloudformation create-stack \
 
 ::::{tab-item} ELB Access logs
 
-This example deploys a CloudFormation stack to collect ALB Access logs stored in an S3 bucket.  
+This example deploys a CloudFormation stack to collect ALB Access logs stored in an S3 bucket.
 
 ```sh
 aws cloudformation create-stack \
