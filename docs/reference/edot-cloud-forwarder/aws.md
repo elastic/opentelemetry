@@ -22,11 +22,16 @@ products:
 
 Read on to learn how to set up {{edot-cf}} for AWS.
 
+::::{note}
+We are working to support other popular log types and sources. Get in touch to let us know of any have specific requirements that could influence our plans.
+::::
+
+## Prerequisites
+
 ::::{important}
 {{edot-cf}} for AWS is not supported on {{ech}} or self-managed {{stack}}.
 ::::
 
-## Prerequisites
 
 To collect logs using {{edot-cf}} for AWS, you need:
 
