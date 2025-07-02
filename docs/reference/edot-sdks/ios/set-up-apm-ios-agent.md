@@ -30,7 +30,6 @@ Other platform requires:
 | `tvOS` | `16` |
 | `watchOS` | `10` |
 
-
 ## Add the SDK dependency [add-agent-dependency]
 
 Add the Elastic Distribution of OpenTelemetry iOS to your Xcode project or your `Package.swift`.
