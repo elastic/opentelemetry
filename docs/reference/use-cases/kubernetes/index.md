@@ -8,6 +8,7 @@ applies_to:
 products:
   - id: cloud-serverless
   - id: observability
+  - id: edot-collector
 ---
 
 # Kubernetes observability with EDOT
