@@ -5,6 +5,8 @@ applies_to:
   stack:
   serverless:
     observability:
+  product:
+    edot_node: ga
 products:
   - id: cloud-serverless
   - id: observability
@@ -33,7 +35,7 @@ curl -i $ELASTIC_OTLP_ENDPOINT \
     -H "Authorization: ApiKey $ELASTIC_API_KEY"
 ```
 
-For example, if you [configured](/reference/edot-sdks//nodejs/configuration.md#basic-configuration) EDOT Node.js with:
+For example, if you [configured](/reference/edot-sdks/nodejs/configuration.md#basic-configuration) EDOT Node.js with:
 
 ```bash
 export OTEL_EXPORTER_OTLP_ENDPOINT="https://my-deployment-abc123.ingest.us-west-2.aws.elastic.cloud"

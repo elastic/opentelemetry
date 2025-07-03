@@ -5,9 +5,12 @@ applies_to:
   stack:
   serverless:
     observability:
+  product:
+    edot_collector: ga
 products:
   - id: cloud-serverless
   - id: observability
+  - id: edot-collector
 ---
 
 #  Quickstart for hosts / VMs on Elastic Cloud Serverless
@@ -33,7 +36,7 @@ Follow these steps to deploy the EDOT Collector and EDOT OTel SDKs with {{server
 
 :::::{step} Download the EDOT Collector
 
-[Download the EDOT Collector](../../edot-collector/download.md) for your operating system.
+[Download the EDOT Collector](/reference/edot-collector/download.md) for your operating system.
 
 :::::
 
@@ -115,11 +118,11 @@ The Collector opens ports `4317` and `4318` to receive application data from loc
 
 If you want to collect telemetry from applications running on the host where you installed the EDOT Collector, instrument your target applications:
 
-- [.NET](../../edot-sdks/dotnet/setup/index.md)
-- [Java](../../edot-sdks/java/setup/index.md)
-- [Node.js](../../edot-sdks/nodejs/setup/index.md)
-- [PHP](../../edot-sdks/php/setup/index.md)
-- [Python](../../edot-sdks/python/setup/index.md)
+- [.NET](/reference/edot-sdks/dotnet/setup/index.md)
+- [Java](/reference/edot-sdks/java/setup/index.md)
+- [Node.js](/reference/edot-sdks/nodejs/setup/index.md)
+- [PHP](/reference/edot-sdks/php/setup/index.md)
+- [Python](/reference/edot-sdks/python/setup/index.md)
 
 Configure your SDKs to send the data to the local EDOT Collector using OTLP/gRPC (`http://localhost:4317`) or OTLP/HTTP (`http://localhost:4318`).
 :::::

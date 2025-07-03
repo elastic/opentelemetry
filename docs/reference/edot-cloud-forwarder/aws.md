@@ -4,10 +4,12 @@ description: Set up the EDOT Cloud Forwarder for AWS to bring your AWS logs to E
 applies_to:
   serverless:
     observability: preview
+  product:
+    edot_cf_aws: preview
 products:
   - id: cloud-serverless
   - id: observability
-  #- id: edot-cf-aws
+  - id: edot-cf
 ---
 
 # EDOT Cloud Forwarder for AWS
@@ -29,7 +31,7 @@ We are working to support other popular log types and sources. Get in touch to l
 ## Prerequisites
 
 ::::{important}
-{{edot-cf}} for AWS is not supported on {{ech}} or self-managed {{stack}}.
+{{edot-cf}} for AWS is not currently supported on {{ech}} or self-managed {{stack}}.
 ::::
 
 

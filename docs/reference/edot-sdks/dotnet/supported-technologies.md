@@ -5,24 +5,27 @@ applies_to:
   stack:
   serverless:
     observability:
+  product:
+    edot_dotnet: ga
 products:
   - id: cloud-serverless
   - id: observability
+  - id: edot-sdk
 ---
 
 # Technologies supported by EDOT .NET SDK
 
-EDOT .NET is a distribution of OpenTelemetry .NET SDK. It inherits all the [supported](../../compatibility/nomenclature.md) technologies from the [upstream SDK](https://github.com/open-telemetry/opentelemetry-dotnet).
+EDOT .NET is a distribution of OpenTelemetry .NET SDK. It inherits all the [supported](/reference/compatibility/nomenclature.md) technologies from the [upstream SDK](https://github.com/open-telemetry/opentelemetry-dotnet).
 
 ## EDOT Collector and Elastic Stack versions
 
-EDOT .NET sends data through the OpenTelemetry protocol (OTLP). While OTLP ingest works with later 8.16+ versions of the EDOT Collector, for full support use either the [EDOT Collector](../../edot-collector/index.md) versions 9.x or [{{serverless-full}}](docs-content://deploy-manage/deploy/elastic-cloud/serverless.md) for OTLP ingest.
+EDOT .NET sends data through the OpenTelemetry protocol (OTLP). While OTLP ingest works with later 8.16+ versions of the EDOT Collector, for full support use either the [EDOT Collector](/reference/edot-collector/index.md) versions 9.x or [{{serverless-full}}](docs-content://deploy-manage/deploy/elastic-cloud/serverless.md) for OTLP ingest.
 
 :::{note}
 Ingesting data from EDOT SDKs through EDOT Collector 9.x into Elastic Stack versions 8.18+ is supported.
 :::
 
-Refer to [EDOT SDKs compatibility](../../compatibility/sdks.md) for support details.
+Refer to [EDOT SDKs compatibility](/reference/compatibility/sdks.md) for support details.
 
 ## .NET Frameworks
 
@@ -51,11 +54,11 @@ Instrumentation for .NET can occur in three ways:
 
 1. Built-in OpenTelemetry native instrumentation, where libraries are instrumented using the .NET APIs, requiring no bridging libraries to be observed. Many Microsoft recent libraries implement OpenTelemetry native instrumentation, and many third parties are working on such improvements. When native OTel instrumentation exists, it may be observed directly by the OpenTelemetry SDK (and, by extension, EDOT .NET) by calling `AddSource` to register the `ActivitySource` used by the instrumented code.
 
-2. [Contrib instrumentation](https://github.com/open-telemetry/opentelemetry-dotnet-contrib) packages. These packages bridge existing telemetry from libraries to emit or enrich OpenTelemetry spans and metrics. Some packages have no dependencies and are included with EDOT .NET [by default](./setup/edot-defaults.md). Others, which bring in transitive dependencies, can be added to applications and registered with the OpenTelemetry SDK. EDOT .NET provides an instrumentation assembly scanning feature to register any contrib instrumentation without code changes.
+2. [Contrib instrumentation](https://github.com/open-telemetry/opentelemetry-dotnet-contrib) packages. These packages bridge existing telemetry from libraries to emit or enrich OpenTelemetry spans and metrics. Some packages have no dependencies and are included with EDOT .NET [by default](/reference/edot-sdks/dotnet/setup/edot-defaults.md). Others, which bring in transitive dependencies, can be added to applications and registered with the OpenTelemetry SDK. EDOT .NET provides an instrumentation assembly scanning feature to register any contrib instrumentation without code changes.
 
-3. Additional instrumentation is available for some components and libraries when using the profiler-based [zero code installation](./setup/zero-code.md), for which  EDOT .NET does not add any additional instrumentation. Find the current list supported upstream in the [.NET zero-code documentation](https://opentelemetry.io/docs/zero-code/dotnet/instrumentations/).
+3. Additional instrumentation is available for some components and libraries when using the profiler-based [zero code installation](/reference/edot-sdks/dotnet/setup/zero-code.md), for which  EDOT .NET does not add any additional instrumentation. Find the current list supported upstream in the [.NET zero-code documentation](https://opentelemetry.io/docs/zero-code/dotnet/instrumentations/).
 
-See also the EDOT .NET [opinionated defaults](./setup/edot-defaults.md) for behavior that might differ from the OpenTelemetry NET SDK defaults.
+See also the EDOT .NET [opinionated defaults](/reference/edot-sdks/dotnet/setup/edot-defaults.md) for behavior that might differ from the OpenTelemetry NET SDK defaults.
 
 :::{warning}
 Instrumentation assembly scanning is not supported for applications using native [AOT](https://learn.microsoft.com/dotnet/core/deploying/native-aot) compilation.

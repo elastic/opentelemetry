@@ -5,6 +5,8 @@ applies_to:
   stack:
   serverless:
     observability:
+  product:
+    edot_java: ga
 products:
   - id: cloud-serverless
   - id: observability
@@ -17,11 +19,11 @@ Learn how to set up the {{edot}} (EDOT) Java in various environments, including 
 
 ## Kubernetes
 
-For Kubernetes, use the OTel Kubernetes Operator. The Operator also manages the auto-instrumentation of Java applications. Follow the [quickstart guide](../../../quickstart/index.md) for Kubernetes or learn more about [instrumentation details on Kubernetes for Java](./k8s.md).
+For Kubernetes, use the OTel Kubernetes Operator. The Operator also manages the auto-instrumentation of Java applications. Follow the [quickstart guide](/reference/quickstart/index.md) for Kubernetes or learn more about [instrumentation details on Kubernetes for Java](/reference/edot-sdks/java/setup/k8s.md).
 
 ## Runtime attach
 
-For environments where modifying the JVM arguments or configuration is not possible, or when including the EDOT Java in the application binary is necessary or preferred, use the [runtime attach](./runtime-attach.md) setup option.
+For environments where modifying the JVM arguments or configuration is not possible, or when including the EDOT Java in the application binary is necessary or preferred, use the [runtime attach](/reference/edot-sdks/java/setup/runtime-attach.md) setup option.
 
 ## All other environments
 
@@ -37,7 +39,7 @@ You can download the latest release version or snapshot version of the EDOT Java
 
 ## Prerequisites
 
-Complete the steps in the [Quickstart](../../../quickstart/index.md) section that corresponds to your Elastic deployment model.
+Complete the steps in the [Quickstart](/reference/quickstart/index.md) section that corresponds to your Elastic deployment model.
 
 ##  Configure the Java agent
 
@@ -53,7 +55,7 @@ export OTEL_EXPORTER_OTLP_HEADERS="Authorization=ApiKey P....l"
 export OTEL_SERVICE_NAME="my-awesome-service"
 ```
 
-For more advanced configuration, refer to [Configuration](../configuration.md). 
+For more advanced configuration, refer to [Configuration](/reference/edot-sdks/java/configuration.md). 
 
 Configuration of those environment values depends on the deployment model.
 
@@ -67,14 +69,14 @@ When using a self-managed EDOT Collector, set the `OTEL_EXPORTER_OTLP_ENDPOINT` 
 
 ### Elastic Managed OTLP endpoint
 
-Follow the [Serverless quickstart guides](../../../quickstart/serverless/index.md) to retrieve the `<ELASTIC_OTLP_ENDPOINT>` and the `<ELASTIC_API_KEY>`.
+Follow the [Serverless quickstart guides](/reference/quickstart/serverless/index.md) to retrieve the `<ELASTIC_OTLP_ENDPOINT>` and the `<ELASTIC_API_KEY>`.
 
 - Set `OTEL_EXPORTER_OTLP_ENDPOINT` to `<ELASTIC_OTLP_ENDPOINT>`.
 - Set `OTEL_EXPORTER_OTLP_HEADERS` to include `Authorization=ApiKey <ELASTIC_API_KEY>`.
 
 ### Kubernetes
 
-Connection to the EDOT Collector is managed by the OTel Kubernetes Operator. [Follow the Quickstart Guides](../../../quickstart/index.md) for Kubernetes.
+Connection to the EDOT Collector is managed by the OTel Kubernetes Operator. [Follow the Quickstart Guides](/reference/quickstart/index.md) for Kubernetes.
 
 ## Run the Java agent
 
@@ -90,4 +92,4 @@ When modifying the JVM command line arguments is not possible, use the `JAVA_TOO
 
 Some application servers require manual steps or modification of their configuration files. Refer to [dedicated instructions](https://opentelemetry.io/docs/zero-code/java/agent/server-config/) for more details.
 
-For applications deployed with Kubernetes, use the [OpenTelemetry Operator](./k8s.md).
+For applications deployed with Kubernetes, use the [OpenTelemetry Operator](/reference/edot-sdks/java/setup/k8s.md).

@@ -5,6 +5,8 @@ applies_to:
   stack:
   serverless:
     observability:
+  product:
+    edot_collector: ga
 products:
   - id: cloud-serverless
   - id: observability
@@ -15,7 +17,7 @@ products:
 
 You can build and configure a [custom Collector](https://opentelemetry.io/docs/collector/custom-collector/) or extend the [OpenTelemetry Collector Contrib ](https://github.com/open-telemetry/opentelemetry-collector-contrib) distribution to collect logs and metrics and send them to Elastic Observability.
 
-For a more seamless experience, use the Elastic Distribution of the OpenTelemetry Collector. Refer to the [configuration](./config/index.md) docs for more information on configuring the EDOT Collector.
+For a more seamless experience, use the Elastic Distribution of the OpenTelemetry Collector. Refer to the [configuration](/reference/edot-collector/config/index.md) docs for more information on configuring the EDOT Collector.
 
 ## Build a custom Collector
 
@@ -39,7 +41,7 @@ Make sure to install the version of OpenTelemetry Collector Builder that matches
 
 Create a builder configuration file,`builder-config.yml`, to define the custom Collector. This file specifies the components, such as extensions, exporters, processors, receivers, and connectors, included in your custom Collector.
 
-The following example, `builder-config.yml`, contains the components needed to send your telemetry data to Elastic Observability. For more information on these components, refer to the [components](./components.md) documentation. Keep or remove components from the example configuration file to fit your needs.
+The following example, `builder-config.yml`, contains the components needed to send your telemetry data to Elastic Observability. For more information on these components, refer to the [components](/reference/edot-collector/components.md) documentation. Keep or remove components from the example configuration file to fit your needs.
 
 % start:edot-collector-components-ocb
 ``` yaml

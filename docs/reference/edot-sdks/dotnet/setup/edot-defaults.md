@@ -5,10 +5,13 @@ applies_to:
   stack:
   serverless:
     observability:
+  product:
+    edot_dotnet: ga
 products:
   - id: cloud-serverless
   - id: observability
   - id: edot-sdk
+
 ---
 
 # EDOT .NET opinionated defaults
@@ -29,7 +32,7 @@ EDOT .NET turns on:
 - Observation of all signals (tracing, metrics and logging).
 - OTLP exporter for all signals.
 
-When sending data to an Elastic Observability backend, OTLP through the EDOT Collector is recommended for compatibility and is required for full support. EDOT .NET enables OTLP over gRPC as the default for all signals. You can turn off this behavior through [configuration](../configuration.md).
+When sending data to an Elastic Observability backend, OTLP through the EDOT Collector is recommended for compatibility and is required for full support. EDOT .NET enables OTLP over gRPC as the default for all signals. You can turn off this behavior through [configuration](/reference/edot-sdks/dotnet/configuration.md).
 
 All signals are configured to apply EDOT .NET defaults for resource attributes through the `ResourceBuilder`.
 
@@ -239,7 +242,7 @@ Instrumentation assembly scanning is enabled by default and is designed to simpl
 Calling the `AddXyzInstrumentation` method in combination with assembly scanning, might not be safe for all instrumentations. When using EDOT .NET, remove the registration of instrumentation to avoid overhead and mitigate the potential for duplicated spans. This has a positive side-effect of simplifying the code you need to manage.
 :::
 
-If you need to configure advanced options when registering instrumentation, turn off instrumentation assembly scanning through [Configuration](../configuration.md) and prefer manually registering all instrumentation in your application code.
+If you need to configure advanced options when registering instrumentation, turn off instrumentation assembly scanning through [Configuration](/reference/edot-sdks/dotnet/configuration.md) and prefer manually registering all instrumentation in your application code.
 
 :::{warning}
 Instrumentation assembly scanning is not supported for applications using native [AOT](https://learn.microsoft.com/dotnet/core/deploying/native-aot) compilation.

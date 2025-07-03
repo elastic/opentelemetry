@@ -5,6 +5,8 @@ applies_to:
   stack:
   serverless:
     observability:
+  product:
+    edot_collector: ga
 products:
   - id: cloud-serverless
   - id: observability
@@ -14,7 +16,7 @@ products:
 
 Explore specific use cases for the {{edot}}:
 
-- [Kubernetes observability](./kubernetes/index.md)
-- [LLM observability](./llms/index.md)
+- [Kubernetes observability](/reference/use-cases/kubernetes/index.md)
+- [LLM observability](/reference/use-cases/llms/index.md)
 
 

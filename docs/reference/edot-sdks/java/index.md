@@ -5,6 +5,8 @@ applies_to:
   stack:
   serverless:
     observability:
+  product:
+    edot_java: ga
 products:
   - id: cloud-serverless
   - id: observability
@@ -28,7 +30,7 @@ In addition to all the features of OpenTelemetry Java, with EDOT Java you have a
 * Elastic-specific processors that ensure optimal compatibility when exporting OpenTelemetry signal data to an Elastic backend like an Elastic Observability deployment.
 * Preconfigured collection of tracing and metrics signals, applying some opinionated defaults, such as which sources are collected by default.
 
-Follow the step-by-step instructions in [Setup](./setup/index.md) to get started.
+Follow the step-by-step instructions in [Setup](/reference/edot-sdks/java/setup/index.md) to get started.
 
 ## Release notes
 

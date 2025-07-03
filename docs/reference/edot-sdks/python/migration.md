@@ -5,6 +5,8 @@ applies_to:
   stack:
   serverless:
     observability:
+  product:
+    edot_python: ga
 products:
   - id: cloud-serverless
   - id: observability
@@ -16,7 +18,7 @@ products:
 
 Learn the differences between the [Elastic APM Python agent](apm-agent-python://reference/index.md) and the {{edot}} Python (EDOT Python).
 
-Follow the steps to migrate your instrumentation and settings. For step-by-step instructions on setting up EDOT Python refer to [Setup](./setup/index.md).
+Follow the steps to migrate your instrumentation and settings. For step-by-step instructions on setting up EDOT Python refer to [Setup](/reference/edot-sdks/python/setup/index.md).
 
 ## Migration steps
 
@@ -84,7 +86,7 @@ For example: `OTEL_RESOURCE_ATTRIBUTES=service.version=1.2.3`.
 
 ## Performance overhead
 
-Evaluate the [differences in performance overhead](./overhead.md) between EDOT Python and Elastic APM Python agent.
+Evaluate the [differences in performance overhead](/reference/edot-sdks/python/overhead.md) between EDOT Python and Elastic APM Python agent.
 
 ## Limitations
 

@@ -5,6 +5,8 @@ applies_to:
   stack:
   serverless:
     observability:
+  product:
+    edot_collector: ga
 products:
   - id: cloud-serverless
   - id: observability
@@ -80,11 +82,11 @@ The Gateway Collector in Kubernetes receives data from all Daemon and Cluster co
 
 This multi-tier architecture in Kubernetes provides an efficient way to collect and process telemetry data at different levels of the infrastructure while minimizing resource usage and network traffic.
 
-For more details on Kubernetes deployment architecture, see [Kubernetes environments](../architecture/k8s.md).
+For more details on Kubernetes deployment architecture, see [Kubernetes environments](/reference/architecture/k8s.md).
 
 ## Direct EDOT SDK to Managed OTLP (No Collector)
 
-In some scenarios, you don't need a Collector at all. EDOT SDKs can send telemetry data directly to the [{{motlp}}](../motlp.md). This is the simplest deployment pattern for getting application telemetry data into Elastic Observability.
+In some scenarios, you don't need a Collector at all. EDOT SDKs can send telemetry data directly to the [{{motlp}}](/reference/motlp.md). This is the simplest deployment pattern for getting application telemetry data into Elastic Observability.
 
 Use direct EDOT SDK export to Managed OTLP when:
 
