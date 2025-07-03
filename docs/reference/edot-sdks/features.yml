@@ -352,17 +352,17 @@ features:
       status: not-available
       min_version: 
     Java:
-      status: not-available
-      min_version: 
+      status: tech-preview
+      min_version: 1.5.0
     Node.js:
-      status: not-available
-      min_version: 
+      status: tech-preview
+      min_version: 1.2.0
     PHP:
-      status: not-available
-      min_version: 
+      status: tech-preview
+      min_version: 1.1.0
     Python:
-      status: not-available
-      min_version: 
+      status: tech-preview
+      min_version: 1.4.0
     Android:
       status: not-available
       min_version: 
