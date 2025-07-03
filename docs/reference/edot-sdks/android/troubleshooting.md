@@ -15,7 +15,7 @@ mapped_pages:
 
 # Troubleshooting the EDOT Android SDK
 
-Use the information in this section to troubleshoot common problems. As a first step, make sure your stack is compatible with the [supported technologies](./getting-started.md#requirements) for EDOT Android and the OpenTelemetry SDK.
+Use the information in this section to troubleshoot common problems. As a first step, make sure your stack is compatible with the [supported technologies](/reference/edot-sdks/android/getting-started.md#requirements) for EDOT Android and the OpenTelemetry SDK.
 
 If you have an Elastic support contract, create a ticket in the [Elastic Support portal](https://support.elastic.co/customers/s/login/). If you don't, post in the [APM discuss forum](https://discuss.elastic.co/c/apm) or [open a GitHub issue](https://github.com/elastic/apm-SDK-android).
 
@@ -149,7 +149,7 @@ Your export endpoint URL is the value for the `OTEL_EXPORTER_OTLP_ENDPOINT` conf
 
 ### Cloud hosted and self-managed deployments
 
-For Elastic Cloud Hosted (ECH) and self-managed deployments, the export endpoint, also known as [EDOT Collector](../../edot-collector/index.md), is not available out of the box at the moment. You can still create your own service by following [creating and configuring a standalone EDOT Collector](../../edot-collector/config/default-config-standalone.md).
+For Elastic Cloud Hosted (ECH) and self-managed deployments, the export endpoint, also known as [EDOT Collector](/reference/edot-collector/index.md), is not available out of the box at the moment. You can still create your own service by following [creating and configuring a standalone EDOT Collector](/reference/edot-collector/config/default-config-standalone.md).
 
 ## Create an API key [create-api-key]
 

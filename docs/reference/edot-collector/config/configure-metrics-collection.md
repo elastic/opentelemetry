@@ -208,4 +208,4 @@ The EDOT Collector supports a wide range of metrics receivers for popular softwa
 
  - Kafka ([kafkareceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/kafkareceiver)): Receives telemetry data from Kafka, with configurable topics and encodings.
 
-For a full list of supported receivers, see the EDOT Collector components [reference](../components.md).
+For a full list of supported receivers, see the EDOT Collector components [reference](/reference/edot-collector/components.md).

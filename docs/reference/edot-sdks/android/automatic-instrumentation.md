@@ -89,7 +89,7 @@ plugins {
 product: preview
 ```
 
-You can use any instrumentation from the OpenTelemetry Android [available instrumentations](https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation) through the OTel instrumentation adapter by following these steps. The adapter is an [extended](../../compatibility/nomenclature.md#extended-components) component.
+You can use any instrumentation from the OpenTelemetry Android [available instrumentations](https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation) through the OTel instrumentation adapter by following these steps. The adapter is an [extended](/reference/compatibility/nomenclature.md#extended-components) component.
 
 :::::{stepper}
 
