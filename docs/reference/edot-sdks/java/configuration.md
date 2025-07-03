@@ -147,7 +147,7 @@ The EDOT Java agent provides the ability to control the agent log verbosity by s
 
 The following log levels are supported: `TRACE`, `DEBUG`, `INFO`, `WARN`, `ERROR`, `FATAL` and `OFF`.
 
-For [troubleshooting](./troubleshooting.md#agent-debug-logging), the `ELASTIC_OTEL_JAVAAGENT_LOG_LEVEL=DEBUG` is a recommended alternative to `OTEL_JAVAAGENT_DEBUG=true` as it provides span information in JSON format.
+For [troubleshooting](../../../troubleshooting/edot-sdks/java/index.md#agent-debug-logging), the `ELASTIC_OTEL_JAVAAGENT_LOG_LEVEL=DEBUG` is a recommended alternative to `OTEL_JAVAAGENT_DEBUG=true` as it provides span information in JSON format.
 
 This feature relies on the `OTEL_JAVAAGENT_LOGGING` configuration option to be set to `elastic` (default), the `simple` value from upstream is not supported.
 
