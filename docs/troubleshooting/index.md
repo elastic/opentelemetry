@@ -1,5 +1,5 @@
 ---
-navigation_title: Troubleshooting EDOT
+navigation_title: EDOT
 description: Troubleshooting EDOT.
 applies_to:
   stack:

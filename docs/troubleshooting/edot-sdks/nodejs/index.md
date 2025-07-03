@@ -1,5 +1,5 @@
 ---
-navigation_title: Troubleshooting
+navigation_title: Node.js
 description: Troubleshooting guide for the Elastic Distribution of OpenTelemetry Node.js (EDOT Node.js).
 applies_to:
   stack:

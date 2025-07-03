@@ -1,5 +1,5 @@
 ---
-navigation_title: EDOT SDKs
+navigation_title: SDKs
 description: Troubleshooting the EDOT SDKs.
 applies_to:
   stack:

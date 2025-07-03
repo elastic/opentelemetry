@@ -2,7 +2,7 @@
   "origin": {
     "branch": "move-tb",
     "remote": " git@github.com:alexandra5000/opentelemetry",
-    "ref": "3d1ff2666501d4feeef41fab0d7a44f28d24be0b",
+    "ref": "e4a2636cdf8a396b25a7464d4ca94d4e7b45bd2d",
     "name": "opentelemetry"
   },
   "url_path_prefix": "",
@@ -789,8 +789,7 @@
     },
     "troubleshooting/index.md": {},
     "troubleshooting/edot-collector/index.md": {},
-    "troubleshooting/edot-collector/standalone/index.md": {},
-    "troubleshooting/edot-collector/standalone/collector-oomkilled.md": {
+    "troubleshooting/edot-collector/collector-oomkilled.md": {
       "anchors": [
         "symptoms",
         "resolution",
@@ -879,7 +878,7 @@
       "anchors": {
         "!": "!"
       },
-      "to": "troubleshooting/edot-collector/standalone/collector-oomkilled.md"
+      "to": "troubleshooting/edot-collector/collector-oomkilled.md"
     },
     "reference/edot-sdks/dotnet/troubleshooting.md": {
       "anchors": {

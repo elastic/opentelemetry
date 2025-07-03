@@ -1,5 +1,5 @@
 ---
-navigation_title: Troubleshooting
+navigation_title: PHP
 description: Troubleshooting the Elastic Distribution of OpenTelemetry PHP agent.
 applies_to:
   stack:

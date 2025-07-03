@@ -1,5 +1,5 @@
 ---
-navigation_title: Troubleshooting
+navigation_title: EDOT Collector
 description: Troubleshooting common issues with the EDOT Collector.
 applies_to:
   stack:
@@ -13,7 +13,7 @@ products:
 
 # Troubleshoot the EDOT Collector
 
-Perform these checks when troubleshooting Collector issues:
+Perform these checks when troubleshooting common Collector issues:
 
 * Check logs: Review the Collector’s logs for error messages.
 * Validate configuration: Use the `--dry-run` option to test configurations.
