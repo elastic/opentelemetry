@@ -1,5 +1,5 @@
 ---
-navigation_title: Java
+navigation_title: EDOT Java
 description: Troubleshooting guide for the Elastic Distribution of OpenTelemetry (EDOT) Java Agent, covering connectivity, agent identification, and debugging.
 applies_to:
   stack:

@@ -94,3 +94,7 @@ To confirm that EDOT PHP has successfully connected to Elastic:
 :::{note}
 There might be no trace data to visualize unless you have used your application since initializing EDOT PHP.
 :::
+
+## Troubleshooting
+
+For help with common setup issues, refer to the [EDOT PHP troubleshooting guide](/troubleshooting/edot-sdks/PHP/index.md).

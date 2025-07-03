@@ -212,3 +212,7 @@ Currently EDOT Node.js does not yet have an equivalent of the [central configura
 ### Span compression
 
 EDOT Node.js does not implement [span compression](docs-content://solutions/observability/apm/spans.md#apm-spans-span-compression).
+
+## Troubleshooting
+
+If you're encountering issues during migration, refer to the [EDOT Node.js troubleshooting guide](/troubleshooting/edot-sdks/nodejs/index.md).

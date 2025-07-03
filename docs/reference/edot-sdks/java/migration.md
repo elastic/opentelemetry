@@ -216,3 +216,7 @@ apply, and the agent must be started early during application startup.
 ### Micrometer turned off by default
 
 By default, Micrometer instrumentation is inactive and doesn't capture metrics. To turn it on, use the `otel.instrumentation.micrometer.enabled=true` setting.
+
+## Troubleshooting
+
+If you're encountering issues during migration, refer to the [EDOT Java troubleshooting guide](/troubleshooting/edot-sdks/java/index.md).

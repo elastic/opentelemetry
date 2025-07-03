@@ -115,3 +115,8 @@ instrument your target applications following the setup instructions for the cor
 
 ::::
 :::::
+
+
+## Troubleshooting
+
+Having issues with EDOT? Refer to the [Troubleshooting common issues with the EDOT Collector](/troubleshooting/edot-collector/index.md) and [Troubleshooting the EDOT SDKs](/troubleshooting/edot-sdks/index.md) for help.

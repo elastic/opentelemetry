@@ -1,5 +1,5 @@
 ---
-navigation_title: PHP
+navigation_title: EDOT PHP
 description: Troubleshooting the Elastic Distribution of OpenTelemetry PHP agent.
 applies_to:
   stack:

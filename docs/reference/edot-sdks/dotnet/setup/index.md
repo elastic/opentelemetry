@@ -152,3 +152,7 @@ In .NET, use the built-in .NET APIs for each signal:
 ### Next steps
 
 Refer to the technology-specific documentation pages for further details on using EDOT .NET in those application types. The [OpenTelemetry SDK documentation](https://opentelemetry.io/docs/languages/net/getting-started/) provides more examples of working with the .NET SDK.
+
+## Troubleshooting
+
+For help with common setup issues, refer to the [EDOT .NET troubleshooting guide](/troubleshooting/edot-sdks/dotnet/index.md).

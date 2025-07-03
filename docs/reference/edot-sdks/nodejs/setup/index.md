@@ -108,3 +108,6 @@ To confirm that EDOT Node.js has be setup successfully:
 
 If you do not see your service, work through [the Troubleshooting guide](/troubleshooting/edot-sdks/nodejs/index.md).
 
+## Troubleshooting
+
+For help with common setup issues, refer to the [EDOT Node.js troubleshooting guide](/troubleshooting/edot-sdks/nodejs/index.md).

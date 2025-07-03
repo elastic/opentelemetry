@@ -20,3 +20,7 @@ Select the quickstart guide for your environment from the following list:
 - [Kubernetes on hosted](k8s.md)
 - [Docker on hosted](docker.md)
 - [Hosts or VMs on hosted](hosts_vms.md)
+
+## Troubleshooting
+
+Having issues with EDOT? Refer to the [Troubleshooting common issues with the EDOT Collector](/troubleshooting/edot-collector/index.md) and [Troubleshooting the EDOT SDKs](/troubleshooting/edot-sdks/index.md) for help.

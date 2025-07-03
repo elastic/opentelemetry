@@ -1,5 +1,5 @@
 ---
-navigation_title: .NET
+navigation_title: EDOT .NET
 description: Use the information in this section to troubleshoot common problems affecting the {{edot}} .NET.
 applies_to:
   stack:

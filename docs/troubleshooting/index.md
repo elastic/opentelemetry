@@ -1,5 +1,5 @@
 ---
-navigation_title: EDOT
+navigation_title: Elastic Distributions of OpenTelemetry (EDOT)
 description: Troubleshooting EDOT.
 applies_to:
   stack:
@@ -11,6 +11,6 @@ products:
   - id: edot-sdk
 ---
 
-# Troubleshooting
+# Troubleshooting Elastic Distributions of OpenTelemetry (EDOT)
 
 Find solutions to common issues in EDOT components and SDKs.

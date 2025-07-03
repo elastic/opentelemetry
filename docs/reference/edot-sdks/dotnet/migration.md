@@ -277,3 +277,7 @@ Instrumentation assembly scanning is not supported for applications using native
 EDOT .NET ships with a lightly modified redistribution of the OpenTelemetry SDK installation script. To instrument a .NET application automatically, download and run the installer script for your operating system from the latest [release](https://github.com/elastic/elastic-otel-dotnet/releases).
 
 Refer to the upstream OpenTelemetry SDK documentation for [.NET zero-code instrumentation](https://opentelemetry.io/docs/zero-code/net) for more examples of using the installation script.
+
+## Troubleshooting
+
+If you're encountering issues during migration, refer to the [EDOT .NET troubleshooting guide](/troubleshooting/edot-sdks/dotnet/index.md).
