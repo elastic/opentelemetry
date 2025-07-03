@@ -100,6 +100,7 @@ You can modify the following settings for EDOT Java through APM Agent Central Co
 | Send metrics | `send_metrics` | Dynamic |
 | Send logs | `send_logs` | Dynamic |
 
+Dynamic settings can be changed without having to restart the application.
 
 ## Configuration methods
 

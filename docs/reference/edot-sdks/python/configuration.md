@@ -45,6 +45,8 @@ You can modify the following settings for EDOT Python through APM Agent Central 
 |--------------|---------------------------------------------|---------|
 | Logging level | Configure EDOT Python agent logging level. | Dynamic |
 
+Dynamic settings can be changed without having to restart the application.
+
 ### OpenTelemetry configuration options
 
 EDOT Python supports all configuration options listed in the [OpenTelemetry General SDK Configuration documentation](https://opentelemetry.io/docs/languages/sdk-configuration/general/) and [OpenTelemetry Python](https://opentelemetry.io/docs/languages/python).

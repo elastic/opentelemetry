@@ -138,3 +138,5 @@ You can modify the following settings for EDOT PHP through APM Agent Central Con
 | Setting | Central configuration name | Type |
 |---------|--------------------------|------|
 | Logging level | `logging_level` | Dynamic |
+
+Dynamic settings can be changed without having to restart the application.

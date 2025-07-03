@@ -126,6 +126,8 @@ You can modify the following settings for EDOT Node.js through APM Agent Central
 | Turn off instrumentations | `deactivate_instrumentations` | Dynamic |
 | Turn off all instrumentations | `deactivate_all_instrumentations` | Dynamic |
 
+Dynamic settings can be changed without having to restart the application.
+
 ## EDOT configuration details
 
 This section includes additional details on some configuration settings that merit more explanation, or that have behavior that differs in EDOT Node.js when compared to upstream OpenTelemetry JS.
