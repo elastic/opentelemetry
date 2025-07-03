@@ -86,7 +86,7 @@ The following settings are available:
 
 ## Central configuration
 
-APM Agent Central Configuration lets you configure EDOT Java instances remotely, see [Central configuration docs](../../central-configuration.md) for more details.
+APM Agent Central Configuration lets you configure EDOT Java instances remotely, see [Central configuration docs](/reference/central-configuration.md) for more details.
 
 ### Central configuration settings
 

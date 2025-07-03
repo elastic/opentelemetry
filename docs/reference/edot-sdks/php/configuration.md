@@ -129,7 +129,7 @@ elastic_otel.enabled=true
 
 ## Central configuration
 
-APM Agent Central Configuration lets you configure EDOT PHP instances remotely, see [Central configuration docs](../../central-configuration.md) for more details.
+APM Agent Central Configuration lets you configure EDOT PHP instances remotely, see [Central configuration docs](/reference/central-configuration.md) for more details.
 
 ### Central configuration settings
 

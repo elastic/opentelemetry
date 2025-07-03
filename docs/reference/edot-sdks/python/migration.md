@@ -94,7 +94,7 @@ The following limitations apply when migrating to EDOT Python.
 
 You can manage EDOT Python configurations through the [central configuration feature](docs-content://solutions/observability/apm/apm-agent-central-configuration.md) in the Applications UI.
 
-Refer to [Central configuration](../../central-configuration.md) for more information.
+Refer to [Central configuration](/reference/central-configuration.md) for more information.
 
 ### AWS Lambda
 

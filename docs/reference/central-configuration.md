@@ -12,7 +12,7 @@ products:
 
 # Central configuration for EDOT SDKs
 
-Manage {{edot}} (EDOT) SDKs through the APM Agent Central Configuration feature in the Applications UI. Changes are automatically propagated to the deployed [EDOT SDKs](./edot-sdks/index.md). Refer to [APM Agent Central Configuration](docs-content://solutions/observability/apm/apm-agent-central-configuration.md) for more information.
+Manage {{edot}} (EDOT) SDKs through the APM Agent Central Configuration feature in the Applications UI. Changes are automatically propagated to the deployed [EDOT SDKs](/reference/edot-sdks/index.md). Refer to [APM Agent Central Configuration](docs-content://solutions/observability/apm/apm-agent-central-configuration.md) for more information.
 
 This feature implements the Open Agent Management Protocol (OpAMP). Refer to [Open Agent Management Protocol
 ](https://opentelemetry.io/docs/specs/opamp/) for more information.
@@ -22,8 +22,8 @@ This feature implements the Open Agent Management Protocol (OpAMP). Refer to [Op
 To use APM Agent Central Configuration for EDOT SDKs, you need:
 
 * An Elastic self-managed or {{ecloud}} deployment, version 9.1 or higher.
-* A standalone [EDOT Collector](./edot-collector/index.md), in either Agent or Collector mode.
-* [EDOT SDKs](./edot-sdks/index.md) instrumenting your application.
+* A standalone [EDOT Collector](/reference/edot-collector/index.md), in either Agent or Collector mode.
+* [EDOT SDKs](/reference/edot-sdks/index.md) instrumenting your application.
 
 The following versions of EDOT and {{stack}} support central configuration:
 
@@ -76,7 +76,7 @@ extensions:
           authenticator: bearertokenauth
 ```
 
-Restart the Elastic Agent to also restart the Collector and apply the changes. Refer to [EDOT Collector configuration](./edot-collector/config/default-config-standalone.md#central-configuration).
+Restart the Elastic Agent to also restart the Collector and apply the changes. Refer to [EDOT Collector configuration](/reference/edot-collector/config/default-config-standalone.md#central-configuration).
 
 ::::
 
@@ -115,9 +115,9 @@ Your application must produce and send telemetry data for the EDOT SDK to appear
 
 For a list of settings that you can configure through APM Agent Central Configuration, refer to the configuration reference of each EDOT SDK:
 
-- [EDOT Android](./edot-sdks/android/configuration.md#central-configuration)
-- [EDOT iOS](./edot-sdks/ios/configuration.md#central-configuration)
-- [EDOT Java](./edot-sdks/java/configuration.md#central-configuration)
-- [EDOT Node.js](./edot-sdks/nodejs/configuration.md#central-configuration)
-- [EDOT PHP](./edot-sdks/php/configuration.md#central-configuration)
-- [EDOT Python](./edot-sdks/python/configuration.md#central-configuration)
+% - [EDOT Android](/reference/edot-sdks/android/configuration.md#central-configuration)
+% - [EDOT iOS](/reference/edot-sdks/ios/configuration.md#central-configuration)
+- [EDOT Java](/reference/edot-sdks/java/configuration.md#central-configuration)
+- [EDOT Node.js](/reference/edot-sdks/nodejs/configuration.md#central-configuration)
+- [EDOT PHP](/reference/edot-sdks/php/configuration.md#central-configuration)
+- [EDOT Python](/reference/edot-sdks/python/configuration.md#central-configuration)

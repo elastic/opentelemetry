@@ -164,7 +164,7 @@ The following are Elastic APM PHP agent settings that you can migrate to EDOT PH
 
 You can manage EDOT PHP configurations through the [central configuration feature](docs-content://solutions/observability/apm/apm-agent-central-configuration.md) in the Applications UI.
 
-Refer to [Central configuration](../../central-configuration.md) for more information.
+Refer to [Central configuration](/reference/central-configuration.md) for more information.
 
 ## Limitations
 

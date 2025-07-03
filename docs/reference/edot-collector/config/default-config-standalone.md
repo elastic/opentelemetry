@@ -196,7 +196,7 @@ Each pipeline connects specific receivers, processors, and exporters to handle d
 
 ## Central configuration
 
-The EDOT Collector can be configured to use [APM Agent Central Configuration](docs-content://solutions/observability/apm/apm-agent-central-configuration.md). Refer to [Central configuration docs](../../central-configuration.md) for more details.
+The EDOT Collector can be configured to use [APM Agent Central Configuration](docs-content://solutions/observability/apm/apm-agent-central-configuration.md). Refer to [Central configuration docs](/reference/central-configuration.md) for more details.
 
 ### Activate the apmconfig extension
 

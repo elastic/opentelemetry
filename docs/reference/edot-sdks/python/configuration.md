@@ -35,7 +35,7 @@ Because the {{edot}} Python is an extension of OpenTelemetry Python, it supports
 
 ## Central configuration
 
-APM Agent Central Configuration lets you configure EDOT Python instances remotely, see [Central configuration docs](../../central-configuration.md) for more details.
+APM Agent Central Configuration lets you configure EDOT Python instances remotely, see [Central configuration docs](/reference/central-configuration.md) for more details.
 
 ### Central configuration settings
 

@@ -114,7 +114,7 @@ The following settings are deprecated:
 
 ## Central configuration
 
-APM Agent Central Configuration lets you configure EDOT Node.js instances remotely, see [Central configuration docs](../../central-configuration.md) for more details.
+APM Agent Central Configuration lets you configure EDOT Node.js instances remotely, see [Central configuration docs](/reference/central-configuration.md) for more details.
 
 ### Central configuration settings
 
