@@ -28,7 +28,7 @@ In addition to all the features of the OpenTelemetry Python agent, with EDOT Pyt
 * Elastic-specific processors that ensure optimal compatibility when exporting OpenTelemetry signal data to an Elastic backend like an Elastic Observability deployment.
 * Preconfigured collection of tracing and metrics signals, applying some opinionated defaults, such as which sources are collected by default.
 
-Follow the step-by-step instructions in [Setup](./setup/index.md) to get started.
+Follow the step-by-step instructions in [Setup](/reference/edot-sdks/python/setup/index.md) to get started.
 
 ## Release notes
 

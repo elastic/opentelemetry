@@ -29,7 +29,7 @@ In addition to all the features of OpenTelemetry .NET, with EDOT .NET you have a
 * Preconfigured collection of tracing and metrics signals, applying some opinionated defaults, such as which sources are collected by default. For example, the OpenTelemetry protocol [(OTLP) exporter](https://opentelemetry.io/docs/specs/otlp) is enabled by default.
 * Instrumentation assembly scanning to automatically enable instrumentation from installed contrib NuGet packages.
 
-Follow the step-by-step instructions in [Setup](./setup/index.md) to get started.
+Follow the step-by-step instructions in [Setup](/reference/edot-sdks/dotnet/setup/index.md) to get started.
 
 ## Release notes
 

@@ -19,7 +19,7 @@ Learn how to use the {{edot}} PHP (EDOT PHP) to instrument your PHP application 
 
 Before you begin, make sure you have a destination for the telemetry data collected by EDOT PHP. While EDOT PHP can export data to any OpenTelemetry Protocol (OTLP)–compatible endpoint, this guide focuses on using [Elastic Observability](https://www.elastic.co/observability) as the backend. You can either use an existing Elastic Cloud deployment or create a new one.
 
-To quickly get up and running, follow the [Elastic OpenTelemetry Quickstart guide](../../../quickstart/index.md), which walks you through:
+To quickly get up and running, follow the [Elastic OpenTelemetry Quickstart guide](/reference/quickstart/index.md), which walks you through:
 
 - Creating a free Elastic Cloud deployment.
 - Configuring your OpenTelemetry agent.
@@ -27,11 +27,11 @@ To quickly get up and running, follow the [Elastic OpenTelemetry Quickstart guid
 
 ### Operating system and PHP version
 
-Refer to [Supported technologies](../supported-technologies.md) for details about currently supported operating systems and PHP versions.
+Refer to [Supported technologies](/reference/edot-sdks/php/supported-technologies.md) for details about currently supported operating systems and PHP versions.
 
 ### Limitations
 
-Refer to [Limitations](./limitations.md) to learn about the limitations of EDOT PHP.
+Refer to [Limitations](/reference/edot-sdks/php/setup/limitations.md) to learn about the limitations of EDOT PHP.
 
 ## Download and install packages
 
