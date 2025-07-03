@@ -47,7 +47,7 @@ To retrieve your {{motlp}} endpoint address and an API key, follow these steps:
 
 To send data in OTLP format to the {{motlp}}, you need to configure your {{edot}} or any system that can forward logs, metrics, or traces in OTLP format. 
 
-Refer to the [Quickstart guides](./quickstart/index.md) for more information.
+Refer to the [Quickstart guides](/reference/quickstart/index.md) for more information.
 
 ## Compatibility
 

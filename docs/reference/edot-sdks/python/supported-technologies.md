@@ -13,17 +13,17 @@ products:
 
 # Technologies supported by EDOT Python
 
-EDOT Python is a [distribution](https://opentelemetry.io/docs/concepts/distributions/) of OpenTelemetry Python. It inherits all the [supported](../../compatibility/nomenclature.md) technologies of the OpenTelemetry Python.
+EDOT Python is a [distribution](https://opentelemetry.io/docs/concepts/distributions/) of OpenTelemetry Python. It inherits all the [supported](/reference/compatibility/nomenclature.md) technologies of the OpenTelemetry Python.
 
 ## EDOT Collector and Elastic Stack versions
 
-EDOT Python sends data through the OpenTelemetry protocol (OTLP). While OTLP ingest works with later 8.16+ versions of the EDOT Collector, for full support use either [EDOT Collector](../../edot-collector/index.md) versions 9.x or {{serverless-full}} for OTLP ingest.
+EDOT Python sends data through the OpenTelemetry protocol (OTLP). While OTLP ingest works with later 8.16+ versions of the EDOT Collector, for full support use either [EDOT Collector](/reference/edot-collector/index.md) versions 9.x or {{serverless-full}} for OTLP ingest.
 
 :::{note}
 Ingesting data from EDOT SDKs through EDOT Collector 9.x into Elastic Stack versions 8.18+ is supported.
 :::
 
-Refer to [EDOT SDKs compatibility](../../compatibility/sdks.md) for support details.
+Refer to [EDOT SDKs compatibility](/reference/compatibility/sdks.md) for support details.
 
 ## Python versions
 
@@ -39,7 +39,7 @@ This follows the [OpenTelemetry Python Version Support](https://github.com/open-
 
 ## Instrumentations
 
-Instrumentations are not installed by default. Use the [edot-bootstrap](./setup/index.md) command to automatically install the available instrumentations.
+Instrumentations are not installed by default. Use the [edot-bootstrap](/reference/edot-sdks/python/setup/index.md) command to automatically install the available instrumentations.
 
 | Name | Packages instrumented | Semantic conventions status |
 |---|---|---|---|

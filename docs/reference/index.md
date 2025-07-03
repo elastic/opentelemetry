@@ -18,7 +18,7 @@ Elastic Distributions of OpenTelemetry (EDOT) is an open-source ecosystem of [Op
 
 Each EDOT distribution is assembled with selected OpenTelemetry components and tested to ensure production readiness. This provides a reliable and optimized OpenTelemetry experience, enabling seamless adoption with confidence and expert support.
 
-[OpenTelemetry](https://opentelemetry.io/docs/) is a vendor-neutral observability framework for collecting, processing, and exporting telemetry data. If you are new to OpenTelemetry, refer to OpenTelemetry [concepts](https://opentelemetry.io/docs/concepts/) and [components](https://opentelemetry.io/docs/concepts/components/). Refer to [EDOT compared to upstream OpenTelemetry](./compatibility/edot-vs-upstream.md) for more information on how EDOT differs from upstream OpenTelemetry.
+[OpenTelemetry](https://opentelemetry.io/docs/) is a vendor-neutral observability framework for collecting, processing, and exporting telemetry data. If you are new to OpenTelemetry, refer to OpenTelemetry [concepts](https://opentelemetry.io/docs/concepts/) and [components](https://opentelemetry.io/docs/concepts/components/). Refer to [EDOT compared to upstream OpenTelemetry](/reference/compatibility/edot-vs-upstream.md) for more information on how EDOT differs from upstream OpenTelemetry.
 
 
 ## Available OpenTelemetry distributions
@@ -27,15 +27,15 @@ The following Elastic OpenTelemetry distributions are available:
 
 | Distribution | Version | Status |
 | ------------ | ------- | ------ |
-| [EDOT Collector](./edot-collector/index.md) | {{edot-collector-version}} | GA |
-| [EDOT .NET](./edot-sdks/dotnet/index.md) | {{edot-dotnet-version}} | GA |
-| [EDOT Java](./edot-sdks/java/index.md) | {{edot-java-version}} | GA |
-| [EDOT Node.js](./edot-sdks/nodejs/index.md) | {{edot-nodejs-version}} | GA |
-| [EDOT PHP](./edot-sdks/php/index.md) | {{edot-php-version}} | GA |
-| [EDOT Python](./edot-sdks/python/index.md) | {{edot-python-version}} | GA |
+| [EDOT Collector](/reference/edot-collector/index.md) | {{edot-collector-version}} | GA |
+| [EDOT .NET](/reference/edot-sdks/dotnet/index.md) | {{edot-dotnet-version}} | GA |
+| [EDOT Java](/reference/edot-sdks/java/index.md) | {{edot-java-version}} | GA |
+| [EDOT Node.js](/reference/edot-sdks/nodejs/index.md) | {{edot-nodejs-version}} | GA |
+| [EDOT PHP](/reference/edot-sdks/php/index.md) | {{edot-php-version}} | GA |
+| [EDOT Python](/reference/edot-sdks/python/index.md) | {{edot-python-version}} | GA |
 | [EDOT Android](apm-agent-android://reference/index.md) | {{edot-android-version}} | GA |
 | [EDOT iOS](apm-agent-ios://reference/index.md) | {{edot-ios-version}} | GA |
-| [EDOT Cloud Forwarder for AWS](./edot-cloud-forwarder/aws.md) | 0.1.6 | Technical Preview |
+| [EDOT Cloud Forwarder for AWS](/reference/edot-cloud-forwarder/aws.md) | 0.1.6 | Technical Preview |
 
 Each EDOT distribution undergoes production-grade testing before being declared Generally Available (GA). Elastic provides full support for GA releases in accordance with our [support matrix](https://www.elastic.co/support/matrix) and SLAs.
 
@@ -43,10 +43,10 @@ Technical Preview distributions receive best-effort support and are not covered 
 
 ## Get started
 
-Pick the right [Quickstart guide](./quickstart/index.md) for your environment or select an observability use case:
+Pick the right [Quickstart guide](/reference/quickstart/index.md) for your environment or select an observability use case:
 
-- [Monitoring on Kubernetes](./use-cases/kubernetes/index.md)
-- [LLM Observability](./use-cases/llms/index.md)
+- [Monitoring on Kubernetes](/reference/use-cases/kubernetes/index.md)
+- [LLM Observability](/reference/use-cases/llms/index.md)
 
 ## EDOT Demo environment
 

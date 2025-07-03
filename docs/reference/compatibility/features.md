@@ -12,7 +12,7 @@ products:
 
 # Elastic features available with EDOT
 
-The following table shows Elastic features and their level of support and compatibility with Elastic Distributions of OpenTelemetry (EDOT). Refer to the [SDKs Overview](../edot-sdks/index.md) for SDK-specific features.
+The following table shows Elastic features and their level of support and compatibility with Elastic Distributions of OpenTelemetry (EDOT). Refer to the [SDKs Overview](/reference/edot-sdks/index.md) for SDK-specific features.
 
 | Feature                                                     | Compatibility    | Support level    |
 | :-----------------------------------------------------------| :--------------- | :--------------- |
@@ -23,7 +23,7 @@ The following table shows Elastic features and their level of support and compat
 | *[Tail-based Sampling (TBS)]*                               | [Compatible]     | [Not supported]  |
 | [Self-managed, OTel Collector-based TBS]                    | [Compatible]     | [Not supported]  |
 | TBS managed / hosted in {{ecloud}}                          | [Incompatible]   | [Not supported]  |
-| Runtime metrics                                             | [See language-specific overview](../edot-sdks/index.md) | -                |
+| Runtime metrics                                             | [See language-specific overview](/reference/edot-sdks/index.md) | -                |
 | **Infrastructure Monitoring**                               | [Compatible]     | [Supported]      |
 | Host view^1^                                                | [Compatible]     | [Supported]      |
 | Kubernetes dashboard                                        | [Compatible]     | [Supported]      |
