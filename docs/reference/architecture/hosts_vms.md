@@ -15,7 +15,7 @@ products:
 
 On host or virtual machine environments, deploy local, per-host OpenTelemetry Collector instances, here referred to as OTel Collector in Agent Mode.
 
-![VM-Edge](/reference/images/arch-vm-edge.png)
+![VM-Edge](../images/arch-vm-edge.png)
 
 These collectors have two main purposes:
 
