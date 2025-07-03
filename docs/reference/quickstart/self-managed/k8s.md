@@ -76,6 +76,6 @@ kubectl annotate namespace YOUR_NAMESPACE instrumentation.opentelemetry.io/injec
 
 Restart your deployment to ensure the annotations and auto-instrumentations are applied.
 
-For languages where auto-instrumentation is not available, you will need to manually instrument your application. See the [Setup section in the corresponding SDK](../../edot-sdks/index.md).
+For languages where auto-instrumentation is not available, you will need to manually instrument your application. See the [Setup section in the corresponding SDK](/reference/edot-sdks/index.md).
 ::::
 :::::

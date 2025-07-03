@@ -44,6 +44,7 @@ toc:
   - file: edot-collector/index.md
     children:
       - file: edot-collector/download.md
+      - file: edot-collector/modes.md
       - file: edot-collector/config/index.md
         children:
           - file: edot-collector/config/default-config-standalone.md
@@ -54,10 +55,13 @@ toc:
         children:
           - file: edot-collector/components.md
           - file: edot-collector/custom-collector.md
-      - hidden: edot-collector/troubleshooting.md
+      - hidden: edot-collector/troubleshooting-edot-collector.md
       - file: edot-collector/troubleshooting/index.md
         children:
         - file: edot-collector/troubleshooting/collector-oomkilled.md
+  - file: edot-cloud-forwarder/index.md
+    children:
+      - file: edot-cloud-forwarder/aws.md
   - file: edot-sdks/index.md
     children:
       - file: edot-sdks/dotnet/index.md
@@ -117,3 +121,4 @@ toc:
           - file: edot-sdks/python/troubleshooting.md
           - file: edot-sdks/python/migration.md
           - file: edot-sdks/python/overhead.md
+  - file: motlp.md

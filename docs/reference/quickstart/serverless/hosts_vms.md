@@ -33,19 +33,14 @@ Follow these steps to deploy the EDOT Collector and EDOT OTel SDKs with {{server
 
 :::::{step} Download the EDOT Collector
 
-[Download the EDOT Collector](../../edot-collector/download.md) for your operating system.
+[Download the EDOT Collector](/reference/edot-collector/download.md) for your operating system.
 
 :::::
 
 :::::{step} Configure the EDOT Collector
 
-Follow these steps to retrieve the managed OTLP endpoint URL for your Serverless project:
-
-1. In Elastic Cloud, open your Observability project.
-2. Go to **Add data**, **Application**, **OpenTelemetry**.
-3. Select **Managed OTLP Endpoint** in the second step.
-4. Copy the OTLP endpoint configuration value.
-5. Select Create API Key to generate an API key.
+:::{include} ../../_snippets/serverless-endpoint-api.md
+:::
 
 Replace `<ELASTIC_OTLP_ENDPOINT>` and `<ELASTIC_API_KEY>` before applying the following command.
 
@@ -120,11 +115,11 @@ The Collector opens ports `4317` and `4318` to receive application data from loc
 
 If you want to collect telemetry from applications running on the host where you installed the EDOT Collector, instrument your target applications:
 
-- [.NET](../../edot-sdks/dotnet/setup/index.md)
-- [Java](../../edot-sdks/java/setup/index.md)
-- [Node.js](../../edot-sdks/nodejs/setup/index.md)
-- [PHP](../../edot-sdks/php/setup/index.md)
-- [Python](../../edot-sdks/python/setup/index.md)
+- [.NET](/reference/edot-sdks/dotnet/setup/index.md)
+- [Java](/reference/edot-sdks/java/setup/index.md)
+- [Node.js](/reference/edot-sdks/nodejs/setup/index.md)
+- [PHP](/reference/edot-sdks/php/setup/index.md)
+- [Python](/reference/edot-sdks/python/setup/index.md)
 
 Configure your SDKs to send the data to the local EDOT Collector using OTLP/gRPC (`http://localhost:4317`) or OTLP/HTTP (`http://localhost:4318`).
 :::::

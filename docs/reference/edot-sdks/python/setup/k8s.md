@@ -15,10 +15,10 @@ products:
 
 Learn how to instrument Python applications on Kubernetes using the OpenTelemetry Operator, the {{edot}} (EDOT) Collector, and the EDOT Python SDK.
 
-- For general knowledge about the EDOT Python SDK, refer to the [EDOT Java Intro page](../index.md).
+- For general knowledge about the EDOT Python SDK, refer to the [EDOT Java Intro page](/reference/edot-sdks/python/index.md).
 - For Python auto-instrumentation specifics, refer to [OpenTelemetry Operator Python auto-instrumentation](https://opentelemetry.io/docs/kubernetes/operator/automatic/#python).
-- To manually instrument your Python application code (by customizing spans and metrics), refer to [EDOT Python manual instrumentation](./manual-instrumentation.md).
-- For general information about instrumenting applications on Kubernetes, refer to [instrumenting applications on Kubernetes](../../../use-cases/kubernetes/instrumenting-applications.md).
+- To manually instrument your Python application code (by customizing spans and metrics), refer to [EDOT Python manual instrumentation](/reference/edot-sdks/python/setup/manual-instrumentation.md).
+- For general information about instrumenting applications on Kubernetes, refer to [instrumenting applications on Kubernetes](/reference/use-cases/kubernetes/instrumenting-applications.md).
 
 ## Supported environments and configuration
 
@@ -43,7 +43,7 @@ Following this example, you can learn how to:
 
 For this example, we assume the application you're instrumenting is a deployment named `python-app` running in the `python-ns` namespace.
 
-1. Ensure you have successfully [installed the OpenTelemetry Operator](../../../use-cases/kubernetes/deployment.md), and confirm that the following `Instrumentation` object exists in the system:
+1. Ensure you have successfully [installed the OpenTelemetry Operator](/reference/use-cases/kubernetes/deployment.md), and confirm that the following `Instrumentation` object exists in the system:
 
     ```bash
     $ kubectl get instrumentation -n opentelemetry-operator-system
@@ -85,7 +85,7 @@ For this example, we assume the application you're instrumenting is a deployment
         kubectl rollout restart deployment python-app -n python-ns
         ```
 
-4. Verify the [auto-instrumentation resources](../../../use-cases/kubernetes/instrumenting-applications.md#how-auto-instrumentation-works) are injected in the Pod:
+4. Verify the [auto-instrumentation resources](/reference/use-cases/kubernetes/instrumenting-applications.md#how-auto-instrumentation-works) are injected in the Pod:
 
     Run a `kubectl describe` of one of your application pods and check:
 
@@ -154,7 +154,7 @@ For this example, we assume the application you're instrumenting is a deployment
 
 5. Confirm data is flowing to **{{kib}}**:
 
-    - Open **Observability**, **Applications**, **Service inventory**, and determine if:
+    - Open **Observability** → **Applications** → **Service inventory**, and determine if:
         - The application appears in the list of services.
         - The application shows transactions and metrics.
         - If [python logs instrumentation](https://opentelemetry.io/docs/kubernetes/operator/automatic/#auto-instrumenting-python-logs) is enabled, the application logs should  appear in the Logs tab.
@@ -163,8 +163,8 @@ For this example, we assume the application you're instrumenting is a deployment
         - `k8s.deployment.name: "python-app"` (adapt the query filter to your use case)
         - `k8s.pod.name: python-app*` (adapt the query filter to your use case)
 
-    Note that the container logs are not provided by the instrumentation library, but by the DaemonSet collector deployed as part of the [operator installation](../../../use-cases/kubernetes/deployment.md).
+    Note that the container logs are not provided by the instrumentation library, but by the DaemonSet collector deployed as part of the [operator installation](/reference/use-cases/kubernetes/deployment.md).
 
 ## Troubleshooting
 
-Refer to [troubleshoot auto-instrumentation](../../../use-cases/kubernetes/instrumenting-applications.md#troubleshooting-auto-instrumentation) for further analysis.
+Refer to [troubleshoot auto-instrumentation](/reference/use-cases/kubernetes/instrumenting-applications.md#troubleshooting-auto-instrumentation) for further analysis.

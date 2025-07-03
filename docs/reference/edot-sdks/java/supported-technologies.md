@@ -13,13 +13,13 @@ products:
 
 # Technologies supported by the EDOT Java Agent
 
-The EDOT Java agent is a [distribution](https://opentelemetry.io/docs/concepts/distributions/) of [OpenTelemetry Java Instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation) agent. It inherits all the [supported](../../compatibility/nomenclature.md) technologies of the OpenTelemetry Java Instrumentation.
+The EDOT Java agent is a [distribution](https://opentelemetry.io/docs/concepts/distributions/) of [OpenTelemetry Java Instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation) agent. It inherits all the [supported](/reference/compatibility/nomenclature.md) technologies of the OpenTelemetry Java Instrumentation.
 
 ## EDOT Collector and Elastic Stack versions
 
-The EDOT Java agent sends data through the OpenTelemetry protocol (OTLP). While OTLP ingest works with later 8.16+ versions of the EDOT Collector, for full support use either [EDOT Collector](../../edot-collector/index.md) versions 9.x or [{{serverless-full}}](docs-content://deploy-manage/deploy/elastic-cloud/serverless.md) for OTLP ingest.
+The EDOT Java agent sends data through the OpenTelemetry protocol (OTLP). While OTLP ingest works with later 8.16+ versions of the EDOT Collector, for full support use either [EDOT Collector](/reference/edot-collector/index.md) versions 9.x or [{{serverless-full}}](docs-content://deploy-manage/deploy/elastic-cloud/serverless.md) for OTLP ingest.
 
-Refer to [EDOT SDKs compatibility](../../compatibility/sdks.md) for support details.
+Refer to [EDOT SDKs compatibility](/reference/compatibility/sdks.md) for support details.
 
 :::{note}
 Ingesting data from EDOT SDKs through EDOT Collector 9.x into Elastic Stack versions 8.18+ is supported.
@@ -27,7 +27,11 @@ Ingesting data from EDOT SDKs through EDOT Collector 9.x into Elastic Stack vers
 
 ## JVM versions
 
-The EDOT Java agent supports JVM (OpenJDK, OpenJ9) versions 8+. This follows from the [OpenTelemetry supported JMVs](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md#jvms-and-operating-systems).
+The EDOT Java agent supports Java Virtual Machine (OpenJDK, OpenJ9) versions 8+. This follows from the [OpenTelemetry supported JMVs](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md#jvms-and-operating-systems).
+
+## JVM languages
+
+The EDOT Java agent is compatible with all JVM languages supported by the JVM version 8 and higher.
 
 ## Application servers
 
@@ -41,7 +45,7 @@ Note that [some supported technologies are deactivated by default](https://githu
 
 The EDOT Java agent also supports technologies listed here that are not available in the [OpenTelemetry Java Instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation).
 
-Refer to the [EDOT Java agent configuration](./configuration.md#configuration-options) for defaults that might differ from the OpenTelemetry Java Instrumentation.
+Refer to the [EDOT Java agent configuration](/reference/edot-sdks/java/configuration.md#configuration-options) for defaults that might differ from the OpenTelemetry Java Instrumentation.
 
 ## OpenAI Client instrumentation
 

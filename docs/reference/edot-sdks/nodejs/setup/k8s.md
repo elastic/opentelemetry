@@ -15,16 +15,16 @@ products:
 
 Learn how to instrument Node.js applications on Kubernetes, using the OpenTelemetry Operator, the {{edot}} (EDOT) Collectors, and the EDOT Node.js SDK.
 
-- For general knowledge about the EDOT Node.js SDK, refer to the [EDOT Node.js Intro page](../index.md) and [Configuration](../configuration.md).
+- For general knowledge about the EDOT Node.js SDK, refer to the [EDOT Node.js Intro page](/reference/edot-sdks/nodejs/index.md) and [Configuration](/reference/edot-sdks/nodejs/configuration.md).
 - For Node.js auto-instrumentation specifics, refer to [OpenTelemetry Operator Node.js auto-instrumentation](https://opentelemetry.io/docs/kubernetes/operator/automatic/#nodejs).
-- For general information about instrumenting applications on Kubernetes, refer to [instrumenting applications on Kubernetes](../../../use-cases/kubernetes/instrumenting-applications.md).
+- For general information about instrumenting applications on Kubernetes, refer to [instrumenting applications on Kubernetes](/reference/use-cases/kubernetes/instrumenting-applications.md).
 
 ## Instrument a Node.js app on Kubernetes
 
 ::::::{stepper}
 
 ::::{step} Ensure the OpenTelemetry Operator and Instrumentation object exist
-Ensure you have successfully [installed the OpenTelemetry Operator](../../../use-cases/kubernetes/deployment.md), and confirm that the following `Instrumentation` object exists in the system:
+Ensure you have successfully [installed the OpenTelemetry Operator](/reference/use-cases/kubernetes/deployment.md), and confirm that the following `Instrumentation` object exists in the system:
 
 ```bash
 $ kubectl get instrumentation -n opentelemetry-operator-system
@@ -73,7 +73,7 @@ Once the annotation has been set, restart the application to create new Pods and
 ::::
 
 ::::{step} Verify auto-instrumentation resources in the Pods
-Verify the [auto-instrumentation resources](../../../use-cases/kubernetes/instrumenting-applications.md#how-auto-instrumentation-works) are injected in the Pods:
+Verify the [auto-instrumentation resources](/reference/use-cases/kubernetes/instrumenting-applications.md#how-auto-instrumentation-works) are injected in the Pods:
 
 Run a `kubectl describe` of one of your application Pods and check:
 
@@ -147,7 +147,7 @@ Run a `kubectl describe` of one of your application Pods and check:
 ::::{step} Confirm data is flowing to {{kib}}
 Confirm data is flowing to **{{kib}}**:
 
-- Open **Observability**, **Applications**, **Service inventory**, and determine if:
+- Open **Observability** → **Applications** → **Service inventory**, and determine if:
     - The application appears in the list of services (`nodejs-app` in the example).
     - The application shows transactions and metrics.
 
@@ -159,11 +159,11 @@ Confirm data is flowing to **{{kib}}**:
     - `k8s.deployment.name: "nodejs-app"` (adapt the query filter to your use case).
     - `k8s.pod.name: nodejs-app*` (adapt the query filter to your use case).
 
-Note that the container logs are not provided by the instrumentation library, but by the DaemonSet collector deployed as part of the [operator installation](../../../use-cases/kubernetes/deployment.md).
+Note that the container logs are not provided by the instrumentation library, but by the DaemonSet collector deployed as part of the [operator installation](/reference/use-cases/kubernetes/deployment.md).
 ::::
 
 ::::::
 
 ## Troubleshooting
 
-Refer to [troubleshoot auto-instrumentation](../../../use-cases/kubernetes/instrumenting-applications.md#troubleshooting-auto-instrumentation) for further analysis.
+Refer to [troubleshoot auto-instrumentation](/reference/use-cases/kubernetes/instrumenting-applications.md#troubleshooting-auto-instrumentation) for further analysis.
