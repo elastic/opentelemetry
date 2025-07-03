@@ -74,7 +74,7 @@ Replace the `{MyServerlessEndpoint}` and `{MyEncodedApiKey}` placeholders above 
 
 ### Configure EDOT .NET
 
-Several configuration settings are available to control the additional features offered by EDOT .NET. These might be configured using environment variables, `IConfiguration` and/or code-based configuration. Refer to [Configuration](../configuration.md) documentation for more details.
+Several configuration settings are available to control the additional features offered by EDOT .NET. These might be configured using environment variables, `IConfiguration` and/or code-based configuration. Refer to [Configuration](/reference/edot-sdks/dotnet/configuration.md) documentation for more details.
 
 As an example, manual code-based configuration can be used to disable the instrumentation assembly scanning feature.
 

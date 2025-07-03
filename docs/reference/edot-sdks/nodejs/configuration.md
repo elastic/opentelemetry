@@ -167,7 +167,7 @@ In addition, EDOT Node.js always includes the [`telemetry.distro.*` resource att
 `OTEL_NODE_DISABLED_INSTRUMENTATIONS` is a comma-separated list of instrumentation names to disable, from the default set.
 `OTEL_NODE_ENABLED_INSTRUMENTATIONS` is a comma-separated list of instrumentation names to enable. Specifying this results in *only* those instrumentations being enabled.
 
-The default set of enabled instrumentations is [the set of included instrumentations](./supported-technologies.md#instrumentations), minus any that are noted as ["disabled by default"](./supported-technologies.md#disabled-instrumentations).
+The default set of enabled instrumentations is [the set of included instrumentations](/reference/edot-sdks/nodejs/supported-technologies.md#instrumentations), minus any that are noted as ["disabled by default"](/reference/edot-sdks/nodejs/supported-technologies.md#disabled-instrumentations).
 
 EDOT Node.js handles these settings the same as the upstream [`@opentelemetry/auto-instrumentations-node`](https://github.com/open-telemetry/opentelemetry-js-contrib/blob/main/metapackages/auto-instrumentations-node/README.md#usage-auto-instrumentation), with one addition. In `@opentelemetry/auto-instrumentations-node`, the name of an instrumentation is the name of the package with the `@opentelemetry/instrumentation-` prefix removed -- `cassandra-driver` refers to the instrumentation provided by `@opentelemetry/instrumentation-cassandra`. EDOT Node.js can include instrumentations that do not have this prefix, e.g. `@elastic/opentelemetry-instrumentation-openai`. In these cases, the "name" for the instrumentation is the full package name. For example, to enable only instrumentation for openai, http, fastify, and pino one could use:
 
@@ -189,7 +189,7 @@ Setting `ELASTIC_OTEL_METRICS_DISABLED` to `true` turns off metrics export by th
 
 ### `ELASTIC_OTEL_HOST_METRICS_DISABLED` details [elastic_otel_host_metrics_disabled-details]
 
-EDOT Node.js collects and exports [host metrics](./metrics.md#process-and-runtime-metrics) by default, using the `@opentelemetry/host-metrics` package. To turn off host metrics collection, set the `ELASTIC_HOST_OTEL_METRICS_DISABLED` environment variable to `true`.
+EDOT Node.js collects and exports [host metrics](/reference/edot-sdks/nodejs/metrics.md#process-and-runtime-metrics) by default, using the `@opentelemetry/host-metrics` package. To turn off host metrics collection, set the `ELASTIC_HOST_OTEL_METRICS_DISABLED` environment variable to `true`.
 
 ### `OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE` details [otel_exporter_otlp_metrics_temporality_preference-details]
 

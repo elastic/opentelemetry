@@ -16,6 +16,11 @@ cross_links:
   - cloud
   - cloud-on-k8s
   - docs-content
+  - elastic-otel-dotnet
+  - elastic-otel-java
+  - elastic-otel-node
+  - elastic-otel-php
+  - elastic-otel-python
   - elasticsearch
   - kibana
   - integrations
@@ -37,12 +42,13 @@ subs:
   edot-java-version: 1.4.1
   edot-nodejs-version: 1.1.1
   edot-php-version: 1.0.0
-  edot-python-version: 1.3.0
+  edot-python-version: 1.4.0
 
   # Substitutions
   motlp: Elastic Cloud Managed OTLP Endpoint
   edot: Elastic Distribution of OpenTelemetry
   ecloud:   "Elastic Cloud"
+  edot-cf:   "EDOT Cloud Forwarder"
   ech:   "Elastic Cloud Hosted"
   ess:   "Elasticsearch Service"
   ece:   "Elastic Cloud Enterprise"

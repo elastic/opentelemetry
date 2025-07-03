@@ -32,4 +32,8 @@ In addition to all the features of OpenTelemetry PHP, with EDOT PHP you have acc
 * Additional runtime features such as automatic root span creation, URL grouping, and inferred spans to provide richer and more structured trace data with minimal setup.
 * Compatibility with APM Agent Central Configuration to modify the settings of the EDOT PHP agent without having to restart the application.
 
-Follow the step-by-step instructions in [Setup](./setup/index.md) to get started.
+Follow the step-by-step instructions in [Setup](/reference/edot-sdks/php/setup/index.md) to get started.
+
+## Release notes
+
+For the latest release notes, including known issues, deprecations, and breaking changes, refer to [EDOT PHP release notes](elastic-otel-php://release-notes/index.md)

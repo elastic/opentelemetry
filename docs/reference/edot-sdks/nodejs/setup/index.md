@@ -30,13 +30,13 @@ export OTEL_SERVICE_NAME="my-app"
 node --import @elastic/opentelemetry-node my-app.js
 ```
 
-If you are deploying in Kubernetes, see the [Kubernetes setup guide](./k8s.md).
+If you are deploying in Kubernetes, see the [Kubernetes setup guide](/reference/edot-sdks/nodejs/setup/k8s.md).
 
 ## Prerequisites
 
 Before getting started, you need somewhere to send the gathered OpenTelemetry data, so it can be viewed and analyzed. This doc assumes you're using an Elastic Observability deployment. You can use an existing one or set up a new one.
 
-Follow the EDOT [Quickstart guide](../../../quickstart/index.md) to get a deployment and gather the `ELASTIC_OTLP_ENDPOINT` and `ELASTIC_API_KEY` pieces of data that you need to configure the EDOT Node.js SDK.
+Follow the EDOT [Quickstart guide](/reference/quickstart/index.md) to get a deployment and gather the `ELASTIC_OTLP_ENDPOINT` and `ELASTIC_API_KEY` pieces of data that you need to configure the EDOT Node.js SDK.
 
 ## Installation
 
@@ -58,8 +58,8 @@ For example, all the OpenTelemetry [General SDK Configuration env vars](https://
 
 To configure EDOT Node.js, as a typical minimum you need:
 
-* `OTEL_EXPORTER_OTLP_ENDPOINT`: The full URL of an OpenTelemetry Collector where data is sent. When using Elastic Observability, this is the ingest endpoint of an {{serverless-full}} project or the URL of a deployed [EDOT Collector](../../../edot-collector/index.md). Set this to the `ELASTIC_OTLP_ENDPOINT` value as described in the [EDOT Quickstart pages](../../../quickstart/index.md).
-* `OTEL_EXPORTER_OTLP_HEADERS`: A comma-separated list of HTTP headers used for exporting data, typically used to set the `Authorization` header with auth information. Get an `ELASTIC_API_KEY` as described in the [EDOT Quickstart pages](../../../quickstart/index.md) and set this to `"Authorization=ApiKey ELASTIC_API_KEY"`.
+* `OTEL_EXPORTER_OTLP_ENDPOINT`: The full URL of an OpenTelemetry Collector where data is sent. When using Elastic Observability, this is the ingest endpoint of an {{serverless-full}} project or the URL of a deployed [EDOT Collector](/reference/edot-collector/index.md). Set this to the `ELASTIC_OTLP_ENDPOINT` value as described in the [EDOT Quickstart pages](/reference/quickstart/index.md).
+* `OTEL_EXPORTER_OTLP_HEADERS`: A comma-separated list of HTTP headers used for exporting data, typically used to set the `Authorization` header with auth information. Get an `ELASTIC_API_KEY` as described in the [EDOT Quickstart pages](/reference/quickstart/index.md) and set this to `"Authorization=ApiKey ELASTIC_API_KEY"`.
 * `OTEL_SERVICE_NAME`: The name of your service, used to distinguish telemetry data from other services in your system. If not set, it defaults to `unknown_service:node`.
 
 :::{note}
@@ -75,7 +75,7 @@ Additional other common configuration settings that might be useful include:
 * `OTEL_LOG_LEVEL=verbose`: This can be used to get more internal logging data from EDOT Node.js when investigating issues with telemetry.
 * `OTEL_SDK_DISABLED=true`: This can be used to fully disable EDOT Node.js, perhaps when troubleshooting.
 
-For more information on all the available configuration options, refer to [Configuration](../configuration.md).
+For more information on all the available configuration options, refer to [Configuration](/reference/edot-sdks/nodejs/configuration.md).
 
 ## Start EDOT Node.js
 
@@ -94,7 +94,7 @@ export NODE_OPTIONS="--import @elastic/opentelemetry-node"
 node my-app.js
 ```
 
-EDOT Node.js automatically instruments popular modules, listed in [Supported technologies](../supported-technologies.md), used by your service, and send traces, metrics, and logs telemetry data (using OTLP) to your configured observability backend.
+EDOT Node.js automatically instruments popular modules, listed in [Supported technologies](/reference/edot-sdks/nodejs/supported-technologies.md), used by your service, and send traces, metrics, and logs telemetry data (using OTLP) to your configured observability backend.
 
 ## Confirm instrumentation is working
 
@@ -104,5 +104,5 @@ To confirm that EDOT Node.js has be setup successfully:
 2. Go to **Applications** → **Service Inventory** in your Elastic Observability deployment.
 3. Find the name of your service. It can take a minute or two after starting your service with EDOT Node.js for the service to show up in this list.
 
-If you do not see your service, work through [the Troubleshooting guide](../troubleshooting.md).
+If you do not see your service, work through [the Troubleshooting guide](/reference/edot-sdks/nodejs/troubleshooting.md).
 

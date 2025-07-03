@@ -29,4 +29,8 @@ In addition to all the features of the OpenTelemetry Python agent, with EDOT Pyt
 * Preconfigured collection of tracing and metrics signals, applying some opinionated defaults, such as which sources are collected by default.
 * Compatibility with APM Agent Central Configuration to modify the settings of the EDOT Python agent without having to restart the application.
 
-Follow the step-by-step instructions in [Setup](./setup/index.md) to get started.
+Follow the step-by-step instructions in [Setup](/reference/edot-sdks/python/setup/index.md) to get started.
+
+## Release notes
+
+For the latest release notes, including known issues, deprecations, and breaking changes, refer to [EDOT Python release notes](elastic-otel-python://release-notes/index.md)

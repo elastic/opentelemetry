@@ -18,9 +18,9 @@ The EDOT Java agent is a [distribution](https://opentelemetry.io/docs/concepts/d
 The EDOT Java agent also provides:
 
 - Exclusive features that are not available in the [OpenTelemetry Java Instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation).
-- Features of [OpenTelemetry Java Instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation) with [different default configuration](./configuration.md#configuration-options).
+- Features of [OpenTelemetry Java Instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation) with [different default configuration](/reference/edot-sdks/java/configuration.md#configuration-options).
 
-In addition to the features listed, refer to [Supported technologies](./supported-technologies.md).
+In addition to the features listed, refer to [Supported technologies](/reference/edot-sdks/java/supported-technologies.md).
 
 ## Resource attributes
 
@@ -65,3 +65,15 @@ Refer to [Central configuration](../../central-configuration.md) for more inform
 [Universal Profiling](https://www.elastic.co/observability/universal-profiling) integration provides the ability to correlate traces with profiling data from the Elastic universal profiler. This feature is turned on by default on supported systems, and turned off otherwise.
 
 Refer to [universal-profiling-integration](https://github.com/elastic/elastic-otel-java/tree/main/universal-profiling-integration) for details and configuration options.
+
+## Baggage
+
+[Baggage](https://opentelemetry.io/docs/concepts/signals/baggage/) provides a key-value store that allows to store
+and propagate contextual information to traces, metrics, and logs across services.
+
+This feature requires minimal code changes for creating and accessing the baggage using the [OpenTelemetry Java API](https://github.com/open-telemetry/opentelemetry-java). Baggage entries can be automatically added to spans and logs through these [configuration](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/baggage-processor#usage-with-sdk-auto-configuration) settings:
+
+- `OTEL_JAVA_EXPERIMENTAL_SPAN_ATTRIBUTES_COPY_FROM_BAGGAGE_INCLUDE`
+- `OTEL_JAVA_EXPERIMENTAL_LOG_ATTRIBUTES_COPY_FROM_BAGGAGE_INCLUDE`
+
+Refer to [baggage-processor](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/baggage-processor) and the [baggage example](https://github.com/elastic/elastic-otel-java/tree/main/examples/baggage) for more details.

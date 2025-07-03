@@ -13,17 +13,17 @@ products:
 
 # Technologies supported by the EDOT Node.js SDK
 
-The EDOT Node.js agent is a [distribution](https://opentelemetry.io/docs/concepts/distributions/) of OpenTelemetry Node.js. It inherits all the [supported](../../compatibility/nomenclature.md) technologies of the OpenTelemetry Node.js.
+The EDOT Node.js agent is a [distribution](https://opentelemetry.io/docs/concepts/distributions/) of OpenTelemetry Node.js. It inherits all the [supported](/reference/compatibility/nomenclature.md) technologies of the OpenTelemetry Node.js.
 
 ## EDOT Collector and Elastic Stack versions
 
-The {{edot}} Node.js (EDOT Node.js) sends data through the OpenTelemetry protocol (OTLP). While OTLP ingest works with later 8.16+ versions of the EDOT Collector, for full support use either [EDOT Collector](../../edot-collector/index.md) versions 9.x or [{{serverless-full}}](docs-content://deploy-manage/deploy/elastic-cloud/serverless.md) for OTLP ingest.
+The {{edot}} Node.js (EDOT Node.js) sends data through the OpenTelemetry protocol (OTLP). While OTLP ingest works with later 8.16+ versions of the EDOT Collector, for full support use either [EDOT Collector](/reference/edot-collector/index.md) versions 9.x or [{{serverless-full}}](docs-content://deploy-manage/deploy/elastic-cloud/serverless.md) for OTLP ingest.
 
 :::{note}
 Ingesting data from EDOT SDKs through EDOT Collector 9.x into Elastic Stack versions 8.18+ is supported.
 :::
 
-Refer to [EDOT SDKs compatibility](../../compatibility/sdks.md) for support details.
+Refer to [EDOT SDKs compatibility](/reference/compatibility/sdks.md) for support details.
 
 ## Node.js versions
 
@@ -96,7 +96,7 @@ The following instrumentations are included in EDOT Node.js, but deactivated by 
 - `@opentelemetry/instrumentation-fs` (Deactivated upstream in [open-telemetry/opentelemetry-js-contrib#2467](https://github.com/open-telemetry/opentelemetry-js-contrib/pull/2467).)
 - `@opentelemetry/instrumentation-fastify` (Deprecated upstream and slated for removal. Refer to [open-telemetry/opentelemetry-js-contrib#2652](https://github.com/open-telemetry/opentelemetry-js-contrib/pull/2652))
 
-To turn on these instrumentations, use the [`OTEL_NODE_ENABLED_INSTRUMENTATIONS` environment variable](./configuration.md#otel_node_disabledenabled_instrumentations-details). Make sure you list all the instrumentations you need for your service since only the ones in that list will be activated. For example:
+To turn on these instrumentations, use the [`OTEL_NODE_ENABLED_INSTRUMENTATIONS` environment variable](/reference/edot-sdks/nodejs/configuration.md#otel_node_disabledenabled_instrumentations-details). Make sure you list all the instrumentations you need for your service since only the ones in that list will be activated. For example:
 
 ```bash
 export OTEL_EXPORTER_OTLP_ENDPOINT="https://my-deployment-abc123.ingest.us-west-2.aws.elastic.cloud"
