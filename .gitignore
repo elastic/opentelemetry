@@ -16,3 +16,4 @@ __pycache__
 
 test/operator/dotnet/obj/**
 docs/.artifacts
+.artifacts

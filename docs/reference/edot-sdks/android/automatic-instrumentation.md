@@ -67,7 +67,7 @@ elasticAgent {
 Turning off byte-code instrumentation might affect the ability of some [automatic instrumentations](#supported-instrumentations) to generate telemetry.
 :::
 
-## Supported instrumentations
+## Supported instrumentations [supported-instrumentations]
 
 The following automatic instrumentations are supported.
 

@@ -47,8 +47,8 @@ For compatibility of language-specific technologies check out the following page
 - [Supported Technologies - Node.js](/reference/edot-sdks/nodejs/supported-technologies.md)
 - [Supported Technologies - PHP](/reference/edot-sdks/php/supported-technologies.md)
 - [Supported Technologies - Python](/reference/edot-sdks/python/supported-technologies.md)
-- [Supported Technologies - Android](apm-agent-android://reference/index.md)
-- [Supported Technologies - iOS](apm-agent-ios://reference/index.md)
+- [Supported Technologies - Android](/reference/edot-sdks/android/automatic-instrumentation.md#supported-instrumentations)
+- [Supported Technologies - iOS](/reference/edot-sdks/ios/supported-technologies.md)
 
 ## Other SDK distributions
 
