@@ -1,0 +1,915 @@
+{
+  "origin": {
+    "branch": "move-tb",
+    "remote": " git@github.com:alexandra5000/opentelemetry",
+    "ref": "3d1ff2666501d4feeef41fab0d7a44f28d24be0b",
+    "name": "opentelemetry"
+  },
+  "url_path_prefix": "",
+  "links": {
+    "reference/index.md": {
+      "anchors": [
+        "available-opentelemetry-distributions",
+        "get-started",
+        "edot-demo-environment",
+        "report-an-issue-or-provide-feedback"
+      ]
+    },
+    "reference/quickstart/index.md": {
+      "anchors": [
+        "add-data-from-the-ui",
+        "manual-installation-guides"
+      ]
+    },
+    "reference/quickstart/self-managed/index.md": {},
+    "reference/quickstart/self-managed/k8s.md": {
+      "anchors": [
+        "prerequisites",
+        "guided-setup",
+        "manual-installation"
+      ]
+    },
+    "reference/quickstart/self-managed/hosts_vms.md": {
+      "anchors": [
+        "prerequisites",
+        "guided-setup",
+        "manual-installation"
+      ]
+    },
+    "reference/quickstart/self-managed/docker.md": {
+      "anchors": [
+        "prerequisites",
+        "guided-setup",
+        "manual-installation"
+      ]
+    },
+    "reference/quickstart/serverless/index.md": {
+      "anchors": [
+        "prerequisites",
+        "quickstart-guides",
+        "differences-with-elastic-apm-endpoint",
+        "provide-feedback"
+      ]
+    },
+    "reference/quickstart/serverless/k8s.md": {
+      "anchors": [
+        "prerequisites",
+        "guided-setup",
+        "manual-installation",
+        "troubleshooting",
+        "api-key-prefix-not-found",
+        "error-too-many-requests"
+      ]
+    },
+    "reference/quickstart/serverless/hosts_vms.md": {
+      "anchors": [
+        "prerequisites",
+        "guided-setup",
+        "manual-installation",
+        "troubleshooting",
+        "api-key-prefix-not-found",
+        "error-too-many-requests"
+      ]
+    },
+    "reference/quickstart/serverless/docker.md": {
+      "anchors": [
+        "prerequisites",
+        "guided-setup",
+        "manual-installation",
+        "troubleshooting",
+        "api-key-prefix-not-found",
+        "error-too-many-requests"
+      ]
+    },
+    "reference/quickstart/ech/index.md": {},
+    "reference/quickstart/ech/k8s.md": {
+      "anchors": [
+        "prerequisites",
+        "guided-setup",
+        "manual-installation"
+      ]
+    },
+    "reference/quickstart/ech/hosts_vms.md": {
+      "anchors": [
+        "prerequisites",
+        "guided-setup",
+        "manual-installation"
+      ]
+    },
+    "reference/quickstart/ech/docker.md": {
+      "anchors": [
+        "prerequisites",
+        "guided-setup",
+        "manual-installation"
+      ]
+    },
+    "reference/architecture/index.md": {},
+    "reference/architecture/k8s.md": {
+      "anchors": [
+        "daemon-form",
+        "cluster-form",
+        "gateway-form",
+        "deployment-scenarios",
+        "elastic-cloud-serverless",
+        "elastic-cloud-hosted",
+        "self-managed"
+      ]
+    },
+    "reference/architecture/hosts_vms.md": {
+      "anchors": [
+        "deployment-scenarios",
+        "elastic-cloud-serverless",
+        "elastic-cloud-hosted",
+        "self-managed"
+      ]
+    },
+    "reference/use-cases/index.md": {},
+    "reference/use-cases/kubernetes/index.md": {},
+    "reference/use-cases/kubernetes/prerequisites-compatibility.md": {
+      "anchors": [
+        "compatibility-matrix"
+      ]
+    },
+    "reference/use-cases/kubernetes/components.md": {
+      "anchors": [
+        "opentelemetry-operator",
+        "kube-stack-helm-chart",
+        "daemonset-collectors",
+        "deployment-collector",
+        "auto-instrumentation"
+      ]
+    },
+    "reference/use-cases/kubernetes/deployment.md": {
+      "anchors": [
+        "deploy-using-the-guided-onboarding",
+        "manual-deployment",
+        "elastic-stack-preparations",
+        "operator-installation",
+        "verify-the-installation",
+        "check-pods-status",
+        "validate-instrumentation-object",
+        "kibana-dashboard-check",
+        "log-data-availability-in-kibana",
+        "metrics-data-availability-in-kibana"
+      ]
+    },
+    "reference/use-cases/kubernetes/instrumenting-applications.md": {
+      "anchors": [
+        "prerequisites",
+        "auto-instrumentation-basics",
+        "configure-auto-instrumentation",
+        "namespace-based-annotations-example",
+        "verify-auto-instrumentation",
+        "how-auto-instrumentation-works",
+        "advanced-configuration",
+        "additional-instrumentation-objects",
+        "troubleshooting-auto-instrumentation",
+        "migrate-from-the-elastic-apm-attacher-for-kubernetes",
+        "add-instrumentation-crds",
+        "migrate-your-pods-to-the-new-instrumentation"
+      ]
+    },
+    "reference/use-cases/kubernetes/upgrade.md": {},
+    "reference/use-cases/kubernetes/customization.md": {
+      "anchors": [
+        "configurable-parameters",
+        "cert-manager-integrated-installation",
+        "install-using-the-cli",
+        "install-using-values.yaml"
+      ]
+    },
+    "reference/use-cases/llms/index.md": {
+      "anchors": [
+        "supported-technologies",
+        "quickstart",
+        "instrument-your-llm-application",
+        "configuration"
+      ]
+    },
+    "reference/compatibility/index.md": {},
+    "reference/compatibility/features.md": {},
+    "reference/compatibility/collectors.md": {
+      "anchors": [
+        "edot-collector-9.x",
+        "operating-systems",
+        "edot-collector-components",
+        "other-collector-distributions"
+      ]
+    },
+    "reference/compatibility/sdks.md": {
+      "anchors": [
+        "supported-technologies-per-edot-sdk",
+        "other-sdk-distributions"
+      ]
+    },
+    "reference/compatibility/edot-vs-upstream.md": {
+      "anchors": [
+        "edot-collector-compared-to-upstream-otel-collector"
+      ]
+    },
+    "reference/compatibility/limitations.md": {
+      "anchors": [
+        "centralized-parsing-and-processing-of-data",
+        "infrastructure-and-host-metrics",
+        "metrics-data-ingestion",
+        "histograms-in-delta-temporality-only",
+        "limitations-on-managed-kubernetes-environments",
+        "limitations-with-apm",
+        "allowed-characters-in-service-names",
+        "runtime-metrics",
+        "additional-information"
+      ]
+    },
+    "reference/compatibility/nomenclature.md": {
+      "anchors": [
+        "categorization-of-collector-components",
+        "core-components",
+        "extended-components",
+        "breaking-changes"
+      ]
+    },
+    "reference/edot-collector/index.md": {
+      "anchors": [
+        "get-started",
+        "deployment-modes",
+        "configure-the-collector",
+        "collector-components",
+        "limitations",
+        "license"
+      ]
+    },
+    "reference/edot-collector/download.md": {},
+    "reference/edot-collector/modes.md": {
+      "anchors": [
+        "edot-collector-as-agent",
+        "edot-collector-as-gateway",
+        "gateway-requirements-for-self-managed-environments",
+        "required-components-for-apm-functionality-in-self-managed-elastic",
+        "deployment-in-kubernetes-environments",
+        "agent-mode-in-kubernetes",
+        "gateway-mode-in-kubernetes",
+        "direct-edot-sdk-to-managed-otlp-no-collector"
+      ]
+    },
+    "reference/edot-collector/config/index.md": {},
+    "reference/edot-collector/config/default-config-standalone.md": {
+      "anchors": [
+        "agent-mode",
+        "direct-ingestion-into-elasticsearch",
+        "logs-collection-pipeline",
+        "application-and-traces-collection-pipeline",
+        "host-metrics-collection-pipeline",
+        "using-the-managed-otlp-endpoint",
+        "gateway-mode",
+        "sample-configuration",
+        "data-collection-and-processing",
+        "data-processing-and-transformation",
+        "data-export",
+        "pipeline-configuration"
+      ]
+    },
+    "reference/edot-collector/config/default-config-k8s.md": {
+      "anchors": [
+        "cluster-collector-pipeline",
+        "daemonset-collectors-pipeline",
+        "host-metrics-and-container-logs",
+        "application-telemetry-through-otlp-from-otel-sdks",
+        "gateway-collectors-pipeline",
+        "direct-ingestion-into-elasticsearch",
+        "managed-otlp-endpoint"
+      ]
+    },
+    "reference/edot-collector/config/configure-logs-collection.md": {
+      "anchors": [
+        "parse-json-logs",
+        "parse-multiline-logs",
+        "parse-otlp-logs-in-json-format",
+        "parse-apache-logs",
+        "customize-logs-parsing-on-kubernetes",
+        "collect-apache-logs-using-annotations-discovery",
+        "use-processors-and-ottl-for-logs-processing",
+        "parse-json-logs-using-ottl",
+        "parse-apache-logs-using-ottl"
+      ]
+    },
+    "reference/edot-collector/config/configure-metrics-collection.md": {
+      "anchors": [
+        "otlp-metrics",
+        "host-metrics",
+        "kubernetes-metrics",
+        "kubelet-metrics",
+        "cluster-metrics",
+        "other-metrics"
+      ]
+    },
+    "reference/edot-collector/customization.md": {},
+    "reference/edot-collector/components.md": {},
+    "reference/edot-collector/custom-collector.md": {
+      "anchors": [
+        "build-a-custom-collector",
+        "install-the-opentelemetry-collector-builder",
+        "create-a-builder-configuration-file",
+        "build-the-collector"
+      ]
+    },
+    "reference/edot-cloud-forwarder/index.md": {
+      "anchors": [
+        "supported-cloud-providers-and-services",
+        "get-started"
+      ]
+    },
+    "reference/edot-cloud-forwarder/aws.md": {
+      "anchors": [
+        "prerequisites",
+        "deployment-considerations",
+        "download-templates",
+        "configure-the-template",
+        "required-settings",
+        "log-source-settings",
+        "optional-settings",
+        "deployment-examples",
+        "manual-deployment-using-the-cloudformation-console",
+        "cloudformation-stack-resources",
+        "resources-for-s3-logs",
+        "delete-a-cloudformation-stack"
+      ]
+    },
+    "reference/edot-sdks/index.md": {
+      "anchors": [
+        "elastic-support-for-edot-sdks",
+        "license"
+      ]
+    },
+    "reference/edot-sdks/dotnet/index.md": {
+      "anchors": [
+        "features",
+        "release-notes"
+      ]
+    },
+    "reference/edot-sdks/dotnet/setup/index.md": {
+      "anchors": [
+        "quickstart-guide",
+        "prerequisites",
+        "installing-the-nuget-packages",
+        "asp.net-core-instrumentation",
+        "registering-opentelemetry-with-edot-.net",
+        "configure-the-opentelemetry-resource-attributes",
+        "configure-the-otlp-endpoint",
+        "instrument-application-code",
+        "next-steps"
+      ]
+    },
+    "reference/edot-sdks/dotnet/setup/aspnet.md": {
+      "anchors": [
+        "install-the-nuget-packages",
+        "modify-web.config",
+        "register-the-edot-.net-and-opentelemetry-sdk",
+        "configure-environment-variables",
+        "advanced-asp.net-configuration"
+      ]
+    },
+    "reference/edot-sdks/dotnet/setup/aspnetcore.md": {
+      "hidden": true
+    },
+    "reference/edot-sdks/dotnet/setup/console.md": {
+      "anchors": [
+        "provide-configuration-values",
+        "configure-edot-.net"
+      ]
+    },
+    "reference/edot-sdks/dotnet/setup/worker-services.md": {
+      "anchors": [
+        "instrument-worker-services"
+      ]
+    },
+    "reference/edot-sdks/dotnet/setup/zero-code.md": {
+      "anchors": [
+        "compatibility",
+        "setup",
+        "linux-and-macos",
+        "windows-powershell"
+      ]
+    },
+    "reference/edot-sdks/dotnet/setup/edot-defaults.md": {
+      "anchors": [
+        "defaults-for-all-signals",
+        "modify-defaults-for-each-signal",
+        "defaults-for-resource-attributes",
+        "instrumentation-assembly-scanning",
+        "defaults-for-tracing",
+        "http-traces",
+        "grpc-traces",
+        "sql-client-traces",
+        "additional-sources",
+        "asp.net-core-defaults",
+        "defaults-for-metrics",
+        "http-metrics",
+        "runtime-metrics",
+        "process-metrics",
+        "asp.net-core-metrics",
+        "additional-meters",
+        "configuration-defaults",
+        "defaults-for-logging"
+      ]
+    },
+    "reference/edot-sdks/dotnet/configuration.md": {
+      "anchors": [
+        "configuration-methods",
+        "environment-variables",
+        "iconfiguration-integration",
+        "manual-configuration",
+        "configuration-options",
+        "opentelemetry-sdk-configuration-options",
+        "elastic-specific-configuration-options",
+        "logdirectory",
+        "loglevel",
+        "logtargets",
+        "skipotlpexporter",
+        "skipinstrumentationassemblyscanning"
+      ]
+    },
+    "reference/edot-sdks/dotnet/supported-technologies.md": {
+      "anchors": [
+        "edot-collector-and-elastic-stack-versions",
+        ".net-frameworks",
+        "instrumentations",
+        ".net-runtime-support",
+        "exporting-data-to-elastic"
+      ]
+    },
+    "reference/edot-sdks/dotnet/migration.md": {
+      "anchors": [
+        "migrating-to-edot-net-from-elastic-net-agent",
+        "manual-instrumentation",
+        "agent-registration",
+        "zero-code-auto-instrumentation",
+        "limitations",
+        "stacktrace-capture",
+        "central-and-dynamic-configuration",
+        "span-compression",
+        "migrating-to-edot-net-from-the-upstream-opentelemetry-net-sdk",
+        "zero-code-instrumentation"
+      ]
+    },
+    "reference/edot-sdks/java/index.md": {
+      "anchors": [
+        "features",
+        "release-notes"
+      ]
+    },
+    "reference/edot-sdks/java/setup/index.md": {
+      "anchors": [
+        "kubernetes",
+        "runtime-attach",
+        "all-other-environments",
+        "download-the-agent",
+        "prerequisites",
+        "configure-the-java-agent",
+        "local-edot-collector",
+        "self-managed-edot-collector",
+        "elastic-managed-otlp-endpoint",
+        "run-the-java-agent"
+      ]
+    },
+    "reference/edot-sdks/java/setup/k8s.md": {
+      "anchors": [
+        "extensions-consideration",
+        "instrument-a-java-app",
+        "troubleshooting"
+      ]
+    },
+    "reference/edot-sdks/java/setup/runtime-attach.md": {
+      "anchors": [
+        "limitations",
+        "instrument-a-java-app",
+        "jvm-runtime-attach-warnings"
+      ]
+    },
+    "reference/edot-sdks/java/configuration.md": {
+      "anchors": [
+        "minimal-configuration",
+        "configuration-options",
+        "openai-client-settings",
+        "configuration-methods",
+        "environment-variables",
+        "system-properties",
+        "properties-configuration-file",
+        "agent-logging"
+      ]
+    },
+    "reference/edot-sdks/java/features.md": {
+      "anchors": [
+        "resource-attributes",
+        "inferred-spans",
+        "span-stacktrace",
+        "runtime-metrics",
+        "metric-temporality",
+        "elastic-universal-profiling-integration",
+        "baggage"
+      ]
+    },
+    "reference/edot-sdks/java/supported-technologies.md": {
+      "anchors": [
+        "edot-collector-and-elastic-stack-versions",
+        "jvm-versions",
+        "jvm-languages",
+        "application-servers",
+        "libraries-and-frameworks-instrumentations",
+        "openai-client-instrumentation"
+      ]
+    },
+    "reference/edot-sdks/java/migration.md": {
+      "anchors": [
+        "migration-steps",
+        "configuration-mapping",
+        "server_url",
+        "server_urls",
+        "secret_token",
+        "api_key",
+        "service_name",
+        "enabled",
+        "service_version",
+        "environment",
+        "global_labels",
+        "trace_methods",
+        "capture_jmx_metrics",
+        "capture_headers",
+        "span_stack_trace_min_duration",
+        "disable_instrumentations",
+        "enable_instrumentations",
+        "hostname",
+        "service_node_name",
+        "cloud_provider",
+        "log_sending",
+        "limitations",
+        "supported-java-versions",
+        "missing-instrumentations",
+        "central-and-dynamic-configuration",
+        "span-compression",
+        "breakdown-metrics",
+        "no-remote-attach",
+        "micrometer-turned-off-by-default"
+      ]
+    },
+    "reference/edot-sdks/java/overhead.md": {
+      "anchors": [
+        "benchmark",
+        "optimizing-application-startup"
+      ]
+    },
+    "reference/edot-sdks/nodejs/index.md": {
+      "anchors": [
+        "features",
+        "release-notes"
+      ]
+    },
+    "reference/edot-sdks/nodejs/setup/index.md": {
+      "anchors": [
+        "prerequisites",
+        "installation",
+        "configuration",
+        "basic-configuration",
+        "additional-configuration",
+        "start-edot-node.js",
+        "confirm-instrumentation-is-working"
+      ]
+    },
+    "reference/edot-sdks/nodejs/setup/k8s.md": {
+      "anchors": [
+        "instrument-a-node.js-app-on-kubernetes",
+        "troubleshooting"
+      ]
+    },
+    "reference/edot-sdks/nodejs/configuration.md": {
+      "anchors": [
+        "basic-configuration",
+        "configuration-reference",
+        "edot-configuration-details",
+        "otel_node_resource_detectors-details",
+        "otel_node_disabledenabled_instrumentations-details",
+        "deprecated-elastic_otel_metrics_disabled-details",
+        "elastic_otel_host_metrics_disabled-details",
+        "otel_exporter_otlp_metrics_temporality_preference-details",
+        "otel_semconv_stability_opt_in-details",
+        "otel_instrumentation_genai_capture_message_content-details"
+      ]
+    },
+    "reference/edot-sdks/nodejs/supported-technologies.md": {
+      "anchors": [
+        "edot-collector-and-elastic-stack-versions",
+        "node.js-versions",
+        "typescript-versions",
+        "instrumentations",
+        "llm-instrumentations",
+        "disabled-instrumentations",
+        "native-instrumentations",
+        "ecmascript-modules-esm",
+        "limitations"
+      ]
+    },
+    "reference/edot-sdks/nodejs/metrics.md": {
+      "anchors": [
+        "process-and-runtime-metrics"
+      ]
+    },
+    "reference/edot-sdks/nodejs/migration.md": {
+      "anchors": [
+        "migration-steps",
+        "configuration-mapping",
+        "serverurl",
+        "secrettoken",
+        "apikey",
+        "servicename",
+        "active",
+        "serviceversion",
+        "environment",
+        "globallabels",
+        "transactionsamplerate",
+        "loglevel",
+        "maxqueuesize",
+        "servertimeout",
+        "apmclientheaders",
+        "disableinstrumentations",
+        "metricsinterval",
+        "cloudprovider",
+        "limitations",
+        "supported-node.js-versions",
+        "missing-instrumentations",
+        "central-configuration",
+        "span-compression"
+      ]
+    },
+    "reference/edot-sdks/php/index.md": {
+      "anchors": [
+        "features",
+        "release-notes"
+      ]
+    },
+    "reference/edot-sdks/php/setup/index.md": {
+      "anchors": [
+        "prerequisites",
+        "operating-system-and-php-version",
+        "limitations",
+        "download-and-install-packages",
+        "send-data-to-elastic",
+        "configure-edot-php",
+        "run-edot-php",
+        "confirm-that-edot-php-is-working"
+      ]
+    },
+    "reference/edot-sdks/php/setup/limitations.md": {
+      "anchors": [
+        "opentelemetry-extension-and-sdk-loaded-in-parallel-with-edot-php",
+        "open_basedir-php-configuration-option",
+        "xdebug-stability-and-memory-issues"
+      ]
+    },
+    "reference/edot-sdks/php/configuration.md": {
+      "anchors": [
+        "configuration-method",
+        "configuration-options",
+        "opentelemetry-configuration-options",
+        "special-considerations",
+        "options-only-available-in-edot-php",
+        "general-configuration",
+        "asynchronous-data-sending-configuration",
+        "logging-configuration",
+        "transaction-span-configuration",
+        "inferred-spans-configuration"
+      ]
+    },
+    "reference/edot-sdks/php/supported-technologies.md": {
+      "anchors": [
+        "edot-collector-and-elastic-stack-versions",
+        "php-versions",
+        "supported-php-sapis",
+        "supported-operating-systems",
+        "instrumented-frameworks",
+        "instrumented-libraries",
+        "additional-features-and-improvements",
+        "truly-zero-config-auto-instrumentation",
+        "automatic-roottransaction-span",
+        "roottransaction-span-url-grouping",
+        "inferred-spans",
+        "asynchronous-data-sending"
+      ]
+    },
+    "reference/edot-sdks/php/migration.md": {
+      "anchors": [
+        "migration-steps",
+        "configuration-mapping",
+        "limitations"
+      ]
+    },
+    "reference/edot-sdks/php/overhead.md": {
+      "anchors": [
+        "benchmark",
+        "results",
+        "key-findings",
+        "recommendations"
+      ]
+    },
+    "reference/edot-sdks/python/index.md": {
+      "anchors": [
+        "features",
+        "release-notes"
+      ]
+    },
+    "reference/edot-sdks/python/setup/index.md": {},
+    "reference/edot-sdks/python/setup/k8s.md": {
+      "anchors": [
+        "supported-environments-and-configuration",
+        "instrument-a-python-app-on-kubernetes",
+        "troubleshooting"
+      ]
+    },
+    "reference/edot-sdks/python/setup/manual-instrumentation.md": {
+      "anchors": [
+        "configure-edot-python",
+        "manually-instrument-your-auto-instrumented-python-application",
+        "confirm-that-edot-python-is-working"
+      ]
+    },
+    "reference/edot-sdks/python/configuration.md": {
+      "anchors": [
+        "configuration-method",
+        "configuration-options",
+        "opentelemetry-configuration-options",
+        "logs",
+        "differences-from-opentelemetry-python",
+        "configuration-options-only-available-in-edot-python",
+        "llm-settings"
+      ]
+    },
+    "reference/edot-sdks/python/supported-technologies.md": {
+      "anchors": [
+        "edot-collector-and-elastic-stack-versions",
+        "python-versions",
+        "instrumentations",
+        "native-elasticsearch-instrumentation",
+        "llm-instrumentations"
+      ]
+    },
+    "reference/edot-sdks/python/migration.md": {
+      "anchors": [
+        "migration-steps",
+        "configuration-mapping",
+        "api_key",
+        "enabled",
+        "environment",
+        "global_labels",
+        "metrics_interval",
+        "secret_token",
+        "server_url",
+        "service_name",
+        "service_version",
+        "performance-overhead",
+        "limitations",
+        "central-and-dynamic-configuration",
+        "aws-lambda",
+        "missing-instrumentations",
+        "integration-with-structured-logging",
+        "span-compression",
+        "breakdown-metrics"
+      ]
+    },
+    "reference/edot-sdks/python/overhead.md": {
+      "anchors": [
+        "benchmark"
+      ]
+    },
+    "reference/motlp.md": {
+      "anchors": [
+        "differences-from-the-elastic-apm-endpoint",
+        "prerequisites",
+        "find-your-otlp-endpoint",
+        "send-data-in-otlp-format",
+        "compatibility"
+      ]
+    },
+    "troubleshooting/index.md": {},
+    "troubleshooting/edot-collector/index.md": {},
+    "troubleshooting/edot-collector/standalone/index.md": {},
+    "troubleshooting/edot-collector/standalone/collector-oomkilled.md": {
+      "anchors": [
+        "symptoms",
+        "resolution",
+        "best-practices",
+        "resources"
+      ]
+    },
+    "troubleshooting/edot-sdks/index.md": {},
+    "troubleshooting/edot-sdks/dotnet/index.md": {
+      "anchors": [
+        "obtain-edot-.net-diagnostic-logs",
+        "asp.net-core-generic-host-logging-integration",
+        "configuring-the-log-level",
+        "enable-global-file-logging",
+        "advanced-troubleshooting",
+        "diagnosing-initialization-or-bootstrap-issues",
+        "providing-an-additional-application-logger",
+        "known-issues",
+        "missing-log-records"
+      ]
+    },
+    "troubleshooting/edot-sdks/java/index.md": {
+      "anchors": [
+        "general-troubleshooting",
+        "connectivity-to-endpoint",
+        "agent-troubleshooting",
+        "agent-debug-logging",
+        "agent-debugging",
+        "per-signal-debugging",
+        "access-or-modification-of-application-code",
+        "how-to-deactivate-the-agent",
+        "partial-activation-or-deactivation-of-the-agent",
+        "check-if-edot-is-attached-to-a-running-jvm",
+        "identify-the-version-of-edot-agent",
+        "versions-of-the-opentelemetry-upstream-dependencies",
+        "when-and-how-to-update-edot",
+        "opentelemetry-apisdk-update",
+        "how-to-update"
+      ]
+    },
+    "troubleshooting/edot-sdks/nodejs/index.md": {
+      "anchors": [
+        "set-a-service-name",
+        "check-connectivity",
+        "deactivate-the-sdk",
+        "sdk-diagnostic-logs",
+        "deactivate-an-instrumentation",
+        "check-if-edot-node.js-is-running"
+      ]
+    },
+    "troubleshooting/edot-sdks/php/index.md": {
+      "anchors": [
+        "turn-on-logging",
+        "turn-off-the-agent",
+        "agent-is-not-instrumenting-code",
+        "native-otlp-serializer-issues",
+        "open_basedir-php-configuration-option",
+        "collection-of-diagnostic-information",
+        "turn-on-debugging-for-instrumented-functions",
+        "turn-on-instrumentation-of-all-the-application-code"
+      ]
+    },
+    "troubleshooting/edot-sdks/python/index.md": {
+      "anchors": [
+        "general-troubleshooting",
+        "debug-and-development-modes",
+        "django",
+        "fastapi",
+        "flask",
+        "turn-off-edot",
+        "missing-logs",
+        "check-stability-of-semantic-conventions",
+        "access-or-modification-of-application-code"
+      ]
+    }
+  },
+  "cross_links": [],
+  "redirects": {
+    "reference/edot-collector/troubleshooting/index.md": {
+      "anchors": {
+        "!": "!"
+      },
+      "to": "troubleshooting/edot-collector/index.md"
+    },
+    "reference/edot-collector/troubleshooting/collector-oomkilled.md": {
+      "anchors": {
+        "!": "!"
+      },
+      "to": "troubleshooting/edot-collector/standalone/collector-oomkilled.md"
+    },
+    "reference/edot-sdks/dotnet/troubleshooting.md": {
+      "anchors": {
+        "!": "!"
+      },
+      "to": "troubleshooting/edot-sdks/dotnet/index.md"
+    },
+    "reference/edot-sdks/java/troubleshooting.md": {
+      "anchors": {
+        "!": "!"
+      },
+      "to": "troubleshooting/edot-sdks/java/index.md"
+    },
+    "reference/edot-sdks/nodejs/troubleshooting.md": {
+      "anchors": {
+        "!": "!"
+      },
+      "to": "troubleshooting/edot-sdks/nodejs/index.md"
+    },
+    "reference/edot-sdks/php/troubleshooting.md": {
+      "anchors": {
+        "!": "!"
+      },
+      "to": "troubleshooting/edot-sdks/php/index.md"
+    },
+    "reference/edot-sdks/python/troubleshooting.md": {
+      "anchors": {
+        "!": "!"
+      },
+      "to": "troubleshooting/edot-sdks/python/index.md"
+    }
+  }
+}

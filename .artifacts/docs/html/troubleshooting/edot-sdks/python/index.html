@@ -1,0 +1,2004 @@
+<!DOCTYPE html>
+<html lang="en" class="h-screen" xmlns="http://www.w3.org/1999/html">
+<head hx-head="merge">
+	<meta charset="utf-8">
+	<title>Troubleshooting the EDOT Python Agent | Elastic Documentation</title>
+	<meta name="description" content="Troubleshooting the EDOT Python Agent.">
+		<link rel="preload" href="/_static/InterVariable.e6ec8b96.woff2" as="font" type="font/woff2" crossorigin>
+		<link rel="preload" href="/_static/MierB-Regular.efa24115.woff2" as="font" type="font/woff2" crossorigin>
+		<link rel="preload" href="/_static/MierB-Bold.01af95ca.woff2" as="font" type="font/woff2" crossorigin>
+		<link rel="preload" href="/_static/MierB-Demi.845945e0.woff2" as="font" type="font/woff2" crossorigin>
+	<link rel="stylesheet preload" as="style" type="text/css" href="/_static/styles.css?v=409c15859f982c46" crossorigin/>
+		<link rel="canonical" href="https://docs-v3-preview.elastic.dev/troubleshooting/edot-sdks/python" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="apple-touch-icon" sizes="57x57" href="https://elastic.co/apple-icon-57x57.png"/>
+<link rel="apple-touch-icon" sizes="60x60" href="https://elastic.co/apple-icon-60x60.png"/>
+<link rel="apple-touch-icon" sizes="72x72" href="https://elastic.co/apple-icon-72x72.png"/>
+<link rel="apple-touch-icon" sizes="76x76" href="https://elastic.co/apple-icon-76x76.png"/>
+<link rel="apple-touch-icon" sizes="114x114" href="https://elastic.co/apple-icon-114x114.png"/>
+<link rel="apple-touch-icon" sizes="120x120" href="https://elastic.co/apple-icon-120x120.png"/>
+<link rel="apple-touch-icon" sizes="144x144" href="https://elastic.co/apple-icon-144x144.png"/>
+<link rel="apple-touch-icon" sizes="152x152" href="https://elastic.co/apple-icon-152x152.png"/>
+<link rel="apple-touch-icon" sizes="180x180" href="https://elastic.co/apple-icon-180x180.png"/>
+<link rel="apple-touch-icon" sizes="192x192" href="https://elastic.co/apple-icon-192x192.png"/>
+<link rel="icon" type="image/png" href="https://elastic.co/favicon-32x32.png" sizes="32x32"/>
+<link rel="shortcut icon" href="https://elastic.co/favicon.ico" type="image/x-icon"/>
+<link rel="icon" href="https://elastic.co/favicon.ico" type="image/x-icon"/>
+<link rel="apple-touch-icon-precomposed" sizes="64x64" href="https://elastic.co/favicon_64x64_16bit.png"/>
+<link rel="apple-touch-icon-precomposed" sizes="32x32" href="https://elastic.co/favicon_32x32.png"/>
+<link rel="apple-touch-icon-precomposed" sizes="16x16" href="https://elastic.co/favicon_16x16.png"/>
+<link rel="icon" type="image/png" href="https://elastic.co/android-chrome-192x192.png" sizes="192x192"/>
+<link rel="icon" type="image/png" href="https://elastic.co/favicon-96x96.png" sizes="96x96"/>
+<link rel="icon" type="image/png" href="https://elastic.co/favicon-16x16.png" sizes="16x16"/>
+<link rel="icon" type="image/png" href="https://elastic.co/favicon-48x48.png" sizes="48x48"/>
+
+	<meta name="robots" content="noindex, nofollow">
+	<meta name="htmx-config" content='{"selfRequestsOnly": true}'>
+	<meta property="og:type" content="website"/>
+	<meta property="og:title" content="Troubleshooting the EDOT Python Agent | Elastic Documentation"/>
+	<meta property="og:description" content="Troubleshooting the EDOT Python Agent."/>
+	<meta property="og:image" content="https://www.elastic.co/static-res/images/social_media_default.png"/>
+	<meta property="og:image:alt" content="Elastic | The Search AI Company"/>
+		<meta property="og:url" content="https://docs-v3-preview.elastic.dev/troubleshooting/edot-sdks/python" />
+		<meta class="elastic" name="product_name" content="Elastic Cloud Serverless,Elastic Observability,Elastic Distribution of OpenTelemetry SDK"/>
+		<meta name="DC.subject" content="Elastic Cloud Serverless,Elastic Observability,Elastic Distribution of OpenTelemetry SDK"/>
+</head>
+
+
+
+<body
+	class="group/body text-ink has-[#primary-nav-hamburger:checked]:overflow-hidden"
+	hx-ext="preload, head-support"
+	data-root-path="/">
+	<header class="sticky top-0 z-50 bg-blue-developer text-white h-(--offset-top) flex items-center">
+		<div class="max-w-(--max-layout-width) w-full mx-auto flex justify-between items-center">
+			<label role="button" class="md:hidden cursor-pointer" for="pages-nav-hamburger">
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8">
+					<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12"/>
+				</svg>
+			</label>
+			<a href="/" class="flex items-center gap-2 text-lg font-semibold px-4">
+				<img src="/_static/logo-elastic-glyph-color.svg?v=f602ddacafcf3057" alt="" width="32" height="32">
+				opentelemetry
+			</a>
+		</div>
+	</header>
+
+<div id="main-container" class="flex flex-col items-center border-t-1 border-grey-20">
+
+			<div class="max-w-(--max-layout-width) w-full h-full grid
+					grid-cols-1
+					md:grid-cols-[var(--max-sidebar-width)_1fr]
+					lg:grid-cols-[var(--max-sidebar-width)_1fr_var(--max-sidebar-width)]
+				">
+				<aside class="sidebar bg-white fixed md:sticky shadow-2xl md:shadow-none left-[100%] group-has-[#pages-nav-hamburger:checked]/body:left-0 bottom-0 md:left-auto pl-6 md:pl-2 top-[calc(var(--offset-top)+1px)] w-[80%] md:w-auto shrink-0 border-r-1 border-r-grey-20 z-40 md:z-auto">
+	<nav
+		id="pages-nav"
+		class="sidebar-nav h-full"
+				data-current-navigation="41e3612e">
+		<div class="pb-20 font-body" hx-boost="true" hx-swap="none" hx-push-url="true" hx-indicator="#htmx-indicator">
+		<a
+			 hx-select-oob=#content-container,#toc-nav preload=mousedown
+			class="inline-block mx-4 mt-6 font-semibold text-ink hover:text-black">
+			Docs
+		</a>
+	
+	<ul class="block px-4">
+				<li class="flex flex-wrap group-navigation mt-6">
+			<div class="peer grid grid-cols-[1fr_auto] w-full">
+				<a
+					href="/reference/"
+					 hx-select-oob=#content-container,#toc-nav preload=mousedown
+					id="page-064450bd"
+					class="sidebar-link pr-2 content-center font-semibold">
+					Elastic Distributions of OpenTelemetry (EDOT)
+				</a>
+				<label for="666bfd61" class="group/label flex mr-2 items-start">
+					<div class="hover:bg-grey-20 rounded-sm p-1 cursor-pointer">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							class="shrink-0 -rotate-90 group-has-checked/label:rotate-0 w-3.5">
+							<path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+						</svg>
+					</div>
+					<input
+						id="666bfd61"
+						type="checkbox"
+						class="hidden"
+						aria-hidden="true">
+				</label>
+			</div>
+				<ul class="w-full hidden peer-has-checked:block ml-4">
+							<li class="flex flex-wrap group-navigation mt-4">
+			<div class="peer grid grid-cols-[1fr_auto] w-full">
+				<a
+					href="/reference/quickstart/"
+					 hx-select-oob=#content-container,#toc-nav preload=mousedown
+					id="page-97fdb70f"
+					class="sidebar-link pr-2 content-center ">
+					Quickstart
+				</a>
+				<label for="e1ca362f" class="group/label flex mr-2 items-start">
+					<div class="hover:bg-grey-20 rounded-sm p-1 cursor-pointer">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							class="shrink-0 -rotate-90 group-has-checked/label:rotate-0 w-3.5">
+							<path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+						</svg>
+					</div>
+					<input
+						id="e1ca362f"
+						type="checkbox"
+						class="hidden"
+						aria-hidden="true">
+				</label>
+			</div>
+				<ul class="w-full hidden peer-has-checked:block ml-4">
+							<li class="flex flex-wrap group-navigation mt-4">
+			<div class="peer grid grid-cols-[1fr_auto] w-full">
+				<a
+					href="/reference/quickstart/self-managed/"
+					 hx-select-oob=#content-container,#toc-nav preload=mousedown
+					id="page-4e7659bb"
+					class="sidebar-link pr-2 content-center ">
+					Self-managed
+				</a>
+				<label for="d4c6b878" class="group/label flex mr-2 items-start">
+					<div class="hover:bg-grey-20 rounded-sm p-1 cursor-pointer">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							class="shrink-0 -rotate-90 group-has-checked/label:rotate-0 w-3.5">
+							<path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+						</svg>
+					</div>
+					<input
+						id="d4c6b878"
+						type="checkbox"
+						class="hidden"
+						aria-hidden="true">
+				</label>
+			</div>
+				<ul class="w-full hidden peer-has-checked:block ml-4">
+							<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/quickstart/self-managed/k8s"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-af68b10c"
+				>
+				Kubernetes
+			</a>
+		</li>
+		<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/quickstart/self-managed/hosts_vms"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-92fc1ce9"
+				>
+				Hosts / VMs
+			</a>
+		</li>
+		<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/quickstart/self-managed/docker"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-26f73e2f"
+				>
+				Docker
+			</a>
+		</li>
+
+				</ul>
+		</li>
+		<li class="flex flex-wrap group-navigation mt-4">
+			<div class="peer grid grid-cols-[1fr_auto] w-full">
+				<a
+					href="/reference/quickstart/serverless/"
+					 hx-select-oob=#content-container,#toc-nav preload=mousedown
+					id="page-1cb1b98e"
+					class="sidebar-link pr-2 content-center ">
+					Elastic Cloud Serverless
+				</a>
+				<label for="280d9a5b" class="group/label flex mr-2 items-start">
+					<div class="hover:bg-grey-20 rounded-sm p-1 cursor-pointer">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							class="shrink-0 -rotate-90 group-has-checked/label:rotate-0 w-3.5">
+							<path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+						</svg>
+					</div>
+					<input
+						id="280d9a5b"
+						type="checkbox"
+						class="hidden"
+						aria-hidden="true">
+				</label>
+			</div>
+				<ul class="w-full hidden peer-has-checked:block ml-4">
+							<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/quickstart/serverless/k8s"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-f63452ca"
+				>
+				Kubernetes
+			</a>
+		</li>
+		<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/quickstart/serverless/hosts_vms"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-3f0efb8b"
+				>
+				Hosts and VMs
+			</a>
+		</li>
+		<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/quickstart/serverless/docker"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-cf898aba"
+				>
+				Docker
+			</a>
+		</li>
+
+				</ul>
+		</li>
+		<li class="flex flex-wrap group-navigation mt-4">
+			<div class="peer grid grid-cols-[1fr_auto] w-full">
+				<a
+					href="/reference/quickstart/ech/"
+					 hx-select-oob=#content-container,#toc-nav preload=mousedown
+					id="page-f6167013"
+					class="sidebar-link pr-2 content-center ">
+					Elastic Cloud Hosted
+				</a>
+				<label for="7b3570fd" class="group/label flex mr-2 items-start">
+					<div class="hover:bg-grey-20 rounded-sm p-1 cursor-pointer">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							class="shrink-0 -rotate-90 group-has-checked/label:rotate-0 w-3.5">
+							<path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+						</svg>
+					</div>
+					<input
+						id="7b3570fd"
+						type="checkbox"
+						class="hidden"
+						aria-hidden="true">
+				</label>
+			</div>
+				<ul class="w-full hidden peer-has-checked:block ml-4">
+							<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/quickstart/ech/k8s"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-a1b8c4c0"
+				>
+				Kubernetes
+			</a>
+		</li>
+		<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/quickstart/ech/hosts_vms"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-07279c0c"
+				>
+				Hosts and VMs
+			</a>
+		</li>
+		<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/quickstart/ech/docker"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-6fd8c755"
+				>
+				Docker
+			</a>
+		</li>
+
+				</ul>
+		</li>
+
+				</ul>
+		</li>
+		<li class="flex flex-wrap group-navigation mt-4">
+			<div class="peer grid grid-cols-[1fr_auto] w-full">
+				<a
+					href="/reference/architecture/"
+					 hx-select-oob=#content-container,#toc-nav preload=mousedown
+					id="page-72c4bb0b"
+					class="sidebar-link pr-2 content-center ">
+					Reference Architecture
+				</a>
+				<label for="806875a8" class="group/label flex mr-2 items-start">
+					<div class="hover:bg-grey-20 rounded-sm p-1 cursor-pointer">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							class="shrink-0 -rotate-90 group-has-checked/label:rotate-0 w-3.5">
+							<path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+						</svg>
+					</div>
+					<input
+						id="806875a8"
+						type="checkbox"
+						class="hidden"
+						aria-hidden="true">
+				</label>
+			</div>
+				<ul class="w-full hidden peer-has-checked:block ml-4">
+							<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/architecture/k8s"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-5d938055"
+				>
+				Kubernetes environments
+			</a>
+		</li>
+		<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/architecture/hosts_vms"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-75667f84"
+				>
+				Hosts / VMs environments
+			</a>
+		</li>
+
+				</ul>
+		</li>
+		<li class="flex flex-wrap group-navigation mt-4">
+			<div class="peer grid grid-cols-[1fr_auto] w-full">
+				<a
+					href="/reference/use-cases/"
+					 hx-select-oob=#content-container,#toc-nav preload=mousedown
+					id="page-89555691"
+					class="sidebar-link pr-2 content-center ">
+					Use cases
+				</a>
+				<label for="e2644c79" class="group/label flex mr-2 items-start">
+					<div class="hover:bg-grey-20 rounded-sm p-1 cursor-pointer">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							class="shrink-0 -rotate-90 group-has-checked/label:rotate-0 w-3.5">
+							<path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+						</svg>
+					</div>
+					<input
+						id="e2644c79"
+						type="checkbox"
+						class="hidden"
+						aria-hidden="true">
+				</label>
+			</div>
+				<ul class="w-full hidden peer-has-checked:block ml-4">
+							<li class="flex flex-wrap group-navigation mt-4">
+			<div class="peer grid grid-cols-[1fr_auto] w-full">
+				<a
+					href="/reference/use-cases/kubernetes/"
+					 hx-select-oob=#content-container,#toc-nav preload=mousedown
+					id="page-8b38b7fe"
+					class="sidebar-link pr-2 content-center ">
+					Kubernetes observability
+				</a>
+				<label for="57ec286c" class="group/label flex mr-2 items-start">
+					<div class="hover:bg-grey-20 rounded-sm p-1 cursor-pointer">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							class="shrink-0 -rotate-90 group-has-checked/label:rotate-0 w-3.5">
+							<path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+						</svg>
+					</div>
+					<input
+						id="57ec286c"
+						type="checkbox"
+						class="hidden"
+						aria-hidden="true">
+				</label>
+			</div>
+				<ul class="w-full hidden peer-has-checked:block ml-4">
+							<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/use-cases/kubernetes/prerequisites-compatibility"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-d8ba19a9"
+				>
+				Prerequisites and compatibility
+			</a>
+		</li>
+		<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/use-cases/kubernetes/components"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-e1971fd8"
+				>
+				Components description
+			</a>
+		</li>
+		<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/use-cases/kubernetes/deployment"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-928661a3"
+				>
+				Deployment
+			</a>
+		</li>
+		<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/use-cases/kubernetes/instrumenting-applications"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-d4a62dc6"
+				>
+				Instrumenting Applications
+			</a>
+		</li>
+		<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/use-cases/kubernetes/upgrade"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-054d26ba"
+				>
+				Upgrade
+			</a>
+		</li>
+		<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/use-cases/kubernetes/customization"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-bd9de905"
+				>
+				Customization
+			</a>
+		</li>
+
+				</ul>
+		</li>
+		<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/use-cases/llms/"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link group-[.current]/li:text-blue-elastic!"
+				id="page-38bcddff"
+			>
+				LLM observability
+			</a>
+		</li>
+
+				</ul>
+		</li>
+		<li class="flex flex-wrap group-navigation mt-4">
+			<div class="peer grid grid-cols-[1fr_auto] w-full">
+				<a
+					href="/reference/compatibility/"
+					 hx-select-oob=#content-container,#toc-nav preload=mousedown
+					id="page-1d792931"
+					class="sidebar-link pr-2 content-center ">
+					Compatibility and support
+				</a>
+				<label for="fbec984a" class="group/label flex mr-2 items-start">
+					<div class="hover:bg-grey-20 rounded-sm p-1 cursor-pointer">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							class="shrink-0 -rotate-90 group-has-checked/label:rotate-0 w-3.5">
+							<path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+						</svg>
+					</div>
+					<input
+						id="fbec984a"
+						type="checkbox"
+						class="hidden"
+						aria-hidden="true">
+				</label>
+			</div>
+				<ul class="w-full hidden peer-has-checked:block ml-4">
+							<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/compatibility/features"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-7c5e2b4b"
+				>
+				Features
+			</a>
+		</li>
+		<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/compatibility/collectors"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-a91cb804"
+				>
+				Collector distributions
+			</a>
+		</li>
+		<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/compatibility/sdks"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-e4da9cb0"
+				>
+				SDK Distributions
+			</a>
+		</li>
+		<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/compatibility/edot-vs-upstream"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-d8f2cc02"
+				>
+				EDOT compared to upstream OTel
+			</a>
+		</li>
+		<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/compatibility/limitations"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-4c1dae2b"
+				>
+				Limitations
+			</a>
+		</li>
+		<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/compatibility/nomenclature"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-98cd1aa7"
+				>
+				Nomenclature
+			</a>
+		</li>
+
+				</ul>
+		</li>
+		<li class="flex flex-wrap group-navigation mt-4">
+			<div class="peer grid grid-cols-[1fr_auto] w-full">
+				<a
+					href="/reference/edot-collector/"
+					 hx-select-oob=#content-container,#toc-nav preload=mousedown
+					id="page-2e0f456a"
+					class="sidebar-link pr-2 content-center ">
+					EDOT Collector
+				</a>
+				<label for="ba25715d" class="group/label flex mr-2 items-start">
+					<div class="hover:bg-grey-20 rounded-sm p-1 cursor-pointer">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							class="shrink-0 -rotate-90 group-has-checked/label:rotate-0 w-3.5">
+							<path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+						</svg>
+					</div>
+					<input
+						id="ba25715d"
+						type="checkbox"
+						class="hidden"
+						aria-hidden="true">
+				</label>
+			</div>
+				<ul class="w-full hidden peer-has-checked:block ml-4">
+							<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/edot-collector/download"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-fe3d1746"
+				>
+				Download
+			</a>
+		</li>
+		<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/edot-collector/modes"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-5c5ba54a"
+				>
+				Deployment modes
+			</a>
+		</li>
+		<li class="flex flex-wrap group-navigation mt-4">
+			<div class="peer grid grid-cols-[1fr_auto] w-full">
+				<a
+					href="/reference/edot-collector/config/"
+					 hx-select-oob=#content-container,#toc-nav preload=mousedown
+					id="page-719ef154"
+					class="sidebar-link pr-2 content-center ">
+					Configuration
+				</a>
+				<label for="8bb972e4" class="group/label flex mr-2 items-start">
+					<div class="hover:bg-grey-20 rounded-sm p-1 cursor-pointer">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							class="shrink-0 -rotate-90 group-has-checked/label:rotate-0 w-3.5">
+							<path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+						</svg>
+					</div>
+					<input
+						id="8bb972e4"
+						type="checkbox"
+						class="hidden"
+						aria-hidden="true">
+				</label>
+			</div>
+				<ul class="w-full hidden peer-has-checked:block ml-4">
+							<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/edot-collector/config/default-config-standalone"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-c6fb02bc"
+				>
+				Default config (Standalone)
+			</a>
+		</li>
+		<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/edot-collector/config/default-config-k8s"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-6b4aa4a0"
+				>
+				Default config (Kubernetes)
+			</a>
+		</li>
+		<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/edot-collector/config/configure-logs-collection"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-a964171f"
+				>
+				Configure Logs Collection
+			</a>
+		</li>
+		<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/edot-collector/config/configure-metrics-collection"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-cc65de94"
+				>
+				Configure Metrics Collection
+			</a>
+		</li>
+
+				</ul>
+		</li>
+		<li class="flex flex-wrap group-navigation mt-4">
+			<div class="peer grid grid-cols-[1fr_auto] w-full">
+				<a
+					href="/reference/edot-collector/customization"
+					 hx-select-oob=#content-container,#toc-nav preload=mousedown
+					id="page-9432716a"
+					class="sidebar-link pr-2 content-center ">
+					Customization
+				</a>
+				<label for="a2aa2126" class="group/label flex mr-2 items-start">
+					<div class="hover:bg-grey-20 rounded-sm p-1 cursor-pointer">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							class="shrink-0 -rotate-90 group-has-checked/label:rotate-0 w-3.5">
+							<path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+						</svg>
+					</div>
+					<input
+						id="a2aa2126"
+						type="checkbox"
+						class="hidden"
+						aria-hidden="true">
+				</label>
+			</div>
+				<ul class="w-full hidden peer-has-checked:block ml-4">
+							<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/edot-collector/components"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-3fe5bef7"
+				>
+				Components
+			</a>
+		</li>
+		<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/edot-collector/custom-collector"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-c31f5a8b"
+				>
+				Custom Collector
+			</a>
+		</li>
+
+				</ul>
+		</li>
+
+				</ul>
+		</li>
+		<li class="flex flex-wrap group-navigation mt-4">
+			<div class="peer grid grid-cols-[1fr_auto] w-full">
+				<a
+					href="/reference/edot-cloud-forwarder/"
+					 hx-select-oob=#content-container,#toc-nav preload=mousedown
+					id="page-35aad8a9"
+					class="sidebar-link pr-2 content-center ">
+					EDOT Cloud Forwarder
+				</a>
+				<label for="1aabf9eb" class="group/label flex mr-2 items-start">
+					<div class="hover:bg-grey-20 rounded-sm p-1 cursor-pointer">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							class="shrink-0 -rotate-90 group-has-checked/label:rotate-0 w-3.5">
+							<path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+						</svg>
+					</div>
+					<input
+						id="1aabf9eb"
+						type="checkbox"
+						class="hidden"
+						aria-hidden="true">
+				</label>
+			</div>
+				<ul class="w-full hidden peer-has-checked:block ml-4">
+							<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/edot-cloud-forwarder/aws"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-f76070c0"
+				>
+				AWS
+			</a>
+		</li>
+
+				</ul>
+		</li>
+		<li class="flex flex-wrap group-navigation mt-4">
+			<div class="peer grid grid-cols-[1fr_auto] w-full">
+				<a
+					href="/reference/edot-sdks/"
+					 hx-select-oob=#content-container,#toc-nav preload=mousedown
+					id="page-e2b5a089"
+					class="sidebar-link pr-2 content-center ">
+					EDOT SDKs
+				</a>
+				<label for="576e5bbd" class="group/label flex mr-2 items-start">
+					<div class="hover:bg-grey-20 rounded-sm p-1 cursor-pointer">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							class="shrink-0 -rotate-90 group-has-checked/label:rotate-0 w-3.5">
+							<path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+						</svg>
+					</div>
+					<input
+						id="576e5bbd"
+						type="checkbox"
+						class="hidden"
+						aria-hidden="true">
+				</label>
+			</div>
+				<ul class="w-full hidden peer-has-checked:block ml-4">
+							<li class="flex flex-wrap group-navigation mt-4">
+			<div class="peer grid grid-cols-[1fr_auto] w-full">
+				<a
+					href="/reference/edot-sdks/dotnet/"
+					 hx-select-oob=#content-container,#toc-nav preload=mousedown
+					id="page-0e0218cb"
+					class="sidebar-link pr-2 content-center ">
+					EDOT .NET
+				</a>
+				<label for="69533327" class="group/label flex mr-2 items-start">
+					<div class="hover:bg-grey-20 rounded-sm p-1 cursor-pointer">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							class="shrink-0 -rotate-90 group-has-checked/label:rotate-0 w-3.5">
+							<path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+						</svg>
+					</div>
+					<input
+						id="69533327"
+						type="checkbox"
+						class="hidden"
+						aria-hidden="true">
+				</label>
+			</div>
+				<ul class="w-full hidden peer-has-checked:block ml-4">
+							<li class="flex flex-wrap group-navigation mt-4">
+			<div class="peer grid grid-cols-[1fr_auto] w-full">
+				<a
+					href="/reference/edot-sdks/dotnet/setup/"
+					 hx-select-oob=#content-container,#toc-nav preload=mousedown
+					id="page-ba954b8d"
+					class="sidebar-link pr-2 content-center ">
+					Setup
+				</a>
+				<label for="5afd6144" class="group/label flex mr-2 items-start">
+					<div class="hover:bg-grey-20 rounded-sm p-1 cursor-pointer">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							class="shrink-0 -rotate-90 group-has-checked/label:rotate-0 w-3.5">
+							<path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+						</svg>
+					</div>
+					<input
+						id="5afd6144"
+						type="checkbox"
+						class="hidden"
+						aria-hidden="true">
+				</label>
+			</div>
+				<ul class="w-full hidden peer-has-checked:block ml-4">
+							<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/edot-sdks/dotnet/setup/aspnet"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-52b7e65f"
+				>
+				ASP.NET
+			</a>
+		</li>
+		<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/edot-sdks/dotnet/setup/console"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-2eb93a0d"
+				>
+				Console applications
+			</a>
+		</li>
+		<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/edot-sdks/dotnet/setup/worker-services"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-1df42d6b"
+				>
+				.NET worker services
+			</a>
+		</li>
+		<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/edot-sdks/dotnet/setup/zero-code"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-1ed4788b"
+				>
+				Zero-code instrumentation
+			</a>
+		</li>
+		<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/edot-sdks/dotnet/setup/edot-defaults"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-ed8bf9c3"
+				>
+				Opinionated defaults
+			</a>
+		</li>
+
+				</ul>
+		</li>
+		<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/edot-sdks/dotnet/configuration"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-d592c71e"
+				>
+				Configuration
+			</a>
+		</li>
+		<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/edot-sdks/dotnet/supported-technologies"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-796643b0"
+				>
+				Supported technologies
+			</a>
+		</li>
+		<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/edot-sdks/dotnet/migration"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-b8387e16"
+				>
+				Migration
+			</a>
+		</li>
+
+				</ul>
+		</li>
+		<li class="flex flex-wrap group-navigation mt-4">
+			<div class="peer grid grid-cols-[1fr_auto] w-full">
+				<a
+					href="/reference/edot-sdks/java/"
+					 hx-select-oob=#content-container,#toc-nav preload=mousedown
+					id="page-11f86acc"
+					class="sidebar-link pr-2 content-center ">
+					EDOT Java
+				</a>
+				<label for="dbe62065" class="group/label flex mr-2 items-start">
+					<div class="hover:bg-grey-20 rounded-sm p-1 cursor-pointer">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							class="shrink-0 -rotate-90 group-has-checked/label:rotate-0 w-3.5">
+							<path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+						</svg>
+					</div>
+					<input
+						id="dbe62065"
+						type="checkbox"
+						class="hidden"
+						aria-hidden="true">
+				</label>
+			</div>
+				<ul class="w-full hidden peer-has-checked:block ml-4">
+							<li class="flex flex-wrap group-navigation mt-4">
+			<div class="peer grid grid-cols-[1fr_auto] w-full">
+				<a
+					href="/reference/edot-sdks/java/setup/"
+					 hx-select-oob=#content-container,#toc-nav preload=mousedown
+					id="page-4114f93e"
+					class="sidebar-link pr-2 content-center ">
+					Setup
+				</a>
+				<label for="a7ee18b5" class="group/label flex mr-2 items-start">
+					<div class="hover:bg-grey-20 rounded-sm p-1 cursor-pointer">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							class="shrink-0 -rotate-90 group-has-checked/label:rotate-0 w-3.5">
+							<path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+						</svg>
+					</div>
+					<input
+						id="a7ee18b5"
+						type="checkbox"
+						class="hidden"
+						aria-hidden="true">
+				</label>
+			</div>
+				<ul class="w-full hidden peer-has-checked:block ml-4">
+							<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/edot-sdks/java/setup/k8s"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-2c8018dc"
+				>
+				Kubernetes Setup
+			</a>
+		</li>
+		<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/edot-sdks/java/setup/runtime-attach"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-3f7077f2"
+				>
+				Runtime attach Setup
+			</a>
+		</li>
+
+				</ul>
+		</li>
+		<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/edot-sdks/java/configuration"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-fad0f1ec"
+				>
+				Configuration
+			</a>
+		</li>
+		<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/edot-sdks/java/features"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-9b2179cb"
+				>
+				Features
+			</a>
+		</li>
+		<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/edot-sdks/java/supported-technologies"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-63d6ae7f"
+				>
+				Supported Technologies
+			</a>
+		</li>
+		<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/edot-sdks/java/migration"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-cd816cf7"
+				>
+				Migration
+			</a>
+		</li>
+		<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/edot-sdks/java/overhead"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-b768b930"
+				>
+				Performance overhead
+			</a>
+		</li>
+
+				</ul>
+		</li>
+		<li class="flex flex-wrap group-navigation mt-4">
+			<div class="peer grid grid-cols-[1fr_auto] w-full">
+				<a
+					href="/reference/edot-sdks/nodejs/"
+					 hx-select-oob=#content-container,#toc-nav preload=mousedown
+					id="page-301cc5f1"
+					class="sidebar-link pr-2 content-center ">
+					EDOT Node.js
+				</a>
+				<label for="91af68b5" class="group/label flex mr-2 items-start">
+					<div class="hover:bg-grey-20 rounded-sm p-1 cursor-pointer">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							class="shrink-0 -rotate-90 group-has-checked/label:rotate-0 w-3.5">
+							<path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+						</svg>
+					</div>
+					<input
+						id="91af68b5"
+						type="checkbox"
+						class="hidden"
+						aria-hidden="true">
+				</label>
+			</div>
+				<ul class="w-full hidden peer-has-checked:block ml-4">
+							<li class="flex flex-wrap group-navigation mt-4">
+			<div class="peer grid grid-cols-[1fr_auto] w-full">
+				<a
+					href="/reference/edot-sdks/nodejs/setup/"
+					 hx-select-oob=#content-container,#toc-nav preload=mousedown
+					id="page-55b539c5"
+					class="sidebar-link pr-2 content-center ">
+					Setup
+				</a>
+				<label for="4b6cf93f" class="group/label flex mr-2 items-start">
+					<div class="hover:bg-grey-20 rounded-sm p-1 cursor-pointer">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							class="shrink-0 -rotate-90 group-has-checked/label:rotate-0 w-3.5">
+							<path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+						</svg>
+					</div>
+					<input
+						id="4b6cf93f"
+						type="checkbox"
+						class="hidden"
+						aria-hidden="true">
+				</label>
+			</div>
+				<ul class="w-full hidden peer-has-checked:block ml-4">
+							<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/edot-sdks/nodejs/setup/k8s"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-38122431"
+				>
+				Kubernetes
+			</a>
+		</li>
+
+				</ul>
+		</li>
+		<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/edot-sdks/nodejs/configuration"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-582c4f07"
+				>
+				Configuration
+			</a>
+		</li>
+		<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/edot-sdks/nodejs/supported-technologies"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-621a6a3c"
+				>
+				Supported Technologies
+			</a>
+		</li>
+		<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/edot-sdks/nodejs/metrics"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-254a7c02"
+				>
+				Metrics
+			</a>
+		</li>
+		<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/edot-sdks/nodejs/migration"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-478796a5"
+				>
+				Migration
+			</a>
+		</li>
+
+				</ul>
+		</li>
+		<li class="flex flex-wrap group-navigation mt-4">
+			<div class="peer grid grid-cols-[1fr_auto] w-full">
+				<a
+					href="/reference/edot-sdks/php/"
+					 hx-select-oob=#content-container,#toc-nav preload=mousedown
+					id="page-9918a555"
+					class="sidebar-link pr-2 content-center ">
+					EDOT PHP
+				</a>
+				<label for="a29c5509" class="group/label flex mr-2 items-start">
+					<div class="hover:bg-grey-20 rounded-sm p-1 cursor-pointer">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							class="shrink-0 -rotate-90 group-has-checked/label:rotate-0 w-3.5">
+							<path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+						</svg>
+					</div>
+					<input
+						id="a29c5509"
+						type="checkbox"
+						class="hidden"
+						aria-hidden="true">
+				</label>
+			</div>
+				<ul class="w-full hidden peer-has-checked:block ml-4">
+							<li class="flex flex-wrap group-navigation mt-4">
+			<div class="peer grid grid-cols-[1fr_auto] w-full">
+				<a
+					href="/reference/edot-sdks/php/setup/"
+					 hx-select-oob=#content-container,#toc-nav preload=mousedown
+					id="page-145a788f"
+					class="sidebar-link pr-2 content-center ">
+					Setup
+				</a>
+				<label for="99ad9e80" class="group/label flex mr-2 items-start">
+					<div class="hover:bg-grey-20 rounded-sm p-1 cursor-pointer">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							class="shrink-0 -rotate-90 group-has-checked/label:rotate-0 w-3.5">
+							<path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+						</svg>
+					</div>
+					<input
+						id="99ad9e80"
+						type="checkbox"
+						class="hidden"
+						aria-hidden="true">
+				</label>
+			</div>
+				<ul class="w-full hidden peer-has-checked:block ml-4">
+							<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/edot-sdks/php/setup/limitations"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-d08ae3e9"
+				>
+				Limitations
+			</a>
+		</li>
+
+				</ul>
+		</li>
+		<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/edot-sdks/php/configuration"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-430e8610"
+				>
+				Configuration
+			</a>
+		</li>
+		<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/edot-sdks/php/supported-technologies"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-788c2932"
+				>
+				Supported Technologies
+			</a>
+		</li>
+		<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/edot-sdks/php/migration"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-ba678536"
+				>
+				Migration
+			</a>
+		</li>
+		<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/edot-sdks/php/overhead"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-a6bcdaca"
+				>
+				Performance overhead
+			</a>
+		</li>
+
+				</ul>
+		</li>
+		<li class="flex flex-wrap group-navigation mt-4">
+			<div class="peer grid grid-cols-[1fr_auto] w-full">
+				<a
+					href="/reference/edot-sdks/python/"
+					 hx-select-oob=#content-container,#toc-nav preload=mousedown
+					id="page-6479d886"
+					class="sidebar-link pr-2 content-center ">
+					EDOT Python
+				</a>
+				<label for="4f863ba4" class="group/label flex mr-2 items-start">
+					<div class="hover:bg-grey-20 rounded-sm p-1 cursor-pointer">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							class="shrink-0 -rotate-90 group-has-checked/label:rotate-0 w-3.5">
+							<path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+						</svg>
+					</div>
+					<input
+						id="4f863ba4"
+						type="checkbox"
+						class="hidden"
+						aria-hidden="true">
+				</label>
+			</div>
+				<ul class="w-full hidden peer-has-checked:block ml-4">
+							<li class="flex flex-wrap group-navigation mt-4">
+			<div class="peer grid grid-cols-[1fr_auto] w-full">
+				<a
+					href="/reference/edot-sdks/python/setup/"
+					 hx-select-oob=#content-container,#toc-nav preload=mousedown
+					id="page-584c2e2c"
+					class="sidebar-link pr-2 content-center ">
+					Setup
+				</a>
+				<label for="35838f4c" class="group/label flex mr-2 items-start">
+					<div class="hover:bg-grey-20 rounded-sm p-1 cursor-pointer">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							class="shrink-0 -rotate-90 group-has-checked/label:rotate-0 w-3.5">
+							<path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+						</svg>
+					</div>
+					<input
+						id="35838f4c"
+						type="checkbox"
+						class="hidden"
+						aria-hidden="true">
+				</label>
+			</div>
+				<ul class="w-full hidden peer-has-checked:block ml-4">
+							<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/edot-sdks/python/setup/k8s"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-bfadd4cd"
+				>
+				Kubernetes
+			</a>
+		</li>
+		<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/edot-sdks/python/setup/manual-instrumentation"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-8e2a57a7"
+				>
+				Manual Instrumentation
+			</a>
+		</li>
+
+				</ul>
+		</li>
+		<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/edot-sdks/python/configuration"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-ec9b838e"
+				>
+				Configuration
+			</a>
+		</li>
+		<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/edot-sdks/python/supported-technologies"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-4512a9e4"
+				>
+				Supported Technologies
+			</a>
+		</li>
+		<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/edot-sdks/python/migration"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-c3996f4f"
+				>
+				Migration
+			</a>
+		</li>
+		<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/edot-sdks/python/overhead"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-ce8e3213"
+				>
+				Performance Overhead
+			</a>
+		</li>
+
+				</ul>
+		</li>
+
+				</ul>
+		</li>
+		<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/reference/motlp"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-09cea74d"
+				>
+				Managed OTLP Endpoint
+			</a>
+		</li>
+
+				</ul>
+		</li>
+		<li class="flex flex-wrap group-navigation mt-6">
+			<div class="peer grid grid-cols-[1fr_auto] w-full">
+				<a
+					href="/troubleshooting/"
+					 hx-select-oob=#content-container,#toc-nav preload=mousedown
+					id="page-17f3e443"
+					class="sidebar-link pr-2 content-center font-semibold">
+					Troubleshooting EDOT
+				</a>
+				<label for="eff6c65f" class="group/label flex mr-2 items-start">
+					<div class="hover:bg-grey-20 rounded-sm p-1 cursor-pointer">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							class="shrink-0 -rotate-90 group-has-checked/label:rotate-0 w-3.5">
+							<path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+						</svg>
+					</div>
+					<input
+						id="eff6c65f"
+						type="checkbox"
+						class="hidden"
+						aria-hidden="true">
+				</label>
+			</div>
+				<ul class="w-full hidden peer-has-checked:block ml-4">
+							<li class="flex flex-wrap group-navigation mt-4">
+			<div class="peer grid grid-cols-[1fr_auto] w-full">
+				<a
+					href="/troubleshooting/"
+					 hx-select-oob=#content-container,#toc-nav preload=mousedown
+					id="page-17f3e443"
+					class="sidebar-link pr-2 content-center ">
+					Troubleshooting EDOT
+				</a>
+				<label for="7b7fb640" class="group/label flex mr-2 items-start">
+					<div class="hover:bg-grey-20 rounded-sm p-1 cursor-pointer">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							class="shrink-0 -rotate-90 group-has-checked/label:rotate-0 w-3.5">
+							<path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+						</svg>
+					</div>
+					<input
+						id="7b7fb640"
+						type="checkbox"
+						class="hidden"
+						aria-hidden="true">
+				</label>
+			</div>
+				<ul class="w-full hidden peer-has-checked:block ml-4">
+							<li class="flex flex-wrap group-navigation mt-4">
+			<div class="peer grid grid-cols-[1fr_auto] w-full">
+				<a
+					href="/troubleshooting/edot-collector/"
+					 hx-select-oob=#content-container,#toc-nav preload=mousedown
+					id="page-81635b05"
+					class="sidebar-link pr-2 content-center ">
+					Troubleshooting
+				</a>
+				<label for="6254d805" class="group/label flex mr-2 items-start">
+					<div class="hover:bg-grey-20 rounded-sm p-1 cursor-pointer">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							class="shrink-0 -rotate-90 group-has-checked/label:rotate-0 w-3.5">
+							<path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+						</svg>
+					</div>
+					<input
+						id="6254d805"
+						type="checkbox"
+						class="hidden"
+						aria-hidden="true">
+				</label>
+			</div>
+				<ul class="w-full hidden peer-has-checked:block ml-4">
+							<li class="flex flex-wrap group-navigation mt-4">
+			<div class="peer grid grid-cols-[1fr_auto] w-full">
+				<a
+					href="/troubleshooting/edot-collector/standalone/"
+					 hx-select-oob=#content-container,#toc-nav preload=mousedown
+					id="page-51480121"
+					class="sidebar-link pr-2 content-center ">
+					EDOT Collector
+				</a>
+				<label for="d5a8b02e" class="group/label flex mr-2 items-start">
+					<div class="hover:bg-grey-20 rounded-sm p-1 cursor-pointer">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							class="shrink-0 -rotate-90 group-has-checked/label:rotate-0 w-3.5">
+							<path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+						</svg>
+					</div>
+					<input
+						id="d5a8b02e"
+						type="checkbox"
+						class="hidden"
+						aria-hidden="true">
+				</label>
+			</div>
+				<ul class="w-full hidden peer-has-checked:block ml-4">
+							<li class="flex group/li pr-8 mt-4">
+			<a
+				href="/troubleshooting/edot-collector/standalone/collector-oomkilled"
+				 hx-select-oob=#content-container,#toc-nav preload=mousedown
+				class="sidebar-link grow group-[.current]/li:text-blue-elastic!"
+				id="page-96848a31"
+				>
+				Collector out of memory
+			</a>
+		</li>
+
+				</ul>
+		</li>
+
+				</ul>
+		</li>
+		<li class="flex flex-wrap group-navigation mt-4">
+			<div class="peer grid grid-cols-[1fr_auto] w-full">
+				<a
+					href="/troubleshooting/edot-sdks/"
+					 hx-select-oob=#content-container,#toc-nav preload=mousedown
+					id="page-81055afd"
+					class="sidebar-link pr-2 content-center ">
+					EDOT SDKs
+				</a>
+				<label for="30cd9dec" class="group/label flex mr-2 items-start">
+					<div class="hover:bg-grey-20 rounded-sm p-1 cursor-pointer">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							class="shrink-0 -rotate-90 group-has-checked/label:rotate-0 w-3.5">
+							<path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
+						</svg>
+					</div>
+					<input
+						id="30cd9dec"
+						type="checkbox"
+						class="hidden"
+						aria-hidden="true">
+				</label>
+			</div>
+				<ul class="w-full hidden peer-has-checked:block ml-4">
+					
+				</ul>
+		</li>
+
+				</ul>
+		</li>
+
+				</ul>
+		</li>
+
+	</ul>
+</div>
+
+	</nav>
+	<label role="button" for="pages-nav-hamburger" class="absolute md:hidden top-7 -right-12 bg-white p-1 rounded-full border-1 border-grey-20 cursor-pointer z-99">
+		<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+			<path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+		</svg>
+	</label>
+</aside>
+<label for="pages-nav-hamburger" aria-hidden="true" class="hidden group-has-[#pages-nav-hamburger:checked]/body:block md:hidden! fixed top-0 left-0 right-0 bottom-0 bg-black/50 z-30 ">
+	
+</label>
+
+				<div class="justify-center grid
+					grid-cols-1
+					px-6 lg:px-0
+					lg:grid-cols-[1fr_var(--max-text-width)_1fr]
+					">
+					<div class="spacer"></div>
+					<main id="content-container" class="w-full flex flex-col relative pb-30 overflow-x-hidden">
+						<div class="w-full absolute top-0 left-0 right-0 htmx-indicator" id="htmx-indicator" role="status">
+							<div class="h-[2px] w-full overflow-hidden">
+								<div class="progress w-full h-full bg-pink-70 left-right"></div>
+							</div>
+							<div class="sr-only">Loading</div>
+						</div>
+						<div class="content-container md:px-4">
+							
+<ol id="breadcrumbs" class="block items-center w-full py-6" itemscope="" itemtype="https://schema.org/BreadcrumbList">
+	<li class="inline text-ink-light text-sm leading-[1.2em]" itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
+		<a
+			itemprop="item"
+			href="/"
+		>
+			<span itemprop="name" class="hover:text-black">
+				Docs
+			</span>
+		</a>
+		<meta itemprop="position" content="1">
+	</li>
+		<li class="inline text-ink-light text-sm leading-[1.2em]" itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
+			<span class="px-1">/</span>
+			<a
+				itemprop="item"
+				href="/troubleshooting/"
+				 hx-get=/troubleshooting/ hx-select-oob=#content-container,#toc-nav hx-swap=none hx-push-url=true hx-indicator=#htmx-indicator preload=mousedown
+			>
+				<span itemprop="name" class="hover:text-black">Troubleshooting EDOT</span>
+			</a>
+			<meta itemprop="position" content="2">
+		</li>
+	
+		<li class="inline text-ink-light text-sm leading-[1.2em]" itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
+			<span class="px-1">/</span>
+			<a
+				itemprop="item" 
+				href="/troubleshooting/edot-sdks/"
+				 hx-get=/troubleshooting/edot-sdks/ hx-select-oob=#content-container,#toc-nav hx-swap=none hx-push-url=true hx-indicator=#htmx-indicator preload=mousedown
+			>
+				<span itemprop="name" class="hover:text-black">EDOT SDKs</span>
+			</a>
+			<meta itemprop="position" content="3">
+		</li>
+	<li class="inline text-ink-light text-sm leading-[1.2em]" itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem">
+		<span class="px-1">/</span>
+	</li>
+</ol>
+
+						</div>
+						<article id="markdown-content" class="content-container markdown-content md:px-4">
+							<input type="checkbox" class="hidden" id="pages-nav-hamburger">
+							<section id="elastic-docs-v3">
+	<h1>Troubleshooting the EDOT Python Agent</h1>
+
+		<p class="applies">
+		
+
+			<span class="applicable-info">
+				Elastic Stack
+				<span class="applicable-meta applicable-meta-ga">
+				</span>
+			</span>
+			<span class="applicable-info">
+				Serverless Observability
+				<span class="applicable-meta applicable-meta-ga">
+				</span>
+			</span>
+
+
+		</p>
+	<p>Use the information on this page to troubleshoot issues using EDOT Python.</p>
+<p>If you need help and you're an existing Elastic customer with a support contract, create a ticket in the <a href="https://support.elastic.co/customers/s/login/" target="_blank" rel="noopener noreferrer">Elastic Support portal</a>. Other users can post in the <a href="https://discuss.elastic.co/c/apm" target="_blank" rel="noopener noreferrer">APM discuss forum</a> or <a href="https://github.com/elastic/elastic-otel-node/issues" target="_blank" rel="noopener noreferrer">open a GitHub issue</a>.</p>
+<p>As a first step, review the <a href="/reference/edot-sdks/python/supported-technologies" hx-get="/reference/edot-sdks/python/supported-technologies" hx-select-oob="#main-container" hx-swap="none" hx-push-url="true" hx-indicator="#htmx-indicator" preload="mousedown">supported technologies</a> to ensure your application is supported by the agent. Are you using a Python version that EDOT Python supports? Are the versions of your dependencies in the supported version range to be instrumented?</p>
+<div class="heading-wrapper" id="general-troubleshooting"><h2><a class="headerlink" href="#general-troubleshooting">General troubleshooting</a></h2>
+</div>
+<p>Follow these recommended actions to make sure that EDOT Python is configured correctly.</p>
+<div class="heading-wrapper" id="debug-and-development-modes"><h3><a class="headerlink" href="#debug-and-development-modes">Debug and development modes</a></h3>
+</div>
+<p>Most frameworks support a debug mode. This mode is intended for non-production environments and provides detailed error messages and logging of potentially sensitive data. Turning on instrumentation in debug mode is not advised and might pose privacy and security issues in recording sensitive data.</p>
+<div class="heading-wrapper" id="django"><h4><a class="headerlink" href="#django">Django</a></h4>
+</div>
+<p>Django applications running with the Django <code>runserver</code> must use the <code>--noreload</code> parameter to be instrumented with <code>opentelemetry-instrument</code>. You also need to set the <code>DJANGO_SETTINGS_MODULE</code> environment variable pointing to the application settings module.</p>
+<div class="heading-wrapper" id="fastapi"><h4><a class="headerlink" href="#fastapi">FastAPI</a></h4>
+</div>
+<p>FastAPI application started with <code>fastapi dev</code> requires the reloader to be turned off with <code>--no-reload</code> to be instrumented with <code>opentelemetry-instrument</code>.</p>
+<div class="heading-wrapper" id="flask"><h4><a class="headerlink" href="#flask">Flask</a></h4>
+</div>
+<p>Flask applications running in debug mode require to turn off the reloader to be traced. Refer to <a href="https://opentelemetry.io/docs/zero-code/python/example/#instrumentation-while-debugging" target="_blank" rel="noopener noreferrer">OpenTelemetry zero code documentation</a>.</p>
+<div class="heading-wrapper" id="turn-off-edot"><h2><a class="headerlink" href="#turn-off-edot">Turn off EDOT</a></h2>
+</div>
+<p>In the unlikely event EDOT Python causes disruptions to a production application, you can turn it off while you troubleshoot. To turn off the underlying OpenTelemetry SDK, set the <code>OTEL_SDK_DISABLED</code> environment variable to <code>true</code>.</p>
+<p>If only a subset of instrumentation are causing disruptions, turn them off using the <code>OTEL_PYTHON_DISABLED_INSTRUMENTATIONS</code> environment variable. The variable accepts a list of comma-separated instrumentations. Refer to <a href="https://opentelemetry.io/docs/zero-code/python/configuration/#disabling-specific-instrumentations" target="_blank" rel="noopener noreferrer">OpenTelemetry zero code documentation</a>.</p>
+<div class="heading-wrapper" id="missing-logs"><h2><a class="headerlink" href="#missing-logs">Missing logs</a></h2>
+</div>
+<p>Activating the Python logging module auto-instrumentation with <code>OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED=true</code> calls the <a href="https://docs.python.org/3/library/logging.html#logging.basicConfig" target="_blank" rel="noopener noreferrer">logging.basicConfig</a> method that makes your own application calls to it a no-op. The side effect of this is that you won't see your application logs in the console. If you are already shipping logs by other means, you don't need to turn this on.</p>
+<div class="heading-wrapper" id="check-stability-of-semantic-conventions"><h2><a class="headerlink" href="#check-stability-of-semantic-conventions">Check stability of semantic conventions</a></h2>
+</div>
+<p>For some semantic conventions, like HTTP, there is a migration path, but the conversion to stable HTTP semantic conventions is not done yet for all the instrumentations.</p>
+<div class="heading-wrapper" id="access-or-modification-of-application-code"><h2><a class="headerlink" href="#access-or-modification-of-application-code">Access or modification of application code</a></h2>
+</div>
+<p>EDOT Python is distributed as a Python package and so must be installed in the same environment as your application. Once it is available in the path, it can auto-instrument your application without changing the application code.</p>
+
+</section>
+
+						</article>
+						<footer id="prev-next-nav" class="content-container mt-20 px-4">
+	<div class="flex flex-wrap lg:flex-nowrap gap-2 mt-2">
+		<div class="w-full">
+				<a 
+					href="/troubleshooting/edot-sdks/php/"
+					 hx-get=/troubleshooting/edot-sdks/php/ hx-select-oob=#content-container,#toc-nav hx-swap=none hx-push-url=true hx-indicator=#htmx-indicator preload=mousedown
+					class="flex h-full items-center text-ink-light hover:black border-1 border-grey-20 hover:border-grey-80 rounded-lg p-6 shadow-md"
+				>
+					<svg class="size-6 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5"/>
+					</svg>
+					<div>
+						<div class="text-xs lg:text-sm">Previous</div>
+						<div class="text-base lg:text-xl text-black">Troubleshooting</div>
+					</div>
+				</a>
+		</div>
+		<div class="w-full">
+		</div>
+	</div>
+</footer>
+
+					</main>
+					<div class="spacer"></div>
+				</div>
+				<aside class="sidebar hidden lg:block max-w-65 md:hidden">
+	<nav id="toc-nav" class="sidebar-nav">
+		<div id="page-version-dropdown" tabindex="1"
+		     class="mt-6 block group font-sans text-sm relative z-50">
+			<button
+				class="text-left border-1 rounded-2xl grid grid-cols-[1fr_auto] cursor-pointer font-semibold gap-1 hover:text-black pl-4 pr-1 py-1 group-open:border-b-1 border-grey-20">
+				<div>
+					<span class="page-version-dropdown_active text-ink">
+						Current version
+					</span>
+				</div>
+				<div class="flex items-center my-auto justify-center size-5 hover:bg-grey-20 rounded-xl">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						fill="none"
+						viewBox="0 0 24 24"
+						stroke-width="1.5"
+						stroke="currentColor"
+						class="w-4 group-open:rotate-180">
+						<path stroke-linecap="round" stroke-linejoin="round" d="m19.5 9.25-7.5 8.5-7.5-8.5"/>
+					</svg>
+				</div>
+			</button>
+			<div class="hidden group-focus-within:block left-0 right-0 absolute top-full w-max">
+				<ul class="mt-1 py-0 bg-white border-1 border-grey-20 rounded-sm shadow-md">
+					<li class="block">
+						<a
+							class="block py-2 px-4 hover:underline hover:text-black hover:bg-grey-10 active:bg-blue-elastic-70 active:text-white font-semibold text-ink rounded-sm"
+							 hx-select-oob=#main-container preload=mouseover
+						>
+							Current version ✓
+						</a>						
+					</li>
+					<li class="block">
+							<a
+								class="block py-2 px-4 font-semibold text-grey-60 cursor-default"
+								 hx-select-oob=#main-container preload=mouseover
+								title="Current is the only version of this page.">
+								Previous version
+							</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<ul class="mt-6">
+
+				<li class="edit-this-page not-first:mt-1">
+					<a href="https://github.com/elastic/opentelemetry/edit/move-tb/docs/troubleshooting/edot-sdks/python/index.md" class="link text-sm" target="_blank">
+
+
+						<svg class="link-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125"/>
+						</svg>
+
+						Edit this page
+					</a>
+				</li>
+				<li class="report-an-issue not-first:mt-1">
+					<a href="https://github.com/elastic/docs-content/issues/new?template=issue-report.yaml&amp;link=https://docs-v3-preview.elastic.dev/troubleshooting/edot-sdks/python/&amp;labels=source:web" class="link text-sm" target="_blank">
+						<svg class="link-icon" viewBox="0 0 98 96" xmlns="http://www.w3.org/2000/svg">
+							<path fill-rule="evenodd" clip-rule="evenodd" d="M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.853 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z" fill="currentColor"/>
+						</svg>
+						Report an issue
+					</a>
+				</li>
+		</ul>
+		<div class="pt-6">
+				<div>
+					<div class="font-bold mb-2">On this page</div>
+					<div class="relative toc-progress-container font-body">
+						<div class="toc-progress-indicator absolute top-0 h-0 w-[1px] bg-blue-elastic transition-all duration-200 ease-out "></div>
+						<ul class="block w-full">
+								<li class="has-[:hover]:border-l-grey-80 items-center px-4 border-l-1 border-l-grey-20 has-[.current]:border-l-blue-elastic!">
+									<a
+										class="sidebar-link inline-block my-1.5 "
+										href="#general-troubleshooting">
+										General troubleshooting
+									</a>
+								</li>
+								<li class="has-[:hover]:border-l-grey-80 items-center px-4 border-l-1 border-l-grey-20 has-[.current]:border-l-blue-elastic!">
+									<a
+										class="sidebar-link inline-block my-1.5 ml-4"
+										href="#debug-and-development-modes">
+										Debug and development modes
+									</a>
+								</li>
+								<li class="has-[:hover]:border-l-grey-80 items-center px-4 border-l-1 border-l-grey-20 has-[.current]:border-l-blue-elastic!">
+									<a
+										class="sidebar-link inline-block my-1.5 "
+										href="#turn-off-edot">
+										Turn off EDOT
+									</a>
+								</li>
+								<li class="has-[:hover]:border-l-grey-80 items-center px-4 border-l-1 border-l-grey-20 has-[.current]:border-l-blue-elastic!">
+									<a
+										class="sidebar-link inline-block my-1.5 "
+										href="#missing-logs">
+										Missing logs
+									</a>
+								</li>
+								<li class="has-[:hover]:border-l-grey-80 items-center px-4 border-l-1 border-l-grey-20 has-[.current]:border-l-blue-elastic!">
+									<a
+										class="sidebar-link inline-block my-1.5 "
+										href="#check-stability-of-semantic-conventions">
+										Check stability of semantic conventions
+									</a>
+								</li>
+								<li class="has-[:hover]:border-l-grey-80 items-center px-4 border-l-1 border-l-grey-20 has-[.current]:border-l-blue-elastic!">
+									<a
+										class="sidebar-link inline-block my-1.5 "
+										href="#access-or-modification-of-application-code">
+										Access or modification of application code
+									</a>
+								</li>
+						</ul>
+					</div>
+				</div>
+
+		</div>
+
+	</nav>
+</aside>
+
+			</div>
+</div>
+
+
+<footer class="py-12 px-6 w-full mx-auto bg-ink-dark">
+	<div class="max-w-(--max-layout-width) w-full mx-auto">
+	<div class="text-grey-20 text-[12px]">
+		<a href="https://www.elastic.co/">
+			<img class="block" alt="Elastic logo" src="/_static/logo-elastic-horizontal-white.svg?v=19bc4040eda89518" width="120"/>
+		</a>
+	</div>
+	<div class="text-grey-20 text-[12px] bg-ink-dark grid grid-cols-1 md:grid-cols-2 gap-2 items-center">
+		<div>
+			<ul class="mt-4 flex gap-3">
+				<li>
+					<a class="underline hover:text-white" href="https://www.elastic.co/legal/trademarks">Trademarks</a>
+				</li>
+				<li>
+					<a class="underline hover:text-white" href="https://www.elastic.co/legal/terms-of-use">Terms of Use</a>
+				</li>
+				<li>
+					<a class="underline hover:text-white" href="https://www.elastic.co/legal/privacy-statement">Privacy</a>
+				</li>
+				<li>
+					<a class="underline hover:text-white" href="https://www.elastic.co/sitemap">Sitemap</a>
+				</li>
+			</ul>
+			<p class="mt-4">
+				© 2025 Elasticsearch B.V. All Rights Reserved.
+			</p>
+		</div>
+		<p class="mt-4">
+			Elasticsearch is a trademark of Elasticsearch B.V., registered in the U.S. and in other countries. Apache, Apache Lucene, Apache Hadoop, Hadoop, HDFS and the yellow elephant logo are trademarks of the Apache Software Foundation in the United States and/or other countries.
+		</p>
+	</div>
+	</div>
+</footer>
+
+<script src="/_static/main.js?v=0f975b9469857808"></script>
+
+	<aside id="dismissible-banner" class="admonition tip">
+		<div class="container flex justify-between items-center mx-auto">
+			<p>
+				Welcome to the docs for the <a class="link text-base" href="/docs/get-started/versioning-availability#find-docs-for-your-product-version">latest Elastic product versions</a>, including Elastic Stack 9.0 and Elastic Cloud Serverless.
+				To view previous versions, go to <a class="link text-base" target="_blank" href="https://elastic.co/guide">elastic.co/guide</a>.
+			</p>
+			<button id="dismissible-button">
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+					<path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/>
+				</svg>
+			</button>
+		</div>
+	</aside>
+</body>
+</html>

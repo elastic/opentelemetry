@@ -1,0 +1,13 @@
+{
+  "last_seen_changes": "2025-07-03T09:15:00.6120526+00:00",
+  "invalid_files": [
+    "/Users/aleksandra/Repositories/opentelemetry/docs/docset.yml"
+  ],
+  "exporter": "DocumentationFileExporter",
+  "git": {
+    "branch": "move-tb",
+    "remote": " git@github.com:alexandra5000/opentelemetry",
+    "ref": "3d1ff2666501d4feeef41fab0d7a44f28d24be0b",
+    "name": "opentelemetry"
+  }
+}

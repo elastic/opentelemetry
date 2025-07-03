@@ -13,7 +13,7 @@ products:
 
 # Troubleshooting the EDOT Java Agent
 
-Use the information in this section to troubleshoot common problems. As a first step, make sure your stack is compatible with the [supported technologies](./supported-technologies.md) for EDOT Java and the OpenTelemetry SDK.
+Use the information in this section to troubleshoot common problems. As a first step, make sure your stack is compatible with the [supported technologies](/reference/edot-sdks/java/supported-technologies.md) for EDOT Java and the OpenTelemetry SDK.
 
 If you need help and you're an existing Elastic customer with a support contract, create a ticket in the [Elastic Support portal](https://support.elastic.co/customers/s/login/). Other users can post in the [APM discuss forum](https://discuss.elastic.co/c/apm) or [open a GitHub issue](https://github.com/elastic/elastic-otel-node/issues)
 
@@ -50,7 +50,7 @@ As debugging output is verbose and might produce noticeable overhead on the appl
 - In case of a technical issue or exception with the agent, use [agent debugging](#agent-debugging).
 - If you need details on the captured data, use [per-signal debugging](#per-signal-debugging).
 
-In case of missing data, check first that the technology used in the application is supported in [upstream OpenTelemetry Java Instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md) and in [EDOT Java](supported-technologies.md).
+In case of missing data, check first that the technology used in the application is supported in [upstream OpenTelemetry Java Instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md) and in [EDOT Java](/reference/edot-sdks/java/supported-technologies.md).
 
 ### Agent debugging
 
@@ -160,4 +160,4 @@ Updates of the OpenTelemetry API/SDK in the application and the EDOT Java agent 
 
 ### How to update
 
-Updating EDOT Java agent is done by replacing the agent binary `.jar` that has been [added during setup](./setup/index.md).
+Updating EDOT Java agent is done by replacing the agent binary `.jar` that has been [added during setup](/reference/edot-sdks/java/setup/index.md).
