@@ -5,9 +5,12 @@ applies_to:
   stack:
   serverless:
     observability:
+  product:
+    edot_ios: ga
 products:
   - id: cloud-serverless
   - id: observability
+  - id: edot-sdk
 mapped_pages:
   - https://www.elastic.co/guide/en/apm/agent/swift/current/supported-technologies.html
 ---
