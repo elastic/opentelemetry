@@ -5,6 +5,8 @@ applies_to:
   stack:
   serverless:
     observability:
+  product:
+    edot_java: ga
 products:
   - id: cloud-serverless
   - id: observability

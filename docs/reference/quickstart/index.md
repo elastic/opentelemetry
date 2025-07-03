@@ -4,10 +4,13 @@ description: Learn how to set up the Elastic Distributions for OpenTelemetry (ED
 applies_to:
    stack:
    serverless:
-    observability:
+     observability:
+   product:
+     edot_collector: ga
 products:
   - id: cloud-serverless
   - id: observability
+  - id: edot-collector
 ---
 
 # Quickstart guides
