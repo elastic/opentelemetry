@@ -7,7 +7,7 @@ applies_to:
 products:
   - id: cloud-serverless
   - id: observability
-  #- id: edot-cf
+  - id: edot-cf
 ---
 
 # EDOT Cloud Forwarder

@@ -5,9 +5,12 @@ applies_to:
   stack:
   serverless:
     observability:
+  product:
+    edot_dotnet: ga
 products:
   - id: cloud-serverless
   - id: observability
+  - id: edot-sdk
 ---
 
 # Troubleshooting the EDOT .NET SDK

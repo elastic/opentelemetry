@@ -5,9 +5,12 @@ applies_to:
   stack:
   serverless:
     observability:
+  product:
+    edot_collector: ga
 products:
   - id: cloud-serverless
   - id: observability
+  - id: edot-collector
 ---
 
 # Quickstart for Kubernetes on self-managed deployments
