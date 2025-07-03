@@ -13,7 +13,7 @@ products:
 
 # Troubleshooting the EDOT Java Agent
 
-Use the information in this section to troubleshoot common problems. As a first step, make sure your stack is compatible with the [supported technologies](./supported-technologies.md) for EDOT Java and the OpenTelemetry SDK.
+Use the information in this section to troubleshoot common problems. As a first step, make sure your stack is compatible with the [supported technologies](/reference/edot-sdks/java/supported-technologies.md) for EDOT Java and the OpenTelemetry SDK.
 
 If you need help and you're an existing Elastic customer with a support contract, create a ticket in the [Elastic Support portal](https://support.elastic.co/customers/s/login/). Other users can post in the [APM discuss forum](https://discuss.elastic.co/c/apm) or [open a GitHub issue](https://github.com/elastic/elastic-otel-node/issues)
 
@@ -129,7 +129,7 @@ Because EDOT Java is a distribution of [OpenTelemetry Java instrumentation](http
 - [Semantic Conventions Java mappings](https://github.com/open-telemetry/semantic-conventions-java)
 - [OpenTelemetry Java Contrib](https://github.com/open-telemetry/opentelemetry-java-contrib)
 
-The versions of those included in EDOT are usually aligned with the OpenTelemetry Java Instrumentation. For reference, check the [release notes](https://github.com/elastic/elastic-otel-java/releases) details of versions included in each release.
+The versions of those included in EDOT are usually aligned with the OpenTelemetry Java Instrumentation. For reference, check the [elastic-otel-java://release-notes/index.md](https://github.com/elastic/elastic-otel-java/releases) details of versions included in each release.
 
 ## When and how to update EDOT
 
@@ -147,7 +147,7 @@ Updating to the latest EDOT version involves reviewing changes of the included d
 - [Semantic Conventions Java mappings](https://github.com/open-telemetry/semantic-conventions-java)
 - [OpenTelemetry Java Contrib](https://github.com/open-telemetry/opentelemetry-java-contrib)
 
-To review each of those individually, you can use the [EDOT release notes](https://github.com/elastic/elastic-otel-java/releases) for links to the respective versions of each component.
+To review each of those individually, you can use the [EDOT Java release notes](elastic-otel-java://release-notes/index.md) for links to the respective versions of each component.
 
 ### OpenTelemetry API/SDK update
 
@@ -160,4 +160,4 @@ Updates of the OpenTelemetry API/SDK in the application and the EDOT Java agent 
 
 ### How to update
 
-Updating EDOT Java agent is done by replacing the agent binary `.jar` that has been [added during setup](./setup/index.md).
+Updating EDOT Java agent is done by replacing the agent binary `.jar` that has been [added during setup](/reference/edot-sdks/java/setup/index.md).

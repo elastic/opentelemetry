@@ -43,13 +43,8 @@ helm repo add open-telemetry 'https://open-telemetry.github.io/opentelemetry-hel
 
 ::::{step} Set up connection and credentials
 
-Follow these steps to retrieve the [{{motlp}}](../../motlp.md) URL for your Serverless project:
-
-1. In Elastic Cloud, open your Observability project.
-2. Go to **Add data** → **Application** → **OpenTelemetry**.
-3. Select **Managed OTLP Endpoint** in the second step.
-4. Copy the OTLP endpoint configuration value.
-5. Select Create API Key to generate an API key.
+:::{include} ../../_snippets/serverless-endpoint-api.md
+:::
 
 Replace `<ELASTIC_OTLP_ENDPOINT>` and `<ELASTIC_API_KEY>` in the following command to create a namespace and a secret with your credentials.
 
@@ -86,7 +81,7 @@ kubectl annotate namespace YOUR_NAMESPACE instrumentation.opentelemetry.io/injec
 
 The OpenTelemetry Operator automatically provides the OTLP endpoint configuration and authentication to the SDKs through environment variables. Restart your deployment to ensure the annotations and auto-instrumentations are applied.
 
-For languages where auto-instrumentation is not available, manually instrument your application. See the [Setup section in the corresponding SDK](../../edot-sdks/index.md).
+For languages where auto-instrumentation is not available, manually instrument your application. See the [Setup section in the corresponding SDK](/reference/edot-sdks/index.md).
 ::::
 :::::
 

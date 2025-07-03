@@ -65,8 +65,8 @@ Application-related OTel data is ingested into {{es}} in OTel-native format usin
 Both components, `elastictrace` and `elasticapm` are required for Elastic APM UIs to work properly. As they aren't included in the OpenTelemetry [Collector Contrib repository](https://github.com/open-telemetry/opentelemetry-collector-contrib), you can:
 
 * Use the EDOT Collector with the available configuration to ingest data into {{es}}.
-* [Build a custom, EDOT-like Collector](../custom-collector.md) for ingesting data into {{es}}.
-* Use Elastic's [managed OTLP endpoint](../../quickstart/serverless/index.md) that does the enrichment for you.
+* [Build a custom, EDOT-like Collector](/reference/edot-collector/custom-collector.md) for ingesting data into {{es}}.
+* Use Elastic's [managed OTLP endpoint](/reference/quickstart/serverless/index.md) that does the enrichment for you.
 :::
 
 #### Host metrics collection pipeline
@@ -79,7 +79,7 @@ The [`resourcedetection`] processor enriches the metrics with meta information a
 
 ### Using the Managed OTLP Endpoint
 
-When ingesting OTel data through the [{{motlp}}](../../motlp.md), all the enrichment that is required for an optimal experience in the Elastic solutions happens at the endpoint level and is transparent to users. 
+When ingesting OTel data through the [{{motlp}}](/reference/motlp.md), all the enrichment that is required for an optimal experience in the Elastic solutions happens at the endpoint level and is transparent to users. 
 
 The Collector configuration for all use cases that involve the {{motlp}} is only concerned with local data collection and context enrichment.
 

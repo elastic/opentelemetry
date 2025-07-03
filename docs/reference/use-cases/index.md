@@ -14,7 +14,7 @@ products:
 
 Explore specific use cases for the {{edot}}:
 
-- [Kubernetes observability](./kubernetes/index.md)
-- [LLM observability](./llms/index.md)
+- [Kubernetes observability](/reference/use-cases/kubernetes/index.md)
+- [LLM observability](/reference/use-cases/llms/index.md)
 
 
