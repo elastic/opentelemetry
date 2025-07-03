@@ -70,10 +70,10 @@ extensions:
           # Default is localhost:4320
           # endpoint: "<CUSTOM_OPAMP_ENDPOINT>"
     source:
-     elasticsearch:
-       endpoint: "<ELASTICSEARCH_ENDPOINT>"
-       auth:
-         authenticator: bearertokenauth
+      elasticsearch:
+        endpoint: "<ELASTICSEARCH_ENDPOINT>"
+        auth:
+          authenticator: bearertokenauth
 ```
 
 Restart the Elastic Agent to also restart the Collector and apply the changes. Refer to [EDOT Collector configuration](./edot-collector/config/default-config-standalone.md#central-configuration).
