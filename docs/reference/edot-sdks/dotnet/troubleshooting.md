@@ -15,7 +15,7 @@ products:
 
 # Troubleshooting the EDOT .NET SDK
 
-Use the information in this section to troubleshoot common problems. As a first step, make sure your stack is compatible with the [supported technologies](./supported-technologies.md) for EDOT .NET and the OpenTelemetry SDK.
+Use the information in this section to troubleshoot common problems. As a first step, make sure your stack is compatible with the [supported technologies](/reference/edot-sdks/dotnet/supported-technologies.md) for EDOT .NET and the OpenTelemetry SDK.
 
 If you have an Elastic support contract, create a ticket in the [Elastic Support portal](https://support.elastic.co/customers/s/login/). If you don't, post in the [APM discuss forum](https://discuss.elastic.co/c/apm) or [open a GitHub issue](https://github.com/elastic/elastic-otel-dotnet/issues).
 
@@ -180,7 +180,7 @@ The following known issues affect EDOT .NET.
 
 The upstream SDK currently does not [comply with the spec](https://github.com/open-telemetry/opentelemetry-dotnet/issues/4324) regarding the deduplication of attributes when exporting log records. When you create a log within multiple scopes, each scope may store information using the same logical key. In this situation, the exported data will have duplicated attributes.
 
-You are most likely to see this when you log in the scope of a request and enable the `OpenTelemetryLoggerOptions.IncludeScopes` option. ASP.NET Core adds the `RequestId` to multiple scopes. We recommend that you don't enable `IncludeScopes` until the SDK fixes this. When you use the EDOT Collector or the [{{motlp}}](../../motlp.md) in serverless, non-compliant log records will fail to be ingested.
+You are most likely to see this when you log in the scope of a request and enable the `OpenTelemetryLoggerOptions.IncludeScopes` option. ASP.NET Core adds the `RequestId` to multiple scopes. We recommend that you don't enable `IncludeScopes` until the SDK fixes this. When you use the EDOT Collector or the [{{motlp}}](/reference/motlp.md) in serverless, non-compliant log records will fail to be ingested.
 
 EDOT .NET currently emits a warning if it detects that you use `IncludeScopes` in ASP.NET Core scenarios.
 

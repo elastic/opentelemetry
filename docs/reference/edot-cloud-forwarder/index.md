@@ -22,7 +22,7 @@ The Elastic Distribution of OpenTelemetry (EDOT) Cloud Forwarder provides the ED
 
 | Cloud provider | Cloud service | Availability |
 | --- | --- | --- |
-| AWS | S3, CloudWatch | [EDOT Cloud Forwarder for AWS](./aws.md) |
+| AWS | S3, CloudWatch | [EDOT Cloud Forwarder for AWS](/reference/edot-cloud-forwarder/aws.md) |
 | GCP | GCS, Operations | Under development |
 | Azure | Blob Storage, Event Hub | Under development |
 
@@ -30,6 +30,6 @@ The Elastic Distribution of OpenTelemetry (EDOT) Cloud Forwarder provides the ED
 
 To get started with {{edot-cf}}, select the setup guide for your cloud provider:
 
-- [AWS](./aws.md)
+- [AWS](/reference/edot-cloud-forwarder/aws.md)
 
 

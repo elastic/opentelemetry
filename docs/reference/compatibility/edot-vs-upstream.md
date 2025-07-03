@@ -14,7 +14,7 @@ products:
 
 # EDOT compared to upstream OpenTelemetry
 
-The [Elastic Distributions of OpenTelemetry (EDOT)](../index.md) are based on the upstream OpenTelemetry project but include additional features and configurations that are specific to the Elastic ecosystem. Each EDOT component is carefully selected and tested to ensure it works seamlessly with Elastic Stack components.
+The [Elastic Distributions of OpenTelemetry (EDOT)](/reference/index.md) are based on the upstream OpenTelemetry project but include additional features and configurations that are specific to the Elastic ecosystem. Each EDOT component is carefully selected and tested to ensure it works seamlessly with Elastic Stack components.
 
 Here are some key differences and considerations when using EDOT compared to upstream OpenTelemetry:
 
@@ -38,4 +38,4 @@ The OpenTelemetry project does not provide a single, recommended distribution of
 
 EDOT Collector is a curated version of the OpenTelemetry Collector that includes specific components and configurations optimized for Elastic Observability. It is designed to work seamlessly with Elastic Stack components, such as Elasticsearch and Kibana, and provides additional features that are not available in the upstream OpenTelemetry Collector.
 
-For a complete list of components included in the EDOT Collector, refer to [EDOT Collector components](../edot-collector/components.md).
+For a complete list of components included in the EDOT Collector, refer to [EDOT Collector components](/reference/edot-collector/components.md).

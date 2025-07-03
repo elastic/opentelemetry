@@ -37,4 +37,4 @@ After you've downloaded and uncompressed the file, you can get EDOT Collector ru
 sudo ./otelcol --config otel.yml
 ```
 
-For specific configuration, refer to the [Quickstart guides](../quickstart/index.md) or refer to [Configuration](./config/index.md).
+For specific configuration, refer to the [Quickstart guides](/reference/quickstart/index.md) or refer to [Configuration](/reference/edot-collector/config/index.md).

@@ -65,16 +65,16 @@ EDOT Java uses different defaults than the OpenTelemetry Java instrumentation fo
 
 (*) default value set to `delta` only if not already explicitly set.
 
-The EDOT Java instrumentation agent also provides configuration options for each of the [supported features](./features.md).
+The EDOT Java instrumentation agent also provides configuration options for each of the [supported features](/reference/edot-sdks/java/features.md).
 This table only contains minimal configuration, see each respective feature for exhaustive configuration options documentation.
 
 | Option                                                 | Default | Feature                                                                                          |
 |--------------------------------------------------------|---------|--------------------------------------------------------------------------------------------------|
-| `OTEL_INFERRED_SPANS_ENABLED`                          | `false` | [Inferred spans](./features.md#inferred-spans)                                                   |
-| `OTEL_JAVA_EXPERIMENTAL_SPAN_STACKTRACE_MIN_DURATION`  | `5ms`   | [Span stacktrace](./features.md#span-stacktrace)                                                 |
-| `ELASTIC_OTEL_UNIVERSAL_PROFILING_INTEGRATION_ENABLED` | `auto`  | [Elastic Universal profiling integration](./features.md#elastic-universal-profiling-integration) |
-| `OTEL_INSTRUMENTATION_OPENAI_CLIENT_ENABLED`           | `true`  | [OpenAI client instrumentation](./supported-technologies.md#openai-client-instrumentation)       |
-| `ELASTIC_OTEL_JAVAAGENT_LOG_LEVEL`                     | `INFO`  | [Agent logging](./configuration.md#agent-logging)                                                |
+| `OTEL_INFERRED_SPANS_ENABLED`                          | `false` | [Inferred spans](/reference/edot-sdks/java/features.md#inferred-spans)                                                   |
+| `OTEL_JAVA_EXPERIMENTAL_SPAN_STACKTRACE_MIN_DURATION`  | `5ms`   | [Span stacktrace](/reference/edot-sdks/java/features.md#span-stacktrace)                                                 |
+| `ELASTIC_OTEL_UNIVERSAL_PROFILING_INTEGRATION_ENABLED` | `auto`  | [Elastic Universal profiling integration](/reference/edot-sdks/java/features.md#elastic-universal-profiling-integration) |
+| `OTEL_INSTRUMENTATION_OPENAI_CLIENT_ENABLED`           | `true`  | [OpenAI client instrumentation](/reference/edot-sdks/java/supported-technologies.md#openai-client-instrumentation)       |
+| `ELASTIC_OTEL_JAVAAGENT_LOG_LEVEL`                     | `INFO`  | [Agent logging](/reference/edot-sdks/java/configuration.md#agent-logging)                                                |
 
 ## OpenAI Client settings
 
@@ -149,7 +149,7 @@ The EDOT Java agent provides the ability to control the agent log verbosity by s
 
 The following log levels are supported: `TRACE`, `DEBUG`, `INFO`, `WARN`, `ERROR`, `FATAL` and `OFF`.
 
-For [troubleshooting](./troubleshooting.md#agent-debug-logging), the `ELASTIC_OTEL_JAVAAGENT_LOG_LEVEL=DEBUG` is a recommended alternative to `OTEL_JAVAAGENT_DEBUG=true` as it provides span information in JSON format.
+For [troubleshooting](/reference/edot-sdks/java/troubleshooting.md#agent-debug-logging), the `ELASTIC_OTEL_JAVAAGENT_LOG_LEVEL=DEBUG` is a recommended alternative to `OTEL_JAVAAGENT_DEBUG=true` as it provides span information in JSON format.
 
 This feature relies on the `OTEL_JAVAAGENT_LOGGING` configuration option to be set to `elastic` (default), the `simple` value from upstream is not supported.
 

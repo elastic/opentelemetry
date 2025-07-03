@@ -36,4 +36,4 @@ The following is the current list of supported versions:
 | 8.17.0        | 0.3.3              | [values.yaml](https://raw.githubusercontent.com/elastic/elastic-agent/refs/heads/8.17/deploy/helm/edot-collector/kube-stack/values.yaml) |
 | 9.0.1         | 0.3.3              | [values.yaml](https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v9.0.1/deploy/helm/edot-collector/kube-stack/managed_otlp/values.yaml) |
 
-When [installing the release](./deployment.md), make sure you use the right `--version` and `-f <values-file>` parameters.
+When [installing the release](/reference/use-cases/kubernetes/deployment.md), make sure you use the right `--version` and `-f <values-file>` parameters.

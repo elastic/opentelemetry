@@ -32,7 +32,7 @@ This applies to all EDOT SDKs:
 
 Refer to the [EDOT Collector compatibility table](collectors.md) for compatibility with Elastic Stack versions.
 
-For the best experience, export data from EDOT SDKs using the [EDOT Collector](../edot-collector/index.md).
+For the best experience, export data from EDOT SDKs using the [EDOT Collector](/reference/edot-collector/index.md).
 
 :::{note}
 Ingesting data from EDOT SDKs through EDOT Collector into Elastic Stack versions 8.18 or higher is supported ([Supported]).
@@ -42,11 +42,11 @@ Ingesting data from EDOT SDKs through EDOT Collector into Elastic Stack versions
 
 For compatibility of language-specific technologies check out the following pages for corresponding EDOT SDKs:
 
-- [Supported Technologies - .NET](../edot-sdks/dotnet/supported-technologies.md)
-- [Supported Technologies - Java](../edot-sdks/java/supported-technologies.md)
-- [Supported Technologies - Node.js](../edot-sdks/nodejs/supported-technologies.md)
-- [Supported Technologies - PHP](../edot-sdks/php/supported-technologies.md)
-- [Supported Technologies - Python](../edot-sdks/python/supported-technologies.md)
+- [Supported Technologies - .NET](/reference/edot-sdks/dotnet/supported-technologies.md)
+- [Supported Technologies - Java](/reference/edot-sdks/java/supported-technologies.md)
+- [Supported Technologies - Node.js](/reference/edot-sdks/nodejs/supported-technologies.md)
+- [Supported Technologies - PHP](/reference/edot-sdks/php/supported-technologies.md)
+- [Supported Technologies - Python](/reference/edot-sdks/python/supported-technologies.md)
 - [Supported Technologies - Android](apm-agent-android://reference/index.md)
 - [Supported Technologies - iOS](apm-agent-ios://reference/index.md)
 

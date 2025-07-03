@@ -24,7 +24,7 @@ Compared to the Elastic APM .NET agent, the {{edot}} .NET presents a number of a
 - A wider pool of knowledge, experience and support is available across the OpenTelemetry community.
 - Efficient data collection and advanced data processing opportunities.
 
-While you can use the upstream [OpenTelemetry SDK for .NET](https://github.com/open-telemetry/opentelemetry-dotnet) to directly export data to an Elastic Observability backend, some capabilities of the Elastic tooling might not be able to function as intended. Use the {{edot}} (EDOT) language SDK and the [{{edot}} Collector](../../edot-collector/index.md) for the best experience.
+While you can use the upstream [OpenTelemetry SDK for .NET](https://github.com/open-telemetry/opentelemetry-dotnet) to directly export data to an Elastic Observability backend, some capabilities of the Elastic tooling might not be able to function as intended. Use the {{edot}} (EDOT) language SDK and the [{{edot}} Collector](/reference/edot-collector/index.md) for the best experience.
 
 ## Migrating from Elastic .NET Agent [migrating-to-edot-net-from-elastic-net-agent]
 
@@ -143,7 +143,7 @@ builder.AddElasticOpenTelemetry(b => b
    .WithTracing(t => t.AddSource("MyAppInstrumentation")));
 ```
 
-The previous snippet adds one additional source to be observed, which matches the name you gave to the `ActivitySource` defined earlier. It also uses the `AddElasticOpenTelemetry` extension method for the `IHostApplicationBuilder`. By default, EDOT .NET is configured to observe the most common instrumentation and export data through OTLP. Refer to [Opinionated defaults](./setup/edot-defaults.md) for more information.
+The previous snippet adds one additional source to be observed, which matches the name you gave to the `ActivitySource` defined earlier. It also uses the `AddElasticOpenTelemetry` extension method for the `IHostApplicationBuilder`. By default, EDOT .NET is configured to observe the most common instrumentation and export data through OTLP. Refer to [Opinionated defaults](/reference/edot-sdks/dotnet/setup/edot-defaults.md) for more information.
 
 Configuration of the APM Agent is likely to have been achieved using environment variables or by providing settings using the `appsettings.json` file, typical for ASP.NET Core applications:
 
@@ -168,7 +168,7 @@ The OpenTelemetry SDK is generally configured using environment variables. For t
 
 The required values for the endpoint and headers can be obtained from your Elastic Observability instance. After you've migrated, you can remove the Elastic APM Agent NuGet from your application.
 
-For more details on registering and configuring EDOT. NET, see the [quickstart](./setup/index.md) documentation.
+For more details on registering and configuring EDOT. NET, see the [quickstart](/reference/edot-sdks/dotnet/setup/index.md) documentation.
 
 ### Zero-code auto instrumentation
 
@@ -189,7 +189,7 @@ When using the Elastic APM Agent profiler auto-instrumentation functionality, th
 
 To switch to the EDOT .NET zero-code auto instrumentation, update the `COR_*` and `CORECLR_*` environment variables to point to the Elastic redistribution of the OpenTelemetry auto-instrumentation profiler.
 
-Follow the steps in [Using EDOT .NET zero-code instrumentation](./setup/zero-code.md) to configure the profiler.
+Follow the steps in [Using EDOT .NET zero-code instrumentation](/reference/edot-sdks/dotnet/setup/zero-code.md) to configure the profiler.
 
 ### Limitations
 
@@ -211,7 +211,7 @@ EDOT .NET does not implement [span compression](docs-content://solutions/observa
 
 ## Migrate from the upstream .NET SDK [migrating-to-edot-net-from-the-upstream-opentelemetry-net-sdk]
 
-EDOT .NET require minimal code changes to migrate from the upstream OpenTelemetry SDK for .NET. The distribution [opinionated defaults](./setup/edot-defaults.md) simplify the amount of code required to get started with OpenTelemetry in .NET applications.
+EDOT .NET require minimal code changes to migrate from the upstream OpenTelemetry SDK for .NET. The distribution [opinionated defaults](/reference/edot-sdks/dotnet/setup/edot-defaults.md) simplify the amount of code required to get started with OpenTelemetry in .NET applications.
 
 In an application which already uses the upstream OpenTelemetry SDK, the following code is an example of how this would be registered and enabled in an ASP.NET Core application.
 

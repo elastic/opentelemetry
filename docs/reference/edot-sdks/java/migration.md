@@ -42,12 +42,12 @@ Migration of application code using these APIs and annotations is not strictly r
 ::::
 
 ::::{step} Replace configuration options
-Refer to the [Configuration mapping](#configuration-mapping). Refer to [Configuration](./configuration.md) for ways to provide configuration settings.
+Refer to the [Configuration mapping](#configuration-mapping). Refer to [Configuration](/reference/edot-sdks/java/configuration.md) for ways to provide configuration settings.
 ::::
 
 ::::{step} Replace the agent binary
 
-Remove the `-javaagent:` argument that contains the Elastic APM Java agent from the JVM arguments. Then add the `-javaagent:` argument to the JVM arguments to use EDOT Java, and restart the application or follow [Kubernetes instructions](./setup/k8s.md) or [Runtime attach instructions](./setup/runtime-attach.md) if applicable. Refer to [Setup](./setup/index.md).
+Remove the `-javaagent:` argument that contains the Elastic APM Java agent from the JVM arguments. Then add the `-javaagent:` argument to the JVM arguments to use EDOT Java, and restart the application or follow [Kubernetes instructions](/reference/edot-sdks/java/setup/k8s.md) or [Runtime attach instructions](/reference/edot-sdks/java/setup/runtime-attach.md) if applicable. Refer to [Setup](/reference/edot-sdks/java/setup/index.md).
 ::::
 
 ::::::
@@ -136,7 +136,7 @@ The `capture_headers` option is dynamically adjustable, while the `otel.*` optio
 
 ### `span_stack_trace_min_duration`
 
-Replace the Elastic `span_stack_trace_min_duration` option with [`OTEL_JAVA_EXPERIMENTAL_SPAN_STACKTRACE_MIN_DURATION`](./features.md#span-stacktrace).
+Replace the Elastic `span_stack_trace_min_duration` option with [`OTEL_JAVA_EXPERIMENTAL_SPAN_STACKTRACE_MIN_DURATION`](/reference/edot-sdks/java/features.md#span-stacktrace).
 
 ### `disable_instrumentations`
 
@@ -169,7 +169,7 @@ The Elastic [`cloud_provider`](apm-agent-java://reference/config-core.md#config-
 
 By default, with EDOT `otel.resource.providers.{provider}.enabled` is set to `true`, this is equivalent to the `cloud_provider` default valuem which is `auto`, or automatically detect cloud providers. Notice that this behavior differs from upstream OpenTelemetry distribution.
 
-When the cloud provider is known, or there is none, turning off the non-relevant providers with `otel.resource.providers.{provider}.enabled = false` allows to [minimize the application startup overhead](./overhead.md#optimizing-application-startup).
+When the cloud provider is known, or there is none, turning off the non-relevant providers with `otel.resource.providers.{provider}.enabled = false` allows to [minimize the application startup overhead](/reference/edot-sdks/java/overhead.md#optimizing-application-startup).
 
 ### `log_sending`
 
@@ -210,7 +210,7 @@ EDOT Java is not sending metrics that power the [Breakdown metrics](docs-content
 
 There is currently no EDOT Java equivalent for starting the agent with the [remote attach](apm-agent-java://reference/setup-attach-cli.md) capability. The `-javaagent:` option is the preferred startup mechanism. 
 
-A migration path is available for starting the agent with [self attach](apm-agent-java://reference/setup-attach-api.md), which is to use [runtime attachment](./setup/runtime-attach.md). Some [limitations](./setup/runtime-attach.md#limitations)
+A migration path is available for starting the agent with [self attach](apm-agent-java://reference/setup-attach-api.md), which is to use [runtime attachment](/reference/edot-sdks/java/setup/runtime-attach.md). Some [limitations](/reference/edot-sdks/java/setup/runtime-attach.md#limitations)
 apply, and the agent must be started early during application startup.
 
 ### Micrometer turned off by default

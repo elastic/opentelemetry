@@ -15,7 +15,7 @@ products:
 
 On host or virtual machine environments, deploy local, per-host OpenTelemetry Collector instances, here referred to as OTel Collector in Agent Mode.
 
-![VM-Edge](../images/arch-vm-edge.png)
+![VM-Edge](/reference/images/arch-vm-edge.png)
 
 These collectors have two main purposes:
 
@@ -32,9 +32,9 @@ Elastic's Observability solution is technically compatible with edge setups that
 
 ### Elastic Cloud Serverless
 
-{{serverless-full}} provides a [Managed OTLP Endpoint](../motlp.md) for ingestion of OpenTelemetry data.
+{{serverless-full}} provides a [Managed OTLP Endpoint](/reference/motlp.md) for ingestion of OpenTelemetry data.
 
-![VM-Serverless](../images/arch-vm-serverless.png)
+![VM-Serverless](/reference/images/arch-vm-serverless.png)
 
 Users can send their OTel data from the edge setup in OTel-native format through OTLP without any additional requirements for self-managed preprocessing of data.
 
@@ -42,12 +42,12 @@ Users can send their OTel data from the edge setup in OTel-native format through
 
 As of Elastic Stack version 9.0 on {{ech}} (ECH), you need to run a self-hosted EDOT Collector in Gateway Mode to ingest OTel data from the edge setup in OTel-native format into the Elastic-hosted {{es}}.
 
-![VM-ECH](../images/arch-vm-ech.png)
+![VM-ECH](/reference/images/arch-vm-ech.png)
 
 The EDOT Collector in Gateway mode enriches and pre-aggregates the data for a seamless experience in the Elastic Observability solution before ingesting it directly into {{es}}.
 
 If required, users can build their custom, EDOT-like Collector 
-[following these instructions](../edot-collector/custom-collector.md).
+[following these instructions](/reference/edot-collector/custom-collector.md).
 
 :::{note}
 The EDOT Gateway Collector does not send data through Elastic's Integration / APM Server on ECH to ingest data into {{es}}.
@@ -61,7 +61,7 @@ If self-managing an EDOT Gateway is not a valid option for you, refer to [Elasti
 
 In a self-managed deployment scenario, you need to host an EDOT Collector in Gateway mode that pre-processes and ingests OTel data from the edge setup into the self-managed Elastic Stack.
 
-![VM-self-managed](../images/arch-vm-self-managed.png)
+![VM-self-managed](/reference/images/arch-vm-self-managed.png)
 
 :::{note}
 Compared to [Elastic's classic ingestion paths](docs-content://solutions/observability/apm/use-opentelemetry-with-apm.md) for OTel data, with the EDOT Gateway Collector there is no need for an APM Server anymore.

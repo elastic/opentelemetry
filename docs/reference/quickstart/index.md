@@ -34,6 +34,6 @@ Select a guide based on the environment of your target system and your Elastic d
 
 | Deployment Model       | Kubernetes                              | Docker                                  | Hosts or VMs                          |
 |-------------------------|-----------------------------------------|-----------------------------------------|---------------------------------------|
-| Self-managed Elastic Stack | [Kubernetes on self-managed](./self-managed/k8s.md) | [Docker on self-managed](./self-managed/docker.md) | [Hosts or VMs on self-managed](./self-managed/hosts_vms.md) |
-| {{serverless-full}}  | [Kubernetes on serverless](./serverless/k8s.md)     | [Docker on serverless](./serverless/docker.md)     | [Hosts or VMs on serverless](./serverless/hosts_vms.md)     |
-| {{ech}}      | [Kubernetes on hosted](./ech/k8s.md)               | [Docker on hosted](./ech/docker.md)               | [Hosts or VMs on hosted](./ech/hosts_vms.md)               |
+| Self-managed Elastic Stack | [Kubernetes on self-managed](/reference/quickstart/self-managed/k8s.md) | [Docker on self-managed](/reference/quickstart/self-managed/docker.md) | [Hosts or VMs on self-managed](/reference/quickstart/self-managed/hosts_vms.md) |
+| {{serverless-full}}  | [Kubernetes on serverless](/reference/quickstart/serverless/k8s.md)     | [Docker on serverless](/reference/quickstart/serverless/docker.md)     | [Hosts or VMs on serverless](/reference/quickstart/serverless/hosts_vms.md)     |
+| {{ech}}      | [Kubernetes on hosted](/reference/quickstart/ech/k8s.md)               | [Docker on hosted](/reference/quickstart/ech/docker.md)               | [Hosts or VMs on hosted](/reference/quickstart/ech/hosts_vms.md)               |
