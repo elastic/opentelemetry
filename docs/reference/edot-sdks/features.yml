@@ -93,8 +93,8 @@ features:
       status: ga
       min_version: 1.0
     Android:
-      status: not-available
-      min_version: 
+      status: ga
+      min_version: 1.1
     iOS:
       status: ga
       min_version: v1.0
