@@ -27,13 +27,27 @@ def fetch_url_content(url):
         print(f"Failed to retrieve content: {e.reason}")
         return None
 
-def get_core_components():
+def get_core_components(version='main'):
     """Fetch and parse the core-components.yaml file to determine support status"""
-    url = 'https://raw.githubusercontent.com/elastic/elastic-agent/main/internal/pkg/otel/core-components.yaml'
+    # Try different URL formats, similar to get_otel_components logic
+    url = f'https://raw.githubusercontent.com/elastic/elastic-agent/v{version}/internal/pkg/otel/core-components.yaml'
+    print(f"Trying core components URL: {url}")
     content = fetch_url_content(url)
     
+    # If first attempt fails, try without the 'v' prefix
+    if content is None and version != 'main':
+        url = f'https://raw.githubusercontent.com/elastic/elastic-agent/{version}/internal/pkg/otel/core-components.yaml'
+        print(f"Retrying core components with URL: {url}")
+        content = fetch_url_content(url)
+    
+    # If that fails too, try with main branch
     if content is None:
-        print(f"Could not fetch core components from {url}")
+        url = 'https://raw.githubusercontent.com/elastic/elastic-agent/main/internal/pkg/otel/core-components.yaml'
+        print(f"Falling back to main branch for core components: {url}")
+        content = fetch_url_content(url)
+    
+    if content is None:
+        print(f"Could not fetch core components from any URL")
         return []
         
     try:
@@ -90,7 +104,7 @@ def get_collector_version(filePath):
             
     return 'main'
     
-def get_otel_components(url):
+def get_otel_components(url, version='main'):
     elastic_agent_go_mod = fetch_url_content(url)
     
     if elastic_agent_go_mod is None:
@@ -98,7 +112,7 @@ def get_otel_components(url):
         return None
 
     # Get the list of core components
-    core_components = get_core_components()
+    core_components = get_core_components(version)
     print(f"Found {len(core_components)} core components")
 
     lines = elastic_agent_go_mod.splitlines()
@@ -213,19 +227,19 @@ def check_markdown():
     # Try different URL formats
     url = f'https://raw.githubusercontent.com/elastic/elastic-agent/v{col_version}/go.mod'
     print(f"Trying URL: {url}")
-    components = get_otel_components(url)
+    components = get_otel_components(url, col_version)
     
     # If first attempt fails, try without the 'v' prefix
     if components is None:
         url = f'https://raw.githubusercontent.com/elastic/elastic-agent/{col_version}/go.mod'
         print(f"Retrying with URL: {url}")
-        components = get_otel_components(url)
+        components = get_otel_components(url, col_version)
     
     # If that fails too, try with main branch
     if components is None:
         url = 'https://raw.githubusercontent.com/elastic/elastic-agent/main/go.mod'
         print(f"Falling back to main branch: {url}")
-        components = get_otel_components(url)
+        components = get_otel_components(url, col_version)
         
     otel_col_version = get_otel_col_upstream_version(url)
     data = {
@@ -245,19 +259,19 @@ def generate_markdown():
     # Try different URL formats
     url = f'https://raw.githubusercontent.com/elastic/elastic-agent/v{col_version}/go.mod'
     print(f"Trying URL: {url}")
-    components = get_otel_components(url)
+    components = get_otel_components(url, col_version)
     
     # If first attempt fails, try without the 'v' prefix
     if components is None:
         url = f'https://raw.githubusercontent.com/elastic/elastic-agent/{col_version}/go.mod'
         print(f"Retrying with URL: {url}")
-        components = get_otel_components(url)
+        components = get_otel_components(url, col_version)
     
     # If that fails too, try with main branch
     if components is None:
         url = 'https://raw.githubusercontent.com/elastic/elastic-agent/main/go.mod'
         print(f"Falling back to main branch: {url}")
-        components = get_otel_components(url)
+        components = get_otel_components(url, col_version)
         
     otel_col_version = get_otel_col_upstream_version(url)
     data = {
