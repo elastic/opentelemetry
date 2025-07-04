@@ -96,4 +96,4 @@ For applications deployed with Kubernetes, use the [OpenTelemetry Operator](/ref
 
 ## Troubleshooting
 
-For help with common setup issues, refer to the [EDOT Java troubleshooting guide](/troubleshooting/edot-sdks/java/index.md).
+For help with common setup issues, refer to the [EDOT Java troubleshooting guide](docs-content://troubleshoot/opentelemetry/edot-sdks/java/index.md).

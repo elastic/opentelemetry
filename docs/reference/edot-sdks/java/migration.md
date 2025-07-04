@@ -219,4 +219,4 @@ By default, Micrometer instrumentation is inactive and doesn't capture metrics. 
 
 ## Troubleshooting
 
-If you're encountering issues during migration, refer to the [EDOT Java troubleshooting guide](/troubleshooting/edot-sdks/java/index.md).
+If you're encountering issues during migration, refer to the [EDOT Java troubleshooting guide](docs-content://troubleshoot/opentelemetry/edot-sdks/java/index.md).
