@@ -21,7 +21,7 @@ The SDK can automatically generate telemetry on your behalf. This allows you to 
 
 ## Installation [supported-instrumentations-installation]
 
-All automatic instrumentations are optional. The first step is to install the instrumentations you want to use. Specific targets are supported for automatic instrumentation, each with its own Gradle plugin for installation. 
+All automatic instrumentations are opt-in. Therefore, you have to install the ones you want to use. Specific targets are supported for automatic instrumentation, each with its own Gradle plugin for installation. 
 
 To install a supported automatic instrumentation, follow these steps:
 
@@ -32,12 +32,12 @@ To install a supported automatic instrumentation, follow these steps:
 Automatic instrumentations will get installed during the SDK initialization.
 
 ```{tip}
-You can use instrumentations from [OpenTelemetry Android](https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation) through the Android instrumentation adapter(#android-instrumentation-adapter).
+You can also use instrumentations from [OpenTelemetry Android](https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation) through the [OTel Android instrumentation adapter](#adapter-for-otel-android-instrumentations).
 ```
 
 ## Compilation behavior
 
-Some automatic instrumentations perform bytecode instrumentation, also known as _byte code weaving_, where your application's code, including code from the libraries it uses, is modified at compile-time. This is similar to what `isMinifyEnabled` does with R8 functionalities, automating code changes that you would otherwise need to make manually. 
+Some automatic instrumentations perform bytecode instrumentation, also known as _bytecode weaving_, where your application's code, including code from the libraries it uses, is modified at compile-time. This is similar to what `isMinifyEnabled` does with R8 functionalities, automating code changes that you would otherwise need to make manually. 
 
 Bytecode instrumentation is a common technique which may already be used in your project for use cases such as [code optimization](https://developer.android.com/build/shrink-code#optimization) through R8. While useful, bytecode instrumentation can make compilation take longer to complete. Because of this, the agent provides [a way to exclude](#automatic-instrumentation-configuration) specific build types in your app from byte code changes.
 
@@ -87,17 +87,11 @@ plugins {
 
 ## Adapter for OTel Android instrumentations
 
-```{applies_to}
-product: preview
-```
+You can use any instrumentation from the OpenTelemetry Android [available instrumentations](https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation) through the OTel instrumentation adapter gradle plugin. The adapter is an [extended](/reference/compatibility/nomenclature.md#extended-components) component.
 
-You can use any instrumentation from the OpenTelemetry Android [available instrumentations](https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation) through the OTel instrumentation adapter by following these steps. The adapter is an [extended](/reference/compatibility/nomenclature.md#extended-components) component.
+### Add the adapter to your project
 
-:::::{stepper}
-
-::::{step} Add the adapter to your project
-
-Add the Gradle plugin it to your project by including it in your app's `plugins` block. This is the same block where the [agent's plugin](getting-started.md#gradle-setup) should also be added.
+Add the OTel Android instrumentation adapter by including it in your app's `plugins` block. This is the same block where the [agent's plugin](getting-started.md#gradle-setup) should also be added.
 
 ```kotlin
 plugins {
@@ -105,15 +99,11 @@ plugins {
 }
 ```
 
-1. To find the latest version, refer to [Gradle plugins](https://plugins.gradle.org/plugin/co.elastic.otel.android.instrumentation.oteladapter).
-::::
+1. To find the latest version, refer to [the plugin portal](https://plugins.gradle.org/plugin/co.elastic.otel.android.instrumentation.oteladapter).
 
-::::{step} Use an OTel Android instrumentation
+### Use an OTel Android instrumentation
 
-After including the adapter in your project, install the desired OTel Android instrumentation by following the installation instructions from its README file.
-
-::::
-:::::
+After including the adapter in your project, choose an instrumentation from [this list](https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation) and follow the installation instructions from its README file.
 
 ### Example use case
 
@@ -138,4 +128,4 @@ dependencies {  // <2>
 
 1. Make sure the adapter is added.
 2. You can find the dependencies needed in the [instrumentation's README file](https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation/httpurlconnection#project-dependencies). The same will be the case for any other instrumentation.
-3. The instrumentations that require a byteBuddy dependency do bytecode weaving, as explained in compilation behavior. An extra plugin named `net.bytebuddy.byte-buddy-gradle-plugin` is required to make this work, as shown [here](https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation/httpurlconnection#byte-buddy-compilation-plugin). However, the EDOT agent installs it on your behalf, so there's no need for you to do so manually.
+3. The instrumentations that require a `byteBuddy` dependency, do bytecode weaving, as explained in [compilation behavior](#compilation-behavior). An extra plugin named `net.bytebuddy.byte-buddy-gradle-plugin` is required to make this work, as shown [here](https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation/httpurlconnection#byte-buddy-compilation-plugin). However, the EDOT agent installs this extra plugin on your behalf, so there's no need for you to do so manually.
