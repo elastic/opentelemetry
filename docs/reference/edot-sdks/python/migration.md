@@ -130,4 +130,4 @@ EDOT Python is not sending metrics that power the [Breakdown metrics](docs-conte
 
 ## Troubleshooting
 
-If you're encountering issues during migration, refer to the [EDOT Python troubleshooting guide](docs-content://troubleshoot/opentelemetry/edot-sdks/python/index.md).
+If you're encountering issues during migration, refer to the [EDOT Python troubleshooting guide](docs-content://troubleshoot/ingest/opentelemetry/edot-sdks/python/index.md).

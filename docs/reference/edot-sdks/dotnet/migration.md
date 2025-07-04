@@ -280,4 +280,4 @@ Refer to the upstream OpenTelemetry SDK documentation for [.NET zero-code instru
 
 ## Troubleshooting
 
-If you're encountering issues during migration, refer to the [EDOT .NET troubleshooting guide](docs-content://troubleshoot/opentelemetry/edot-sdks/dotnet/index.md).
+If you're encountering issues during migration, refer to the [EDOT .NET troubleshooting guide](docs-content://troubleshoot/ingest/opentelemetry/edot-sdks/dotnet/index.md).

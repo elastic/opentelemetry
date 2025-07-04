@@ -155,4 +155,4 @@ Refer to the technology-specific documentation pages for further details on usin
 
 ## Troubleshooting
 
-For help with common setup issues, refer to the [EDOT .NET troubleshooting guide](docs-content://troubleshoot/opentelemetry/edot-sdks/dotnet/index.md).
+For help with common setup issues, refer to the [EDOT .NET troubleshooting guide](docs-content://troubleshoot/ingest/opentelemetry/edot-sdks/dotnet/index.md).
