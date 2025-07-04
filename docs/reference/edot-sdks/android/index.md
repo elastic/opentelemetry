@@ -49,7 +49,7 @@ For distributed tracing to work properly, configure your backend services to sen
 
 ## Session review [session-review]
 
-The SDK attaches session information to each span and log generated from your application. This allows you to create queries that group all the telemetry that belongs to a session and form a session event timeline. This is useful to identify the most common actions performed by your users, as well as tracing the steps leading up to errors they might encounter.
+The SDK attaches [session](#sessions) information to each span and log generated from your application. This allows you to create queries that group all the telemetry that belongs to a session and form a session event timeline. This is useful to identify the most common actions performed by your users, as well as tracing the steps leading up to errors they might encounter.
 
 For example, let's say you have a screen "A" in your app that can be opened from other screens, such as "B". If you create a log event when the user clicks on a button on screen "B" that takes them to screen "A", along with a log when screen "A" opens (or a span if you'd like to measure how long it takes for screen "A" to fully load), both items will contain a session.id attribute with the same value per session. This allows you to create Elasticsearch queries, for example in Kibana's Discover tool, to list all events during that session and better understand a user's journey within your application.
 
@@ -70,12 +70,9 @@ Your application's telemetry data is stored locally before being sent to the {{s
 
 ### Real time [real-time]
 
-A session is created when no previous session exists or when the previous one has expired. Sessions expire after 30 minutes of inactivity. This will be extended to up to 4 hours when there's no inactivity.
 For [distributed tracing](#distributed-tracing) to work properly, your application's time should be in sync with the [coordinated universal time](https://en.wikipedia.org/wiki/Coordinated_Universal_Time). This is sometimes an issue for Android applications, as the time provided by the OS is often not accurate enough. The SDK aims to synchronize telemetry timestamps with the universal time to ensure a reliable view of event timelines.
 
 ### Sessions [sessions]
-
-The SDK allows you to modify some values after the initialization has finished. Refer to [configuration](configuration.md) for more details.
 
 A session groups telemetry data within a time frame when your application is active by adding a `session.id` attribute to all the spans and logs that come out of your application. This helps limit the volume of data you need to look at when investigating the steps that led to an error within your app. It can also give you insight into the common actions performed on each use.
 
