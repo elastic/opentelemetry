@@ -1,5 +1,5 @@
 ---
-navigation_title: Troubleshooting
+navigation_title: EDOT Java
 description: Troubleshooting guide for the Elastic Distribution of OpenTelemetry (EDOT) Java Agent, covering connectivity, agent identification, and debugging.
 applies_to:
   stack:
@@ -52,7 +52,7 @@ As debugging output is verbose and might produce noticeable overhead on the appl
 - In case of a technical issue or exception with the agent, use [agent debugging](#agent-debugging).
 - If you need details on the captured data, use [per-signal debugging](#per-signal-debugging).
 
-In case of missing data, check first that the technology used in the application is supported in [upstream OpenTelemetry Java Instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md) and in [EDOT Java](supported-technologies.md).
+In case of missing data, check first that the technology used in the application is supported in [upstream OpenTelemetry Java Instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md) and in [EDOT Java](/reference/edot-sdks/java/supported-technologies.md).
 
 ### Agent debugging
 

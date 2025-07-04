@@ -1,5 +1,5 @@
 ---
-navigation_title: Troubleshooting
+navigation_title: EDOT Python
 description: Troubleshooting the EDOT Python Agent.
 applies_to:
   stack:

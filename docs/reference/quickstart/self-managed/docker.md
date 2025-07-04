@@ -112,3 +112,7 @@ If you want to collect telemetry from applications running on the host where you
 Configure your SDKs to send the data to the local EDOT Collector using OTLP/gRPC (`http://localhost:4317`) or OTLP/HTTP (`http://localhost:4318`).
 ::::
 :::::
+
+## Troubleshooting
+
+Having issues with EDOT? Refer to the [Troubleshooting common issues with the EDOT Collector](/troubleshooting/edot-collector/index.md) and [Troubleshooting the EDOT SDKs](/troubleshooting/edot-sdks/index.md) for help.

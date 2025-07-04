@@ -89,3 +89,7 @@ Restart your deployment to ensure the annotations and auto-instrumentations are 
 For languages where auto-instrumentation is not available, you need to manually instrument your application. See the [Setup section for the corresponding SDK](/reference/edot-sdks/index.md).
 ::::
 :::::
+
+## Troubleshooting
+
+Having issues with EDOT? Refer to the [Troubleshooting common issues with the EDOT Collector](/troubleshooting/edot-collector/index.md) and [Troubleshooting the EDOT SDKs](/troubleshooting/edot-sdks/index.md) for help.

@@ -75,3 +75,7 @@ There might be no trace data to visualize unless you have invoked your applicati
 ::::
 
 ::::::
+
+## Troubleshooting
+
+For help with common setup issues, refer to the [EDOT Python troubleshooting guide](/troubleshooting/edot-sdks/python/index.md).

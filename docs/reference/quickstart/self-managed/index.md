@@ -22,3 +22,7 @@ Select the quickstart guide for your environment from the following list:
 - [Hosts or VMs on self-managed](hosts_vms.md)
 
 Before following the quickstart guides to setup your EDOT deployment, make sure to [install your self-managed Elastic Stack](docs-content://solutions/observability/apm/use-opentelemetry-with-apm.md).
+
+## Troubleshooting
+
+Having issues with EDOT? Refer to the [Troubleshooting common issues with the EDOT Collector](/troubleshooting/edot-collector/index.md) and [Troubleshooting the EDOT SDKs](/troubleshooting/edot-sdks/index.md) for help.

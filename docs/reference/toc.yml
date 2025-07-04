@@ -55,10 +55,6 @@ toc:
         children:
           - file: edot-collector/components.md
           - file: edot-collector/custom-collector.md
-      - hidden: edot-collector/troubleshooting-edot-collector.md
-      - file: edot-collector/troubleshooting/index.md
-        children:
-        - file: edot-collector/troubleshooting/collector-oomkilled.md
   - file: edot-cloud-forwarder/index.md
     children:
       - file: edot-cloud-forwarder/aws.md
@@ -83,7 +79,6 @@ toc:
               - file: edot-sdks/dotnet/setup/edot-defaults.md
           - file: edot-sdks/dotnet/configuration.md
           - file: edot-sdks/dotnet/supported-technologies.md
-          - file: edot-sdks/dotnet/troubleshooting.md
           - file: edot-sdks/dotnet/migration.md
       - file: edot-sdks/ios/index.md
         children:
@@ -100,7 +95,6 @@ toc:
           - file: edot-sdks/java/configuration.md
           - file: edot-sdks/java/features.md
           - file: edot-sdks/java/supported-technologies.md
-          - file: edot-sdks/java/troubleshooting.md
           - file: edot-sdks/java/migration.md
           - file: edot-sdks/java/overhead.md
       - file: edot-sdks/nodejs/index.md
@@ -111,7 +105,6 @@ toc:
           - file: edot-sdks/nodejs/configuration.md
           - file: edot-sdks/nodejs/supported-technologies.md
           - file: edot-sdks/nodejs/metrics.md
-          - file: edot-sdks/nodejs/troubleshooting.md
           - file: edot-sdks/nodejs/migration.md
       - file: edot-sdks/php/index.md
         children:
@@ -120,7 +113,6 @@ toc:
               - file: edot-sdks/php/setup/limitations.md
           - file: edot-sdks/php/configuration.md
           - file: edot-sdks/php/supported-technologies.md
-          - file: edot-sdks/php/troubleshooting.md
           - file: edot-sdks/php/migration.md
           - file: edot-sdks/php/overhead.md
       - file: edot-sdks/python/index.md
@@ -131,7 +123,6 @@ toc:
               - file: edot-sdks/python/setup/manual-instrumentation.md
           - file: edot-sdks/python/configuration.md
           - file: edot-sdks/python/supported-technologies.md
-          - file: edot-sdks/python/troubleshooting.md
           - file: edot-sdks/python/migration.md
           - file: edot-sdks/python/overhead.md
   - file: motlp.md

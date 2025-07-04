@@ -1,0 +1,11 @@
+redirects:
+  # EDOT Collector troubleshooting pages (from reference to troubleshooting)
+  'reference/edot-collector/troubleshooting/index.md': '!troubleshooting/edot-collector/index.md'
+  'reference/edot-collector/troubleshooting/collector-oomkilled.md': '!troubleshooting/edot-collector/collector-oomkilled.md'
+
+  # SDK troubleshooting pages (from reference to troubleshooting)
+  'reference/edot-sdks/dotnet/troubleshooting.md': '!troubleshooting/edot-sdks/dotnet/index.md'
+  'reference/edot-sdks/java/troubleshooting.md': '!troubleshooting/edot-sdks/java/index.md'
+  'reference/edot-sdks/nodejs/troubleshooting.md': '!troubleshooting/edot-sdks/nodejs/index.md'
+  'reference/edot-sdks/php/troubleshooting.md': '!troubleshooting/edot-sdks/php/index.md'
+  'reference/edot-sdks/python/troubleshooting.md': '!troubleshooting/edot-sdks/python/index.md'

@@ -106,5 +106,8 @@ To confirm that EDOT Node.js has be setup successfully:
 2. Go to **Applications** → **Service Inventory** in your Elastic Observability deployment.
 3. Find the name of your service. It can take a minute or two after starting your service with EDOT Node.js for the service to show up in this list.
 
-If you do not see your service, work through [the Troubleshooting guide](/reference/edot-sdks/nodejs/troubleshooting.md).
+If you do not see your service, work through [the Troubleshooting guide](/troubleshooting/edot-sdks/nodejs/index.md).
 
+## Troubleshooting
+
+For help with common setup issues, refer to the [EDOT Node.js troubleshooting guide](/troubleshooting/edot-sdks/nodejs/index.md).

@@ -171,3 +171,7 @@ The following limitations apply to EDOT PHP:
 :::{note}
 For a broader overview of known limitations — including technical constraints related to PHP runtime and extensions, refer to [Limitations](/reference/edot-sdks/php/setup/limitations.md).
 :::
+
+## Troubleshooting
+
+If you're encountering issues during migration, refer to the [EDOT PHP troubleshooting guide](/troubleshooting/edot-sdks/php/index.md).
