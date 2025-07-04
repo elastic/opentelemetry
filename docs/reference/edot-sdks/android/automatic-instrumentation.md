@@ -21,7 +21,7 @@ The SDK can automatically generate telemetry on your behalf. This allows you to 
 
 ## Installation [supported-instrumentations-installation]
 
-All automatic instrumentations are opt-in, therefore, you'll have to install the ones you want to use. Specific targets are supported for automatic instrumentation, each with its own Gradle plugin for installation. 
+All automatic instrumentations are opt-in. Therefore, you have to install the ones you want to use. Specific targets are supported for automatic instrumentation, each with its own Gradle plugin for installation. 
 
 To install a supported automatic instrumentation, follow these steps:
 
