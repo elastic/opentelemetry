@@ -215,4 +215,4 @@ EDOT Node.js does not implement [span compression](docs-content://solutions/obse
 
 ## Troubleshooting
 
-If you're encountering issues during migration, refer to the [EDOT Node.js troubleshooting guide](/troubleshooting/edot-sdks/nodejs/index.md).
+If you're encountering issues during migration, refer to the [EDOT Node.js troubleshooting guide](docs-content://troubleshoot/ingest/opentelemetry/edot-sdks/nodejs/index.md).
