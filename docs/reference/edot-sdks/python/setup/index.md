@@ -42,7 +42,7 @@ Add this command every time you deploy an updated version of your application. A
 ::::
 
 ::::{step} Configure EDOT Python
-Refer to [Observability quickstart](https://elastic.github.io/opentelemetry/quickstart/) documentation on how to setup your environment.
+Refer to [Observability quickstart](/reference/quickstart/index.md) documentation on how to setup your environment.
 
 To configure EDOT Python you need to set a few `OTLP_*` environment variables that are available when running EDOT Python:
 
