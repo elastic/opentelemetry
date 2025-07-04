@@ -112,14 +112,13 @@ After clicking on the span, you should see it in detail.
 
 :::{image} images/span-visualization/3.png
 :alt: Trace sample
-:width: 350px
 :screenshot:
 :::
 
 ## What’s next? [whats-next]
 
-This guide uses the minimum configuration options needed to initialize the agent. If you'd like to explore what else you can customize, take a look at the [configuration page](configuration.md).
+- This guide uses the minimum configuration options needed to initialize the agent. If you'd like to explore what else you can customize, take a look at the [configuration page](configuration.md).
 
-In the example, you've manually sent a span, so you've created some [manual instrumentation](manual-instrumentation.md) for your app. While helpful and flexible, the agent can also create automatic instrumentations. This means that by simply initializing the agent, it will start sending telemetry data on your behalf without you having to write code. For more details, refer to [Automatic instrumentation](automatic-instrumentation.md).
+- In the example, you've manually sent a span, so you've created some [manual instrumentation](manual-instrumentation.md) for your app. While this is helpful and flexible, the agent can also create automatic instrumentations. This means that by simply initializing the agent, it will start sending telemetry data on your behalf without you having to write code. For more details, refer to [Automatic instrumentation](automatic-instrumentation.md).
 
-[Spans](https://opentelemetry.io/docs/concepts/signals/traces/#spans) are a great way to measure how long some method, part of a method, or even some broader transaction that involves multiple methods takes to complete. However, spans aren't the only type of [signal](https://opentelemetry.io/docs/concepts/signals/) that you can send using the agent. You can send [logs](https://opentelemetry.io/docs/concepts/signals/logs/) and [metrics](https://opentelemetry.io/docs/concepts/signals/metrics/) too! For more details, refer to [Manual instrumentation](manual-instrumentation.md).
+- [Spans](https://opentelemetry.io/docs/concepts/signals/traces/#spans) are a great way to measure how long some method, part of a method, or even some broader transaction that involves multiple methods takes to complete. However, spans aren't the only type of [signal](https://opentelemetry.io/docs/concepts/signals/) that you can send using the agent. You can send [logs](https://opentelemetry.io/docs/concepts/signals/logs/) and [metrics](https://opentelemetry.io/docs/concepts/signals/metrics/) too! For more details, refer to [Manual instrumentation](manual-instrumentation.md).
