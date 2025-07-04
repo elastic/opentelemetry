@@ -23,7 +23,7 @@ This table provides an overview of the features available in the {{edot}} (EDOT)
 | [Zero-code instrumentation](https://opentelemetry.io/docs/concepts/instrumentation/zero-code/) | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ❌  | ❌  | 
 | [Head-based Sampling](https://opentelemetry.io/docs/concepts/sampling/#head-sampling) | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ❌  | ✅ v1.0+ | 
 | [Baggage](https://opentelemetry.io/docs/concepts/signals/baggage/) | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ❌  | ✅ v1.0+ | 
-| [Inferred Spans](/reference/edot-sdks/java/features.md#inferred-spans) | ❌  | ✅ 1.0+ | ❌  | 𝐓 1.0+ | ❌  | ❌  | ❌  | 
+| [Inferred Spans](./java/features.md#inferred-spans) | ❌  | ✅ 1.0+ | ❌  | 𝐓 1.0+ | ❌  | ❌  | ❌  | 
 | **[Logs Collection](https://opentelemetry.io/docs/specs/otel/logs/#opentelemetry-solution)** | ✅ 1.0+ | ✅ 1.0+ | 𝐓 1.0+ | ✅ 1.0+ | 𝐓 1.0+ | ✅ 1.0+ | ✅ v1.0+ | 
 | [Logs Correlation](https://opentelemetry.io/docs/specs/otel/logs/#log-correlation) | ✅ 1.0+ | ✅ 1.0+ | 𝐓 1.0+ | ✅ 1.0+ | 𝐓 1.0+ | ✅ 1.0+ | ✅ v1.0+ | 
 | **[Metrics Collection](https://opentelemetry.io/docs/concepts/signals/metrics/)** | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | 𝐓 v0.7+ | 
@@ -33,7 +33,7 @@ This table provides an overview of the features available in the {{edot}} (EDOT)
 | **Capturing Errors / Exceptions** | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ v1.0+ | 
 | Crash Reporting | ➖  | ➖  | ➖  | ➖  | ➖  | ❌  | ✅ v1.0+ | 
 | **Central Configuration** | ❌  | ❌  | ❌  | ❌  | ❌  | ❌  | ❌  | 
-| **[Profiling Integration](/reference/edot-sdks/java/features.md#elastic-universal-profiling-integration)** | ❌  | 𝐓 1.0+ | ❌  | ❌  | ❌  | ❌  | ❌  | 
+| **[Profiling Integration](./java/features.md#elastic-universal-profiling-integration)** | ❌  | 𝐓 1.0+ | ❌  | ❌  | ❌  | ❌  | ❌  | 
 
 **Legend:**
 
