@@ -31,6 +31,9 @@ export OTEL_SERVICE_NAME="my-app"
 # Start it with your application
 node --import @elastic/opentelemetry-node my-app.js
 ```
+:::{warning}
+Avoid using Node.js SDK together with other APM agents, including agents from Elastic such as Elastic APM. Running multiple agents in the same application process may lead to conflicting instrumentation, duplicate telemetry, or other unexpected behavior.
+:::
 
 If you are deploying in Kubernetes, see the [Kubernetes setup guide](/reference/edot-sdks/nodejs/setup/k8s.md).
 
