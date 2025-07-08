@@ -28,7 +28,7 @@ To quickly get up and running, follow the [Elastic OpenTelemetry Quickstart guid
 - Exploring traces and metrics in {{kib}}.
 
 :::{warning}
-Avoid using PHP SDK together with other APM agents, including agents from Elastic such as Elastic APM. Running multiple agents in the same application process may lead to conflicting instrumentation, duplicate telemetry, or other unexpected behavior.
+Avoid using the PHP SDK alongside any other APM agent, including Elastic APM agents. Running multiple agents in the same application process may lead to conflicting instrumentation, duplicate telemetry, or other unexpected behavior.
 :::
 
 ### Operating system and PHP version

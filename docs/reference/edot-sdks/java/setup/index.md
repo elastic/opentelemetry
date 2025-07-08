@@ -18,7 +18,7 @@ products:
 Learn how to set up the {{edot}} (EDOT) Java in various environments, including Kubernetes and others.
 
 :::{warning}
-Avoid using Java SDK together with other APM agents, including agents from Elastic such as Elastic APM. Running multiple agents in the same application process may lead to conflicting instrumentation, duplicate telemetry, or other unexpected behavior.
+Avoid using the Java SDK alongside any other APM agent, including Elastic APM agents. Running multiple agents in the same application process may lead to conflicting instrumentation, duplicate telemetry, or other unexpected behavior.
 :::
 
 ## Kubernetes

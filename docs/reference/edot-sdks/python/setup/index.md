@@ -20,7 +20,7 @@ Learn how to set up the {{edot}} (EDOT) Python in various environments, includin
 Follow these steps to get started.
 
 :::{warning}
-Avoid using Python SDK together with other APM agents, including agents from Elastic such as Elastic APM. Running multiple agents in the same application process may lead to conflicting instrumentation, duplicate telemetry, or other unexpected behavior.
+Avoid using the Python SDK alongside any other APM agent, including Elastic APM agents. Running multiple agents in the same application process may lead to conflicting instrumentation, duplicate telemetry, or other unexpected behavior.
 :::
 
 ::::::{stepper}
