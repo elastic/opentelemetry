@@ -27,6 +27,10 @@ To quickly get up and running, follow the [Elastic OpenTelemetry Quickstart guid
 - Configuring your OpenTelemetry agent.
 - Exploring traces and metrics in {{kib}}.
 
+:::{warning}
+Avoid using the PHP SDK alongside any other APM agent, including Elastic APM agents. Running multiple agents in the same application process may lead to conflicting instrumentation, duplicate telemetry, or other unexpected behavior.
+:::
+
 ### Operating system and PHP version
 
 Refer to [Supported technologies](/reference/edot-sdks/php/supported-technologies.md) for details about currently supported operating systems and PHP versions.
