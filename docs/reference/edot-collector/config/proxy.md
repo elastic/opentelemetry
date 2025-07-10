@@ -93,7 +93,7 @@ export HTTPS_PROXY=http://<proxy.address>:<port>
 
 ### Java SDK
 
-If you’re using Java SDK, you must configure Java system properties using the Java Virtual Machine (JVM). Refer to [Troubleshooting Java SDK proxy issues](../../troubleshoot/ingest/opentelemetry/edot-sdks/java/proxy-issues.md) for more information.
+If you’re using Java SDK, you must configure Java system properties using the Java Virtual Machine (JVM). Refer to [Troubleshooting Java SDK proxy issues](docs-content://troubleshoot/ingest/opentelemetry/edot-sdks/java/proxy-issues.md) for more information.
 
 ## Resources
 
