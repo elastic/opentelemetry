@@ -13,7 +13,7 @@ products:
   - id: edot-collector
 ---
 
-# Quickstart for Kubernetes on Elastic Cloud Hosted
+# Quickstart for Kubernetes on Elastic Cloud Serverless
 
 Learn how to set up the EDOT Collector and EDOT SDKs in a Kubernetes environment with {{serverless-full}} to collect host metrics, logs and application traces.
 
