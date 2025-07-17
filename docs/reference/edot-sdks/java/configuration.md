@@ -170,7 +170,7 @@ This is common in the following scenarios:
 - when endpoint uses a self-signed certificate not trusted by the JVM
 - when the certificate authority used by the endpoint certificate is not trusted by the JVM
 
-The usual solution is to add the certificate or certificate authority to the JVM trust store, which requires to modify the JVM trust store.
+The usual solution is to add the certificate or certificate authority to the JVM trust store, which requires modifying the JVM trust store.
 When this trust store modification is not possible or not practical, for example when troubleshooting or with a local deployment, certificate verification can be disabled by setting `ELASTIC_OTEL_VERIFY_SERVER_CERT` to `false`.
 
 This however need to be evaluated carefully as it lowers the communication security and could allow for man-in-the-middle attacks where the data could be intercepted between the agent and the collector endpoint.
