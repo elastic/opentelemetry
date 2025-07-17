@@ -55,27 +55,27 @@ configuration options:
 
 EDOT Java uses different defaults than the OpenTelemetry Java instrumentation for the following configuration options:
 
-| Option                                                               | EDOT Java default | OpenTelemetry Java agent default                                                                                                             |
-|----------------------------------------------------------------------|-------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
-| `OTEL_RESOURCE_PROVIDERS_AWS_ENABLED`                                | `true`            | `false` ([docs](https://opentelemetry.io/docs/zero-code/java/agent/configuration/#enable-resource-providers-that-are-disabled-by-default))   |
-| `OTEL_RESOURCE_PROVIDERS_GCP_ENABLED`                                | `true`            | `false` ([docs](https://opentelemetry.io/docs/zero-code/java/agent/configuration/#enable-resource-providers-that-are-disabled-by-default))   |
-| `OTEL_RESOURCE_PROVIDERS_AZURE_ENABLED`                              | `true`            | `false` ([docs](https://opentelemetry.io/docs/zero-code/java/agent/configuration/#enable-resource-providers-that-are-disabled-by-default))   |
-| `OTEL_INSTRUMENTATION_RUNTIME-TELEMETRY_EMIT-EXPERIMENTAL-TELEMETRY` | `true`            | `false` ([docs](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/runtime-telemetry/README.md)) |
-| `OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE`                  | `delta` (*)       | `cumulative` ([docs](https://opentelemetry.io/docs/specs/otel/metrics/sdk_exporters/otlp/#additional-environment-variable-configuration))    |
+| Option                                                               | EDOT Java default | OpenTelemetry Java agent default                                                                                                             | EDOT Java version |
+|----------------------------------------------------------------------|-------------------|----------------------------------------------------------------------------------------------------------------------------------------------|-------------------|
+| `OTEL_RESOURCE_PROVIDERS_AWS_ENABLED`                                | `true`            | `false` ([docs](https://opentelemetry.io/docs/zero-code/java/agent/configuration/#enable-resource-providers-that-are-disabled-by-default))   | 1.0.0+            |
+| `OTEL_RESOURCE_PROVIDERS_GCP_ENABLED`                                | `true`            | `false` ([docs](https://opentelemetry.io/docs/zero-code/java/agent/configuration/#enable-resource-providers-that-are-disabled-by-default))   | 1.0.0+            |
+| `OTEL_RESOURCE_PROVIDERS_AZURE_ENABLED`                              | `true`            | `false` ([docs](https://opentelemetry.io/docs/zero-code/java/agent/configuration/#enable-resource-providers-that-are-disabled-by-default))   | 1.4.0+            |
+| `OTEL_INSTRUMENTATION_RUNTIME-TELEMETRY_EMIT-EXPERIMENTAL-TELEMETRY` | `true`            | `false` ([docs](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/runtime-telemetry/README.md)) | 1.4.0+            |
+| `OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE`                  | `delta` (*)       | `cumulative` ([docs](https://opentelemetry.io/docs/specs/otel/metrics/sdk_exporters/otlp/#additional-environment-variable-configuration))    | 1.0.0+            |
 
 (*) default value set to `delta` only if not already explicitly set.
 
 The EDOT Java instrumentation agent also provides configuration options for each of the [supported features](/reference/edot-sdks/java/features.md).
 This table only contains minimal configuration, see each respective feature for exhaustive configuration options documentation.
 
-| Option                                                 | Default | Feature                                                                                                                  |
-|--------------------------------------------------------|---------|--------------------------------------------------------------------------------------------------------------------------|
-| `OTEL_INFERRED_SPANS_ENABLED`                          | `false` | [Inferred spans](/reference/edot-sdks/java/features.md#inferred-spans)                                                   |
-| `OTEL_JAVA_EXPERIMENTAL_SPAN_STACKTRACE_MIN_DURATION`  | `5ms`   | [Span stacktrace](/reference/edot-sdks/java/features.md#span-stacktrace)                                                 |
-| `ELASTIC_OTEL_UNIVERSAL_PROFILING_INTEGRATION_ENABLED` | `auto`  | [Elastic Universal profiling integration](/reference/edot-sdks/java/features.md#elastic-universal-profiling-integration) |
-| `OTEL_INSTRUMENTATION_OPENAI_CLIENT_ENABLED`           | `true`  | [OpenAI client instrumentation](/reference/edot-sdks/java/supported-technologies.md#openai-client-instrumentation)       |
-| `ELASTIC_OTEL_JAVAAGENT_LOG_LEVEL`                     | `INFO`  | [Agent logging](#agent-logging)                                                                                          |
-| `ELASTIC_OTEL_VERIFY_SERVER_CERT`                      | `true`  | [Exporter certificate verification](#exporter-certificate-verification)                                                  |
+| Option                                                 | Default | Feature                                                                                                                  | EDOT Java version |
+|--------------------------------------------------------|---------|--------------------------------------------------------------------------------------------------------------------------|-------------------|
+| `OTEL_INFERRED_SPANS_ENABLED`                          | `false` | [Inferred spans](/reference/edot-sdks/java/features.md#inferred-spans)                                                   | 1.0.0+            |
+| `OTEL_JAVA_EXPERIMENTAL_SPAN_STACKTRACE_MIN_DURATION`  | `5ms`   | [Span stacktrace](/reference/edot-sdks/java/features.md#span-stacktrace)                                                 | 1.0.0+            |
+| `ELASTIC_OTEL_UNIVERSAL_PROFILING_INTEGRATION_ENABLED` | `auto`  | [Elastic Universal profiling integration](/reference/edot-sdks/java/features.md#elastic-universal-profiling-integration) | 1.0.0+            |
+| `OTEL_INSTRUMENTATION_OPENAI_CLIENT_ENABLED`           | `true`  | [OpenAI client instrumentation](/reference/edot-sdks/java/supported-technologies.md#openai-client-instrumentation)       | 1.4.0+            |
+| `ELASTIC_OTEL_JAVAAGENT_LOG_LEVEL`                     | `INFO`  | [Agent logging](#agent-logging)                                                                                          | 1.5.0+            |
+| `ELASTIC_OTEL_VERIFY_SERVER_CERT`                      | `true`  | [Exporter certificate verification](#exporter-certificate-verification)                                                  | 1.5.0+            |
 
 ## OpenAI Client settings
 
