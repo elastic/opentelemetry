@@ -180,6 +180,12 @@ With EDOT, application logs are automatically captured and sent by default.
 
 This feature is controlled by `otel.logs.exporter`, which is set to `otlp` by default. You can turn it off by setting `otel.logs.exporter` to `none`.
 
+### `verify_server_cert`
+
+The Elastic [`verify_server_cert`](apm-agent-java://reference/config-reporter.md#config-verify-server-cert) option allows to disable server certificate validation.
+
+With EDOT, the equivalent configuration option is `ELASTIC_OTEL_VERIFY_SERVER_CERT` (default `true`), see [configuration](./configuration.md#exporter-certificate-verification) for details.
+
 ## Limitations
 
 The following limitations apply to EDOT Java.
