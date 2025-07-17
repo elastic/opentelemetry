@@ -182,7 +182,7 @@ This feature is controlled by `otel.logs.exporter`, which is set to `otlp` by de
 
 ### `verify_server_cert`
 
-The Elastic [`verify_server_cert`](apm-agent-java://reference/config-reporter.md#config-verify-server-cert) option allows to disable server certificate validation.
+The Elastic [`verify_server_cert`](apm-agent-java://reference/config-reporter.md#config-verify-server-cert) option allows you to disable server certificate validation.
 
 With EDOT, the equivalent configuration option is `ELASTIC_OTEL_VERIFY_SERVER_CERT` (default `true`), see [configuration](./configuration.md#exporter-certificate-verification) for details.
 
