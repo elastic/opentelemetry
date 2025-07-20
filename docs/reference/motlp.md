@@ -57,4 +57,4 @@ The {{motlp}} does not currently support these features:
 * Tail-based sampling (TBS)
 * Universal Profiling
 * Only supports histograms with delta temporality. Cumulative histograms are dropped.
-* Latency distributions based on histogram values have limited precision due to the fixed boundaries of explicit bucket histograms
+* Latency distributions based on histogram values have limited precision due to the fixed boundaries of explicit bucket histograms.
