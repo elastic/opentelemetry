@@ -8,6 +8,7 @@ applies_to:
 products:
   - id: cloud-serverless
   - id: observability
+  - id: edot-collector
 ---
 
 # Hosts and VMs environments
@@ -31,7 +32,7 @@ Elastic's Observability solution is technically compatible with edge setups that
 
 ### Elastic Cloud Serverless
 
-{{serverless-full}} provides a [Managed OTLP Endpoint](../motlp.md) for ingestion of OpenTelemetry data.
+{{serverless-full}} provides a [Managed OTLP Endpoint](/reference/motlp.md) for ingestion of OpenTelemetry data.
 
 ![VM-Serverless](../images/arch-vm-serverless.png)
 
@@ -45,8 +46,8 @@ As of Elastic Stack version 9.0 on {{ech}} (ECH), you need to run a self-hosted 
 
 The EDOT Collector in Gateway mode enriches and pre-aggregates the data for a seamless experience in the Elastic Observability solution before ingesting it directly into {{es}}.
 
-If required, users can build their custom, EDOT-like Collector 
-[following these instructions](../edot-collector/custom-collector.md).
+If required, users can build their custom, EDOT-like Collector
+[following these instructions](/reference/edot-collector/custom-collector.md).
 
 :::{note}
 The EDOT Gateway Collector does not send data through Elastic's Integration / APM Server on ECH to ingest data into {{es}}.

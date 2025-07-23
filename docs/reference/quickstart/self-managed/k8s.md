@@ -5,9 +5,12 @@ applies_to:
   stack:
   serverless:
     observability:
+  product:
+    edot_collector: ga
 products:
   - id: cloud-serverless
   - id: observability
+  - id: edot-collector
 ---
 
 # Quickstart for Kubernetes on self-managed deployments
@@ -76,6 +79,10 @@ kubectl annotate namespace YOUR_NAMESPACE instrumentation.opentelemetry.io/injec
 
 Restart your deployment to ensure the annotations and auto-instrumentations are applied.
 
-For languages where auto-instrumentation is not available, you will need to manually instrument your application. See the [Setup section in the corresponding SDK](../../edot-sdks/index.md).
+For languages where auto-instrumentation is not available, you will need to manually instrument your application. See the [Setup section in the corresponding SDK](/reference/edot-sdks/index.md).
 ::::
 :::::
+
+## Troubleshooting
+
+Having issues with EDOT? Refer to the [Troubleshooting common issues with the EDOT Collector](docs-content://troubleshoot/ingest/opentelemetry/edot-collector/index.md) and [Troubleshooting the EDOT SDKs](docs-content://troubleshoot/ingest/opentelemetry/edot-sdks/index.md) for help.

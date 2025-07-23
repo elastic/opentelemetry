@@ -5,16 +5,19 @@ applies_to:
   stack:
   serverless:
     observability:
+  product:
+    edot_collector: ga
 products:
   - id: cloud-serverless
   - id: observability
+  - id: edot-collector
 ---
 
 # Customize the configuration
 
 To customize the installation parameters, change the configuration values provided in `values.yaml` file, or override them using `--set parameter=value` during the installation.
 
-To update an installed release, run a `helm upgrade` with the updated `values.yaml` file. Depending on the changes, some Pods may need to be restarted for the updates to take effect. Refer to [upgrades](./upgrade.md) for a command example.
+To update an installed release, run a `helm upgrade` with the updated `values.yaml` file. Depending on the changes, some Pods may need to be restarted for the updates to take effect. Refer to [upgrades](/reference/use-cases/kubernetes/upgrade.md) for a command example.
 
 ## Configurable parameters
 

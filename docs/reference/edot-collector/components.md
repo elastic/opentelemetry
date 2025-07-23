@@ -5,6 +5,8 @@ applies_to:
   stack:
   serverless:
     observability:
+  product:
+    edot_collector: ga
 products:
   - id: cloud-serverless
   - id: observability
@@ -51,6 +53,7 @@ The components included in the EDOT Collector are categorized into **[Core]** an
 |***Processors***||||
 | [attributesprocessor ](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/attributesprocessor) | [OTel Contrib Repo](https://github.com/open-telemetry/opentelemetry-collector-contrib) | [Core] | v0.121.0 |
 | [batchprocessor ](https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor/batchprocessor) | [OTel Core Repo](https://github.com/open-telemetry/opentelemetry-collector) | [Core] | v0.121.0 |
+| [cumulativetodeltaprocessor ](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/cumulativetodeltaprocessor) | [OTel Contrib Repo](https://github.com/open-telemetry/opentelemetry-collector-contrib) | [Extended] | v0.121.0 |
 | [elasticinframetricsprocessor ](https://github.com/elastic/opentelemetry-collector-components/tree/main/processor/elasticinframetricsprocessor) | [Elastic Repo](https://github.com/elastic/opentelemetry-collector-components) | [Core] | v0.13.0 |
 | [elastictraceprocessor ](https://github.com/elastic/opentelemetry-collector-components/tree/main/processor/elastictraceprocessor) | [Elastic Repo](https://github.com/elastic/opentelemetry-collector-components) | [Core] | v0.4.1 |
 | [filterprocessor ](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/filterprocessor) | [OTel Contrib Repo](https://github.com/open-telemetry/opentelemetry-collector-contrib) | [Extended] | v0.121.0 |

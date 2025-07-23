@@ -7,6 +7,7 @@ applies_to:
 products:
   - id: cloud-serverless
   - id: observability
+  - id: edot-collector
 ---
 
 # Elastic Cloud Managed OTLP Endpoint
@@ -47,11 +48,13 @@ To retrieve your {{motlp}} endpoint address and an API key, follow these steps:
 
 To send data in OTLP format to the {{motlp}}, you need to configure your {{edot}} or any system that can forward logs, metrics, or traces in OTLP format. 
 
-Refer to the [Quickstart guides](./quickstart/index.md) for more information.
+Refer to the [Quickstart guides](/reference/quickstart/index.md) for more information.
 
-## Compatibility
+## Limitations
 
 The {{motlp}} does not currently support these features:
 
 * Tail-based sampling (TBS)
 * Universal Profiling
+* Only supports histograms with delta temporality. Cumulative histograms are dropped.
+* Latency distributions based on histogram values have limited precision due to the fixed boundaries of explicit bucket histograms.

@@ -5,9 +5,12 @@ applies_to:
   stack:
   serverless:
     observability:
+  product:
+    edot_collector: ga
 products:
   - id: cloud-serverless
   - id: observability
+  - id: edot-collector
 ---
 
 # Quickstart for Docker on Elastic Cloud Serverless
@@ -34,19 +37,14 @@ Follow these steps to deploy the EDOT Collector and EDOT OTel SDKs in Docker wit
 
 ::::{step} Create the config file
 
-Create a `otel-collector-config.yml` file with your EDOT collector configuration. For more details, refer to the [configuration reference](../../edot-collector/config/default-config-standalone.md) for {{motlp}}.
+Create a `otel-collector-config.yml` file with your EDOT collector configuration. For more details, refer to the [configuration reference](/reference/edot-collector/config/default-config-standalone.md) for {{motlp}}.
 
 ::::
 
 ::::{step}  Retrieve your settings
 
-Follow these steps to retrieve the [{{motlp}}](../../motlp.md) URL for your Serverless project:
-
-1. In Elastic Cloud, open your Observability project.
-2. Go to **Add data** → **Application** → **OpenTelemetry**.
-3. Select **Managed OTLP Endpoint** in the second step.
-4. Copy the OTLP endpoint configuration value.
-5. Select Create API Key to generate an API key.
+:::{include} ../../_snippets/serverless-endpoint-api.md
+:::
 
 ::::
 
@@ -108,13 +106,16 @@ docker compose up -d
 
 ::::{step} (Optional) Instrument your applications
 
-To collect telemetry from applications running on the host where you installed the EDOT Collector, instrument your target applications:
+To collect telemetry from applications and use the EDOT Collector as a gateway,
+instrument your target applications following the setup instructions:
 
-- [.NET](../../edot-sdks/dotnet/setup/index.md)
-- [Java](../../edot-sdks/java/setup/index.md)
-- [Node.js](../../edot-sdks/nodejs/setup/index.md)
-- [PHP](../../edot-sdks/php/setup/index.md)
-- [Python](../../edot-sdks/python/setup/index.md)
+- [Android](/reference/edot-sdks/android/index.md)
+- [.NET](/reference/edot-sdks/dotnet/setup/index.md)
+- [iOS](/reference/edot-sdks/ios/index.md)
+- [Java](/reference/edot-sdks/java/setup/index.md)
+- [Node.js](/reference/edot-sdks/nodejs/setup/index.md)
+- [PHP](/reference/edot-sdks/php/setup/index.md)
+- [Python](/reference/edot-sdks/python/setup/index.md)
 
 Configure your SDKs to send the data to the local EDOT Collector using OTLP/gRPC (`http://localhost:4317`) or OTLP/HTTP (`http://localhost:4318`).
 

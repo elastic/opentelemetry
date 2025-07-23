@@ -8,6 +8,7 @@ applies_to:
 products:
   - id: cloud-serverless
   - id: observability
+  - id: edot-collector
 ---
 
 # Compatibility and support for OTel Collectors
@@ -49,16 +50,16 @@ The following Kubernetes distributions are [compatible] with EDOT Collector 9.x:
 | Kubernetes  | amd64, arm64     | 1.33.0, 1.32.0, 1.31.0, 1.30.2, 1.29.4, 1.28.9, 1.27.16  |
 
 ::::{note}
-The EDOT Collector is compatible with GKE, EKS and AKS. Refer to [Limitations on managed Kubernetes environments](./limitations.md#limitations-on-managed-kubernetes-environments) for more information.
+The EDOT Collector is compatible with GKE, EKS and AKS. Refer to [Limitations on managed Kubernetes environments](/reference/compatibility/limitations.md#limitations-on-managed-kubernetes-environments) for more information.
 ::::
 
 ## EDOT Collector components
 
-For information on the compatibility of each Collector component, refer to the [full list of Core and Extended components](../edot-collector/components.md).
+For information on the compatibility of each Collector component, refer to the [full list of Core and Extended components](/reference/edot-collector/components.md).
 
 ## Other Collector distributions
 
-Non-EDOT distributions of the OTel Collector, such as custom Collector builds, upstream Collector distributions, and so on aren't officially supported through Elastic but are technically compatible ([Compatible]) if they contain the [required OTel Collector components](../edot-collector/custom-collector.md) and are configured like the EDOT Collector.
+Non-EDOT distributions of the OTel Collector, such as custom Collector builds, upstream Collector distributions, and so on aren't officially supported through Elastic but are technically compatible ([Compatible]) if they contain the [required OTel Collector components](/reference/edot-collector/custom-collector.md) and are configured like the EDOT Collector.
 
 You can retrieve required components and configuration options from the [sample configuration files](https://github.com/elastic/elastic-agent/tree/v<COLLECTOR_VERSION>/internal/pkg/otel/samples/linux) for the EDOT Collector.
 

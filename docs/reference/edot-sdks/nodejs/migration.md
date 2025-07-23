@@ -5,6 +5,8 @@ applies_to:
   stack:
   serverless:
     observability:
+  product:
+    edot_node: ga
 products:
   - id: cloud-serverless
   - id: observability
@@ -52,7 +54,7 @@ If you're using the [Elastic APM Node.js Agent API](apm-agent-nodejs://reference
 ::::
 
 ::::{step} Replace configuration options
-Refer to the [Configuration mapping](#configuration-mapping). Refer to [Configuration](./configuration.md) for details on EDOT Node.js configuration.
+Refer to the [Configuration mapping](#configuration-mapping). Refer to [Configuration](/reference/edot-sdks/nodejs/configuration.md) for details on EDOT Node.js configuration.
 ::::
 
 ::::{step} Add EDOT Node.js start method
@@ -72,9 +74,9 @@ This list contains Elastic APM Node.js agent configuration options that can be m
 
 The Elastic APM Node.js agent [`serverUrl`](apm-agent-nodejs://reference/configuration.md#server-url) option corresponds to the OpenTelemetry [`OTEL_EXPORTER_OTLP_ENDPOINT`](https://opentelemetry.io/docs/concepts/sdk-configuration/otlp-exporter-configuration/#otel_exporter_otlp_endpoint) option.
 
-- If using {{serverless-full}}, set `OTEL_EXPORTER_OTLP_ENDPOINT` to the [{{motlp}}](../../motlp.md) URL for your Serverless project. For example, `OTEL_EXPORTER_OTLP_ENDPOINT=https://my-prj-a1b2c3.ingest.eu-west-1.aws.elastic.cloud`. Refer to the [Quickstart for {{serverless-full}}](../../quickstart/serverless/index.md).
+- If using {{serverless-full}}, set `OTEL_EXPORTER_OTLP_ENDPOINT` to the [{{motlp}}](/reference/motlp.md) URL for your Serverless project. For example, `OTEL_EXPORTER_OTLP_ENDPOINT=https://my-prj-a1b2c3.ingest.eu-west-1.aws.elastic.cloud`. Refer to the [Quickstart for {{serverless-full}}](/reference/quickstart/serverless/index.md).
 
-- If using {{ech}} or Self-managed, set `OTEL_EXPORTER_OTLP_ENDPOINT` to the endpoint URL of your EDOT Collector. Refer to the [Quickstart for {{ech}}](../../quickstart/ech/hosts_vms.md) or the [Quickstart for Self-managed](../../quickstart/self-managed/hosts_vms.md).
+- If using {{ech}} or Self-managed, set `OTEL_EXPORTER_OTLP_ENDPOINT` to the endpoint URL of your EDOT Collector. Refer to the [Quickstart for {{ech}}](/reference/quickstart/ech/hosts_vms.md) or the [Quickstart for Self-managed](/reference/quickstart/self-managed/hosts_vms.md).
 
 ### `secretToken`
 
@@ -172,7 +174,7 @@ For example: `OTEL_EXPORTER_OTLP_HEADERS=foo=bar,baz=quux`.
 
 ### `disableInstrumentations`
 
-The Elastic APM Node.js agent [`disableInstrumentations`](apm-agent-nodejs://reference/configuration.md#apm-client-headers) option corresponds to the EDOT Node.js [`OTEL_NODE_DISABLED_INSTRUMENTATIONS`](./configuration.md#otel_node_disabledenabled_instrumentations-details) option.
+The Elastic APM Node.js agent [`disableInstrumentations`](apm-agent-nodejs://reference/configuration.md#apm-client-headers) option corresponds to the EDOT Node.js [`OTEL_NODE_DISABLED_INSTRUMENTATIONS`](/reference/edot-sdks/nodejs/configuration.md#otel_node_disabledenabled_instrumentations-details) option.
 
 For example: `OTEL_NODE_DISABLED_INSTRUMENTATIONS=express,mysql`.
 
@@ -184,7 +186,7 @@ For example: `OTEL_METRIC_EXPORT_INTERVAL=30000`.
 
 ### `cloudProvider`
 
-The Elastic APM Node.js agent [`cloudProvider`](apm-agent-nodejs://reference/configuration.md#cloud-provider) option does not corresponds directly to an OpenTelemetry option but you can get similar behavior by properly setting [`OTEL_NODE_RESOURCE_DETECTORS`](https://opentelemetry.io/docs/zero-code/js/configuration/#sdk-resource-detector-configuration) option. If you set this option make sure you add along with the cloud detector the non-cloud detectors that apply to your service. For a full list of detectors check [OTEL_NODE_RESOURCE_DETECTORS details](./configuration.md#otel_node_resource_detectors-details). Not setting this option is the equivalent of `auto`.
+The Elastic APM Node.js agent [`cloudProvider`](apm-agent-nodejs://reference/configuration.md#cloud-provider) option does not corresponds directly to an OpenTelemetry option but you can get similar behavior by properly setting [`OTEL_NODE_RESOURCE_DETECTORS`](https://opentelemetry.io/docs/zero-code/js/configuration/#sdk-resource-detector-configuration) option. If you set this option make sure you add along with the cloud detector the non-cloud detectors that apply to your service. For a full list of detectors check [OTEL_NODE_RESOURCE_DETECTORS details](/reference/edot-sdks/nodejs/configuration.md#otel_node_resource_detectors-details). Not setting this option is the equivalent of `auto`.
 
 For example: `OTEL_NODE_RESOURCE_DETECTORS=os,env,host,serviceinstance,process,aws` will make the agent query for AWS metadata only and use other non-cloud detectors to enrich that metadata.
 
@@ -210,3 +212,7 @@ Currently EDOT Node.js does not yet have an equivalent of the [central configura
 ### Span compression
 
 EDOT Node.js does not implement [span compression](docs-content://solutions/observability/apm/spans.md#apm-spans-span-compression).
+
+## Troubleshooting
+
+If you're encountering issues during migration, refer to the [EDOT Node.js troubleshooting guide](docs-content://troubleshoot/ingest/opentelemetry/edot-sdks/nodejs/index.md).
