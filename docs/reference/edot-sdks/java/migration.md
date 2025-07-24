@@ -200,9 +200,9 @@ Support for LDAP client instrumentation is not currently available in EDOT Java.
 
 ### Central and dynamic configuration
 
-Currently EDOT Java does not have an equivalent of the [central configuration feature](docs-content://solutions/observability/apm/apm-agent-central-configuration.md) that the Elastic APM Java agent supports. 
+You can manage EDOT Java configurations through the [central configuration feature](docs-content://solutions/observability/apm/apm-agent-central-configuration.md) in the Applications UI.
 
-When using EDOT Java, all the configurations are static and should be provided to the application with other configurations, such as environment variables.
+Refer to [Central configuration](/reference/central-configuration.md) for more information.
 
 ### Span compression
 
