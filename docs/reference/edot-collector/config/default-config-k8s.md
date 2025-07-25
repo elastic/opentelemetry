@@ -44,6 +44,12 @@ The [`filelog`] and [`hostmetrics`] receivers are used to gather container logs 
 
 Logs and metrics are batched for better performance ([`batch`] processor) and then enriched with meta information using the [`k8sattributes`], [`resourcedetection`] and [`resource`] processors.
 
+:::{note}
+The `from_context: client_metadata` option in the `resource` processor only applies to transport-level metadata. It cannot extract custom application attributes.  
+
+To propagate such values into your telemetry, set them explicitly in your application code using EDOT SDK instrumentation. For more information, refer to [EDOT Collector doesn’t propagate client metadata](docs-content://troubleshoot/ingest/opentelemetry/edot-collector/metadata.md).
+:::
+
 ### Application telemetry through OTLP from OTel SDKs
 
 The Daemonset collectors also receive the application telemetry from OTel SDKs that instrument services and pods running on corresponding Kubernetes nodes.
