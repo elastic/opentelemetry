@@ -54,7 +54,7 @@ Create an `.env` file with the following content. Replace the placeholder values
    HOST_FILESYSTEM=/
    DOCKER_SOCK=/var/run/docker.sock
    ELASTIC_AGENT_OTEL=true
-   COLLECTOR_CONTRIB_IMAGE=elastic/elastic-agent:{{edot-collector-version}}
+   COLLECTOR_CONTRIB_IMAGE=elastic/elastic-agent:{{version.edot_collector}}
    ELASTIC_API_KEY=<your_api_key_here>
    ELASTIC_ENDPOINT=<your_endpoint_here>
    OTEL_COLLECTOR_CONFIG=/path/to/otel-collector-config.yml

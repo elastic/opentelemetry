@@ -53,13 +53,13 @@ The `Instrumentation` object stores important parameters:
 
    ```yaml subs=true
    dotnet:
-      image: docker.elastic.co/observability/elastic-otel-dotnet:{{edot-dotnet-version}}
+      image: docker.elastic.co/observability/elastic-otel-dotnet:{{version.edot_dotnet}}
    java:
-      image: docker.elastic.co/observability/elastic-otel-javaagent:{{edot-java-version}}
+      image: docker.elastic.co/observability/elastic-otel-javaagent:{{version.edot_java}}
    nodejs:
-      image: docker.elastic.co/observability/elastic-otel-node:{{edot-nodejs-version}}
+      image: docker.elastic.co/observability/elastic-otel-node:{{version.edot_node}}
    python:
-      image: docker.elastic.co/observability/elastic-otel-python:{{edot-python-version}}
+      image: docker.elastic.co/observability/elastic-otel-python:{{version.edot_python}}
    ```
 
 ## Configure auto-instrumentation
