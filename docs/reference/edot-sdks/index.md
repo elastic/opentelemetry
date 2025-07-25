@@ -8,6 +8,7 @@ applies_to:
 products:
   - id: cloud-serverless
   - id: observability
+  - id: edot-sdk
 ---
 
 # EDOT SDKs 
@@ -20,13 +21,13 @@ While maintaining full compatibility with the OpenTelemetry specification, EDOT 
 
 EDOT SDKs are available for the following programming languages and platforms:
 
-* [.NET](/reference/edot-sdks/dotnet/)
-* [Java](/reference/edot-sdks/java/)
-* [Node.js](/reference/edot-sdks/nodejs/)
-* [PHP](/reference/edot-sdks/php/)
-* [Python](/reference/edot-sdks/python/)
-* [Android](/reference/edot-sdks/android/)
-* [iOS](/reference/edot-sdks/ios/)
+* [.NET](/reference/edot-sdks/dotnet/index.md)
+* [Java](/reference/edot-sdks/java/index.md)
+* [Node.js](/reference/edot-sdks/nodejs/index.md)
+* [PHP](/reference/edot-sdks/php/index.md)
+* [Python](/reference/edot-sdks/python/index.md)
+* [Android](/reference/edot-sdks/android/index.md)
+* [iOS](/reference/edot-sdks/ios/index.md)
 
 ## Feature overview
 
