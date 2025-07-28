@@ -53,6 +53,12 @@ The goal of EDOT is to preserve OTel data formats and semantics as much as possi
 
 For logs collection, the default configuration uses the [`filelog`] receiver to read log entries from files.  In addition, the [`resourcedetection`] processor enriches the log entries with metadata about the corresponding host and operating system.
 
+:::{note}
+The `from_context: client_metadata` option in the `resource` processor only applies to transport-level metadata. It cannot extract custom application attributes.  
+
+To propagate such values into your telemetry, set them explicitly in your application code using EDOT SDK instrumentation. For more information, refer to [EDOT Collector doesn’t propagate client metadata](docs-content://troubleshoot/ingest/opentelemetry/edot-collector/metadata.md).
+:::
+
 Data is exported directly to {{es}} using the [`elasticsearch`] exporter in `OTel-native` mode.
 
 #### Application and traces collection pipeline
@@ -97,9 +103,15 @@ In Gateway mode, the Collector ingests data from other Collectors running in Age
 
 ## Sample configuration
 
-The following sample configuration file is available for the Gateway mode:
+The following sample configuration files are available for the Gateway mode:
 
-- [Gateway mode]
+| Version | Configuration  |
+|---------|----------------|
+| 8.17    | [Gateway mode](https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v9.0.4/internal/pkg/otel/samples/linux/gateway.yml) |
+| 8.18    | [Gateway mode](https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v9.0.4/internal/pkg/otel/samples/linux/gateway.yml) |
+| 9.0     | [Gateway mode](https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v9.0.4/internal/pkg/otel/samples/linux/gateway.yml) |
+% | 8.19    | [Gateway mode](https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v8.19.0/internal/pkg/otel/samples/linux/gateway.yml) |
+% | 9.1     | [Gateway mode](https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v9.1.0/internal/pkg/otel/samples/linux/gateway.yml) |
 
 Use the previous example configuration as a reference when configuring your Gateway Collector or customizing your EDOT Collector configuration.
 
