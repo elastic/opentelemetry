@@ -121,3 +121,5 @@ For a list of settings that you can configure through APM Agent Central Configur
 - [EDOT Node.js](/reference/edot-sdks/nodejs/configuration.md#central-configuration)
 - [EDOT PHP](/reference/edot-sdks/php/configuration.md#central-configuration)
 - [EDOT Python](/reference/edot-sdks/python/configuration.md#central-configuration)
+
+EDOT iOS currently supports APM Agent Central Configuration through APM Server. Refer to [EDOT iOS configuration](/reference/edot-sdks/ios/configuration.md) for more details.
