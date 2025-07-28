@@ -77,23 +77,11 @@ Environment="NO_PROXY=<address1>,<address2>"
 ::::
 
 :::{{note}}
-For the Collector, proxy support applies to all exporters, including those using gRPC. No special configuration is needed beyond the environment variables.
+For the EDOT Collector, proxy support applies to all exporters, including those using gRPC. No special configuration is needed beyond the environment variables.
+
+If you're using an SDK that doesn't support proxy variables directly, consider routing telemetry through an EDOT Collector configured with proxy settings. This ensures consistent proxy handling. For more information, refer to [Proxy settings for EDOT SDKs](../../edot-sdks/proxy.md).
 :::
 
-## Proxy settings for EDOT SDKs
-
-With the exception of Java SDK, EDOT SDKs use the `HTTP_PROXY / HTTPS_PROXY` settings from environment variables and require no extra configuration.
-
-You can export environment variables like this:
-
-```
-export HTTP_PROXY=http://<proxy.address>:<port>
-export HTTPS_PROXY=http://<proxy.address>:<port>
-```
-
-### Java SDK
-
-If you’re using Java SDK, you must configure Java system properties using the Java Virtual Machine (JVM). Refer to [Troubleshooting Java SDK proxy issues](docs-content://troubleshoot/ingest/opentelemetry/edot-sdks/java/proxy-issues.md) for more information.
 
 ## Resources
 
