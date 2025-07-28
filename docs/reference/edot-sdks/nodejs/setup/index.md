@@ -5,6 +5,8 @@ applies_to:
   stack:
   serverless:
     observability:
+  product:
+    edot_node: ga
 products:
   - id: cloud-serverless
   - id: observability
@@ -29,6 +31,9 @@ export OTEL_SERVICE_NAME="my-app"
 # Start it with your application
 node --import @elastic/opentelemetry-node my-app.js
 ```
+:::{warning}
+Avoid using the Node.js SDK alongside any other APM agent, including Elastic APM agents. Running multiple agents in the same application process may lead to conflicting instrumentation, duplicate telemetry, or other unexpected behavior.
+:::
 
 If you are deploying in Kubernetes, see the [Kubernetes setup guide](/reference/edot-sdks/nodejs/setup/k8s.md).
 
@@ -104,5 +109,8 @@ To confirm that EDOT Node.js has be setup successfully:
 2. Go to **Applications** → **Service Inventory** in your Elastic Observability deployment.
 3. Find the name of your service. It can take a minute or two after starting your service with EDOT Node.js for the service to show up in this list.
 
-If you do not see your service, work through [the Troubleshooting guide](/reference/edot-sdks/nodejs/troubleshooting.md).
+If you do not see your service, work through [the Troubleshooting guide](docs-content://troubleshoot/ingest/opentelemetry/edot-sdks/nodejs/index.md).
 
+## Troubleshooting
+
+For help with common setup issues, refer to the [EDOT Node.js troubleshooting guide](docs-content://troubleshoot/ingest/opentelemetry/edot-sdks/nodejs/index.md).

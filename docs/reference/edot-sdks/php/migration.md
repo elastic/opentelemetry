@@ -5,6 +5,8 @@ applies_to:
   stack:
   serverless:
     observability:
+  product:
+    edot_php: ga
 products:
   - id: cloud-serverless
   - id: observability
@@ -175,3 +177,7 @@ The following limitations apply to EDOT PHP:
 :::{note}
 For a broader overview of known limitations — including technical constraints related to PHP runtime and extensions, refer to [Limitations](/reference/edot-sdks/php/setup/limitations.md).
 :::
+
+## Troubleshooting
+
+If you're encountering issues during migration, refer to the [EDOT PHP troubleshooting guide](docs-content://troubleshoot/ingest/opentelemetry/edot-sdks/php/index.md).

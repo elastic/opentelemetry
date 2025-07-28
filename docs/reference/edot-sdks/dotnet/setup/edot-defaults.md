@@ -5,10 +5,13 @@ applies_to:
   stack:
   serverless:
     observability:
+  product:
+    edot_dotnet: ga
 products:
   - id: cloud-serverless
   - id: observability
   - id: edot-sdk
+
 ---
 
 # EDOT .NET opinionated defaults
@@ -229,7 +232,7 @@ EDOT .NET enables the following options that are not enabled by default when usi
 | IncludeFormattedMessage  | `true`            | `false`                   |
 | IncludeScopes            | `false` (Since 1.0.2)           | `false`                   |
 
-Since 1.0.2 `IncludeScopes` is no longer enabled by default. Refer to [Troubleshooting](/reference/edot-sdks/dotnet/troubleshooting.md#missing-log-records). 1.0.0 and 1.0.1 default to `true`.
+Since 1.0.2 `IncludeScopes` is no longer enabled by default. Refer to [Troubleshooting](docs-content://troubleshoot/ingest/opentelemetry/edot-sdks/dotnet/index.md#missing-log-records). 1.0.0 and 1.0.1 default to `true`.
 
 ### Instrumentation assembly scanning
 

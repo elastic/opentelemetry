@@ -5,6 +5,8 @@ applies_to:
   stack:
   serverless:
     observability:
+  product:
+    edot_java: ga
 products:
   - id: cloud-serverless
   - id: observability
@@ -14,6 +16,10 @@ products:
 # Set up the EDOT Java Agent
 
 Learn how to set up the {{edot}} (EDOT) Java in various environments, including Kubernetes and others.
+
+:::{warning}
+Avoid using the Java SDK alongside any other APM agent, including Elastic APM agents. Running multiple agents in the same application process may lead to conflicting instrumentation, duplicate telemetry, or other unexpected behavior.
+:::
 
 ## Kubernetes
 
@@ -91,3 +97,7 @@ When modifying the JVM command line arguments is not possible, use the `JAVA_TOO
 Some application servers require manual steps or modification of their configuration files. Refer to [dedicated instructions](https://opentelemetry.io/docs/zero-code/java/agent/server-config/) for more details.
 
 For applications deployed with Kubernetes, use the [OpenTelemetry Operator](/reference/edot-sdks/java/setup/k8s.md).
+
+## Troubleshooting
+
+For help with common setup issues, refer to the [EDOT Java troubleshooting guide](docs-content://troubleshoot/ingest/opentelemetry/edot-sdks/java/index.md).

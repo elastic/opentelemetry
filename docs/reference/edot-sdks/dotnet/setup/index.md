@@ -5,10 +5,13 @@ applies_to:
   stack:
   serverless:
     observability:
+  product:
+    edot_dotnet: ga
 products:
   - id: cloud-serverless
   - id: observability
   - id: edot-sdk
+
 ---
 
 # Set up the EDOT .NET SDK
@@ -26,6 +29,10 @@ This quickstart guide documents the introductory steps required to set up OpenTe
 * [Console applications](/reference/edot-sdks/dotnet/setup/console.md)
 * [Worker services](/reference/edot-sdks/dotnet/setup/worker-services.md)
 * [Zero code](/reference/edot-sdks/dotnet/setup/zero-code.md)
+
+:::{warning}
+Avoid using the .NET SDK alongside any other APM agent, including Elastic APM agents. Running multiple agents in the same application process may lead to conflicting instrumentation, duplicate telemetry, or other unexpected behavior.
+:::
 
 ### Prerequisites
 
@@ -149,3 +156,7 @@ In .NET, use the built-in .NET APIs for each signal:
 ### Next steps
 
 Refer to the technology-specific documentation pages for further details on using EDOT .NET in those application types. The [OpenTelemetry SDK documentation](https://opentelemetry.io/docs/languages/net/getting-started/) provides more examples of working with the .NET SDK.
+
+## Troubleshooting
+
+For help with common setup issues, refer to the [EDOT .NET troubleshooting guide](docs-content://troubleshoot/ingest/opentelemetry/edot-sdks/dotnet/index.md).

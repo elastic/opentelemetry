@@ -5,6 +5,8 @@ applies_to:
   stack:
   serverless:
     observability:
+  product:
+    edot_php: ga
 products:
   - id: cloud-serverless
   - id: observability
@@ -24,6 +26,10 @@ To quickly get up and running, follow the [Elastic OpenTelemetry Quickstart guid
 - Creating a free Elastic Cloud deployment.
 - Configuring your OpenTelemetry agent.
 - Exploring traces and metrics in {{kib}}.
+
+:::{warning}
+Avoid using the PHP SDK alongside any other APM agent, including Elastic APM agents. Running multiple agents in the same application process may lead to conflicting instrumentation, duplicate telemetry, or other unexpected behavior.
+:::
 
 ### Operating system and PHP version
 
@@ -92,3 +98,7 @@ To confirm that EDOT PHP has successfully connected to Elastic:
 :::{note}
 There might be no trace data to visualize unless you have used your application since initializing EDOT PHP.
 :::
+
+## Troubleshooting
+
+For help with common setup issues, refer to the [EDOT PHP troubleshooting guide](docs-content://troubleshoot/ingest/opentelemetry/edot-sdks/php/index.md).

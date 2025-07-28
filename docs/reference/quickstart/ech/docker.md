@@ -5,9 +5,12 @@ applies_to:
   stack:
   serverless:
     observability:
+  product:
+    edot_collector: ga
 products:
   - id: cloud-serverless
   - id: observability
+  - id: edot-collector
 ---
 
 # Quickstart for Docker on Elastic Cloud Hosted
@@ -99,10 +102,12 @@ Start the Collector by running:
 
 ::::{step} (Optional) Instrument your applications
 
-To collect telemetry from applications running on the host where you installed the EDOT Collector, 
-instrument your target applications following the setup instructions for the corresponding language:
+To collect telemetry from applications and use the EDOT Collector as a gateway,
+instrument your target applications following the setup instructions:
 
+   - [Android](/reference/edot-sdks/android/index.md)
    - [.NET](/reference/edot-sdks/dotnet/setup/index.md)
+   - [iOS](/reference/edot-sdks/ios/index.md)
    - [Java](/reference/edot-sdks/java/setup/index.md)
    - [Node.js](/reference/edot-sdks/nodejs/setup/index.md)
    - [PHP](/reference/edot-sdks/php/setup/index.md)
@@ -112,3 +117,8 @@ instrument your target applications following the setup instructions for the cor
 
 ::::
 :::::
+
+
+## Troubleshooting
+
+Having issues with EDOT? Refer to the [Troubleshooting common issues with the EDOT Collector](docs-content://troubleshoot/ingest/opentelemetry/edot-collector/index.md) and [Troubleshooting the EDOT SDKs](docs-content://troubleshoot/ingest/opentelemetry/edot-sdks/index.md) for help.

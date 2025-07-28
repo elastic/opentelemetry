@@ -8,13 +8,14 @@ applies_to:
 products:
   - id: cloud-serverless
   - id: observability
+  - id: edot-collector
 ---
 
 # Kubernetes Environments
 
 The recommended OTel architecture for Kubernetes clusters includes a set of OpenTelemetry collectors in different forms. The following diagram shows the different forms:
 
-![K8s-Cluster](/reference/images/arch-k8s-cluster.png)
+![K8s-Cluster](../images/arch-k8s-cluster.png)
 
 ## Daemon form
 
@@ -48,7 +49,7 @@ Elastic's Observability solution is technically compatible with setups that are 
 
 {{serverless-full}} provides a [Managed OTLP Endpoint](/reference/motlp.md) for ingestion of OpenTelemetry data.
 
-![K8s-Serverless](/reference/images/arch-k8s-serverless.png)
+![K8s-Serverless](../images/arch-k8s-serverless.png)
 
 For a Kubernetes setup, that means the Gateway Collector passes through the OTel data in native format using the OTLP protocol to the managed OTLP endpoint. There is no need for the Gateway Collector to do any Elastic-specific pre-processing.
 
@@ -56,9 +57,9 @@ For a Kubernetes setup, that means the Gateway Collector passes through the OTel
 
 With {{ech}} (ECH), OTel data is being directly ingested into the Elastic-hosted {{es}} instance.
 
-![K8s-ECH](/reference/images/arch-k8s-ech.png)
+![K8s-ECH](../images/arch-k8s-ech.png)
 
-The Gateway Collector needs to do some preprocessing, aggregation of metrics and, finally, it uses the {{es}} exporter to ingest data into ECH. 
+The Gateway Collector needs to do some preprocessing, aggregation of metrics and, finally, it uses the {{es}} exporter to ingest data into ECH.
 
 While the Daemon and Cluster collectors, as well as the OTel SDKs, can stay fully vendor agnostic or upstream, the Gateway Collector needs to be either an EDOT Collector or a [custom, EDOT-like Collector](/reference/edot-collector/custom-collector.md) containing the
 [required components and pre-processing pipelines](/reference/edot-collector/config/default-config-k8s.md#direct-ingestion-into-elasticsearch).
@@ -77,9 +78,9 @@ If self-managing an EDOT Gateway is not a valid option for you, refer to [Elasti
 
 With a self-managed scenario the Gateway Collector ingests data directly into the self-managed {{es}} instance.
 
-![K8s-self-managed](/reference/images/arch-k8s-self-managed.png)
+![K8s-self-managed](../images/arch-k8s-self-managed.png)
 
-The Gateway Collector does some preprocessing and aggregation of OTel data before ingesting it into {{es}}. 
+The Gateway Collector does some preprocessing and aggregation of OTel data before ingesting it into {{es}}.
 
 While the Daemon and Cluster collectors, as well as the OTel SDKs, can stay fully vendor agnostic or upstream, the Gateway Collector needs to be either an EDOT Collector or a [custom, EDOT-like Collector](/reference/edot-collector/custom-collector.md) containing the [required components and pre-processing pipelines](/reference/edot-collector/config/default-config-k8s.md#direct-ingestion-into-elasticsearch).
 

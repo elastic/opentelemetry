@@ -5,6 +5,8 @@ applies_to:
   stack:
   serverless:
     observability:
+  product:
+    edot_java: ga
 products:
   - id: cloud-serverless
   - id: observability
@@ -178,6 +180,12 @@ With EDOT, application logs are automatically captured and sent by default.
 
 This feature is controlled by `otel.logs.exporter`, which is set to `otlp` by default. You can turn it off by setting `otel.logs.exporter` to `none`.
 
+### `verify_server_cert`
+
+The Elastic [`verify_server_cert`](apm-agent-java://reference/config-reporter.md#config-verify-server-cert) option allows you to disable server certificate validation.
+
+With EDOT, the equivalent configuration option is `ELASTIC_OTEL_VERIFY_SERVER_CERT` (default `true`), see [configuration](./configuration.md#exporter-certificate-verification) for details.
+
 ## Limitations
 
 The following limitations apply to EDOT Java.
@@ -214,3 +222,7 @@ apply, and the agent must be started early during application startup.
 ### Micrometer turned off by default
 
 By default, Micrometer instrumentation is inactive and doesn't capture metrics. To turn it on, use the `otel.instrumentation.micrometer.enabled=true` setting.
+
+## Troubleshooting
+
+If you're encountering issues during migration, refer to the [EDOT Java troubleshooting guide](docs-content://troubleshoot/ingest/opentelemetry/edot-sdks/java/index.md).

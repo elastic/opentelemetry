@@ -5,6 +5,8 @@ applies_to:
   stack:
   serverless:
     observability:
+  product:
+    edot_node: ga
 products:
   - id: cloud-serverless
   - id: observability
@@ -212,3 +214,7 @@ Refer to [Central configuration](/reference/central-configuration.md) for more i
 ### Span compression
 
 EDOT Node.js does not implement [span compression](docs-content://solutions/observability/apm/spans.md#apm-spans-span-compression).
+
+## Troubleshooting
+
+If you're encountering issues during migration, refer to the [EDOT Node.js troubleshooting guide](docs-content://troubleshoot/ingest/opentelemetry/edot-sdks/nodejs/index.md).

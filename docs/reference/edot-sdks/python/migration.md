@@ -5,6 +5,8 @@ applies_to:
   stack:
   serverless:
     observability:
+  product:
+    edot_python: ga
 products:
   - id: cloud-serverless
   - id: observability
@@ -127,3 +129,7 @@ EDOT Python does not implement [span compression](docs-content://solutions/obser
 ### Breakdown metrics
 
 EDOT Python is not sending metrics that power the [Breakdown metrics](docs-content://solutions/observability/apm/metrics.md#_breakdown_metrics).
+
+## Troubleshooting
+
+If you're encountering issues during migration, refer to the [EDOT Python troubleshooting guide](docs-content://troubleshoot/ingest/opentelemetry/edot-sdks/python/index.md).
