@@ -5,6 +5,8 @@ applies_to:
   stack:
   serverless:
     observability:
+  product:
+    edot_java: ga
 products:
   - id: cloud-serverless
   - id: observability
@@ -13,9 +15,9 @@ products:
 
 # Instrumenting Java applications using the EDOT Java runtime attach
 
-:::{warning}
-This feature is currently in *tech preview*.
-:::
+```{applies_to}
+product: preview
+```
 
 Runtime attach includes the EDOT instrumentation agent in the application binary. This allows deploying the agent when access to JVM arguments or configuration is not possible, for example, with some managed services. The application development team can control the agent deployment and update cycle without having to modify the execution environment. Runtime attach only requires a minor modification of the application main entry point and one additional dependency.
 

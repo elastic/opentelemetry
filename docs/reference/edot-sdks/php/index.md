@@ -5,6 +5,8 @@ applies_to:
   stack:
   serverless:
     observability:
+  product:
+    edot_php: ga
 products:
   - id: cloud-serverless
   - id: observability
@@ -31,4 +33,8 @@ In addition to all the features of OpenTelemetry PHP, with EDOT PHP you have acc
 * Out-of-the-box auto-instrumentation — no need to modify your code. EDOT PHP takes care of enabling telemetry collection automatically.
 * Additional runtime features such as automatic root span creation, URL grouping, and inferred spans to provide richer and more structured trace data with minimal setup.
 
-Follow the step-by-step instructions in [Setup](./setup/index.md) to get started.
+Follow the step-by-step instructions in [Setup](/reference/edot-sdks/php/setup/index.md) to get started.
+
+## Release notes
+
+For the latest release notes, including known issues, deprecations, and breaking changes, refer to [EDOT PHP release notes](elastic-otel-php://release-notes/index.md)

@@ -5,6 +5,8 @@ applies_to:
   stack:
   serverless:
     observability:
+  product:
+    edot_collector: ga
 products:
   - id: cloud-serverless
   - id: observability
@@ -13,7 +15,7 @@ products:
 
 # Default configuration of the EDOT Collector (Kubernetes)
 
-The [Kubernetes setup](../../quickstart/index.md) uses the OpenTelemetry Operator to automate orchestration of EDOT Collectors:
+The [Kubernetes setup](/reference/quickstart/index.md) uses the OpenTelemetry Operator to automate orchestration of EDOT Collectors:
 
 * [EDOT Collector Cluster](#cluster-collector-pipeline): Collection of cluster metrics.
 * [EDOT Collector Daemon](#daemonset-collectors-pipeline): Collection of node metrics, logs and application telemetry.
@@ -42,6 +44,12 @@ The [`filelog`] and [`hostmetrics`] receivers are used to gather container logs 
 
 Logs and metrics are batched for better performance ([`batch`] processor) and then enriched with meta information using the [`k8sattributes`], [`resourcedetection`] and [`resource`] processors.
 
+:::{note}
+The `from_context: client_metadata` option in the `resource` processor only applies to transport-level metadata. It cannot extract custom application attributes.  
+
+To propagate such values into your telemetry, set them explicitly in your application code using EDOT SDK instrumentation. For more information, refer to [EDOT Collector doesn’t propagate client metadata](docs-content://troubleshoot/ingest/opentelemetry/edot-collector/metadata.md).
+:::
+
 ### Application telemetry through OTLP from OTel SDKs
 
 The Daemonset collectors also receive the application telemetry from OTel SDKs that instrument services and pods running on corresponding Kubernetes nodes.
@@ -50,13 +58,13 @@ The Daemonset collectors receive that data through [`OTLP`], batch the data ([`b
 
 ## Gateway collectors pipeline
 
-The Gateway collectors pipelines differ between the two different deployment use cases, direct ingestion into {{es}} and using Elastic's Managed OTLP Endpoint.
+The Gateway collectors pipelines differ between the two different deployment use cases, direct ingestion into {{es}} and using the [{{motlp}}](/reference/motlp.md).
 
 ### Direct ingestion into Elasticsearch
 
 In self-managed and {{ech}} Stack deployment use cases, the main purpose of the Gateway Collector is the central enrichment of data before the OpenTelemetry data is being ingested directly into {{es}} using the [`elasticsearch`] exporter.
 
-The Gateway Collector configuration comprises the pipelines for data enrichment of [application telemetry](./default-config-standalone.md#application-and-traces-collection-pipeline) and [host metrics](./default-config-standalone.md#host-metrics-collection-pipeline). For more details, refer to the linked descriptions of the corresponding standalone use cases.
+The Gateway Collector configuration comprises the pipelines for data enrichment of [application telemetry](/reference/edot-collector/config/default-config-standalone.md#application-and-traces-collection-pipeline) and [host metrics](/reference/edot-collector/config/default-config-standalone.md#host-metrics-collection-pipeline). For more details, refer to the linked descriptions of the corresponding standalone use cases.
 
 The [`routing`] connector separates the infrastructure metrics from other metrics and routes them into the ECS-based pipeline, with ECS-compatibility exporter mode. Other metrics are exported in OTel-native format to {{es}}.
 

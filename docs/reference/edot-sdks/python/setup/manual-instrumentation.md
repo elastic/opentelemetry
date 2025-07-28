@@ -5,6 +5,8 @@ applies_to:
   stack:
   serverless:
     observability:
+  product:
+    edot_python: ga
 products:
   - id: cloud-serverless
   - id: observability
@@ -15,11 +17,11 @@ products:
 
 Learn how to use the {{edot}} Python (EDOT Python) to manually instrument your Python application and send OpenTelemetry data to an Elastic Observability deployment.
 
-The following instructions require to have already added auto-instrumentation with OpenTelemetry to your application per [Setup](./index.md).
+The following instructions require to have already added auto-instrumentation with OpenTelemetry to your application per [Setup](/reference/edot-sdks/python/setup/index.md).
 
 ## Configure EDOT Python
 
-Refer to our [Setup](./index.md) page for more details.
+Refer to our [Setup](/reference/edot-sdks/python/setup/index.md) page for more details.
 
 ## Manually instrument your auto-instrumented Python application
 
@@ -93,7 +95,7 @@ def hello():
 
 To confirm that EDOT Python has successfully connected to Elastic:
 
-1. Go to **Observability**, **Applications**, **Service Inventory**
+1. Go to **Observability** → **Applications** → **Service Inventory**
 1. Find the name of the service to which you just added EDOT Python. It can take several minutes after initializing EDOT Python for the service to show up in this list.
 1. Select the name in the list to see trace data.
 

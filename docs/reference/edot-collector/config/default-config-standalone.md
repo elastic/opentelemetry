@@ -5,6 +5,8 @@ applies_to:
   stack:
   serverless:
     observability:
+  product:
+    edot_collector: ga
 products:
   - id: cloud-serverless
   - id: observability
@@ -51,6 +53,12 @@ The goal of EDOT is to preserve OTel data formats and semantics as much as possi
 
 For logs collection, the default configuration uses the [`filelog`] receiver to read log entries from files.  In addition, the [`resourcedetection`] processor enriches the log entries with metadata about the corresponding host and operating system.
 
+:::{note}
+The `from_context: client_metadata` option in the `resource` processor only applies to transport-level metadata. It cannot extract custom application attributes.  
+
+To propagate such values into your telemetry, set them explicitly in your application code using EDOT SDK instrumentation. For more information, refer to [EDOT Collector doesn’t propagate client metadata](docs-content://troubleshoot/ingest/opentelemetry/edot-collector/metadata.md).
+:::
+
 Data is exported directly to {{es}} using the [`elasticsearch`] exporter in `OTel-native` mode.
 
 #### Application and traces collection pipeline
@@ -65,8 +73,8 @@ Application-related OTel data is ingested into {{es}} in OTel-native format usin
 Both components, `elastictrace` and `elasticapm` are required for Elastic APM UIs to work properly. As they aren't included in the OpenTelemetry [Collector Contrib repository](https://github.com/open-telemetry/opentelemetry-collector-contrib), you can:
 
 * Use the EDOT Collector with the available configuration to ingest data into {{es}}.
-* [Build a custom, EDOT-like Collector](../custom-collector.md) for ingesting data into {{es}}.
-* Use Elastic's [managed OTLP endpoint](../../quickstart/serverless/index.md) that does the enrichment for you.
+* [Build a custom, EDOT-like Collector](/reference/edot-collector/custom-collector.md) for ingesting data into {{es}}.
+* Use Elastic's [managed OTLP endpoint](/reference/quickstart/serverless/index.md) that does the enrichment for you.
 :::
 
 #### Host metrics collection pipeline
@@ -79,21 +87,31 @@ The [`resourcedetection`] processor enriches the metrics with meta information a
 
 ### Using the Managed OTLP Endpoint
 
-When ingesting OTel data through Elastics Managed OTLP endpoint, all the enrichment that is required for an optimal experience in the Elastic solutions happens at the managed OTLP endpoint level and is transparent to users. 
+When ingesting OTel data through the [{{motlp}}](/reference/motlp.md), all the enrichment that is required for an optimal experience in the Elastic solutions happens at the endpoint level and is transparent to users. 
 
-The Collector configuration for all the use cases involving the Managed OTLP endpoint is only concerned with local data collection and context enrichment.
+The Collector configuration for all use cases that involve the {{motlp}} is only concerned with local data collection and context enrichment.
 
 Platform logs are scraped with the [`filelog`] receiver, host metrics are collected through the [`hostmetrics`] receiver and both signals are enriched with meta information through the [`resourcedetection`] processor.
 
-Data from OTel SDKs is piped through the [`OTLP`] receiver directly to the OTLP exporter that sends data for all the signals to the managed OTLP endpoint.
+Data from OTel SDKs is piped through the [`OTLP`] receiver directly to the OTLP exporter that sends data for all signals to the {{motlp}}.
 
-With the managed OTLP Endpoint there is no need for configuring any Elastic-specific components, such as [`elasticinframetrics`], [`elastictrace`] processors, [`elasticapm`] connector or the [`elasticsearch`] exporter. Edge setup and configuration can be 100% vendor agnostic.
+With the {{motlp}}, there is no need to configure any Elastic-specific components, such as [`elasticinframetrics`], [`elastictrace`] processors, the [`elasticapm`] connector, or the [`elasticsearch`] exporter. Edge setup and configuration can be 100% vendor agnostic.
 
 ## Gateway mode
 
-The following sample configuration file is available for the Gateway mode:
+In Gateway mode, the Collector ingests data from other Collectors running in Agent mode and forwards it to Elastic.
 
-- [Gateway mode]
+## Sample configuration
+
+The following sample configuration files are available for the Gateway mode:
+
+| Version | Configuration  |
+|---------|----------------|
+| 8.17    | [Gateway mode](https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v9.0.4/internal/pkg/otel/samples/linux/gateway.yml) |
+| 8.18    | [Gateway mode](https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v9.0.4/internal/pkg/otel/samples/linux/gateway.yml) |
+| 9.0     | [Gateway mode](https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v9.0.4/internal/pkg/otel/samples/linux/gateway.yml) |
+% | 8.19    | [Gateway mode](https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v8.19.0/internal/pkg/otel/samples/linux/gateway.yml) |
+% | 9.1     | [Gateway mode](https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v9.1.0/internal/pkg/otel/samples/linux/gateway.yml) |
 
 Use the previous example configuration as a reference when configuring your Gateway Collector or customizing your EDOT Collector configuration.
 

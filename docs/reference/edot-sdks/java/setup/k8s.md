@@ -5,6 +5,8 @@ applies_to:
   stack:
   serverless:
     observability:
+  product:
+    edot_java: ga
 products:
   - id: cloud-serverless
   - id: observability
@@ -15,9 +17,9 @@ products:
 
 Learn how to instrument Java applications on Kubernetes using the OpenTelemetry Operator, the {{edot}} (EDOT) Collectors, and the EDOT Java SDK.
 
-- For general knowledge about the EDOT Java SDK, refer to the [EDOT Java Intro page](../index.md).
+- For general knowledge about the EDOT Java SDK, refer to the [EDOT Java Intro page](/reference/edot-sdks/java/index.md).
 - For Java auto-instrumentation specifics, refer to [OpenTelemetry Operator Java auto-instrumentation](https://opentelemetry.io/docs/kubernetes/operator/automatic/#java).
-- For general information about instrumenting applications on Kubernetes, refer to [instrumenting applications on Kubernetes](../../../use-cases/kubernetes/instrumenting-applications.md).
+- For general information about instrumenting applications on Kubernetes, refer to [instrumenting applications on Kubernetes](/reference/use-cases/kubernetes/instrumenting-applications.md).
 
 ## Extensions consideration
 
@@ -35,7 +37,7 @@ Following this example, you can learn how to:
 
 In this example, the application you're instrumenting is a deployment named `java-app` running in the `java-ns` namespace.
 
-1. Ensure you have successfully [installed the OpenTelemetry Operator](../../../use-cases/kubernetes/deployment.md) and confirm that the following `Instrumentation` object exists in the system:
+1. Ensure you have successfully [installed the OpenTelemetry Operator](/reference/use-cases/kubernetes/deployment.md) and confirm that the following `Instrumentation` object exists in the system:
 
     ```sh
     $ kubectl get instrumentation -n opentelemetry-operator-system
@@ -80,7 +82,7 @@ In this example, the application you're instrumenting is a deployment named `jav
     kubectl rollout restart deployment java-app -n java-ns
     ```
 
-4. Verify the [auto-instrumentation resources](../../../use-cases/kubernetes/instrumenting-applications.md#how-auto-instrumentation-works) are injected in the Pod:
+4. Verify the [auto-instrumentation resources](/reference/use-cases/kubernetes/instrumenting-applications.md#how-auto-instrumentation-works) are injected in the Pod:
 
     Run a `kubectl describe` of one of your application Pods and check:
 
@@ -154,7 +156,7 @@ In this example, the application you're instrumenting is a deployment named `jav
 
 5. Confirm data is flowing to {{kib}}:
 
-    - Open **Observability**, **Applications**, **Service inventory**, and determine if:
+    - Open **Observability** → **Applications** → **Service inventory**, and determine if:
         - The application appears in the list of services.
         - The application shows transactions and metrics.
 
@@ -162,8 +164,8 @@ In this example, the application you're instrumenting is a deployment named `jav
         - `k8s.deployment.name: "java-app"` (adapt the query filter to your use case)
         - `k8s.pod.name: java-app*` (adapt the query filter to your use case)
 
-    Note that the container logs are not provided by the instrumentation library, but by the DaemonSet collector deployed as part of the [operator installation](../../../use-cases/kubernetes/deployment.md).
+    Note that the container logs are not provided by the instrumentation library, but by the DaemonSet collector deployed as part of the [operator installation](/reference/use-cases/kubernetes/deployment.md).
 
 ## Troubleshooting
 
-Refer to [troubleshoot auto-instrumentation](../../../use-cases/kubernetes/instrumenting-applications.md#troubleshooting-auto-instrumentation) for further analysis.
+Refer to [troubleshoot auto-instrumentation](/reference/use-cases/kubernetes/instrumenting-applications.md#troubleshooting-auto-instrumentation) for further analysis.

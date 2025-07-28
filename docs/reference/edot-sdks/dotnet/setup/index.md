@@ -5,10 +5,13 @@ applies_to:
   stack:
   serverless:
     observability:
+  product:
+    edot_dotnet: ga
 products:
   - id: cloud-serverless
   - id: observability
   - id: edot-sdk
+
 ---
 
 # Set up the EDOT .NET SDK
@@ -17,15 +20,19 @@ Learn how to set up and configure the {{edot}} .NET to instrument your applicati
 
 ## Quickstart guide
 
-EDOT .NET is designed to be straightforward to integrate into your applications. Integration includes applications that have previously used the [OpenTelemetry SDK](https://opentelemetry.io/docs/languages/net/), those that are transitioning from the [Elastic APM Agent](https://www.elastic.co/guide/en/apm/agent/dotnet/current/index.html) and those introducing observability instrumentation for the first time. When the OpenTelemetry SDK or Elastic APM Agent are already in use, minor code changes are required at the point of registration. Refer to [Migration](../migration.md) for more details.
+EDOT .NET is designed to be straightforward to integrate into your applications. Integration includes applications that have previously used the [OpenTelemetry SDK](https://opentelemetry.io/docs/languages/net/), those that are transitioning from the [Elastic APM Agent](apm-agent-dotnet://reference/index.md) and those introducing observability instrumentation for the first time. When the OpenTelemetry SDK or Elastic APM Agent are already in use, minor code changes are required at the point of registration. Refer to [Migration](/reference/edot-sdks/dotnet/migration.md) for more details.
 
 This quickstart guide documents the introductory steps required to set up OpenTelemetry using EDOT .NET for an ASP.NET Core 
 [minimal API](https://learn.microsoft.com/aspnet/core/fundamentals/minimal-apis) application. For detailed, technology-specific steps, see:
 
-* [ASP.NET (.NET Framework)](./aspnet.md)
-* [Console applications](./console.md)
-* [Worker services](./worker-services.md)
-* [Zero code](./zero-code.md)
+* [ASP.NET (.NET Framework)](/reference/edot-sdks/dotnet/setup/aspnet.md)
+* [Console applications](/reference/edot-sdks/dotnet/setup/console.md)
+* [Worker services](/reference/edot-sdks/dotnet/setup/worker-services.md)
+* [Zero code](/reference/edot-sdks/dotnet/setup/zero-code.md)
+
+:::{warning}
+Avoid using the .NET SDK alongside any other APM agent, including Elastic APM agents. Running multiple agents in the same application process may lead to conflicting instrumentation, duplicate telemetry, or other unexpected behavior.
+:::
 
 ### Prerequisites
 
@@ -36,7 +43,7 @@ Before getting started:
 * Set up Elastic Observability. You need somewhere to send the gathered OpenTelemetry data so that it can be viewed and analyzed. This documentation assumes you're using [Elastic Cloud](https://www.elastic.co/cloud) with an [Elastic Observability](https://www.elastic.co/observability) hosted deployment or serverless project. You can use an existing one or set up a new one.
 
 :::{tip}
-When using Serverless, use the Managed OTLP Endpoint UR for the best experience when using EDOT .NET.
+When using Serverless, use the [{{motlp}}](/reference/motlp.md) for the best experience when using EDOT .NET.
 :::
 
 ### Installing the NuGet packages
@@ -80,7 +87,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.AddElasticOpenTelemetry();
 ```
 
-Immediately after creating the WebApplicationBuilder, which implements `IHostApplicationBuilder`, call the `AddElasticOpenTelemetry` method. `AddElasticOpenTelemetry` registers the OpenTelemetry SDK for .NET, applying the Elastic [opinionated defaults](./edot-defaults.md). The Elastic defaults enable tracing, metrics, log signals, and the OTLP exporter.
+Immediately after creating the WebApplicationBuilder, which implements `IHostApplicationBuilder`, call the `AddElasticOpenTelemetry` method. `AddElasticOpenTelemetry` registers the OpenTelemetry SDK for .NET, applying the Elastic [opinionated defaults](/reference/edot-sdks/dotnet/setup/edot-defaults.md). The Elastic defaults enable tracing, metrics, log signals, and the OTLP exporter.
 
 Additionally, EDOT performs automatic instrumentation assembly scanning to enable the ASP.NET Core instrumentation that we added in the previous step. With the upstream SDK, additional lines of code would be required to register the instrumentation. EDOT .NET aims to simplify the experience of getting started.
 
@@ -125,7 +132,7 @@ OpenTelemetry configuration environment variables should be specified as a top-l
 
 ### Configure the OTLP endpoint
 
-The configuration documented so far ensures that when the application starts, the OpenTelemetry SDK is launched with the [EDOT .NET defaults](./edot-defaults.md), activating all signals and exporting telemetry through OTLP. Unless configured otherwise, the OTLP exporter in the SDK defaults to sending data to `localhost` on the default port for OTLP over gRPC, 4317. If you are running a local Collector, this might be sufficient, but in most cases you will need to configure the correct endpoint for exporting telemetry data.
+The configuration documented so far ensures that when the application starts, the OpenTelemetry SDK is launched with the [EDOT .NET defaults](/reference/edot-sdks/dotnet/setup/edot-defaults.md), activating all signals and exporting telemetry through OTLP. Unless configured otherwise, the OTLP exporter in the SDK defaults to sending data to `localhost` on the default port for OTLP over gRPC, 4317. If you are running a local Collector, this might be sufficient, but in most cases you will need to configure the correct endpoint for exporting telemetry data.
 
 In this quickstart guide, {{serverless-full}} is the backend. The onboarding **Add data** page of Elastic Observability provides the environment variables required to send telemetry data to the Elastic Observability backend. This information includes the endpoint URL and API key that should be used when exporting data. The application must be configured to use the endpoint and authorization header when exporting telemetry data.
 
@@ -149,3 +156,7 @@ In .NET, use the built-in .NET APIs for each signal:
 ### Next steps
 
 Refer to the technology-specific documentation pages for further details on using EDOT .NET in those application types. The [OpenTelemetry SDK documentation](https://opentelemetry.io/docs/languages/net/getting-started/) provides more examples of working with the .NET SDK.
+
+## Troubleshooting
+
+For help with common setup issues, refer to the [EDOT .NET troubleshooting guide](docs-content://troubleshoot/ingest/opentelemetry/edot-sdks/dotnet/index.md).

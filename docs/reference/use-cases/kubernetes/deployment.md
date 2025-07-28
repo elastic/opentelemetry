@@ -5,9 +5,12 @@ applies_to:
   stack:
   serverless:
     observability:
+  product:
+    edot_collector: ga
 products:
   - id: cloud-serverless
   - id: observability
+  - id: edot-collector
 ---
 
 # Deployment
@@ -20,7 +23,7 @@ The guided onboarding simplifies deploying your Kubernetes components by setting
 
 Follow these steps to use the guided onboarding:
 
-1. In {{kib}}, navigate to **Observability**, **Add data**.
+1. In {{kib}}, navigate to **Observability** → **Add data**.
 2. Select **Kubernetes**, then choose **Kubernetes monitoring with EDOT Collector**.
 3. Follow the instructions to install the OpenTelemetry Operator using the Helm chart and the provided `values.yaml`.
 
@@ -31,7 +34,7 @@ When installing the OpenTelemetry Operator:
 
 :::{note}
 The default installation deploys an OpenTelemetry Operator with a self-signed TLS certificate.
-To automatically generate and renew certificates, refer to [cert-manager integrated installation](./customization.md#cert-manager-integrated-installation) for instructions on customizing the `values.yaml` file before running the `helm install` command.
+To automatically generate and renew certificates, refer to [cert-manager integrated installation](/reference/use-cases/kubernetes/customization.md#cert-manager-integrated-installation) for instructions on customizing the `values.yaml` file before running the `helm install` command.
 :::
 
 ## Manual deployment
@@ -74,7 +77,7 @@ Follow these steps to install the operator:
    - `YOUR_ELASTICSEARCH_ENDPOINT`: {{es}} endpoint (**with `https://` prefix**). For example: `https://1234567.us-west2.gcp.elastic-cloud.com:443`.
    - `YOUR_ELASTICSEARCH_API_KEY`: {{es}} API Key created in the previous step.
 
-3. If you need to [customize the configuration](./customization.md), copy the `values.yaml` file and adapt it to your needs. Refer to the [compatibility matrix](./prerequisites-compatibility.md#compatibility-matrix) for a complete list of available manifests in the `release branches`. 
+3. If you need to [customize the configuration](/reference/use-cases/kubernetes/customization.md), copy the `values.yaml` file and adapt it to your needs. Refer to the [compatibility matrix](/reference/use-cases/kubernetes/prerequisites-compatibility.md#compatibility-matrix) for a complete list of available manifests in the `release branches`. 
 
 4. Run the following commands to deploy the `opentelemetry-kube-stack` Helm chart, using the appropriate values file:
 

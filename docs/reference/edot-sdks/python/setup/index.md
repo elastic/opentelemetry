@@ -5,6 +5,8 @@ applies_to:
   stack:
   serverless:
     observability:
+  product:
+    edot_python: ga
 products:
   - id: cloud-serverless
   - id: observability
@@ -16,6 +18,10 @@ products:
 Learn how to set up the {{edot}} (EDOT) Python in various environments, including Kubernetes and others.
 
 Follow these steps to get started.
+
+:::{warning}
+Avoid using the Python SDK alongside any other APM agent, including Elastic APM agents. Running multiple agents in the same application process may lead to conflicting instrumentation, duplicate telemetry, or other unexpected behavior.
+:::
 
 ::::::{stepper}
 
@@ -40,7 +46,7 @@ Add this command every time you deploy an updated version of your application. A
 ::::
 
 ::::{step} Configure EDOT Python
-Refer to [Observability quickstart](https://elastic.github.io/opentelemetry/quickstart/) documentation on how to setup your environment.
+Refer to [Observability quickstart](/reference/quickstart/index.md) documentation on how to setup your environment.
 
 To configure EDOT Python you need to set a few `OTLP_*` environment variables that are available when running EDOT Python:
 
@@ -63,7 +69,7 @@ opentelemetry-instrument gunicorn main:app
 ::::{step} Confirm that EDOT Python is working
 To confirm that EDOT Python has successfully connected to Elastic:
 
-1. Go to **Observability**, **Applications**, **Service Inventory**
+1. Go to **Observability** → **Applications** → **Service Inventory**
 2. Find the name of the service to which you just added EDOT Python. It can take several minutes after initializing EDOT Python for the service to show up in this list.
 3. Select the name in the list to see trace data.
 
@@ -73,3 +79,7 @@ There might be no trace data to visualize unless you have invoked your applicati
 ::::
 
 ::::::
+
+## Troubleshooting
+
+For help with common setup issues, refer to the [EDOT Python troubleshooting guide](docs-content://troubleshoot/ingest/opentelemetry/edot-sdks/python/index.md).

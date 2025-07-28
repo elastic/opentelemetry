@@ -8,6 +8,8 @@ applies_to:
 products:
   - id: cloud-serverless
   - id: observability
+  - id: edot-collector
+  - id: edot-sdk
 ---
 
 # Compatibility and support
@@ -17,6 +19,7 @@ The following pages describe the compatibility and support levels for different 
 - [Features](features.md)
 - [Collectors](collectors.md)
 - [SDKs](sdks.md)
+- [EDOT compared to upstream](edot-vs-upstream.md)
 - [Limitations](limitations.md)
 - [Nomenclature](nomenclature.md)
 

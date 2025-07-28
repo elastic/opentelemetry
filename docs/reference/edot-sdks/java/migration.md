@@ -5,6 +5,8 @@ applies_to:
   stack:
   serverless:
     observability:
+  product:
+    edot_java: ga
 products:
   - id: cloud-serverless
   - id: observability
@@ -40,12 +42,12 @@ Migration of application code using these APIs and annotations is not strictly r
 ::::
 
 ::::{step} Replace configuration options
-Refer to the [Configuration mapping](#configuration-mapping). Refer to [Configuration](./configuration.md) for ways to provide configuration settings.
+Refer to the [Configuration mapping](#configuration-mapping). Refer to [Configuration](/reference/edot-sdks/java/configuration.md) for ways to provide configuration settings.
 ::::
 
 ::::{step} Replace the agent binary
 
-Remove the `-javaagent:` argument that contains the Elastic APM Java agent from the JVM arguments. Then add the `-javaagent:` argument to the JVM arguments to use EDOT Java, and restart the application or follow [Kubernetes instructions](./setup/k8s.md) or [Runtime attach instructions](./setup/runtime-attach.md) if applicable. Refer to [Setup](./setup/index.md).
+Remove the `-javaagent:` argument that contains the Elastic APM Java agent from the JVM arguments. Then add the `-javaagent:` argument to the JVM arguments to use EDOT Java, and restart the application or follow [Kubernetes instructions](/reference/edot-sdks/java/setup/k8s.md) or [Runtime attach instructions](/reference/edot-sdks/java/setup/runtime-attach.md) if applicable. Refer to [Setup](/reference/edot-sdks/java/setup/index.md).
 ::::
 
 ::::::
@@ -112,7 +114,7 @@ The Elastic [`trace_methods`] option can be replaced by the [`OTEL_INSTRUMENTATI
 
 ### `capture_jmx_metrics`
 
-The Elastic [`capture_jmx_metrics`](https://www.elastic.co/guide/en/apm/agent/java/current/config-jmx.html#config-capture-jmx-metrics) option can be replaced by 
+The Elastic [`capture_jmx_metrics`](apm-agent-java://reference/config-jmx.md#config-capture-jmx-metrics) option can be replaced by 
 [OpenTelemetry JMX Insight](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/javaagent/) feature which is included in EDOT Java.
 
 The JMX Insight feature provides the following benefits:
@@ -134,7 +136,7 @@ The `capture_headers` option is dynamically adjustable, while the `otel.*` optio
 
 ### `span_stack_trace_min_duration`
 
-Replace the Elastic `span_stack_trace_min_duration` option with [`OTEL_JAVA_EXPERIMENTAL_SPAN_STACKTRACE_MIN_DURATION`](./features.md#span-stacktrace).
+Replace the Elastic `span_stack_trace_min_duration` option with [`OTEL_JAVA_EXPERIMENTAL_SPAN_STACKTRACE_MIN_DURATION`](/reference/edot-sdks/java/features.md#span-stacktrace).
 
 ### `disable_instrumentations`
 
@@ -167,7 +169,22 @@ The Elastic [`cloud_provider`](apm-agent-java://reference/config-core.md#config-
 
 By default, with EDOT `otel.resource.providers.{provider}.enabled` is set to `true`, this is equivalent to the `cloud_provider` default valuem which is `auto`, or automatically detect cloud providers. Notice that this behavior differs from upstream OpenTelemetry distribution.
 
-When the cloud provider is known, or there is none, turning off the non-relevant providers with `otel.resource.providers.{provider}.enabled = false` allows to [minimize the application startup overhead](./overhead.md#optimizing-application-startup).
+When the cloud provider is known, or there is none, turning off the non-relevant providers with `otel.resource.providers.{provider}.enabled = false` allows to [minimize the application startup overhead](/reference/edot-sdks/java/overhead.md#optimizing-application-startup).
+
+### `log_sending`
+
+The Elastic [`log_sending`](apm-agent-java://reference/config-logging.md#config-log-sending) option allows capturing and
+sending application logs directly to APM Server without storing them on disk and ingesting them with a separate tool.
+
+With EDOT, application logs are automatically captured and sent by default.
+
+This feature is controlled by `otel.logs.exporter`, which is set to `otlp` by default. You can turn it off by setting `otel.logs.exporter` to `none`.
+
+### `verify_server_cert`
+
+The Elastic [`verify_server_cert`](apm-agent-java://reference/config-reporter.md#config-verify-server-cert) option allows you to disable server certificate validation.
+
+With EDOT, the equivalent configuration option is `ELASTIC_OTEL_VERIFY_SERVER_CERT` (default `true`), see [configuration](./configuration.md#exporter-certificate-verification) for details.
 
 ## Limitations
 
@@ -199,9 +216,13 @@ EDOT Java is not sending metrics that power the [Breakdown metrics](docs-content
 
 There is currently no EDOT Java equivalent for starting the agent with the [remote attach](apm-agent-java://reference/setup-attach-cli.md) capability. The `-javaagent:` option is the preferred startup mechanism. 
 
-A migration path is available for starting the agent with [self attach](apm-agent-java://reference/setup-attach-api.md), which is to use [runtime attachment](./setup/runtime-attach.md). Some [limitations](./setup/runtime-attach.md#limitations)
+A migration path is available for starting the agent with [self attach](apm-agent-java://reference/setup-attach-api.md), which is to use [runtime attachment](/reference/edot-sdks/java/setup/runtime-attach.md). Some [limitations](/reference/edot-sdks/java/setup/runtime-attach.md#limitations)
 apply, and the agent must be started early during application startup.
 
 ### Micrometer turned off by default
 
 By default, Micrometer instrumentation is inactive and doesn't capture metrics. To turn it on, use the `otel.instrumentation.micrometer.enabled=true` setting.
+
+## Troubleshooting
+
+If you're encountering issues during migration, refer to the [EDOT Java troubleshooting guide](docs-content://troubleshoot/ingest/opentelemetry/edot-sdks/java/index.md).
