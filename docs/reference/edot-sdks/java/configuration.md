@@ -89,6 +89,13 @@ The following settings are available:
 
 ## Central configuration
 
+```{applies_to}
+serverless: unavailable
+stack: preview 9.1 
+product:
+  edot_java: preview 1.5.0
+```
+
 APM Agent Central Configuration lets you configure EDOT Java instances remotely, see [Central configuration docs](/reference/central-configuration.md) for more details.
 
 ### Central configuration settings

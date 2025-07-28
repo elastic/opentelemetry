@@ -37,7 +37,7 @@ You can configure the `AgentConfigBuilder` with the following functions.
 * **Type:** URL
 * **Default:** nil
 
-The URL host endpoint that handles both OTLP data export as well as Elastic Central Config.
+The URL host endpoint that handles both OTLP data export as well as Elastic Central Configuration.
 This configuration option is deprecated. Use `withExportUrl` instead.
 
 ### `withExportUrl` [withExportUrl]
@@ -198,7 +198,7 @@ Deployment environment is set to `default`. This can be overridden using the `OT
 
 ### Dynamic configuration ![dynamic config](images/dynamic-config.svg "") [dynamic-configuration]
 
-Dynamic configurations are available through the kibana UI and are read by the SDK remotely to apply configuration on all active agents deployed in the field. More info on dynamic configurations can be found in  [agent configurations](docs-content://solutions/observability/apps/apm-agent-central-configuration.md).
+Dynamic configurations are available through the Kibana UI and are read by the SDK remotely to apply configuration on all active agents deployed in the field. More info on dynamic configurations can be found in  [agent configurations](docs-content://solutions/observability/apps/apm-agent-central-configuration.md).
 
 #### Recording [recording]
 

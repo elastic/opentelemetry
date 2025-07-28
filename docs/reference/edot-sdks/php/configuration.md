@@ -5,8 +5,6 @@ applies_to:
   stack:
   serverless:
     observability:
-  product:
-    edot_php: ga
 products:
   - id: cloud-serverless
   - id: observability
@@ -133,9 +131,9 @@ elastic_otel.enabled=true
 
 ```{applies_to}
 serverless: unavailable
-stack: 9.1 preview
+stack: preview 9.1 
 product:
-  edot_php: 1.1.0 preview
+  edot_php: preview 1.1.0
 ```
 
 APM Agent Central Configuration lets you configure EDOT PHP instances remotely, see [Central configuration docs](/reference/central-configuration.md) for more details.

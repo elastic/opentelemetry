@@ -5,9 +5,11 @@ applies_to:
   deployment:
       ess: preview 9.1
   stack: preview 9.1
+  serverless: unavailable
 products:
   - id: observability
   - id: kibana
+  - id: edot-collector
 ---
 
 # Central configuration for EDOT SDKs
@@ -115,8 +117,8 @@ Your application must produce and send telemetry data for the EDOT SDK to appear
 
 For a list of settings that you can configure through APM Agent Central Configuration, refer to the configuration reference of each EDOT SDK:
 
-% - [EDOT Android](/reference/edot-sdks/android/configuration.md#central-configuration)
-% - [EDOT iOS](/reference/edot-sdks/ios/configuration.md#central-configuration)
+- [EDOT Android](/reference/edot-sdks/android/configuration.md)
+- [EDOT iOS](/reference/edot-sdks/ios/configuration.md)
 - [EDOT Java](/reference/edot-sdks/java/configuration.md#central-configuration)
 - [EDOT Node.js](/reference/edot-sdks/nodejs/configuration.md#central-configuration)
 - [EDOT PHP](/reference/edot-sdks/php/configuration.md#central-configuration)

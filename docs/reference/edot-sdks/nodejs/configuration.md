@@ -116,6 +116,13 @@ The following settings are deprecated:
 
 ## Central configuration
 
+```{applies_to}
+serverless: unavailable
+stack: preview 9.1 
+product:
+  edot_node: preview 1.2.0
+```
+
 APM Agent Central Configuration lets you configure EDOT Node.js instances remotely, see [Central configuration docs](/reference/central-configuration.md) for more details.
 
 ### Central configuration settings
