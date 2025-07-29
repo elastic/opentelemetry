@@ -68,9 +68,9 @@ The EDOT Android SDK provides additional features on top of those that come with
 
 Your application's telemetry data is stored locally before being sent to the {{stack}}. Then it's removed either after being successfully exported or to make room for new telemetry data if needed. This minimizes the risk of data loss due to internet connectivity issues.
 
-### Remote management
+### Central configuration
 
-You can remotely control how the Elastic SDK behaves via Kibana's [Central configuration](/reference/central-configuration.md). Refer to [Remote management](configuration.md#remote-management) for more details.
+You can remotely manage how the Elastic SDK behaves via {{kib}}'s [Central configuration](/reference/central-configuration.md). Refer to [Central configuration](configuration.md#central-configuration) for more details.
 
 ### Real time [real-time]
 

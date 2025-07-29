@@ -276,6 +276,47 @@ class MyApp : android.app.Application {
 }
 ```
 
+## Central configuration
+
+```{applies_to}
+serverless: unavailable
+stack: preview 9.1 
+product:
+  edot_android: preview 1.2.0
+```
+
+Starting from version `1.2.0`, you can remotely manage the EDOT Android behavior via [Central configuration](/reference/central-configuration.md).
+
+### Enabling it
+
+The remote management is disabled by default. To enable it, you need to provide your Central configuration endpoint when initializing the agent, as shown below.
+
+```kotlin
+class MyApp : android.app.Application {
+
+    override fun onCreate() {
+        super.onCreate()
+        val agent = ElasticApmAgent.builder(this)
+            // ...
+            .setManagementUrl("https://...") // <1>
+            .build()
+    }
+}
+```
+
+1. Provide your EDOT Collector OpAMP endpoint. Refer to [Central configuration](/reference/central-configuration.md) for more details.
+
+### Available settings
+
+You can modify the following settings for EDOT Android through the Central Configuration:
+
+| Setting | Central configuration name | Description | Type |
+|---------|----------------------------|-------------|------|
+| Recording | `recording` | Whether the agent should record and export telemetry or not. By default it's enabled, disabling it is effectively turning the agent off where only the central configuration polling will be performed. | Dynamic |
+| Session sample rate | `session_sample_rate` | To reduce overhead and storage requirements, you can set the sample rate to a value between 0.0 and 1.0. When reduced below 1.0, data will be sampled per session. This is so context in a given session isn't lost. | Dynamic |
+
+Dynamic settings can be changed without having to restart the application.
+
 ## Provide config values from outside of your code
 
 You might need to get values such as an endpoint URL or API key or secret token from a local file in your project directory or an environment variable, or both. You can do this through the Android Gradle plugin and its [build config fields](https://developer.android.com/build/gradle-tips#share-custom-fields-and-resource-values-with-your-app-code), which provide a way to share Gradle info with your app's Kotlin/Java code.
