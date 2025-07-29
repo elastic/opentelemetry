@@ -285,7 +285,7 @@ extensions:
 
 The server expects incoming HTTP requests to include an API key with sufficient privileges, using the following header format: `Authorization: ApiKey <base64(id:api_key)>`.
 
-You can create an API key with the minimum required application permissions through Kibana by going to **Observability** → **Applications** → **Settings** → **Agent Keys**, or by using the Elasticsearch Security API:
+You can create an API key with the minimum required application permissions through {{kib}} by going to **Observability** → **Applications** → **Settings** → **Agent Keys**, or by using the Elasticsearch Security API:
 
 ```sh
 POST /_security/api_key
