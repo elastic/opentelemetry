@@ -101,9 +101,9 @@ With the {{motlp}}, there is no need to configure any Elastic-specific component
 
 In Gateway mode, the Collector ingests data from other Collectors running in Agent mode and forwards it to Elastic.
 
-## Sample configuration
+## Example configuration
 
-The following sample configuration files are available for the Gateway mode:
+The following example configuration files are available for the Gateway mode:
 
 | Version | Configuration  |
 |---------|----------------|

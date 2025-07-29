@@ -36,7 +36,7 @@ The following versions of EDOT and {{stack}} support central configuration:
 | EDOT Android | 1.2.0 or higher |
 | EDOT Java | 1.5.0 or higher |
 | EDOT Node.js | 1.2.0 or higher |
-| EDOT PHP | 1.1.0 or higher |
+| EDOT PHP | 1.1.1 or higher |
 | EDOT Python | 1.4.0 or higher |
 
 ::::{note}
@@ -56,7 +56,7 @@ Edit the EDOT Collector configuration file to use the `apmconfig` extension. You
 :::{include} _snippets/retrieve-credentials.md
 :::
 
-The sample configuration is:
+The example configuration is:
 
 ```yaml
 extensions:
