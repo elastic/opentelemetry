@@ -68,6 +68,10 @@ The EDOT Android SDK provides additional features on top of those that come with
 
 Your application's telemetry data is stored locally before being sent to the {{stack}}. Then it's removed either after being successfully exported or to make room for new telemetry data if needed. This minimizes the risk of data loss due to internet connectivity issues.
 
+### Remote management
+
+You can remotely control how the Elastic SDK behaves via Kibana's [Central configuration](/reference/central-configuration.md). Refer to [Remote management](configuration.md#remote-management) for more details.
+
 ### Real time [real-time]
 
 For [distributed tracing](#distributed-tracing) to work properly, your application's time should be in sync with the [coordinated universal time](https://en.wikipedia.org/wiki/Coordinated_Universal_Time). This is sometimes an issue for Android applications, as the time provided by the OS is often not accurate enough. The SDK aims to synchronize telemetry timestamps with the universal time to ensure a reliable view of event timelines.
