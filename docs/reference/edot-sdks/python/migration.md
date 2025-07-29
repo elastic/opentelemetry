@@ -94,7 +94,9 @@ The following limitations apply when migrating to EDOT Python.
 
 ### Central and dynamic configuration
 
-EDOT Python lacks an equivalent to the [central configuration feature](docs-content://solutions/observability/apm/configure-apm-agent-central-configuration.md) that the Elastic APM Python agent supports. When using EDOT Python, all of the configurations are static and you should provide them to the application through other means, such as environment variables.
+You can manage EDOT Python configurations through the [central configuration feature](docs-content://solutions/observability/apm/apm-agent-central-configuration.md) in the Applications UI.
+
+Refer to [Central configuration](/reference/central-configuration.md) for more information.
 
 ### AWS Lambda
 
