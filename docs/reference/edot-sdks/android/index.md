@@ -70,7 +70,7 @@ Your application's telemetry data is stored locally before being sent to the {{s
 
 ### Central configuration
 
-You can remotely manage how the Elastic SDK behaves via {{kib}}'s [Central configuration](/reference/central-configuration.md). Refer to [Central configuration](configuration.md#central-configuration) for more details.
+You can remotely manage how the Elastic SDK behaves via {{kib}}. Refer to [Central configuration](configuration.md#central-configuration) for more details.
 
 ### Real time [real-time]
 

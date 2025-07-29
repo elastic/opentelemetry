@@ -279,10 +279,7 @@ class MyApp : android.app.Application {
 ## Central configuration
 
 ```{applies_to}
-serverless: unavailable
-stack: preview 9.1 
-product:
-  edot_android: preview 1.2.0
+product: preview
 ```
 
 Starting from version `1.2.0`, you can remotely manage the EDOT Android behavior via [Central configuration](/reference/central-configuration.md).
@@ -299,12 +296,14 @@ class MyApp : android.app.Application {
         val agent = ElasticApmAgent.builder(this)
             // ...
             .setManagementUrl("https://...") // <1>
+            .setManagementAuthentication(Authentication.ApiKey("my-api-key")) // <2>
             .build()
     }
 }
 ```
 
 1. Provide your EDOT Collector OpAMP endpoint. Refer to [Central configuration](/reference/central-configuration.md) for more details.
+2. In case your OpAMP endpoint [requires authentication](/reference/edot-collector/config/default-config-standalone.md#authentication-settings), this is how you can provide your API Key value.
 
 ### Available settings
 

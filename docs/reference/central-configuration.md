@@ -116,7 +116,7 @@ Your application must produce and send telemetry data for the EDOT SDK to appear
 
 For a list of settings that you can configure through APM Agent Central Configuration, refer to the configuration reference of each EDOT SDK:
 
-- [EDOT Android](/reference/edot-sdks/android/configuration.md)
+- [EDOT Android](/reference/edot-sdks/android/configuration.md#central-configuration)
 - [EDOT Java](/reference/edot-sdks/java/configuration.md#central-configuration)
 - [EDOT Node.js](/reference/edot-sdks/nodejs/configuration.md#central-configuration)
 - [EDOT PHP](/reference/edot-sdks/php/configuration.md#central-configuration)
