@@ -51,7 +51,7 @@ This table provides an overview of the features available in the {{edot}} (EDOT)
 | [Runtime Metrics](https://opentelemetry.io/docs/specs/semconv/runtime/) | ✅ 1.0+ | ✅ 1.0+ | 𝐓 1.0+ | ❌  | ❌  | ❌  | ❌  | 
 | **Capturing Errors / Exceptions** | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ v1.0+ | 
 | Crash Reporting | ➖  | ➖  | ➖  | ➖  | ➖  | ❌  | ✅ v1.0+ | 
-| **Central Configuration** | ❌  | ❌  | ❌  | ❌  | ❌  | ❌  | ❌  | 
+| **Central Configuration** | ❌  | 𝐓 1.5.0+ | 𝐓 1.2.0+ | 𝐓 1.1.0+ | 𝐓 1.4.0+ | ❌  | ❌  | 
 | **[Profiling Integration](./java/features.md#elastic-universal-profiling-integration)** | ❌  | 𝐓 1.0+ | ❌  | ❌  | ❌  | ❌  | ❌  | 
 
 **Legend:**
