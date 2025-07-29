@@ -21,12 +21,12 @@ Before upgrading or updating the release configuration, refer to [compatibility 
 
 To upgrade an installed release, run a `helm upgrade` command providing the desired chart version and using the correct `values.yaml` for your environment. For example:
 
-```bash
+```bash subs=true
 helm repo update open-telemetry # update information of available charts locally
 helm search repo open-telemetry/opentelemetry-kube-stack --versions # list available versions of the chart
 
 helm upgrade --namespace opentelemetry-operator-system opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack \
---values 'https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{edot-collector-version}}/deploy/helm/edot-collector/kube-stack/values.yaml' \
+--values 'https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{version.edot_collector}}/deploy/helm/edot-collector/kube-stack/values.yaml' \
 --version 0.3.3
 ```
 
