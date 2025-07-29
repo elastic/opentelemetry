@@ -312,7 +312,7 @@ You can modify the following settings for EDOT Android through the Central Confi
 | Setting | Central configuration name | Description | Type |
 |---------|----------------------------|-------------|------|
 | Recording | `recording` | Whether the agent should record and export telemetry or not. By default it's enabled, disabling it is effectively turning the agent off where only the central configuration polling will be performed. | Dynamic |
-| Session sample rate | `session_sample_rate` | To reduce overhead and storage requirements, you can set the sample rate to a value between 0.0 and 1.0. When reduced below 1.0, data will be sampled per session. This is so context in a given session isn't lost. | Dynamic |
+| Session sample rate | `session_sample_rate` | To reduce overhead and storage requirements, you can set the sample rate to a value between 0.0 and 1.0. Data will be sampled per session, this is so context in a given session isn't lost. | Dynamic |
 
 Dynamic settings can be changed without having to restart the application.
 
