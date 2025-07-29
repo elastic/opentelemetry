@@ -86,7 +86,7 @@ Restart the Elastic Agent to also restart the Collector and apply the changes. R
 Activate the central configuration feature in the SDKs by setting the `ELASTIC_OTEL_OPAMP_ENDPOINT` environment variable to the URL endpoint of the `apmconfig` extension that you configured in the previous step. For example:
 
 ```sh
-export ELASTIC_OTEL_OPAMP_ENDPOINT="http://localhost:4320"
+export ELASTIC_OTEL_OPAMP_ENDPOINT="http://localhost:4320/v1/opamp"
 ```
 
 Restart the instrumented application to apply the changes.
