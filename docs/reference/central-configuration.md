@@ -99,7 +99,7 @@ Central configuration uses the `service.name` and `deployment.environment.name` 
 
 ::::{step} Check that the EDOT SDK appears in central configuration
 
-After some minutes, go to Kibana and check that the EDOT SDK appears in Agent Configuration.
+Wait some time for the EDOT SDK to appear in {{kib}} under Agent Configuration.
 
 1. Go to **Kibana** → **Observability** → **Applications** and select a service.
 2. Select **Settings** and go to **Agent Configuration**.
