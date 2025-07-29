@@ -121,7 +121,7 @@ This section includes additional details on some configuration settings that mer
 
 ### `OTEL_NODE_RESOURCE_DETECTORS` details [otel_node_resource_detectors-details]
 
-A comma-separated list of named resource detectors to use. EDOT Node.js supports the same set as the upstream [`@opentelemetry/auto-instrumentations-node`](https://github.com/open-telemetry/opentelemetry-js-contrib/blob/main/metapackages/auto-instrumentations-node/README.md#usage-auto-instrumentation):
+A comma-separated list of named resource detectors to use. EDOT Node.js supports the same set as the upstream [`@opentelemetry/auto-instrumentations-node`](https://github.com/open-telemetry/opentelemetry-js-contrib/blob/main/packages/auto-instrumentations-node/README.md#usage-auto-instrumentation):
 
 - `env`
 - `host`
@@ -151,12 +151,14 @@ In addition, EDOT Node.js always includes the [`telemetry.distro.*` resource att
 
 ### `OTEL_NODE_{DISABLED,ENABLED}_INSTRUMENTATIONS` details [otel_node_disabledenabled_instrumentations-details]
 
+% Note: Linked to by https://ela.st/edot-node-disable-instrs for the central config `deactivate_instrumentations` setting in Kibana.
+
 `OTEL_NODE_DISABLED_INSTRUMENTATIONS` is a comma-separated list of instrumentation names to disable, from the default set.
 `OTEL_NODE_ENABLED_INSTRUMENTATIONS` is a comma-separated list of instrumentation names to enable. Specifying this results in *only* those instrumentations being enabled.
 
 The default set of enabled instrumentations is [the set of included instrumentations](/reference/edot-sdks/nodejs/supported-technologies.md#instrumentations), minus any that are noted as ["disabled by default"](/reference/edot-sdks/nodejs/supported-technologies.md#disabled-instrumentations).
 
-EDOT Node.js handles these settings the same as the upstream [`@opentelemetry/auto-instrumentations-node`](https://github.com/open-telemetry/opentelemetry-js-contrib/blob/main/metapackages/auto-instrumentations-node/README.md#usage-auto-instrumentation), with one addition. In `@opentelemetry/auto-instrumentations-node`, the name of an instrumentation is the name of the package with the `@opentelemetry/instrumentation-` prefix removed -- `cassandra-driver` refers to the instrumentation provided by `@opentelemetry/instrumentation-cassandra`. EDOT Node.js can include instrumentations that do not have this prefix, e.g. `@elastic/opentelemetry-instrumentation-openai`. In these cases, the "name" for the instrumentation is the full package name. For example, to enable only instrumentation for openai, http, fastify, and pino one could use:
+EDOT Node.js handles these settings the same as the upstream [`@opentelemetry/auto-instrumentations-node`](https://github.com/open-telemetry/opentelemetry-js-contrib/blob/main/packages/auto-instrumentations-node/README.md#usage-auto-instrumentation), with one addition. In `@opentelemetry/auto-instrumentations-node`, the name of an instrumentation is the name of the package with the `@opentelemetry/instrumentation-` prefix removed -- `cassandra-driver` refers to the instrumentation provided by `@opentelemetry/instrumentation-cassandra`. EDOT Node.js can include instrumentations that do not have this prefix, for example `@elastic/opentelemetry-instrumentation-openai`. In these cases, the "name" for the instrumentation is the full package name. For example, to enable only instrumentation for openai, http, fastify, and pino one could use:
 
 ```bash
 export OTEL_NODE_ENABLED_INSTRUMENTATIONS=http,fastify,pino,@elastic/opentelemetry-instrumentation-openai
@@ -165,7 +167,8 @@ export OTEL_NODE_ENABLED_INSTRUMENTATIONS=http,fastify,pino,@elastic/opentelemet
 ### `ELASTIC_OTEL_METRICS_DISABLED` details [deprecated-elastic_otel_metrics_disabled-details]
 
 ```{applies_to}
-product: deprecated 1.1.0
+product:
+ edot_node: deprecated 1.1.0
 ```
 
 Setting `ELASTIC_OTEL_METRICS_DISABLED` to `true` turns off metrics export by the SDK and some metrics collection.  This configuration setting is deprecated as of v1.1.0 in favor of using the following settings for finer control:
