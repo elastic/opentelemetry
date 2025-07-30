@@ -5,8 +5,6 @@ applies_to:
   stack:
   serverless:
     observability:
-  product:
-    edot_php: ga
 products:
   - id: cloud-serverless
   - id: observability

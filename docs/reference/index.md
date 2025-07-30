@@ -27,15 +27,15 @@ The following Elastic OpenTelemetry distributions are available:
 
 | Distribution | Version | Status |
 | ------------ | ------- | ------ |
-| [EDOT Collector](/reference/edot-collector/index.md) | {{edot-collector-version}} | GA |
-| [EDOT .NET](/reference/edot-sdks/dotnet/index.md) | {{edot-dotnet-version}} | GA |
-| [EDOT Java](/reference/edot-sdks/java/index.md) | {{edot-java-version}} | GA |
-| [EDOT Node.js](/reference/edot-sdks/nodejs/index.md) | {{edot-nodejs-version}} | GA |
-| [EDOT PHP](/reference/edot-sdks/php/index.md) | {{edot-php-version}} | GA |
-| [EDOT Python](/reference/edot-sdks/python/index.md) | {{edot-python-version}} | GA |
-| [EDOT Android](/reference/edot-sdks/android/index.md) | {{edot-android-version}} | GA |
-| [EDOT iOS](/reference/edot-sdks/ios/index.md) | {{edot-ios-version}} | GA |
-| [EDOT Cloud Forwarder for AWS](/reference/edot-cloud-forwarder/aws.md) | 0.1.6 | Technical Preview |
+| [EDOT Collector](/reference/edot-collector/index.md) | {{version.edot_collector}} | GA |
+| [EDOT .NET](/reference/edot-sdks/dotnet/index.md) | {{version.edot_dotnet}} | GA |
+| [EDOT Java](/reference/edot-sdks/java/index.md) | {{version.edot_java}} | GA |
+| [EDOT Node.js](/reference/edot-sdks/nodejs/index.md) | {{version.edot_node}} | GA |
+| [EDOT PHP](/reference/edot-sdks/php/index.md) | {{version.edot_php}} | GA |
+| [EDOT Python](/reference/edot-sdks/python/index.md) | {{version.edot_python}} | GA |
+| [EDOT Android](/reference/edot-sdks/android/index.md) | {{version.edot_android}} | GA |
+| [EDOT iOS](/reference/edot-sdks/ios/index.md) | {{version.edot_ios}} | GA |
+| [EDOT Cloud Forwarder for AWS](/reference/edot-cloud-forwarder/aws.md) | {{version.edot_cf_aws}} | Technical Preview |
 
 Each EDOT distribution undergoes production-grade testing before being declared Generally Available (GA). Elastic provides full support for GA releases in accordance with our [support matrix](https://www.elastic.co/support/matrix) and SLAs.
 
