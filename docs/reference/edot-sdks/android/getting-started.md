@@ -27,7 +27,7 @@ Set up the Elastic Distribution of OpenTelemetry Android (EDOT Android) in your 
 | Android API level                                 | 26 (or 21 with [desugaring](https://developer.android.com/studio/write/java8-support#library-desugaring)) |
 
 :::{important}
-If your application's [minSdk](https://developer.android.com/studio/publish/versioning#minsdk) value is lower than 26, you must add [Java 8 desugaring support](https://developer.android.com/studio/write/java8-support#library-desugaring). Refer to [Troubleshooting](troubleshooting.md#why-desugaring) for more information.
+If your application's [minSdk](https://developer.android.com/studio/publish/versioning#minsdk) value is lower than 26, you must add [Java 8 desugaring support](https://developer.android.com/studio/write/java8-support#library-desugaring). Refer to [Troubleshooting](docs-content://troubleshoot/ingest/opentelemetry/edot-sdks/android/index.md#why-desugaring) for more information.
 :::
 
 ## Gradle setup
@@ -55,10 +55,10 @@ val agent = ElasticApmAgent.builder(application) // <1>
     .build()
 ```
 
-1. Your [Application](https://developer.android.com/reference/android/app/Application) object. [Get your application object](troubleshooting.md#get-application).
-2. In OpenTelemetry, _service_ means _an entity that produces telemetry_, so this is where your application name should go. Refer to [Troubleshooting](troubleshooting.md#why-service) for more information.
-3. This is the Elastic endpoint where all your telemetry will be exported. [Get your Elastic endpoint](troubleshooting.md#get-export-endpoint).
-4. Use an API key to connect the agent to the {{stack}}. [Create an API key](troubleshooting.md#create-api-key).
+1. Your [Application](https://developer.android.com/reference/android/app/Application) object. [Get your application object](docs-content://troubleshoot/ingest/opentelemetry/edot-sdks/android/index.md#get-application).
+2. In OpenTelemetry, _service_ means _an entity that produces telemetry_, so this is where your application name should go. Refer to [Troubleshooting](docs-content://troubleshoot/ingest/opentelemetry/edot-sdks/android/index.md#why-service) for more information.
+3. This is the Elastic endpoint where all your telemetry will be exported. [Get your Elastic endpoint](docs-content://troubleshoot/ingest/opentelemetry/edot-sdks/android/index.md#get-export-endpoint).
+4. Use an API key to connect the agent to the {{stack}}. [Create an API key](docs-content://troubleshoot/ingest/opentelemetry/edot-sdks/android/index.md#create-api-key).
 
 :::{tip}
 If you'd like to provide these values from outside of your code, using an environment variable or a properties file for example, refer to [Provide config values outside of your code](configuration.md#provide-config-values-from-outside-of-your-code).
