@@ -46,6 +46,16 @@ product:
 
 APM Agent Central Configuration lets you configure EDOT Python instances remotely, see [Central configuration docs](/reference/central-configuration.md) for more details.
 
+### Turn on central configuration
+
+To activate central configuration, set the `ELASTIC_OTEL_OPAMP_ENDPOINT` environment variable to the OpAMP server endpoint.
+
+```sh
+export ELASTIC_OTEL_OPAMP_ENDPOINT=http://localhost:4320/v1/opamp
+```
+
+To deactivate central configuration, remove the `ELASTIC_OTEL_OPAMP_ENDPOINT` environment variable and restart the instrumented application.
+
 ### Central configuration settings
 
 You can modify the following settings for EDOT Python through APM Agent Central Configuration:

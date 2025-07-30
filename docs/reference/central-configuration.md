@@ -56,25 +56,28 @@ Edit the EDOT Collector configuration file to use the `apmconfig` extension. You
 :::{include} _snippets/retrieve-credentials.md
 :::
 
+:::{note}
+Generate an API key with `config_agent:read` permissions and resources set to `-`.
+:::
+
 The example configuration is:
 
 ```yaml
 extensions:
-  bearertokenauth:
-    scheme: "APIKey"
-    token: "<ENCODED_ELASTICSEARCH_APIKEY>"
-
+  apikeyauth:
+    endpoint: "<YOUR_ELASTICSEARCH_ENDPOINT>"
+    application_privileges:
+      - application: "apm"
+        privileges:
+          - "config_agent:read"
+        resources:
+          - "-"
   apmconfig:
     opamp:
       protocols:
         http:
-          # Default is localhost:4320
-          # endpoint: "<CUSTOM_OPAMP_ENDPOINT>"
-    source:
-      elasticsearch:
-        endpoint: "<ELASTICSEARCH_ENDPOINT>"
-        auth:
-          authenticator: bearertokenauth
+          auth:
+            authenticator: apikeyauth
 ```
 
 Restart the Elastic Agent to also restart the Collector and apply the changes. Refer to [EDOT Collector configuration](/reference/edot-collector/config/default-config-standalone.md#central-configuration) for more information.
@@ -123,3 +126,9 @@ For a list of settings that you can configure through APM Agent Central Configur
 - [EDOT Python](/reference/edot-sdks/python/configuration.md#central-configuration)
 
 EDOT iOS currently supports APM Agent Central Configuration through APM Server. Refer to [EDOT iOS configuration](/reference/edot-sdks/ios/configuration.md) for more details.
+
+## Deactivate central configuration
+
+To deactivate central configuration, remove the `ELASTIC_OTEL_OPAMP_ENDPOINT` environment variable.
+
+Restart the instrumented application to apply the changes.

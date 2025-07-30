@@ -287,9 +287,9 @@ product:
 
 Starting from version `1.2.0`, you can remotely manage the EDOT Android behavior through [Central configuration](/reference/central-configuration.md).
 
-### Activate Central configuration
+### Activate central configuration
 
-The remote management is turned off by default. To turn it on, provide your Central configuration endpoint when initializing the agent, as shown here:
+The remote management is turned off by default. To turn it on, provide your central configuration endpoint when initializing the agent, as shown here:
 
 ```kotlin
 class MyApp : android.app.Application {
