@@ -42,7 +42,7 @@ class MyApp : android.app.Application {
 }
 ```
 
-1. Name used by {{kib}} when listing your application on the [Services](docs-content://solutions/observability/apm/services.md) page. Defaults to `unknown`. Refer to [Why your app is referred to as a "service"](troubleshooting.md#why-service).
+1. Name used by {{kib}} when listing your application on the [Services](docs-content://solutions/observability/apm/services.md) page. Defaults to `unknown`. Refer to [Why your app is referred to as a "service"](docs-content://troubleshoot/ingest/opentelemetry/edot-sdks/android/index.md#why-service).
 2. Your app's version name. Defaults to the version provided [in the PackageInfo](https://developer.android.com/reference/android/content/pm/PackageInfo#versionName).
 3. Your app's build type, flavor, backend environment, or a combination of these. Helpful to better analyze your app's data later in {{kib}}.
 
@@ -65,8 +65,8 @@ class MyApp : android.app.Application {
 }
 ```
 
-1. Your endpoint URL. If you don't have one yet, refer to [Get the export endpoint](troubleshooting.md#get-export-endpoint).
-2. Your authentication method. You can use either an [API key](docs-content://solutions/observability/apm/api-keys.md), a [Secret token](docs-content://solutions/observability/apm/secret-token.md), or none. Defaults to `None`. API keys are the recommended method, if you don't have one yet, refer to [Create an API key](troubleshooting.md#create-api-key).
+1. Your endpoint URL. If you don't have one yet, refer to [Get the export endpoint](docs-content://troubleshoot/ingest/opentelemetry/edot-sdks/android/index.md#get-export-endpoint).
+2. Your authentication method. You can use either an [API key](docs-content://solutions/observability/apm/api-keys.md), a [Secret token](docs-content://solutions/observability/apm/secret-token.md), or none. Defaults to `None`. API keys are the recommended method, if you don't have one yet, refer to [Create an API key](docs-content://troubleshoot/ingest/opentelemetry/edot-sdks/android/index.md#create-api-key).
 3. The protocol used to communicate with your endpoint. It can be either `HTTP` or `gRPC`. Defaults to `HTTP`.
 
 :::{tip}
