@@ -214,30 +214,29 @@ The EDOT Collector can be configured to use [APM Agent Central Configuration](do
 
 ### Activate the apmconfig extension
 
-To activate the central configuration feature, uncomment the [`apmconfig`](https://github.com/elastic/opentelemetry-collector-components/blob/main/extension/apmconfigextension/README.md) and [`bearertokenauth`](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/extension/bearertokenauthextension/README.md) extensions and provide the necessary configuration, or add the configuration manually. For example:
+To activate the central configuration feature, add the [`apmconfig`](https://github.com/elastic/opentelemetry-collector-components/blob/main/extension/apmconfigextension/README.md) and `apikeyauth` extensions. For example:
 
 ```yaml
 extensions:
-  bearertokenauth:
-    scheme: "APIKey"
-    token: "<ENCODED_ELASTICSEARCH_APIKEY>"
-
+  apikeyauth:
+    endpoint: "<YOUR_ELASTICSEARCH_ENDPOINT>"
+    application_privileges:
+      - application: "apm"
+        privileges:
+          - "config_agent:read"
+        resources:
+          - "-"
   apmconfig:
-    source:
-     elasticsearch:
-       endpoint: "<ELASTICSEARCH_ENDPOINT>"
-       auth:
-         authenticator: bearertokenauth
     opamp:
       protocols:
         http:
-          # Default is localhost:4320
-          # endpoint: "<CUSTOM_OPAMP_ENDPOINT> 
+          auth:
+            authenticator: apikeyauth
 ```
 
-:::{note}
-Create an API Key following [these instructions](docs-content://deploy-manage/api-keys/elasticsearch-api-keys.md).
-:::
+Create an API Key following [these instructions](docs-content://deploy-manage/api-keys/elasticsearch-api-keys.md). The API key must have `config_agent:read` permissions and resources set to `-`.
+
+The server expects incoming HTTP requests to include an API key with sufficient privileges, using the following header format: `Authorization: ApiKey <base64(id:api_key)>`.
 
 ### TLS configuration
 

@@ -78,6 +78,17 @@ extensions:
         http:
           auth:
             authenticator: apikeyauth
+          # Optional: Configure TLS for the OpAMP server
+          tls:
+            cert_file: server.crt
+            key_file: server.key
+            ca_file: ca.crt
+```
+
+To send the API key, use the following header format:
+
+```
+Authorization: ApiKey <base64(id:api_key_value)>
 ```
 
 Restart the Elastic Agent to also restart the Collector and apply the changes. Refer to [EDOT Collector configuration](/reference/edot-collector/config/default-config-standalone.md#central-configuration) for more information.
