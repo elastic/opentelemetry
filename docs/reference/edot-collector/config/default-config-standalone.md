@@ -212,7 +212,7 @@ Each pipeline connects specific receivers, processors, and exporters to handle d
 
 The EDOT Collector can be configured to use [APM Agent Central Configuration](docs-content://solutions/observability/apm/apm-agent-central-configuration.md). Refer to [Central configuration docs](/reference/central-configuration.md) for more details.
 
-### Activate the apmconfig extension
+### Configure the apmconfig extension
 
 To activate the central configuration feature, add the [`apmconfig`](https://github.com/elastic/opentelemetry-collector-components/blob/main/extension/apmconfigextension/README.md) and the `bearertokenauth` or `apikeyauth` extensions depending on the authentication method you want to use. For example:
 
