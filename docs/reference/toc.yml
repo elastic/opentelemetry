@@ -51,6 +51,7 @@ toc:
           - file: edot-collector/config/default-config-k8s.md
           - file: edot-collector/config/configure-logs-collection.md
           - file: edot-collector/config/configure-metrics-collection.md
+          - file: edot-collector/config/proxy.md
       - file: edot-collector/customization.md
         children:
           - file: edot-collector/components.md
@@ -124,5 +125,6 @@ toc:
           - file: edot-sdks/python/supported-technologies.md
           - file: edot-sdks/python/migration.md
           - file: edot-sdks/python/overhead.md
+      - file: edot-sdks/proxy.md
   - file: motlp.md
   - file: central-configuration.md
