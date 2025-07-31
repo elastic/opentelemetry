@@ -214,25 +214,10 @@ The EDOT Collector can be configured to use [APM Agent Central Configuration](do
 
 ### Activate the apmconfig extension
 
-To activate the central configuration feature, add the [`apmconfig`](https://github.com/elastic/opentelemetry-collector-components/blob/main/extension/apmconfigextension/README.md) and `apikeyauth` extensions. For example:
+To activate the central configuration feature, add the [`apmconfig`](https://github.com/elastic/opentelemetry-collector-components/blob/main/extension/apmconfigextension/README.md) and the `bearertokenauth` or `apikeyauth` extensions depending on the authentication method you want to use. For example:
 
-```yaml
-extensions:
-  apikeyauth:
-    endpoint: "<YOUR_ELASTICSEARCH_ENDPOINT>"
-    application_privileges:
-      - application: "apm"
-        privileges:
-          - "config_agent:read"
-        resources:
-          - "-"
-  apmconfig:
-    opamp:
-      protocols:
-        http:
-          auth:
-            authenticator: apikeyauth
-```
+:::{include} _snippets/edot-collector-auth.md
+:::
 
 Create an API Key following [these instructions](docs-content://deploy-manage/api-keys/elasticsearch-api-keys.md). The API key must have `config_agent:read` permissions and resources set to `-`.
 

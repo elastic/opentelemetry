@@ -47,55 +47,64 @@ Serverless deployments are not currently supported.
 
 To activate APM Agent Central Configuration for EDOT SDKs, follow these steps.
 
-:::::{stepper}
+::::::{stepper}
 
-::::{step} Edit the EDOT Collector configuration
+:::::{step} Retrieve your credentials
 
-Edit the EDOT Collector configuration file to use the `apmconfig` extension. You need a valid {{es}} API key to authenticate to the {{es}} endpoint. 
+You need a valid {{es}} API key to authenticate to the {{es}} endpoint. 
 
-:::{include} _snippets/retrieve-credentials.md
+::::{include} _snippets/retrieve-credentials.md
+::::
+
+Make sure the API key has `config_agent:read` permissions and resources set to `-`.
+
+::::{dropdown} Example JSON payload
+```json
+POST /_security/api_key
+{
+  "name": "apmconfig-opamp-test-sdk",
+  "metadata": {
+    "application": "apm"
+  },
+  "role_descriptors": {
+    "apm": {
+      "cluster": [],
+      "indices": [],
+      "applications": [
+        {
+          "application": "apm",
+          "privileges": [
+            "config_agent:read"
+          ],
+          "resources": [
+            "*"
+          ]
+        }
+      ],
+      "run_as": [],
+      "metadata": {}
+    }
+  }
+}
+```
+::::
+
+:::::
+
+:::::{step} Edit the EDOT Collector configuration
+
+Edit the EDOT Collector configuration file to use the `apmconfig` extension. Use the authentication method that best suits your needs.
+
+:::{include} _snippets/edot-collector-auth.md
 :::
-
-:::{note}
-Generate an API key with `config_agent:read` permissions and resources set to `-`.
-:::
-
-The example configuration is:
-
-```yaml
-extensions:
-  apikeyauth:
-    endpoint: "<YOUR_ELASTICSEARCH_ENDPOINT>"
-    application_privileges:
-      - application: "apm"
-        privileges:
-          - "config_agent:read"
-        resources:
-          - "-"
-  apmconfig:
-    opamp:
-      protocols:
-        http:
-          auth:
-            authenticator: apikeyauth
-          # Optional: Configure TLS for the OpAMP server
-          tls:
-            cert_file: server.crt
-            key_file: server.key
-            ca_file: ca.crt
-```
-
-To send the API key, use the following header format:
-
-```
-Authorization: ApiKey <base64(id:api_key_value)>
-```
 
 Restart the Elastic Agent to also restart the Collector and apply the changes. Refer to [EDOT Collector configuration](/reference/edot-collector/config/default-config-standalone.md#central-configuration) for more information.
 
-::::
+::::{note}
+If you need to use TLS or mutual TLS, refer to [TLS configuration](/reference/edot-collector/config/default-config-standalone.md#tls-configuration).
+:::::
 
-::::{step} Set the environment variable for the SDKs
+:::::{step} Set the environment variable for the SDKs
 
 Activate the central configuration feature in the SDKs by setting the `ELASTIC_OTEL_OPAMP_ENDPOINT` environment variable to the URL endpoint of the `apmconfig` extension that you configured in the previous step. For example:
 
@@ -109,9 +118,9 @@ Restart the instrumented application to apply the changes.
 Central configuration uses the `service.name` and `deployment.environment.name` OpenTelemetry resource attributes to target specific instances with a configuration. If no environment is specified, the central configuration feature will match `All` as the environment.
 :::
 
-::::
+:::::
 
-::::{step} Check that the EDOT SDK appears in central configuration
+:::::{step} Check that the EDOT SDK appears in central configuration
 
 Wait some time for the EDOT SDK to appear in {{kib}} under Agent Configuration.
 
@@ -122,9 +131,9 @@ Wait some time for the EDOT SDK to appear in {{kib}} under Agent Configuration.
 Your application must produce and send telemetry data for the EDOT SDK to appear in Agent Configuration.
 :::
 
-::::
+:::::
 
-:::::{stepper}
+::::::
 
 ## Supported settings
 
