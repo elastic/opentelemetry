@@ -120,7 +120,7 @@ Central configuration uses the `service.name` and `deployment.environment.name` 
 
 :::::
 
-:::::{step} Check that the EDOT SDK appears in central configuration
+:::::{step} Check that the EDOT SDK show up
 
 Wait some time for the EDOT SDK to appear in {{kib}} under Agent Configuration.
 
