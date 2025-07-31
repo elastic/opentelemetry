@@ -30,20 +30,6 @@ toc:
   - toc: reference
 
 subs:
-
-  # Versions metadata
-
-  edot-stack-version: 9.0.1
-  edot-collector-version: 9.0.4
-  edot-android-version: 1.1.0
-  edot-dotnet-version: 1.1.0
-  edot-ios-version: 1.2.1
-  edot-java-version: 1.4.1
-  edot-nodejs-version: 1.1.1
-  edot-php-version: 1.0.0
-  edot-python-version: 1.4.0
-
-  # Substitutions
   motlp: Elastic Cloud Managed OTLP Endpoint
   edot: Elastic Distribution of OpenTelemetry
   ecloud:   "Elastic Cloud"

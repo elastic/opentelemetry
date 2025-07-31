@@ -20,10 +20,6 @@ mapped_pages:
 
 The Elastic Distribution of OpenTelemetry iOS (EDOT iOS) measures the performance of your mobile applications in real time.
 
-::::{note}
-The Elastic Distribution of OpenTelemetry iOS is not compatible with [{{serverless-full}}](docs-content://deploy-manage/deploy/elastic-cloud/serverless.md).
-::::
-
 ## How does EDOT iOS work? [how-it-works]
 
 The Elastic Distribution of OpenTelemetry iOS uses the [OpenTelemetry-Swift SDK](https://github.com/open-telemetry/opentelemetry-swift). The agent automatically traces URLSessions and provides distributed traces annotated with device information along with your back-end services instrumented with OpenTelemetry.
