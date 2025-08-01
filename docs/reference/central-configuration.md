@@ -47,41 +47,64 @@ Serverless deployments are not currently supported.
 
 To activate APM Agent Central Configuration for EDOT SDKs, follow these steps.
 
-:::::{stepper}
+::::::{stepper}
 
-::::{step} Edit the EDOT Collector configuration
+:::::{step} Retrieve your credentials
 
-Edit the EDOT Collector configuration file to use the `apmconfig` extension. You need a valid {{es}} API key to authenticate to the {{es}} endpoint. 
+You need a valid {{es}} API key to authenticate to the {{es}} endpoint. 
 
-:::{include} _snippets/retrieve-credentials.md
-:::
-
-The example configuration is:
-
-```yaml
-extensions:
-  bearertokenauth:
-    scheme: "APIKey"
-    token: "<ENCODED_ELASTICSEARCH_APIKEY>"
-
-  apmconfig:
-    opamp:
-      protocols:
-        http:
-          # Default is localhost:4320
-          # endpoint: "<CUSTOM_OPAMP_ENDPOINT>"
-    source:
-      elasticsearch:
-        endpoint: "<ELASTICSEARCH_ENDPOINT>"
-        auth:
-          authenticator: bearertokenauth
-```
-
-Restart the Elastic Agent to also restart the Collector and apply the changes. Refer to [EDOT Collector configuration](/reference/edot-collector/config/default-config-standalone.md#central-configuration) for more information.
-
+::::{include} _snippets/retrieve-credentials.md
 ::::
 
-::::{step} Set the environment variable for the SDKs
+Make sure the API key has `config_agent:read` permissions and resources set to `-`.
+
+::::{dropdown} Example JSON payload
+```json
+POST /_security/api_key
+{
+  "name": "apmconfig-opamp-test-sdk",
+  "metadata": {
+    "application": "apm"
+  },
+  "role_descriptors": {
+    "apm": {
+      "cluster": [],
+      "indices": [],
+      "applications": [
+        {
+          "application": "apm",
+          "privileges": [
+            "config_agent:read"
+          ],
+          "resources": [
+            "*"
+          ]
+        }
+      ],
+      "run_as": [],
+      "metadata": {}
+    }
+  }
+}
+```
+::::
+
+:::::
+
+:::::{step} Edit the EDOT Collector configuration
+
+Edit the [EDOT Collector configuration](/reference/edot-collector/config/default-config-standalone.md#central-configuration) to activate the central configuration feature:
+
+:::{include} _snippets/edot-collector-auth.md
+:::
+
+Restart the Elastic Agent to also restart the Collector and apply the changes.
+
+::::{note}
+Refer to [Secure connection](/reference/edot-collector/config/default-config-standalone.md#secure-connection) if you need to secure the connection between the EDOT Collector and Elastic using TLS or mutual TLS.
+:::::
+
+:::::{step} Set the environment variable for the SDKs
 
 Activate the central configuration feature in the SDKs by setting the `ELASTIC_OTEL_OPAMP_ENDPOINT` environment variable to the URL endpoint of the `apmconfig` extension that you configured in the previous step. For example:
 
@@ -95,9 +118,9 @@ Restart the instrumented application to apply the changes.
 Central configuration uses the `service.name` and `deployment.environment.name` OpenTelemetry resource attributes to target specific instances with a configuration. If no environment is specified, the central configuration feature will match `All` as the environment.
 :::
 
-::::
+:::::
 
-::::{step} Check that the EDOT SDK appears in central configuration
+:::::{step} Check that the EDOT SDK shows up
 
 Wait some time for the EDOT SDK to appear in {{kib}} under Agent Configuration.
 
@@ -105,12 +128,12 @@ Wait some time for the EDOT SDK to appear in {{kib}} under Agent Configuration.
 2. Select **Settings** and go to **Agent Configuration**.
 
 :::{note}
-Your application must produce and send telemetry data for the EDOT SDK to appear in Agent Configuration.
+Your application must produce and send telemetry data for the EDOT SDK to appear in Agent Configuration. This is because central configuration requires an application name as the key, which can't be defined until the application name is associated with the EDOT SDK agent after receiveing telemetry. 
 :::
 
-::::
+:::::
 
-:::::{stepper}
+::::::
 
 ## Supported settings
 
@@ -123,3 +146,9 @@ For a list of settings that you can configure through APM Agent Central Configur
 - [EDOT Python](/reference/edot-sdks/python/configuration.md#central-configuration)
 
 EDOT iOS currently supports APM Agent Central Configuration through APM Server. Refer to [EDOT iOS configuration](/reference/edot-sdks/ios/configuration.md) for more details.
+
+## Deactivate central configuration
+
+To deactivate central configuration, remove the `ELASTIC_OTEL_OPAMP_ENDPOINT` environment variable.
+
+Restart the instrumented application to apply the changes.
