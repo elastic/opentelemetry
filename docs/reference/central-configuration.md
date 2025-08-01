@@ -93,15 +93,15 @@ POST /_security/api_key
 
 :::::{step} Edit the EDOT Collector configuration
 
-Edit the EDOT Collector configuration file to use the `apmconfig` extension. Use the authentication method that best suits your needs.
+Edit the [EDOT Collector configuration](/reference/edot-collector/config/default-config-standalone.md#central-configuration) to activate the central configuration feature:
 
 :::{include} _snippets/edot-collector-auth.md
 :::
 
-Restart the Elastic Agent to also restart the Collector and apply the changes. Refer to [EDOT Collector configuration](/reference/edot-collector/config/default-config-standalone.md#central-configuration) for more information.
+Restart the Elastic Agent to also restart the Collector and apply the changes.
 
 ::::{note}
-If you need to use TLS or mutual TLS, refer to [TLS configuration](/reference/edot-collector/config/default-config-standalone.md#tls-configuration).
+Refer to [Secure connection](/reference/edot-collector/config/default-config-standalone.md#secure-connection) if you need to secure the connection between the EDOT Collector and Elastic using TLS or mutual TLS.
 :::::
 
 :::::{step} Set the environment variable for the SDKs

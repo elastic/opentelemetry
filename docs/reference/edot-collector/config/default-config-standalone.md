@@ -212,16 +212,16 @@ Each pipeline connects specific receivers, processors, and exporters to handle d
 
 The EDOT Collector can be configured to use [APM Agent Central Configuration](docs-content://solutions/observability/apm/apm-agent-central-configuration.md). Refer to [Central configuration docs](/reference/central-configuration.md) for more details.
 
-### Configure the apmconfig extension
+To activate the central configuration feature, add the [`apmconfig`](https://github.com/elastic/opentelemetry-collector-components/blob/main/extension/apmconfigextension/README.md). For example:
 
-To activate the central configuration feature, add the [`apmconfig`](https://github.com/elastic/opentelemetry-collector-components/blob/main/extension/apmconfigextension/README.md) and the `bearertokenauth` or `apikeyauth` extensions depending on the authentication method you want to use. For example:
-
-:::{include} ../../_snippets/edot-collector-auth.md
+:::{include} _snippets/edot-collector-auth.md
 :::
 
 Create an API Key following [these instructions](docs-content://deploy-manage/api-keys/elasticsearch-api-keys.md). The API key must have `config_agent:read` permissions and resources set to `-`.
 
-The server expects incoming HTTP requests to include an API key with sufficient privileges, using the following header format: `Authorization: ApiKey <base64(id:api_key)>`.
+## Secure connection
+
+To secure the connection between the EDOT Collector and Elastic, you can use TLS or mutual TLS, as well as the `apikeyauth` extension.
 
 ### TLS configuration
 
@@ -267,11 +267,10 @@ extensions:
    ...
 ```
 
-The server expects incoming HTTP requests to include an API key with sufficient privileges, using the following header format: `Authorization: ApiKey <base64(id:api_key)>`.
+Create an API key with the minimum required application permissions through {{kib}} under **Observability** → **Applications** → **Settings** → **Agent Keys**, or by using the Elasticsearch Security API:
 
-You can create an API key with the minimum required application permissions through {{kib}} by going to **Observability** → **Applications** → **Settings** → **Agent Keys**, or by using the Elasticsearch Security API:
-
-```sh
+::::{dropdown} Example JSON payload
+```json
 POST /_security/api_key
 {
   "name": "apmconfig-opamp-test-sdk",
@@ -299,6 +298,9 @@ POST /_security/api_key
   }
 }
 ```
+::::
+
+The server expects incoming HTTP requests to include an API key with sufficient privileges, using the following header format: `Authorization: ApiKey <base64(id:api_key)>`.
 
 [`attributes`]: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/attributesprocessor
 [`filelog`]: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/filelogreceiver
