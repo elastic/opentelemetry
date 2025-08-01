@@ -89,3 +89,7 @@ The SDK allows you to modify some values after the initialization has finished. 
 ### Automatic instrumentation [automatic-instrumentation]
 
 The SDK provides extensions that automatically generate telemetry for common tools and use cases. Refer to [Automatic Instrumentation](automatic-instrumentation.md) for more details.
+
+## Try it out
+
+You can follow the [Sample application guide](https://github.com/elastic/apm-agent-android/tree/main/sample-app) to set up a test environment and take a quick look at the agent's functionalities. Or if you're ready to get started with your own app, continue with [Getting started](getting-started.md).
