@@ -364,8 +364,8 @@ features:
       status: tech-preview
       min_version: 1.4.0
     Android:
-      status: not-available
-      min_version: 
+      status: tech-preview
+      min_version: 1.2.0
     iOS:
       status: not-available
       min_version: 
