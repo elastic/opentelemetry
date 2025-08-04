@@ -102,6 +102,7 @@ Restart the Elastic Agent to also restart the Collector and apply the changes.
 
 ::::{note}
 Refer to [Secure connection](/reference/edot-collector/config/default-config-standalone.md#secure-connection) if you need to secure the connection between the EDOT Collector and Elastic using TLS or mutual TLS.
+::::
 :::::
 
 :::::{step} Set the environment variable for the SDKs
