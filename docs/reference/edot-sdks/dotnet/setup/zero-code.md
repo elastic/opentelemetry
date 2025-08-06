@@ -44,7 +44,7 @@ Download and run the .sh script:
 
 ```bash
 # Download the bash script
-curl -sSfL  https://github.com/elastic/elastic-otel-dotnet/releases/latest/download/elastic-dotnet-auto-install.sh -O
+curl -sSfL https://github.com/elastic/elastic-otel-dotnet/releases/latest/download/elastic-dotnet-auto-install.sh -O
 
 # Install core files
 sh ./otel-dotnet-auto-install.sh
