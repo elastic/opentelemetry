@@ -44,7 +44,7 @@ Download and run the .sh script:
 
 ```bash
 # Download the bash script
-curl -sSfL https://github.com/open-telemetry/elastic-otel-dotnet/releases/latest/download/otel-dotnet-auto-install.sh -O
+curl -sSfL  https://github.com/elastic/elastic-otel-dotnet/releases/latest/download/elastic-dotnet-auto-install.sh -O
 
 # Install core files
 sh ./otel-dotnet-auto-install.sh
@@ -66,7 +66,7 @@ On Windows, use the PowerShell module as an Administrator:
 ```powershell
 # PowerShell 5.1 or higher is required
 # Download the module
-$module_url = "https://github.com/open-telemetry/elastic-otel-dotnet/releases/latest/download/OpenTelemetry.DotNet.Auto.psm1"
+$module_url = "https://github.com/elastic/elastic-otel-dotnet/releases/latest/download/Elastic.OpenTelemetry.DotNet.psm1"
 $download_path = Join-Path $env:temp "OpenTelemetry.DotNet.Auto.psm1"
 Invoke-WebRequest -Uri $module_url -OutFile $download_path -UseBasicParsing
 
