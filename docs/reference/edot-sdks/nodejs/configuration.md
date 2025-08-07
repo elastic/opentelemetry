@@ -232,7 +232,6 @@ For Node.js usage, the following instrumentations produce telemetry using HTTP s
 
 EDOT Node.js differs from current upstream OTel JS in that it *defaults `OTEL_SEMCONV_STABILITY_OPT_IN` to `http`*. This means that, by default, all HTTP-related telemetry from EDOT Node.js will use the newer, stable HTTP semantic conventions. (This difference from upstream is expected to be temporary, as upstream `@opentelemetry/instrumentation-http` switches to producing only stable HTTP semantic conventions after its transition period.)
 
-
 ### `OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT` details [otel_instrumentation_genai_capture_message_content-details]
 
 Set `OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT` to `true` to
@@ -240,6 +239,11 @@ enable capture of content data, such as prompt and completion content, in GenAI 
 
 The `OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT` boolean environment variable is a convention established by the OpenTelemetry GenAI SIG. It is referenced in <https://opentelemetry.io/blog/2024/otel-generative-ai/>.
 
+### ``OTEL_LOGS_EXPORTER` details [otel_logs_exporter-details]
+
+Setting `OTEL_LOGS_EXPORTER` to none prevents logs from being exported. Application logs might still be gathered and exported by the Collector through the `filelog` receiver.
+
+To prevent application logs from being collected and exported by the Collector, refer to [Exclude paths from logs collection](/reference/edot-collector/config/configure-logs-collection.md#exclude-logs-paths).
 
 [otel-sdk-envvars]: https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#general-sdk-configuration
 [otel-sdk-envvars-bsp]: https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#batch-span-processor

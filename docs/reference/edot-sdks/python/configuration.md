@@ -112,3 +112,10 @@ LLM instrumentations implement the following configuration options:
 | Option                                                | default | description               |
 |-------------------------------------------------------|---------|:--------------------------|
 | `OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT`  | `false`| If set to `true`, enables the capturing of request and response content in the log events outputted by the agent.
+
+
+## Prevent logs export
+
+Setting `OTEL_LOGS_EXPORTER` to none prevents logs from being exported. Application logs might still be gathered and exported by the Collector through the `filelog` receiver.
+
+To prevent application logs from being collected and exported by the Collector, refer to [Exclude paths from logs collection](/reference/edot-collector/config/configure-logs-collection.md#exclude-logs-paths).

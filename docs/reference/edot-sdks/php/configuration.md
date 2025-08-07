@@ -140,3 +140,8 @@ The following settings control Central configuration management through OpAMP.
 | ELASTIC_OTEL_OPAMP_SEND_MAX_RETRIES   | 3                              | Integer ≥ 0                                                                                   | Maximum number of retry attempts for failed message sends.                                                                                                                  |
 | ELASTIC_OTEL_OPAMP_SEND_RETRY_DELAY   | 10s                            | Integer number with time duration. Optional units: ms (default), s, m. It can't be set to 0. | Time to wait between retries of failed sends.                                                                                                                                |
 
+## Prevent logs export
+
+Setting `OTEL_LOGS_EXPORTER` to none prevents logs from being exported. Application logs might still be gathered and exported by the Collector through the `filelog` receiver.
+
+To prevent application logs from being collected and exported by the Collector, refer to [Exclude paths from logs collection](/reference/edot-collector/config/configure-logs-collection.md#exclude-logs-paths).
