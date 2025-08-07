@@ -241,7 +241,7 @@ The `OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT` boolean environment var
 
 ### ``OTEL_LOGS_EXPORTER` details [otel_logs_exporter-details]
 
-Setting `OTEL_LOGS_EXPORTER` to none prevents logs from being exported. Application logs might still be gathered and exported by the Collector through the `filelog` receiver.
+To prevent logs from being exported, set `OTEL_LOGS_EXPORTER` to `none`. However, application logs might still be gathered and exported by the Collector through the `filelog` receiver.
 
 To prevent application logs from being collected and exported by the Collector, refer to [Exclude paths from logs collection](/reference/edot-collector/config/configure-logs-collection.md#exclude-logs-paths).
 

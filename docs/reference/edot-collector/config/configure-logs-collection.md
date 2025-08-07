@@ -357,7 +357,7 @@ integration.
 
 ## Exclude paths from logs collection [exclude-logs-paths]
 
-To exclude specific paths from logs collection, use the `exclude` field in the `logs` pipeline configuration. For example:
+To exclude specific paths from logs collection, use the `exclude` field in the `logs` pipeline configuration. Exclude patterns are applied against the paths matched by include patterns. For example:
 
 ::::{tab-set}
 :::{tab-item} Standalone
@@ -393,5 +393,3 @@ config:
 ```
 :::
 ::::
-
-Exclude patterns are applied against the paths matched by include patterns.
