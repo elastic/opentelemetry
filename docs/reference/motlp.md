@@ -10,14 +10,38 @@ products:
   - id: edot-collector
 ---
 
-# Sending Data to Elastic Using the Managed OTLP Endpoint
+# Elastic Cloud Managed OTLP Endpoint
 
-The {{motlp}} endpoint allows you to send OpenTelemetry data directly to Elastic Cloud using the OTLP protocol. This guide explains how to find your {{motlp}} endpoint, create an API key for authentication, and configure different environments. The {{motlp}} is currently available on Elastic Cloud Serverless and will be coming soon to Elastic Cloud Hosted (ECH), this is a managed service which makes it currently unavailable for self-managed Elastic deployments.
+The {{motlp}} endpoint allows you to send OpenTelemetry data directly to Elastic Cloud using the OTLP protocol with Elastic handling scaling, data processing, and storage. 
 
+![mOTLP Reference Architecture](./images/motlp-reference-architecture.png)
 
-## 1. Locate Your {{motlp}} Endpoint
+## Specification
 
-### Elastic Cloud Serverless
+* The {{motlp}} supports ingestion for Logs, Metrics and Traces.
+* If no specific dataset or namespace is provided, the data streams will be: Traces `traces-generic.otel-default`, Metrics: `metrics-generic.otel-default`, Logs: `logs-generic.otel-default`
+* Telemetry is stored in Elastic using the native OpenTelemetry format, preserving resource attributes and original semantic conventions.
+* The {{motlp}} endpoint is available on Elastic Cloud Serverless and will soon be supported on Elastic Cloud Hosted (ECH). It is not available for self-managed deployments.
+* You do not need to use the APM Server when ingesting data through {{motlp}}. The APM integration (`.apm` endpoint) is a legacy ingest path that only supports traces and translates OTLP telemetry to ECS, whereas {{motlp}} natively ingests OTLP data for logs, metrics, and traces.
+
+The {{motlp}} does not currently support these features:
+* Tail-based sampling (TBS)
+* Universal Profiling
+* Only supports histograms with delta temporality. Cumulative histograms are dropped.
+* Latency distributions based on histogram values have limited precision due to the fixed boundaries of explicit bucket histograms.
+
+This guide explains how to find your {{motlp}} endpoint, create an API key for authentication, and configure different environments. 
+
+## Sending Data to Elastic Using the Managed OTLP Endpoint
+
+### Prerequisites
+
+* An Elastic Observability Serverless project. Security projects are not yet supported; support is planned for a future release.
+* An OTLP-compliant shipper capable of forwarding logs, metrics, or traces in OTLP format. This can include the OpenTelemetry Collector (Contrib, EDOT, or other distributions), OpenTelemetry SDKs (upstream, EDOT, or other distributions), or any other forwarder that supports the OTLP protocol.
+
+### 1. Locate Your {{motlp}} Endpoint
+
+#### Elastic Cloud Serverless
 1. Create or Login to Go to an Observability project
 2. Navigate to the project management page.
 3. Click edit on **Connection alias** in the overview section.
@@ -35,7 +59,7 @@ For self-managed environments, you can deploy and expose an OTLP-compatible endp
 
 -->
 
-## 2. Create an API Key
+### 2. Create an API Key
 
 You must generate an API key with appropriate ingest privileges to authenticate OTLP traffic.
 
