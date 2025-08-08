@@ -24,7 +24,10 @@ The {{motlp}} endpoint is available on {{serverless-full}} and will soon be supp
 
 This diagram shows data ingest using {{edot}} and the {{motlp}}:
 
-![mOTLP Reference Architecture](./images/motlp-reference-architecture.png)
+:::{image} ./images/motlp-reference-architecture.png
+:alt: mOTLP Reference architecture
+:width: 100%
+:::
 
 Telemetry is stored in Elastic in OTLP format, preserving resource attributes and original semantic conventions. If no specific dataset or namespace is provided, the data streams are: `traces-generic.otel-default`, `metrics-generic.otel-default`, and L`logs-generic.otel-default`.
 
@@ -39,22 +42,22 @@ The following limitations apply when using the {{motlp}}:
 * Only supports histograms with delta temporality. Cumulative histograms are dropped.
 * Latency distributions based on histogram values have limited precision due to the fixed boundaries of explicit bucket histograms.
 
-## Send data to Elastic using the {{motlp}}
+## Send data to Elastic
 
 Follow these steps to send data to Elastic using the {{motlp}}.
 
-:::::{stepper}
+::::::{stepper}
 
-::::{step} Check the requirements
+:::::{step} Check the requirements
 
 To use the {{motlp}} you need the following:
 
 * An Elastic Observability Serverless project. Security projects are not yet supported.
 * An OTLP-compliant shipper capable of forwarding logs, metrics, or traces in OTLP format. This can include the OpenTelemetry Collector (EDOT, Contrib, or other distributions), OpenTelemetry SDKs (EDOT, upstream, or other distributions), or any other forwarder that supports the OTLP protocol.
 
-::::
+:::::
 
-::::{step} Locate Your {{motlp}} Endpoint
+:::::{step} Locate Your {{motlp}} Endpoint
 
 To retrieve your {{motlp}} endpoint address and an API key, follow these steps:
 
@@ -71,9 +74,9 @@ To retrieve your {{motlp}} endpoint address and an API key, follow these steps:
 % ## Self-Managed
 % For self-managed environments, you can deploy and expose an OTLP-compatible endpoint using the EDOT Collector as a gateway. Refer to [EDOT deployment docs](https://www.elastic.co/docs/reference/opentelemetry/edot-collector/modes#edot-collector-as-gateway).
 
-::::
+:::::
 
-::::{step} Create an API key
+:::::{step} Create an API key
 
 Generate an API key with appropriate ingest privileges to authenticate OTLP traffic:
 
@@ -97,14 +100,29 @@ The API key copied from Kibana does not include the `ApiKey` scheme. Always prep
   - Incorrect: `Authorization: abc123`
 :::
 
-::::
+:::::
 
-::::{step} Send data to the {{motlp}}
+:::::{step} Send data to the {{motlp}}
 
 The final step is to use the {{motlp}} endpoint and your Elastic API key to send data to {{ecloud}}.
 
-#### OpenTelemetry SDK example
+::::{tab-set}
 
+:::{tab-item} OpenTelemetry Collector example
+To send data to the {{motlp}} from the {{edot}} Collector or the upstream Collector, configure the `otlp` exporter:
+
+```yaml
+exporters:
+  otlp:
+    endpoint: https://<motlp-endpoint>
+    headers:
+      Authorization: ApiKey <your-api-key>
+```
+
+Set the API key as an environment variable or directly in the configuration as shown in the example.
+:::
+
+:::{tab-item} OpenTelemetry SDK example
 To send data to the {{motlp}} from {{edot}} SDKs or upstream SDKs, set the following variables in your application's environment:
 
 ```bash
@@ -117,23 +135,9 @@ Avoid extra spaces in the header. For Python SDKs replace any spaces with `%20`.
 ```
 OTEL_EXPORTER_OTLP_HEADERS=Authorization=ApiKey%20<your-api-key>`
 ```
+:::
 
-#### OpenTelemetry Collector example
-
-To send data to the {{motlp}} from the {{edot}} Collector or the upstream Collector, configure the `otlp` exporter:
-
-```yaml
-exporters:
-  otlp:
-    endpoint: https://<motlp-endpoint>
-    headers:
-      Authorization: ApiKey <your-api-key>
-```
-
-Set the API key as an environment variable or directly in the configuration as shown in the example.
-
-#### Kubernetes example
-
+:::{tab-item} Kubernetes example
 You can store your API key in a Kubernetes secret and reference it in your OTLP exporter configuration. This is more secure than hardcoding credentials.
 
 The API key from Kibana does not include the `ApiKey` scheme. You must prepend `ApiKey ` before storing it. 
@@ -170,7 +174,10 @@ env:
 :::{important}
 When creating a Kubernetes secret, always encode the full string in Base64, including the scheme (for example, `ApiKey abc123`).
 :::
+:::
 
 ::::
 
 :::::
+
+::::::
