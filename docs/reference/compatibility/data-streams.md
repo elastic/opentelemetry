@@ -1,5 +1,5 @@
 ---
-navigation_title: EDOT data streams compared to APM
+navigation_title: Data streams comparison
 description: Learn how EDOT optimizes telemetry storage and query performance in Elastic Observability compared to classic APM.  
 applies_to:
   stack:

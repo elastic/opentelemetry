@@ -18,6 +18,8 @@ The Elastic Distributions of OpenTelemetry (EDOT) come with a new way of ingesti
 
 While EDOT and OTel-native data collection already covers most of the core Observability use cases, the following limitations apply compared to data collection with classic Elastic data collection mechanisms.
 
+Refer to [EDOT data streams compared to classic APM](../compatibility/data-streams.md) for an overview of how these ingestion paths differ.
+
 ## Centralized parsing and processing of data
 
 With OTel-native ingestion of data, for example through the EDOT Collector or the [Managed OTLP endpoint](/reference/motlp.md), [{{es}} Ingest Pipelines](docs-content://manage-data/ingest/transform-enrich/ingest-pipelines.md) are not supported.
