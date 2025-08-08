@@ -208,3 +208,9 @@ This is common in the following scenarios:
 One solution is to add the certificate or certificate authority to the JVM trust store, which requires modifying the JVM trust store.
 
 If trust store modification is not possible or not practical, for example when troubleshooting or working with a local deployment, certificate verification can be disabled by setting `ELASTIC_OTEL_VERIFY_SERVER_CERT` to `false`. This however need to be evaluated carefully as it lowers the communication security and could allow for man-in-the-middle attacks where the data could be intercepted between the agent and the collector endpoint.
+
+## Prevent logs export
+
+To prevent logs from being exported, set `OTEL_LOGS_EXPORTER` to `none`. However, application logs might still be gathered and exported by the Collector through the `filelog` receiver.
+
+To prevent application logs from being collected and exported by the Collector, refer to [Exclude paths from logs collection](/reference/edot-collector/config/configure-logs-collection.md#exclude-logs-paths).

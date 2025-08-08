@@ -354,3 +354,42 @@ service:
 A more detailed example about using OTTL and the transform processor can be found at the
 [nginx_ingress_controller_otel](https://github.com/elastic/integrations/blob/main/packages/nginx_ingress_controller_otel/docs/README.md)
 integration.
+
+## Exclude paths from logs collection [exclude-logs-paths]
+
+To exclude specific paths from logs collection, use the `exclude` field in the `logs` pipeline configuration. Exclude patterns are applied against the paths matched by include patterns. For example:
+
+::::{tab-set}
+:::{tab-item} Standalone
+```yaml
+receivers:
+  # Receiver for platform specific log files
+  filelog/platformlogs:
+    include: [/var/log/*.log]
+    retry_on_failure:
+      enabled: true
+    start_at: end
+    storage: file_storage
+    exclude:
+      # Paths support glob patterns
+      - /var/log/ignore_this.log
+      - /var/log/another_path/*
+```
+:::
+
+:::{tab-item} Kubernetes
+```yaml
+mode: daemonset
+
+presets:
+  logsCollection:
+    enabled: true
+config:
+  receivers:
+    filelog:
+      exclude:
+        # Paths support glob patterns
+        - /var/log/pods/my-nodejs-app-namespace_my-nodejs-app-pod-name_*/*/*.log
+```
+:::
+::::
