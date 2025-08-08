@@ -33,15 +33,6 @@ Telemetry is stored in Elastic in OTLP format, preserving resource attributes an
 
 You don't need to use APM Server when ingesting data through the Managed OTLP Endpoint. The APM integration (`.apm` endpoint) is a legacy ingest path that only supports traces and translates OTLP telemetry to ECS, whereas {{motlp}} natively ingests OTLP data for logs, metrics, and traces.
 
-## Limitations
-
-The following limitations apply when using the {{motlp}}:
-
-* Tail-based sampling (TBS) is not available.
-* Universal Profiling is not available.
-* Only supports histograms with delta temporality. Cumulative histograms are dropped.
-* Latency distributions based on histogram values have limited precision due to the fixed boundaries of explicit bucket histograms.
-
 ## Send data to Elastic
 
 Follow these steps to send data to Elastic using the {{motlp}}.
@@ -181,3 +172,12 @@ When creating a Kubernetes secret, always encode the full string in Base64, incl
 :::::
 
 ::::::
+
+## Limitations
+
+The following limitations apply when using the {{motlp}}:
+
+* Tail-based sampling (TBS) is not available.
+* Universal Profiling is not available.
+* Only supports histograms with delta temporality. Cumulative histograms are dropped.
+* Latency distributions based on histogram values have limited precision due to the fixed boundaries of explicit bucket histograms.
