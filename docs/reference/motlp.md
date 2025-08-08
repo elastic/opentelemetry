@@ -12,7 +12,7 @@ products:
 
 # Sending Data to Elastic Using the Managed OTLP Endpoint
 
-The {{motlp}} endpoint allows you to send OpenTelemetry data directly to Elastic Cloud using the OTLP protocol. This guide explains how to find your {{motlp}} endpoint, create an API key for authentication, and configure different environments.
+The {{motlp}} endpoint allows you to send OpenTelemetry data directly to Elastic Cloud using the OTLP protocol. This guide explains how to find your {{motlp}} endpoint, create an API key for authentication, and configure different environments. The {{motlp}} is currently available on Elastic Cloud Serverless and will be coming soon to Elastic Cloud Hosted (ECH), this is a managed service which makes it currently unavailable for self-managed Elastic deployments.
 
 
 ## 1. Locate Your {{motlp}} Endpoint
