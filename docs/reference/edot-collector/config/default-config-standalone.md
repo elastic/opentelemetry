@@ -101,9 +101,9 @@ With the {{motlp}}, there is no need to configure any Elastic-specific component
 
 In Gateway mode, the Collector ingests data from other Collectors running in Agent mode and forwards it to Elastic.
 
-## Sample configuration
+## Example configuration
 
-The following sample configuration files are available for the Gateway mode:
+The following example configuration files are available for the Gateway mode:
 
 | Version | Configuration  |
 |---------|----------------|
@@ -207,6 +207,101 @@ The service section defines separate pipelines for different telemetry types:
 
 Each pipeline connects specific receivers, processors, and exporters to handle different data types appropriately.
 
+
+## Central configuration
+
+The EDOT Collector can be configured to use [APM Agent Central Configuration](docs-content://solutions/observability/apm/apm-agent-central-configuration.md). Refer to [Central configuration docs](/reference/central-configuration.md) for more details.
+
+To activate the central configuration feature, add the [`apmconfig`](https://github.com/elastic/opentelemetry-collector-components/blob/main/extension/apmconfigextension/README.md). For example:
+
+:::{include} ../../_snippets/edot-collector-auth.md
+:::
+
+Create an API Key following [these instructions](docs-content://deploy-manage/api-keys/elasticsearch-api-keys.md). The API key must have `config_agent:read` permissions and resources set to `-`.
+
+## Secure connection
+
+To secure the connection between the EDOT Collector and Elastic, you can use TLS or mutual TLS, as well as the `apikeyauth` extension.
+
+### TLS configuration
+
+You can turn on TLS or mutual TLS to encrypt data in transit between EDOT SDKs and the extension. Refer to [OpenTelemetry TLS server configuration](https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/configtls/README.md#server-configuration) for more details.
+
+For example:
+
+```yaml
+extensions:
+  apmconfig:
+    opamp:
+      protocols:
+        http:
+          endpoint: ":4320"
+          tls:
+            cert_file: server.crt
+            key_file: server.key
+   ...
+```
+
+### Authentication settings
+
+In addition to TLS, you can configure authentication to ensure that only authorized agents can communicate with the extension and retrieve their corresponding remote configurations.
+
+The `apmconfig` extension supports any configauth authenticator. Use the `apikeyauth` extension to authenticate with Elasticsearch API keys:
+
+```yaml
+extensions:
+  apikeyauth:
+    endpoint: "<YOUR_ELASTICSEARCH_ENDPOINT>"
+    application_privileges:
+      - application: "apm"
+        privileges:
+          - "config_agent:read"
+        resources:
+          - "-"
+  apmconfig:
+    opamp:
+      protocols:
+        http:
+          auth:
+            authenticator: apikeyauth
+   ...
+```
+
+Create an API key with the minimum required application permissions through {{kib}} under **Observability** → **Applications** → **Settings** → **Agent Keys**, or by using the Elasticsearch Security API:
+
+::::{dropdown} Example JSON payload
+```json
+POST /_security/api_key
+{
+  "name": "apmconfig-opamp-test-sdk",
+  "metadata": {
+    "application": "apm"
+  },
+  "role_descriptors": {
+    "apm": {
+      "cluster": [],
+      "indices": [],
+      "applications": [
+        {
+          "application": "apm",
+          "privileges": [
+            "config_agent:read"
+          ],
+          "resources": [
+            "*"
+          ]
+        }
+      ],
+      "run_as": [],
+      "metadata": {}
+    }
+  }
+}
+```
+::::
+
+The server expects incoming HTTP requests to include an API key with sufficient privileges, using the following header format: `Authorization: ApiKey <base64(id:api_key)>`.
+
 [`attributes`]: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/attributesprocessor
 [`filelog`]: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/filelogreceiver
 [`hostmetrics`]: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver
@@ -217,10 +312,10 @@ Each pipeline connects specific receivers, processors, and exporters to handle d
 [`resource`]: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/resourceprocessor
 [`resourcedetection`]: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/resourcedetectionprocessor
 [`OTLP`]: https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver
-[Logs - ES]: https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{edot-collector-version}}/internal/pkg/otel/samples/linux/platformlogs.yml
-[Logs - OTLP]: https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{edot-collector-version}}/internal/pkg/otel/samples/linux/managed_otlp/platformlogs.yml
-[Logs &#124; Metrics - ES]: https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{edot-collector-version}}/internal/pkg/otel/samples/linux/platformlogs_hostmetrics.yml
-[Logs &#124; Metrics - OTLP]: https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{edot-collector-version}}/internal/pkg/otel/samples/linux/managed_otlp/platformlogs_hostmetrics.yml
-[Logs &#124; Metrics &#124; App - ES]: https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{edot-collector-version}}/internal/pkg/otel/samples/linux/logs_metrics_traces.yml
-[Logs &#124; Metrics &#124; App - OTLP]: https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{edot-collector-version}}/internal/pkg/otel/samples/linux/managed_otlp/logs_metrics_traces.yml
+[Logs - ES]: https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{version.edot_collector}}/internal/pkg/otel/samples/linux/platformlogs.yml
+[Logs - OTLP]: https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{version.edot_collector}}/internal/pkg/otel/samples/linux/managed_otlp/platformlogs.yml
+[Logs &#124; Metrics - ES]: https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{version.edot_collector}}/internal/pkg/otel/samples/linux/platformlogs_hostmetrics.yml
+[Logs &#124; Metrics - OTLP]: https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{version.edot_collector}}/internal/pkg/otel/samples/linux/managed_otlp/platformlogs_hostmetrics.yml
+[Logs &#124; Metrics &#124; App - ES]: https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{version.edot_collector}}/internal/pkg/otel/samples/linux/logs_metrics_traces.yml
+[Logs &#124; Metrics &#124; App - OTLP]: https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{version.edot_collector}}/internal/pkg/otel/samples/linux/managed_otlp/logs_metrics_traces.yml
 [Gateway mode]: https://raw.githubusercontent.com/elastic/elastic-agent/refs/heads/main/internal/pkg/otel/samples/linux/gateway.yml

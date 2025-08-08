@@ -16,7 +16,7 @@ products:
 
 # Elastic Distribution of OpenTelemetry Node.js
 
-The {{edot}} (EDOT) Node.js is a light wrapper around the upstream [OpenTelemetry SDK for Node.js](https://opentelemetry.io/docs/languages/js), configured for the best experience with Elastic Observability. 
+The {{edot}} (EDOT) Node.js is a light wrapper around the upstream [OpenTelemetry SDK for Node.js](https://opentelemetry.io/docs/languages/js), configured for the best experience with Elastic Observability.
 
 Use EDOT Node.js to start the OpenTelemetry SDK with your Node.js application, and automatically capture tracing data, performance metrics, and logs. Traces, metrics, and logs can be sent to any OpenTelemetry Protocol (OTLP) Collector you choose.
 
@@ -31,7 +31,8 @@ In addition to all the features of OpenTelemetry Node.js, with EDOT Node.js you 
 * Improvements and bug fixes contributed by the Elastic team before the changes are available upstream in OpenTelemetry repositories.
 * Optional features that can enhance OpenTelemetry data that is being sent to Elastic.
 * Elastic-specific processors that ensure optimal compatibility when exporting OpenTelemetry signal data to an Elastic backend like an Elastic Observability deployment.
-* Pre-configured collection of tracing and metrics signals, applying some opinionated defaults, such as which sources are collected by default. Additional metrics are collected by default: `process.cpu.*` and `process.memory.*` metrics from the [host-metrics package](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/opentelemetry-host-metrics/).
+* Pre-configured collection of tracing and metrics signals, applying some opinionated defaults, such as which sources are collected by default. Additional metrics are collected by default: `process.cpu.*` and `process.memory.*` metrics from the [host-metrics package](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/host-metrics/).
+* Compatibility with APM Agent Central Configuration to modify the settings of the EDOT Node.js agent without having to restart the application.
 
 Use EDOT Node.js with your Node.js application to automatically capture distributed tracing data, performance metrics, and logs. EDOT Node.js automatically instruments [popular modules](/reference/edot-sdks/nodejs/supported-technologies.md#instrumentations) used by your service.
 

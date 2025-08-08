@@ -87,6 +87,41 @@ The following settings are available:
 | `ELASTIC_OTEL_JAVA_INSTRUMENTATION_GENAI_EMIT_EVENTS` | value of `OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT` | If set to `true`, the agent will generate log events for OpenAI requests and responses. Potentially sensitive content will only be included if `OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT` is `true`                                                                    |
 | `OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT`  | `false`                                                       | If set to `true`, enables the capturing of OpenAI request and response content in the log events outputted by the agent.                                                                                                                                                       ↪ |
 
+## Central configuration
+
+```{applies_to}
+serverless: unavailable
+stack: preview 9.1 
+product:
+  edot_java: preview 1.5.0
+```
+
+APM Agent Central Configuration lets you configure EDOT Java instances remotely, see [Central configuration docs](/reference/central-configuration.md) for more details.
+
+### Turn on central configuration
+
+To activate central configuration, set the `ELASTIC_OTEL_OPAMP_ENDPOINT` environment variable to the OpAMP server endpoint.
+
+```sh
+export ELASTIC_OTEL_OPAMP_ENDPOINT=http://localhost:4320/v1/opamp
+```
+
+To deactivate central configuration, remove the `ELASTIC_OTEL_OPAMP_ENDPOINT` environment variable and restart the instrumented application.
+
+### Central configuration settings
+
+You can modify the following settings for EDOT Java through APM Agent Central Configuration:
+
+| Setting | Central configuration name | Type |
+|---------|--------------------------|------|
+| Logging level | `logging_level` | Dynamic |
+| Turn off instrumentations | `deactivate_instrumentations` | Dynamic |
+| Turn off all instrumentations | `deactivate_all_instrumentations` | Dynamic |
+| Send traces | `send_traces` | Dynamic |
+| Send metrics | `send_metrics` | Dynamic |
+| Send logs | `send_logs` | Dynamic |
+
+Dynamic settings can be changed without having to restart the application.
 
 ## Configuration methods
 

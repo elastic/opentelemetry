@@ -68,6 +68,10 @@ The EDOT Android SDK provides additional features on top of those that come with
 
 Your application's telemetry data is stored locally before being sent to the {{stack}}. Then it's removed either after being successfully exported or to make room for new telemetry data if needed. This minimizes the risk of data loss due to internet connectivity issues.
 
+### Central configuration
+
+You can remotely manage how the Elastic SDK behaves via {{kib}}. Refer to [Central configuration](configuration.md#central-configuration) for more details.
+
 ### Real time [real-time]
 
 For [distributed tracing](#distributed-tracing) to work properly, your application's time should be in sync with the [coordinated universal time](https://en.wikipedia.org/wiki/Coordinated_Universal_Time). This is sometimes an issue for Android applications, as the time provided by the OS is often not accurate enough. The SDK aims to synchronize telemetry timestamps with the universal time to ensure a reliable view of event timelines.
@@ -85,3 +89,7 @@ The SDK allows you to modify some values after the initialization has finished. 
 ### Automatic instrumentation [automatic-instrumentation]
 
 The SDK provides extensions that automatically generate telemetry for common tools and use cases. Refer to [Automatic Instrumentation](automatic-instrumentation.md) for more details.
+
+## Try it out
+
+You can follow the [Sample application guide](https://github.com/elastic/apm-agent-android/tree/main/sample-app) to set up a test environment and take a quick look at the agent's functionalities. Or if you're ready to get started with your own app, continue with [Getting started](getting-started.md).

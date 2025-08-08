@@ -9,3 +9,4 @@ redirects:
   'reference/edot-sdks/nodejs/troubleshooting.md': 'docs-content://troubleshoot/ingest/opentelemetry/edot-sdks/nodejs/index.md'
   'reference/edot-sdks/php/troubleshooting.md': 'docs-content://troubleshoot/ingest/opentelemetry/edot-sdks/php/index.md'
   'reference/edot-sdks/python/troubleshooting.md': 'docs-content://troubleshoot/ingest/opentelemetry/edot-sdks/python/index.md'
+  'reference/edot-sdks/android/troubleshooting.md': 'docs-content://troubleshoot/ingest/opentelemetry/edot-sdks/android/index.md'

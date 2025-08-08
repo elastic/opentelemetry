@@ -42,7 +42,7 @@ class MyApp : android.app.Application {
 }
 ```
 
-1. Name used by {{kib}} when listing your application on the [Services](docs-content://solutions/observability/apm/services.md) page. Defaults to `unknown`. Refer to [Why your app is referred to as a "service"](troubleshooting.md#why-service).
+1. Name used by {{kib}} when listing your application on the [Services](docs-content://solutions/observability/apm/services.md) page. Defaults to `unknown`. Refer to [Why your app is referred to as a "service"](docs-content://troubleshoot/ingest/opentelemetry/edot-sdks/android/index.md#why-service).
 2. Your app's version name. Defaults to the version provided [in the PackageInfo](https://developer.android.com/reference/android/content/pm/PackageInfo#versionName).
 3. Your app's build type, flavor, backend environment, or a combination of these. Helpful to better analyze your app's data later in {{kib}}.
 
@@ -65,8 +65,8 @@ class MyApp : android.app.Application {
 }
 ```
 
-1. Your endpoint URL. If you don't have one yet, refer to [Get the export endpoint](troubleshooting.md#get-export-endpoint).
-2. Your authentication method. You can use either an [API key](docs-content://solutions/observability/apm/api-keys.md), a [Secret token](docs-content://solutions/observability/apm/secret-token.md), or none. Defaults to `None`. API keys are the recommended method, if you don't have one yet, refer to [Create an API key](troubleshooting.md#create-api-key).
+1. Your endpoint URL. If you don't have one yet, refer to [Get the export endpoint](docs-content://troubleshoot/ingest/opentelemetry/edot-sdks/android/index.md#get-export-endpoint).
+2. Your authentication method. You can use either an [API key](docs-content://solutions/observability/apm/api-keys.md), a [Secret token](docs-content://solutions/observability/apm/secret-token.md), or none. Defaults to `None`. API keys are the recommended method, if you don't have one yet, refer to [Create an API key](docs-content://troubleshoot/ingest/opentelemetry/edot-sdks/android/index.md#create-api-key).
 3. The protocol used to communicate with your endpoint. It can be either `HTTP` or `gRPC`. Defaults to `HTTP`.
 
 :::{tip}
@@ -275,6 +275,49 @@ class MyApp : android.app.Application {
     }
 }
 ```
+
+## Central configuration
+
+```{applies_to}
+serverless: unavailable
+stack: preview 9.1 
+product:
+  edot_android: preview 1.2.0
+```
+
+Starting from version `1.2.0`, you can remotely manage the EDOT Android behavior through [Central configuration](/reference/central-configuration.md).
+
+### Activate central configuration
+
+The remote management is turned off by default. To turn it on, provide your central configuration endpoint when initializing the agent, as shown here:
+
+```kotlin
+class MyApp : android.app.Application {
+
+    override fun onCreate() {
+        super.onCreate()
+        val agent = ElasticApmAgent.builder(this)
+            // ...
+            .setManagementUrl("https://...") // <1>
+            .setManagementAuthentication(Authentication.ApiKey("my-api-key")) // <2>
+            .build()
+    }
+}
+```
+
+1. Provide your EDOT Collector OpAMP endpoint. Refer to [Central configuration](/reference/central-configuration.md) for more details.
+2. In case your OpAMP endpoint [requires authentication](/reference/edot-collector/config/default-config-standalone.md#authentication-settings), this is how you can provide your API Key value.
+
+### Available settings
+
+You can modify the following settings for EDOT Android through the Central Configuration:
+
+| Setting | Central configuration name | Description | Type |
+|---------|----------------------------|-------------|------|
+| Recording | `recording` | Whether the agent should record and export telemetry or not. By default it's enabled, disabling it is effectively turning the agent off where only the central configuration polling will be performed. | Dynamic |
+| Session sample rate | `session_sample_rate` | To reduce overhead and storage requirements, you can set the sample rate to a value between 0.0 and 1.0. Data will be sampled per session, this is so context in a given session isn't lost. | Dynamic |
+
+Dynamic settings can be changed without having to restart the application.
 
 ## Provide config values from outside of your code
 
