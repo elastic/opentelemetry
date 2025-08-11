@@ -12,51 +12,175 @@ products:
 
 # Elastic Cloud Managed OTLP Endpoint
 
-The {{motlp}} is a managed endpoint for sending OpenTelemetry signals to Elastic Cloud, initially available in {{serverless-full}} only. It provides an endpoint for OpenTelemetry SDKs and Collectors to send telemetry data, with Elastic handling scaling, data processing, and storage.
+The {{motlp}} allows you to send OpenTelemetry data directly to {{ecloud}} using the OTLP protocol, with Elastic handling scaling, data processing, and storage.
 
-This endpoint is designed for the following use cases:
+This guide explains how to find your {{motlp}} endpoint, create an API key for authentication, and configure different environments. 
 
-* Logs and infrastructure monitoring: Logs forwarded in OTLP format and host and Kubernetes metrics in OTLP format
-* APM: Application telemetry in OTLP format
+:::{important}
+The {{motlp}} endpoint is available on {{serverless-full}} and will soon be supported on {{ech}}. It is not available for self-managed deployments.
+:::
 
-::::{important}
-{{motlp}} is not currently available for {{ech}} deployments.
-::::
+## Reference architecture
 
-## Differences from the Elastic APM Endpoint
+This diagram shows data ingest using {{edot}} and the {{motlp}}:
 
-The {{motlp}} ensures that OpenTelemetry data is stored without any schema translation, preserving both OpenTelemetry semantic conventions and resource attributes. It supports ingesting OTLP logs, metrics, and traces in a unified manner, ensuring consistent treatment across all telemetry data.
+:::{image} ./images/motlp-reference-architecture.png
+:alt: mOTLP Reference architecture
+:width: 100%
+:::
 
 For a detailed comparison of how EDOT data streams differ from classic Elastic APM data streams, refer to [EDOT data streams compared to classic APM](../reference/compatibility/data-streams.md).
 
 ## Prerequisites
+Telemetry is stored in Elastic in OTLP format, preserving resource attributes and original semantic conventions. If no specific dataset or namespace is provided, the data streams are: `traces-generic.otel-default`, `metrics-generic.otel-default`, and L`logs-generic.otel-default`.
 
-To send data to the {{motlp}}, you need:
+You don't need to use APM Server when ingesting data through the Managed OTLP Endpoint. The APM integration (`.apm` endpoint) is a legacy ingest path that only supports traces and translates OTLP telemetry to ECS, whereas {{motlp}} natively ingests OTLP data for logs, metrics, and traces.
 
-* An Elastic Observability Serverless project.
-* An {{edot}} or any system that can forward logs, metrics, or traces in OTLP format.
+## Send data to Elastic
 
-## Find your OTLP Endpoint
+Follow these steps to send data to Elastic using the {{motlp}}.
+
+::::::{stepper}
+
+:::::{step} Check the requirements
+
+To use the {{motlp}} you need the following:
+
+* An Elastic Observability Serverless project. Security projects are not yet supported.
+* An OTLP-compliant shipper capable of forwarding logs, metrics, or traces in OTLP format. This can include the OpenTelemetry Collector (EDOT, Contrib, or other distributions), OpenTelemetry SDKs (EDOT, upstream, or other distributions), or any other forwarder that supports the OTLP protocol.
+
+:::::
+
+:::::{step} Locate Your {{motlp}} Endpoint
 
 To retrieve your {{motlp}} endpoint address and an API key, follow these steps:
 
-   1. In {{ecloud}}, open your Observability project.
-   2. Go to **Add data** → **Application** → **OpenTelemetry**.
-   3. Select **Managed OTLP Endpoint** in the second step.
-   4. Copy the OTLP endpoint configuration value.
-   5. Select **Create API Key** to generate an API key.
+1. In {{ecloud}}, create an Observability project or open an existing one.
+2. Select your project's name and then select **Manage project**.
+3. Locate the **Connection alias** and select **Edit**.
+4. Copy the **Managed OTLP endpoint** URL.
 
-## Send data in OTLP format
+% ## commented out until mOTLP on ECH is available
+% ### Elastic Cloud on Elasticsearch ({{ech}})
+% 1. Open your deployment in the Elastic Cloud console.
+% 2. Navigate to **Integrations** and find **OpenTelemetry** or **Managed OTLP**.
+% 3. Copy the endpoint URL shown.
+% ## Self-Managed
+% For self-managed environments, you can deploy and expose an OTLP-compatible endpoint using the EDOT Collector as a gateway. Refer to [EDOT deployment docs](https://www.elastic.co/docs/reference/opentelemetry/edot-collector/modes#edot-collector-as-gateway).
 
-To send data in OTLP format to the {{motlp}}, you need to configure your {{edot}} or any system that can forward logs, metrics, or traces in OTLP format. 
+:::::
 
-Refer to the [Quickstart guides](/reference/quickstart/index.md) for more information.
+:::::{step} Create an API key
+
+Generate an API key with appropriate ingest privileges to authenticate OTLP traffic:
+
+1. In {{ecloud}}, go to **Manage project** → **API Keys**.
+2. Select **Create API Key**.
+3. Name the key. For example, `otlp-client`.
+4. Edit the optional security settings.
+5. Select **Create API Key**.
+6. Copy the key to the clipboard.
+
+Add this key to your final API key string. For example:
+
+```
+Authorization: ApiKey <your-api-key>
+```
+
+:::{important}
+The API key copied from Kibana does not include the `ApiKey` scheme. Always prepend `ApiKey ` before using it in your configuration or encoding it for Kubernetes secrets. For example:
+
+  - Correct: `Authorization: ApiKey abc123`
+  - Incorrect: `Authorization: abc123`
+:::
+
+:::::
+
+:::::{step} Send data to the {{motlp}}
+
+The final step is to use the {{motlp}} endpoint and your Elastic API key to send data to {{ecloud}}.
+
+::::{tab-set}
+
+:::{tab-item} OpenTelemetry Collector example
+To send data to the {{motlp}} from the {{edot}} Collector or the upstream Collector, configure the `otlp` exporter:
+
+```yaml
+exporters:
+  otlp:
+    endpoint: https://<motlp-endpoint>
+    headers:
+      Authorization: ApiKey <your-api-key>
+```
+
+Set the API key as an environment variable or directly in the configuration as shown in the example.
+:::
+
+:::{tab-item} OpenTelemetry SDK example
+To send data to the {{motlp}} from {{edot}} SDKs or upstream SDKs, set the following variables in your application's environment:
+
+```bash
+export OTEL_EXPORTER_OTLP_ENDPOINT="https://<motlp-endpoint>"
+export OTEL_EXPORTER_OTLP_HEADERS="Authorization=ApiKey <your-api-key>"
+```
+
+Avoid extra spaces in the header. For Python SDKs replace any spaces with `%20`. For example:
+
+```
+OTEL_EXPORTER_OTLP_HEADERS=Authorization=ApiKey%20<your-api-key>`
+```
+:::
+
+:::{tab-item} Kubernetes example
+You can store your API key in a Kubernetes secret and reference it in your OTLP exporter configuration. This is more secure than hardcoding credentials.
+
+The API key from Kibana does not include the `ApiKey` scheme. You must prepend `ApiKey ` before storing it. 
+
+For example, if your API key from Kibana is `abc123`, run:
+
+```bash
+kubectl create secret generic otlp-api-key \
+  --namespace=default \
+  --from-literal=api-key="ApiKey abc123"
+```
+
+Mount the secret as an environment variable or file, then reference it in your OTLP exporter configuration:
+
+```yaml
+exporters:
+  otlp:
+    endpoint: https://<motlp-endpoint>
+    headers:
+      Authorization: ${API_KEY}
+```
+
+And in your deployment spec:
+
+```yaml
+env:
+  - name: API_KEY
+    valueFrom:
+      secretKeyRef:
+        name: otlp-api-key
+        key: api-key
+```
+
+:::{important}
+When creating a Kubernetes secret, always encode the full string in Base64, including the scheme (for example, `ApiKey abc123`).
+:::
+:::
+
+::::
+
+:::::
+
+::::::
 
 ## Limitations
 
-The {{motlp}} does not currently support these features:
+The following limitations apply when using the {{motlp}}:
 
-* Tail-based sampling (TBS)
-* Universal Profiling
+* Tail-based sampling (TBS) is not available.
+* Universal Profiling is not available.
 * Only supports histograms with delta temporality. Cumulative histograms are dropped.
 * Latency distributions based on histogram values have limited precision due to the fixed boundaries of explicit bucket histograms.

@@ -190,3 +190,9 @@ Allows EDOT .NET to be used without the instrumentation assembly scanning featur
 |---|---|
 | Environment variable | `ELASTIC_OTEL_SKIP_ASSEMBLY_SCANNING` |
 | `IConfiguration` integration | `Elastic:OpenTelemetry:SkipInstrumentationAssemblyScanning` |
+
+## Prevent logs export
+
+To prevent logs from being exported, set `OTEL_LOGS_EXPORTER` to `none`. However, application logs might still be gathered and exported by the Collector through the `filelog` receiver.
+
+To prevent application logs from being collected and exported by the Collector, refer to [Exclude paths from logs collection](/reference/edot-collector/config/configure-logs-collection.md#exclude-logs-paths).
