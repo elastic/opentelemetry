@@ -33,6 +33,8 @@ Telemetry is stored in Elastic in OTLP format, preserving resource attributes an
 
 You don't need to use APM Server when ingesting data through the Managed OTLP Endpoint. The APM integration (`.apm` endpoint) is a legacy ingest path that only supports traces and translates OTLP telemetry to ECS, whereas {{motlp}} natively ingests OTLP data for logs, metrics, and traces.
 
+To add fields or tweak the number of shards, replicas, or policies per namespace, you can use the [APM data streams custom policy namespace](docs-content://solutions/observability/apm/index-lifecycle-management.md#apm-data-streams-custom-policy-namespace) feature.
+
 ## Send data to Elastic
 
 Follow these steps to send data to Elastic using the {{motlp}}.
