@@ -16,6 +16,7 @@ cross_links:
   - cloud
   - cloud-on-k8s
   - docs-content
+  - ecs
   - elastic-otel-dotnet
   - elastic-otel-java
   - elastic-otel-node
