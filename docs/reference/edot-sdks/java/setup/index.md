@@ -35,11 +35,7 @@ Follow the following Java setup guide for all other environments.
 
 ## Download the agent
 
-You can download the latest release version or snapshot version of the EDOT Java agent from the following links:
-
-| Latest release | Latest snapshot |
-|:---:|:---:|
-| [![Maven Central](https://img.shields.io/maven-central/v/co.elastic.otel/elastic-otel-javaagent?label=elastic-otel-javaagent&style=for-the-badge)](https://mvnrepository.com/artifact/co.elastic.otel/elastic-otel-javaagent/latest) | [![Sonatype Nexus](https://img.shields.io/nexus/s/co.elastic.otel/elastic-otel-javaagent?server=https%3A%2F%2Foss.sonatype.org&label=elastic-otel-javaagent&style=for-the-badge)](https://oss.sonatype.org/service/local/artifact/maven/redirect?r=snapshots&g=co.elastic.otel&a=elastic-otel-javaagent&v=LATEST) |
+You can download the latest release version of the EDOT Java agent from [![Maven Central](https://img.shields.io/maven-central/v/co.elastic.otel/elastic-otel-javaagent?label=elastic-otel-javaagent&style=for-the-badge)](https://mvnrepository.com/artifact/co.elastic.otel/elastic-otel-javaagent/latest)
 
 ## Prerequisites
 
