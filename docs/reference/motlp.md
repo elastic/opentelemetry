@@ -12,7 +12,7 @@ products:
 
 # Elastic Cloud Managed OTLP Endpoint
 
-The {{motlp}} allows you to send OpenTelemetry data directly to {{ecloud}} using the OTLP protocol, with Elastic handling scaling, data processing, and storage.
+The {{motlp}} allows you to send OpenTelemetry data directly to {{ecloud}} using the OTLP protocol, with Elastic handling scaling, data processing, and storage. The Managed OTLP endpoint can act like a Gateway Collector, so that you can point your OpenTelemetry SDKs or Collectors to it.
 
 This guide explains how to find your {{motlp}} endpoint, create an API key for authentication, and configure different environments. 
 
@@ -173,6 +173,25 @@ When creating a Kubernetes secret, always encode the full string in Base64, incl
 
 ::::::
 
+% ## Rate limiting and throttling
+% 
+% The following rate limits apply to the {{motlp}}:
+% 
+% * n requests per second per API key
+% * m requests per minute per API key
+% 
+% If you exceed these limits, you will receive an HTTP 429 status code.
+
+## Data retention
+
+You can configure the data retention for each data stream from the **Streams** screen. Refer to [Managed data retention](docs-content://solutions/observability/logs/streams/management/retention.md).
+
+## Failure store
+
+The {{motlp}} endpoint is designed to be highly available and resilient. However, there are some scenarios where data might be lost or not sent completely. The [Failure store](docs-content://manage-data/data-store/data-streams/failure-store.md) is a mechanism that allows you to recover from these scenarios.
+
+The Failure store is always enabled for {{motlp}} data streams. This prevents ingest pipeline exceptions and conflicts with data stream mappings. Failed documents are stored in a separate index. You can view the failed documents from the **Data Set Quality** page. Refer to [Data set quality](docs-content://solutions/observability/data-set-quality-monitoring.md).
+
 ## Limitations
 
 The following limitations apply when using the {{motlp}}:
@@ -181,3 +200,7 @@ The following limitations apply when using the {{motlp}}:
 * Universal Profiling is not available.
 * Only supports histograms with delta temporality. Cumulative histograms are dropped.
 * Latency distributions based on histogram values have limited precision due to the fixed boundaries of explicit bucket histograms.
+
+## Billing
+
+For more information on billing, refer to [Elastic Cloud pricing](https://www.elastic.co/pricing/serverless-observability).
