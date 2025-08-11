@@ -41,7 +41,7 @@ The [`passthrough`](elasticsearch://reference/elasticsearch/mapping-reference/pa
 
 For example, while the service name is stored at `resource.attributes.service.name`, you can query it as `service.name` (the same field name used in the classic APM data stream). This allows dashboards, saved searches, and queries built for ECS to work with EDOT data without changes.
 
-`passthrough` also works with field aliases to map naming differences between ECS and EDOT semantic conventions. Many fields share the same name and meaning, but when names differ, aliases map them for compatibility to make migration easier. Refer to [ECS & OpenTelemetry](ecs://docs/reference/ecs-opentelemetry.md) for more information.
+`passthrough` also works with field aliases to map naming differences between ECS and EDOT semantic conventions. Many fields share the same name and meaning, but when names differ, aliases map them for compatibility to make migration easier. Refer to [ECS & OpenTelemetry](ecs://reference/ecs-opentelemetry.md) for more information.
 
 Key benefits of using the `passthrough` field type include:
 
