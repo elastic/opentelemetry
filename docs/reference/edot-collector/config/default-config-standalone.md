@@ -85,6 +85,11 @@ For backwards compatibility, host metrics are translated into ECS-compatible sys
 
 The [`resourcedetection`] processor enriches the metrics with meta information about the corresponding host and operating system. The [`attributes`] and [`resource`] processor are used to set some fields for proper routing of the ECS-based system metrics data into corresponding {{es}} data streams.
 
+::::{important}
+:::{include} ../../_snippets/process-config.md
+:::
+::::
+
 ### Using the Managed OTLP Endpoint
 
 When ingesting OTel data through the [{{motlp}}](/reference/motlp.md), all the enrichment that is required for an optimal experience in the Elastic solutions happens at the endpoint level and is transparent to users. 

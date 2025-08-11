@@ -120,6 +120,11 @@ To ensure compatibility with {{kib}}'s Infrastructure dashboards, include the [e
               - elasticinframetrics
  ```
 
+### Process metrics
+
+:::{include} ../../_snippets/process-config.md
+:::
+
 ## Kubernetes metrics
 
 You can collect Kubernetes metrics using multiple receivers depending on the type and source of the metrics. Each receiver might require specific Kubernetes permissions and require a deployment as DaemonSets or singletons.
