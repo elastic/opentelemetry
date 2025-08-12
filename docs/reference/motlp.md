@@ -185,13 +185,13 @@ When creating a Kubernetes secret, always encode the full string in Base64, incl
 % * m requests per minute per API key
 % 
 % If you exceed these limits, you will receive an HTTP 429 status code.
-
-## Data retention
-
-Telemetry is stored in OTel-specific data streams. The separation is implemented by adding an `.otel` suffix to the `data_stream.dataset` for data streams that contain OTel signal data. This allows to have a separate index template for OTel data, such as `logs-*.otel-*`.
-
-To configure the data retention for each data stream from the **Streams** screen, refer to [Managed data retention](docs-content://solutions/observability/logs/streams/management/retention.md).
-
+%
+% ## Data retention
+%
+% Telemetry is stored in OTel-specific data streams. The separation is implemented by adding an `.otel` suffix to the `data_stream.dataset` for data streams that contain OTel signal data. This allows to have a separate index template for OTel data, such as `logs-*.otel-*`.
+%
+% To configure the data retention for each data stream from the **Streams** screen, refer to [Managed data retention](docs-content://solutions/observability/logs/streams/management/retention.md).
+%
 ## Failure store
 
 The {{motlp}} endpoint is designed to be highly available and resilient. However, there are some scenarios where data might be lost or not sent completely. The [Failure store](docs-content://manage-data/data-store/data-streams/failure-store.md) is a mechanism that allows you to recover from these scenarios.
