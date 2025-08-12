@@ -15,7 +15,7 @@ products:
 
 # Elastic APM intake receiver
 
-The Elastic APM intake receiver is an OpenTelemetry Collector component that receives APM data from Elastic APM Agents. This allows users of classic APM agents to gradually migrate to [EDOT SDKs](/reference/edot-sdks/index.md) and adapt their instrumentation to the new OTel-based approach.
+The Elastic APM intake receiver is an OpenTelemetry Collector component that receives APM data from Elastic APM Agents. This allows users of classic APM agents to gradually migrate to OpenTelemetry and adapt their instrumentation to the new OTel-based approach.
 
 The receiver takes the NDJSON data sent by [classic APM Agents](docs-content://reference/apm-agents/index.md) and turns it into OTel native data, which is processed by the Elastic APM processor and then exported to Elasticsearch, where it's stored in classic APM data streams.
 
@@ -99,13 +99,3 @@ The Elastic APM intake receiver supports the following environment variables:
 - `ELASTIC_APM_API_KEY`: The API key to use for authentication.
 - `ELASTIC_APM_SERVER_URL`: The URL of the Elastic APM server.
 - `ELASTIC_APM_SERVER_CERT`: The path to the server certificate file.
-
-## Data mapping
-
-Data is mapped as follows:
-
-- All fields that are defined as top level fields in OTel are populated according to the OTel spec. Examples are `ParentSpanID`, `TraceID`, `StartTimestamp`, `EndTimestamp`.
-- All Elastic APM fields that can be mapped into an OTel field, as defined by the OTel semantic convention (SemConv), are mapped into SemConv fields. This hold true for both resource attributes and event specific attributes. For example, the `service.name` field from the metadata is stored on each event as `service.name`, while `node.name` is stored on each event in the `service.instance.id`.
-- All fields that are required by Elastic APM and Kibana, but aren't part of any OTel spec, are stored in a custom attribute, using the Elastic APM field name as the key. 
-
-Refer to [ECS & OpenTelemetry](ecs://reference/ecs-opentelemetry.md) for more details on ECS and OpenTelemetry mapping.
