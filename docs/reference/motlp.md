@@ -29,11 +29,9 @@ This diagram shows data ingest using {{edot}} and the {{motlp}}:
 :width: 100%
 :::
 
-Telemetry is stored in Elastic in OTLP format, preserving resource attributes and original semantic conventions. If no specific dataset or namespace is provided, the data streams are: `traces-generic.otel-default`, `metrics-generic.otel-default`, and L`logs-generic.otel-default`.
+Telemetry is stored in Elastic in OTLP format, preserving resource attributes and original semantic conventions. If no specific dataset or namespace is provided, the data streams are: `traces-generic.otel-default`, `metrics-generic.otel-default`, and `logs-generic.otel-default`.
 
 You don't need to use APM Server when ingesting data through the Managed OTLP Endpoint. The APM integration (`.apm` endpoint) is a legacy ingest path that only supports traces and translates OTLP telemetry to ECS, whereas {{motlp}} natively ingests OTLP data for logs, metrics, and traces.
-
-To add fields or tweak the number of shards, replicas, or policies per namespace, refer to [Index lifecycle management](docs-content://solutions/observability/apm/index-lifecycle-management.md).
 
 ## Send data to Elastic
 
@@ -66,6 +64,10 @@ To retrieve your {{motlp}} endpoint address and an API key, follow these steps:
 % 3. Copy the endpoint URL shown.
 % ## Self-Managed
 % For self-managed environments, you can deploy and expose an OTLP-compatible endpoint using the EDOT Collector as a gateway. Refer to [EDOT deployment docs](https://www.elastic.co/docs/reference/opentelemetry/edot-collector/modes#edot-collector-as-gateway).
+%
+% :::{note}
+% Please reach out to support and then Engineering can look in to Increasing it based on the License tier or experimentation purposes.
+% :::
 
 :::::
 
@@ -186,7 +188,9 @@ When creating a Kubernetes secret, always encode the full string in Base64, incl
 
 ## Data retention
 
-You can configure the data retention for each data stream from the **Streams** screen. Refer to [Managed data retention](docs-content://solutions/observability/logs/streams/management/retention.md).
+Telemetry is stored in OTel-specific data streams. The separation is implemented by adding an `.otel` suffix to the `data_stream.dataset` for data streams that contain OTel signal data. This allows to have a separate index template for OTel data, such as `logs-*.otel-*`.
+
+To configure the data retention for each data stream from the **Streams** screen, refer to [Managed data retention](docs-content://solutions/observability/logs/streams/management/retention.md).
 
 ## Failure store
 
