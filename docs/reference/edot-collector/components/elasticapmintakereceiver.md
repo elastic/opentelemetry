@@ -20,7 +20,9 @@ The Elastic APM intake receiver is an OpenTelemetry Collector component that rec
 The receiver takes the NDJSON data sent by [classic APM Agents](docs-content://reference/apm-agents/index.md) and turns it into OTel native data, which is processed by the Elastic APM processor and then exported to Elasticsearch, where it's stored in classic APM data streams.
 
 :::{important}
-The receiver currently supports the Intake v2 protocol. RUM intake, and older intake protocols, are not supported.
+The receiver supports the [Elastic Intake v2 protocol](https://github.com/elastic/apm-server/tree/main/docs/spec/v2).
+
+RUM intake and older intake protocols are not supported.
 :::
 
 ## Get started
@@ -54,7 +56,7 @@ receivers:
       enabled: false
 ```
 
-### Agent environment variables
+#### Agent environment variables [agent_config_ssl]
 
 The Elastic APM intake receiver supports the following environment variables:
 
@@ -90,7 +92,7 @@ receivers:
       enabled: false
 ```
 
-### Agent environment variables
+#### Agent environment variables [agent_config_auth]
 
 The Elastic APM intake receiver supports the following environment variables:
 
