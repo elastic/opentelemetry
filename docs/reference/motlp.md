@@ -12,7 +12,7 @@ products:
 
 # Elastic Cloud Managed OTLP Endpoint
 
-The {{motlp}} allows you to send OpenTelemetry data directly to {{ecloud}} using the OTLP protocol, with Elastic handling scaling, data processing, and storage.
+The {{motlp}} allows you to send OpenTelemetry data directly to {{ecloud}} using the OTLP protocol, with Elastic handling scaling, data processing, and storage. The Managed OTLP endpoint can act like a Gateway Collector, so that you can point your OpenTelemetry SDKs or Collectors to it.
 
 This guide explains how to find your {{motlp}} endpoint, create an API key for authentication, and configure different environments. 
 
@@ -32,7 +32,8 @@ This diagram shows data ingest using {{edot}} and the {{motlp}}:
 For a detailed comparison of how EDOT data streams differ from classic Elastic APM data streams, refer to [EDOT data streams compared to classic APM](../reference/compatibility/data-streams.md).
 
 ## Prerequisites
-Telemetry is stored in Elastic in OTLP format, preserving resource attributes and original semantic conventions. If no specific dataset or namespace is provided, the data streams are: `traces-generic.otel-default`, `metrics-generic.otel-default`, and L`logs-generic.otel-default`.
+
+Telemetry is stored in Elastic in OTLP format, preserving resource attributes and original semantic conventions. If no specific dataset or namespace is provided, the data streams are: `traces-generic.otel-default`, `metrics-generic.otel-default`, and `logs-generic.otel-default`.
 
 You don't need to use APM Server when ingesting data through the Managed OTLP Endpoint. The APM integration (`.apm` endpoint) is a legacy ingest path that only supports traces and translates OTLP telemetry to ECS, whereas {{motlp}} natively ingests OTLP data for logs, metrics, and traces.
 
@@ -67,6 +68,10 @@ To retrieve your {{motlp}} endpoint address and an API key, follow these steps:
 % 3. Copy the endpoint URL shown.
 % ## Self-Managed
 % For self-managed environments, you can deploy and expose an OTLP-compatible endpoint using the EDOT Collector as a gateway. Refer to [EDOT deployment docs](https://www.elastic.co/docs/reference/opentelemetry/edot-collector/modes#edot-collector-as-gateway).
+%
+% :::{note}
+% Please reach out to support, and then Engineering can look into increasing it based on the license tier or for experimentation purposes.
+% :::
 
 :::::
 
@@ -176,6 +181,27 @@ When creating a Kubernetes secret, always encode the full string in Base64, incl
 
 ::::::
 
+% ## Rate limiting and throttling
+% 
+% The following rate limits apply to the {{motlp}}:
+% 
+% * n requests per second per API key
+% * m requests per minute per API key
+% 
+% If you exceed these limits, you will receive an HTTP 429 status code.
+%
+% ## Data retention
+%
+% Telemetry is stored in OTel-specific data streams. The separation is implemented by adding an `.otel` suffix to the `data_stream.dataset` for data streams that contain OTel signal data. This allows to have a separate index template for OTel data, such as `logs-*.otel-*`.
+%
+% To configure the data retention for each data stream from the **Streams** screen, refer to [Managed data retention](docs-content://solutions/observability/logs/streams/management/retention.md).
+%
+## Failure store
+
+The {{motlp}} endpoint is designed to be highly available and resilient. However, there are some scenarios where data might be lost or not sent completely. The [Failure store](docs-content://manage-data/data-store/data-streams/failure-store.md) is a mechanism that allows you to recover from these scenarios.
+
+The Failure store is always enabled for {{motlp}} data streams. This prevents ingest pipeline exceptions and conflicts with data stream mappings. Failed documents are stored in a separate index. You can view the failed documents from the **Data Set Quality** page. Refer to [Data set quality](docs-content://solutions/observability/data-set-quality-monitoring.md).
+
 ## Limitations
 
 The following limitations apply when using the {{motlp}}:
@@ -184,3 +210,7 @@ The following limitations apply when using the {{motlp}}:
 * Universal Profiling is not available.
 * Only supports histograms with delta temporality. Cumulative histograms are dropped.
 * Latency distributions based on histogram values have limited precision due to the fixed boundaries of explicit bucket histograms.
+
+## Billing
+
+For more information on billing, refer to [Elastic Cloud pricing](https://www.elastic.co/pricing/serverless-observability).
