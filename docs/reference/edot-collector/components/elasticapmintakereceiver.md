@@ -22,7 +22,7 @@ The receiver takes the NDJSON data sent by [classic APM Agents](docs-content://r
 :::{important}
 The receiver supports the [Elastic Intake v2 protocol](https://github.com/elastic/apm-server/tree/main/docs/spec/v2).
 
-RUM intake and older intake protocols are not supported.
+Real user monitoring (RUM) intake and older intake protocols are not supported.
 :::
 
 ## Get started
