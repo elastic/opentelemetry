@@ -52,9 +52,11 @@ toc:
           - file: edot-collector/config/configure-logs-collection.md
           - file: edot-collector/config/configure-metrics-collection.md
           - file: edot-collector/config/proxy.md
+      - file: edot-collector/components.md
+        children:
+          - file: edot-collector/components/elasticapmintakereceiver.md
       - file: edot-collector/customization.md
         children:
-          - file: edot-collector/components.md
           - file: edot-collector/custom-collector.md
   - file: edot-cloud-forwarder/index.md
     children:
