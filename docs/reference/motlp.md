@@ -66,7 +66,7 @@ To retrieve your {{motlp}} endpoint address and an API key, follow these steps:
 % For self-managed environments, you can deploy and expose an OTLP-compatible endpoint using the EDOT Collector as a gateway. Refer to [EDOT deployment docs](https://www.elastic.co/docs/reference/opentelemetry/edot-collector/modes#edot-collector-as-gateway).
 %
 % :::{note}
-% Please reach out to support and then Engineering can look in to Increasing it based on the License tier or experimentation purposes.
+% Please reach out to support, and then Engineering can look into increasing it based on the license tier or for experimentation purposes.
 % :::
 
 :::::
