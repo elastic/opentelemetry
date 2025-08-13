@@ -26,7 +26,6 @@ EDOT already supports most core observability use cases, but in some scenarios, 
 * **Real user monitoring (RUM):** RUM ingestion and visualizations are not yet available for OTel-native data.
 * **Universal profiling:** This capability is currently only supported in the classic stack.
 * **Existing integrations and dashboards:** Many prebuilt Elastic integrations and dashboards are designed for ECS-formatted data and may not work as expected with OTel-native data without customization.
-* **Avoiding management of an EDOT Collector:** EDOT requires running a Collector (either self-managed or EDOT Collector) as a gateway for certain ingestion patterns. If you prefer a fully managed ingestion path, the classic stack may be more suitable.
 * **Ingest pipelines for structured logs:** {{es}} ingest pipelines cannot directly parse OTel-native data with dotted field names without preprocessing. See [Centralized parsing and processing of data](#centralized-parsing-and-processing-of-data) for workarounds.
 
 ## Centralized parsing and processing of data
