@@ -15,13 +15,9 @@ products:
 
 # Elastic APM intake receiver
 
-The Elastic APM intake receiver is an OpenTelemetry Collector component that receives APM data from Elastic APM Agents. This allows users of classic APM agents to gradually migrate to OpenTelemetry and adapt their instrumentation to the new OTel-based approach.
-
-The receiver takes the NDJSON data sent by [classic APM Agents](docs-content://reference/apm-agents/index.md) and turns it into OTel native data, which is processed by the Elastic APM processor and then exported to Elasticsearch, where it's stored in classic APM data streams.
+The Elastic APM intake receiver is an OpenTelemetry Collector component that receives APM data from Elastic APM Agents. The receiver supports the [Elastic Intake v2 protocol](https://github.com/elastic/apm-server/tree/main/docs/spec/v2) and behaves like APM Server, so that telemetry is stored in the same format and using the same indices while going through the Collector. This allows users of classic APM agents to gradually migrate to OpenTelemetry and adapt their instrumentation to the new OTel-based approach.
 
 :::{important}
-The receiver supports the [Elastic Intake v2 protocol](https://github.com/elastic/apm-server/tree/main/docs/spec/v2).
-
 Real user monitoring (RUM) intake and older intake protocols are not supported.
 :::
 
@@ -56,13 +52,6 @@ receivers:
       enabled: false
 ```
 
-#### Agent environment variables [agent_config_ssl]
-
-The Elastic APM intake receiver supports the following environment variables:
-
-- `ELASTIC_APM_SERVER_URL`: The URL of the Elastic APM server.
-- `ELASTIC_APM_SERVER_CERT`: The path to the server certificate file.
-
 Refer to [OpenTelemetry TLS server configuration](https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/configtls/README.md#server-configuration) for more details.
 
 ### Authentication settings
@@ -92,7 +81,7 @@ receivers:
       enabled: false
 ```
 
-#### Agent environment variables [agent_config_auth]
+### Agent environment variables
 
 The Elastic APM intake receiver supports the following environment variables:
 
