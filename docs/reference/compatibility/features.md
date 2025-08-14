@@ -22,8 +22,8 @@ The following table shows Elastic features and their level of support and compat
 | [Service Maps]                                              | [Compatible]     | [Supported]      |
 | [Distributed Tracing]                                       | [Compatible]     | [Supported]      |
 | [Head-based Sampling (HBS)]                                 | [Compatible]     | [Supported]      |
-| *[Tail-based Sampling (TBS)]*                               | [Compatible]     | [Not supported]  |
-| [Self-managed, OTel Collector-based TBS]                    | [Compatible]     | [Not supported]  |
+| [Tail-based Sampling (TBS)]                                 | [Compatible]^4^  | [Not supported]  |
+| [Self-managed, OTel Collector-based TBS]                    | [Compatible]^4^  | [Not supported]  |
 | TBS managed / hosted in {{ecloud}}                          | [Incompatible]   | [Not supported]  |
 | Runtime metrics                                             | [See language-specific overview](/reference/edot-sdks/index.md) | -                |
 | **Infrastructure Monitoring**                               | [Compatible]     | [Supported]      |
@@ -46,6 +46,8 @@ The following table shows Elastic features and their level of support and compat
 ^2^ Refer to [limitations on Ingest Pipelines](limitations.md#centralized-parsing-and-processing-of-data)
 
 ^3^ Refer to [limitations on metrics ingestion](limitations.md#metrics-data-ingestion)
+
+^4^ While ingesting traces that have been sampled using TBS is technically possible, there are important limitations to consider. Refer to [Tail-based sampling (TBS) limitations](../compatibility/limitations.md#tail-based-sampling-tbs) for more information.
 
 [Incompatible]: nomenclature.md
 [Compatible]: nomenclature.md
