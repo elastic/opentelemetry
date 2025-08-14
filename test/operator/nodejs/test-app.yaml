@@ -17,3 +17,5 @@ spec:
         value: "debug"
       - name: AGENT_HAS_STARTED_IF_YOU_SEE
         value: "@opentelemetry/instrumentation-http Applying instrumentation patch for nodejs core module"
+      - name: OTEL_EXPORTER_OTLP_ENDPOINT
+        value: "http://collector:4318"
