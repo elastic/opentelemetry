@@ -217,7 +217,7 @@ processors:
     - set(attributes["data_stream.dataset"], "aws.vpc-flow-logs") where attributes["aws.vpc.flow.log.version"] != nil
 ```
 
-## Limitationss
+## Limitations
 
 The following limitations apply when using the {{motlp}}:
 
