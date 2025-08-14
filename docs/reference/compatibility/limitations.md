@@ -16,17 +16,18 @@ products:
 
 The Elastic Distributions of OpenTelemetry (EDOT) come with a new way of ingesting data in OTel-native way and format. Elastic is continuously working on providing a great experience with OTel-native data within Elastic solutions, contributing popular Elastic features to the upstream OpenTelemetry projects and aligning concepts with OpenTelemetry.
 
-While EDOT and OTel-native data collection already covers most of the core Observability use cases, the following limitations apply compared to data collection with classic Elastic data collection mechanisms.
+While EDOT and OTel-native data collection already covers most of the core Observability use cases, the following limitations apply compared to data collection with classic Elastic data ingestion components.
 
-## When to use the classic Elastic Stack instead of EDOT
+## When to use the classic Elastic Stack ingestion components instead of EDOT
 
-EDOT already supports most core observability use cases, but in some scenarios, you may prefer to use classic Elastic collection mechanisms, such as Elastic Agent or APM Server:
+EDOT already supports most core observability use cases, but in some scenarios, you may prefer to use classic Elastic ingestion components, such as Elastic Agent, Elastic APM Agent or APM Server:
 
-* **Tail-based sampling (TBS):** Tail-based sampling is required for some tracing use cases. While EDOT can ingest tail-sampled traces from an upstream OTel Collector, it does not provide a managed TBS capability and has limitations on metric accuracy. For more details, refer to [Tail-based sampling limitations](#tail-based-sampling-tbs).
 * **Real user monitoring (RUM):** RUM ingestion and visualizations are not yet available for OTel-native data.
 * **Universal profiling:** This capability is currently only supported in the classic stack.
 * **Existing integrations and dashboards:** Many prebuilt Elastic integrations and dashboards are designed for ECS-formatted data and may not work as expected with OTel-native data without customization.
-* **Ingest pipelines for structured logs:** {{es}} ingest pipelines cannot directly parse OTel-native data with dotted field names without preprocessing. See [Centralized parsing and processing of data](#centralized-parsing-and-processing-of-data) for workarounds.
+* **Ingest pipelines for structuring logs:** {{es}} ingest pipelines cannot directly parse OTel-native data with dotted field names without preprocessing. See [Centralized parsing and processing of data](#centralized-parsing-and-processing-of-data) for workarounds.
+* **Tail-based sampling (TBS):**  
+If you need the full tail-based sampling capabilities of APM Server, use APM Server with an Elasticsearch output. EDOT does not provide managed TBS. You can run TBS in a self-managed EDOT Collector or any upstream OTel Collector and ingest the sampled traces into Elastic with some caveats - refer to [Tail-based sampling limitations](#tail-based-sampling-tbs) for more information.
 
 ## Centralized parsing and processing of data
 
@@ -81,14 +82,14 @@ Runtime metrics can be ingested and used to create custom dashboards. As a tempo
 
 ## Tail-based sampling (TBS)
 
-While it's possible to ingest traces that have been sampled using tail-based sampling (TBS) with an EDOT Collector or an upstream OTel Collector, consider the following limitations:
+If you need the full tail-based sampling capabilities of APM Server, use APM Server with an Elasticsearch output. EDOT does not provide a managed TBS service.
 
-* **Metric accuracy:** The `tailsamplingprocessor` in the Collector does not send sampling probability metadata. The Elastic APM backend cannot reliably extrapolate throughput or count metrics from tail-sampled traces.
-* **Operational complexity:** Tail-based sampling requires buffering spans until a sampling decision can be made. This increases memory, CPU, and disk I/O requirements and must be carefully tuned to avoid dropped traces under load.
- * **No managed TBS in Elastic Cloud:** Elastic Cloud does not currently provide a managed or hosted tail-based sampling service. If you require TBS, you must operate and maintain either an EDOT or an upstream OTel Collector with the `tailsamplingprocessor` yourself.
-* **No APM Server–native TBS for OTel:** TBS implemented in APM Server is not available for OTel-native data. Only head-based sampling is supported natively.
+You can run tail-based sampling in a self-managed EDOT Collector or any upstream OTel Collector and ingest the sampled traces into Elastic, with these caveats:
 
-If accurate aggregated metrics are important for your use case, use head-based sampling or adjust your sampling strategy to provide representative counts.
+* **Metric accuracy:** Counts and rate metrics reflect sampled data, not total volumes. The Elastic APM backend cannot extrapolate totals because the `tailsamplingprocessor` does not send sampling probability metadata.
+* **Service map coverage:** Some edges between services may be missing.
+* **Impact on SLOs and alerts:** SLOs and alerts that depend on request volume can be biased by sampling.
+* **Operational complexity:** You are responsible for reliability, scaling, and tuning.
 
 ## Additional information
 
