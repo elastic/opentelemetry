@@ -193,7 +193,12 @@ For example, if you want to route the {{edot-cf}} logs to custom datasets, you c
 processors:
   transform:
     - set(attributes["data_stream.dataset"], "aws.cloudtrail") where attributes["aws.cloudtrail.event_id"] != nil
-    - set(attributes["data_stream.dataset"], "aws.vpc-flow-logs") where attributes["aws.vpc.flow.log.version"] != nil
+```
+
+You can also set the `OTEL_RESOURCE_ATTRIBUTES` environment variable to set the `data_stream.dataset` attribute for all logs. For example:
+
+```bash
+export OTEL_RESOURCE_ATTRIBUTES="data_stream.dataset=app.orders"
 ```
 
 ## Limitations
