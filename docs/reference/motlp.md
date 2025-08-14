@@ -177,27 +177,6 @@ When creating a Kubernetes secret, always encode the full string in Base64, incl
 
 ::::::
 
-## Rate limiting
-
-Requests to the {{motlp}} are subject to rate limiting. If you send data at a rate that exceeds the defined limits, your requests will be temporarily rejected.
-
-The rate limit is currently set to 15 MiB per second, with a burst limit of 30 MiB per second. As long as your data ingestion rate stays at or below this average, your requests will be accepted.
-
-If send data that exceeds the available rate limit, the {{motlp}} will respond with an HTTP 429 Too Many Requests status code. A log message similar to this will appear in the OpenTelemetry Collector's output:
-
-```json
-{
-  "code": 8,
-  "message": "error exporting items, request to <ingest endpoint> responded with HTTP Status Code 429"
-}
-```
-
-Once your sending rate drops back within the allowed limit, the system will automatically begin accepting requests again.
-
-:::{note}
-If you need to increase the rate limit, reach out to Elastic Support.
-:::
-
 ## Failure store
 
 The {{motlp}} endpoint is designed to be highly available and resilient. However, there are some scenarios where data might be lost or not sent completely. The [Failure store](docs-content://manage-data/data-store/data-streams/failure-store.md) is a mechanism that allows you to recover from these scenarios.
@@ -229,3 +208,24 @@ The following limitations apply when using the {{motlp}}:
 ## Billing
 
 For more information on billing, refer to [Elastic Cloud pricing](https://www.elastic.co/pricing/serverless-observability).
+
+## Rate limiting
+
+Requests to the {{motlp}} are subject to rate limiting. If you send data at a rate that exceeds the defined limits, your requests will be temporarily rejected.
+
+The rate limit is currently set to 15 MiB per second, with a burst limit of 30 MiB per second. As long as your data ingestion rate stays at or below this average, your requests will be accepted.
+
+If send data that exceeds the available rate limit, the {{motlp}} will respond with an HTTP 429 Too Many Requests status code. A log message similar to this will appear in the OpenTelemetry Collector's output:
+
+```json
+{
+  "code": 8,
+  "message": "error exporting items, request to <ingest endpoint> responded with HTTP Status Code 429"
+}
+```
+
+Once your sending rate drops back within the allowed limit, the system will automatically begin accepting requests again.
+
+:::{note}
+If you need to increase the rate limit, reach out to Elastic Support.
+:::
