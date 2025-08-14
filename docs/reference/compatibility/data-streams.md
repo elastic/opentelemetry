@@ -70,16 +70,48 @@ This table highlights key differences between classic Elastic APM data streams a
 
 #### Classic APM:
 
-```
+```yaml
+"@timestamp": "2025-08-14T05:29:43.922Z"
+data_stream:
+  type: logs
+  dataset: apm.app.cart-service
+  namespace: default
+service:
+  name: "cart-service"
+host:
+  ip: ["127.0.0.1", "0.0.0.0"]
+kubernetes:
+  namespace: "ecommerce"
 labels:
+  customer_id: "fc2d1b03-b307-4ae3-a19e-df2804c49fc2"
+numeric_labels:
+  order_id: 4711
   cart_items: 42
   cart_total_amount: 42.0
+message: "Order was successfully created"
+log:
+  level: INFO
 ```
 
 #### EDOT:
 
-```
+```yaml
+"@timestamp": "2025-08-14T05:29:43.922Z"
+data_stream:
+  type: logs
+  dataset: generic.otel
+  namespace: default
+resource:
+  attributes:
+    service.name: "cart-service"
+    host.ip: ["127.0.0.1", "0.0.0.0"]
+    k8s.namespace.name: "ecommerce"
 attributes:
+  customer.id: "fc2d1b03-b307-4ae3-a19e-df2804c49fc2"
+  order.id: 4711
   cart.items: 42
   cart.total_amount: 42.0
+body:
+  text: "Order was successfully created"
+severity_text: INFO
 ```
