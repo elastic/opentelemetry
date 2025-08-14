@@ -41,6 +41,7 @@ toc:
       - file: compatibility/edot-vs-upstream.md
       - file: compatibility/limitations.md
       - file: compatibility/nomenclature.md
+      - file: compatibility/data-streams.md
   - file: edot-collector/index.md
     children:
       - file: edot-collector/download.md
