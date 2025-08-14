@@ -24,7 +24,7 @@ EDOT already supports most core observability use cases, but in some scenarios, 
 
 * **Real user monitoring (RUM):** RUM ingestion and visualizations are not yet available for OTel-native data.
 * **Universal profiling:** This capability is currently only supported in the classic stack.
-* **Existing integrations and dashboards:** Many prebuilt Elastic integrations and dashboards are designed for ECS-formatted data and may not work as expected with OTel-native data without customization.
+* **Existing integrations and dashboards:** Many prebuilt Elastic integrations and dashboards are designed for ECS-formatted data and may not work as expected with the OpenTelemetry semantic conventions without customization.
 * **Ingest pipelines for structuring logs:** {{es}} ingest pipelines cannot directly parse OTel-native data with dotted field names without preprocessing. See [Centralized parsing and processing of data](#centralized-parsing-and-processing-of-data) for workarounds.
 * **Tail-based sampling (TBS):**  
 If you need the full tail-based sampling capabilities of APM Server, use APM Server with an Elasticsearch output. EDOT does not provide managed TBS. You can run TBS in a self-managed EDOT Collector or any upstream OTel Collector and ingest the sampled traces into Elastic with some caveats - refer to [Tail-based sampling limitations](#tail-based-sampling-tbs) for more information.
