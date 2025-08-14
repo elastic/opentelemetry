@@ -177,28 +177,47 @@ When creating a Kubernetes secret, always encode the full string in Base64, incl
 
 ::::::
 
-% ## Rate limiting and throttling
-% 
-% The following rate limits apply to the {{motlp}}:
-% 
-% * n requests per second per API key
-% * m requests per minute per API key
-% 
-% If you exceed these limits, you will receive an HTTP 429 status code.
-%
-% ## Data retention
-%
-% Telemetry is stored in OTel-specific data streams. The separation is implemented by adding an `.otel` suffix to the `data_stream.dataset` for data streams that contain OTel signal data. This allows to have a separate index template for OTel data, such as `logs-*.otel-*`.
-%
-% To configure the data retention for each data stream from the **Streams** screen, refer to [Managed data retention](docs-content://solutions/observability/logs/streams/management/retention.md).
-%
+## Rate limiting
+
+Requests to the {{motlp}} are subject to rate limiting. If you send data at a rate that exceeds the defined limits, your requests will be temporarily rejected.
+
+The rate limit is currently set to 15 MiB per second, with a burst limit of 30 MiB per second. As long as your data ingestion rate stays at or below this average, your requests will be accepted.
+
+If send data that exceeds the available rate limit, the {{motlp}} will respond with an HTTP 429 Too Many Requests status code. A log message similar to this will appear in the OpenTelemetry Collector's output:
+
+```json
+{
+  "code": 8,
+  "message": "error exporting items, request to <ingest endpoint> responded with HTTP Status Code 429"
+}
+```
+
+Once your sending rate drops back within the allowed limit, the system will automatically begin accepting requests again.
+
+:::{note}
+If you need to increase the rate limit, reach out to Elastic Support.
+:::
+
 ## Failure store
 
 The {{motlp}} endpoint is designed to be highly available and resilient. However, there are some scenarios where data might be lost or not sent completely. The [Failure store](docs-content://manage-data/data-store/data-streams/failure-store.md) is a mechanism that allows you to recover from these scenarios.
 
 The Failure store is always enabled for {{motlp}} data streams. This prevents ingest pipeline exceptions and conflicts with data stream mappings. Failed documents are stored in a separate index. You can view the failed documents from the **Data Set Quality** page. Refer to [Data set quality](docs-content://solutions/observability/data-set-quality-monitoring.md).
 
-## Limitations
+## Routing logs to dedicated datasets
+
+You can route logs to dedicated datasets by setting the `data_stream.dataset` attribute to the log record. This attribute is used to route the log to the corresponding dataset.
+
+For example, if you want to route the {{edot-cf}} logs to custom datasets, you can add the following attributes to the log records:
+
+```yaml
+processors:
+  transform:
+    - set(attributes["data_stream.dataset"], "aws.cloudtrail") where attributes["aws.cloudtrail.event_id"] != nil
+    - set(attributes["data_stream.dataset"], "aws.vpc-flow-logs") where attributes["aws.vpc.flow.log.version"] != nil
+```
+
+## Limitationss
 
 The following limitations apply when using the {{motlp}}:
 
