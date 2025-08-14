@@ -22,4 +22,5 @@ The following pages describe the compatibility and support levels for different 
 - [EDOT compared to upstream](edot-vs-upstream.md)
 - [Limitations](limitations.md)
 - [Nomenclature](nomenclature.md)
+- [Data streams comparison](data-streams.md)
 
