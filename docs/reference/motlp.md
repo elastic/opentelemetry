@@ -177,12 +177,6 @@ When creating a Kubernetes secret, always encode the full string in Base64, incl
 
 ::::::
 
-## Failure store
-
-The {{motlp}} endpoint is designed to be highly available and resilient. However, there are some scenarios where data might be lost or not sent completely. The [Failure store](docs-content://manage-data/data-store/data-streams/failure-store.md) is a mechanism that allows you to recover from these scenarios.
-
-The Failure store is always enabled for {{motlp}} data streams. This prevents ingest pipeline exceptions and conflicts with data stream mappings. Failed documents are stored in a separate index. You can view the failed documents from the **Data Set Quality** page. Refer to [Data set quality](docs-content://solutions/observability/data-set-quality-monitoring.md).
-
 ## Routing logs to dedicated datasets
 
 You can route logs to dedicated datasets by setting the `data_stream.dataset` attribute to the log record. This attribute is used to route the log to the corresponding dataset.
@@ -192,7 +186,8 @@ For example, if you want to route the {{edot-cf}} logs to custom datasets, you c
 ```yaml
 processors:
   transform:
-    - set(attributes["data_stream.dataset"], "aws.cloudtrail") where attributes["aws.cloudtrail.event_id"] != nil
+    log_statements:
+      - statement: set(attributes["data_stream.dataset"], "aws.cloudtrail") where attributes["aws.cloudtrail.event_id"] != nil
 ```
 
 You can also set the `OTEL_RESOURCE_ATTRIBUTES` environment variable to set the `data_stream.dataset` attribute for all logs. For example:
@@ -200,6 +195,12 @@ You can also set the `OTEL_RESOURCE_ATTRIBUTES` environment variable to set the 
 ```bash
 export OTEL_RESOURCE_ATTRIBUTES="data_stream.dataset=app.orders"
 ```
+
+## Failure store
+
+The {{motlp}} endpoint is designed to be highly available and resilient. However, there are some scenarios where data might be lost or not sent completely. The [Failure store](docs-content://manage-data/data-store/data-streams/failure-store.md) is a mechanism that allows you to recover from these scenarios.
+
+The Failure store is always enabled for {{motlp}} data streams. This prevents ingest pipeline exceptions and conflicts with data stream mappings. Failed documents are stored in a separate index. You can view the failed documents from the **Data Set Quality** page. Refer to [Data set quality](docs-content://solutions/observability/data-set-quality-monitoring.md).
 
 ## Limitations
 
