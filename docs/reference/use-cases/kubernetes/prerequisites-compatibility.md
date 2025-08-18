@@ -27,13 +27,16 @@ Before setting up observability for Kubernetes, make sure you have the following
 
 The minimum supported version of the Elastic Stack for OpenTelemetry-based monitoring on Kubernetes is `8.16.0`. Different Elastic Stack releases support specific versions of the [kube-stack Helm chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-kube-stack).
 
-The following is the current list of supported versions:
+You can download the values file for a specific version from the following URL:
 
-| Stack Version | Helm chart Version |    Values file     |
-|---------------|--------------------|--------------------|
-| Serverless    | 0.3.3              | [values.yaml](https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{version.edot_collector}}/deploy/helm/edot-collector/kube-stack/managed_otlp/values.yaml)  |
-| 8.16.0        | 0.3.3              | [values.yaml](https://raw.githubusercontent.com/elastic/opentelemetry/refs/heads/8.16/resources/kubernetes/operator/helm/values.yaml)  |
-| 8.17.0        | 0.3.3              | [values.yaml](https://raw.githubusercontent.com/elastic/elastic-agent/refs/heads/8.17/deploy/helm/edot-collector/kube-stack/values.yaml) |
-| 9.0.1         | 0.3.3              | [values.yaml](https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v9.0.1/deploy/helm/edot-collector/kube-stack/managed_otlp/values.yaml) |
+```
+https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v<STACK_VERSION>/deploy/helm/edot-collector/kube-stack/values.yaml
+```
 
+Where `<STACK_VERSION>` is the version of the Elastic Stack you are using, for example `9.1.2`.
+
+For Serverless, use the [latest version of the values file](https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{version.edot_collector}}/deploy/helm/edot-collector/kube-stack/managed_otlp/values.yaml). For version 8.16.0, use [this chart](https://raw.githubusercontent.com/elastic/opentelemetry/refs/heads/8.16/resources/kubernetes/operator/helm/values.yaml).
+
+:::{important}
 When [installing the release](/reference/use-cases/kubernetes/deployment.md), make sure you use the right `--version` and `-f <values-file>` parameters.
+:::
