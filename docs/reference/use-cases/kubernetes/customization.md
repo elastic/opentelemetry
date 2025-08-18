@@ -53,7 +53,7 @@ For example:
 
 ```bash subs=true
 helm upgrade --install --namespace opentelemetry-operator-system opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack \
---values https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{version.edot_collector}}/deploy/helm/edot-collector/kube-stack/values.yaml --version 0.3.3 \
+--values https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{version.edot_collector}}/deploy/helm/edot-collector/kube-stack/values.yaml --version {{kube-stack-version}} \
 --set opentelemetry-operator.admissionWebhooks.certManager.enabled=true --set opentelemetry-operator.admissionWebhooks.autoGenerateCert=null
 ```
 
@@ -85,5 +85,5 @@ Keep an updated copy of the `values.yaml` file by following these steps:
 
       ```bash
       helm upgrade --install --namespace opentelemetry-operator-system opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack \
-      --values ./resources/kubernetes/operator/helm/values_cert-manager.yaml --version 0.3.3
+      --values ./resources/kubernetes/operator/helm/values_cert-manager.yaml --version {{kube-stack-version}}
       ```

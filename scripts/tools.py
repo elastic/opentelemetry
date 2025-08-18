@@ -1,3 +1,18 @@
+"""
+OpenTelemetry Documentation Generation Tools
+
+This module provides tools for automatically generating and updating OpenTelemetry documentation
+based on external data sources. It includes functionality for:
+
+- Component table generation from Elastic Agent go.mod files
+- SDK feature table generation from YAML configuration
+- OCB (OpenTelemetry Collector Builder) file generation
+- Kube-stack version extraction and docset.yml updates
+
+The scripts fetch data from the Elastic Agent repository and generate documentation
+using Jinja2 templates.
+"""
+
 from jinja2 import Environment, FileSystemLoader
 import urllib.request
 from collections import defaultdict
@@ -101,8 +116,10 @@ def get_collector_version(filePath):
     for line in lines:
         if line.strip().startswith('edot-collector-version:'):
             return line.split(':', 1)[1].strip()
-            
-    return 'main'
+    
+    # If no specific version is found, use a default version that we know works
+    # This should match the version used in the Elastic Agent repository
+    return '9.1.2'
     
 def get_otel_components(url, version='main'):
     elastic_agent_go_mod = fetch_url_content(url)
@@ -251,7 +268,18 @@ def check_markdown():
     
     features_data = get_features_data(SDK_FEATURES_YAML)
     features = check_markdown_generation(EDOT_SDKS_DIR, features_data, TEMPLATE_SDK_FEATURES, FEATURES_TAG)
-    return tables and ocb and features
+    
+    # Check kube-stack version
+    kube_stack_version = get_kube_stack_version(col_version)
+    if kube_stack_version:
+        print(f"Found kube-stack version: {kube_stack_version}")
+        # Note: We don't check if it's up to date here, just that we can fetch it
+        kube_stack_ok = True
+    else:
+        print("Warning: Could not fetch kube-stack version")
+        kube_stack_ok = False
+    
+    return tables and ocb and features and kube_stack_ok
 
 def generate_markdown():
     col_version = get_collector_version('../docs/docset.yml')
@@ -283,3 +311,73 @@ def generate_markdown():
     
     features_data = get_features_data(SDK_FEATURES_YAML)
     render_components_into_file(EDOT_SDKS_DIR, features_data, TEMPLATE_SDK_FEATURES, FEATURES_TAG)
+    
+    # Update kube-stack version in docset.yml
+    kube_stack_version = get_kube_stack_version(col_version)
+    if kube_stack_version:
+        print(f"Updating kube-stack version to: {kube_stack_version}")
+        update_docset_kube_stack_version(kube_stack_version)
+    else:
+        print("Warning: Could not fetch kube-stack version, skipping update")
+
+def get_kube_stack_version(version='main'):
+    """Extract KubeStackChartVersion from elastic-agent repository"""
+    # Try different URL formats for the k8s.go file
+    # First try with the version as-is (in case it already has 'v' prefix)
+    url = f'https://raw.githubusercontent.com/elastic/elastic-agent/{version}/testing/integration/k8s/k8s.go'
+    print(f"Trying k8s.go URL: {url}")
+    content = fetch_url_content(url)
+    
+    # If first attempt fails and version doesn't start with 'v', try with 'v' prefix
+    if content is None and not version.startswith('v') and version != 'main':
+        url = f'https://raw.githubusercontent.com/elastic/elastic-agent/v{version}/testing/integration/k8s/k8s.go'
+        print(f"Retrying k8s.go with URL: {url}")
+        content = fetch_url_content(url)
+    
+    # If that fails too, try with main branch
+    if content is None:
+        url = 'https://raw.githubusercontent.com/elastic/elastic-agent/main/testing/integration/k8s/k8s.go'
+        print(f"Falling back to main branch for k8s.go: {url}")
+        content = fetch_url_content(url)
+    
+    if content is None:
+        print(f"Could not fetch k8s.go from any URL")
+        return None
+        
+    # Look for the KubeStackChartVersion line
+    lines = content.splitlines()
+    for line in lines:
+        if 'KubeStackChartVersion' in line and '=' in line:
+            # Extract the version from the line like: KubeStackChartVersion = "0.6.3"
+            match = re.search(r'KubeStackChartVersion\s*=\s*"([^"]+)"', line)
+            if match:
+                return match.group(1)
+    
+    print("Could not find KubeStackChartVersion in k8s.go")
+    return None
+
+def update_docset_kube_stack_version(version):
+    """Update the kube-stack-version substitution in docset.yml"""
+    docset_path = '../docs/docset.yml'
+    
+    try:
+        with open(docset_path, 'r', encoding='utf-8') as file:
+            content = file.read()
+        
+        # Replace the kube-stack-version line
+        pattern = r'(kube-stack-version:\s*)[0-9]+\.[0-9]+\.[0-9]+'
+        replacement = f'\\g<1>{version}'
+        new_content = re.sub(pattern, replacement, content)
+        
+        if new_content != content:
+            with open(docset_path, 'w', encoding='utf-8') as file:
+                file.write(new_content)
+            print(f"Updated kube-stack-version to {version} in docset.yml")
+            return True
+        else:
+            print(f"kube-stack-version already up to date: {version}")
+            return False
+            
+    except Exception as e:
+        print(f"Error updating docset.yml: {e}")
+        return False
