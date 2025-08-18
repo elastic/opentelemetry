@@ -32,10 +32,6 @@ You also need to retrieve your OTLP endpoint address and an API key.
 :::{include} ../../_snippets/serverless-endpoint-api.md
 :::
 
-::::{warning}
-> The previous instructions use a {{motlp}}. This feature is in **Technical Preview** and shouldn't be used in production.
-::::
-
 ## Quickstart guides
 
 Select the quickstart guide for your environment from the following list:
