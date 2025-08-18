@@ -27,7 +27,7 @@ Before setting up observability for Kubernetes, make sure you have the following
 
 The minimum supported version of the Elastic Stack for OpenTelemetry-based monitoring on Kubernetes is `8.16.0`. Different Elastic Stack releases support specific versions of the [kube-stack Helm chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-kube-stack).
 
-You can download the values file for a specific version from the following URL:
+You can download the values file for a specific {{stack}} version from the following URL:
 
 ```
 https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v<STACK_VERSION>/deploy/helm/edot-collector/kube-stack/values.yaml
@@ -39,4 +39,6 @@ For Serverless, use the [latest version of the values file](https://raw.githubus
 
 :::{important}
 When [installing the release](/reference/use-cases/kubernetes/deployment.md), make sure you use the right `--version` and `-f <values-file>` parameters.
+
+The latest Helm chart version is {{kube-stack-version}}.
 :::

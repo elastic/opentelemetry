@@ -64,7 +64,7 @@ Install the OpenTelemetry Operator using the `kube-stack` Helm chart with the pr
 helm install opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack \
 --namespace opentelemetry-operator-system \
 --values 'https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{version.edot_collector}}/deploy/helm/edot-collector/kube-stack/values.yaml' \
---version '0.3.9'
+--version '{{kube-stack-version}}'
 ```
 
 ::::

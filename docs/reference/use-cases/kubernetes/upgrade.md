@@ -27,7 +27,7 @@ helm search repo open-telemetry/opentelemetry-kube-stack --versions # list avail
 
 helm upgrade --namespace opentelemetry-operator-system opentelemetry-kube-stack open-telemetry/opentelemetry-kube-stack \
 --values 'https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v{{version.edot_collector}}/deploy/helm/edot-collector/kube-stack/values.yaml' \
---version 0.3.3
+--version {{kube-stack-version}}
 ```
 
 If [cert-manager integration](/reference/use-cases/kubernetes/customization.md#cert-manager-integrated-installation) is disabled, Helm generates a new self-signed TLS certificate with every update, even if there are no actual changes to apply.
