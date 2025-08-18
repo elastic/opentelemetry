@@ -72,6 +72,7 @@ The 🔹 symbol denotes settings with a default value or behavior that differs b
 | `OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE` 🔹 | [(EDOT Ref)](#otel_exporter_otlp_metrics_temporality_preference-details) The metrics exporter's default aggregation `temporality`. The default value is `delta`. The upstream OTel default is `cumulative`. |
 | | |
 | `OTEL_SEMCONV_STABILITY_OPT_IN` 🔹 | [(EDOT Ref)](#otel_semconv_stability_opt_in-details) Control which HTTP semantic conventions are used by `@opentelemetry/instrumentation-http`. The default value is `http`. The upstream OTel default is an empty value. |
+| `ELASTIC_OTEL_CONTEXT_PROPAGATION_ONLY` 🔹 | [(EDOT Ref)](#elastic_otel_context_propagation_only-details) Set to `true` to enable trace-context propagation in outgoing requests and log correlation, but disable the sending of spans. |
 | | |
 | `OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT` | [(EDOT Ref)](#otel_instrumentation_genai_capture_message_content-details) A boolean to control whether message content should be included in GenAI-related telemetry. |
 | | |
@@ -118,7 +119,7 @@ The following settings are deprecated:
 
 ```{applies_to}
 serverless: unavailable
-stack: preview 9.1 
+stack: preview 9.1
 product:
   edot_node: preview 1.2.0
 ```
@@ -144,6 +145,9 @@ You can modify the following settings for EDOT Node.js through APM Agent Central
 | Logging level | `logging_level` | Dynamic |
 | Turn off instrumentations | `deactivate_instrumentations` | Dynamic |
 | Turn off all instrumentations | `deactivate_all_instrumentations` | Dynamic |
+| Send traces | `send_traces` | Dynamic {applies_to}`product: preview 1.3.0` |
+| Send metrics | `send_metrics` | Dynamic {applies_to}`product: preview 1.3.0` |
+| Send logs | `send_logs` | Dynamic {applies_to}`product: preview 1.3.0` |
 
 Dynamic settings can be changed without having to restart the application.
 
@@ -232,6 +236,18 @@ For Node.js usage, the following instrumentations produce telemetry using HTTP s
 
 EDOT Node.js differs from current upstream OTel JS in that it *defaults `OTEL_SEMCONV_STABILITY_OPT_IN` to `http`*. This means that, by default, all HTTP-related telemetry from EDOT Node.js will use the newer, stable HTTP semantic conventions. (This difference from upstream is expected to be temporary, as upstream `@opentelemetry/instrumentation-http` switches to producing only stable HTTP semantic conventions after its transition period.)
 
+### `ELASTIC_OTEL_CONTEXT_PROPAGATION_ONLY` details [elastic_otel_context_propagation_only-details]
+
+```{applies_to}
+product:
+  edot_node: preview 1.3.0
+```
+
+Set `ELASTIC_OTEL_CONTEXT_PROPAGATION_ONLY` to `true` to enable trace-context propagation in outgoing requests and log correlation, but disable the sending of spans.
+Setting `OTEL_TRACES_EXPORTER=none` will "win" over this setting: trace-context propagation will be disabled.
+
+See the [migration guide](#./migration#contextpropagationonly) for details on how this relates to the similar `contextPropagationOnly` setting from the non-OTel Elastic Node.js APM agent.
+
 ### `OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT` details [otel_instrumentation_genai_capture_message_content-details]
 
 Set `OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT` to `true` to
@@ -239,7 +255,7 @@ enable capture of content data, such as prompt and completion content, in GenAI 
 
 The `OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT` boolean environment variable is a convention established by the OpenTelemetry GenAI SIG. It is referenced in <https://opentelemetry.io/blog/2024/otel-generative-ai/>.
 
-### ``OTEL_LOGS_EXPORTER` details [otel_logs_exporter-details]
+### `OTEL_LOGS_EXPORTER` details [otel_logs_exporter-details]
 
 To prevent logs from being exported, set `OTEL_LOGS_EXPORTER` to `none`. However, application logs might still be gathered and exported by the Collector through the `filelog` receiver.
 
