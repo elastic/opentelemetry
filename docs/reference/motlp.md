@@ -40,7 +40,6 @@ You don't need to use APM Server when ingesting data through the Managed OTLP En
 ## Send data to Elastic
 
 To send data to Elastic through the {{motlp}}, follow the [Send data to the Elastic Cloud Managed OTLP Endpoint](docs-content:///solutions/observability/get-started/quickstart-elastic-cloud-otel-endpoint.md) quickstart.
-]
 
 ## Routing logs to dedicated datasets
 
@@ -84,7 +83,7 @@ For more information on billing, refer to [Elastic Cloud pricing](https://www.el
 
 Requests to the {{motlp}} are subject to rate limiting. If you send data at a rate that exceeds the defined limits, your requests will be temporarily rejected.
 
-The rate limit is currently set to 15 MiB per second, with a burst limit of 30 MiB per second. As long as your data ingestion rate stays at or below this average, your requests will be accepted.
+The rate limit is currently set to 15 MB/s per second, with a burst limit of 30 MB/s per second. As long as your data ingestion rate stays at or below this average, your requests will be accepted.
 
 If send data that exceeds the available rate limit, the {{motlp}} will respond with an HTTP 429 Too Many Requests status code. A log message similar to this will appear in the OpenTelemetry Collector's output:
 
