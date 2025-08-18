@@ -246,7 +246,7 @@ product:
 Set `ELASTIC_OTEL_CONTEXT_PROPAGATION_ONLY` to `true` to enable trace-context propagation in outgoing requests and log correlation, but disable the sending of spans.
 Setting `OTEL_TRACES_EXPORTER=none` will "win" over this setting: trace-context propagation will be disabled.
 
-See the [migration guide](#./migration#contextpropagationonly) for details on how this relates to the similar `contextPropagationOnly` setting from the non-OTel Elastic Node.js APM agent.
+See the [migration guide](/reference/edot-sdks/nodejs/migration.md#contextpropagationonly) for details on how this relates to the similar `contextPropagationOnly` setting from the non-OTel Elastic Node.js APM agent.
 
 ### `OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT` details [otel_instrumentation_genai_capture_message_content-details]
 
