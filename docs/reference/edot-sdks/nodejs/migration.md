@@ -148,16 +148,15 @@ The following table shows the equivalent values of log levels between `elastic-a
 
 ### `contextPropagationOnly`
 
-The equivalent of the Elastic APM Node.js agent [`contextPropagationOnly`](apm-agent-nodejs://reference/configuration.md#context-propagation-only) option can be accomplished with the following EDOT Node.js settings.
+The equivalent of the Elastic APM Node.js agent [`contextPropagationOnly`](apm-agent-nodejs://reference/configuration.md#context-propagation-only) option can be accomplished with the following EDOT Node.js settings:
 
-- [`ELASTIC_OTEL_CONTEXT_PROPAGATION_ONLY=true`](/reference/edot-sdks/nodejs/configuration.md#elastic_otel_context_propagation_only-details) to configure trace-context propagation, but disable sending spans and the overhead from doing so. Note that using `OTEL_TRACES_EXPORTER=none` will break this: there will be no context-propagation.
-  The `ELASTIC_OTEL_CONTEXT_PROPAGATION_ONLY` EDOT Node.js setting only impacts *tracing*, as opposed to the APM agent `contextPropagationOnly` which impacts both tracing and *metrics*.
-- If you would also like to disable metrics sending and collection overhead:
-    - [`OTEL_METRICS_EXPORTER=none`](https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#exporter-selection) to disable the sending of any metrics
-    - [`ELASTIC_OTEL_HOST_METRICS_DISABLED=true`](/reference/edot-sdks/nodejs/configuration.md#elastic_otel_host_metrics_disabled-details) to disable any overhead from collection by the `@opentelemetry/host-metrics` package.
-    - [`OTEL_NODE_DISABLED_INSTRUMENTATIONS=runtime-node`](/reference/edot-sdks/nodejs/configuration.md#otel_node_disabledenabled_instrumentations-details) to disable collection overhead from the `@opentelemetry/instrumentation-runtime-node` instrumentation
+- [`ELASTIC_OTEL_CONTEXT_PROPAGATION_ONLY=true`](/reference/edot-sdks/nodejs/configuration.md#elastic_otel_context_propagation_only-details) to configure trace-context propagation. This turns off sending spans and the overhead from doing so. Note that using `OTEL_TRACES_EXPORTER=none` turns off context-propagation. The `ELASTIC_OTEL_CONTEXT_PROPAGATION_ONLY` EDOT Node.js setting only impacts tracing, as opposed to the APM agent `contextPropagationOnly` which impacts both tracing and metric collection.
+- To turn off metrics sending and collection overhead, use the following settings:
+    - [`OTEL_METRICS_EXPORTER=none`](https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#exporter-selection) to turn off the sending of any metrics.
+    - [`ELASTIC_OTEL_HOST_METRICS_DISABLED=true`](/reference/edot-sdks/nodejs/configuration.md#elastic_otel_host_metrics_disabled-details) to remove the overhead from metrics collection by the `@opentelemetry/host-metrics` package.
+    - [`OTEL_NODE_DISABLED_INSTRUMENTATIONS=runtime-node`](/reference/edot-sdks/nodejs/configuration.md#otel_node_disabledenabled_instrumentations-details) to remove metrics collection overhead from the `@opentelemetry/instrumentation-runtime-node` instrumentation
 
-Altogether:
+For example:
 
 ```
 ELASTIC_OTEL_CONTEXT_PROPAGATION_ONLY=true

@@ -72,7 +72,7 @@ The 🔹 symbol denotes settings with a default value or behavior that differs b
 | `OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE` 🔹 | [(EDOT Ref)](#otel_exporter_otlp_metrics_temporality_preference-details) The metrics exporter's default aggregation `temporality`. The default value is `delta`. The upstream OTel default is `cumulative`. |
 | | |
 | `OTEL_SEMCONV_STABILITY_OPT_IN` 🔹 | [(EDOT Ref)](#otel_semconv_stability_opt_in-details) Control which HTTP semantic conventions are used by `@opentelemetry/instrumentation-http`. The default value is `http`. The upstream OTel default is an empty value. |
-| `ELASTIC_OTEL_CONTEXT_PROPAGATION_ONLY` 🔹 | [(EDOT Ref)](#elastic_otel_context_propagation_only-details) Set to `true` to enable trace-context propagation in outgoing requests and log correlation, but disable the sending of spans. |
+| `ELASTIC_OTEL_CONTEXT_PROPAGATION_ONLY` 🔹 | [(EDOT Ref)](#elastic_otel_context_propagation_only-details) Set to `true` to turn on trace-context propagation in outgoing requests and log correlation. This turns off the sending of spans. |
 | | |
 | `OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT` | [(EDOT Ref)](#otel_instrumentation_genai_capture_message_content-details) A boolean to control whether message content should be included in GenAI-related telemetry. |
 | | |
@@ -243,10 +243,9 @@ product:
   edot_node: preview 1.3.0
 ```
 
-Set `ELASTIC_OTEL_CONTEXT_PROPAGATION_ONLY` to `true` to enable trace-context propagation in outgoing requests and log correlation, but disable the sending of spans.
-Setting `OTEL_TRACES_EXPORTER=none` will "win" over this setting: trace-context propagation will be disabled.
+Set the `ELASTIC_OTEL_CONTEXT_PROPAGATION_ONLY` environment variable to `true` to turn on trace-context propagation in outgoing requests and log correlation. This turns off the sending of spans. Setting `OTEL_TRACES_EXPORTER` to `none` overrides this setting, deactivating trace-context propagation.
 
-See the [migration guide](/reference/edot-sdks/nodejs/migration.md#contextpropagationonly) for details on how this relates to the similar `contextPropagationOnly` setting from the non-OTel Elastic Node.js APM agent.
+Refer to the [migration guide](/reference/edot-sdks/nodejs/migration.md#contextpropagationonly) for details on how this relates to the similar `contextPropagationOnly` setting from the non-OTel Elastic Node.js APM agent.
 
 ### `OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT` details [otel_instrumentation_genai_capture_message_content-details]
 
