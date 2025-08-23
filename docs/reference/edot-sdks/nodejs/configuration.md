@@ -239,7 +239,7 @@ enable capture of content data, such as prompt and completion content, in GenAI 
 
 The `OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT` boolean environment variable is a convention established by the OpenTelemetry GenAI SIG. It is referenced in <https://opentelemetry.io/blog/2024/otel-generative-ai/>.
 
-### ``OTEL_LOGS_EXPORTER` details [otel_logs_exporter-details]
+### `OTEL_LOGS_EXPORTER` details [otel_logs_exporter-details]
 
 To prevent logs from being exported, set `OTEL_LOGS_EXPORTER` to `none`. However, application logs might still be gathered and exported by the Collector through the `filelog` receiver.
 
