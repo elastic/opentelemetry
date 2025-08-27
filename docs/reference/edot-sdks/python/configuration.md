@@ -60,10 +60,10 @@ To deactivate central configuration, remove the `ELASTIC_OTEL_OPAMP_ENDPOINT` en
 
 You can modify the following settings for EDOT Python through APM Agent Central Configuration:
 
-| Settings      | Description                                  | Type    | Version |
+| Settings      | Description                                  | Type    | Versions |
 |---------------|----------------------------------------------|---------|---------|
-| Logging level | Configure EDOT Python agent logging level.   | Dynamic | {applies_to}`stack: preview 9.1, product: edot_python 1.4.0` |
-| Sampling rate | Configure EDOT Python tracing sampling rate. | Dynamic | {applies_to}`stack: preview 9.2, product: edot_python 1.7.0`       |
+| Logging level | Configure EDOT Python agent logging level.   | Dynamic | {applies_to}`stack: preview 9.1` <br> {applies_to}`edot_python: preview 1.4.0` |
+| Sampling rate | Configure EDOT Python tracing sampling rate. | Dynamic | {applies_to}`stack: preview 9.2` <br> {applies_to}`edot_python: preview 1.7.0` |
 
 Dynamic settings can be changed without having to restart the application.
 
