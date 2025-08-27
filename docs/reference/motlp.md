@@ -3,7 +3,7 @@ navigation_title: Managed OTLP Endpoint
 description: Reference documentation for the Elastic Cloud Managed OTLP Endpoint.
 applies_to:
   serverless:
-    observability: preview
+    observability: 
 products:
   - id: cloud-serverless
   - id: observability
