@@ -109,12 +109,12 @@ The following libraries are currently missing an OpenTelemetry equivalent:
 - Azure storage and Azure queue
 - `aiobotocore`
 - `aiomysql`
-- `aiopg`
 - `aioredis`
 - `Graphene`
 - `httplib2`
 - `pylibmc`
 - `pyodbc`
+- `python-memcached`
 - `Sanic`
 - `zlib`
 
