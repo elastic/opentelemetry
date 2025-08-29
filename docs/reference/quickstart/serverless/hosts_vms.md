@@ -110,7 +110,7 @@ The Collector opens ports `4317` and `4318` to receive application data from loc
 
 :::::{step} Install the content pack
 
-Install the **[System OpenTelemetry Assets](integration-docs://reference/system_otel.md)** integration in {{kib}}. Select **Add integration only** to skip the agent installation, as only the integration assets are required. This ensures that you will be able to see your data in Elastic Observability.
+Install the **[System OpenTelemetry Assets](integration-docs://reference/system_otel.md)** integration in {{kib}}.
 
 :::::
 

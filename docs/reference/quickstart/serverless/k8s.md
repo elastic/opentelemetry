@@ -82,7 +82,7 @@ For languages where auto-instrumentation is not available, manually instrument y
 
 ::::{step} Install the content packs
 
-Install the **[Kubernetes OpenTelemetry Assets](integration-docs://reference/kubernetes_otel.md)** and **[System OpenTelemetry Assets](integration-docs://reference/system_otel.md)** integrations in {{kib}}. Select **Add integration only** to skip the agent installation, as only the integration assets are required. This ensures that you will be able to see your data in Elastic Observability.
+Install the **[Kubernetes OpenTelemetry Assets](integration-docs://reference/kubernetes_otel.md)** and **[System OpenTelemetry Assets](integration-docs://reference/system_otel.md)** integrations in {{kib}}.
 
 ::::
 :::::
