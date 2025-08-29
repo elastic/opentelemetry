@@ -114,12 +114,6 @@ Install the **[System OpenTelemetry Assets](integration-docs://reference/system_
 
 :::::
 
-:::::{step} Check the prerequisites
-
-- The **[System OpenTelemetry Assets](integration-docs://reference/system_otel.md)** integration is installed in {{kib}}. Select **Add integration only** to skip the agent installation, as only the integration assets are required.
-
-:::::
-
 :::::{step} (Optional) Instrument your applications
 
 To collect telemetry from applications and use the EDOT Collector as a gateway,
