@@ -80,6 +80,12 @@ The OpenTelemetry Operator automatically provides the OTLP endpoint configuratio
 For languages where auto-instrumentation is not available, manually instrument your application. See the [Setup section in the corresponding SDK](/reference/edot-sdks/index.md).
 ::::
 
+::::{step} Explore your data
+
+Go to {{kib}} and select **Dashboards** to explore your newly collected data.
+
+::::
+
 :::::
 
 ## Troubleshooting

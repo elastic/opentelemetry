@@ -83,7 +83,7 @@ $content | Set-Content .\otel.yml
 ::::
 :::::
 
-:::::{step}  Run the EDOT Collector
+:::::{step} Run the EDOT Collector
 
 Run the following command to run the EDOT Collector.
 
@@ -122,6 +122,11 @@ instrument your target applications following the setup instructions:
 - [Python](/reference/edot-sdks/python/setup/index.md)
 
 Configure your SDKs to send the data to the local EDOT Collector using OTLP/gRPC (`http://localhost:4317`) or OTLP/HTTP (`http://localhost:4318`).
+:::::
+:::::{step} Explore your data
+
+Go to {{kib}} and select **Dashboards** to explore your newly collected data.
+
 :::::
 ::::::
 
