@@ -32,7 +32,7 @@ Follow these steps to deploy the EDOT Collector and EDOT OTel SDKs in Docker.
 
 Make sure the following requirements are present:
 
-- The **Kubernetes OpenTelemetry Assets** integration is installed in {{kib}}.
+- The **[Kubernetes OpenTelemetry Assets](integration-docs://reference/kubernetes_otel.md)** integration is installed in {{kib}}.
 - The **[System OpenTelemetry Assets](integration-docs://reference/system_otel.md)** integration is installed in {{kib}}. Select **Add integration only** to skip the agent installation, as only the integration assets are required.
 
 ::::
