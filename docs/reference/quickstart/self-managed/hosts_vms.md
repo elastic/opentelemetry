@@ -105,12 +105,6 @@ sudo ./otelcol --config otel.yml
 ::::
 :::::
 
-:::::{step} Install the content pack
-
-Install the **[System OpenTelemetry Assets](integration-docs://reference/system_otel.md)** integration in {{kib}}.
-
-:::::
-
 :::::{step} (Optional) Instrument your applications
 
 To collect telemetry from applications and use the EDOT Collector as a gateway,

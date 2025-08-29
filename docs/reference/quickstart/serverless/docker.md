@@ -88,19 +88,13 @@ services:
 
 ::::
 
-::::{step}  Start the Collector
+::::{step} Start the Collector
 
 Start the collector by running:
 
 ```bash
 docker compose up -d
 ```
-
-::::
-
-::::{step} Install the content packs
-
-Install the **[System OpenTelemetry Assets](integration-docs://reference/system_otel.md)** integration and the **[Docker OpenTelemetry Assets](integration-docs://reference/docker_otel.md)** integration in {{kib}}.
 
 ::::
 

@@ -92,9 +92,9 @@ docker compose up -d
 ```
 ::::
 
-::::{step} Install the content packs
+::::{step} Install the content pack
 
-Install the **[System OpenTelemetry Assets](integration-docs://reference/system_otel.md)** integration and the **[Docker OpenTelemetry Assets](integration-docs://reference/docker_otel.md)** integration in {{kib}}.
+Install the **[Docker OpenTelemetry Assets](integration-docs://reference/docker_otel.md)** integration in {{kib}}.
 
 ::::
 

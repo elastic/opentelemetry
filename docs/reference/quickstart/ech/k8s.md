@@ -82,11 +82,6 @@ Restart your deployment to ensure the annotations and auto-instrumentations are 
 For languages where auto-instrumentation is not available, you need to manually instrument your application. See the [Setup section for the corresponding SDK](/reference/edot-sdks/index.md).
 ::::
 
-::::{step} Install the content packs
-
-Install the **[Kubernetes OpenTelemetry Assets](integration-docs://reference/kubernetes_otel.md)** and **[System OpenTelemetry Assets](integration-docs://reference/system_otel.md)** integrations in {{kib}}.
-
-::::
 :::::
 
 ## Troubleshooting

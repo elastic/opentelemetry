@@ -108,12 +108,6 @@ By default, the Collector opens ports `4317` and `4318` to receive application d
 
 :::::
 
-:::::{step} Install the content pack
-
-Install the **[System OpenTelemetry Assets](integration-docs://reference/system_otel.md)** integration in {{kib}}.
-
-:::::
-
 :::::{step} (Optional) Instrument your applications
 
 To collect telemetry from applications and use the EDOT Collector as a gateway,

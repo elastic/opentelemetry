@@ -80,11 +80,6 @@ The OpenTelemetry Operator automatically provides the OTLP endpoint configuratio
 For languages where auto-instrumentation is not available, manually instrument your application. See the [Setup section in the corresponding SDK](/reference/edot-sdks/index.md).
 ::::
 
-::::{step} Install the content packs
-
-Install the **[Kubernetes OpenTelemetry Assets](integration-docs://reference/kubernetes_otel.md)** and **[System OpenTelemetry Assets](integration-docs://reference/system_otel.md)** integrations in {{kib}}.
-
-::::
 :::::
 
 ## Troubleshooting
