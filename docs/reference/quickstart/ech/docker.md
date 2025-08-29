@@ -17,13 +17,6 @@ products:
 
 Learn how to set up the EDOT Collector and EDOT SDKs in a Docker environment with {{ech}} (ECH) to collect host metrics, logs, and application traces.
 
-## Prerequisites
-
-Make sure the following requirements are present:
-
-- Docker installed and running.
-- The **[System](integration-docs://reference/system/index.md)** integration is installed in {{kib}}. Select **Add integration only** to skip the agent installation, as only the integration assets are required.
-
 ## Guided setup
 
 :::{include} ../../_snippets/guided-instructions.md
@@ -34,6 +27,15 @@ Make sure the following requirements are present:
 Follow these steps to deploy the EDOT Collector and EDOT OTel SDKs in Docker with ECH.
 
 :::::{stepper}
+
+::::{step} Check the prerequisites
+
+Make sure the following requirements are present:
+
+- Docker installed and running.
+- The **[System OpenTelemetry Assets](integration-docs://reference/system_otel.md)** integration is installed in {{kib}}. Select **Add integration only** to skip the agent installation, as only the integration assets are required.
+
+::::
 
 ::::{step} Create the config file
 

@@ -17,12 +17,6 @@ products:
 
 Learn how to set up the EDOT Collector and EDOT SDKs to collect host metrics, logs and application traces.
 
-## Prerequisites
-
-Make sure the following requirements are present:
-
-- The **[System](integration-docs://reference/system/index.md)** integration is installed in {{kib}}. Select **Add integration only** to skip the agent installation, as only the integration assets are required.
-
 ## Guided setup
 
 :::{include} ../../_snippets/guided-instructions.md
@@ -33,6 +27,14 @@ Make sure the following requirements are present:
 Follow these steps to deploy the EDOT Collector and EDOT OTel SDKs.
 
 ::::::{stepper}
+
+:::::{step} Check the prerequisites
+
+Make sure the following requirements are present:
+
+- The **[System OpenTelemetry Assets](integration-docs://reference/system_otel.md)** integration is installed in {{kib}}. Select **Add integration only** to skip the agent installation, as only the integration assets are required.
+
+:::::
 
 :::::{step} Download the EDOT Collector
 
