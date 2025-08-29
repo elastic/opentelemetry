@@ -17,13 +17,6 @@ products:
 
 Learn how to set up the EDOT Collector and EDOT SDKs in a Docker environment with {{ech}} (ECH) to collect host metrics, logs, and application traces.
 
-## Prerequisites
-
-Make sure the following requirements are present:
-
-- Docker installed and running.
-- The **[System](integration-docs://reference/system/index.md)** integration is installed in {{kib}}. Select **Add integration only** to skip the agent installation, as only the integration assets are required.
-
 ## Guided setup
 
 :::{include} ../../_snippets/guided-instructions.md
@@ -114,6 +107,18 @@ instrument your target applications following the setup instructions:
    - [Python](/reference/edot-sdks/python/setup/index.md)
 
    Configure your SDKs to send the data to the local EDOT Collector using OTLP/gRPC (`http://localhost:4317`) or OTLP/HTTP (`http://localhost:4318`).
+
+::::
+
+::::{step} Install the content packs
+
+Install the **[System OpenTelemetry Assets](integration-docs://reference/system_otel.md)** integration and the **[Docker OpenTelemetry Assets](integration-docs://reference/docker_otel.md)** integration in {{kib}}.
+
+::::
+
+::::{step} Explore your data
+
+Go to {{kib}} and select **Dashboards** to explore your newly collected data.
 
 ::::
 :::::

@@ -17,12 +17,6 @@ products:
 
 Learn how to set up the EDOT Collector and EDOT SDKs in a Docker environment with {{serverless-full}} to collect host metrics, logs, and application traces. Send the data through OTLP to your Elastic Serverless Project.
 
-## Prerequisites
-
-Make sure the following requirements are present:
-
-- The **[System](integration-docs://reference/system/index.md)** integration is installed in {{kib}}. Select **Add integration only** to skip the agent installation, as only the integration assets are required.
-
 ## Guided setup
 
 :::{include} ../../_snippets/guided-instructions.md
@@ -128,6 +122,12 @@ instrument your target applications following the setup instructions:
 - [Python](/reference/edot-sdks/python/setup/index.md)
 
 Configure your SDKs to send the data to the local EDOT Collector using OTLP/gRPC (`http://localhost:4317`) or OTLP/HTTP (`http://localhost:4318`).
+:::::
+
+:::::{step} Explore your data
+
+Go to {{kib}} and select **Dashboards** to explore your newly collected data.
+
 :::::
 ::::::
 

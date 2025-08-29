@@ -17,13 +17,6 @@ products:
 
 Learn how to set up the EDOT Collector and EDOT SDKs in a Kubernetes environment to collect host metrics, logs and application traces.
 
-## Prerequisites
-
-Make sure the following requirements are present:
-
-- The **Kubernetes OpenTelemetry Assets** integration is installed in {{kib}}.
-- The **[System](integration-docs://reference/system/index.md)** integration is installed in {{kib}}. Select **Add integration only** to skip the agent installation, as only the integration assets are required.
-
 ## Guided setup
 
 :::{include} ../../_snippets/guided-instructions.md
@@ -80,6 +73,18 @@ kubectl annotate namespace YOUR_NAMESPACE instrumentation.opentelemetry.io/injec
 Restart your deployment to ensure the annotations and auto-instrumentations are applied.
 
 For languages where auto-instrumentation is not available, you will need to manually instrument your application. See the [Setup section in the corresponding SDK](/reference/edot-sdks/index.md).
+::::
+
+::::{step} Install the content packs
+
+Install the **[Kubernetes OpenTelemetry Assets](integration-docs://reference/kubernetes_otel.md)** and **[System OpenTelemetry Assets](integration-docs://reference/system_otel.md)** integrations in {{kib}}.
+
+::::
+
+::::{step} Explore your data
+
+Go to {{kib}} and select **Dashboards** to explore your newly collected data.
+
 ::::
 :::::
 
