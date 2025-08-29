@@ -28,14 +28,6 @@ Follow these steps to deploy the EDOT Collector and EDOT OTel SDKs.
 
 ::::::{stepper}
 
-:::::{step} Check the prerequisites
-
-Make sure the following requirements are present:
-
-- The **[System OpenTelemetry Assets](integration-docs://reference/system_otel.md)** integration is installed in {{kib}}. Select **Add integration only** to skip the agent installation, as only the integration assets are required.
-
-:::::
-
 :::::{step} Download the EDOT Collector
 
 [Download the EDOT Collector](/reference/edot-collector/download.md) for your operating system, extract the archive and move to the extracted directory.
@@ -111,6 +103,12 @@ sudo ./otelcol --config otel.yml
 ```
 :::
 ::::
+:::::
+
+:::::{step} Install the content pack
+
+Install the **[System OpenTelemetry Assets](integration-docs://reference/system_otel.md)** integration in {{kib}}. Select **Add integration only** to skip the agent installation, as only the integration assets are required. This ensures that you will be able to see your data in Elastic Observability.
+
 :::::
 
 :::::{step} (Optional) Instrument your applications

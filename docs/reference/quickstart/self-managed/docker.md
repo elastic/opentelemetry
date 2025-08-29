@@ -28,15 +28,6 @@ Follow these steps to deploy the EDOT Collector and EDOT OTel SDKs in Docker.
 
 :::::{stepper}
 
-::::{step} Check the prerequisites
-
-Make sure the following requirements are present:
-
-- Docker installed and running.
-- The **[System OpenTelemetry Assets](integration-docs://reference/system_otel.md)** integration is installed in {{kib}}. Select **Add integration only** to skip the agent installation, as only the integration assets are required.
-
-::::
-
 ::::{step} Create the config file
 
 Create the `otel-collector-config.yml` file with your EDOT Collector configuration. Refer to the [configuration reference](/reference/edot-collector/config/default-config-standalone.md).
@@ -99,6 +90,12 @@ Start the Collector by running the following command:
 ```bash
 docker compose up -d
 ```
+::::
+
+::::{step} Install the content pack
+
+Install the **[System OpenTelemetry Assets](integration-docs://reference/system_otel.md)** integration in {{kib}}. Select **Add integration only** to skip the agent installation, as only the integration assets are required. This ensures that you will be able to see your data in Elastic Observability.
+
 ::::
 
 ::::{step} (Optional) Instrument your applications

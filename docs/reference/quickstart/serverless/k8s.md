@@ -28,15 +28,6 @@ Follow these steps to deploy the EDOT Collector and EDOT OTel SDKs in Kubernetes
 
 :::::{stepper}
 
-::::{step} Check the prerequisites
-
-Make sure the following requirements are present:
-
-- The **[Kubernetes OpenTelemetry Assets](integration-docs://reference/kubernetes_otel.md)** integration is installed in {{kib}}.
-- The **[System OpenTelemetry Assets](integration-docs://reference/system_otel.md)** integration is installed in {{kib}}. Select **Add integration only** to skip the agent installation, as only the integration assets are required.
-
-::::
-
 ::::{step} Add the OpenTelemetry repository to Helm
 
 Run the following command to add the charts repository to Helm:
@@ -87,6 +78,12 @@ kubectl annotate namespace YOUR_NAMESPACE instrumentation.opentelemetry.io/injec
 The OpenTelemetry Operator automatically provides the OTLP endpoint configuration and authentication to the SDKs through environment variables. Restart your deployment to ensure the annotations and auto-instrumentations are applied.
 
 For languages where auto-instrumentation is not available, manually instrument your application. See the [Setup section in the corresponding SDK](/reference/edot-sdks/index.md).
+::::
+
+::::{step} Install the content packs
+
+Install the **[Kubernetes OpenTelemetry Assets](integration-docs://reference/kubernetes_otel.md)** and **[System OpenTelemetry Assets](integration-docs://reference/system_otel.md)** integrations in {{kib}}. Select **Add integration only** to skip the agent installation, as only the integration assets are required. This ensures that you will be able to see your data in Elastic Observability.
+
 ::::
 :::::
 
