@@ -92,12 +92,6 @@ docker compose up -d
 ```
 ::::
 
-::::{step} Install the content pack
-
-Install the **[Docker OpenTelemetry Assets](integration-docs://reference/docker_otel.md)** integration in {{kib}}.
-
-::::
-
 ::::{step} (Optional) Instrument your applications
 
 To collect telemetry from applications and use the EDOT Collector as a gateway,
@@ -113,6 +107,14 @@ instrument your target applications following the setup instructions:
 
 Configure your SDKs to send the data to the local EDOT Collector using OTLP/gRPC (`http://localhost:4317`) or OTLP/HTTP (`http://localhost:4318`).
 ::::
+
+::::{step} Install the content packs
+
+Install the **[System OpenTelemetry Assets](integration-docs://reference/system_otel.md)** integration and the **[Docker OpenTelemetry Assets](integration-docs://reference/docker_otel.md)** integration in {{kib}}.
+
+::::
+
+
 ::::{step} Explore your data
 
 Go to {{kib}} and select **Dashboards** to explore your newly collected data.

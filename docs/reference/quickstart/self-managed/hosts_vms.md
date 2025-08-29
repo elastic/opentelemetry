@@ -121,6 +121,13 @@ instrument your target applications following the setup instructions:
 Configure your SDKs to send the data to the local EDOT Collector using OTLP/gRPC (`http://localhost:4317`) or OTLP/HTTP (`http://localhost:4318`).
 
 :::::
+
+:::::{step} Install the content pack
+
+Install the **[System OpenTelemetry Assets](integration-docs://reference/system_otel.md)** integration in {{kib}}.
+
+:::::
+
 :::::{step} Explore your data
 
 Go to {{kib}} and select **Dashboards** to explore your newly collected data.
