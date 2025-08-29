@@ -13,7 +13,9 @@ products:
   - id: edot-collector
 ---
 
-# Elastic APM intake receiver fThe Elastic APM intake receiver is an OpenTelemetry Collector component that receives APM data from classic Elastic APM Agents. The receiver supports the [Elastic Intake v2 protocol](https://github.com/elastic/apm-server/tree/main/docs/spec/v2) and behaves like the Elastic APM Server, so that telemetry is stored in the same format and using the same indices while going through the Collector. This allows users of classic APM agents to gradually migrate to OpenTelemetry and adapt their instrumentation to the new OTel-based approach.
+# Elastic APM intake receiver
+
+The Elastic APM intake receiver is an OpenTelemetry Collector component that receives APM data from classic Elastic APM Agents. The receiver supports the [Elastic Intake v2 protocol](https://github.com/elastic/apm-server/tree/main/docs/spec/v2) and behaves like the Elastic APM Server, so that telemetry is stored in the same format and using the same indices while going through the Collector. This allows users of classic APM agents to gradually migrate to OpenTelemetry and adapt their instrumentation to the new OTel-based approach.
 
 :::{important}
 Real user monitoring (RUM) intake and older intake protocols are not supported.
