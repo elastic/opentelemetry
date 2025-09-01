@@ -104,7 +104,7 @@ The exporter supports several mapping modes that determine how your telemetry da
 
 ### OTel mapping mode
 
-```applies_to
+```{applies_to}
 elasticsearch: ga 8.12
 ```
 
