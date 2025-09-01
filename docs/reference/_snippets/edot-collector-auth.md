@@ -16,3 +16,7 @@ extensions:
         auth:
           authenticator: bearertokenauth
 ```
+
+:::{note}
+For comprehensive authentication configuration options, see [Authentication Methods](/reference/edot-collector/config/authentication-methods.md).
+:::
