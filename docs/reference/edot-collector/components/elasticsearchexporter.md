@@ -105,7 +105,7 @@ The exporter supports several mapping modes that determine how your telemetry da
 ### OTel mapping mode
 
 ```{applies_to}
-elasticsearch: ga 8.12
+stack: ga 8.12
 ```
 
 The default mapping mode is `otel`. In `otel` mapping mode, the Elasticsearch Exporter stores documents in Elastic's preferred OTel-native schema. In this mapping mode, documents use the original attribute names and closely follow the event structure from the OTLP events.
@@ -224,8 +224,8 @@ The flush::interval config is ignored when batcher::enabled config is explicitly
 Starting from Elasticsearch 8.18 and higher, the [`include_source_on_error`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk#operation-bulk-include_source_on_error) query parameter allows users to receive the source document in the error response if there were parsing errors in the bulk request. In the exporter, the equivalent configuration is also named `include_source_on_error`.
 
 - `include_source_on_error`:
-  - `true`: Turns on bulk index responses to include source document on error. {applies_to}`elasticsearch: ga 8.18`
-  - `false`: Turns off including source document on bulk index error responses. {applies_to}`elasticsearch: ga 8.18`
+  - `true`: Turns on bulk index responses to include source document on error. {applies_to}`stack: ga 8.18`
+  - `false`: Turns off including source document on bulk index error responses. {applies_to}`stack: ga 8.18`
   - `null` (default): Backward-compatible option for older Elasticsearch versions. By default, the error reason is discarded from bulk index responses entirely. Only the error type is returned.
 
 :::{warning}
