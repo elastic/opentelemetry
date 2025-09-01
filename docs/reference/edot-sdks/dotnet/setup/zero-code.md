@@ -67,7 +67,7 @@ On Windows, use the PowerShell module as an Administrator:
 # PowerShell 5.1 or higher is required
 # Download the module
 $module_url = "https://github.com/elastic/elastic-otel-dotnet/releases/latest/download/Elastic.OpenTelemetry.DotNet.psm1"
-$download_path = Join-Path $env:temp "OpenTelemetry.DotNet.Auto.psm1"
+$download_path = Join-Path $env:temp "Elastic.OpenTelemetry.DotNet.psm1"
 Invoke-WebRequest -Uri $module_url -OutFile $download_path -UseBasicParsing
 
 # Import the module to use its functions
