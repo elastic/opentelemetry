@@ -17,8 +17,6 @@ products:
 
 The Elasticsearch exporter is an OpenTelemetry Collector component that sends logs, metrics, and traces to {{es}}. The exporter supports multiple mapping modes and provides flexible configuration options for data routing, authentication, and performance tuning.
 
-The exporter converts resource-level attributes from the OpenTelemetry Semantic Conventions (SemConv) names to equivalent Elastic Common Schema (ECS) names. Refer to [ECS & OpenTelemetry](ecs://reference/ecs-opentelemetry.md) for more details.
-
 ## Get started
 
 To use the Elasticsearch exporter, include it in the exporter definitions of the [Collector configuration](/reference/edot-collector/config/index.md). The exporter is already included in the [default configuration](/reference/edot-collector/config/default-config-standalone.md). For example:
@@ -59,36 +57,6 @@ The exporter supports standard OpenTelemetry [authentication configuration](http
 - `user` and `password`: For HTTP Basic Authentication
 - `api_key`: For [Elasticsearch API key authentication](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key)
 
-Example with API key authentication:
-
-```yaml subs=true
-exporters:
-  elasticsearch:
-    endpoint: https://elastic.example.com:9200
-    auth:
-      authenticator: basicauth
-
-extensions:
-  basicauth:
-    client_auth:
-      username: elastic
-      password: changeme
-
-···
-
-service:
-  extensions: [basicauth]
-  pipelines:
-    logs:
-      receivers: [otlp]
-      processors: [batch]
-      exporters: [elasticsearch]
-    traces:
-      receivers: [otlp]
-      processors: [batch]
-      exporters: [elasticsearch]
-```
-
 ### TLS and security settings
 
 The exporter supports standard OpenTelemetry TLS configuration for secure connections. You can configure TLS certificates, client authentication, and other security settings through the standard [TLS configuration options](https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/configtls/README.md#tls-configuration-settings).
@@ -112,7 +80,7 @@ The default mapping mode is `otel`. In `otel` mapping mode, the Elasticsearch Ex
 
 ### ECS mapping mode
 
-In `ecs` mapping mode, the Elasticsearch Exporter maps fields from OpenTelemetry Semantic Conventions (SemConv) to Elastic Common Schema (ECS) where possible. This mode can be used for compatibility with existing dashboards that work with ECS.
+In `ecs` mapping mode, the Elasticsearch Exporter maps fields from OpenTelemetry Semantic Conventions (SemConv) to Elastic Common Schema (ECS) where possible. This mode can be used for compatibility with existing dashboards that work with ECS. Refer to [ECS & OpenTelemetry](ecs://reference/ecs-opentelemetry.md) for more details.
 
 ### Bodymap mapping mode
 
