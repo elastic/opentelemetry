@@ -153,6 +153,17 @@ For example: `OTEL_EXPORTER_OTLP_HEADERS="Authorization=Bearer an_apm_secret_tok
 Secret token usage is discouraged. Use API keys for authentication.
 :::
 
+### `serverCaCertFile`
+
+The Elastic APM Node.js agent [`serverUrl`](apm-agent-nodejs://reference/configuration.md#server-ca-cert-file) option corresponds to ...
+
+TOOD: the certs config seems to be only used in GRPC exporter but not HTTP. These vars are
+  OTEL_EXPORTER_OTLP_CERTIFICATE
+  OTEL_EXPORTER_OTLP_CLIENT_KEY
+  OTEL_EXPORTER_OTLP_CLIENT_CERTIFICATE
+  ref: https://grpc.github.io/grpc/node/grpc.credentials.html
+  Should we add it to this docs???
+
 ### `serverTimeout`
 
 The Elastic APM Node.js agent [`serverTimeout`](apm-agent-nodejs://reference/configuration.md#server-timeout) option corresponds to a OpenTelemetry options per signal:
@@ -170,17 +181,6 @@ The Elastic APM Node.js agent [`serverUrl`](apm-agent-nodejs://reference/configu
 - If using {{serverless-full}}, set `OTEL_EXPORTER_OTLP_ENDPOINT` to the [{{motlp}}](/reference/motlp.md) URL for your Serverless project. For example, `OTEL_EXPORTER_OTLP_ENDPOINT=https://my-prj-a1b2c3.ingest.eu-west-1.aws.elastic.cloud`. Refer to the [Quickstart for {{serverless-full}}](/reference/quickstart/serverless/index.md).
 
 - If using {{ech}} or Self-managed, set `OTEL_EXPORTER_OTLP_ENDPOINT` to the endpoint URL of your EDOT Collector. Refer to the [Quickstart for {{ech}}](/reference/quickstart/ech/hosts_vms.md) or the [Quickstart for Self-managed](/reference/quickstart/self-managed/hosts_vms.md).
-
-### `serverCaCertFile`
-
-The Elastic APM Node.js agent [`serverUrl`](apm-agent-nodejs://reference/configuration.md#server-ca-cert-file) option corresponds to ...
-
-TOOD: the certs config seems to be only used in GRPC exporter but not HTTP. These vars are
-  OTEL_EXPORTER_OTLP_CERTIFICATE
-  OTEL_EXPORTER_OTLP_CLIENT_KEY
-  OTEL_EXPORTER_OTLP_CLIENT_CERTIFICATE
-  ref: https://grpc.github.io/grpc/node/grpc.credentials.html
-  Should we add it to this docs???
 
 ### `serviceName`
 
