@@ -2,11 +2,11 @@
 navigation_title: Elastic APM intake receiver
 description: The Elastic APM intake receiver is an OpenTelemetry Collector component that receives APM data from Elastic APM Agents.
 applies_to:
-  stack:
+  stack: ga 9.2
   serverless:
     observability:
   product:
-    edot_collector: ga
+    edot_collector: ga 9.2
 products:
   - id: cloud-serverless
   - id: observability

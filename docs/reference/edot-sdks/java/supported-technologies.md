@@ -29,7 +29,7 @@ Ingesting data from EDOT SDKs through EDOT Collector 9.x into Elastic Stack vers
 
 ## JVM versions
 
-The EDOT Java agent supports Java Virtual Machine (OpenJDK, OpenJ9) versions 8+. This follows from the [OpenTelemetry supported JMVs](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md#jvms-and-operating-systems).
+The EDOT Java agent supports Java Virtual Machine (OpenJDK, OpenJ9) versions 8+. This follows from the [OpenTelemetry supported JVMs](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md#jvms-and-operating-systems).
 
 ## JVM languages
 

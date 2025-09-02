@@ -82,36 +82,15 @@ The Elastic APM Node.js agent [`apiKey`](apm-agent-nodejs://reference/configurat
 
 For example:`OTEL_EXPORTER_OTLP_HEADERS="Authorization=ApiKey an_api_key"`.
 
-### `apiRequestSize`
-
-The Elastic APM Node.js agent [`apiRequestSize`](apm-agent-nodejs://reference/configuration.md#api-request-size) option not corresponds directly to any OpenTelemetry option but you can get similar behavior by properly setting:
-
-- [`OTEL_BSP_MAX_EXPORT_BATCH_SIZE`](https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#batch-span-processor) for traces.
-- [`OTEL_BLRP_MAX_EXPORT_BATCH_SIZE`](https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#batch-logrecord-processor) for logs.
-
-These variables control the number of spans and logs being exported at a time. Lower values mean lower payload size sent over the wire.
-
-For example:`OTEL_BSP_MAX_EXPORT_BATCH_SIZE=256 OTEL_BLRP_MAX_EXPORT_BATCH_SIZE=512`.
-
 ### `apmClientHeaders`
 
 The Elastic APM Node.js agent [`apmClientHeaders`](apm-agent-nodejs://reference/configuration.md#apm-client-headers) option corresponds to the OpenTelemetry [`OTEL_EXPORTER_OTLP_HEADERS`](https://opentelemetry.io/docs/specs/otel/protocol/exporter/#specifying-headers-via-environment-variables) option.
 
 For example: `OTEL_EXPORTER_OTLP_HEADERS=foo=bar,baz=quux`.
 
-### `centralConfig`
-
-The Elastic APM Node.js agent [`centralConfig`](apm-agent-nodejs://reference/configuration.md#central-config) option corresponds to the EDOT Node.js [`ELASTIC_OTEL_OPAMP_ENDPOINT`](/reference/edot-sdks/nodejs/configuration.md#turn-on-central-configuration) option.
-
-For example: `export ELASTIC_OTEL_OPAMP_ENDPOINT=http://localhost:4320/v1/opamp`.
-
-:::{warning}
-To activate central configuration for EDOT Node.js is necessary to enable it by following the [configuration guide](/reference/central-configuration.md). Also there is a difference in which options can be configured. You can find a list in 
-:::
-
 ### `cloudProvider`
 
-The Elastic APM Node.js agent [`cloudProvider`](apm-agent-nodejs://reference/configuration.md#cloud-provider) option does not corresponds directly to any OpenTelemetry option but you can get similar behavior by properly setting [`OTEL_NODE_RESOURCE_DETECTORS`](https://opentelemetry.io/docs/zero-code/js/configuration/#sdk-resource-detector-configuration) option. If you set this option make sure you add along with the cloud detector the non-cloud detectors that apply to your service. For a full list of detectors check [OTEL_NODE_RESOURCE_DETECTORS details](/reference/edot-sdks/nodejs/configuration.md#otel_node_resource_detectors-details). Not setting this option is the equivalent of `auto`.
+The Elastic APM Node.js agent [`cloudProvider`](apm-agent-nodejs://reference/configuration.md#cloud-provider) option does not corresponds directly to an OpenTelemetry option but you can get similar behavior by properly setting [`OTEL_NODE_RESOURCE_DETECTORS`](https://opentelemetry.io/docs/zero-code/js/configuration/#sdk-resource-detector-configuration) option. If you set this option make sure you add along with the cloud detector the non-cloud detectors that apply to your service. For a full list of detectors check [OTEL_NODE_RESOURCE_DETECTORS details](/reference/edot-sdks/nodejs/configuration.md#otel_node_resource_detectors-details). Not setting this option is the equivalent of `auto`.
 
 For example: `OTEL_NODE_RESOURCE_DETECTORS=os,env,host,serviceinstance,process,aws` will make the agent query for AWS metadata only and use other non-cloud detectors to enrich that metadata.
 
@@ -120,25 +99,6 @@ For example: `OTEL_NODE_RESOURCE_DETECTORS=os,env,host,serviceinstance,process,a
 The Elastic APM Node.js agent [`disableInstrumentations`](apm-agent-nodejs://reference/configuration.md#disable-instrumentations) option corresponds to the EDOT Node.js [`OTEL_NODE_DISABLED_INSTRUMENTATIONS`](/reference/edot-sdks/nodejs/configuration.md#otel_node_disabledenabled_instrumentations-details) option.
 
 For example: `OTEL_NODE_DISABLED_INSTRUMENTATIONS=express,mysql`.
-
-### `disableMetrics`
-
-The Elastic APM Node.js agent [`disableMetrics`](apm-agent-nodejs://reference/configuration.md#disable-metrics) option corresponds to the EDOT Node.js [`OTEL_METRICS_EXPORTER`](https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#exporter-selection) option. Set it to none to disable the collection of metrics.
-
-For example: `OTEL_METRICS_EXPORTER=none`.
-
-### `disableSend`
-
-The Elastic APM Node.js agent [`disableSend`](apm-agent-nodejs://reference/configuration.md#disable-send) does not corresponds to any Opentelemetry option. You can get the same behavior by setting to the value `none` on the folloing environment vars.
-
-- [`OTEL_TRACES_EXPORTER`](https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#exporter-selection)
-- [`OTEL_METRICS_EXPORTER`](https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#exporter-selection)
-- [`OTEL_LOGS_EXPORTER`](https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#exporter-selection)
-
-Note that you have control per signal. You can disable sending only for traces and still get the metrics and logs.
-
-For example to completelly disable sending: `OTEL_TRACES_EXPORTER=none OTEL_METRICS_EXPORTER=none OTEL_LOGS_EXPORTER=none`.
-And to only disable sending for trances: `OTEL_TRACES_EXPORTER=none`.
 
 ### `environment`
 
@@ -151,16 +111,6 @@ For example: `OTEL_RESOURCE_ATTRIBUTES=deployment.environment=testing`.
 The Elastic APM Node.js agent [`globalLabels`](apm-agent-nodejs://reference/configuration.md#global-labels) option corresponds to adding `key=value` comma separated pairs in [OTEL_RESOURCE_ATTRIBUTES](https://opentelemetry.io/docs/concepts/sdk-configuration/general-sdk-configuration/#otel_resource_attributes).
 
 For example: `OTEL_RESOURCE_ATTRIBUTES=alice=first,bob=second`. Such labels will result in labels.key=value attributes on the server. For example, `labels.alice=first`.
-
-### `instrument`
-
-The Elastic APM Node.js agent [`environment`](apm-agent-nodejs://reference/configuration.md#instrument) option corresponds to [`OTEL_NODE_ENABLED_INSTRUMENTATIONS`](/reference/edot-sdks/nodejs/configuration.md#otel_node_disabledenabled_instrumentations-details) option.
-
-For example: `OTEL_NODE_ENABLED_INSTRUMENTATIONS=none`.
-
-TODO: this works but it shows a warning. Should we consider this as good enough???
-The log message: `{"name":"elastic-otel-node","level":40,"msg":"Unknown instrumentation \"none\" specified in environment variable \"OTEL_NODE_ENABLED_INSTRUMENTATIONS\"","time":"2025-09-01T11:12:30.949Z"}`
-
 
 ### `logLevel`
 

@@ -60,9 +60,10 @@ To deactivate central configuration, remove the `ELASTIC_OTEL_OPAMP_ENDPOINT` en
 
 You can modify the following settings for EDOT Python through APM Agent Central Configuration:
 
-| Settings      | Description                                 | Type    |
-|--------------|---------------------------------------------|---------|
-| Logging level | Configure EDOT Python agent logging level. | Dynamic |
+| Settings      | Description                                  | Type    | Versions |
+|---------------|----------------------------------------------|---------|---------|
+| Logging level | Configure EDOT Python agent logging level.   | Dynamic | {applies_to}`stack: preview 9.1` <br> {applies_to}`edot_python: preview 1.4.0` |
+| Sampling rate | Configure EDOT Python tracing sampling rate. | Dynamic | {applies_to}`stack: preview 9.2` <br> {applies_to}`edot_python: preview 1.7.0` |
 
 Dynamic settings can be changed without having to restart the application.
 
@@ -88,9 +89,11 @@ EDOT Python uses different defaults than OpenTelemetry Python for the following 
 
 | Option | EDOT Python default | OpenTelemetry Python default |
 |---|---|---|
-| `OTEL_EXPERIMENTAL_RESOURCE_DETECTORS` | `process_runtime,os,otel,telemetry_distro,service_instance,_gcp,aws_ec2,aws_ecs,aws_elastic_beanstalk,azure_app_service,azure_vm` | `otel` |
+| `OTEL_EXPERIMENTAL_RESOURCE_DETECTORS` | `process_runtime,os,otel,telemetry_distro,service_instance,containerid,_gcp,aws_ec2,aws_ecs,aws_elastic_beanstalk,azure_app_service,azure_vm` | `otel` |
 | `OTEL_METRICS_EXEMPLAR_FILTER` | `always_off` | `trace_based` |
 | `OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE` | `DELTA` | `CUMULATIVE` |
+| `OTEL_TRACES_SAMPLER` | `parentbased_traceidratio` | `parentbased_always_on` |
+| `OTEL_TRACES_SAMPLER_ARG` | `1.0` | |
 
 :::{note}
 `OTEL_EXPERIMENTAL_RESOURCE_DETECTORS` cloud resource detectors are dynamically set. When running in a Kubernetes Pod it will be set to `process_runtime,os,otel,telemetry_distro,service_instance,_gcp,aws_eks`.
