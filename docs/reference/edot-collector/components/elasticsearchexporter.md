@@ -76,7 +76,7 @@ The exporter supports several mapping modes that determine how your telemetry da
 stack: ga 8.12
 ```
 
-The default mapping mode is `otel`. In `otel` mapping mode, the Elasticsearch Exporter stores documents in Elastic's preferred OTel-native schema. In this mapping mode, documents use the original attribute names and closely follow the event structure from the OTLP events.
+The default mapping mode is `otel`. In the `otel` mapping mode, the Elasticsearch Exporter stores documents in Elastic's preferred OTel-native schema. In this mapping mode, documents use the original attribute names and closely follow the event structure from the OTLP events.
 
 ### ECS mapping mode
 
