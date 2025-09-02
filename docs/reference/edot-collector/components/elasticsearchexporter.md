@@ -99,7 +99,7 @@ The `raw` mapping mode is identical to `none`, except for two differences:
 
 ## Document routing
 
-Documents are statically or dynamically routed to the target index or data stream in the following order. The first routing mode that applies is used.
+Documents are statically or dynamically routed to the target index or data stream. The first routing mode that applies is used, in the following order:
 
 ### Static mode
 
