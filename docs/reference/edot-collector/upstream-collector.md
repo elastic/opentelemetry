@@ -28,7 +28,7 @@ The contrib OpenTelemetry Collector is the community-maintained version that pro
 
 ## Deployment scenarios
 
-The configuration requirements vary depending on your Elastic deployment model. The following sections outline what you need for each scenario.
+The configuration requirements vary depending on your use case and the Elastic deployment model you want to send data to. The following sections outline what you need for each scenario.
 
 ### Elastic Cloud Serverless
 
