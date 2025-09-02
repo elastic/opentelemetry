@@ -55,7 +55,7 @@ service:
 
 ### Elastic Cloud Hosted (ECH)
 
-With {{ech}}, you need to send data directly to Elasticsearch, which requires specific preprocessing and the Elasticsearch exporter. You need to include these components in your upstream collector, for example by creating a [custom collector](/reference/edot-collector/custom-collector.md):
+Managed OTLP is yet to come to {{ech}}, meanwhile you need to setup an instance of EDOT that works as a gateway, handling processing required for some use cases (eg. deriving metrics from events in APM) and writes data directly to Elasticsearch using the Elasticsearch exporter. You can point your contrib collector OTLP exporter to the EDOT gateway
 
 ```yaml
 receivers:
