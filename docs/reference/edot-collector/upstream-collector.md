@@ -19,7 +19,7 @@ While the [{{edot}} (EDOT) Collector](/reference/index.md) provides a streamline
 
 ## Overview
 
-The upstream OpenTelemetry Collector is the community-maintained version that provides the foundation for all OpenTelemetry distributions. To configure it to work with Elastic Observability, you need to:
+The contrib OpenTelemetry Collector is the community-maintained version that provides the foundation for all OpenTelemetry distributions. To configure it to work with Elastic Observability, you need to:
 
 - Manually select and configure components.
 - Set up proper data processing pipelines.
