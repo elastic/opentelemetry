@@ -199,7 +199,7 @@ extensions:
 
 ## Security considerations
 
-In general, be aware of the following security considerations.
+In general, be aware of the following security considerations:
 
 ### API Key security
 
