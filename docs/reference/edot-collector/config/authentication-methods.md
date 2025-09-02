@@ -34,9 +34,11 @@ The `apikeyauth` extension is an Elastic-specific authentication method that val
 
 ### Bearer Token Authentication (`bearertokenauth`)
 
-The `bearertokenauth` extension is an upstream OpenTelemetry authentication method that supports static bearer tokens. This extension is useful for simple token-based authentication scenarios.
+The `bearertokenauth` extension is an upstream OpenTelemetry authentication method that supports static bearer tokens. This extension is useful for token-based authentication scenarios.
 
 ## Configuration examples
+
+These examples show how to configure the `apikeyauth` and `bearertokenauth` extensions.
 
 ### Elastic API key authentication
 
@@ -139,6 +141,8 @@ The extension automatically monitors the token file for changes and reloads the 
 
 ## Use cases
 
+These use cases show how to configure the `apikeyauth` and `bearertokenauth` extensions for different scenarios.
+
 ### Authenticating EDOT SDKs
 
 When using EDOT SDKs, configure the `apikeyauth` extension to validate API keys:
@@ -165,7 +169,7 @@ receivers:
 
 ### Securing collector-to-collector communication
 
-Use bearer token authentication for secure communication between Collectors:
+Use bearer token authentication for secure communication between collectors:
 
 ```yaml subs=true
 extensions:
