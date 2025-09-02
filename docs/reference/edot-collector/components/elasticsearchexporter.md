@@ -88,7 +88,7 @@ In `bodymap` mapping mode, the Elasticsearch Exporter supports only logs and tak
 
 ### None mapping mode
 
-In the `none` mapping mode the Elasticsearch Exporter produces documents with the original field names of from the OTLP data structures.
+In the `none` mapping mode the Elasticsearch Exporter produces documents with the original field names from the OTLP data structures.
 
 ### Raw mapping mode
 
