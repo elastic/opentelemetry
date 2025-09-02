@@ -32,7 +32,7 @@ The configuration requirements vary depending on your use case and the Elastic d
 
 ### Elastic Cloud Serverless
 
-{{serverless-full}} provides a [Managed OTLP Endpoint](/reference/motlp.md) that accepts OpenTelemetry data in its native format. This makes it the simplest scenario for using upstream components because no special processing is needed.
+{{serverless-full}} provides a [Managed OTLP Endpoint](/reference/motlp.md) that accepts OpenTelemetry data in its native format. This makes it the simplest scenario for using upstream components because scaling and signal processing (eg. producing metrics from events) is handled by Elastic.
 
 The following configuration example shows how to send data to the Managed OTLP Endpoint:
 
