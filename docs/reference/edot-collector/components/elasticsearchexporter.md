@@ -236,7 +236,7 @@ To turn off node discovery, set `discover.interval` to `0`.
 The following are some known limitations of the Elasticsearch exporter:
 
 - Metrics support is currently in development and might have limitations.
-- Profile support requires Universal Profiling to be installed in Elasticsearch.
+- Profile support requires Universal Profiling to be installed in {{es}}.
 - Some mapping modes might have reduced functionality for certain telemetry types.
 - The `bodymap` mode only supports logs and ignores other telemetry types.
 
