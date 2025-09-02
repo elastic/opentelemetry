@@ -38,7 +38,7 @@ The following configuration example shows how to send data to the Managed OTLP E
 
 ```yaml
 exporters:
-  otlpexporter:
+  otlp:
     endpoint: "https://your-deployment.elastic-cloud.com:443"
     headers:
       authorization: "Bearer YOUR_API_KEY"
