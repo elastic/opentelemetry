@@ -151,6 +151,12 @@ The Elastic APM Node.js agent [`globalLabels`](apm-agent-nodejs://reference/conf
 
 For example: `OTEL_RESOURCE_ATTRIBUTES=alice=first,bob=second`. Such labels will result in labels.key=value attributes on the server. For example, `labels.alice=first`.
 
+### `hostname`
+
+The Elastic APM Node.js agent [`environment`](apm-agent-nodejs://reference/configuration.md#instrument) option corresponds to setting the `host.name` key in [OTEL_RESOURCE_ATTRIBUTES](https://opentelemetry.io/docs/concepts/sdk-configuration/general-sdk-configuration/#otel_resource_attributes).
+
+For example: `OTEL_RESOURCE_ATTRIBUTES=host.name=myhost`.
+
 ### `instrument`
 
 The Elastic APM Node.js agent [`environment`](apm-agent-nodejs://reference/configuration.md#instrument) option corresponds to [`OTEL_NODE_ENABLED_INSTRUMENTATIONS`](/reference/edot-sdks/nodejs/configuration.md#otel_node_disabledenabled_instrumentations-details) option.
@@ -251,9 +257,9 @@ You can also set the service name using [OTEL_RESOURCE_ATTRIBUTES](https://opent
 
 ### `serviceNodeName`
 
-The Elastic APM Node.js agent [`serviceNodeName`](apm-agent-nodejs://reference/configuration.md#service-node-name) option corresponds to ...
+The Elastic APM Node.js agent [`serviceNodeName`](apm-agent-nodejs://reference/configuration.md#service-node-name) option corresponds to setting the `service.instance.id` key in [OTEL_RESOURCE_ATTRIBUTES](https://opentelemetry.io/docs/concepts/sdk-configuration/general-sdk-configuration/#otel_resource_attributes). Warning: by default this is a generated unique ID; if you set this it must be a unique value for each service instance otherwise metric views cannot be correctly aggregated nor disambiguated
 
-TODO: it might be possible to use `OTEL_RESOURCE_ATTRIBUTES`. We shouold test it
+For example: `OTEL_RESOURCE_ATTRIBUTES=service.instance.id=myserviceinstance001`.
 
 ### `serviceVersion`
 
