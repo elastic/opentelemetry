@@ -48,7 +48,7 @@ service:
     traces:
       exporters: [otlp]
     metrics:
-      exporters: [otlpexporter]
+      exporters: [otlp]
     logs:
       exporters: [otlp]
 ```
