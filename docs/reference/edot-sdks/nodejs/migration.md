@@ -82,19 +82,6 @@ The Elastic APM Node.js agent [`apiKey`](apm-agent-nodejs://reference/configurat
 
 For example:`OTEL_EXPORTER_OTLP_HEADERS="Authorization=ApiKey an_api_key"`.
 
-### `apiRequestSize`
-
-The Elastic APM Node.js agent [`apiRequestSize`](apm-agent-nodejs://reference/configuration.md#api-request-size) option not corresponds directly to any OpenTelemetry option but you can get similar behavior by properly setting:
-
-- [`OTEL_BSP_MAX_EXPORT_BATCH_SIZE`](https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#batch-span-processor) for traces.
-- [`OTEL_BLRP_MAX_EXPORT_BATCH_SIZE`](https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#batch-logrecord-processor) for logs.
-
-These variables control the number of spans and logs being exported at a time. Lower values mean lower payload size sent over the wire.
-
-For example:`OTEL_BSP_MAX_EXPORT_BATCH_SIZE=256 OTEL_BLRP_MAX_EXPORT_BATCH_SIZE=512`.
-
-TODO: span and log limits also affects payload size. Should we mention it???
-
 ### `apmClientHeaders`
 
 The Elastic APM Node.js agent [`apmClientHeaders`](apm-agent-nodejs://reference/configuration.md#apm-client-headers) option corresponds to the OpenTelemetry [`OTEL_EXPORTER_OTLP_HEADERS`](https://opentelemetry.io/docs/specs/otel/protocol/exporter/#specifying-headers-via-environment-variables) option.
@@ -219,17 +206,6 @@ For example: `OTEL_EXPORTER_OTLP_HEADERS="Authorization=Bearer an_apm_secret_tok
 :::{note}
 Secret token usage is discouraged. Use API keys for authentication.
 :::
-
-### `serverCaCertFile`
-
-The Elastic APM Node.js agent [`serverUrl`](apm-agent-nodejs://reference/configuration.md#server-ca-cert-file) option corresponds to ...
-
-TOOD: the certs config seems to be only used in GRPC exporter but not HTTP. These vars are
-  OTEL_EXPORTER_OTLP_CERTIFICATE
-  OTEL_EXPORTER_OTLP_CLIENT_KEY
-  OTEL_EXPORTER_OTLP_CLIENT_CERTIFICATE
-  ref: https://grpc.github.io/grpc/node/grpc.credentials.html
-  Should we add it to this docs???
 
 ### `serverTimeout`
 
