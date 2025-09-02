@@ -227,9 +227,9 @@ The following issues might occur.
 :::
 
 :::{dropdown} Bearer token authentication failures
-- Confirm the token is correct and not expired
-- Check the authentication scheme matches expectations
-- Verify the token file exists and is readable
-- Ensure the custom header is properly configured
+- Confirm the token is correct and not expired.
+- Check the authentication scheme matches expectations.
+- Verify the token file exists and is readable.
+- Ensure the custom header is properly configured.
 :::
 
