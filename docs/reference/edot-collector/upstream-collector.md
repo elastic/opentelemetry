@@ -46,7 +46,7 @@ exporters:
 service:
   pipelines:
     traces:
-      exporters: [otlpexporter]
+      exporters: [otlp]
     metrics:
       exporters: [otlpexporter]
     logs:
