@@ -186,7 +186,7 @@ The Elasticsearch exporter uses the [Elasticsearch Bulk API](https://www.elastic
 | `retry::retry_on_status` | `[429]` | Status codes that trigger request or document level retries. Request level retry and document level retry status codes are shared and cannot be configured separately. To avoid duplicates, it defaults to `[429]`. |
 
 :::{note}
-The flush::interval config is ignored when batcher::enabled config is explicitly set to true or false.
+The `flush::interval` config is ignored when `batcher::enabled` config is explicitly set to true or false.
 :::
 
 Starting from Elasticsearch 8.18 and higher, the [`include_source_on_error`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk#operation-bulk-include_source_on_error) query parameter allows users to receive the source document in the error response if there were parsing errors in the bulk request. In the exporter, the equivalent configuration is also named `include_source_on_error`.
