@@ -18,5 +18,5 @@ extensions:
 ```
 
 :::{note}
-For comprehensive authentication configuration options, see [Authentication Methods](/reference/edot-collector/config/authentication-methods.md).
+For comprehensive authentication configuration options, see [Authentication methods](/reference/edot-collector/config/authentication-methods.md).
 :::
