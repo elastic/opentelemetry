@@ -22,7 +22,7 @@ Authentication in the EDOT Collector is handled through extensions that implemen
 
 - Authenticate incoming requests from SDKs and other collectors.
 - Authenticate outgoing requests to external services.
-- Secure internal collector communications.
+- Secure internal Collector communications.
 
 ## Available authentication extensions
 
