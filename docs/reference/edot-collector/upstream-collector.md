@@ -132,7 +132,7 @@ Self-managed deployments have similar requirements to ECH but with your own Elas
 - Ensure your Elasticsearch version is compatible.
 - Set up proper index templates and mappings.
 
-## Building a custom upstream Collector
+## Creating a custom OpenTelemetry Collector
 
 To use the upstream OpenTelemetry Collector with Elastic Observability, you need to build a custom distribution that includes the required components.
 
