@@ -126,7 +126,7 @@ These settings allow you to customize document routing:
 
 | Setting | Default | Description |
 |---------|---------|-------------|
-| `logs_index` | - | The index or data stream name to publish logs (and span events in OTel mapping mode) to. Should be empty unless all logs should be sent to the same index. |
+| `logs_index` | - | The index or data stream name to publish logs (and span events in OTel mapping mode) to. Should be empty unless all logs are to be sent to the same index. |
 | `metrics_index` | - | The index or data stream name to publish metrics to. Should be empty unless all metrics should be sent to the same index. |
 | `traces_index` | - | The index or data stream name to publish traces to. Should be empty unless all traces should be sent to the same index. |
 | `logstash_format::enabled` | `false` | Turns on or off Logstash format compatibility. When active, the index name is composed using the dynamic routing rules as prefix and the date as suffix. For example, `logs-generic-default-YYYY.MM.DD`. |
