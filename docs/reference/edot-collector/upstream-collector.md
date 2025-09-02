@@ -55,7 +55,7 @@ service:
 
 ### Elastic Cloud Hosted (ECH)
 
-Managed OTLP is yet to come to {{ech}}, meanwhile you need to setup an instance of EDOT that works as a gateway, handling processing required for some use cases (eg. deriving metrics from events in APM) and writes data directly to Elasticsearch using the Elasticsearch exporter. You can point your contrib collector OTLP exporter to the EDOT gateway
+Because {{motlp}} is not yet available for {{ech}}, you need to setup an instance of EDOT that works as a gateway, handling processing required for some use cases (eg. deriving metrics from events in APM) and writes data directly to Elasticsearch using the Elasticsearch exporter. You can point your contrib collector OTLP exporter to the EDOT gateway
 
 ```yaml
 receivers:
@@ -125,7 +125,7 @@ service:
 
 ### Self-managed Elastic Stack
 
-Self-managed deployments have similar requirements to ECH but with your own Elasticsearch instance. The configuration is similar to ECH. In addition you need to:
+Self-managed deployments have similar requirements to ECH but with your own Elasticsearch instance. The configuration is similar to ECH. You also need to:
 
 - Point to your self-managed Elasticsearch instance.
 - Configure appropriate security settings.
