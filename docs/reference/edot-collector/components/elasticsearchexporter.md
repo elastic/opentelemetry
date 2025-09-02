@@ -19,22 +19,7 @@ The Elasticsearch exporter is an OpenTelemetry Collector component that sends lo
 
 ## Get started
 
-To use the Elasticsearch exporter, include it in the exporter definitions of the [Collector configuration](/reference/edot-collector/config/index.md). The exporter is already included in the [default configuration](/reference/edot-collector/config/default-config-standalone.md). For example:
-
-```yaml subs=true
-exporters:
-  elasticsearch/ecs:
-    endpoints: ["${env:ELASTIC_ENDPOINT}"]
-    api_key: ${env:ELASTIC_API_KEY}
-    mapping:
-      mode: ecs
-
-  elasticsearch/otel:
-    endpoints: [ "${env:ELASTIC_ENDPOINT}" ]
-    api_key: ${env:ELASTIC_API_KEY}
-    mapping:
-      mode: otel
-```
+To use the Elasticsearch exporter, include it in the exporter definitions of the [Collector configuration](/reference/edot-collector/config/index.md). The exporter is already included in the [default configuration](/reference/edot-collector/config/default-config-standalone.md).
 
 ## Configuration
 
@@ -114,9 +99,9 @@ Dynamic mode (Index attribute) routes documents to index name specified in `elas
 Dynamic mode (Data stream routing) routes documents to data stream constructed from `${data_stream.type}-${data_stream.dataset}-${data_stream.namespace}`,
 where `data_stream.type` is `logs` for log records, `metrics` for data points, and `traces` for spans, and is static. The following rules apply:
 
-1. `data_stream.dataset` or `data_stream.namespace` in attributes, with the following order of precedence: log record / data point / span attribute -> scope attribute -> resource attribute
-2. Otherwise, if the scope name matches the `/receiver/(\w*receiver)` regular expression, `data_stream.dataset` is the first capture group.
-3. Otherwise, `data_stream.dataset` falls back to `generic` and `data_stream.namespace` falls back to `default`.
+- `data_stream.dataset` or `data_stream.namespace` in attributes, with the following order of precedence: log record / data point / span attribute -> scope attribute -> resource attribute
+- Otherwise, if the scope name matches the `/receiver/(\w*receiver)` regular expression, `data_stream.dataset` is the first capture group.
+- Otherwise, `data_stream.dataset` falls back to `generic` and `data_stream.namespace` falls back to `default`.
 
 If the mapping mode is set to `bodymap`, the `data_stream.type` field can be dynamically set from attributes. The resulting documents contain the corresponding `data_stream.*` fields. Refer to [Data Stream Fields](ecs://reference/ecs-data_stream.md) for the restrictions applied to the data stream fields.
 
