@@ -50,7 +50,7 @@ service:
     metrics:
       exporters: [otlpexporter]
     logs:
-      exporters: [otlpexporter]
+      exporters: [otlp]
 ```
 
 ### Elastic Cloud Hosted (ECH)
