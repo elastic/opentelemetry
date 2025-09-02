@@ -24,7 +24,7 @@ The contrib OpenTelemetry Collector is the community-maintained version that pro
 - Manually select and configure components.
 - Set up proper data processing pipelines.
 - Handle authentication and connection details.
-- Ensure compatibility with Elastic's data requirements.
+- Ensure required components have been properly configured in accordance to your use case.
 
 ## Deployment scenarios
 
