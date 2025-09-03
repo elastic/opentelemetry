@@ -5,12 +5,12 @@
 components:
   # Exporters
   elasticsearchexporter:
-    doc_path: "/reference/edot-collector/components/elasticsearchexporter"
+    doc_path: "/reference/edot-collector/components/elasticsearchexporter.md"
     title: "Elasticsearch exporter"
     
   # Receivers  
   elasticapmintakereceiver:
-    doc_path: "/reference/edot-collector/components/elasticapmintakereceiver"
+    doc_path: "/reference/edot-collector/components/elasticapmintakereceiver.md"
     title: "Elastic APM intake receiver"
 
   apikeyauthextension:
