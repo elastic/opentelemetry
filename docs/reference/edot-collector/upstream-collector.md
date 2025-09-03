@@ -55,20 +55,7 @@ service:
 
 ### Elastic Cloud Hosted (ECH)
 
-Because {{motlp}} is not yet available for {{ech}}, you need to setup an instance of EDOT that works as a gateway, handling processing required for some use cases (eg. deriving metrics from events in APM) and writes data directly to Elasticsearch using the Elasticsearch exporter. You can point your contrib collector OTLP exporter to the EDOT gateway
-
-```yaml
-receivers:
-  - gomod: go.opentelemetry.io/collector/receiver/otlpreceiver
-
-processors:
-  - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/processor/resourcedetectionprocessor
-  - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/processor/attributesprocessor
-  - gomod: go.opentelemetry.io/collector/processor/batchprocessor
-
-exporters:
-  - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/elasticsearchexporter
-```
+Because {{motlp}} is not yet available for {{ech}}, you need to setup an instance of EDOT that works as a gateway, handling processing required for some use cases (eg. deriving metrics from events in APM) and writes data directly to Elasticsearch using the Elasticsearch exporter. You can point your contrib collector OTLP exporter to the EDOT Gateway.
 
 The following configuration example shows how to send data to Elasticsearch:
 
@@ -134,7 +121,7 @@ Self-managed deployments have similar requirements to ECH but with your own Elas
 
 ## Creating a custom OpenTelemetry Collector
 
-To use the upstream OpenTelemetry Collector with Elastic Observability, you need to build a custom distribution that includes the required components.
+To use the upstream OpenTelemetry Collector with Elastic Observability, you need to build a custom distribution that includes the required components. Refer to [Custom Collector](/reference/edot-collector/custom-collector.md) for more information.
 
 ## Configuration best practices
 
