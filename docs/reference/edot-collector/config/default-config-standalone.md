@@ -115,8 +115,8 @@ The following example configuration files are available for the Gateway mode:
 | 8.17    | [Gateway mode](https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v9.0.4/internal/pkg/otel/samples/linux/gateway.yml) |
 | 8.18    | [Gateway mode](https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v9.0.4/internal/pkg/otel/samples/linux/gateway.yml) |
 | 9.0     | [Gateway mode](https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v9.0.4/internal/pkg/otel/samples/linux/gateway.yml) |
-% | 8.19    | [Gateway mode](https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v8.19.0/internal/pkg/otel/samples/linux/gateway.yml) |
-% | 9.1     | [Gateway mode](https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v9.1.0/internal/pkg/otel/samples/linux/gateway.yml) |
+| 8.19    | [Gateway mode](https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v8.19.0/internal/pkg/otel/samples/linux/gateway.yml) |
+| 9.1     | [Gateway mode](https://raw.githubusercontent.com/elastic/elastic-agent/refs/tags/v9.1.0/internal/pkg/otel/samples/linux/gateway.yml) |
 
 Use the previous example configuration as a reference when configuring your Gateway Collector or customizing your EDOT Collector configuration.
 

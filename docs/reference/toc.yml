@@ -60,6 +60,7 @@ toc:
       - file: edot-collector/customization.md
         children:
           - file: edot-collector/custom-collector.md
+      - file: edot-collector/upstream-collector.md
   - file: edot-cloud-forwarder/index.md
     children:
       - file: edot-cloud-forwarder/aws.md
