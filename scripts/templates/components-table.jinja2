@@ -1,44 +1,43 @@
-
-| Component | GitHub Repo | Support status | Version |
-|:---|:---|:---|:---|
+| Component | GitHub Repo | Support status | Version | Documentation |
+|:---|:---|:---|:---|:---|
 {%if grouped_components['Receivers'] -%}
-|***Receivers***||||
+|***Receivers***|||||
 {% for comp in grouped_components['Receivers'] -%}
-| [{{ comp['name'] }}]({{ comp['html_url'] }}) | {{ comp['repo_link'] }} | {{ comp['support_status'] }} | {{ comp['version'] }} |
+| [{{ comp['name'] }}]({{ comp['html_url'] }}) | {{ comp['repo_link'] }} | {{ comp['support_status'] }} | {{ comp['version'] }} | {% if comp.get('doc_link') %}[📖]({{ comp['doc_link'] }}){% else %}—{% endif %} |
 {% endfor %}
 {%- endif -%}
 
 {%- if grouped_components['Exporters'] -%}
-|***Exporters***||||
+|***Exporters***|||||
 {% for comp in grouped_components['Exporters'] -%}
-| [{{ comp['name'] }}]({{ comp['html_url'] }}) | {{ comp['repo_link'] }} | {{ comp['support_status'] }} | {{ comp['version'] }} |
+| [{{ comp['name'] }}]({{ comp['html_url'] }}) | {{ comp['repo_link'] }} | {{ comp['support_status'] }} | {{ comp['version'] }} | {% if comp.get('doc_link') %}[📖]({{ comp['doc_link'] }}){% else %}—{% endif %} |
 {% endfor %}
 {%- endif -%}
 
 {%- if grouped_components['Processors'] -%}
-|***Processors***||||
+|***Processors***|||||
 {% for comp in grouped_components['Processors'] -%}
-| [{{ comp['name'] }}]({{ comp['html_url'] }}) | {{ comp['repo_link'] }} | {{ comp['support_status'] }} | {{ comp['version'] }} |
+| [{{ comp['name'] }}]({{ comp['html_url'] }}) | {{ comp['repo_link'] }} | {{ comp['support_status'] }} | {{ comp['version'] }} | {% if comp.get('doc_link') %}[📖]({{ comp['doc_link'] }}){% else %}—{% endif %} |
 {% endfor %}
 {%- endif -%}
 
 {%- if grouped_components['Connectors'] -%}
-|***Connectors***||||
+|***Connectors***|||||
 {% for comp in grouped_components['Connectors'] -%}
-| [{{ comp['name'] }}]({{ comp['html_url'] }}) | {{ comp['repo_link'] }} | {{ comp['support_status'] }} | {{ comp['version'] }} |
+| [{{ comp['name'] }}]({{ comp['html_url'] }}) | {{ comp['repo_link'] }} | {{ comp['support_status'] }} | {{ comp['version'] }} | {% if comp.get('doc_link') %}[📖]({{ comp['doc_link'] }}){% else %}—{% endif %} |
 {% endfor %}
 {%- endif -%}
 
 {%- if grouped_components['Extensions'] -%}
-|***Extensions***||||
+|***Extensions***|||||
 {% for comp in grouped_components['Extensions'] -%}
-| [{{ comp['name'] }}]({{ comp['html_url'] }}) | {{ comp['repo_link'] }} | {{ comp['support_status'] }} | {{ comp['version'] }} |
+| [{{ comp['name'] }}]({{ comp['html_url'] }}) | {{ comp['repo_link'] }} | {{ comp['support_status'] }} | {{ comp['version'] }} | {% if comp.get('doc_link') %}[📖]({{ comp['doc_link'] }}){% else %}—{% endif %} |
 {% endfor %}
 {%- endif -%}
 
 {%- if grouped_components['Providers'] -%}
-|***Providers***||||
+|***Providers***|||||
 {% for comp in grouped_components['Providers'] -%}
-| [{{ comp['name'] }}]({{ comp['html_url'] }}) | {{ comp['repo_link'] }} | {{ comp['support_status'] }} | {{ comp['version'] }} |
+| [{{ comp['name'] }}]({{ comp['html_url'] }}) | {{ comp['repo_link'] }} | {{ comp['support_status'] }} | {{ comp['version'] }} | {% if comp.get('doc_link') %}[📖]({{ comp['doc_link'] }}){% else %}—{% endif %} |
 {% endfor %}
 {%- endif -%}

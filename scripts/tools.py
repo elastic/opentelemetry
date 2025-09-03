@@ -30,6 +30,7 @@ TEMPLATE_COLLECTOR_COMPONENTS_TABLE = 'templates/components-table.jinja2'
 TEMPLATE_COLLECTOR_OCB_FILE = 'templates/ocb.jinja2'
 TEMPLATE_SDK_FEATURES = 'templates/features.jinja2'
 SDK_FEATURES_YAML = '../docs/reference/edot-sdks/features.yml'
+COMPONENT_DOCS_YAML = '../docs/reference/edot-collector/component-docs.yml'
 
 def fetch_url_content(url):
     try:
@@ -121,7 +122,7 @@ def get_collector_version(filePath):
     # This should match the version used in the Elastic Agent repository
     return '9.1.2'
     
-def get_otel_components(url, version='main'):
+def get_otel_components(url, version='main', component_docs_mapping=None):
     elastic_agent_go_mod = fetch_url_content(url)
     
     if elastic_agent_go_mod is None:
@@ -137,7 +138,7 @@ def get_otel_components(url, version='main'):
     otel_deps = [line for line in lines if (not line.endswith('// indirect') and ("=>" not in line) and (any(f'/{comp}/' in line for comp in components_type)))]
     otel_components = list(map(dep_to_component, otel_deps))
     
-    # Add support status to each component
+    # Add support status and documentation links to each component
     for comp in otel_components:
         # Extract the component name without the suffix (e.g., 'filelogreceiver' from 'filelogreceiver ')
         comp_name = comp['name'].strip()
@@ -146,6 +147,12 @@ def get_otel_components(url, version='main'):
             comp['support_status'] = '[Core]'
         else:
             comp['support_status'] = '[Extended]'
+            
+        # Add documentation link if available
+        if component_docs_mapping and comp_name in component_docs_mapping:
+            comp['doc_link'] = component_docs_mapping[comp_name]['doc_path']
+        else:
+            comp['doc_link'] = None
 
     components_grouped = defaultdict(list)
 
@@ -238,25 +245,43 @@ def get_features_data(source_file):
             print(f"Error reading YAML file: {exc}")
             exit(1)
 
+def get_component_docs_mapping(source_file):
+    """Load component documentation mapping from YAML file"""
+    try:
+        with open(source_file, 'r') as file:
+            data = yaml.safe_load(file)
+            return data.get('components', {})
+    except FileNotFoundError:
+        print(f"Component docs mapping file not found: {source_file}")
+        return {}
+    except yaml.YAMLError as exc:
+        print(f"Error reading component docs YAML file: {exc}")
+        return {}
+
 def check_markdown():
     col_version = get_collector_version('../docs/docset.yml')
     print(f"Collector version: {col_version}")
+    
+    # Load component documentation mapping
+    component_docs_mapping = get_component_docs_mapping(COMPONENT_DOCS_YAML)
+    print(f"Loaded {len(component_docs_mapping)} component documentation mappings")
+    
     # Try different URL formats
     url = f'https://raw.githubusercontent.com/elastic/elastic-agent/v{col_version}/go.mod'
     print(f"Trying URL: {url}")
-    components = get_otel_components(url, col_version)
+    components = get_otel_components(url, col_version, component_docs_mapping)
     
     # If first attempt fails, try without the 'v' prefix
     if components is None:
         url = f'https://raw.githubusercontent.com/elastic/elastic-agent/{col_version}/go.mod'
         print(f"Retrying with URL: {url}")
-        components = get_otel_components(url, col_version)
+        components = get_otel_components(url, col_version, component_docs_mapping)
     
     # If that fails too, try with main branch
     if components is None:
         url = 'https://raw.githubusercontent.com/elastic/elastic-agent/main/go.mod'
         print(f"Falling back to main branch: {url}")
-        components = get_otel_components(url, col_version)
+        components = get_otel_components(url, col_version, component_docs_mapping)
         
     otel_col_version = get_otel_col_upstream_version(url)
     data = {
@@ -284,22 +309,27 @@ def check_markdown():
 def generate_markdown():
     col_version = get_collector_version('../docs/docset.yml')
     print(f"Collector version: {col_version}")
+    
+    # Load component documentation mapping
+    component_docs_mapping = get_component_docs_mapping(COMPONENT_DOCS_YAML)
+    print(f"Loaded {len(component_docs_mapping)} component documentation mappings")
+    
     # Try different URL formats
     url = f'https://raw.githubusercontent.com/elastic/elastic-agent/v{col_version}/go.mod'
     print(f"Trying URL: {url}")
-    components = get_otel_components(url, col_version)
+    components = get_otel_components(url, col_version, component_docs_mapping)
     
     # If first attempt fails, try without the 'v' prefix
     if components is None:
         url = f'https://raw.githubusercontent.com/elastic/elastic-agent/{col_version}/go.mod'
         print(f"Retrying with URL: {url}")
-        components = get_otel_components(url, col_version)
+        components = get_otel_components(url, col_version, component_docs_mapping)
     
     # If that fails too, try with main branch
     if components is None:
         url = 'https://raw.githubusercontent.com/elastic/elastic-agent/main/go.mod'
         print(f"Falling back to main branch: {url}")
-        components = get_otel_components(url, col_version)
+        components = get_otel_components(url, col_version, component_docs_mapping)
         
     otel_col_version = get_otel_col_upstream_version(url)
     data = {
