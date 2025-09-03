@@ -15,7 +15,7 @@ products:
 
 # Send data to {{serverless-full}} using the upstream Collector
 
-While the [{{edot}} (EDOT) Collector](/reference/index.md) provides a streamlined experience with pre-selected components, you can also use the contrib OpenTelemetry Collector or a custom distribution to send data to Elastic Observability. This approach requires more configuration but gives you equal control over your OpenTelemetry setup.
+While the [{{edot}} (EDOT) Collector](/reference/index.md) provides a streamlined experience with pre-selected components, you can also use the contrib OpenTelemetry Collector or a custom distribution to send data to Elastic Observability. This approach requires more configuration but gives you more control over your OpenTelemetry setup.
 
 ## Overview
 
