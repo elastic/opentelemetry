@@ -190,7 +190,7 @@ The following table shows the equivalent values of log levels between `elastic-a
 
 ### `longFieldMaxLength`
 
-The Elastic APM Node.js agent [`longFieldMaxLength`](apm-agent-nodejs://reference/configuration.md#long-field-maxLength) option does not corresponds directly to an OpenTelemetry option but you can get similar behavior by properly setting [`OTEL_ATTRIBUTE_VALUE_LENGTH_LIMIT`](https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#attribute-limits) option. This limit can also be set for specific signals
+The Elastic APM Node.js agent [`longFieldMaxLength`](apm-agent-nodejs://reference/configuration.md#long-field-max-length) option does not corresponds directly to an OpenTelemetry option but you can get similar behavior by properly setting [`OTEL_ATTRIBUTE_VALUE_LENGTH_LIMIT`](https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#attribute-limits) option. This limit can also be set for specific signals
 
 - `OTEL_SPAN_ATTRIBUTE_VALUE_LENGTH_LIMIT` for traces.
 - `OTEL_LOGRECORD_ATTRIBUTE_VALUE_LENGTH_LIMIT` for logs.
