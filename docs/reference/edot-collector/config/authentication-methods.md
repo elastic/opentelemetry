@@ -80,8 +80,11 @@ The following configuration options are available for the `apikeyauth` extension
 |--------|------|-------------|---------|
 | `endpoint` | string | The Elasticsearch endpoint for API key validation | Required |
 | `application_privileges` | array | List of required application privileges and resources | Required |
+| `application_privileges.application` | string | Name of the application for which privileges are defined | `""` |
+| `application_privileges.privileges` | array | List of application-specific privileges that the API Key must have to be considered valid | `[]` |
+| `application_privileges.resources` | array | List of application-specific resources that the API Key must have access to be considered valid | `[]` |
 | `cache.capacity` | integer | Maximum number of cached entries | 1000 |
-| `cache.ttl` | duration | Time-to-live for cached entries | "5m" |
+| `cache.ttl` | duration | Time-to-live for cached entries | 30s |
 | `cache.pbkdf2_iterations` | integer | Number of PBKDF2 iterations for key derivation | 10000 |
 | `cache.key_headers` | array | Optional headers to include in cache key generation | `[]` |
 
