@@ -138,7 +138,7 @@ To use the upstream OpenTelemetry Collector with Elastic Observability, you need
 
 ## Configuration best practices
 
-When using the upstream OpenTelemetry Collector with Elastic Observability, follow these best practices.
+When using the upstream OpenTelemetry Collector with Elastic Observability, follow these best practices:
 
 ### Resource detection
 
