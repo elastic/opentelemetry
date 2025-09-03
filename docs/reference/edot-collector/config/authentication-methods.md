@@ -119,9 +119,9 @@ The following configuration options are available for the `bearertokenauth` exte
 | Option | Type | Description | Default |
 |--------|------|-------------|---------|
 | `scheme` | string | Authentication scheme | "Bearer" |
-| `token` | string | Static token for authentication. Only required if `tokens` is an empty list. | `""` |
-| `tokens` | string array | List of multiple tokens. Only required if `token` is empty. | `[]` |
-| `filename` | string | Path to file containing the token | `""` |
+| `token` | string | Static token for authentication. Only required if `tokens` is an empty list and `filename` is empty. | `""` |
+| `tokens` | string array | List of multiple tokens. Only required if `token` and `filename` are empty. | `[]` |
+| `filename` | string | Path to file containing the token, required if `token` and `tokens` are left unset. | `""` |
 | `header` | string | Custom header name | "Authorization" |
 
 #### File-based token storage
