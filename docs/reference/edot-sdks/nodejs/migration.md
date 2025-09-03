@@ -104,6 +104,25 @@ The Elastic APM Node.js agent [`cloudProvider`](apm-agent-nodejs://reference/con
 
 For example: `OTEL_NODE_RESOURCE_DETECTORS=os,env,host,serviceinstance,process,aws` will make the agent query for AWS metadata only and use other non-cloud detectors to enrich that metadata.
 
+### `contextPropagationOnly`
+
+The equivalent of the Elastic APM Node.js agent [`contextPropagationOnly`](apm-agent-nodejs://reference/configuration.md#context-propagation-only) option can be accomplished with the following EDOT Node.js settings:
+
+- [`ELASTIC_OTEL_CONTEXT_PROPAGATION_ONLY=true`](/reference/edot-sdks/nodejs/configuration.md#elastic_otel_context_propagation_only-details) to configure trace-context propagation. This turns off sending spans and the overhead from doing so. Note that using `OTEL_TRACES_EXPORTER=none` turns off context-propagation. The `ELASTIC_OTEL_CONTEXT_PROPAGATION_ONLY` EDOT Node.js setting only impacts tracing, as opposed to the APM agent `contextPropagationOnly` which impacts both tracing and metric collection.
+- To turn off metrics sending and collection overhead, use the following settings:
+    - [`OTEL_METRICS_EXPORTER=none`](https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#exporter-selection) to turn off the sending of any metrics.
+    - [`ELASTIC_OTEL_HOST_METRICS_DISABLED=true`](/reference/edot-sdks/nodejs/configuration.md#elastic_otel_host_metrics_disabled-details) to remove the overhead from metrics collection by the `@opentelemetry/host-metrics` package.
+    - [`OTEL_NODE_DISABLED_INSTRUMENTATIONS=runtime-node`](/reference/edot-sdks/nodejs/configuration.md#otel_node_disabledenabled_instrumentations-details) to remove metrics collection overhead from the `@opentelemetry/instrumentation-runtime-node` instrumentation
+
+For example:
+
+```
+ELASTIC_OTEL_CONTEXT_PROPAGATION_ONLY=true
+OTEL_METRICS_EXPORTER=none
+ELASTIC_OTEL_HOST_METRICS_DISABLED=true
+OTEL_NODE_DISABLED_INSTRUMENTATIONS=runtime-node
+```
+
 ### `disableInstrumentations`
 
 The Elastic APM Node.js agent [`disableInstrumentations`](apm-agent-nodejs://reference/configuration.md#disable-instrumentations) option corresponds to the EDOT Node.js [`OTEL_NODE_DISABLED_INSTRUMENTATIONS`](/reference/edot-sdks/nodejs/configuration.md#otel_node_disabledenabled_instrumentations-details) option.
