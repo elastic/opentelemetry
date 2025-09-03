@@ -150,7 +150,7 @@ def get_otel_components(url, version='main', component_docs_mapping=None):
             
         # Add documentation link if available
         if component_docs_mapping and comp_name in component_docs_mapping:
-            comp['doc_link'] = component_docs_mapping[comp_name]['doc_path']
+            comp['doc_link'] = component_docs_mapping[comp_name]['doc_path'] + '.md'
         else:
             comp['doc_link'] = None
 
