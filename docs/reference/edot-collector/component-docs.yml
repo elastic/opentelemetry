@@ -1,0 +1,19 @@
+# Component Documentation Registry
+# Maps component names to their documentation files
+# Used by tools.py to generate links to local documentation
+
+components:
+  # Exporters
+  elasticsearchexporter:
+    doc_path: "/reference/edot-collector/components/elasticsearchexporter"
+    title: "Elasticsearch exporter"
+    
+  # Receivers  
+  elasticapmintakereceiver:
+    doc_path: "/reference/edot-collector/components/elasticapmintakereceiver"
+    title: "Elastic APM intake receiver"
+    
+  # Add more components as documentation is created
+  # elasticapmconnector:
+  #   doc_path: "/reference/edot-collector/components/elasticapmconnector"
+  #   title: "Elastic APM connector"

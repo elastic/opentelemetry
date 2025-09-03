@@ -14,7 +14,7 @@ products:
 
 # OpenTelemetry data streams compared to classic APM
 
-The Elastic Distribution of OpenTelemetry (EDOT) stores telemetry data using a storage model optimized for OpenTelemetry signals. When `mapping_mode: otel` is enabled on the Elasticsearch exporter (which is the default setting), EDOT writes logs, traces, and metrics to specialized data streams aligned with OpenTelemetry semantics.
+The Elastic Distribution of OpenTelemetry (EDOT) stores telemetry data using a storage model optimized for OpenTelemetry signals. When `mapping::mode: otel` is enabled on the [Elasticsearch exporter](/reference/edot-collector/components/elasticsearchexporter.md) (which is the default setting), EDOT writes logs, traces, and metrics to specialized data streams aligned with OpenTelemetry semantics.
 
 This architecture is designed for scalable observability workloads. It supports dynamic attributes, reduces mapping complexity, and avoids issues like mapping explosions or manual dimension setup.
 
