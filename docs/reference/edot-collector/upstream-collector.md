@@ -55,7 +55,7 @@ service:
 
 ### Elastic Cloud Hosted (ECH)
 
-Because {{motlp}} is not yet available for {{ech}}, you need to setup an instance of EDOT that works as a gateway, handling processing required for some use cases (eg. deriving metrics from events in APM) and writes data directly to Elasticsearch using the Elasticsearch exporter. You can point your contrib collector OTLP exporter to the EDOT gateway
+Because {{motlp}} is not yet available for {{ech}}, you need to setup an instance of EDOT that works as a gateway, handling processing required for some use cases (for example, deriving metrics from events in APM) and writes data directly to Elasticsearch using the Elasticsearch exporter. You can point your contrib collector OTLP exporter to the EDOT gateway:
 
 ```yaml
 receivers:
