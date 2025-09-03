@@ -52,6 +52,7 @@ toc:
           - file: edot-collector/config/default-config-k8s.md
           - file: edot-collector/config/configure-logs-collection.md
           - file: edot-collector/config/configure-metrics-collection.md
+          - file: edot-collector/config/authentication-methods.md
           - file: edot-collector/config/proxy.md
       - file: edot-collector/components.md
         children:
