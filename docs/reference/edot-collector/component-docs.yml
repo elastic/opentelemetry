@@ -12,7 +12,15 @@ components:
   elasticapmintakereceiver:
     doc_path: "/reference/edot-collector/components/elasticapmintakereceiver"
     title: "Elastic APM intake receiver"
-    
+
+  apikeyauthextension:
+    doc_path: "/reference/edot-collector/config/authentication-methods.md"
+    title: "Authentication methods"
+
+  bearertokenauthextension:
+    doc_path: "/reference/edot-collector/config/authentication-methods.md"
+    title: "Authentication methods"
+
   # Add more components as documentation is created
   # elasticapmconnector:
   #   doc_path: "/reference/edot-collector/components/elasticapmconnector"
