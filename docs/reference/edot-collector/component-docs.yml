@@ -9,11 +9,9 @@ components:
     title: "Elasticsearch exporter"
     
   # Receivers  
-  # Note: elasticapmintakereceiver is documented but not currently in the EDOT Collector build
-  # When it becomes available, uncomment the following:
-  # elasticapmintakereceiver:
-  #   doc_path: "/reference/edot-collector/components/elasticapmintakereceiver"
-  #   title: "Elastic APM intake receiver"
+  elasticapmintakereceiver:
+    doc_path: "/reference/edot-collector/components/elasticapmintakereceiver"
+    title: "Elastic APM intake receiver"
     
   # Add more components as documentation is created
   # elasticapmconnector:
