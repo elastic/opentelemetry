@@ -35,7 +35,7 @@ You can configure EDOT .NET using environment variables. This is a cross-platfor
 
 Environment variables are read at startup and can be used to configure EDOT .NET. For details of the various EDOT-specific options available and their corresponding environment variable names, see [Configuration options](#configuration-options).
 
-All OpenTelemetry environment variables from the upstream SDK may also be used to configure the SDK behavior for features such as resources, samples and exporters.
+All OpenTelemetry environment variables from the contrib SDK may also be used to configure the SDK behavior for features such as resources, samples and exporters.
 
 ### IConfiguration integration
 

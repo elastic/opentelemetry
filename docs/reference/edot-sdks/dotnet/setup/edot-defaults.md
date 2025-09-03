@@ -1,6 +1,6 @@
 ---
 navigation_title: Opinionated defaults
-description: When using EDOT .NET, Elastic defaults for tracing, metrics and logging are applied. These defaults are designed to provide a faster getting started experience by automatically enabling data collection from telemetry signals without requiring as much up-front code as the upstream OpenTelemetry SDK.
+description: When using EDOT .NET, Elastic defaults for tracing, metrics and logging are applied. These defaults are designed to provide a faster getting started experience by automatically enabling data collection from telemetry signals without requiring as much up-front code as the OpenTelemetry SDK.
 applies_to:
   stack:
   serverless:
@@ -16,7 +16,7 @@ products:
 
 # EDOT .NET opinionated defaults
 
-When using EDOT .NET, Elastic defaults for tracing, metrics and logging are applied. These defaults are designed to provide a faster getting started experience by automatically enabling data collection from telemetry signals without requiring as much up-front code as the upstream OpenTelemetry SDK. This has the positive side effect of reducing the
+When using EDOT .NET, Elastic defaults for tracing, metrics and logging are applied. These defaults are designed to provide a faster getting started experience by automatically enabling data collection from telemetry signals without requiring as much up-front code as the OpenTelemetry SDK. This has the positive side effect of reducing the
 boilerplate code you must maintain in your application. These defaults should be satisfactory for most applications but can be overridden for advanced use cases.
 
 ## Defaults for all signals
@@ -225,7 +225,7 @@ To ensure the best compatibility of metric data (specifically from the histogram
 
 ## Defaults for logging
 
-EDOT .NET enables the following options that are not enabled by default when using the upstream OpenTelemetry SDK.
+EDOT .NET enables the following options that are not enabled by default when using the OpenTelemetry SDK.
 
 | Option                   | EDOT .NET default | OpenTelemetry SDK default |
 | ------------------------ | ----------------- | ------------------------- |

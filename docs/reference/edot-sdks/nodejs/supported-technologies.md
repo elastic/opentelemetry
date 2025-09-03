@@ -42,7 +42,7 @@ Usage of `@elastic/opentelemetry-node` in TypeScript code requires:
 
 The following instrumentations are included in EDOT Node.js. All are turned on by default, except those noted _disabled by default_.
 
-The 🔹 symbol marks instrumentations that differ between EDOT Node.js and upstream OTel JS, or that only exist in EDOT Node.js.
+The 🔹 symbol marks instrumentations that differ between EDOT Node.js and OTel JS, or that only exist in EDOT Node.js.
 
 | Name | Packages instrumented | Notes |
 |---|---|---|
@@ -113,7 +113,7 @@ export OTEL_NODE_ENABLED_INSTRUMENTATIONS="fs,http,fastify" # only the ones in t
 node --import @elastic/opentelemetry-node my-service.js
 ```
 
-EDOT Node.js uses the upstream [`@opentelemetry/auto-instrumentations-node` package set of instrumentations](https://github.com/open-telemetry/opentelemetry-js-contrib/blob/main/metapackages/auto-instrumentations-node/README.md#supported-instrumentations) as a guide for instrumentations to include, exclude, or turn off by default. This is to maximize compatibility between usage of EDOT Node.js and the upstream OpenTelemetry JS SDK.
+EDOT Node.js uses the [`@opentelemetry/auto-instrumentations-node` package set of instrumentations](https://github.com/open-telemetry/opentelemetry-js-contrib/blob/main/metapackages/auto-instrumentations-node/README.md#supported-instrumentations) as a guide for instrumentations to include, exclude, or turn off by default. This is to maximize compatibility between usage of EDOT Node.js and the OpenTelemetry JS SDK.
 
 ## Native instrumentations
 

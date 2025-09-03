@@ -27,7 +27,7 @@ These collectors have two main purposes:
 See the recommended architectures per Elastic deployment scenarios:
 
 :::{note}
-Elastic's Observability solution is technically compatible with edge setups that are fully based on upstream OTel components as long as the ingestion path follows the recommendations outlined in the following sections.
+Elastic's Observability solution is technically compatible with edge setups that are fully based on contrib OTel components as long as the ingestion path follows the recommendations outlined in the following sections.
 :::
 
 ### Elastic Cloud Serverless

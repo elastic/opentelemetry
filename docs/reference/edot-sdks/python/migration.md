@@ -100,7 +100,7 @@ Refer to [Central configuration](/reference/central-configuration.md) for more i
 
 ### AWS Lambda
 
-A custom lambda layer for the {{edot}} Python is not currently available. Refer to the upstream [Lambda Auto-Instrumentation](https://opentelemetry.io/docs/faas/lambda-auto-instrument/).
+A custom lambda layer for the {{edot}} Python is not currently available. Refer to the [Lambda Auto-Instrumentation](https://opentelemetry.io/docs/faas/lambda-auto-instrument/).
 
 ### Missing instrumentations
 

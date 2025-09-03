@@ -1,6 +1,6 @@
 ---
-navigation_title: Use the upstream Collector
-description: Learn how to send data to Elastic Observability using the upstream OpenTelemetry Collector instead of EDOT.
+navigation_title: Use the contrib Collector
+description: Learn how to send data to Elastic Observability using the contrib OpenTelemetry Collector instead of EDOT.
 applies_to:
   stack:
   serverless:
@@ -13,7 +13,7 @@ products:
   - id: edot-collector
 ---
 
-# Send data to {{serverless-full}} using the upstream Collector
+# Send data to {{serverless-full}} using the contrib Collector
 
 While the [{{edot}} (EDOT) Collector](/reference/index.md) provides a streamlined experience with pre-selected components, you can also use the contrib OpenTelemetry Collector or a custom distribution to send data to Elastic Observability. This approach requires more configuration but gives you more control over your OpenTelemetry setup.
 
@@ -32,7 +32,7 @@ The configuration requirements vary depending on your use case and the Elastic d
 
 ### Elastic Cloud Serverless
 
-{{serverless-full}} provides a [Managed OTLP Endpoint](/reference/motlp.md) that accepts OpenTelemetry data in its native format. This makes it the simplest scenario for using upstream components because scaling and signal processing (for example producing metrics from events) is handled by Elastic.
+{{serverless-full}} provides a [Managed OTLP Endpoint](/reference/motlp.md) that accepts OpenTelemetry data in its native format. This makes it the simplest scenario for using contrib components because scaling and signal processing (for example producing metrics from events) is handled by Elastic.
 
 The following configuration example shows how to send data to the Managed OTLP Endpoint:
 
@@ -70,7 +70,7 @@ Self-managed deployments have similar requirements to ECH but with your own Elas
 
 ## Configuration best practices
 
-When using the upstream OpenTelemetry Collector with Elastic Observability, follow these best practices:
+When using the contrib OpenTelemetry Collector with Elastic Observability, follow these best practices:
 
 ### Resource detection
 
@@ -128,7 +128,7 @@ exporters:
 
 ## Limitations and considerations
 
-Using the upstream OpenTelemetry Collector instead of EDOT comes with some trade-offs. Refer to [EDOT compared to upstream OpenTelemetry](/reference/compatibility/edot-vs-upstream.md) for more information.
+Using the contrib OpenTelemetry Collector instead of EDOT comes with some trade-offs. Refer to [EDOT compared to contrib Collector](/reference/compatibility/edot-vs-upstream.md) for more information.
 
 ## Next steps
 

@@ -42,7 +42,7 @@ For self-managed and {{ech}} deployment models the Gateway Collector does some a
 See the recommended architectures per Elastic deployment scenarios:
 
 ::::{note}
-Elastic's Observability solution is technically compatible with setups that are fully based on upstream OTel components, as long as the ingestion path follows the recommendations outlined in following sub-sections for the different Elastic deployment options.
+Elastic's Observability solution is technically compatible with setups that are fully based on contrib OTel components, as long as the ingestion path follows the recommendations outlined in following sub-sections for the different Elastic deployment options.
 ::::
 
 ### Elastic Cloud Serverless

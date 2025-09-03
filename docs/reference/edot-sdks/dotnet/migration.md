@@ -24,7 +24,7 @@ Compared to the Elastic APM .NET agent, the {{edot}} .NET presents a number of a
 - A wider pool of knowledge, experience and support is available across the OpenTelemetry community.
 - Efficient data collection and advanced data processing opportunities.
 
-While you can use the upstream [OpenTelemetry SDK for .NET](https://github.com/open-telemetry/opentelemetry-dotnet) to directly export data to an Elastic Observability backend, some capabilities of the Elastic tooling might not be able to function as intended. Use the {{edot}} (EDOT) language SDK and the [{{edot}} Collector](/reference/edot-collector/index.md) for the best experience.
+While you can use the [OpenTelemetry SDK for .NET](https://github.com/open-telemetry/opentelemetry-dotnet) to directly export data to an Elastic Observability backend, some capabilities of the Elastic tooling might not be able to function as intended. Use the {{edot}} (EDOT) language SDK and the [{{edot}} Collector](/reference/edot-collector/index.md) for the best experience.
 
 ## Migrating from Elastic .NET Agent [migrating-to-edot-net-from-elastic-net-agent]
 
@@ -209,11 +209,11 @@ When using EDOT .NET, all the configurations are static and should be provided t
 
 EDOT .NET does not implement [span compression](docs-content://solutions/observability/apm/spans.md#apm-spans-span-compression).
 
-## Migrate from the upstream .NET SDK [migrating-to-edot-net-from-the-upstream-opentelemetry-net-sdk]
+## Migrate from the .NET SDK [migrating-to-edot-net-from-the-upstream-opentelemetry-net-sdk]
 
-EDOT .NET require minimal code changes to migrate from the upstream OpenTelemetry SDK for .NET. The distribution [opinionated defaults](/reference/edot-sdks/dotnet/setup/edot-defaults.md) simplify the amount of code required to get started with OpenTelemetry in .NET applications.
+EDOT .NET require minimal code changes to migrate from the OpenTelemetry SDK for .NET. The distribution [opinionated defaults](/reference/edot-sdks/dotnet/setup/edot-defaults.md) simplify the amount of code required to get started with OpenTelemetry in .NET applications.
 
-In an application which already uses the upstream OpenTelemetry SDK, the following code is an example of how this would be registered and enabled in an ASP.NET Core application.
+In an application which already uses the OpenTelemetry SDK, the following code is an example of how this would be registered and enabled in an ASP.NET Core application.
 
 ```csharp
 using OpenTelemetry;
@@ -255,7 +255,7 @@ Replace the `<LATEST>` version placeholder with the [latest available package fr
 
 EDOT .NET includes a transitive dependency on the OpenTelemetry SDK, so you do not need to add the OpenTelemetry SDK package to your project directly. However, you can explicitly add the OpenTelemetry SDK as a dependency if you want to opt into newer SDK versions.
 
-Due to the EDOT .NET defaults, less code is required to achieve the same instrumentation behavior that the previous code snippet configured for the upstream OpenTelemetry SDK. For example:
+Due to the EDOT .NET defaults, less code is required to achieve the same instrumentation behavior that the previous code snippet configured for the OpenTelemetry SDK. For example:
 
 ```csharp
 using OpenTelemetry;
@@ -276,7 +276,7 @@ Instrumentation assembly scanning is not supported for applications using native
 
 EDOT .NET ships with a lightly modified redistribution of the OpenTelemetry SDK installation script. To instrument a .NET application automatically, download and run the installer script for your operating system from the latest [release](https://github.com/elastic/elastic-otel-dotnet/releases).
 
-Refer to the upstream OpenTelemetry SDK documentation for [.NET zero-code instrumentation](https://opentelemetry.io/docs/zero-code/net) for more examples of using the installation script.
+Refer to the OpenTelemetry SDK documentation for [.NET zero-code instrumentation](https://opentelemetry.io/docs/zero-code/net) for more examples of using the installation script.
 
 ## Troubleshooting
 
