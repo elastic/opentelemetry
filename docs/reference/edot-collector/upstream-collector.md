@@ -15,7 +15,7 @@ products:
 
 # Send data to {{serverless-full}} using the upstream Collector
 
-While the [{{edot}} (EDOT) Collector](/reference/index.md) provides a streamlined experience with pre-selected components, you can also use the contrib OpenTelemetry Collector or a custom distribution to send data to Elastic Observability. This approach requires more configuration but gives you equal control over your OpenTelemetry setup.
+While the [{{edot}} (EDOT) Collector](/reference/index.md) provides a streamlined experience with pre-selected components, you can also use the contrib OpenTelemetry Collector or a custom distribution to send data to Elastic Observability. This approach requires more configuration but gives you more control over your OpenTelemetry setup.
 
 ## Overview
 
@@ -32,7 +32,7 @@ The configuration requirements vary depending on your use case and the Elastic d
 
 ### Elastic Cloud Serverless
 
-{{serverless-full}} provides a [Managed OTLP Endpoint](/reference/motlp.md) that accepts OpenTelemetry data in its native format. This makes it the simplest scenario for using upstream components because scaling and signal processing (eg. producing metrics from events) is handled by Elastic.
+{{serverless-full}} provides a [Managed OTLP Endpoint](/reference/motlp.md) that accepts OpenTelemetry data in its native format. This makes it the simplest scenario for using upstream components because scaling and signal processing (for example producing metrics from events) is handled by Elastic.
 
 The following configuration example shows how to send data to the Managed OTLP Endpoint:
 
@@ -55,60 +55,7 @@ service:
 
 ### Elastic Cloud Hosted (ECH)
 
-Because {{motlp}} is not yet available for {{ech}}, you need to setup an instance of EDOT that works as a gateway, handling processing required for some use cases (eg. deriving metrics from events in APM) and writes data directly to Elasticsearch using the Elasticsearch exporter. You can point your contrib collector OTLP exporter to the EDOT Gateway.
-
-The following configuration example shows how to send data to Elasticsearch:
-
-```yaml
-receivers:
-  otlp:
-    protocols:
-      grpc:
-        endpoint: 0.0.0.0:4317
-      http:
-        endpoint: 0.0.0.0:4318
-
-processors:
-  resourcedetection:
-    detectors: [env, system, gcp, ecs, ec2, azure, aks, eks, gke]
-    timeout: 5s
-    override: true
-  
-  attributes:
-    actions:
-      - key: service.name
-        value: "your-service-name"
-        action: insert
-  
-  batch:
-    timeout: 1s
-    send_batch_size: 1024
-
-exporters:
-  elasticsearch:
-    endpoints: ["https://your-ech-instance.elastic-cloud.com:9243"]
-    user: "elastic"
-    password: "YOUR_PASSWORD"
-    tls:
-      insecure: false
-    num_workers: 4
-    timeout: 90s
-
-service:
-  pipelines:
-    traces:
-      receivers: [otlp]
-      processors: [resourcedetection, attributes, batch]
-      exporters: [elasticsearch]
-    metrics:
-      receivers: [otlp]
-      processors: [resourcedetection, attributes, batch]
-      exporters: [elasticsearch]
-    logs:
-      receivers: [otlp]
-      processors: [resourcedetection, attributes, batch]
-      exporters: [elasticsearch]
-```
+Because {{motlp}} is not yet available for {{ech}}, you need to setup an instance of EDOT that works as a gateway, handling processing required for some use cases (for example, deriving metrics from events in APM) and writes data directly to Elasticsearch using the Elasticsearch exporter. You can point your contrib Cllector OTLP exporter to the EDOT gateway. Refer to [Gateway configuration](/reference/edot-collector/config/default-config-standalone.md#gateway-mode) for more information.
 
 ### Self-managed Elastic Stack
 
@@ -119,13 +66,9 @@ Self-managed deployments have similar requirements to ECH but with your own Elas
 - Ensure your Elasticsearch version is compatible.
 - Set up proper index templates and mappings.
 
-## Creating a custom OpenTelemetry Collector
-
-To use the upstream OpenTelemetry Collector with Elastic Observability, you need to build a custom distribution that includes the required components. Refer to [Custom Collector](/reference/edot-collector/custom-collector.md) for more information.
-
 ## Configuration best practices
 
-When using the upstream OpenTelemetry Collector with Elastic Observability, follow these best practices.
+When using the upstream OpenTelemetry Collector with Elastic Observability, follow these best practices:
 
 ### Resource detection
 
