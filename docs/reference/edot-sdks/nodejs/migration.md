@@ -195,7 +195,7 @@ The Elastic APM Node.js agent [`longFieldMaxLength`](apm-agent-nodejs://referenc
 - `OTEL_SPAN_ATTRIBUTE_VALUE_LENGTH_LIMIT` for traces.
 - `OTEL_LOGRECORD_ATTRIBUTE_VALUE_LENGTH_LIMIT` for logs.
 
-For example: `OTEL_ATTRIBUTE_VALUE_LENGTH_LIMIT=1000` will limit all attributes to a thousad chars long.
+For example: `OTEL_ATTRIBUTE_VALUE_LENGTH_LIMIT=1000` will limit attribute string values to a thousand characters.
 
 ### `maxQueueSize`
 
