@@ -234,7 +234,7 @@ For Node.js usage, the following instrumentations produce telemetry using HTTP s
 - `@opentelemetry/instrumentation-http`: Currently transitioning from old to stable HTTP semantic conventions, via the `OTEL_SEMCONV_STABILITY_OPT_IN` setting.
 - `@opentelemetry/instrumentation-undici`: Uses the stable HTTP semantic conventions, because this instrumentation was created after HTTP semconv had stabilized.
 
-EDOT Node.js differs from current OTel JS in that it *defaults `OTEL_SEMCONV_STABILITY_OPT_IN` to `http`*. This means that, by default, all HTTP-related telemetry from EDOT Node.js will use the newer, stable HTTP semantic conventions. (This difference from upstream is expected to be temporary, as `@opentelemetry/instrumentation-http` switches to producing only stable HTTP semantic conventions after its transition period.)
+EDOT Node.js differs from current OTel JS in that it *defaults `OTEL_SEMCONV_STABILITY_OPT_IN` to `http`*. This means that, by default, all HTTP-related telemetry from EDOT Node.js will use the newer, stable HTTP semantic conventions. (This difference from contrib is expected to be temporary, as `@opentelemetry/instrumentation-http` switches to producing only stable HTTP semantic conventions after its transition period.)
 
 ### `ELASTIC_OTEL_CONTEXT_PROPAGATION_ONLY` details [elastic_otel_context_propagation_only-details]
 
