@@ -159,7 +159,7 @@ For example: `OTEL_RESOURCE_ATTRIBUTES=alice=first,bob=second`. Such labels will
 
 ### `hostname`
 
-The Elastic APM Node.js agent [`environment`](apm-agent-nodejs://reference/configuration.md#instrument) option corresponds to setting the `host.name` key in [OTEL_RESOURCE_ATTRIBUTES](https://opentelemetry.io/docs/concepts/sdk-configuration/general-sdk-configuration/#otel_resource_attributes).
+The Elastic APM Node.js agent [`hostname`](apm-agent-nodejs://reference/configuration.md#hostname) option corresponds to setting the `host.name` key in [OTEL_RESOURCE_ATTRIBUTES](https://opentelemetry.io/docs/concepts/sdk-configuration/general-sdk-configuration/#otel_resource_attributes).
 
 For example: `OTEL_RESOURCE_ATTRIBUTES=host.name=myhost`.
 
