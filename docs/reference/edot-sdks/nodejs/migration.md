@@ -165,7 +165,7 @@ For example: `OTEL_RESOURCE_ATTRIBUTES=host.name=myhost`.
 
 ### `instrument`
 
-The Elastic APM Node.js agent [`environment`](apm-agent-nodejs://reference/configuration.md#instrument) option corresponds to [`OTEL_NODE_ENABLED_INSTRUMENTATIONS`](/reference/edot-sdks/nodejs/configuration.md#otel_node_disabledenabled_instrumentations-details) option.
+The Elastic APM Node.js agent [`instrument`](apm-agent-nodejs://reference/configuration.md#instrument) option corresponds to [`OTEL_NODE_ENABLED_INSTRUMENTATIONS`](/reference/edot-sdks/nodejs/configuration.md#otel_node_disabledenabled_instrumentations-details) option.
 
 For example: `OTEL_NODE_ENABLED_INSTRUMENTATIONS=none`.
 
