@@ -133,7 +133,11 @@ For example: `OTEL_NODE_DISABLED_INSTRUMENTATIONS=express,mysql`.
 
 The Elastic APM Node.js agent [`disableMetrics`](apm-agent-nodejs://reference/configuration.md#disable-metrics) option corresponds to the EDOT Node.js [`OTEL_METRICS_EXPORTER`](https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#exporter-selection) option. Set it to none to disable the collection of metrics.
 
-For example: `OTEL_METRICS_EXPORTER=none`.
+
+The Elastic APM Node.js agent [`disableMetrics`](apm-agent-nodejs://reference/configuration.md#disable-metrics) option does not correspond to any Opentelemetry option.
+However if you want to disable all metrics (equivalent to `disableMetrics='*'`) you can use [`OTEL_METRICS_EXPORTER`](https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#exporter-selection) option. Set it to none to disable the collection of all metrics.
+
+For example: `OTEL_METRICS_EXPORTER=none` will tell EDOT Node.js to not collect any metric at all.
 
 ### `disableSend`
 
@@ -147,9 +151,9 @@ For example `OTEL_TRACES_EXPORTER=none OTEL_METRICS_EXPORTER=none OTEL_LOGS_EXPO
 
 ### `environment`
 
-The Elastic APM Node.js agent [`environment`](apm-agent-nodejs://reference/configuration.md#environment) option corresponds to setting the `deployment.environment` key in [OTEL_RESOURCE_ATTRIBUTES](https://opentelemetry.io/docs/concepts/sdk-configuration/general-sdk-configuration/#otel_resource_attributes).
+The Elastic APM Node.js agent [`environment`](apm-agent-nodejs://reference/configuration.md#environment) option corresponds to setting the `deployment.environment.name` key in [OTEL_RESOURCE_ATTRIBUTES](https://opentelemetry.io/docs/concepts/sdk-configuration/general-sdk-configuration/#otel_resource_attributes).
 
-For example: `OTEL_RESOURCE_ATTRIBUTES=deployment.environment=testing`.
+For example: `OTEL_RESOURCE_ATTRIBUTES=deployment.environment.name=testing`.
 
 ### `globalLabels`
 
@@ -165,12 +169,14 @@ For example: `OTEL_RESOURCE_ATTRIBUTES=host.name=myhost`.
 
 ### `instrument`
 
-The Elastic APM Node.js agent [`environment`](apm-agent-nodejs://reference/configuration.md#instrument) option corresponds to [`OTEL_NODE_ENABLED_INSTRUMENTATIONS`](/reference/edot-sdks/nodejs/configuration.md#otel_node_disabledenabled_instrumentations-details) option.
+The Elastic APM Node.js agent [`environment`](apm-agent-nodejs://reference/configuration.md#instrument) option can be achieved with [`OTEL_NODE_ENABLED_INSTRUMENTATIONS`](/reference/edot-sdks/nodejs/configuration.md#otel_node_disabledenabled_instrumentations-details) option.
 
 For example: `OTEL_NODE_ENABLED_INSTRUMENTATIONS=none`.
 
-TODO: this works but it shows a warning. Should we consider this as good enough???
-The log message: `{"name":"elastic-otel-node","level":40,"msg":"Unknown instrumentation \"none\" specified in environment variable \"OTEL_NODE_ENABLED_INSTRUMENTATIONS\"","time":"2025-09-01T11:12:30.949Z"}`
+:::{info}
+Because "none" is not an instrumentation name the EDOT will log a message saying so. The message will heve the following format.
+`{"name":"elastic-otel-node","level":40,"msg":"Unknown instrumentation \"none\" specified in environment variable \"OTEL_NODE_ENABLED_INSTRUMENTATIONS\"","time":"2025-09-01T11:12:30.949Z"}`
+:::
 
 ### `logLevel`
 
@@ -211,10 +217,6 @@ For example: `OTEL_BSP_MAX_QUEUE_SIZE=2048 OTEL_BLRP_MAX_QUEUE_SIZE=4096`.
 The Elastic APM Node.js agent [`metricsInterval`](apm-agent-nodejs://reference/configuration.md#metrics-interval) option corresponds to the OpenTelemetry [`OTEL_METRIC_EXPORT_INTERVAL`](https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#periodic-exporting-metricreader) option.
 
 For example: `OTEL_METRIC_EXPORT_INTERVAL=30000`.
-
-### `opentelemetryBridgeEnabled`
-
-If you were using the Elastic APM Node.js agent [`opentelemetryBridgeEnabled`](apm-agent-nodejs://reference/configuration.md#opentelemetry-bridge-enabled) option you can drop it safely and keep using `@openetelemetry/api` to manually instrument your service.
 
 ### `secretToken`
 
