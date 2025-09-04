@@ -100,7 +100,7 @@ To use central configuration for EDOT Node.js it is necessary to enable it by fo
 
 ### `cloudProvider`
 
-The Elastic APM Node.js agent [`cloudProvider`](apm-agent-nodejs://reference/configuration.md#cloud-provider) option does not corresponds directly to any OpenTelemetry option but you can get similar behavior by properly setting [`OTEL_NODE_RESOURCE_DETECTORS`](https://opentelemetry.io/docs/zero-code/js/configuration/#sdk-resource-detector-configuration) option. If you set this option make sure you add along with the cloud detector the non-cloud detectors that apply to your service. For a full list of detectors check [OTEL_NODE_RESOURCE_DETECTORS details](/reference/edot-sdks/nodejs/configuration.md#otel_node_resource_detectors-details). Not setting this option is the equivalent of `auto`.
+The Elastic APM Node.js agent [`cloudProvider`](apm-agent-nodejs://reference/configuration.md#cloud-provider) option does not correspond directly to any OpenTelemetry option but you can get similar behavior by properly setting [`OTEL_NODE_RESOURCE_DETECTORS`](https://opentelemetry.io/docs/zero-code/js/configuration/#sdk-resource-detector-configuration) option. If you set this option make sure you add along with the cloud detector the non-cloud detectors that apply to your service. For a full list of detectors check [OTEL_NODE_RESOURCE_DETECTORS details](/reference/edot-sdks/nodejs/configuration.md#otel_node_resource_detectors-details). Not setting this option is the equivalent of `auto`.
 
 For example: `OTEL_NODE_RESOURCE_DETECTORS=os,env,host,serviceinstance,process,aws` will make the agent query for AWS metadata only and use other non-cloud detectors to enrich that metadata.
 
