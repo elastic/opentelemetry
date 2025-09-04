@@ -137,7 +137,7 @@ For example: `OTEL_METRICS_EXPORTER=none`.
 
 ### `disableSend`
 
-The Elastic APM Node.js agent [`disableSend`](apm-agent-nodejs://reference/configuration.md#disable-send) does not corresponds to any Opentelemetry option. You can get the same behavior by setting to the value `none` on the following environment vars dedicated to [exporter selection](https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#exporter-selection). Note that you have control per signal.
+The Elastic APM Node.js agent [`disableSend`](apm-agent-nodejs://reference/configuration.md#disable-send) does not corresponds to a single OpenTelemetry option. You can get the same behavior by setting to the value `none` on the following environment vars dedicated to [exporter selection](https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#exporter-selection). Note that you have control per signal.
 
 - `OTEL_TRACES_EXPORTER` for traces.
 - `OTEL_METRICS_EXPORTER` for metrics.
