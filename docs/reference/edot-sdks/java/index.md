@@ -15,17 +15,17 @@ products:
 
 # Elastic Distribution of OpenTelemetry Java
 
-The {{edot}} (EDOT) Java is a customized version of the upstream [OpenTelemetry Java agent](https://github.com/open-telemetry/opentelemetry-java-instrumentation), configured for the best experience with Elastic Observability. 
+The {{edot}} (EDOT) Java is a customized version of the [OpenTelemetry Java agent](https://github.com/open-telemetry/opentelemetry-java-instrumentation), configured for the best experience with Elastic Observability. 
 
 Use EDOT Java to start the OpenTelemetry SDK with your Java application, and automatically capture tracing data, performance metrics, and logs. Traces, metrics, and logs can be sent to any OpenTelemetry Protocol (OTLP) Collector you choose.
 
-A goal of this distribution is to avoid introducing proprietary concepts in addition to those defined by the wider OpenTelemetry community. For any additional features introduced, Elastic aims at contributing them back to the upstream OpenTelemetry project.
+A goal of this distribution is to avoid introducing proprietary concepts in addition to those defined by the wider OpenTelemetry community. For any additional features introduced, Elastic aims at contributing them back to the OpenTelemetry project.
 
 ## Features
 
 In addition to all the features of OpenTelemetry Java, with EDOT Java you have access to the following:
 
-* Improvements and bug fixes contributed by the Elastic team before the changes are available upstream in OpenTelemetry repositories.
+* Improvements and bug fixes contributed by the Elastic team before the changes are available in OpenTelemetry repositories.
 * Optional features that can enhance OpenTelemetry data that is being sent to Elastic.
 * Elastic-specific processors that ensure optimal compatibility when exporting OpenTelemetry signal data to an Elastic backend like an Elastic Observability deployment.
 * Preconfigured collection of tracing and metrics signals, applying some opinionated defaults, such as which sources are collected by default.

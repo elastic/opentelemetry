@@ -55,7 +55,7 @@ pnpm add @elastic/opentelemetry-node
 
 ## Configuration
 
-EDOT Node.js is configured with environment variables beginning with `OTEL_` or `ELASTIC_OTEL_`. Any `OTEL_*` environment variables behave the same as with the upstream OpenTelemetry SDK. 
+EDOT Node.js is configured with environment variables beginning with `OTEL_` or `ELASTIC_OTEL_`. Any `OTEL_*` environment variables behave the same as with the OpenTelemetry SDK. 
 
 For example, all the OpenTelemetry [General SDK Configuration env vars](https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#general-sdk-configuration) are supported. If EDOT Node.js provides a configuration setting specific to the Elastic distribution, it begins with `ELASTIC_OTEL_`.
 

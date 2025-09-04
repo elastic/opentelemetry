@@ -106,7 +106,7 @@ hostmetrics:
 
 You must grant access to the `/proc` filesystem to the receiver by running the Collector with privileged access and mounting /proc and /sys appropriately. Refer to the hostmetrics container use [guide](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver#collecting-host-metrics-from-inside-a-container-linux-only) (Linux only).
 
-Turning on the process scraper might significantly increase the volume of scraped metrics, potentially impacting performance. Refer to the upstream issue [#39423](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/39423) for discussion.
+Turning on the process scraper might significantly increase the volume of scraped metrics, potentially impacting performance. Refer to the contrib issue [#39423](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/39423) for discussion.
 
 To ensure compatibility with {{kib}}'s Infrastructure dashboards, include the [elasticinframetrics processor](https://github.com/elastic/opentelemetry-collector-components/tree/main/processor/elasticinframetricsprocessor) in your pipeline:
 

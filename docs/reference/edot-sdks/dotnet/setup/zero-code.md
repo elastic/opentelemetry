@@ -16,7 +16,7 @@ products:
 
 # Using profiler-based zero-code instrumentation
 
-EDOT .NET includes a redistribution of the zero-code installer scripts so most of the documentation in the upstream [.NET zero-code instrumentation documentation](https://opentelemetry.io/docs/zero-code/dotnet/) applies.
+EDOT .NET includes a redistribution of the zero-code installer scripts so most of the documentation in the [.NET zero-code instrumentation documentation](https://opentelemetry.io/docs/zero-code/dotnet/) applies.
 
 Use the EDOT .NET automatic instrumentation to send traces and metrics from .NET applications and services to observability backends without having to modify source code.
 
@@ -92,4 +92,4 @@ Get-Command -Module OpenTelemetry.DotNet.Auto
 Get-Help Install-OpenTelemetryCore -Detailed
 ```
 
-For more information on instrumenting specific application types visit the [upstream OpenTelemetry documentation](https://opentelemetry.io/docs/zero-code/dotnet/).
+For more information on instrumenting specific application types visit the [contrib OpenTelemetry documentation](https://opentelemetry.io/docs/zero-code/dotnet/).

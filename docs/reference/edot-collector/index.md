@@ -41,7 +41,7 @@ To request a component to be added to EDOT Collector, submit a [GitHub issue her
 
 ## Limitations 
 
-The EDOT Collector inherits the same limitations from the upstream components. Refer to [Limitations](/reference/compatibility/limitations.md) for a complete list.
+The EDOT Collector inherits the same limitations from the contrib components. Refer to [Limitations](/reference/compatibility/limitations.md) for a complete list.
 
 ## License
 

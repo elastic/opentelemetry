@@ -14,7 +14,7 @@ products:
 
 # Limitations of Elastic Distributions of OpenTelemetry
 
-The Elastic Distributions of OpenTelemetry (EDOT) come with a new way of ingesting data in OTel-native way and format. Elastic is continuously working on providing a great experience with OTel-native data within Elastic solutions, contributing popular Elastic features to the upstream OpenTelemetry projects and aligning concepts with OpenTelemetry.
+The Elastic Distributions of OpenTelemetry (EDOT) come with a new way of ingesting data in OTel-native way and format. Elastic is continuously working on providing a great experience with OTel-native data within Elastic solutions, contributing popular Elastic features to the contrib OpenTelemetry projects and aligning concepts with OpenTelemetry.
 
 While EDOT and OTel-native data collection already covers most of the core Observability use cases, the following limitations apply compared to data collection with classic Elastic data ingestion components.
 
@@ -27,7 +27,7 @@ EDOT already supports most core observability use cases, but in some scenarios, 
 * **Existing integrations and dashboards:** Many prebuilt Elastic integrations and dashboards are designed for ECS-formatted data and may not work as expected with the OpenTelemetry semantic conventions without customization.
 * **Ingest pipelines for structuring logs:** {{es}} ingest pipelines cannot directly parse OTel-native data with dotted field names without preprocessing. See [Centralized parsing and processing of data](#centralized-parsing-and-processing-of-data) for workarounds.
 * **Tail-based sampling (TBS):**  
-If you need the full tail-based sampling capabilities of APM Server, use APM Server with an Elasticsearch output. EDOT does not provide managed TBS. You can run TBS in a self-managed EDOT Collector or any upstream OTel Collector and ingest the sampled traces into Elastic with some caveats - refer to [Tail-based sampling limitations](#tail-based-sampling-tbs) for more information.
+If you need the full tail-based sampling capabilities of APM Server, use APM Server with an Elasticsearch output. EDOT does not provide managed TBS. You can run TBS in a self-managed EDOT Collector or any contrib OTel Collector and ingest the sampled traces into Elastic with some caveats - refer to [Tail-based sampling limitations](#tail-based-sampling-tbs) for more information.
 
 Refer to [EDOT data streams compared to classic APM](../compatibility/data-streams.md) for an overview of how these ingestion paths differ.
 
@@ -43,11 +43,11 @@ Refer to [these examples](/reference/edot-collector/config/configure-logs-collec
 
 ## Infrastructure and host metrics
 
-Due to limitations and gaps in data collection with the upstream OTel `hostmetrics`, there are corresponding limitations with the curated infrastructure and host metrics UIs in Elastic.
+Due to limitations and gaps in data collection with the contrib OTel `hostmetrics`, there are corresponding limitations with the curated infrastructure and host metrics UIs in Elastic.
 
 | Limitation                                      | Explanation                                                                                                                                                                                                                     |
 |------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Host network panels do not display data in some Elastic Observability UIs. | Due to an upstream limitation, `host.network.*` metrics are not available from OpenTelemetry.                                                                                                                                   |
+| Host network panels do not display data in some Elastic Observability UIs. | Due to an contrib limitation, `host.network.*` metrics are not available from OpenTelemetry.                                                                                                                                   |
 | Process state is unavailable in OpenTelemetry host metrics. | The `process.state` metric is not present and is assigned a dummy value of "Unknown" in the State column of the host processes table.                                                                                           |
 | Host OS version and operating system may show as "N/A". | Although the {{es}} exporter processes resource attributes, it may not populate these values.                                                                                                                            |
 | Normalized Load data is missing unless the CPU scraper is enabled. | The `system.load.cores` metric is required for the Normalized Load column in the Hosts table and the Normalized Load visualization in the host detailed view.                                                                    |
@@ -86,7 +86,7 @@ Runtime metrics can be ingested and used to create custom dashboards. As a tempo
 
 If you need the full tail-based sampling capabilities of APM Server, use APM Server with an Elasticsearch output. EDOT does not provide a managed TBS service.
 
-You can run tail-based sampling in a self-managed EDOT Collector or any upstream OTel Collector and ingest the sampled traces into Elastic, with these caveats:
+You can run tail-based sampling in a self-managed EDOT Collector or any contrib OTel Collector and ingest the sampled traces into Elastic, with these caveats:
 
 * **Metric accuracy:** Counts and rate metrics reflect sampled data, not total volumes. The Elastic APM backend cannot extrapolate totals because the `tailsamplingprocessor` does not send sampling probability metadata.
 * **Service map coverage:** Some edges between services may be missing.

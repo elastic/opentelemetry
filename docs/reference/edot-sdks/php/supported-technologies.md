@@ -31,7 +31,7 @@ Refer to [EDOT SDKs compatibility](/reference/compatibility/sdks.md) for support
 
 EDOT PHP supports PHP versions 8.1 to 8.4.
 
-Unlike the upstream OpenTelemetry PHP agent, EDOT PHP supports extension-level instrumentation starting from PHP 8.1. This allows you to capture detailed traces from libraries such as cURL, PDO, and MySQLi even in PHP 8.1 environments.
+Unlike the OpenTelemetry PHP agent, EDOT PHP supports extension-level instrumentation starting from PHP 8.1. This allows you to capture detailed traces from libraries such as cURL, PDO, and MySQLi even in PHP 8.1 environments.
 
 ## Supported PHP SAPIs
 
@@ -71,7 +71,7 @@ The following libraries are supported:
 ## Additional features and improvements
 ### Truly zero-config auto-instrumentation
 
-Unlike the upstream OpenTelemetry PHP agent, EDOT PHP works fully automatically. There is no need to modify your application code, add Composer packages, or adjust deployment scripts. Once the system package is installed, EDOT PHP automatically detects your application and injects the instrumentation code at runtime, without requiring manual integration.
+Unlike the OpenTelemetry PHP agent, EDOT PHP works fully automatically. There is no need to modify your application code, add Composer packages, or adjust deployment scripts. Once the system package is installed, EDOT PHP automatically detects your application and injects the instrumentation code at runtime, without requiring manual integration.
 
 ### Automatic Root/Transaction Span
 

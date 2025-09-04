@@ -89,7 +89,7 @@ builder.AddElasticOpenTelemetry();
 
 Immediately after creating the WebApplicationBuilder, which implements `IHostApplicationBuilder`, call the `AddElasticOpenTelemetry` method. `AddElasticOpenTelemetry` registers the OpenTelemetry SDK for .NET, applying the Elastic [opinionated defaults](/reference/edot-sdks/dotnet/setup/edot-defaults.md). The Elastic defaults enable tracing, metrics, log signals, and the OTLP exporter.
 
-Additionally, EDOT performs automatic instrumentation assembly scanning to enable the ASP.NET Core instrumentation that we added in the previous step. With the upstream SDK, additional lines of code would be required to register the instrumentation. EDOT .NET aims to simplify the experience of getting started.
+Additionally, EDOT performs automatic instrumentation assembly scanning to enable the ASP.NET Core instrumentation that we added in the previous step. With the SDK, additional lines of code would be required to register the instrumentation. EDOT .NET aims to simplify the experience of getting started.
 
 ### Configure the OpenTelemetry resource attributes
 

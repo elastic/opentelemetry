@@ -61,11 +61,11 @@ For information on the compatibility of each Collector component, refer to the [
 
 ## Other Collector distributions
 
-Non-EDOT distributions of the OTel Collector, such as custom Collector builds, upstream Collector distributions, and so on aren't officially supported through Elastic but are technically compatible ([Compatible]) if they contain the [required OTel Collector components](/reference/edot-collector/custom-collector.md) and are configured like the EDOT Collector.
+Non-EDOT distributions of the OTel Collector, such as custom Collector builds, contrib Collector distributions, and so on aren't officially supported through Elastic but are technically compatible ([Compatible]) if they contain the [required OTel Collector components](/reference/edot-collector/custom-collector.md) and are configured like the EDOT Collector.
 
 You can retrieve required components and configuration options from the [example configuration files](https://github.com/elastic/elastic-agent/tree/v<COLLECTOR_VERSION>/internal/pkg/otel/samples/linux) for the EDOT Collector.
 
-For a comparison between EDOT and the upstream OTel, refer to [EDOT compared to upstream OTel](edot-vs-upstream.md).
+For a comparison between EDOT and the contrib OTel Collector, refer to [EDOT compared to contrib Collector](edot-vs-upstream.md).
 
 [Incompatible]: nomenclature.md
 [Compatible]: nomenclature.md

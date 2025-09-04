@@ -47,7 +47,7 @@ The benchmark uses the following components:
 
 EDOT PHP delivers the best balance of performance and observability, with low overhead and full compatibility with Elastic and OpenTelemetry ecosystems. The Elastic APM agent provides slightly lower latency but is limited to the Elastic stack.
 
-Upstream OTEL PHP with Protobuf via C extension improves significantly over pure PHP, but still trails behind EDOT PHP. The pure PHP implementation of Protobuf export in upstream OTEL PHP leads to extreme performance degradation, rendering it impractical for real-world use.
+OTEL PHP with Protobuf via C extension improves significantly over pure PHP, but still trails behind EDOT PHP. The pure PHP implementation of Protobuf export in OTEL PHP leads to extreme performance degradation, rendering it impractical for real-world use.
 
  Running a local Collector increases CPU load, especially when colocated with the application container.
 

@@ -85,4 +85,4 @@ If you're using an SDK that doesn't support proxy variables directly, consider r
 
 ## Resources
 
-[Proxy support - upstream documentation](https://opentelemetry.io/docs/collector/configuration/#proxy-support)
+[Proxy support - contrib documentation](https://opentelemetry.io/docs/collector/configuration/#proxy-support)

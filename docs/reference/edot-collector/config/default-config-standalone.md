@@ -32,7 +32,7 @@ The following sample config files for Agent mode are available:
 | Platform logs and host metrics | [Logs &#124; Metrics - ES] | [Logs &#124; Metrics - OTLP] |
 | Platform logs, host metrics, <br> and application telemetry | [Logs &#124; Metrics &#124; App - ES]<br>(*default*) | [Logs &#124; Metrics &#124; App - OTLP]<br>(*default*) |
 
-Use the previous example configurations as a reference when configuring your upstream Collector or customizing your EDOT Collector configuration.
+Use the previous example configurations as a reference when configuring your contrib Collector or customizing your EDOT Collector configuration.
 
 The following sections describe the default pipelines by use cases.
 
@@ -51,7 +51,7 @@ The goal of EDOT is to preserve OTel data formats and semantics as much as possi
 
 #### Logs collection pipeline
 
-For logs collection, the default configuration uses the [`filelog`] receiver to read log entries from files.  In addition, the [`resourcedetection`] processor enriches the log entries with metadata about the corresponding host and operating system.
+For logs collection, the default configuration uses the [`filelog`] receiver to read log entries from files. In addition, the [`resourcedetection`] processor enriches the log entries with metadata about the corresponding host and operating system.
 
 :::{note}
 The `from_context: client_metadata` option in the `resource` processor only applies to transport-level metadata. It cannot extract custom application attributes.  
