@@ -92,4 +92,4 @@ Get-Command -Module OpenTelemetry.DotNet.Auto
 Get-Help Install-OpenTelemetryCore -Detailed
 ```
 
-For more information on instrumenting specific application types visit the [OpenTelemetry documentation](https://opentelemetry.io/docs/zero-code/dotnet/).
+For more information on instrumenting specific application types visit the [contrib OpenTelemetry documentation](https://opentelemetry.io/docs/zero-code/dotnet/).
