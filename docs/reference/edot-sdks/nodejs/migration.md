@@ -131,13 +131,10 @@ For example: `OTEL_NODE_DISABLED_INSTRUMENTATIONS=express,mysql`.
 
 ### `disableMetrics`
 
-The Elastic APM Node.js agent [`disableMetrics`](apm-agent-nodejs://reference/configuration.md#disable-metrics) option corresponds to the EDOT Node.js [`OTEL_METRICS_EXPORTER`](https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#exporter-selection) option. Set it to none to disable the collection of metrics.
-
-
 The Elastic APM Node.js agent [`disableMetrics`](apm-agent-nodejs://reference/configuration.md#disable-metrics) option does not correspond to any Opentelemetry option.
-However if you want to disable all metrics (equivalent to `disableMetrics='*'`) you can use [`OTEL_METRICS_EXPORTER`](https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#exporter-selection) option. Set it to none to disable the collection of all metrics.
+However if you want to disable all metrics (equivalent to `disableMetrics='*'`) you can use [`OTEL_METRICS_EXPORTER`](https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#exporter-selection) option. Set it to `none` to disable the collection of all metrics.
 
-For example: `OTEL_METRICS_EXPORTER=none` will tell EDOT Node.js to not collect any metric at all.
+For example: `OTEL_METRICS_EXPORTER=none`.
 
 ### `disableSend`
 
@@ -171,7 +168,7 @@ For example: `OTEL_RESOURCE_ATTRIBUTES=host.name=myhost`.
 
 The Elastic APM Node.js agent [`instrument`](apm-agent-nodejs://reference/configuration.md#instrument) option can be achieved with [`OTEL_NODE_ENABLED_INSTRUMENTATIONS`](/reference/edot-sdks/nodejs/configuration.md#otel_node_disabledenabled_instrumentations-details) option.
 
-For example: `OTEL_NODE_ENABLED_INSTRUMENTATIONS=none` .
+For example: `OTEL_NODE_ENABLED_INSTRUMENTATIONS=none` will make EDOT Node.js .
 
 :::{info}
 Because "none" is not an instrumentation name the EDOT will log a message saying so. The message will heve the following format.
