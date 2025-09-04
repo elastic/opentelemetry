@@ -252,7 +252,7 @@ You can also set the service name using [OTEL_RESOURCE_ATTRIBUTES](https://opent
 
 ### `serviceNodeName`
 
-The Elastic APM Node.js agent [`serviceNodeName`](apm-agent-nodejs://reference/configuration.md#service-node-name) option corresponds to setting the `service.instance.id` key in [OTEL_RESOURCE_ATTRIBUTES](https://opentelemetry.io/docs/concepts/sdk-configuration/general-sdk-configuration/#otel_resource_attributes). Warning: by default this is a generated unique ID; if you set this it must be a unique value for each service instance otherwise metric views cannot be correctly aggregated nor disambiguated
+The Elastic APM Node.js agent [`serviceNodeName`](apm-agent-nodejs://reference/configuration.md#service-node-name) option corresponds to setting the `service.instance.id` key in [OTEL_RESOURCE_ATTRIBUTES](https://opentelemetry.io/docs/concepts/sdk-configuration/general-sdk-configuration/#otel_resource_attributes). Warning: by default this is a generated unique ID; if you set this it must be a unique value for each service instance otherwise metric views cannot be correctly aggregated or disambiguated.
 
 For example: `OTEL_RESOURCE_ATTRIBUTES=service.instance.id=myserviceinstance001`.
 
