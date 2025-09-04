@@ -95,7 +95,7 @@ The Elastic APM Node.js agent [`centralConfig`](apm-agent-nodejs://reference/con
 For example: `export ELASTIC_OTEL_OPAMP_ENDPOINT=http://localhost:4320/v1/opamp`.
 
 :::{warning}
-To activate central configuration for EDOT Node.js is necessary to enable it by following the [configuration guide](/reference/central-configuration.md). Also there is a difference in which options can be configured. You can find a list in [central configuration settings](/reference/edot-sdks/nodejs/configuration.md#central-configuration-settings).
+To use central configuration for EDOT Node.js it is necessary to enable it by following the [configuration guide](/reference/central-configuration.md). Also there is a difference in which options can be configured. You can find a list in [central configuration settings](/reference/edot-sdks/nodejs/configuration.md#central-configuration-settings).
 :::
 
 ### `cloudProvider`
