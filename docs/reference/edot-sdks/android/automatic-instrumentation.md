@@ -17,7 +17,7 @@ mapped_pages:
 
 # Automatic instrumentation
 
-The SDK can automatically generate telemetry on your behalf. This allows you to get telemetry data for supported targets without having to write [manual instrumentation](manual-instrumentation.md).
+EDOT Android can automatically generate telemetry on your behalf. This allows you to get telemetry data for supported targets without having to write [manual instrumentation](manual-instrumentation.md).
 
 ## Installation [supported-instrumentations-installation]
 
@@ -27,9 +27,9 @@ To install a supported automatic instrumentation, follow these steps:
 
 1. Choose a [supported instrumentation](#supported-instrumentations).
 2. Add its Gradle plugin to your project in the same location where the [agent](getting-started.md#gradle-setup) is added.
-3. [Initialize the agent](getting-started.md#agent-setup) the same way you would without using automatic instrumentation.
+3. [Initialize EDOT Android](getting-started.md#agent-setup) the same way you would without using automatic instrumentation.
 
-Automatic instrumentations will get installed during the SDK initialization.
+Automatic instrumentations will get installed during EDOT Android's initialization.
 
 ```{tip}
 You can also use instrumentations from [OpenTelemetry Android](https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation) through the [OTel Android instrumentation adapter](#adapter-for-otel-android-instrumentations).
@@ -39,7 +39,7 @@ You can also use instrumentations from [OpenTelemetry Android](https://github.co
 
 Some automatic instrumentations perform bytecode instrumentation, also known as _bytecode weaving_, where your application's code, including code from the libraries it uses, is modified at compile-time. This is similar to what `isMinifyEnabled` does with R8 functionalities, automating code changes that you would otherwise need to make manually. 
 
-Bytecode instrumentation is a common technique which may already be used in your project for use cases such as [code optimization](https://developer.android.com/build/shrink-code#optimization) through R8. While useful, bytecode instrumentation can make compilation take longer to complete. Because of this, the agent provides [a way to exclude](#automatic-instrumentation-configuration) specific build types in your app from byte code changes.
+Bytecode instrumentation is a common technique which may already be used in your project for use cases such as [code optimization](https://developer.android.com/build/shrink-code#optimization) through R8. While useful, bytecode instrumentation can make compilation take longer to complete. Because of this, EDOT Android provides [a way to exclude](#automatic-instrumentation-configuration) specific build types in your app from byte code changes.
 
 ## Configuration [automatic-instrumentation-configuration]
 
@@ -128,4 +128,4 @@ dependencies {  // <2>
 
 1. Make sure the adapter is added.
 2. You can find the dependencies needed in the [instrumentation's README file](https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation/httpurlconnection#project-dependencies). The same will be the case for any other instrumentation.
-3. The instrumentations that require a `byteBuddy` dependency, do bytecode weaving, as explained in [compilation behavior](#compilation-behavior). An extra plugin named `net.bytebuddy.byte-buddy-gradle-plugin` is required to make this work, as shown [here](https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation/httpurlconnection#byte-buddy-compilation-plugin). However, the EDOT agent installs this extra plugin on your behalf, so there's no need for you to do so manually.
+3. The instrumentations that require a `byteBuddy` dependency, do bytecode weaving, as explained in [compilation behavior](#compilation-behavior). An extra plugin named `net.bytebuddy.byte-buddy-gradle-plugin` is required to make this work, as shown [here](https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation/httpurlconnection#byte-buddy-compilation-plugin). However, EDOT Android installs this extra plugin on your behalf, so there's no need for you to do so manually.
