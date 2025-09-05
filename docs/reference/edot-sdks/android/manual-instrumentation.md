@@ -19,11 +19,11 @@ mapped_pages:
 
 You can create your custom spans, metrics, and logs, using the [OpenTelemetry SDK APIs](https://opentelemetry.io/docs/languages/java/api/#opentelemetry-api), which you can find in the [OpenTelemetry](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/OpenTelemetry.html) object provided through the `getOpenTelemetry()` method. 
 
-Alternatively, for common operations, you can use the [convenience agent extensions](#convenience-extensions) to create telemetry in a less verbose way.
+Alternatively, for common operations, you can use the [convenience EDOT Android extensions](#convenience-extensions) to create telemetry in a less verbose way.
 
 ## OpenTelemetry APIs
 
-After completing the [setup](getting-started.md) process, the SDK has configured an [OpenTelemetry](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/OpenTelemetry.html) object for you, which is available through the `getOpenTelemetry()` method. 
+After completing the [setup](getting-started.md) process, EDOT Android has configured an [OpenTelemetry](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/OpenTelemetry.html) object for you, which is available through the `getOpenTelemetry()` method. 
 
 Here's an example of how to create telemetry using the OpenTelemetry Java APIs:
 
@@ -55,7 +55,7 @@ For more details on creating signals using the OpenTelemetry APIs, refer to the 
 
 ## Convenience extensions
 
-For common use cases, such as spans and logs creation, the SDK provides a couple of Kotlin extension methods to allow you to create telemetry in a less verbose way.
+For common use cases, such as spans and logs creation, EDOT Android provides a couple of Kotlin extension methods to allow you to create telemetry in a less verbose way.
 
 The convenience methods make use of the same [OpenTelemetry APIs](#opentelemetry-apis) internally to create telemetry. While they're not the only way to create the following signals, they make it easier to create them.
 
