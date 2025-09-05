@@ -17,11 +17,11 @@ mapped_pages:
 
 # Configure the EDOT Android SDK [configuration]
 
-This section contains a comprehensive list of all the configurable parameters available for the SDK, including those you can set during initialization and those you can adjust dynamically afterward.
+This section contains a comprehensive list of all the configurable parameters available for EDOT Android, including those you can set during initialization and those you can adjust dynamically afterward.
 
 ## Initialization configuration 
 
-Initialization configuration is available from the SDK builder shown in [Agent setup](getting-started.md#agent-setup). The following are its available parameters.
+Initialization configuration is available from the EDOT Android builder shown in [Agent setup](getting-started.md#agent-setup). The following are its available parameters.
 
 ### Application metadata
 
@@ -150,7 +150,7 @@ class MyApp : android.app.Application {
 
 ### Intercept resources
 
-The agent creates a [resource](https://opentelemetry.io/docs/specs/otel/overview/#resources) for your signals, which is a set of static global attributes. These attributes help {{kib}} properly display your application's data.
+EDOT Android creates a [resource](https://opentelemetry.io/docs/specs/otel/overview/#resources) for your signals, which is a set of static global attributes. These attributes help {{kib}} properly display your application's data.
 
 You can intercept these resources and read or modify them as shown in the following example.
 
@@ -173,7 +173,7 @@ The resource interceptor is only applied during initialization, as this is the o
 
 ### Intercept exporters
 
-The SDK configures exporters for each signal ([spans](https://opentelemetry.io/docs/languages/java/sdk/#spanexporter), [logs](https://opentelemetry.io/docs/languages/java/sdk/#logrecordexporter), and [metrics](https://opentelemetry.io/docs/languages/java/sdk/#metricexporter)) to manage features like [disk buffering](index.md#disk-buffering) and also to establish a connection with the Elastic export endpoint based on the provided [export connectivity](#export-connectivity) values.
+EDOT Android configures exporters for each signal ([spans](https://opentelemetry.io/docs/languages/java/sdk/#spanexporter), [logs](https://opentelemetry.io/docs/languages/java/sdk/#logrecordexporter), and [metrics](https://opentelemetry.io/docs/languages/java/sdk/#metricexporter)) to manage features like [disk buffering](index.md#disk-buffering) and also to establish a connection with the Elastic export endpoint based on the provided [export connectivity](#export-connectivity) values.
 
 You can intercept exporters to add your own logic, such as logging each signal that gets exported, or filtering some items that don't make sense for you to export. For example:
 
@@ -194,7 +194,7 @@ class MyApp : android.app.Application {
 
 ### Intercept HTTP spans
 
-This is a convenience tool to intercept HTTP-related spans. By default, the agent enhances HTTP span names to include `domain:port` when only an HTTP verb is set. This is [often the case](https://opentelemetry.io/docs/specs/semconv/http/http-spans/#name) for HTTP client span names.
+This is a convenience tool to intercept HTTP-related spans. By default, EDOT Android enhances HTTP span names to include `domain:port` when only an HTTP verb is set. This is [often the case](https://opentelemetry.io/docs/specs/semconv/http/http-spans/#name) for HTTP client span names.
 
 You can override this behavior by setting your own interceptor, or you can choose to set it to `null` to just turn it off. For example:
 
@@ -213,7 +213,7 @@ class MyApp : android.app.Application {
 
 ### Provide processors
 
-Part of the work that the agent does when configuring the OpenTelemetry SDK on your behalf is to provide processors, which are needed to delegate data to the exporters. For spans, the agent provides a [BatchSpanProcessor](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-trace/latest/io/opentelemetry/sdk/trace/export/BatchSpanProcessor.html); for logs, a [BatchLogRecordProcessor](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-logs/latest/io/opentelemetry/sdk/logs/export/BatchLogRecordProcessor.html); whereas for metrics, it's a [PeriodicMetricReader](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-metrics/latest/io/opentelemetry/sdk/metrics/export/PeriodicMetricReader.html), which is analogous to a processor.
+Part of the work that EDOT Android does when configuring the OpenTelemetry SDK on your behalf is to provide processors, which are needed to delegate data to the exporters. For spans, EDOT Android provides a [BatchSpanProcessor](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-trace/latest/io/opentelemetry/sdk/trace/export/BatchSpanProcessor.html); for logs, a [BatchLogRecordProcessor](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-logs/latest/io/opentelemetry/sdk/logs/export/BatchLogRecordProcessor.html); whereas for metrics, it's a [PeriodicMetricReader](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-metrics/latest/io/opentelemetry/sdk/metrics/export/PeriodicMetricReader.html), which is analogous to a processor.
 
 If you want to provide your own processors, you can do so by setting a custom [ProcessorFactory](https://github.com/elastic/apm-agent-android/blob/main/agent-sdk/src/main/java/co/elastic/otel/android/processors/ProcessorFactory.kt), as shown in the example:
 
@@ -235,12 +235,12 @@ The factory is called once during initialization and needs to provide a processo
 ### Internal logging policy
 
 :::{note}
-Not to be confused with OpenTelemetry's [log signals](https://opentelemetry.io/docs/concepts/signals/logs/). The internal logging policy is about the agent's internal logs that you should see in [logcat](https://developer.android.com/studio/debug/logcat) only.
+Not to be confused with OpenTelemetry's [log signals](https://opentelemetry.io/docs/concepts/signals/logs/). The internal logging policy is about EDOT Android's internal logs that you should see in [logcat](https://developer.android.com/studio/debug/logcat) only.
 :::
 
-The agent creates logs using [Android's Log](https://developer.android.com/reference/android/util/Log) type to notify about its internal events, so that you can check them out in [logcat](https://developer.android.com/studio/debug/logcat) for debugging purposes. By default, all logs are printed for a debuggable app build. However, in the case of non-debuggable builds, only logs at the `INFO` level and higher are printed.
+EDOT Android creates logs using [Android's Log](https://developer.android.com/reference/android/util/Log) type to notify about its internal events, so that you can check them out in [logcat](https://developer.android.com/studio/debug/logcat) for debugging purposes. By default, all logs are printed for a debuggable app build. However, in the case of non-debuggable builds, only logs at the `INFO` level and higher are printed.
 
-If you want to show specific logs from the agent, or even turn off logs altogether, you can do so by providing your own `LoggingPolicy` configuration. The following example shows how to allow all logs of level `WARN` and higher to be printed, whereas those lower than `WARN` are ignored.
+If you want to show specific logs from EDOT Android, or even turn off logs altogether, you can do so by providing your own `LoggingPolicy` configuration. The following example shows how to allow all logs of level `WARN` and higher to be printed, whereas those lower than `WARN` are ignored.
 
 ```kotlin
 class MyApp : android.app.Application {
@@ -289,7 +289,7 @@ Starting from version `1.2.0`, you can remotely manage the EDOT Android behavior
 
 ### Activate central configuration
 
-The remote management is turned off by default. To turn it on, provide your central configuration endpoint when initializing the agent, as shown here:
+The remote management is turned off by default. To turn it on, provide your central configuration endpoint when initializing EDOT Android, as shown here:
 
 ```kotlin
 class MyApp : android.app.Application {
@@ -314,7 +314,7 @@ You can modify the following settings for EDOT Android through the Central Confi
 
 | Setting | Central configuration name | Description | Type |
 |---------|----------------------------|-------------|------|
-| Recording | `recording` | Whether the agent should record and export telemetry or not. By default it's enabled, disabling it is effectively turning the agent off where only the central configuration polling will be performed. | Dynamic |
+| Recording | `recording` | Whether EDOT Android should record and export telemetry or not. By default it's enabled, disabling it is effectively turning EDOT Android off where only the central configuration polling will be performed. | Dynamic |
 | Session sample rate | `session_sample_rate` | To reduce overhead and storage requirements, you can set the sample rate to a value between 0.0 and 1.0. Data will be sampled per session, this is so context in a given session isn't lost. | Dynamic |
 
 Dynamic settings can be changed without having to restart the application.
@@ -356,7 +356,7 @@ You've properly created build config fields from environment variables. To use t
 
 ### Provide data from a properties file
 
-[Properties](https://docs.oracle.com/javase/8/docs/api/java/util/Properties.html) are a common way to provide values to JVM apps through files. Here's an example of how you could use them to provide config values to the agent.
+[Properties](https://docs.oracle.com/javase/8/docs/api/java/util/Properties.html) are a common way to provide values to JVM apps through files. Here's an example of how you could use them to provide config values to EDOT Android.
 
 Given the following example properties file:
 
