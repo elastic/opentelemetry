@@ -80,7 +80,7 @@ The presence of this package is detected by the EDOT instrumentation assembly sc
 
 ### Registering OpenTelemetry with EDOT .NET
 
-To register the OpenTelemetry SDK via EDOT .NET, the recommended approach is to use the extension method available on `IHostApplicationBuilder`. `IHostApplicationBuilder` is the abstraction representing the .NET generic host responsible for managing application startup and lifetime in ASP.NET Core.
+To register the OpenTelemetry SDK through EDOT .NET, the recommended approach is to use the extension method available on `IHostApplicationBuilder`. `IHostApplicationBuilder` is the abstraction representing the .NET generic host responsible for managing application startup and lifetime in ASP.NET Core.
 
 ```csharp
 var builder = WebApplication.CreateBuilder(args);

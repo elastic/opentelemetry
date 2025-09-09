@@ -165,7 +165,7 @@ If the target application has an explicit dependency on the `OpenTelemetry.Instr
 When upgrading applications to .NET 9 and newer, consider removing the package reference to `OpenTelemetry.Instrumentation.Http`.
 :::
 
-On all other runtimes, when using the NuGet installation method, a transitive dependency is included for the [OpenTelemetry.Instrumentation.Http](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.Http) contrib instrumentation package, which is registered on the `MeterProviderBuilder` via instrumentation assembly scanning.
+On all other runtimes, when using the NuGet installation method, a transitive dependency is included for the [OpenTelemetry.Instrumentation.Http](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.Http) contrib instrumentation package, which is registered on the `MeterProviderBuilder` through instrumentation assembly scanning.
 
 ### Runtime metrics
 
@@ -177,7 +177,7 @@ If the target application has an explicit dependency on the `OpenTelemetry.Instr
 When upgrading applications to .NET 9 and newer, consider removing the package reference to `OpenTelemetry.Instrumentation.Runtime`.
 :::
 
-On all other runtimes, when using the NuGet installation method, a transitive dependency is included for the [OpenTelemetry.Instrumentation.Runtime](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.Runtime) contrib instrumentation package, which is registered on the `MeterProviderBuilder` via instrumentation assembly scanning.
+On all other runtimes, when using the NuGet installation method, a transitive dependency is included for the [OpenTelemetry.Instrumentation.Runtime](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.Runtime) contrib instrumentation package, which is registered on the `MeterProviderBuilder` through instrumentation assembly scanning.
 
 ### Process metrics
 

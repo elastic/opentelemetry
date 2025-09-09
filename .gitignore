@@ -9,7 +9,7 @@ docs/Gemfile.lock
 **/.DS_Store
 
 # Python
-
+.venv
 __pycache__
 
 # .NET

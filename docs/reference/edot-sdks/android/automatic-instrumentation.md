@@ -15,7 +15,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/apm/agent/android/current/supported-technologies.html
 ---
 
-# Automatic instrumentation
+# Automatic instrumentation for Android with EDOT SDK
 
 EDOT Android can automatically generate telemetry on your behalf. This allows you to get telemetry data for supported targets without having to write [manual instrumentation](manual-instrumentation.md).
 
