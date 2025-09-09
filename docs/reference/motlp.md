@@ -47,7 +47,7 @@ To retrieve your {{motlp}} endpoint address, follow these steps:
 
 1. In Elastic Cloud, create an Observability project or open an existing one.
 2. Select your project's name and then select **Manage project**.
-3. Locate the Connection alias and select Edit.
+3. Locate the Connection alias and select **Edit**.
 4. Copy the Managed OTLP endpoint URL.
 
 ## Routing logs to dedicated datasets
