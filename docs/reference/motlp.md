@@ -3,7 +3,9 @@ navigation_title: Managed OTLP Endpoint
 description: Reference documentation for the Elastic Cloud Managed OTLP Endpoint.
 applies_to:
   serverless:
-    observability: 
+    observability:
+  deployment:
+    ess: preview 9.2
 products:
   - id: cloud-serverless
   - id: observability
@@ -17,7 +19,7 @@ The {{motlp}} allows you to send OpenTelemetry data directly to {{ecloud}} using
 This guide explains how to find your {{motlp}} endpoint, create an API key for authentication, and configure different environments. 
 
 :::{important}
-The {{motlp}} endpoint is available on {{serverless-full}} and will soon be supported on {{ech}}. It is not available for self-managed deployments.
+The {{motlp}} endpoint is not available for self-managed deployments. To send data to the {{motlp}} from a self-managed environment, deploy and expose an OTLP-compatible endpoint using the EDOT Collector as a gateway. Refer to [EDOT deployment docs](https://www.elastic.co/docs/reference/opentelemetry/edot-collector/modes#edot-collector-as-gateway).
 :::
 
 ## Reference architecture
@@ -45,10 +47,22 @@ To send data to Elastic through the {{motlp}}, follow the [Send data to the Elas
 
 To retrieve your {{motlp}} endpoint address, follow these steps:
 
-1. In Elastic Cloud, create an Observability project or open an existing one.
+::::{tab-set}
+
+:::{tab-item} Elastic Cloud Serverless
+1. In {{ecloud}}, create an Observability project or open an existing one.
 2. Select your project's name and then select **Manage project**.
-3. Locate the Connection alias and select **Edit**.
-4. Copy the Managed OTLP endpoint URL.
+3. Locate the **Connection alias** and select **Edit**.
+4. Copy the **Managed OTLP endpoint** URL.
+:::
+
+:::{tab-item} Elastic Cloud Hosted
+1. Open your deployment in the Elastic Cloud console.
+2. Navigate to **Integrations** and find **OpenTelemetry** or **Managed OTLP**.
+3. Copy the endpoint URL shown.
+:::
+
+::::
 
 ## Routing logs to dedicated datasets
 
@@ -90,11 +104,15 @@ For more information on billing, refer to [Elastic Cloud pricing](https://www.el
 
 ## Rate limiting
 
-Requests to the {{motlp}} are subject to rate limiting. If you send data at a rate that exceeds the defined limits, your requests will be temporarily rejected.
+Requests to the {{motlp}} are subject to rate limiting and throttling. If you exceed your {{es}} capacity in {{ech}}, or send data at a rate that exceeds the limits, your requests can be rejected.
+
+### Insufficient {{es}} capacity
+
+If data intake is exceeding the capacity of {{es}} in your {{ech}} deployment, you might### Limits
 
 The rate limit is currently set to 15 MB/s per second, with a burst limit of 30 MB/s per second. As long as your data ingestion rate stays at or below this average, your requests will be accepted.
 
-If send data that exceeds the available rate limit, the {{motlp}} will respond with an HTTP 429 Too Many Requests status code. A log message similar to this will appear in the OpenTelemetry Collector's output:
+If send data that exceeds the available rate limit, the {{motlp}} responds with an HTTP 429 Too Many Requests status code. A log message similar to this appears in the OpenTelemetry Collector's output:
 
 ```json
 {
@@ -103,7 +121,30 @@ If send data that exceeds the available rate limit, the {{motlp}} will respond w
 }
 ```
 
-Once your sending rate drops back within the allowed limit, the system will automatically begin accepting requests again.
+Once your sending rate drops back within the allowed limit, the system automatically begins accepting requests again.
+
+:::{note}
+If you need to increase the rate limit, reach out to Elastic Support.
+::: get rate limiting errors. To solve this issue, scale or resize your deployment:
+
+- [Scaling considerations](docs-content://deploy-manage/production-guidance/scaling-considerations.md)
+- [Resize deployment](docs-content://deploy-manage/deploy/cloud-enterprise/resize-deployment.md)
+- [Autoscaling in ECE and ECH](docs-content://deploy-manage/autoscaling/autoscaling-in-ece-and-ech.md)
+
+### Exceeding the rate limit
+
+The rate limit is currently set to 15 MB/s per second, with a burst limit of 30 MB/s per second. As long as your data ingestion rate stays at or below this average, your requests will be accepted.
+
+If send data that exceeds the available rate limit, the {{motlp}} responds with an HTTP 429 Too Many Requests status code. A log message similar to this appears in the OpenTelemetry Collector's output:
+
+```json
+{
+  "code": 8,
+  "message": "error exporting items, request to <ingest endpoint> responded with HTTP Status Code 429"
+}
+```
+
+After your sending rate goes back to the allowed limit, the system automatically begins accepting requests again.
 
 :::{note}
 If you need to increase the rate limit, reach out to Elastic Support.
