@@ -1,6 +1,6 @@
 ---
 navigation_title: Performance overhead
-description: Understand the performance overhead associated with the Elastic Distribution of OpenTelemetry (EDOT) Java Agent compared to the classic Elastic APM agent and no agent.
+description: This page details the expected performance impact when instrumenting Java applications with the Elastic Distribution of OpenTelemetry SDK, including benchmarks and optimization tips.
 applies_to:
   stack:
   serverless:
@@ -13,7 +13,9 @@ products:
   - id: edot-sdk
 ---
 
-# Performance overhead
+# Performance overhead of the EDOT SDK for Java
+
+This page details the expected performance impact when instrumenting Java applications with the Elastic Distribution of OpenTelemetry SDK, including benchmarks and optimization tips.
 
 While designed to have minimal performance overhead, the EDOT Java agent, like any instrumentation agent, executes within the application process and thus has a small influence on the application performance. 
 

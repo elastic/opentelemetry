@@ -112,7 +112,7 @@ By default, EDOT .NET uses instrumentation assembly scanning and will detect the
 
 ## Configure environment variables
 
-When calling `OpenTelemetrySdk.Create` a dedicated `IServiceCollection` and `IServiceProvider` are created for the SDK and shared by all signals. An `IConfiguration` is created automatically from environment variables. The recommended method to configure the OpenTelemetry SDK is via environment variables. At a minimum, set the environment variables used to configure the OTLP exporter using any suitable method for your operating system.
+When calling `OpenTelemetrySdk.Create` a dedicated `IServiceCollection` and `IServiceProvider` are created for the SDK and shared by all signals. An `IConfiguration` is created automatically from environment variables. The recommended method to configure the OpenTelemetry SDK is through environment variables. At a minimum, set the environment variables used to configure the OTLP exporter using any suitable method for your operating system.
 
 ```
 "OTEL_EXPORTER_OTLP_ENDPOINT" = "https://{MyServerlessEndpoint}.apm.us-east-1.aws.elastic.cloud:443",

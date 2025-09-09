@@ -1,6 +1,6 @@
 ---
-navigation_title: Performance Overhead
-description: Performance overhead comparison between EDOT Python and Elastic APM Python Agent.
+navigation_title: Performance overhead
+description: This page explains the performance considerations when instrumenting Python applications with the Elastic Distribution of OpenTelemetry SDK, including impact analysis and mitigation techniques.
 applies_to:
   stack:
   serverless:
@@ -13,7 +13,9 @@ products:
   - id: edot-sdk
 ---
 
-# Performance overhead
+# Performance overhead of the EDOT SDK for Python
+
+This page explains the performance considerations when instrumenting Python applications with the Elastic Distribution of OpenTelemetry SDK, including impact analysis and mitigation techniques.
 
 While designed to have minimal performance overhead, the EDOT Java agent, like any instrumentation agent, executes within the application process and thus has a small influence on the application performance. 
 

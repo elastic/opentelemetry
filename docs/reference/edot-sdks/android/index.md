@@ -70,7 +70,7 @@ Your application's telemetry data is stored locally before being sent to the {{s
 
 ### Central configuration
 
-You can remotely manage how EDOT Android behaves via {{kib}}. Refer to [Central configuration](configuration.md#central-configuration) for more details.
+You can remotely manage how EDOT Android behaves through {{kib}}. Refer to [Central configuration](configuration.md#central-configuration) for more details.
 
 ### Real time [real-time]
 
