@@ -41,6 +41,15 @@ You don't need to use APM Server when ingesting data through the Managed OTLP En
 
 To send data to Elastic through the {{motlp}}, follow the [Send data to the Elastic Cloud Managed OTLP Endpoint](docs-content:///solutions/observability/get-started/quickstart-elastic-cloud-otel-endpoint.md) quickstart.
 
+### Find your {{motlp}} endpoint
+
+To retrieve your {{motlp}} endpoint address, follow these steps:
+
+1. In Elastic Cloud, create an Observability project or open an existing one.
+2. Select your project's name and then select Manage project.
+3. Locate the Connection alias and select Edit.
+4. Copy the Managed OTLP endpoint URL.
+
 ## Routing logs to dedicated datasets
 
 You can route logs to dedicated datasets by setting the `data_stream.dataset` attribute to the log record. This attribute is used to route the log to the corresponding dataset.
