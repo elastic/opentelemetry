@@ -137,7 +137,7 @@ Depending on the reason for the rate limiting, you can either increase your {{es
 
 #### Increase your {{es}} capacity
 
-If data intake is exceeding the capacity of {{es}} in your {{ech}} deployment, you might get rate limiting errors. To solve this issue, scale or resize your deployment:
+If data intake exceeds the capacity of {{es}} in your {{ech}} deployment, you might get rate limiting errors. To solve this issue, scale or resize your deployment:
 
 - [Scaling considerations](docs-content://deploy-manage/production-guidance/scaling-considerations.md)
 - [Resize deployment](docs-content://deploy-manage/deploy/cloud-enterprise/resize-deployment.md)
