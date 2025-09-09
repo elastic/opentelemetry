@@ -16,8 +16,6 @@ products:
 
 The {{motlp}} allows you to send OpenTelemetry data directly to {{ecloud}} using the OTLP protocol, with Elastic handling scaling, data processing, and storage. The Managed OTLP endpoint can act like a Gateway Collector, so that you can point your OpenTelemetry SDKs or Collectors to it.
 
-This guide explains how to find your {{motlp}} endpoint, create an API key for authentication, and configure different environments. 
-
 :::{important}
 The {{motlp}} endpoint is not available for self-managed deployments. To send data to the {{motlp}} from a self-managed environment, deploy and expose an OTLP-compatible endpoint using the EDOT Collector as a gateway. Refer to [EDOT deployment docs](https://www.elastic.co/docs/reference/opentelemetry/edot-collector/modes#edot-collector-as-gateway).
 :::
@@ -31,11 +29,16 @@ This diagram shows data ingest using {{edot}} and the {{motlp}}:
 :width: 100%
 :::
 
+Telemetry is stored in Elastic in OTLP format, preserving resource attributes and original semantic conventions. If no specific dataset or namespace is provided, the data streams are: `traces-generic.otel-default`, `metrics-generic.otel-default`, and `logs-generic.otel-default`.
+
 For a detailed comparison of how EDOT data streams differ from classic Elastic APM data streams, refer to [EDOT data streams compared to classic APM](../reference/compatibility/data-streams.md).
 
 ## Prerequisites
 
-Telemetry is stored in Elastic in OTLP format, preserving resource attributes and original semantic conventions. If no specific dataset or namespace is provided, the data streams are: `traces-generic.otel-default`, `metrics-generic.otel-default`, and `logs-generic.otel-default`.
+To use the {{ecloud}} {{motlp}} you need the following:
+
+- An {{serverless-full}} or an {{ech}} (ECH) project. Security projects are not yet supported.
+- An OTLP-compliant shipper capable of forwarding logs, metrics, or traces in OTLP format. This can include the OpenTelemetry Collector (EDOT, Contrib, or other distributions), OpenTelemetry SDKs (EDOT, upstream, or other distributions), or any other forwarder that supports the OTLP protocol.
 
 You don't need to use APM Server when ingesting data through the Managed OTLP Endpoint. The APM integration (`.apm` endpoint) is a legacy ingest path that only supports traces and translates OTLP telemetry to ECS, whereas {{motlp}} natively ingests OTLP data for logs, metrics, and traces.
 
@@ -104,38 +107,20 @@ For more information on billing, refer to [Elastic Cloud pricing](https://www.el
 
 ## Rate limiting
 
-Requests to the {{motlp}} are subject to rate limiting and throttling. If you exceed your {{es}} capacity in {{ech}}, or send data at a rate that exceeds the limits, your requests can be rejected.
+Requests to the {{motlp}} are subject to rate limiting and throttling. If you exceed your {{es}} capacity in {{ech}}, or send data at a rate that exceeds the limits, your requests might be rejected.
 
-### Insufficient {{es}} capacity
+The following rate limits and burst limits apply:
 
-If data intake is exceeding the capacity of {{es}} in your {{ech}} deployment, you might### Limits
+| Deployment type | Rate limit | Burst limit |
+|----------------|------------|-------------|
+| Serverless | 15 MB/s | 30 MB/s |
+| ECH | 15 MB/s | 30 MB/s |
 
-The rate limit is currently set to 15 MB/s per second, with a burst limit of 30 MB/s per second. As long as your data ingestion rate stays at or below this average, your requests will be accepted.
-
-If send data that exceeds the available rate limit, the {{motlp}} responds with an HTTP 429 Too Many Requests status code. A log message similar to this appears in the OpenTelemetry Collector's output:
-
-```json
-{
-  "code": 8,
-  "message": "error exporting items, request to <ingest endpoint> responded with HTTP Status Code 429"
-}
-```
-
-Once your sending rate drops back within the allowed limit, the system automatically begins accepting requests again.
-
-:::{note}
-If you need to increase the rate limit, reach out to Elastic Support.
-::: get rate limiting errors. To solve this issue, scale or resize your deployment:
-
-- [Scaling considerations](docs-content://deploy-manage/production-guidance/scaling-considerations.md)
-- [Resize deployment](docs-content://deploy-manage/deploy/cloud-enterprise/resize-deployment.md)
-- [Autoscaling in ECE and ECH](docs-content://deploy-manage/autoscaling/autoscaling-in-ece-and-ech.md)
+As long as your data ingestion rate stays at or below the rate limit and burst limit, your requests are accepted.
 
 ### Exceeding the rate limit
 
-The rate limit is currently set to 15 MB/s per second, with a burst limit of 30 MB/s per second. As long as your data ingestion rate stays at or below this average, your requests will be accepted.
-
-If send data that exceeds the available rate limit, the {{motlp}} responds with an HTTP 429 Too Many Requests status code. A log message similar to this appears in the OpenTelemetry Collector's output:
+If send data that exceeds the available limits, the {{motlp}} responds with an HTTP 429 Too Many Requests status code. A log message similar to this appears in the OpenTelemetry Collector's output:
 
 ```json
 {
@@ -146,6 +131,20 @@ If send data that exceeds the available rate limit, the {{motlp}} responds with 
 
 After your sending rate goes back to the allowed limit, the system automatically begins accepting requests again.
 
-:::{note}
-If you need to increase the rate limit, reach out to Elastic Support.
-:::
+### Solutions to rate limiting
+
+Depending on the reason for the rate limiting, you can either increase your {{es}} capacity or request higher limits.
+
+#### Increase your {{es}} capacity
+
+If data intake is exceeding the capacity of {{es}} in your {{ech}} deployment, you might get rate limiting errors. To solve this issue, scale or resize your deployment:
+
+- [Scaling considerations](docs-content://deploy-manage/production-guidance/scaling-considerations.md)
+- [Resize deployment](docs-content://deploy-manage/deploy/cloud-enterprise/resize-deployment.md)
+- [Autoscaling in ECE and ECH](docs-content://deploy-manage/autoscaling/autoscaling-in-ece-and-ech.md)
+
+#### Request higher limits
+
+If rate limiting is not caused by {{es}} capacity or you're on {{serverless-full}}, you can either decrease data volume or request higher limits.
+
+To increase the rate limit, reach out to Elastic Support.
