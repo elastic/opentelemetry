@@ -37,7 +37,7 @@ For a detailed comparison of how EDOT data streams differ from classic Elastic A
 
 To use the {{ecloud}} {{motlp}} you need the following:
 
-- An {{serverless-full}} or an {{ech}} (ECH) project. Security projects are not yet supported.
+- An {{serverless-full}} project or an {{ech}} (ECH) deployment. Security projects are not yet supported.
 - An OTLP-compliant shipper capable of forwarding logs, metrics, or traces in OTLP format. This can include the OpenTelemetry Collector (EDOT, Contrib, or other distributions), OpenTelemetry SDKs (EDOT, upstream, or other distributions), or any other forwarder that supports the OTLP protocol.
 
 You don't need to use APM Server when ingesting data through the Managed OTLP Endpoint. The APM integration (`.apm` endpoint) is a legacy ingest path that only supports traces and translates OTLP telemetry to ECS, whereas {{motlp}} natively ingests OTLP data for logs, metrics, and traces.
