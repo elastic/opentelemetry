@@ -15,7 +15,7 @@ products:
 
 # Performance overhead of the EDOT SDK for PHP
 
-This documentation outlines the performance implications of using the Elastic Distribution of OpenTelemetry SDK in PHP applications and provides strategies to minimize overhead.
+This documentation outlines the performance implications of using the Elastic Distribution of OpenTelemetry SDK in PHP applications, and provides strategies to minimize overhead.
 
 While designed to have minimal performance overhead, the EDOT PHP agent, like any instrumentation agent, executes within the application process and thus has a small influence on the application performance. 
 
