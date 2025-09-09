@@ -15,7 +15,7 @@ products:
 
 # Manual instrumentation for Python with EDOT SDK
 
-Learn how to manually instrument Python applications using the {{edot}} Python SDK to add spans, metrics, and custom attributes. The following instructions require to have already added auto-instrumentation with OpenTelemetry to your application per [Setup](/reference/edot-sdks/python/setup/index.md).
+Learn how to manually instrument Python applications using the {{edot}} Python SDK to add spans, metrics, and custom attributes. The following instructions require auto-instrumentation with OpenTelemetry to have been added to your application per [Setup](/reference/edot-sdks/python/setup/index.md).
 
 ## Configure EDOT Python
 
