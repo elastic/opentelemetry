@@ -1,6 +1,6 @@
 ---
 navigation_title: Performance overhead
-description: This documentation outlines the performance implications of using the Elastic Distribution of OpenTelemetry SDK in PHP applications and provides strategies to minimize overhead.
+description: This documentation outlines the performance implications of using the Elastic Distribution of OpenTelemetry SDK in PHP applications, and provides strategies to minimize overhead.
 applies_to:
   stack:
   serverless:
