@@ -18,12 +18,12 @@ products:
 Learn how to set up the EDOT Collector and EDOT SDKs in a Docker environment with {{serverless-full}} to collect host metrics, logs, and application traces.
 
 
-## Guided setup
+## Guided setup [serverless-docker-guided-setup]
 
 :::{include} ../../_snippets/guided-instructions.md
 :::
 
-## Manual installation
+## Manual installation [serverless-docker-manual-installation]
 
 Follow these steps to deploy the EDOT Collector and EDOT OTel SDKs in Docker with {{serverless-full}}.
 
@@ -129,11 +129,11 @@ Go to {{kib}} and select **Dashboards** to explore your newly collected data.
 ::::
 :::::
 
-## Troubleshooting
+## Troubleshooting [serverless-docker-troubleshooting]
 
 The following issues might occur.
 
-### API Key prefix not found
+### API Key prefix not found [serverless-docker-api-key-prefix-not-found]
 
 The following error is due to an improperly formatted API key:
 
@@ -145,6 +145,6 @@ Exporting failed. Dropping data.
 
 Format your API key as `"Authorization": "ApiKey <api-key-value-here>"` or `"Authorization=ApiKey <api-key>"` depending on whether you're using a Collector or SDK.
 
-### Error: too many requests
+### Error: too many requests [serverless-docker-error-too-many-requests]
 
 The managed endpoint has per-project rate limits in place. If you reach this limit, contact our [support team](https://support.elastic.co).

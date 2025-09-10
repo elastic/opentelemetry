@@ -11,7 +11,7 @@ products:
   - id: edot-collector
 ---
 
-# Reference architecture
+# Reference architecture [architecture-reference-architecture]
 
 The following sections outline the recommended architectures for Elastic Distributions of OpenTelemetry (EDOT) with different Elastic deployment options.
 

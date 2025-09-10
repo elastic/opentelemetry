@@ -17,12 +17,12 @@ products:
 
 Learn how to set up the EDOT Collector and EDOT SDKs in a Kubernetes environment with {{ech}} (ECH) to collect host metrics, logs and application traces.
 
-## Guided setup
+## Guided setup [ech-k8s-guided-setup]
 
 :::{include} ../../_snippets/guided-instructions.md
 :::
 
-## Manual installation
+## Manual installation [ech-k8s-manual-installation]
 
 Follow these steps to deploy the EDOT Collector and EDOT OTel SDKs in Kubernetes with ECH.
 
@@ -95,6 +95,6 @@ Go to {{kib}} and select **Dashboards** to explore your newly collected data.
 ::::
 :::::
 
-## Troubleshooting
+## Troubleshooting [ech-k8s-troubleshooting]
 
 Having issues with EDOT? Refer to the [Troubleshooting common issues with the EDOT Collector](docs-content://troubleshoot/ingest/opentelemetry/edot-collector/index.md) and [Troubleshooting the EDOT SDKs](docs-content://troubleshoot/ingest/opentelemetry/edot-sdks/index.md) for help.

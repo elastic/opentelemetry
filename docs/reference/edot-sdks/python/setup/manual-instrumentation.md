@@ -40,7 +40,7 @@ app = Flask(__name__)
 @app.route("/hello")
 def hello():
     choices = ["there", "world", "folks", "hello"]
-    # create a span for the choice of the name, this may be a costly call in your real world application
+    # create a span for the choice of the name, this may be a costly call in your real world application [setup-manual-instrumentation-create-a-span-for-the]
     with tracer.start_as_current_span("choice") as span:
         choice = random.choice(choices)
         span.set_attribute("choice.value", choice)
@@ -81,7 +81,7 @@ app = Flask(__name__)
 @app.route("/hello")
 def hello():
     choices = ["there", "world", "folks", "hello"]
-    # create a span for the choice of the name, this may be a costly call in your real world application
+    # create a span for the choice of the name, this may be a costly call in your real world application [setup-manual-instrumentation-create-a-span-for-the]
     with tracer.start_as_current_span("choice") as span:
         choice = random.choice(choices)
         span.set_attribute("choice.value", choice)

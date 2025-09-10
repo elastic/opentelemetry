@@ -191,7 +191,7 @@ To switch to the EDOT .NET zero-code auto instrumentation, update the `COR_*` an
 
 Follow the steps in [Using EDOT .NET zero-code instrumentation](/reference/edot-sdks/dotnet/setup/zero-code.md) to configure the profiler.
 
-### Limitations
+### Limitations [dotnet-migration-limitations]
 
 Elastic APM Agent includes several features that are not currently supported when using EDOT .NET. Each of these are being assessed and may be included in contributions to OpenTelemetry or as value-add features of EDOT .NET in future releases.
 
@@ -199,13 +199,13 @@ Elastic APM Agent includes several features that are not currently supported whe
 
 The [stacktrace capture](apm-agent-dotnet://reference/config-stacktrace.md) feature from Elastic APM .NET agent is not currently available in EDOT .NET.
 
-#### Central and dynamic configuration
+#### Central and dynamic configuration [dotnet-migration-central-and-dynamic-configuration]
 
 Currently EDOT .NET does not have an equivalent of the [central configuration feature](docs-content://solutions/observability/apm/apm-agent-central-configuration.md) that the Elastic APM .NET agent supports. 
 
 When using EDOT .NET, all the configurations are static and should be provided to the application with other configurations, such as environment variables.
 
-#### Span compression
+#### Span compression [dotnet-migration-span-compression]
 
 EDOT .NET does not implement [span compression](docs-content://solutions/observability/apm/spans.md#apm-spans-span-compression).
 
@@ -278,6 +278,6 @@ EDOT .NET ships with a lightly modified redistribution of the OpenTelemetry SDK 
 
 Refer to the OpenTelemetry SDK documentation for [.NET zero-code instrumentation](https://opentelemetry.io/docs/zero-code/net) for more examples of using the installation script.
 
-## Troubleshooting
+## Troubleshooting [dotnet-migration-troubleshooting]
 
 If you're encountering issues during migration, refer to the [EDOT .NET troubleshooting guide](docs-content://troubleshoot/ingest/opentelemetry/edot-sdks/dotnet/index.md).

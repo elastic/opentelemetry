@@ -255,7 +255,7 @@ class MyApp : android.app.Application {
 }
 ```
 
-## Dynamic configuration
+## Dynamic configuration [android-configuration-dynamic-configuration]
 
 Dynamic configuration settings are available from an already built [agent](https://github.com/elastic/apm-agent-android/blob/main/agent-sdk/src/main/java/co/elastic/otel/android/ElasticApmAgent.kt).
 
@@ -276,7 +276,7 @@ class MyApp : android.app.Application {
 }
 ```
 
-## Central configuration
+## Central configuration [android-configuration-central-configuration]
 
 ```{applies_to}
 serverless: unavailable
@@ -287,7 +287,7 @@ product:
 
 Starting from version `1.2.0`, you can remotely manage the EDOT Android behavior through [Central configuration](/reference/central-configuration.md).
 
-### Activate central configuration
+### Activate central configuration [android-configuration-activate-central-configurati]
 
 The remote management is turned off by default. To turn it on, provide your central configuration endpoint when initializing EDOT Android, as shown here:
 

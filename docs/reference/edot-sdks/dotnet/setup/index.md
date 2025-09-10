@@ -34,7 +34,7 @@ This quickstart guide documents the introductory steps required to set up OpenTe
 Avoid using the .NET SDK alongside any other APM agent, including Elastic APM agents. Running multiple agents in the same application process may lead to conflicting instrumentation, duplicate telemetry, or other unexpected behavior.
 :::
 
-### Prerequisites
+### Prerequisites [dotnet-setup-prerequisites]
 
 Before getting started:
 
@@ -153,10 +153,10 @@ In .NET, use the built-in .NET APIs for each signal:
 - [Traces](https://learn.microsoft.com/dotnet/core/diagnostics/distributed-tracing-instrumentation-walkthroughs)
 - [Metrics](https://learn.microsoft.com/dotnet/core/diagnostics/metrics-instrumentation)
 
-### Next steps
+### Next steps [dotnet-setup-next-steps]
 
 Refer to the technology-specific documentation pages for further details on using EDOT .NET in those application types. The [OpenTelemetry SDK documentation](https://opentelemetry.io/docs/languages/net/getting-started/) provides more examples of working with the .NET SDK.
 
-## Troubleshooting
+## Troubleshooting [dotnet-setup-troubleshooting]
 
 For help with common setup issues, refer to the [EDOT .NET troubleshooting guide](docs-content://troubleshoot/ingest/opentelemetry/edot-sdks/dotnet/index.md).

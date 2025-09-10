@@ -76,7 +76,7 @@ When using the NuGet installation method, transitive dependencies are added for 
 
 The resource detectors are registered on the `ResourceBuilder` to enrich the resource attributes.
 
-### Instrumentation assembly scanning
+### Instrumentation assembly scanning [setup-edot-defaults-instrumentation-assembly-scann]
 
 Instrumentation assembly scanning checks for the presence of the following contrib resource detector packages, automatically registering them when present.
 
@@ -118,7 +118,7 @@ All scenarios register the SQL client when instrumentation assembly scanning is 
 
 EDOT .NET observes the `Elastic.Transport` source to collect traces from Elastic client libraries, such as `Elastic.Clients.{{es}}`, which is built upon the [Elastic transport](https://github.com/elastic/elastic-transport-net) layer.
 
-### Instrumentation assembly scanning
+### Instrumentation assembly scanning [setup-edot-defaults-instrumentation-assembly-scann]
 
 Instrumentation assembly scanning checks for the presence of the following contrib instrumentation packages,
 registering them when present.
@@ -167,7 +167,7 @@ When upgrading applications to .NET 9 and newer, consider removing the package r
 
 On all other runtimes, when using the NuGet installation method, a transitive dependency is included for the [OpenTelemetry.Instrumentation.Http](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.Http) contrib instrumentation package, which is registered on the `MeterProviderBuilder` through instrumentation assembly scanning.
 
-### Runtime metrics
+### Runtime metrics [setup-edot-defaults-runtime-metrics]
 
 On .NET 9 and newer runtimes, EDOT .NET observes the `System.Runtime` meter to collect metrics from the .NET HTTP APIs. Since .NET 9, the built-in traces are compliant with current semantic conventions. Using the built-in `System.Runtime` meter is therefore recommended. 
 
@@ -179,7 +179,7 @@ When upgrading applications to .NET 9 and newer, consider removing the package r
 
 On all other runtimes, when using the NuGet installation method, a transitive dependency is included for the [OpenTelemetry.Instrumentation.Runtime](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.Runtime) contrib instrumentation package, which is registered on the `MeterProviderBuilder` through instrumentation assembly scanning.
 
-### Process metrics
+### Process metrics [setup-edot-defaults-process-metrics]
 
 When using the NuGet installation method, a transitive dependency is included for the [OpenTelemetry.Instrumentation.Process](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.Process) contrib instrumentation package. Process metrics are observed in all scenarios.
 
@@ -200,7 +200,7 @@ NuGet package, the following meters are observed by default:
 
 EDOT .NET observes the `System.Net.NameResolution` meter, to collect metrics from DNS.
 
-### Instrumentation assembly scanning
+### Instrumentation assembly scanning [setup-edot-defaults-instrumentation-assembly-scann]
 
 Instrumentation assembly scanning checks for the presence of the following contrib instrumentation packages, registering them when present.
 
@@ -234,7 +234,7 @@ EDOT .NET enables the following options that are not enabled by default when usi
 
 Since 1.0.2 `IncludeScopes` is no longer enabled by default. Refer to [Troubleshooting](docs-content://troubleshoot/ingest/opentelemetry/edot-sdks/dotnet/index.md#missing-log-records). 1.0.0 and 1.0.1 default to `true`.
 
-### Instrumentation assembly scanning
+### Instrumentation assembly scanning [setup-edot-defaults-instrumentation-assembly-scann]
 
 Instrumentation assembly scanning is enabled by default and is designed to simplify the registration code required to configure the OpenTelemetry SDK. Instrumentation assembly scanning uses reflection to invoke the required registration method for the contrib instrumentation and resource detector packages.
 

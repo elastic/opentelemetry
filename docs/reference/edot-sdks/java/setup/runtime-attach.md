@@ -21,7 +21,7 @@ product: preview
 
 Runtime attach includes the EDOT instrumentation agent in the application binary. This allows deploying the agent when access to JVM arguments or configuration is not possible, for example, with some managed services. The application development team can control the agent deployment and update cycle without having to modify the execution environment. Runtime attach only requires a minor modification of the application main entry point and one additional dependency.
 
-## Limitations
+## Limitations [setup-runtime-attach-limitations]
 
 The following limitations apply:
 
@@ -30,7 +30,7 @@ The following limitations apply:
 - Agent can only be attached at application start; it can't be used to attach later during application runtime.
 - Recent JVMs issue [warnings in standard error](#jvm-runtime-attach-warnings) and the feature might require explicit opt-in with JVM settings in the future.
 
-## Instrument a Java app
+## Instrument a Java app [setup-runtime-attach-instrument-a-java-app]
 
 Follow these steps to instrument your Java application using runtime attach.
 

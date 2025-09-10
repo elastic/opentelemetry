@@ -29,7 +29,7 @@ You can measure the performance overhead on the JVM by using the following high-
 - Garbage collector activity: more memory allocation means more GC activity, thus increasing overall CPU usage and potentially reducing application responsiveness
 - Memory usage: how much more memory (heap/non-heap) is needed
 
-## Benchmark
+## Benchmark [java-overhead-benchmark]
 
 While Elastic can't provide generically applicable, accurate numbers about the impact on the previous metrics, synthetic benchmarks are executed with a sample application, which allows to provide an estimate and comparison between agents. Those numbers are only provided as indicators: use them as a framework to evaluate and measure the overhead on your applications.
 

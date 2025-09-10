@@ -41,7 +41,7 @@ Each EDOT distribution undergoes production-grade testing before being declared 
 
 Technical Preview distributions receive best-effort support and are not covered under standard SLAs.
 
-## Get started
+## Get started [section-get-started]
 
 Pick the right [Quickstart guide](/reference/quickstart/index.md) for your environment or select an observability use case:
 

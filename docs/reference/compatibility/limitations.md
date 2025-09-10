@@ -76,7 +76,7 @@ The `service.name` must conform to this regular expression: `^[a-zA-Z0-9 _-]+$`.
 
 Your service name must only contain characters from the ASCII alphabet, numbers, dashes, underscores and spaces.
 
-### Runtime metrics
+### Runtime metrics [compatibility-limitations-runtime-metrics]
 
 Currently, there are limitations with visualizing language-specific runtime metrics in corresponding **Service > Metrics** tab.
 

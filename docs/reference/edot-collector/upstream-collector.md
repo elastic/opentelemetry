@@ -17,7 +17,7 @@ products:
 
 While the [{{edot}} (EDOT) Collector](/reference/index.md) provides a streamlined experience with pre-selected components, you can also use the contrib OpenTelemetry Collector or a custom distribution to send data to Elastic Observability. This approach requires more configuration but gives you more control over your OpenTelemetry setup.
 
-## Overview
+## Overview [edot-collector-upstream-collector-overview]
 
 The contrib OpenTelemetry Collector is the community-maintained version that provides the foundation for all OpenTelemetry distributions. To configure it to work with Elastic Observability, you need to:
 
@@ -26,11 +26,11 @@ The contrib OpenTelemetry Collector is the community-maintained version that pro
 - Handle authentication and connection details.
 - Ensure required components have been properly configured in accordance to your use case.
 
-## Deployment scenarios
+## Deployment scenarios [edot-collector-upstream-collector-deployment-scena]
 
 The configuration requirements vary depending on your use case and the Elastic deployment model you want to send data to. The following sections outline what you need for each scenario.
 
-### Elastic Cloud Serverless
+### Elastic Cloud Serverless [edot-collector-upstream-collector-elastic-cloud-se]
 
 {{serverless-full}} provides a [Managed OTLP Endpoint](/reference/motlp.md) that accepts OpenTelemetry data in its native format. This makes it the simplest scenario for using contrib components because scaling and signal processing (for example producing metrics from events) is handled by Elastic.
 
@@ -130,7 +130,7 @@ exporters:
 
 Using the contrib OpenTelemetry Collector instead of EDOT comes with some trade-offs. Refer to [EDOT compared to contrib Collector](/reference/compatibility/edot-vs-upstream.md) for more information.
 
-## Next steps
+## Next steps [edot-collector-upstream-collector-next-steps]
 
 - [Build a custom EDOT-like collector](/reference/edot-collector/custom-collector.md) for more control.
 - [Configure the EDOT Collector](/reference/edot-collector/config/index.md) for optimal Elastic integration.

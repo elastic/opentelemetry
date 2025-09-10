@@ -18,7 +18,7 @@ products:
 
 Configure the {{edot}} .NET (EDOT .NET) to send data to Elastic.
 
-## Configuration methods
+## Configuration methods [dotnet-configuration-configuration-methods]
 
 Configure the OpenTelemetry SDK using the mechanisms listed in the [OpenTelemetry documentation](https://opentelemetry.io/docs/languages/net/automatic/configuration/),
 including:
@@ -29,7 +29,7 @@ including:
 
 Configuration options set manually in code take precedence over environment variables, and environment variables take precedence over configuration options set using the `IConfiguration` system.
 
-### Environment variables
+### Environment variables [dotnet-configuration-environment-variables]
 
 You can configure EDOT .NET using environment variables. This is a cross-platform way to configure EDOT .NET and is especially useful in containerized environments.
 
@@ -113,7 +113,7 @@ using var sdk = OpenTelemetrySdk.Create(builder => builder
   .WithElasticDefaults(options));
 ```
 
-## Configuration options
+## Configuration options [dotnet-configuration-configuration-options]
 
 Because the {{edot}} .NET (EDOT .NET) is an extension of the [OpenTelemetry .NET SDK](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation), it supports both:
 
@@ -191,7 +191,7 @@ Allows EDOT .NET to be used without the instrumentation assembly scanning featur
 | Environment variable | `ELASTIC_OTEL_SKIP_ASSEMBLY_SCANNING` |
 | `IConfiguration` integration | `Elastic:OpenTelemetry:SkipInstrumentationAssemblyScanning` |
 
-## Prevent logs export
+## Prevent logs export [dotnet-configuration-prevent-logs-export]
 
 To prevent logs from being exported, set `OTEL_LOGS_EXPORTER` to `none`. However, application logs might still be gathered and exported by the Collector through the `filelog` receiver.
 

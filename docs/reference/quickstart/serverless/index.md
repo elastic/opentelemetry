@@ -22,7 +22,7 @@ The {{motlp}} is designed for the following use cases:
 * Logs and Infrastructure Monitoring: Logs forwarded in OTLP format and host and Kubernetes metrics in OTLP format.
 * APM: Application telemetry in OTLP format.
 
-## Prerequisites
+## Prerequisites [quickstart-serverless-prerequisites]
 
 * An Elastic Observability Serverless project.
 * An {{edot}} or any system that can forward logs, metrics, or traces in OTLP format.
@@ -32,7 +32,7 @@ You also need to retrieve your OTLP endpoint address and an API key.
 :::{include} ../../_snippets/serverless-endpoint-api.md
 :::
 
-## Quickstart guides
+## Quickstart guides [quickstart-serverless-quickstart-guides]
 
 Select the quickstart guide for your environment from the following list:
 

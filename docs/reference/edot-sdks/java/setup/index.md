@@ -21,7 +21,7 @@ Learn how to set up the {{edot}} (EDOT) Java in various environments, including 
 Avoid using the Java SDK alongside any other APM agent, including Elastic APM agents. Running multiple agents in the same application process may lead to conflicting instrumentation, duplicate telemetry, or other unexpected behavior.
 :::
 
-## Kubernetes
+## Kubernetes [java-setup-kubernetes]
 
 For Kubernetes, use the OTel Kubernetes Operator. The Operator also manages the auto-instrumentation of Java applications. Follow the [quickstart guide](/reference/quickstart/index.md) for Kubernetes or learn more about [instrumentation details on Kubernetes for Java](/reference/edot-sdks/java/setup/k8s.md).
 
@@ -37,7 +37,7 @@ Follow the following Java setup guide for all other environments.
 
 You can download the latest release version of the EDOT Java agent from [![Maven Central](https://img.shields.io/maven-central/v/co.elastic.otel/elastic-otel-javaagent?label=elastic-otel-javaagent&style=for-the-badge)](https://mvnrepository.com/artifact/co.elastic.otel/elastic-otel-javaagent/latest)
 
-## Prerequisites
+## Prerequisites [java-setup-prerequisites]
 
 Complete the steps in the [Quickstart](/reference/quickstart/index.md) section that corresponds to your Elastic deployment model.
 
@@ -74,7 +74,7 @@ Follow the [Serverless quickstart guides](/reference/quickstart/serverless/index
 - Set `OTEL_EXPORTER_OTLP_ENDPOINT` to `<ELASTIC_OTLP_ENDPOINT>`.
 - Set `OTEL_EXPORTER_OTLP_HEADERS` to include `Authorization=ApiKey <ELASTIC_API_KEY>`.
 
-### Kubernetes
+### Kubernetes [java-setup-kubernetes]
 
 Connection to the EDOT Collector is managed by the OTel Kubernetes Operator. [Follow the Quickstart Guides](/reference/quickstart/index.md) for Kubernetes.
 
@@ -94,6 +94,6 @@ Some application servers require manual steps or modification of their configura
 
 For applications deployed with Kubernetes, use the [OpenTelemetry Operator](/reference/edot-sdks/java/setup/k8s.md).
 
-## Troubleshooting
+## Troubleshooting [java-setup-troubleshooting]
 
 For help with common setup issues, refer to the [EDOT Java troubleshooting guide](docs-content://troubleshoot/ingest/opentelemetry/edot-sdks/java/index.md).

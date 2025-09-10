@@ -12,7 +12,7 @@ products:
   - id: observability
 ---
 
-# Use cases
+# Use cases [use-cases-use-cases]
 
 Explore specific use cases for the {{edot}}:
 

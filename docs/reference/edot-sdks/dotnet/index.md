@@ -22,7 +22,7 @@ Use EDOT .NET to start the OpenTelemetry SDK with your .NET application, and aut
 
 A goal of this distribution is to avoid introducing proprietary concepts in addition to those defined by the wider OpenTelemetry community. For any additional features introduced, Elastic aims at contributing them back to the contrib OpenTelemetry project.
 
-## Features
+## Features [edot-sdks-dotnet-features]
 
 In addition to all the features of OpenTelemetry .NET, with EDOT .NET you have access to the following:
 
@@ -34,6 +34,6 @@ In addition to all the features of OpenTelemetry .NET, with EDOT .NET you have a
 
 Follow the step-by-step instructions in [Setup](/reference/edot-sdks/dotnet/setup/index.md) to get started.
 
-## Release notes
+## Release notes [edot-sdks-dotnet-release-notes]
 
 For the latest release notes, including known issues, deprecations, and breaking changes, refer to [EDOT .NET release notes](elastic-otel-dotnet://release-notes/index.md)

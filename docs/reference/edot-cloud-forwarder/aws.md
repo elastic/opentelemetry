@@ -28,7 +28,7 @@ Read on to learn how to set up {{edot-cf}} for AWS.
 We are working to support other popular log types and sources. Get in touch to let us know of any specific requirements that could influence our plans.
 ::::
 
-## Prerequisites
+## Prerequisites [edot-cloud-forwarder-aws-prerequisites]
 
 ::::{important}
 {{edot-cf}} for AWS is not currently supported on {{ech}} or self-managed {{stack}}.

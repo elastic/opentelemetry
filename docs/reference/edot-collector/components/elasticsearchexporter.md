@@ -17,11 +17,11 @@ products:
 
 The Elasticsearch exporter is an OpenTelemetry Collector component that sends logs, metrics, and traces to {{es}}. The exporter supports multiple mapping modes and provides flexible configuration options for data routing, authentication, and performance tuning.
 
-## Get started
+## Get started [components-elasticsearchexporter-get-started]
 
 To use the Elasticsearch exporter, include it in the exporter definitions of the [Collector configuration](/reference/edot-collector/config/index.md). The exporter is already included in the [default configuration](/reference/edot-collector/config/default-config-standalone.md).
 
-## Configuration
+## Configuration [components-elasticsearchexporter-configuration]
 
 The Elasticsearch exporter supports various configuration options for connecting to Elasticsearch, mapping data, and optimizing performance.
 
@@ -35,7 +35,7 @@ You must specify exactly one of the following connection methods:
 
 If none of the previous settings are specified, the exporter relies on the `ELASTICSEARCH_URL` environment variable.
 
-### Authentication settings
+### Authentication settings [components-elasticsearchexporter-authentication-se]
 
 The exporter supports standard OpenTelemetry [authentication configuration](https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/configauth/README.md#authentication-configuration). You can also use these simplified authentication options:
 
@@ -235,7 +235,7 @@ The following are the main known issues with the Elasticsearch exporter:
 | **version_conflict_engine_exception** | TSDB data streams require unique documents per timestamp. Occurs with OTel mapping mode on Elasticsearch 8.16+ or ECS mode with system integration streams. | Update to Elasticsearch version 8.17.6 or higher and the Elasticsearch exporter version 0.121.0 or higher, or install a custom component template. Remove batch processors to prevent metric splitting. |
 | **flush failed (400) illegal_argument_exception** | OTel mapping mode, which is default from version 0.122.0, requires Elasticsearch 8.12 or higher. | Upgrade Elasticsearch to 8.12 or higher or use alternative mapping modes. |
 
-## Troubleshooting
+## Troubleshooting [components-elasticsearchexporter-troubleshooting]
 
 When you encounter issues with the Elasticsearch exporter, you can try the following:
 

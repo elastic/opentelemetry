@@ -43,7 +43,7 @@ Follow these steps to instrument LLMs using EDOT.
 
 Select the environment and target system from the [quick start overview](/reference/quickstart/index.md) and follow the setup instructions to instrument your LLM application. Instrumentation for the supported technologies is enabled by default.
 
-### Configuration
+### Configuration [use-cases-llms-configuration]
 
 See the [Configuration section in the corresponding EDOT SDK](/reference/edot-sdks/index.md) to turn on or off specific instrumentations and check which instrumentation is active by default.
 

@@ -23,7 +23,7 @@ Compared to the Elastic APM PHP agent, the {{edot}} PHP presents a number of adv
 - Modular, extensible architecture based on the OpenTelemetry SDK. You can add custom exporters, processors, and samplers.
 - You can use EDOT PHP in environments where both tracing and metrics are collected using OpenTelemetry.
 
-## Migration steps
+## Migration steps [php-migration-migration-steps]
 
 Follow these steps to migrate from the legacy Elastic APM PHP agent (`elastic-apm-php`) to the {{edot}} PHP (`elastic-otel-php`).
 
@@ -128,7 +128,7 @@ php script.php
 :::::
 ::::::
 
-## Configuration mapping
+## Configuration mapping [php-migration-configuration-mapping]
 
 The following are Elastic APM PHP agent settings that you can migrate to EDOT PHP.
 
@@ -162,13 +162,13 @@ The following are Elastic APM PHP agent settings that you can migrate to EDOT PH
 | `inferred_spans_sampling_interval` | [`ELASTIC_OTEL_INFERRED_SPANS_SAMPLING_INTERVAL`](/reference/edot-sdks/php/configuration.md#inferred-spans-configuration)                                                                               | Sampling frequency for stack traces during inferred spans.                                                                   |
 | `inferred_spans_min_duration`      | [`ELASTIC_OTEL_INFERRED_SPANS_MIN_DURATION`](/reference/edot-sdks/php/configuration.md#inferred-spans-configuration)                                                                                    | Minimum duration of inferred span (used to limit noise). 
 
-## Central configuration
+## Central configuration [php-migration-central-configuration]
 
 You can manage EDOT PHP configurations through the [central configuration feature](docs-content://solutions/observability/apm/apm-agent-central-configuration.md) in the Applications UI.
 
 Refer to [Central configuration](/reference/central-configuration.md) for more information.
 
-## Limitations
+## Limitations [php-migration-limitations]
 
 The following limitations apply to EDOT PHP:
 
@@ -178,6 +178,6 @@ The following limitations apply to EDOT PHP:
 For a broader overview of known limitations — including technical constraints related to PHP runtime and extensions, refer to [Limitations](/reference/edot-sdks/php/setup/limitations.md).
 :::
 
-## Troubleshooting
+## Troubleshooting [php-migration-troubleshooting]
 
 If you're encountering issues during migration, refer to the [EDOT PHP troubleshooting guide](docs-content://troubleshoot/ingest/opentelemetry/edot-sdks/php/index.md).

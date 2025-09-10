@@ -37,7 +37,7 @@ The OTel or EDOT Collector in Gateway form gathers the OTel data from all other 
 
 For self-managed and {{ech}} deployment models the Gateway Collector does some additional pre-processing of data.
 
-## Deployment scenarios
+## Deployment scenarios [architecture-k8s-deployment-scenarios]
 
 See the recommended architectures per Elastic deployment scenarios:
 
@@ -45,7 +45,7 @@ See the recommended architectures per Elastic deployment scenarios:
 Elastic's Observability solution is technically compatible with setups that are fully based on contrib OTel components, as long as the ingestion path follows the recommendations outlined in following sub-sections for the different Elastic deployment options.
 ::::
 
-### Elastic Cloud Serverless
+### Elastic Cloud Serverless [architecture-k8s-elastic-cloud-serverless]
 
 {{serverless-full}} provides a [Managed OTLP Endpoint](/reference/motlp.md) for ingestion of OpenTelemetry data.
 
@@ -53,7 +53,7 @@ Elastic's Observability solution is technically compatible with setups that are 
 
 For a Kubernetes setup, that means the Gateway Collector passes through the OTel data in native format using the OTLP protocol to the managed OTLP endpoint. There is no need for the Gateway Collector to do any Elastic-specific pre-processing.
 
-### Elastic Cloud Hosted
+### Elastic Cloud Hosted [architecture-k8s-elastic-cloud-hosted]
 
 With {{ech}} (ECH), OTel data is being directly ingested into the Elastic-hosted {{es}} instance.
 
@@ -74,7 +74,7 @@ The EDOT Gateway Collector does not send data through Elastic's Integration / AP
 If self-managing an EDOT Gateway is not a valid option for you, refer to [Elastic's classic ingestion path for OTel data on ECH](docs-content://solutions/observability/apm/use-opentelemetry-with-apm.md).
 ::::
 
-### Self-managed
+### Self-managed [architecture-k8s-self-managed]
 
 With a self-managed scenario the Gateway Collector ingests data directly into the self-managed {{es}} instance.
 

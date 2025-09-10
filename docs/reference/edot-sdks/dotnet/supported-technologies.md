@@ -17,7 +17,7 @@ products:
 
 EDOT .NET is a distribution of OpenTelemetry .NET SDK. It inherits all the [supported](/reference/compatibility/nomenclature.md) technologies from the [upstream SDK](https://github.com/open-telemetry/opentelemetry-dotnet).
 
-## EDOT Collector and Elastic Stack versions
+## EDOT Collector and Elastic Stack versions [dotnet-supported-technologies-edot-collector-and-e]
 
 EDOT .NET sends data through the OpenTelemetry protocol (OTLP). While OTLP ingest works with later 8.16+ versions of the EDOT Collector, for full support use either the [EDOT Collector](/reference/edot-collector/index.md) versions 9.x or [{{serverless-full}}](docs-content://deploy-manage/deploy/elastic-cloud/serverless.md) for OTLP ingest.
 
@@ -48,7 +48,7 @@ This includes the currently supported Microsoft .NET frameworks:
 For further details, see [Microsoft .NET Framework support dates](https://learn.microsoft.com/lifecycle/products/microsoft-net-framework)
 and [.NET Support Policy](https://dotnet.microsoft.com/platform/support/policy).
 
-## Instrumentations
+## Instrumentations [dotnet-supported-technologies-instrumentations]
 
 Instrumentation for .NET can occur in three ways:
 

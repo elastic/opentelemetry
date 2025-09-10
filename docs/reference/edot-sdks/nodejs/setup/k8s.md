@@ -166,6 +166,6 @@ Note that the container logs are not provided by the instrumentation library, bu
 
 ::::::
 
-## Troubleshooting
+## Troubleshooting [setup-k8s-troubleshooting]
 
 Refer to [troubleshoot auto-instrumentation](/reference/use-cases/kubernetes/instrumenting-applications.md#troubleshooting-auto-instrumentation) for further analysis.

@@ -24,7 +24,7 @@ Compared to the Elastic APM Node.js agent, the {{edot}} Node.js presents a numbe
 - You can use EDOT Node.js in environments where both tracing and metrics are collected using OpenTelemetry.
 
 
-## Migration steps
+## Migration steps [nodejs-migration-migration-steps]
 
 Follow these steps to migrate from the legacy Elastic APM PHP agent (`elastic-apm-node`) to the {{edot}} PHP (`@elastic/opentelemetry-node`).
 
@@ -66,7 +66,7 @@ Set it on the command-line using `node --import @elastic/opentelemetry-node serv
 
 ::::::
 
-## Configuration mapping
+## Configuration mapping [nodejs-migration-configuration-mapping]
 
 This list contains Elastic APM Node.js agent configuration options that can be migrated to EDOT Node.js SDK configuration because they have an equivalent in OpenTelemetry.
 
@@ -100,7 +100,7 @@ The Elastic APM Node.js agent [`disableInstrumentations`](apm-agent-nodejs://ref
 
 For example: `OTEL_NODE_DISABLED_INSTRUMENTATIONS=express,mysql`.
 
-### `environment`
+### `environment` [nodejs-migration-environment]
 
 The Elastic APM Node.js agent [`environment`](apm-agent-nodejs://reference/configuration.md#environment) option corresponds to setting the `deployment.environment` key in [OTEL_RESOURCE_ATTRIBUTES](https://opentelemetry.io/docs/concepts/sdk-configuration/general-sdk-configuration/#otel_resource_attributes).
 
@@ -208,7 +208,7 @@ The Elastic APM Node.js agent [`transactionSampleRate`](apm-agent-nodejs://refer
 
 For example, for the equivalent of `transactionSampleRate: '0.25'` use `OTEL_TRACES_SAMPLER=parentbased_traceidratio OTEL_TRACES_SAMPLER_ARG=0.25`.
 
-## Limitations
+## Limitations [nodejs-migration-limitations]
 
 The following limitations apply to EDOT Node.js.
 
@@ -216,23 +216,23 @@ The following limitations apply to EDOT Node.js.
 
 EDOT Node.js and OpenTelemetry SDK support Node.js versions in the range `^18.19.0 || >=20.6.0`. Elastic APM Node.js works with Node.js versions `>=14.17.0`, though with limited support for Node.js 14 and 16 given that those major versions of Node.js are out of long-term support.
 
-### Missing instrumentations
+### Missing instrumentations [nodejs-migration-missing-instrumentations]
 
 EDOT Node.js doesn't currently support instrumentation for AWS Lambda and Azure Functions. However, there are contrib and third-party options based on OpenTelemetry:
 
 - For AWS Lambda use [OpenTelemetry Lambda layers](https://github.com/open-telemetry/opentelemetry-lambda).
 - For Azure Functions you can [configure OpenTelemetry](https://learn.microsoft.com/en-us/azure/azure-functions/opentelemetry-howto?tabs=app-insights&pivots=programming-language-javascript).
 
-### Central configuration
+### Central configuration [nodejs-migration-central-configuration]
 
 You can manage EDOT Node.js configurations through the [central configuration feature](docs-content://solutions/observability/apm/apm-agent-central-configuration.md) in the Applications UI.
 
 Refer to [Central configuration](/reference/central-configuration.md) for more information.
 
-### Span compression
+### Span compression [nodejs-migration-span-compression]
 
 EDOT Node.js does not implement [span compression](docs-content://solutions/observability/apm/spans.md#apm-spans-span-compression).
 
-## Troubleshooting
+## Troubleshooting [nodejs-migration-troubleshooting]
 
 If you're encountering issues during migration, refer to the [EDOT Node.js troubleshooting guide](docs-content://troubleshoot/ingest/opentelemetry/edot-sdks/nodejs/index.md).

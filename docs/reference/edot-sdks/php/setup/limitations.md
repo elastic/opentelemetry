@@ -13,7 +13,7 @@ products:
   - id: edot-sdk
 ---
 
-# Limitations
+# Limitations [setup-limitations-limitations]
 
 This section describes potential limitations of {{edot}} PHP (EDOT PHP) and how you can work around them.
 

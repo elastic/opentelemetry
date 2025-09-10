@@ -21,7 +21,7 @@ In Kubernetes environments with the OpenTelemetry Operator, [automatic or zero-c
 
 On the other hand, manual instrumentation with OpenTelemetry allows you to customize trace spans, metrics, and logging directly in your application’s code. This approach provides more granular control over what and how data is captured.
 
-## Prerequisites
+## Prerequisites [kubernetes-instrumenting-applications-prerequisite]
 
 Before starting with application auto-instrumentation, ensure the following prerequisites are in place for proper setup:
 

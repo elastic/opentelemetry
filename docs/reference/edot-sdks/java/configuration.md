@@ -46,7 +46,7 @@ For authentication, the `OTEL_EXPORTER_OTLP_HEADERS` can also be used with an AP
 OTEL_EXPORTER_OTLP_HEADERS='Authorization=Bearer mySecretToken'
 ```
 
-## Configuration options
+## Configuration options [java-configuration-configuration-options]
 
 EDOT Java instrumentation agent is based on OpenTelemetry Java [SDK](https://github.com/open-telemetry/opentelemetry-java) and [Instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation), and thus supports the following
 configuration options:
@@ -87,7 +87,7 @@ The following settings are available:
 | `ELASTIC_OTEL_JAVA_INSTRUMENTATION_GENAI_EMIT_EVENTS` | value of `OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT` | If set to `true`, the agent will generate log events for OpenAI requests and responses. Potentially sensitive content will only be included if `OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT` is `true`                                                                    |
 | `OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT`  | `false`                                                       | If set to `true`, enables the capturing of OpenAI request and response content in the log events outputted by the agent.                                                                                                                                                       ↪ |
 
-## Central configuration
+## Central configuration [java-configuration-central-configuration]
 
 ```{applies_to}
 serverless: unavailable
@@ -98,7 +98,7 @@ product:
 
 APM Agent Central Configuration lets you configure EDOT Java instances remotely, see [Central configuration docs](/reference/central-configuration.md) for more details.
 
-### Turn on central configuration
+### Turn on central configuration [java-configuration-turn-on-central-configuration]
 
 To activate central configuration, set the `ELASTIC_OTEL_OPAMP_ENDPOINT` environment variable to the OpAMP server endpoint.
 
@@ -108,7 +108,7 @@ export ELASTIC_OTEL_OPAMP_ENDPOINT=http://localhost:4320/v1/opamp
 
 To deactivate central configuration, remove the `ELASTIC_OTEL_OPAMP_ENDPOINT` environment variable and restart the instrumented application.
 
-### Central configuration settings
+### Central configuration settings [java-configuration-central-configuration-settings]
 
 You can modify the following settings for EDOT Java through APM Agent Central Configuration:
 
@@ -123,7 +123,7 @@ You can modify the following settings for EDOT Java through APM Agent Central Co
 
 Dynamic settings can be changed without having to restart the application.
 
-## Configuration methods
+## Configuration methods [java-configuration-configuration-methods]
 
 Configuration can be provided through multiple [configuration methods](#configuration-methods):
 
@@ -140,7 +140,7 @@ Configuration options are applied with the following priorities:
 [Declarative configuration](https://opentelemetry.io/docs/specs/otel/configuration/#declarative-configuration) is not supported.
 :::
 
-### Environment variables
+### Environment variables [java-configuration-environment-variables]
 
 Environment variables provide a cross-platform way to configure EDOT Java and is especially useful in containerized environments.
 
@@ -209,7 +209,7 @@ One solution is to add the certificate or certificate authority to the JVM trust
 
 If trust store modification is not possible or not practical, for example when troubleshooting or working with a local deployment, certificate verification can be disabled by setting `ELASTIC_OTEL_VERIFY_SERVER_CERT` to `false`. This however need to be evaluated carefully as it lowers the communication security and could allow for man-in-the-middle attacks where the data could be intercepted between the agent and the collector endpoint.
 
-## Prevent logs export
+## Prevent logs export [java-configuration-prevent-logs-export]
 
 To prevent logs from being exported, set `OTEL_LOGS_EXPORTER` to `none`. However, application logs might still be gathered and exported by the Collector through the `filelog` receiver.
 

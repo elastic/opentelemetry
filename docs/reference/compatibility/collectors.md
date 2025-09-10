@@ -15,7 +15,7 @@ products:
 
 The following table provides an overview of compatibility and support of {{edot}} Collector versions with {{stack}} (ELK) versions.
 
-#### EDOT Collector 9.x
+#### EDOT Collector 9.x [compatibility-collectors-edot-collector-9x]
 
 | ELK stack version           | **ELK < 8.16** | **ELK 8.16 - 8.17** | **ELK 8.18 - 8.19** | **ELK 9.0** |
 | :-------------------------- | :------------- | :------------------ | :------------------ | :---------- |
@@ -30,7 +30,7 @@ If you're on {{stack}} 8.18 or 8.19 and require Elastic support, use EDOT Collec
 
 The following table provides an overview of compatibility and support of EDOT Collector versions with different operating systems.
 
-#### EDOT Collector 9.x
+#### EDOT Collector 9.x [compatibility-collectors-edot-collector-9x]
 
 These operating systems and distributions are [compatible] with EDOT Collector 9.x:
 

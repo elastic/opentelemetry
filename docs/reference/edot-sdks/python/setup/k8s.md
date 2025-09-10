@@ -167,6 +167,6 @@ For this example, we assume the application you're instrumenting is a deployment
 
     Note that the container logs are not provided by the instrumentation library, but by the DaemonSet collector deployed as part of the [operator installation](/reference/use-cases/kubernetes/deployment.md).
 
-## Troubleshooting
+## Troubleshooting [setup-k8s-troubleshooting]
 
 Refer to [troubleshoot auto-instrumentation](/reference/use-cases/kubernetes/instrumenting-applications.md#troubleshooting-auto-instrumentation) for further analysis.

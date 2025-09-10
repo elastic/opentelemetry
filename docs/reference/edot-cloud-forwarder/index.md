@@ -26,7 +26,7 @@ The Elastic Distribution of OpenTelemetry (EDOT) Cloud Forwarder provides the ED
 | GCP | GCS, Operations | Under development |
 | Azure | Blob Storage, Event Hub | Under development |
 
-## Get started
+## Get started [edot-cloud-forwarder-get-started]
 
 To get started with {{edot-cf}}, select the setup guide for your cloud provider:
 

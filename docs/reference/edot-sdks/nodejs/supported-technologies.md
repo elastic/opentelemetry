@@ -17,7 +17,7 @@ products:
 
 The EDOT Node.js agent is a [distribution](https://opentelemetry.io/docs/concepts/distributions/) of OpenTelemetry Node.js. It inherits all the [supported](/reference/compatibility/nomenclature.md) technologies of the OpenTelemetry Node.js.
 
-## EDOT Collector and Elastic Stack versions
+## EDOT Collector and Elastic Stack versions [nodejs-supported-technologies-edot-collector-and-e]
 
 The {{edot}} Node.js (EDOT Node.js) sends data through the OpenTelemetry protocol (OTLP). While OTLP ingest works with later 8.16+ versions of the EDOT Collector, for full support use either [EDOT Collector](/reference/edot-collector/index.md) versions 9.x or [{{serverless-full}}](docs-content://deploy-manage/deploy/elastic-cloud/serverless.md) for OTLP ingest.
 
@@ -87,7 +87,7 @@ The 🔹 symbol marks instrumentations that differ between EDOT Node.js and OTel
 | `@opentelemetry/instrumentation-undici` | `undici` version range `>=5.12.0` | [README](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-undici#readme) |
 | `@opentelemetry/instrumentation-winston` | `winston` version range `>1 <4` | [README](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-winston#readme) |
 
-### LLM instrumentations
+### LLM instrumentations [nodejs-supported-technologies-llm-instrumentations]
 
 EDOT Node.js can instrument the following Large Language Model (LLM) libraries with instrumentations implementing the [OpenTelemetry GenAI Semantic Conventions](https://opentelemetry.io/docs/specs/semconv/gen-ai/):
 
@@ -134,7 +134,7 @@ EDOT Node.js includes limited and experimental support for instrumenting [ECMASc
 
 To activate ESM instrumentation, use `node --import @elastic/opentelemetry-node ...` to start the SDK. Using `node --require @elastic/opentelemetry-node ...` does not turn on ESM instrumentation. It is intended to signal that only CommonJS module usage should be instrumented.
 
-### Limitations
+### Limitations [nodejs-supported-technologies-limitations]
 
 The following limitations apply to ESM instrumentation:
 

@@ -16,7 +16,7 @@ products:
 
 The {{edot}} Collector supports multiple authentication methods to secure connections and ensure only authorized clients can send telemetry data. This guide covers the available authentication extensions and how to configure them.
 
-## Overview
+## Overview [config-authentication-methods-overview]
 
 Authentication in the EDOT Collector is handled through extensions that implement the `extensionauth` interface. These extensions can be used to:
 
@@ -71,7 +71,7 @@ service:
   extensions: [apikeyauth]
 ```
 
-#### Configuration options
+#### Configuration options [config-authentication-methods-configuration-option]
 
 The following configuration options are available for the `apikeyauth` extension:
 
@@ -112,7 +112,7 @@ service:
   extensions: [bearertokenauth]
 ```
 
-#### Configuration options
+#### Configuration options [config-authentication-methods-configuration-option]
 
 The following configuration options are available for the `bearertokenauth` extension:
 
@@ -141,7 +141,7 @@ service:
 
 The extension automatically monitors the token file for changes and reloads the token when the file is modified.
 
-## Use cases
+## Use cases [config-authentication-methods-use-cases]
 
 These use cases show how to configure the `apikeyauth` and `bearertokenauth` extensions for different scenarios.
 
@@ -221,7 +221,7 @@ In general, be aware of the following security considerations:
 - Avoid hardcoding tokens in configuration files.
 - Consider using token rotation mechanisms.
 
-## Troubleshooting
+## Troubleshooting [config-authentication-methods-troubleshooting]
 
 The following issues might occur.
 

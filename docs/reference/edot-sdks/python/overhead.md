@@ -21,7 +21,7 @@ While designed to have minimal performance overhead, the EDOT Java agent, like a
 
 This performance overhead depends on the application's technical architecture, its configuration and environment, and the load. These factors are not easy to reproduce on their own, and all applications are different, so it is not possible to provide a simple answer.
 
-## Benchmark 
+## Benchmark  [python-overhead-benchmark]
 
 The following numbers are only provided as indicators, and you should not attempt to extrapolate them. Use them as a framework to evaluate and measure the overhead on your applications.
 

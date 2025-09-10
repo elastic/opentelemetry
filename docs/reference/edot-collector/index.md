@@ -17,7 +17,7 @@ products:
 
 The {{edot}} (EDOT) Collector is an open-source distribution of the OpenTelemetry Collector. 
 
-## Get started
+## Get started [edot-collector-get-started]
 
 To install the EDOT Collector with basic settings in your environment, follow the [quickstart guides](/reference/quickstart/index.md).
 
@@ -39,10 +39,10 @@ Refer to [Components](/reference/edot-collector/components.md) for the full list
 
 To request a component to be added to EDOT Collector, submit a [GitHub issue here](https://github.com/elastic/elastic-agent/issues/new/choose).
 
-## Limitations 
+## Limitations  [edot-collector-limitations]
 
 The EDOT Collector inherits the same limitations from the contrib components. Refer to [Limitations](/reference/compatibility/limitations.md) for a complete list.
 
-## License
+## License [edot-collector-license]
 
 For details on the EDOT Collector license, see the [LICENSE.txt](https://github.com/elastic/elastic-agent/blob/main/LICENSE.txt) file.

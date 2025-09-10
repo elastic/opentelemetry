@@ -21,7 +21,7 @@ The Elastic APM intake receiver is an OpenTelemetry Collector component that rec
 Real user monitoring (RUM) intake and older intake protocols are not supported.
 :::
 
-## Get started
+## Get started [components-elasticapmintakereceiver-get-started]
 
 To use the Elastic APM intake receiver, include it in the receiver definitions of the [Collector configuration](/reference/edot-collector/config/index.md):
 
@@ -32,7 +32,7 @@ receivers:
       enabled: false
 ```
 
-## Configuration
+## Configuration [components-elasticapmintakereceiver-configuration]
 
 The Elastic APM intake receiver supports standard HTTP server configuration, including TLS/mTLS and authentication.
 
@@ -54,7 +54,7 @@ receivers:
 
 Refer to [OpenTelemetry TLS server configuration](https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/configtls/README.md#server-configuration) for more details.
 
-### Authentication settings
+### Authentication settings [components-elasticapmintakereceiver-authentication]
 
 In addition to TLS, you can configure authentication to make sure that only authorized agents can send data to the receiver. The Elastic APM intake receiver supports any `configauth` authenticator. 
 

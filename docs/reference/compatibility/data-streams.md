@@ -44,7 +44,7 @@ Query compatibility is achieved through:
 * **`passthrough` fields:** Make nested OpenTelemetry fields available at the top level so they can be queried. For example, while the service name is stored at `resource.attributes.service.name`, you can query it as `service.name` (the same field name as the one used in the classic APM data stream).
 * **Field aliases:** Map fields with different names in ECS and OpenTelemetry semantic conventions to a common query name to make migration easier.
 
-### Limitations
+### Limitations [compatibility-data-streams-limitations]
 
 Query compatibility is not complete:
 

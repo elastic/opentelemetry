@@ -17,7 +17,7 @@ products:
 
 EDOT PHP is a [distribution](https://opentelemetry.io/docs/concepts/distributions/) of OpenTelemetry PHP. It inherits all the [supported](/reference/compatibility/nomenclature.md) technologies of the OpenTelemetry PHP.
 
-## EDOT Collector and Elastic Stack versions
+## EDOT Collector and Elastic Stack versions [php-supported-technologies-edot-collector-and-elas]
 
 EDOT PHP sends data through the OpenTelemetry protocol (OTLP). While OTLP ingest works with later 8.16+ versions of the EDOT Collector, for full support use either [EDOT Collector](/reference/edot-collector/index.md) versions 9.x or [{{serverless-full}}](docs-content://deploy-manage/deploy/elastic-cloud/serverless.md) for OTLP ingest.
 

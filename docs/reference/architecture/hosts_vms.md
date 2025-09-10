@@ -22,7 +22,7 @@ These collectors have two main purposes:
 1.  The collection of local logs and infrastructure metrics. Refer to [this sample config file](https://github.com/elastic/elastic-agent/blob/main/internal/pkg/otel/samples/linux/managed_otlp/platformlogs_hostmetrics.yml) for recommended Collector receiver configurations for hostmetrics and logs.
 2.  Enriching application telemetry from OTel SDKs that run within the instrumented applications on corresponding hosts with resource information.
 
-## Deployment scenarios
+## Deployment scenarios [architecture-hosts-vms-deployment-scenarios]
 
 See the recommended architectures per Elastic deployment scenarios:
 
@@ -30,7 +30,7 @@ See the recommended architectures per Elastic deployment scenarios:
 Elastic's Observability solution is technically compatible with edge setups that are fully based on contrib OTel components as long as the ingestion path follows the recommendations outlined in the following sections.
 :::
 
-### Elastic Cloud Serverless
+### Elastic Cloud Serverless [architecture-hosts-vms-elastic-cloud-serverless]
 
 {{serverless-full}} provides a [Managed OTLP Endpoint](/reference/motlp.md) for ingestion of OpenTelemetry data.
 
@@ -38,7 +38,7 @@ Elastic's Observability solution is technically compatible with edge setups that
 
 Users can send their OTel data from the edge setup in OTel-native format through OTLP without any additional requirements for self-managed preprocessing of data.
 
-### Elastic Cloud Hosted
+### Elastic Cloud Hosted [architecture-hosts-vms-elastic-cloud-hosted]
 
 As of Elastic Stack version 9.0 on {{ech}} (ECH), you need to run a self-hosted EDOT Collector in Gateway Mode to ingest OTel data from the edge setup in OTel-native format into the Elastic-hosted {{es}}.
 
@@ -57,7 +57,7 @@ The EDOT Gateway Collector does not send data through Elastic's Integration / AP
 If self-managing an EDOT Gateway is not a valid option for you, refer to [Elastic's classic ingestion path for OTel data on ECH](docs-content://solutions/observability/apm/use-opentelemetry-with-apm.md).
 :::
 
-### Self-managed
+### Self-managed [architecture-hosts-vms-self-managed]
 
 In a self-managed deployment scenario, you need to host an EDOT Collector in Gateway mode that pre-processes and ingests OTel data from the edge setup into the self-managed Elastic Stack.
 

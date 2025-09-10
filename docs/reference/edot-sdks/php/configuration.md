@@ -15,7 +15,7 @@ products:
 
 Learn how to configure the {{edot}} PHP (EDOT PHP) to send data to Elastic.
 
-## Configuration method
+## Configuration method [php-configuration-configuration-method]
 
 You can configure the OpenTelemetry SDK through the mechanisms [documented on the OpenTelemetry website](https://opentelemetry.io/docs/zero-code/php#configuration). EDOT PHP is typically configured with `OTEL_*` environment variables defined by the OpenTelemetry spec. For example:
 
@@ -23,14 +23,14 @@ You can configure the OpenTelemetry SDK through the mechanisms [documented on th
 export OTEL_EXPORTER_OTLP_ENDPOINT="https://********.cloud.es.io:443/"
 ```
 
-## Configuration options
+## Configuration options [php-configuration-configuration-options]
 
 Because the {{edot}} PHP is an extension of the OpenTelemetry PHP SDK, it supports:
 
 * [OpenTelemetry configuration options](#opentelemetry-configuration-options)
 * [Configuration options only available in EDOT PHP](#options-only-available-in-edot-php)
 
-### OpenTelemetry configuration options
+### OpenTelemetry configuration options [php-configuration-opentelemetry-configuration-opti]
 
 EDOT PHP supports all configuration options listed in the [OpenTelemetry General SDK Configuration documentation](https://opentelemetry.io/docs/languages/sdk-configuration/general/) and [OpenTelemetry PHP SDK](https://opentelemetry.io/docs/languages/php).
 
@@ -127,7 +127,7 @@ elastic_otel.enabled=true
 | ELASTIC_OTEL_INFERRED_SPANS_SAMPLING_INTERVAL  | 50ms    | Integer number with time duration. Optional units: ms (default), s, m. It can't be set to 0.   | The frequency at which stack traces are gathered within a profiling session. The lower you set it, the more accurate the durations will be. This comes at the expense of higher overhead and more spans for potentially irrelevant operations. The minimal duration of a profiling-inferred span is the same as the value of this setting. |
 | ELASTIC_OTEL_INFERRED_SPANS_MIN_DURATION       | 0       | Integer number with time duration. Optional units: ms (default), s, m. _Disabled if set to 0_. | The minimum duration of an inferred span. Note that the min duration is also implicitly set by the sampling interval. However, increasing the sampling interval also decreases the accuracy of the duration of inferred spans.                                                                                                             |
 
-#### Central configuration
+#### Central configuration [php-configuration-central-configuration]
 
 The following settings control Central configuration management through OpAMP.
 
@@ -140,7 +140,7 @@ The following settings control Central configuration management through OpAMP.
 | ELASTIC_OTEL_OPAMP_SEND_MAX_RETRIES   | 3                              | Integer ≥ 0                                                                                   | Maximum number of retry attempts for failed message sends.                                                                                                                  |
 | ELASTIC_OTEL_OPAMP_SEND_RETRY_DELAY   | 10s                            | Integer number with time duration. Optional units: ms (default), s, m. It can't be set to 0. | Time to wait between retries of failed sends.                                                                                                                                |
 
-## Prevent logs export
+## Prevent logs export [php-configuration-prevent-logs-export]
 
 To prevent logs from being exported, set `OTEL_LOGS_EXPORTER` to `none`. However, application logs might still be gathered and exported by the Collector through the `filelog` receiver.
 

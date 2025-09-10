@@ -20,7 +20,7 @@ This guide explains how to find your {{motlp}} endpoint, create an API key for a
 The {{motlp}} endpoint is available on {{serverless-full}} and will soon be supported on {{ech}}. It is not available for self-managed deployments.
 :::
 
-## Reference architecture
+## Reference architecture [motlp-reference-architecture]
 
 This diagram shows data ingest using {{edot}} and the {{motlp}}:
 
@@ -31,13 +31,13 @@ This diagram shows data ingest using {{edot}} and the {{motlp}}:
 
 For a detailed comparison of how EDOT data streams differ from classic Elastic APM data streams, refer to [EDOT data streams compared to classic APM](../reference/compatibility/data-streams.md).
 
-## Prerequisites
+## Prerequisites [motlp-prerequisites]
 
 Telemetry is stored in Elastic in OTLP format, preserving resource attributes and original semantic conventions. If no specific dataset or namespace is provided, the data streams are: `traces-generic.otel-default`, `metrics-generic.otel-default`, and `logs-generic.otel-default`.
 
 You don't need to use APM Server when ingesting data through the Managed OTLP Endpoint. The APM integration (`.apm` endpoint) is a legacy ingest path that only supports traces and translates OTLP telemetry to ECS, whereas {{motlp}} natively ingests OTLP data for logs, metrics, and traces.
 
-## Send data to Elastic
+## Send data to Elastic [motlp-send-data-to-elastic]
 
 To send data to Elastic through the {{motlp}}, follow the [Send data to the Elastic Cloud Managed OTLP Endpoint](docs-content:///solutions/observability/get-started/quickstart-elastic-cloud-otel-endpoint.md) quickstart.
 
@@ -75,7 +75,7 @@ The {{motlp}} endpoint is designed to be highly available and resilient. However
 
 The Failure store is always enabled for {{motlp}} data streams. This prevents ingest pipeline exceptions and conflicts with data stream mappings. Failed documents are stored in a separate index. You can view the failed documents from the **Data Set Quality** page. Refer to [Data set quality](docs-content://solutions/observability/data-set-quality-monitoring.md).
 
-## Limitations
+## Limitations [motlp-limitations]
 
 The following limitations apply when using the {{motlp}}:
 

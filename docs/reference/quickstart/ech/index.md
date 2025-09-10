@@ -21,6 +21,6 @@ Select the quickstart guide for your environment from the following list:
 - [Docker on hosted](docker.md)
 - [Hosts or VMs on hosted](hosts_vms.md)
 
-## Troubleshooting
+## Troubleshooting [quickstart-ech-troubleshooting]
 
 Having issues with EDOT? Refer to the [Troubleshooting common issues with the EDOT Collector](docs-content://troubleshoot/ingest/opentelemetry/edot-collector/index.md) and [Troubleshooting the EDOT SDKs](docs-content://troubleshoot/ingest/opentelemetry/edot-sdks/index.md) for help.

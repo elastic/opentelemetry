@@ -13,7 +13,7 @@ products:
   - id: edot-collector
 ---
 
-# Quickstart guides
+# Quickstart guides [quickstart-quickstart-guides]
 
 Learn how to set up the Elastic Distributions for OpenTelemetry (EDOT) to monitor Kubernetes, applications, and hosts.
 
@@ -38,6 +38,6 @@ Select a guide based on the environment of your target system and your Elastic d
 | {{serverless-full}}  | [Kubernetes on serverless](/reference/quickstart/serverless/k8s.md)     | [Docker on serverless](/reference/quickstart/serverless/docker.md)     | [Hosts or VMs on serverless](/reference/quickstart/serverless/hosts_vms.md)     |
 | {{ech}}      | [Kubernetes on hosted](/reference/quickstart/ech/k8s.md)               | [Docker on hosted](/reference/quickstart/ech/docker.md)               | [Hosts or VMs on hosted](/reference/quickstart/ech/hosts_vms.md)               |
 
-## Troubleshooting
+## Troubleshooting [quickstart-troubleshooting]
 
 Having issues with the EDOT Collector? Refer to the [Troubleshooting common issues with the EDOT Collector](docs-content://troubleshoot/ingest/opentelemetry/edot-collector/index.md) guide for help.

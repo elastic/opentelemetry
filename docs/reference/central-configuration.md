@@ -19,7 +19,7 @@ Manage {{edot}} (EDOT) SDKs through the APM Agent Central Configuration feature 
 This feature implements the Open Agent Management Protocol (OpAMP). Refer to [Open Agent Management Protocol
 ](https://opentelemetry.io/docs/specs/opamp/) for more information.
 
-## Prerequisites
+## Prerequisites [central-configuration-prerequisites]
 
 To use APM Agent Central Configuration for EDOT SDKs, you need:
 
@@ -43,7 +43,7 @@ The following versions of EDOT and {{stack}} support central configuration:
 Serverless deployments are not currently supported.
 ::::
 
-## Activate central configuration
+## Activate central configuration [central-configuration-activate-central-configurati]
 
 To activate APM Agent Central Configuration for EDOT SDKs, follow these steps.
 

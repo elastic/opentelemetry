@@ -70,6 +70,6 @@ Elastic provides technical support for EDOT Language SDKs according to Elastic's
 Avoid using EDOT SDKs alongside any other APM agent, including Elastic APM agents. Running multiple agents in the same application process may lead to conflicting instrumentation, duplicate telemetry, or other unexpected behavior.
 :::
 
-## License
+## License [edot-sdks-license]
 
 EDOT SDKs are licensed under the [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0).

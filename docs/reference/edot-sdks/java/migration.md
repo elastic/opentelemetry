@@ -23,7 +23,7 @@ Compared to the Elastic APM Java agent, the {{edot}} Java presents a number of a
 - OpenTelemetry Java Instrumentation provides a [broad coverage of libraries, frameworks, and applications](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md).
 - EDOT Java is built on top of OpenTelemetry SDK and conventions, ensuring compatibility with community tools, vendor-neutral backends, and so on.
 
-## Migration steps
+## Migration steps [java-migration-migration-steps]
 
 Follow these steps to migrate from the legacy Elastic APM Java agent to the {{edot}} Java.
 
@@ -52,11 +52,11 @@ Remove the `-javaagent:` argument that contains the Elastic APM Java agent from 
 
 ::::::
 
-## Configuration mapping
+## Configuration mapping [java-migration-configuration-mapping]
 
 The following are Elastic APM Java agent settings that you can migrate to EDOT Java.
 
-### `server_url`
+### `server_url` [java-migration-server-url]
 
 The Elastic [`server_url`](apm-agent-java://reference/config-reporter.md#config-server-url) option corresponds to the OpenTelemetry [`OTEL_EXPORTER_OTLP_ENDPOINT`](https://opentelemetry.io/docs/concepts/sdk-configuration/otlp-exporter-configuration/#otel_exporter_otlp_endpoint) option.
 
@@ -66,19 +66,19 @@ The Elastic [`server_urls`](apm-agent-java://reference/config-reporter.md#config
 
 Use [OTEL_EXPORTER_OTLP_ENDPOINT](https://opentelemetry.io/docs/concepts/sdk-configuration/otlp-exporter-configuration/#otel_exporter_otlp_endpoint) instead.
 
-### `secret_token`
+### `secret_token` [java-migration-secret-token]
 
 The Elastic [`secret_token`](apm-agent-java://reference/config-reporter.md#config-secret-token) option corresponds to the OpenTelemetry [OTEL_EXPORTER_OTLP_HEADERS](https://opentelemetry.io/docs/concepts/sdk-configuration/otlp-exporter-configuration/#otel_exporter_otlp_headers) option.
 
 For example: `OTEL_EXPORTER_OTLP_HEADERS="Authorization=Bearer an_apm_secret_token"`.
 
-### `api_key`
+### `api_key` [java-migration-api-key]
 
 The Elastic [`api_key`](apm-agent-java://reference/config-reporter.md#config-api-key) option corresponds to the OpenTelemetry [OTEL_EXPORTER_OTLP_HEADERS](https://opentelemetry.io/docs/concepts/sdk-configuration/otlp-exporter-configuration/#otel_exporter_otlp_headers) option.
 
 For example:`OTEL_EXPORTER_OTLP_HEADERS="Authorization=ApiKey an_api_key"`.
 
-### `service_name`
+### `service_name` [java-migration-service-name]
 
 The Elastic [`service_name`](apm-agent-java://reference/config-core.md#config-service-name) option corresponds to the OpenTelemetry [OTEL_SERVICE_NAME](https://opentelemetry.io/docs/concepts/sdk-configuration/general-sdk-configuration/#otel_service_name) option.
 
@@ -86,23 +86,23 @@ The service name value can also be set using [OTEL_RESOURCE_ATTRIBUTES](https://
 
 For example: `OTEL_RESOURCE_ATTRIBUTES=service.name=myservice`. If `OTEL_SERVICE_NAME` is set, it takes precedence over the resource attribute.
 
-### `enabled`
+### `enabled` [java-migration-enabled]
 
 The Elastic [`enabled`](apm-agent-java://reference/config-core.md#config-enabled) option corresponds to the OpenTelemetry [OTEL_JAVAAGENT_ENABLED](https://opentelemetry.io/docs/zero-code/java/agent/disable/) option.
 
-### `service_version`
+### `service_version` [java-migration-service-version]
 
 The Elastic [`service_version`](apm-agent-java://reference/config-core.md#config-service-version) option corresponds to setting the `service.version` key in [OTEL_RESOURCE_ATTRIBUTES](https://opentelemetry.io/docs/concepts/sdk-configuration/general-sdk-configuration/#otel_resource_attributes).
 
 For example: `OTEL_RESOURCE_ATTRIBUTES=service.version=1.2.3`.
 
-### `environment`
+### `environment` [java-migration-environment]
 
 The Elastic [`environment`](apm-agent-java://reference/config-core.md#config-environment) option corresponds to setting the `deployment.environment` key in [OTEL_RESOURCE_ATTRIBUTES](https://opentelemetry.io/docs/concepts/sdk-configuration/general-sdk-configuration/#otel_resource_attributes).
 
 For example: `OTEL_RESOURCE_ATTRIBUTES=deployment.environment=testing`.
 
-### `global_labels`
+### `global_labels` [java-migration-global-labels]
 
 The Elastic [`global_labels`](apm-agent-java://reference/config-core.md#config-global-labels) option corresponds to adding `key=value` comma separated pairs in [OTEL_RESOURCE_ATTRIBUTES](https://opentelemetry.io/docs/concepts/sdk-configuration/general-sdk-configuration/#otel_resource_attributes).
 
@@ -186,7 +186,7 @@ The Elastic [`verify_server_cert`](apm-agent-java://reference/config-reporter.md
 
 With EDOT, the equivalent configuration option is `ELASTIC_OTEL_VERIFY_SERVER_CERT` (default `true`), see [configuration](./configuration.md#exporter-certificate-verification) for details.
 
-## Limitations
+## Limitations [java-migration-limitations]
 
 The following limitations apply to EDOT Java.
 
@@ -194,21 +194,21 @@ The following limitations apply to EDOT Java.
 
 EDOT Java agent and OpenTelemetry Java instrumentation are only compatible with Java 8 and later.
 
-### Missing instrumentations
+### Missing instrumentations [java-migration-missing-instrumentations]
 
 Support for LDAP client instrumentation is not currently available in EDOT Java.
 
-### Central and dynamic configuration
+### Central and dynamic configuration [java-migration-central-and-dynamic-configuration]
 
 You can manage EDOT Java configurations through the [central configuration feature](docs-content://solutions/observability/apm/apm-agent-central-configuration.md) in the Applications UI.
 
 Refer to [Central configuration](/reference/central-configuration.md) for more information.
 
-### Span compression
+### Span compression [java-migration-span-compression]
 
 EDOT Java does not implement [span compression](docs-content://solutions/observability/apm/spans.md#apm-spans-span-compression).
 
-### Breakdown metrics
+### Breakdown metrics [java-migration-breakdown-metrics]
 
 EDOT Java is not sending metrics that power the [Breakdown metrics](docs-content://solutions/observability/apm/metrics.md#_breakdown_metrics).
 
@@ -223,6 +223,6 @@ apply, and the agent must be started early during application startup.
 
 By default, Micrometer instrumentation is inactive and doesn't capture metrics. To turn it on, use the `otel.instrumentation.micrometer.enabled=true` setting.
 
-## Troubleshooting
+## Troubleshooting [java-migration-troubleshooting]
 
 If you're encountering issues during migration, refer to the [EDOT Java troubleshooting guide](docs-content://troubleshoot/ingest/opentelemetry/edot-sdks/java/index.md).

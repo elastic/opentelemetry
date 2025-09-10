@@ -36,7 +36,7 @@ Use the previous example configurations as a reference when configuring your con
 
 The following sections describe the default pipelines by use cases.
 
-### Direct ingestion into Elasticsearch
+### Direct ingestion into Elasticsearch [config-default-config-standalone-direct-ingestion-]
 
 For self-managed and {{ech}} stack deployment use cases, ingest OpenTelemetry data from the EDOT Collector directly into {{es}} using the [`elasticsearch`] exporter.
 
@@ -213,7 +213,7 @@ The service section defines separate pipelines for different telemetry types:
 Each pipeline connects specific receivers, processors, and exporters to handle different data types appropriately.
 
 
-## Central configuration
+## Central configuration [config-default-config-standalone-central-configura]
 
 The EDOT Collector can be configured to use [APM Agent Central Configuration](docs-content://solutions/observability/apm/apm-agent-central-configuration.md). Refer to [Central configuration docs](/reference/central-configuration.md) for more details.
 
@@ -247,7 +247,7 @@ extensions:
    ...
 ```
 
-### Authentication settings
+### Authentication settings [config-default-config-standalone-authentication-se]
 
 In addition to TLS, you can configure authentication to ensure that only authorized agents can communicate with the extension and retrieve their corresponding remote configurations.
 

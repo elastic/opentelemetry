@@ -17,7 +17,7 @@ products:
 
 EDOT Python is a [distribution](https://opentelemetry.io/docs/concepts/distributions/) of OpenTelemetry Python. It inherits all the [supported](/reference/compatibility/nomenclature.md) technologies of the OpenTelemetry Python.
 
-## EDOT Collector and Elastic Stack versions
+## EDOT Collector and Elastic Stack versions [python-supported-technologies-edot-collector-and-e]
 
 EDOT Python sends data through the OpenTelemetry protocol (OTLP). While OTLP ingest works with later 8.16+ versions of the EDOT Collector, for full support use either [EDOT Collector](/reference/edot-collector/index.md) versions 9.x or {{serverless-full}} for OTLP ingest.
 
@@ -39,7 +39,7 @@ The following Python versions are supported:
 
 This follows the [OpenTelemetry Python Version Support](https://github.com/open-telemetry/opentelemetry-python/?tab=readme-ov-file#python-version-support).
 
-## Instrumentations
+## Instrumentations [python-supported-technologies-instrumentations]
 
 Instrumentations are not installed by default. Use the [edot-bootstrap](/reference/edot-sdks/python/setup/index.md) command to automatically install the available instrumentations.
 
@@ -111,7 +111,7 @@ Some libraries like the Python {{es}} Client natively supports OpenTelemetry ins
 
 The [elasticsearch](https://elasticsearch-py.readthedocs.io/en/latest/) package has native OpenTelemetry support since version 8.13.
 
-### LLM instrumentations
+### LLM instrumentations [python-supported-technologies-llm-instrumentations]
 
 You can instrument the following LLM (Large Language Model) libraries with instrumentations implementing the [OpenTelemetry GenAI Semantic Conventions](https://opentelemetry.io/docs/specs/semconv/gen-ai/):
 

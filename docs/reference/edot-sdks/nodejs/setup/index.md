@@ -37,13 +37,13 @@ Avoid using the Node.js SDK alongside any other APM agent, including Elastic APM
 
 If you are deploying in Kubernetes, see the [Kubernetes setup guide](/reference/edot-sdks/nodejs/setup/k8s.md).
 
-## Prerequisites
+## Prerequisites [nodejs-setup-prerequisites]
 
 Before getting started, you need somewhere to send the gathered OpenTelemetry data, so it can be viewed and analyzed. This doc assumes you're using an Elastic Observability deployment. You can use an existing one or set up a new one.
 
 Follow the EDOT [Quickstart guide](/reference/quickstart/index.md) to get a deployment and gather the `ELASTIC_OTLP_ENDPOINT` and `ELASTIC_API_KEY` pieces of data that you need to configure the EDOT Node.js SDK.
 
-## Installation
+## Installation [nodejs-setup-installation]
 
 EDOT Node.js is published to npm as the [`@elastic/opentelemetry-node` package](https://www.npmjs.com/package/@elastic/opentelemetry-node). Install it with your chosen package manager:
 
@@ -53,13 +53,13 @@ yarn add @elastic/opentelemetry-node
 pnpm add @elastic/opentelemetry-node
 ```
 
-## Configuration
+## Configuration [nodejs-setup-configuration]
 
 EDOT Node.js is configured with environment variables beginning with `OTEL_` or `ELASTIC_OTEL_`. Any `OTEL_*` environment variables behave the same as with the OpenTelemetry SDK. 
 
 For example, all the OpenTelemetry [General SDK Configuration env vars](https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#general-sdk-configuration) are supported. If EDOT Node.js provides a configuration setting specific to the Elastic distribution, it begins with `ELASTIC_OTEL_`.
 
-### Basic configuration
+### Basic configuration [nodejs-setup-basic-configuration]
 
 To configure EDOT Node.js, as a typical minimum you need:
 
@@ -111,6 +111,6 @@ To confirm that EDOT Node.js has be setup successfully:
 
 If you do not see your service, work through [the Troubleshooting guide](docs-content://troubleshoot/ingest/opentelemetry/edot-sdks/nodejs/index.md).
 
-## Troubleshooting
+## Troubleshooting [nodejs-setup-troubleshooting]
 
 For help with common setup issues, refer to the [EDOT Node.js troubleshooting guide](docs-content://troubleshoot/ingest/opentelemetry/edot-sdks/nodejs/index.md).

@@ -60,7 +60,7 @@ Because EDOT Android also provides [direct access](manual-instrumentation.md) to
  * [Create alerts](docs-content://explore-analyze/alerts-cases.md) when something interesting happens; for example, when an error is recorded.
  * [Build custom dashboards](docs-content://explore-analyze/dashboards.md) to display your data the way you need to see it
 
-## Features
+## Features [edot-sdks-android-features]
 
 EDOT Android provides additional features on top of those that come with the [OpenTelemetry SDK](https://opentelemetry.io/docs/languages/java/).
 
@@ -68,7 +68,7 @@ EDOT Android provides additional features on top of those that come with the [Op
 
 Your application's telemetry data is stored locally before being sent to the {{stack}}. Then it's removed either after being successfully exported or to make room for new telemetry data if needed. This minimizes the risk of data loss due to internet connectivity issues.
 
-### Central configuration
+### Central configuration [edot-sdks-android-central-configuration]
 
 You can remotely manage how EDOT Android behaves through {{kib}}. Refer to [Central configuration](configuration.md#central-configuration) for more details.
 

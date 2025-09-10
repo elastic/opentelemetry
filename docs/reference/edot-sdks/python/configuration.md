@@ -17,7 +17,7 @@ products:
 
 Configure the {{edot}} Python (EDOT Python) to send data to Elastic.
 
-## Configuration method
+## Configuration method [python-configuration-configuration-method]
 
 Configure the OpenTelemetry SDK through the mechanisms [documented on the OpenTelemetry website](https://opentelemetry.io/docs/zero-code/python/configuration/). EDOT Python is typically configured with `OTEL_*` environment variables defined by the OpenTelemetry spec. For example:
 
@@ -28,14 +28,14 @@ export OTEL_EXPORTER_OTLP_HEADERS="Authorization=ApiKey P....l"
 opentelemetry-instrument <command to start your service>
 ```
 
-## Configuration options
+## Configuration options [python-configuration-configuration-options]
 
 Because the {{edot}} Python is an extension of OpenTelemetry Python, it supports both:
 
 * [General OpenTelemetry configuration options](#opentelemetry-configuration-options)
 * [Specific configuration options that are only available in EDOT Python](#configuration-options-only-available-in-edot-python)
 
-## Central configuration
+## Central configuration [python-configuration-central-configuration]
 
 ```{applies_to}
 serverless: unavailable
@@ -46,7 +46,7 @@ product:
 
 APM Agent Central Configuration lets you configure EDOT Python instances remotely, see [Central configuration docs](/reference/central-configuration.md) for more details.
 
-### Turn on central configuration
+### Turn on central configuration [python-configuration-turn-on-central-configuration]
 
 To activate central configuration, set the `ELASTIC_OTEL_OPAMP_ENDPOINT` environment variable to the OpAMP server endpoint.
 
@@ -56,7 +56,7 @@ export ELASTIC_OTEL_OPAMP_ENDPOINT=http://localhost:4320/v1/opamp
 
 To deactivate central configuration, remove the `ELASTIC_OTEL_OPAMP_ENDPOINT` environment variable and restart the instrumented application.
 
-### Central configuration settings
+### Central configuration settings [python-configuration-central-configuration-setting]
 
 You can modify the following settings for EDOT Python through APM Agent Central Configuration:
 
@@ -67,11 +67,11 @@ You can modify the following settings for EDOT Python through APM Agent Central 
 
 Dynamic settings can be changed without having to restart the application.
 
-### OpenTelemetry configuration options
+### OpenTelemetry configuration options [python-configuration-opentelemetry-configuration-o]
 
 EDOT Python supports all configuration options listed in the [OpenTelemetry General SDK Configuration documentation](https://opentelemetry.io/docs/languages/sdk-configuration/general/) and [OpenTelemetry Python](https://opentelemetry.io/docs/languages/python).
 
-#### Logs
+#### Logs [python-configuration-logs]
 
 Instrument Python `logging` module to format and forward logs in OTLP format is turned off by default and gated under a configuration environment variable:
 
@@ -117,7 +117,7 @@ LLM instrumentations implement the following configuration options:
 | `OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT`  | `false`| If set to `true`, enables the capturing of request and response content in the log events outputted by the agent.
 
 
-## Prevent logs export
+## Prevent logs export [python-configuration-prevent-logs-export]
 
 To prevent logs from being exported, set `OTEL_LOGS_EXPORTER` to `none`. However, application logs might still be gathered and exported by the Collector through the `filelog` receiver.
 

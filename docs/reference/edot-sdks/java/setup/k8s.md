@@ -25,7 +25,7 @@ Learn how to instrument Java applications on Kubernetes using the OpenTelemetry 
 
 The operator supports a configuration that installs [Java agent extensions](https://opentelemetry.io/docs/zero-code/java/agent/extensions/) in `Instrumentation` objects. The extension needs to be available in an image. Refer to [using extensions with the OpenTelemetry Java agent](https://www.elastic.co/observability-labs/blog/using-the-otel-operator-for-injecting-elastic-agents#using-an-extension-with-the-opentelemetry-java-agent) for an example of adding an extension to an agent.
 
-## Instrument a Java app
+## Instrument a Java app [setup-k8s-instrument-a-java-app]
 
 Following this example, you can learn how to:
 
@@ -166,6 +166,6 @@ In this example, the application you're instrumenting is a deployment named `jav
 
     Note that the container logs are not provided by the instrumentation library, but by the DaemonSet collector deployed as part of the [operator installation](/reference/use-cases/kubernetes/deployment.md).
 
-## Troubleshooting
+## Troubleshooting [setup-k8s-troubleshooting]
 
 Refer to [troubleshoot auto-instrumentation](/reference/use-cases/kubernetes/instrumenting-applications.md#troubleshooting-auto-instrumentation) for further analysis.

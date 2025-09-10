@@ -21,7 +21,7 @@ Use EDOT Python to start the OpenTelemetry SDK with your Python application, and
 
 A goal of this distribution is to avoid introducing proprietary concepts in addition to those defined by the wider OpenTelemetry community. For any additional features introduced, Elastic aims at contributing them back to the OpenTelemetry project.
 
-## Features
+## Features [edot-sdks-python-features]
 
 In addition to all the features of the OpenTelemetry Python agent, with EDOT Python you have access to the following:
 
@@ -33,6 +33,6 @@ In addition to all the features of the OpenTelemetry Python agent, with EDOT Pyt
 
 Follow the step-by-step instructions in [Setup](/reference/edot-sdks/python/setup/index.md) to get started.
 
-## Release notes
+## Release notes [edot-sdks-python-release-notes]
 
 For the latest release notes, including known issues, deprecations, and breaking changes, refer to [EDOT Python release notes](elastic-otel-python://release-notes/index.md)

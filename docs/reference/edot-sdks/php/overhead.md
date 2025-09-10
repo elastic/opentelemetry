@@ -23,7 +23,7 @@ This performance overhead depends on the application's technical architecture, i
 
 The following benchmarks compare the performance overhead of various PHP observability agents, including EDOT PHP, Elastic APM and the official OpenTelemetry PHP agent. All tests were executed in a local Docker-based environment (PHP-FPM 8.2 + NGINX). In configurations that include a Collector, it was also running locally, consuming shared CPU resources.
 
-## Benchmark
+## Benchmark [php-overhead-benchmark]
 
 The benchmark uses the following components:
 

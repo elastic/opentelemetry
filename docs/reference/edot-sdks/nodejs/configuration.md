@@ -18,7 +18,7 @@ products:
 The {{edot}} Node.js (EDOT Node.js) is configured with environment variables beginning with `OTEL_` or `ELASTIC_OTEL_`. Any `OTEL_*` environment variables behave the same as with the OpenTelemetry SDK. For example, all the OpenTelemetry [General SDK Configuration env vars](https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#general-sdk-configuration) are supported. If EDOT Node.js provides a configuration setting specific to the Elastic distribution, it will begin with `ELASTIC_OTEL_`.
 
 
-## Basic configuration
+## Basic configuration [nodejs-configuration-basic-configuration]
 
 If not configured, EDOT Node.js will send telemetry data to `http://localhost:4318` with no authentication information, and identify the running service as `unknown_service:node`. Typically a minimal configuration will include
 
@@ -115,7 +115,7 @@ The following settings are deprecated:
 | :--- | :---- |
 | `ELASTIC_OTEL_METRICS_DISABLED` 🔹 | [(EDOT Ref)](#deprecated-elastic_otel_metrics_disabled-details) Turn off metrics export and some metrics collection by the SDK. {applies_to}`product: deprecated 1.1.0` |
 
-## Central configuration
+## Central configuration [nodejs-configuration-central-configuration]
 
 ```{applies_to}
 serverless: unavailable
@@ -126,7 +126,7 @@ product:
 
 APM Agent Central Configuration lets you configure EDOT Node.js instances remotely, see [Central configuration docs](/reference/central-configuration.md) for more details.
 
-### Turn on central configuration
+### Turn on central configuration [nodejs-configuration-turn-on-central-configuration]
 
 To activate central configuration, set the `ELASTIC_OTEL_OPAMP_ENDPOINT` environment variable to the OpAMP server endpoint.
 
@@ -136,7 +136,7 @@ export ELASTIC_OTEL_OPAMP_ENDPOINT=http://localhost:4320/v1/opamp
 
 To deactivate central configuration, remove the `ELASTIC_OTEL_OPAMP_ENDPOINT` environment variable and restart the instrumented application.
 
-### Central configuration settings
+### Central configuration settings [nodejs-configuration-central-configuration-setting]
 
 You can modify the following settings for EDOT Node.js through APM Agent Central Configuration:
 

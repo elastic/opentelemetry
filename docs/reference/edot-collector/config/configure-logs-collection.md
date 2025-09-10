@@ -33,7 +33,7 @@ receivers:
   filelog:
     # ...
     operators:
-      # Check if format is json and route properly
+      # Check if format is json and route properly [config-configure-logs-collection-check-if-format-i]
       - id: get-format
         routes:
         - expr: body matches "^\\{"
@@ -255,7 +255,7 @@ metadata:
       operators:
       - id: container-parser
         type: container
-      # Check if format is json and route properly
+      # Check if format is json and route properly [config-configure-logs-collection-check-if-format-i]
       - id: get-format
         routes:
         - expr: body matches "^\\{"
@@ -371,7 +371,7 @@ receivers:
     start_at: end
     storage: file_storage
     exclude:
-      # Paths support glob patterns
+      # Paths support glob patterns [config-configure-logs-collection-paths-support-glo]
       - /var/log/ignore_this.log
       - /var/log/another_path/*
 ```
@@ -388,7 +388,7 @@ config:
   receivers:
     filelog:
       exclude:
-        # Paths support glob patterns
+        # Paths support glob patterns [config-configure-logs-collection-paths-support-glo]
         - /var/log/pods/my-nodejs-app-namespace_my-nodejs-app-pod-name_*/*/*.log
 ```
 :::

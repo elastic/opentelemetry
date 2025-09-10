@@ -21,7 +21,7 @@ Use EDOT PHP to start the OpenTelemetry SDK with your PHP application, and autom
 
 A goal of this distribution is to avoid introducing proprietary concepts in addition to those defined by the wider OpenTelemetry community. For any additional features introduced, Elastic aims at contributing them back to the OpenTelemetry project.
 
-## Features
+## Features [edot-sdks-php-features]
 
 In addition to all the features of OpenTelemetry PHP, with EDOT PHP you have access to the following:
 
@@ -36,6 +36,6 @@ In addition to all the features of OpenTelemetry PHP, with EDOT PHP you have acc
 
 Follow the step-by-step instructions in [Setup](/reference/edot-sdks/php/setup/index.md) to get started.
 
-## Release notes
+## Release notes [edot-sdks-php-release-notes]
 
 For the latest release notes, including known issues, deprecations, and breaking changes, refer to [EDOT PHP release notes](elastic-otel-php://release-notes/index.md)

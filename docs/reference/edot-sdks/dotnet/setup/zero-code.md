@@ -55,7 +55,7 @@ chmod +x $HOME/.otel-dotnet-auto/instrument.sh
 # Setup the instrumentation for the current shell session
 . $HOME/.otel-dotnet-auto/instrument.sh
 
-# Run your application with instrumentation
+# Run your application with instrumentation [setup-zero-code-run-your-application-with-instrume]
 OTEL_SERVICE_NAME=myapp OTEL_RESOURCE_ATTRIBUTES=deployment.environment=staging,service.version=1.0.0 ./MyNetApp
 ```
 
@@ -80,7 +80,7 @@ Install-OpenTelemetryCore -LocalPath "C:\Path\To\OpenTelemetry.zip"
 # Set up the instrumentation for the current PowerShell session
 Register-OpenTelemetryForCurrentSession -OTelServiceName "MyServiceDisplayName"
 
-# Run your application with instrumentation
+# Run your application with instrumentation [setup-zero-code-run-your-application-with-instrume]
 .\MyNetApp.exe
 
 # You can get usage information by calling the following commands

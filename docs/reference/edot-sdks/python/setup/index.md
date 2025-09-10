@@ -80,6 +80,6 @@ There might be no trace data to visualize unless you have invoked your applicati
 
 ::::::
 
-## Troubleshooting
+## Troubleshooting [python-setup-troubleshooting]
 
 For help with common setup issues, refer to the [EDOT Python troubleshooting guide](docs-content://troubleshoot/ingest/opentelemetry/edot-sdks/python/index.md).
