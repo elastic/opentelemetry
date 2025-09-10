@@ -46,7 +46,6 @@ The 🔹 symbol marks instrumentations that differ between EDOT Node.js and OTel
 
 | Name | Packages instrumented | Notes |
 |---|---|---|
-| `@elastic/opentelemetry-instrumentation-openai` 🔹 | `openai` version range `>=4.19.0 <5` | [README](https://github.com/elastic/elastic-otel-node/tree/main/packages/instrumentation-openai#readme) |
 | `@opentelemetry/instrumentation-amqplib` | `amqplib` version range `>=0.5.5 <1` | [README](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-amqplib#readme) |
 | `@opentelemetry/instrumentation-aws-sdk` | `aws-sdk` v2 and `@aws-sdk/client-*` v3 | [README](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-aws-sdk#readme) |
 | `@opentelemetry/instrumentation-bunyan` | `bunyan` version range `^1.0.0` | [README](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-bunyan#readme) |
@@ -75,6 +74,7 @@ The 🔹 symbol marks instrumentations that differ between EDOT Node.js and OTel
 | `@opentelemetry/instrumentation-mysql2` | `mysql2` version range `>=1.4.2 <4` | [README](https://github.com/open-telemetry/opentelemetry-js-contrib/blob/main/packages/instrumentation-mysql2#readme) |
 | `@opentelemetry/instrumentation-nestjs-core` | `@nestjs/core` version range `>=4.0.0` | [README](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-nestjs-core#readme) |
 | `@opentelemetry/instrumentation-net` | `net` module for supported Node.js versions | [README](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-net#readme) |
+| `@opentelemetry/instrumentation-openai` {applies_to}`edot_node: ga 1.4.0` | `openai` version range `>=4.19.0 <6` | [README](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-openai#readme) |
 | `@opentelemetry/instrumentation-oracledb` {applies_to}`edot_node: ga 1.3.0` | `oracledb` version range `>=6.7.0 <7` | [README](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-oracledb#readme) |
 | `@opentelemetry/instrumentation-pg` | `pg` version range `>=8 <9` | [README](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-pg#readme) |
 | `@opentelemetry/instrumentation-pino` | `pino` version range `>=5.14.0 <10` | [README](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-pino#readme) |
@@ -87,15 +87,6 @@ The 🔹 symbol marks instrumentations that differ between EDOT Node.js and OTel
 | `@opentelemetry/instrumentation-undici` | `undici` version range `>=5.12.0` | [README](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-undici#readme) |
 | `@opentelemetry/instrumentation-winston` | `winston` version range `>1 <4` | [README](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-winston#readme) |
 
-### LLM instrumentations
-
-EDOT Node.js can instrument the following Large Language Model (LLM) libraries with instrumentations implementing the [OpenTelemetry GenAI Semantic Conventions](https://opentelemetry.io/docs/specs/semconv/gen-ai/):
-
-| SDK    | Instrumentation | Traces | Metrics | Logs | Notes |
-|--------|-----------------|--------|---------|------|-------|
-| OpenAI | [@elastic/opentelemetry-instrumentation-openai](https://github.com/elastic/elastic-otel-node/tree/main/packages/instrumentation-openai#readme) | ✅         | ✅          | ✅       | (1)       |
-
-1. Support for [chat](https://platform.openai.com/docs/api-reference/chat) and [embeddings](https://platform.openai.com/docs/api-reference/embeddings) API endpoints.
 
 ### Deactivated instrumentations [disabled-instrumentations]
 

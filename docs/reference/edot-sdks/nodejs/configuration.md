@@ -250,7 +250,7 @@ Refer to the [migration guide](/reference/edot-sdks/nodejs/migration.md#contextp
 ### `OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT` details [otel_instrumentation_genai_capture_message_content-details]
 
 Set `OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT` to `true` to
-enable capture of content data, such as prompt and completion content, in GenAI telemetry. Currently this applies to the [`@elastic/opentelemetry-instrumentation-openai` instrumentation for the OpenAI Node.js client](https://github.com/elastic/elastic-otel-node/tree/main/packages/instrumentation-openai/#configuration) that is included in EDOT Node.js
+enable capture of content data, such as prompt and completion content, in GenAI telemetry. Currently this applies to the `@opentelemetry/instrumentation-openai` instrumentation.
 
 The `OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT` boolean environment variable is a convention established by the OpenTelemetry GenAI SIG. It is referenced in <https://opentelemetry.io/blog/2024/otel-generative-ai/>.
 
