@@ -17,7 +17,7 @@ products:
 The {{motlp}} allows you to send OpenTelemetry data directly to {{ecloud}} using the OTLP protocol, with Elastic handling scaling, data processing, and storage. The Managed OTLP endpoint can act like a Gateway Collector, so that you can point your OpenTelemetry SDKs or Collectors to it.
 
 :::{important}
-The {{motlp}} endpoint is not available for self-managed deployments. To send data to the {{motlp}} from a self-managed environment, deploy and expose an OTLP-compatible endpoint using the EDOT Collector as a gateway. Refer to [EDOT deployment docs](https://www.elastic.co/docs/reference/opentelemetry/edot-collector/modes#edot-collector-as-gateway).
+The {{motlp}} endpoint is not available for self-managed deployments. To send data to the {{motlp}} from a self-managed environment, deploy and expose an OTLP-compatible endpoint using the EDOT Collector as a gateway. Refer to [EDOT deployment docs](./edot-collector/modes.md#edot-collector-as-gateway).
 :::
 
 ## Reference architecture
@@ -31,7 +31,7 @@ This diagram shows data ingest using {{edot}} and the {{motlp}}:
 
 Telemetry is stored in Elastic in OTLP format, preserving resource attributes and original semantic conventions. If no specific dataset or namespace is provided, the data streams are: `traces-generic.otel-default`, `metrics-generic.otel-default`, and `logs-generic.otel-default`.
 
-For a detailed comparison of how EDOT data streams differ from classic Elastic APM data streams, refer to [EDOT data streams compared to classic APM](../reference/compatibility/data-streams.md).
+For a detailed comparison of how EDOT data streams differ from classic Elastic APM data streams, refer to [EDOT data streams compared to classic APM](./compatibility/data-streams.md).
 
 ## Prerequisites
 
