@@ -65,7 +65,7 @@ This is **NON-NEGOTIABLE**. All content **MUST** be accessible and inclusive.
 
 ## Substitutions
 
-Substitutions are predefined variables that automatically expand to their values when the documentation is built. You **MUST** use them to ensure consistency and maintainability. Local repo substitutions are defined in the `docset.yml` file. 
+Substitutions are predefined variables that automatically expand to their values when the documentation is built. You **MUST** use them to ensure consistency and maintainability. Local repo substitutions are defined in the `docset.yml` file.
 
 Syntax is `{{substitution_name}}`.
 
