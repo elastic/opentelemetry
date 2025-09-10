@@ -144,7 +144,7 @@ The Elastic APM Node.js agent [`disableSend`](apm-agent-nodejs://reference/confi
 - `OTEL_METRICS_EXPORTER` for metrics.
 - `OTEL_LOGS_EXPORTER` for logs.
 
-For example `OTEL_TRACES_EXPORTER=none OTEL_METRICS_EXPORTER=none OTEL_LOGS_EXPORTER=none` will completelly disable sending but `OTEL_TRACES_EXPORTER=none` will disable only the sending of traces.
+For example `OTEL_TRACES_EXPORTER=none OTEL_METRICS_EXPORTER=none OTEL_LOGS_EXPORTER=none` will completely disable sending but `OTEL_TRACES_EXPORTER=none` will disable only the sending of traces.
 
 ### `environment`
 
