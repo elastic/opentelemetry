@@ -147,4 +147,4 @@ If data intake exceeds the capacity of {{es}} in your {{ech}} deployment, you mi
 
 If rate limiting is not caused by {{es}} capacity or you're on {{serverless-full}}, you can either decrease data volume or request higher limits.
 
-To increase the rate limit, reach out to Elastic Support.
+To increase the rate limit, [reach out to Elastic Support](docs-content://troubleshoot/ingest/opentelemetry/contact-support.md).
