@@ -171,7 +171,7 @@ The Elastic APM Node.js agent [`instrument`](apm-agent-nodejs://reference/config
 For example: `OTEL_NODE_ENABLED_INSTRUMENTATIONS=none` will make EDOT Node.js .
 
 :::{info}
-Because "none" is not an instrumentation name the EDOT will log a message saying so. The message will heve the following format.
+Because "none" is not an instrumentation name the EDOT will log a message saying so. The message will have the following format.
 `{"name":"elastic-otel-node","level":40,"msg":"Unknown instrumentation \"none\" specified in environment variable \"OTEL_NODE_ENABLED_INSTRUMENTATIONS\"","time":"2025-09-01T11:12:30.949Z"}`
 :::
 
