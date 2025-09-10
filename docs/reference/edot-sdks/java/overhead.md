@@ -48,7 +48,7 @@ The following table compares the classic Elastic APM Java Agent with the EDOT Ja
 
 The main difference between the two agents is that, unlike EDOT, Elastic APM Java agent recycles in-memory data structures which allows to reduce the overall allocated memory and thus reduces a bit the overhead on the garbage collector.
 
-This difference is also the reason why we observe a difference in the maximum heap usage as more data structures are kept in-memory when possible and not recycled by the garbage collector. This however does not mean that Elastic APM Java agent requires about 100mb more of memory compared to EDOT, but that when there is no limitation on heap memory usage the agent will use available memory to minimize memory allocation.
+This difference is also the reason why we observe a difference in the maximum heap usage as more data structures are kept in-memory when possible and not recycled by the garbage collector. This, however, does not mean that Elastic APM Java agent requires about 100mb more of memory compared to EDOT, but that when there is no limitation on heap memory usage the agent will use available memory to minimize memory allocation.
 
 ## Optimizing application startup
 

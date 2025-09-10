@@ -207,7 +207,7 @@ This is common in the following scenarios:
 
 One solution is to add the certificate or certificate authority to the JVM trust store, which requires modifying the JVM trust store.
 
-If trust store modification is not possible or not practical, for example when troubleshooting or working with a local deployment, certificate verification can be disabled by setting `ELASTIC_OTEL_VERIFY_SERVER_CERT` to `false`. This however need to be evaluated carefully as it lowers the communication security and could allow for man-in-the-middle attacks where the data could be intercepted between the agent and the collector endpoint.
+If trust store modification is not possible or not practical, for example when troubleshooting or working with a local deployment, certificate verification can be disabled by setting `ELASTIC_OTEL_VERIFY_SERVER_CERT` to `false`. This, however, needs to be evaluated carefully as it lowers the communication security and could allow for man-in-the-middle attacks where the data could be intercepted between the agent and the collector endpoint.
 
 ## Prevent logs export
 

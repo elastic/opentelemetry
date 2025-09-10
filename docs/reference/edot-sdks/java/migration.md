@@ -110,7 +110,7 @@ For example: `OTEL_RESOURCE_ATTRIBUTES=alice=first,bob=second`. Such labels will
 
 ### `trace_methods`
 
-The Elastic [`trace_methods`] option can be replaced by the [`OTEL_INSTRUMENTATION_METHODS_INCLUDE`](https://opentelemetry.io/docs/zero-code/java/agent/annotations/#creating-spans-around-methods-with-otelinstrumentationmethodsinclude) OpenTelemetry option, however the syntax is different and the ability to use wildcards is more limited.
+The Elastic [`trace_methods`] option can be replaced by the [`OTEL_INSTRUMENTATION_METHODS_INCLUDE`](https://opentelemetry.io/docs/zero-code/java/agent/annotations/#creating-spans-around-methods-with-otelinstrumentationmethodsinclude) OpenTelemetry option, however, the syntax is different and the ability to use wildcards is more limited.
 
 ### `capture_jmx_metrics`
 
