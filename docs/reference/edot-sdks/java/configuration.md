@@ -133,8 +133,8 @@ Configuration can be provided through multiple [configuration methods](#configur
 
 Configuration options are applied with the following priorities:
 
-- [environment variables](#system-properties) take precedence over [system properties](#system-properties) and [properties configuration file](#properties-configuration-file).
-- [system properties](#system-properties) take precedence on [properties configuration file](#properties-configuration-file).
+- [environment variables](#environment-variables) take precedence over [system properties](#system-properties) and [properties configuration file](#properties-configuration-file).
+- [system properties](#system-properties) take precedence over [properties configuration file](#properties-configuration-file).
 
 :::{important}
 [Declarative configuration](https://opentelemetry.io/docs/specs/otel/configuration/#declarative-configuration) is not supported.

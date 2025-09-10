@@ -39,7 +39,7 @@ You can also use instrumentations from [OpenTelemetry Android](https://github.co
 
 Some automatic instrumentations perform bytecode instrumentation, also known as _bytecode weaving_, where your application's code, including code from the libraries it uses, is modified at compile-time. This is similar to what `isMinifyEnabled` does with R8 functionalities, automating code changes that you would otherwise need to make manually. 
 
-Bytecode instrumentation is a common technique which may already be used in your project for use cases such as [code optimization](https://developer.android.com/build/shrink-code#optimization) through R8. While useful, bytecode instrumentation can make compilation take longer to complete. Because of this, EDOT Android provides [a way to exclude](#automatic-instrumentation-configuration) specific build types in your app from byte code changes.
+Bytecode instrumentation is a common technique which may already be used in your project for use cases such as [code optimization](https://developer.android.com/build/shrink-code#optimization) through R8. While useful, bytecode instrumentation can make compilation take longer to complete. Because of this, EDOT Android provides [a way to exclude](#automatic-instrumentation-configuration) specific build types in your app from bytecode changes.
 
 ## Configuration [automatic-instrumentation-configuration]
 
@@ -61,10 +61,10 @@ elasticAgent {
 }
 ```
 
-1. By default, the `disableForBuildTypes` list is empty. Add any [build type](https://developer.android.com/build/build-variants#build-types) names for which you want to turn off byte code instrumentation.
+1. By default, the `disableForBuildTypes` list is empty. Add any [build type](https://developer.android.com/build/build-variants#build-types) names for which you want to turn off bytecode instrumentation.
 
 :::{note}
-Turning off byte-code instrumentation might affect the ability of some [automatic instrumentations](#supported-instrumentations) to generate telemetry.
+Turning off bytecode instrumentation might affect the ability of some [automatic instrumentations](#supported-instrumentations) to generate telemetry.
 :::
 
 ## Supported instrumentations [supported-instrumentations]
