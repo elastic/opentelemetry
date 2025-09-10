@@ -120,7 +120,7 @@ As long as your data ingestion rate stays at or below the rate limit and burst l
 
 ### Exceeding the rate limit
 
-If send data that exceeds the available limits, the {{motlp}} responds with an HTTP 429 Too Many Requests status code. A log message similar to this appears in the OpenTelemetry Collector's output:
+If you send data that exceeds the available limits, the {{motlp}} responds with an HTTP 429 Too Many Requests status code. A log message similar to this appears in the OpenTelemetry Collector's output:
 
 ```json
 {
