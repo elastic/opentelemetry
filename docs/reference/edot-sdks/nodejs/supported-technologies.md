@@ -75,6 +75,7 @@ The 🔹 symbol marks instrumentations that differ between EDOT Node.js and OTel
 | `@opentelemetry/instrumentation-mysql2` | `mysql2` version range `>=1.4.2 <4` | [README](https://github.com/open-telemetry/opentelemetry-js-contrib/blob/main/packages/instrumentation-mysql2#readme) |
 | `@opentelemetry/instrumentation-nestjs-core` | `@nestjs/core` version range `>=4.0.0` | [README](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-nestjs-core#readme) |
 | `@opentelemetry/instrumentation-net` | `net` module for supported Node.js versions | [README](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-net#readme) |
+| `@opentelemetry/instrumentation-oracledb` {applies_to}`edot_node: ga 1.3.0` | `oracledb` version range `>=6.7.0 <7` | [README](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-oracledb#readme) |
 | `@opentelemetry/instrumentation-pg` | `pg` version range `>=8 <9` | [README](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-pg#readme) |
 | `@opentelemetry/instrumentation-pino` | `pino` version range `>=5.14.0 <10` | [README](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-pino#readme) |
 | `@opentelemetry/instrumentation-redis` | `redis` version range `>=2.6.0 <5` | [README](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-redis#readme) |
