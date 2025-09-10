@@ -19,7 +19,7 @@ mapped_pages:
 
 Set up the Elastic Distribution of OpenTelemetry Android (EDOT Android) in your app and explore your app's data in {{kib}}.
 
-## Requirements [android-getting-started-requirements]
+## Requirements [requirements]
 
 | Requirement                                       | Minimum version                                                                                           |
 |---------------------------------------------------|-----------------------------------------------------------------------------------------------------------|

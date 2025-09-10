@@ -19,7 +19,7 @@ mapped_pages:
 
 Learn how to set up and configure the Elastic Distribution of OpenTelemetry iOS (EDOT iOS) to instrument your application.
 
-## Requirements [requirements]
+## Requirements [ios-setup-requirements]
 
 This project requires Swift `5.10`, and is intended for use in Swift-base mobile apps.
 

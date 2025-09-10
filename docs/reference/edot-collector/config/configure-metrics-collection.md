@@ -120,7 +120,7 @@ To ensure compatibility with {{kib}}'s Infrastructure dashboards, include the [e
               - elasticinframetrics
  ```
 
-### Process metrics [config-configure-metrics-collection-process-metric]
+### Process metrics [process-metrics]
 
 :::{include} ../../_snippets/process-config.md
 :::
