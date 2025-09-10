@@ -87,6 +87,15 @@ The 🔹 symbol marks instrumentations that differ between EDOT Node.js and OTel
 | `@opentelemetry/instrumentation-undici` | `undici` version range `>=5.12.0` | [README](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-undici#readme) |
 | `@opentelemetry/instrumentation-winston` | `winston` version range `>1 <4` | [README](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-winston#readme) |
 
+### LLM instrumentations
+
+EDOT Node.js can instrument the following Large Language Model (LLM) libraries with instrumentations implementing the [OpenTelemetry GenAI Semantic Conventions](https://opentelemetry.io/docs/specs/semconv/gen-ai/):
+
+| SDK    | Instrumentation | Traces | Metrics | Logs | Notes |
+|--------|-----------------|--------|---------|------|-------|
+| OpenAI | [@opentelemetry/instrumentation-openai](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-openai#readme) | ✅         | ✅          | ✅       | (1)       |
+
+1. Support for [chat](https://platform.openai.com/docs/api-reference/chat) and [embeddings](https://platform.openai.com/docs/api-reference/embeddings) API endpoints.
 
 ### Deactivated instrumentations [disabled-instrumentations]
 
