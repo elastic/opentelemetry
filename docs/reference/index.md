@@ -27,14 +27,14 @@ The following Elastic OpenTelemetry distributions are available:
 
 | Distribution | Version | Status |
 | ------------ | ------- | ------ |
-| [EDOT Collector](/reference/edot-collector/index.md) | {{version.edot_collector}} | GA |
-| [EDOT .NET](/reference/edot-sdks/dotnet/index.md) | {{version.edot_dotnet}} | GA |
-| [EDOT Java](/reference/edot-sdks/java/index.md) | {{version.edot_java}} | GA |
-| [EDOT Node.js](/reference/edot-sdks/nodejs/index.md) | {{version.edot_node}} | GA |
-| [EDOT PHP](/reference/edot-sdks/php/index.md) | {{version.edot_php}} | GA |
-| [EDOT Python](/reference/edot-sdks/python/index.md) | {{version.edot_python}} | GA |
-| [EDOT Android](/reference/edot-sdks/android/index.md) | {{version.edot_android}} | GA |
-| [EDOT iOS](/reference/edot-sdks/ios/index.md) | {{version.edot_ios}} | GA |
+| [EDOT Collector](elastic-agent://reference/edot-collector/index.md) | {{version.edot_collector}} | GA |
+| [EDOT .NET](elastic-otel-dotnet://reference/edot-sdks/dotnet/index.md) | {{version.edot_dotnet}} | GA |
+| [EDOT Java](elastic-otel-java://reference/edot-sdks/java/index.md) | {{version.edot_java}} | GA |
+| [EDOT Node.js](elastic-otel-node://reference/edot-sdks/nodejs/index.md) | {{version.edot_node}} | GA |
+| [EDOT PHP](elastic-otel-php://reference/edot-sdks/php/index.md) | {{version.edot_php}} | GA |
+| [EDOT Python](elastic-otel-python://reference/edot-sdks/python/index.md) | {{version.edot_python}} | GA |
+| [EDOT Android](apm-agent-android://reference/edot-sdks/android/index.md) | {{version.edot_android}} | GA |
+| [EDOT iOS](apm-agent-ios://reference/index.mdindex.md) | {{version.edot_ios}} | GA |
 | [EDOT Cloud Forwarder for AWS](/reference/edot-cloud-forwarder/aws.md) | {{version.edot_cf_aws}} | Technical Preview |
 
 Each EDOT distribution undergoes production-grade testing before being declared Generally Available (GA). Elastic provides full support for GA releases in accordance with our [support matrix](https://www.elastic.co/support/matrix) and SLAs.
@@ -43,10 +43,10 @@ Technical Preview distributions receive best-effort support and are not covered 
 
 ## Get started
 
-Pick the right [Quickstart guide](/reference/quickstart/index.md) for your environment or select an observability use case:
+Pick the right [Quickstart guide](docs-content://solutions/observability/get-started/opentelemetry/quickstart/index.md) for your environment or select an observability use case:
 
-- [Monitoring on Kubernetes](/reference/use-cases/kubernetes/index.md)
-- [LLM Observability](/reference/use-cases/llms/index.md)
+- [Monitoring on Kubernetes](docs-content://solutions/observability/get-started/opentelemetry/use-cases/kubernetes/index.md)
+- [LLM Observability](docs-content://solutions/observability/get-started/opentelemetry/use-cases/llms/index.md)
 
 ## EDOT Demo environment
 
