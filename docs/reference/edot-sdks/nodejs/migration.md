@@ -168,10 +168,10 @@ For example: `OTEL_RESOURCE_ATTRIBUTES=host.name=myhost`.
 
 The Elastic APM Node.js agent [`instrument`](apm-agent-nodejs://reference/configuration.md#instrument) option can be achieved with [`OTEL_NODE_ENABLED_INSTRUMENTATIONS`](/reference/edot-sdks/nodejs/configuration.md#otel_node_disabledenabled_instrumentations-details) option.
 
-For example: `OTEL_NODE_ENABLED_INSTRUMENTATIONS=none` will make EDOT Node.js .
+For example: `OTEL_NODE_ENABLED_INSTRUMENTATIONS=none` will make EDOT Node.js instrument no packages. It is equivalent to `instrument=false`.
 
 :::{info}
-Because "none" is not an instrumentation name the EDOT will log a message saying so. The message will heve the following format.
+Because "none" is not an instrumentation name EDOT Node.js will log a message saying so. The message will heve the following format.
 `{"name":"elastic-otel-node","level":40,"msg":"Unknown instrumentation \"none\" specified in environment variable \"OTEL_NODE_ENABLED_INSTRUMENTATIONS\"","time":"2025-09-01T11:12:30.949Z"}`
 :::
 
