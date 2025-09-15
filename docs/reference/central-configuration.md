@@ -148,6 +148,17 @@ For a list of settings that you can configure through APM Agent Central Configur
 
 EDOT iOS currently supports APM Agent Central Configuration through APM Server. Refer to [EDOT iOS configuration](/reference/edot-sdks/ios/configuration.md) for more details.
 
+## Advanced configuration
+```{applies_to}
+stack: preview 9.2
+```
+
+The **Advanced Configuration** feature allows you to define custom configuration options as key-value pairs. Settings are passed directly to your EDOT Collector.
+
+:::{warning}
+Use this feature with caution. An incorrect or incompatible setting might affect the behavior of the Collector.
+:::
+
 ## Deactivate central configuration
 
 To deactivate central configuration, remove the `ELASTIC_OTEL_OPAMP_ENDPOINT` environment variable.
