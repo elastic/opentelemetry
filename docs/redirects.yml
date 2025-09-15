@@ -35,5 +35,88 @@ redirects:
   'reference/use-cases/llms/index.md': 'docs-content://observability/get-started/opentelemetry/use-cases/llms/index.md'
 
   # Collector and SDK reference
+  # EDOT Collector
+  'reference/edot-collector/index.md': 'elastic-agent://reference/edot-collector/index.md'
+  'reference/edot-collector/download.md': 'elastic-agent://reference/edot-collector/download.md'
+  'reference/edot-collector/modes.md': 'elastic-agent://reference/edot-collector/modes.md'
+  'reference/edot-collector/config/index.md': 'elastic-agent://reference/edot-collector/config/index.md'
+  'reference/edot-collector/config/default-config-standalone.md': 'elastic-agent://reference/edot-collector/config/default-config-standalone.md'
+  'reference/edot-collector/config/default-config-k8s.md': 'elastic-agent://reference/edot-collector/config/default-config-k8s.md'
+  'reference/edot-collector/config/configure-logs-collection.md': 'elastic-agent://reference/edot-collector/config/configure-logs-collection.md'
+  'reference/edot-collector/config/configure-metrics-collection.md': 'elastic-agent://reference/edot-collector/config/configure-metrics-collection.md'
+  'reference/edot-collector/config/authentication-methods.md': 'elastic-agent://reference/edot-collector/config/authentication-methods.md'
+  'reference/edot-collector/config/proxy.md': 'elastic-agent://reference/edot-collector/config/proxy.md'
+  'reference/edot-collector/components.md': 'elastic-agent://reference/edot-collector/components.md'
+  'reference/edot-collector/components/elasticsearchexporter.md': 'elastic-agent://reference/edot-collector/components/elasticsearchexporter.md'
+  'reference/edot-collector/components/elasticapmintakereceiver.md': 'elastic-agent://reference/edot-collector/components/elasticapmintakereceiver.md'
+  'reference/edot-collector/customization.md': 'elastic-agent://reference/edot-collector/customization.md'
+  'reference/edot-collector/custom-collector.md': 'elastic-agent://reference/edot-collector/custom-collector.md'
+  'reference/edot-collector/upstream-collector.md': 'elastic-agent://reference/edot-collector/upstream-collector.md'
+
+  # EDOT SDKs - Android
+  'reference/edot-sdks/android/index.md': 'apm-agent-android://reference/edot-sdks/android/index.md'
+  'reference/edot-sdks/android/getting-started.md': 'apm-agent-android://reference/edot-sdks/android/getting-started.md'
+  'reference/edot-sdks/android/configuration.md': 'apm-agent-android://reference/edot-sdks/android/configuration.md'
+  'reference/edot-sdks/android/manual-instrumentation.md': 'apm-agent-android://reference/edot-sdks/android/manual-instrumentation.md'
+  'reference/edot-sdks/android/automatic-instrumentation.md': 'apm-agent-android://reference/edot-sdks/android/automatic-instrumentation.md'
+
+  # EDOT SDKs - .NET
+  'reference/edot-sdks/dotnet/index.md': 'elastic-otel-dotnet://reference/edot-sdks/dotnet/index.md'
+  'reference/edot-sdks/dotnet/setup/index.md': 'elastic-otel-dotnet://reference/edot-sdks/dotnet/setup/index.md'
+  'reference/edot-sdks/dotnet/setup/aspnet.md': 'elastic-otel-dotnet://reference/edot-sdks/dotnet/setup/aspnet.md'
+  'reference/edot-sdks/dotnet/setup/aspnetcore.md': 'elastic-otel-dotnet://reference/edot-sdks/dotnet/setup/aspnetcore.md'
+  'reference/edot-sdks/dotnet/setup/console.md': 'elastic-otel-dotnet://reference/edot-sdks/dotnet/setup/console.md'
+  'reference/edot-sdks/dotnet/setup/worker-services.md': 'elastic-otel-dotnet://reference/edot-sdks/dotnet/setup/worker-services.md'
+  'reference/edot-sdks/dotnet/setup/zero-code.md': 'elastic-otel-dotnet://reference/edot-sdks/dotnet/setup/zero-code.md'
+  'reference/edot-sdks/dotnet/setup/edot-defaults.md': 'elastic-otel-dotnet://reference/edot-sdks/dotnet/setup/edot-defaults.md'
+  'reference/edot-sdks/dotnet/configuration.md': 'elastic-otel-dotnet://reference/edot-sdks/dotnet/configuration.md'
+  'reference/edot-sdks/dotnet/supported-technologies.md': 'elastic-otel-dotnet://reference/edot-sdks/dotnet/supported-technologies.md'
+  'reference/edot-sdks/dotnet/migration.md': 'elastic-otel-dotnet://reference/edot-sdks/dotnet/migration.md'
+
+  # EDOT SDKs - iOS
+  'reference/edot-sdks/ios/index.md': 'apm-agent-ios://reference/edot-sdks/ios/index.md'
+  'reference/edot-sdks/ios/set-up-apm-ios-agent.md': 'apm-agent-ios://reference/edot-sdks/ios/set-up-apm-ios-agent.md'
+  'reference/edot-sdks/ios/supported-technologies.md': 'apm-agent-ios://reference/edot-sdks/ios/supported-technologies.md'
+  'reference/edot-sdks/ios/instrumentation.md': 'apm-agent-ios://reference/edot-sdks/ios/instrumentation.md'
+  'reference/edot-sdks/ios/configuration.md': 'apm-agent-ios://reference/edot-sdks/ios/configuration.md'
+
+  # EDOT SDKs - Java
+  'reference/edot-sdks/java/index.md': 'elastic-otel-java://reference/edot-sdks/java/index.md'
+  'reference/edot-sdks/java/setup/index.md': 'elastic-otel-java://reference/edot-sdks/java/setup/index.md'
+  'reference/edot-sdks/java/setup/k8s.md': 'elastic-otel-java://reference/edot-sdks/java/setup/k8s.md'
+  'reference/edot-sdks/java/setup/runtime-attach.md': 'elastic-otel-java://reference/edot-sdks/java/setup/runtime-attach.md'
+  'reference/edot-sdks/java/configuration.md': 'elastic-otel-java://reference/edot-sdks/java/configuration.md'
+  'reference/edot-sdks/java/features.md': 'elastic-otel-java://reference/edot-sdks/java/features.md'
+  'reference/edot-sdks/java/supported-technologies.md': 'elastic-otel-java://reference/edot-sdks/java/supported-technologies.md'
+  'reference/edot-sdks/java/migration.md': 'elastic-otel-java://reference/edot-sdks/java/migration.md'
+  'reference/edot-sdks/java/overhead.md': 'elastic-otel-java://reference/edot-sdks/java/overhead.md'
+
+  # EDOT SDKs - Node.js
+  'reference/edot-sdks/nodejs/index.md': 'elastic-otel-node://reference/edot-sdks/nodejs/index.md'
+  'reference/edot-sdks/nodejs/setup/index.md': 'elastic-otel-node://reference/edot-sdks/nodejs/setup/index.md'
+  'reference/edot-sdks/nodejs/setup/k8s.md': 'elastic-otel-node://reference/edot-sdks/nodejs/setup/k8s.md'
+  'reference/edot-sdks/nodejs/configuration.md': 'elastic-otel-node://reference/edot-sdks/nodejs/configuration.md'
+  'reference/edot-sdks/nodejs/supported-technologies.md': 'elastic-otel-node://reference/edot-sdks/nodejs/supported-technologies.md'
+  'reference/edot-sdks/nodejs/metrics.md': 'elastic-otel-node://reference/edot-sdks/nodejs/metrics.md'
+  'reference/edot-sdks/nodejs/migration.md': 'elastic-otel-node://reference/edot-sdks/nodejs/migration.md'
+
+  # EDOT SDKs - PHP
+  'reference/edot-sdks/php/index.md': 'elastic-otel-php://reference/edot-sdks/php/index.md'
+  'reference/edot-sdks/php/setup/index.md': 'elastic-otel-php://reference/edot-sdks/php/setup/index.md'
+  'reference/edot-sdks/php/setup/limitations.md': 'elastic-otel-php://reference/edot-sdks/php/setup/limitations.md'
+  'reference/edot-sdks/php/configuration.md': 'elastic-otel-php://reference/edot-sdks/php/configuration.md'
+  'reference/edot-sdks/php/supported-technologies.md': 'elastic-otel-php://reference/edot-sdks/php/supported-technologies.md'
+  'reference/edot-sdks/php/migration.md': 'elastic-otel-php://reference/edot-sdks/php/migration.md'
+  'reference/edot-sdks/php/overhead.md': 'elastic-otel-php://reference/edot-sdks/php/overhead.md'
+
+  # EDOT SDKs - Python
+  'reference/edot-sdks/python/index.md': 'elastic-otel-python://reference/edot-sdks/python/index.md'
+  'reference/edot-sdks/python/setup/index.md': 'elastic-otel-python://reference/edot-sdks/python/setup/index.md'
+  'reference/edot-sdks/python/setup/k8s.md': 'elastic-otel-python://reference/edot-sdks/python/setup/k8s.md'
+  'reference/edot-sdks/python/setup/manual-instrumentation.md': 'elastic-otel-python://reference/edot-sdks/python/setup/manual-instrumentation.md'
+  'reference/edot-sdks/python/configuration.md': 'elastic-otel-python://reference/edot-sdks/python/configuration.md'
+  'reference/edot-sdks/python/supported-technologies.md': 'elastic-otel-python://reference/edot-sdks/python/supported-technologies.md'
+  'reference/edot-sdks/python/migration.md': 'elastic-otel-python://reference/edot-sdks/python/migration.md'
+  'reference/edot-sdks/python/overhead.md': 'elastic-otel-python://reference/edot-sdks/python/overhead.md'
 
   
