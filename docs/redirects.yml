@@ -12,6 +12,7 @@ redirects:
   'reference/edot-sdks/android/troubleshooting.md': 'docs-content://troubleshoot/ingest/opentelemetry/edot-sdks/android/index.md'
 
   # From reference to docs-content
+  'reference/quickstart/index.md': 'docs-content://observability/get-started/opentelemetry/quickstart/index.md'
   'reference/quickstart/self-managed/index.md': 'docs-content://observability/get-started/opentelemetry/quickstart/self-managed/index.md'
   'reference/quickstart/self-managed/k8s.md': 'docs-content://observability/get-started/opentelemetry/quickstart/self-managed/k8s.md'
   'reference/quickstart/self-managed/hosts_vms.md': 'docs-content://observability/get-started/opentelemetry/quickstart/self-managed/hosts_vms.md'
@@ -52,6 +53,8 @@ redirects:
   'reference/edot-collector/customization.md': 'elastic-agent://reference/edot-collector/customization.md'
   'reference/edot-collector/custom-collector.md': 'elastic-agent://reference/edot-collector/custom-collector.md'
   'reference/edot-collector/upstream-collector.md': 'elastic-agent://reference/edot-collector/upstream-collector.md'
+
+  'reference/edot-sdks/proxy.md': 'docs-content://troubleshoot/ingest/opentelemetry/edot-sdks/proxy.md'
 
   # EDOT SDKs - Android
   'reference/edot-sdks/android/index.md': 'apm-agent-android://reference/edot-sdks/android/index.md'
@@ -118,5 +121,3 @@ redirects:
   'reference/edot-sdks/python/supported-technologies.md': 'elastic-otel-python://reference/edot-sdks/python/supported-technologies.md'
   'reference/edot-sdks/python/migration.md': 'elastic-otel-python://reference/edot-sdks/python/migration.md'
   'reference/edot-sdks/python/overhead.md': 'elastic-otel-python://reference/edot-sdks/python/overhead.md'
-
-  
