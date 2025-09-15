@@ -33,3 +33,7 @@ redirects:
   'reference/use-cases/kubernetes/upgrade.md': 'docs-content://observability/get-started/opentelemetry/use-cases/kubernetes/upgrade.md'
   'reference/use-cases/kubernetes/customization.md': 'docs-content://observability/get-started/opentelemetry/use-cases/kubernetes/customization.md'
   'reference/use-cases/llms/index.md': 'docs-content://observability/get-started/opentelemetry/use-cases/llms/index.md'
+
+  # Collector and SDK reference
+
+  
