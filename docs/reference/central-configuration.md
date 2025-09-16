@@ -154,7 +154,7 @@ stack: preview 9.2
 The **Advanced Configuration** feature allows you to define custom configuration options as key-value pairs. Settings are passed directly to your EDOT SDK.
 
 :::{warning}
-Use this feature with caution. An incorrect or incompatible setting might affect the behavior of the Collector.
+Use this feature with caution. An incorrect or incompatible setting might affect the behavior of the SDK.
 :::
 
 ## Deactivate central configuration
