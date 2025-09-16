@@ -32,7 +32,7 @@ This applies to all EDOT SDKs:
 
 Refer to the [EDOT Collector compatibility table](collectors.md) for compatibility with Elastic Stack versions.
 
-For the best experience, export data from EDOT SDKs using the [EDOT Collector](/reference/edot-collector/index.md).
+For the best experience, export data from EDOT SDKs using the [EDOT Collector](elastic-agent://reference/edot-collector/index.md).
 
 :::{note}
 Ingesting data from EDOT SDKs through EDOT Collector into Elastic Stack versions 8.18 or higher is supported ([Supported]).
@@ -42,13 +42,13 @@ Ingesting data from EDOT SDKs through EDOT Collector into Elastic Stack versions
 
 For compatibility of language-specific technologies check out the following pages for corresponding EDOT SDKs:
 
-- [Supported Technologies - .NET](/reference/edot-sdks/dotnet/supported-technologies.md)
-- [Supported Technologies - Java](/reference/edot-sdks/java/supported-technologies.md)
-- [Supported Technologies - Node.js](/reference/edot-sdks/nodejs/supported-technologies.md)
-- [Supported Technologies - PHP](/reference/edot-sdks/php/supported-technologies.md)
-- [Supported Technologies - Python](/reference/edot-sdks/python/supported-technologies.md)
-- [Supported Technologies - Android](/reference/edot-sdks/android/automatic-instrumentation.md#supported-instrumentations)
-- [Supported Technologies - iOS](/reference/edot-sdks/ios/supported-technologies.md)
+- [Supported Technologies - .NET](elastic-otel-dotnet://reference/edot-dotnet/supported-technologies.md)
+- [Supported Technologies - Java](elastic-otel-java://reference/edot-java/supported-technologies.md)
+- [Supported Technologies - Node.js](elastic-otel-node://reference/edot-node/supported-technologies.md)
+- [Supported Technologies - PHP](elastic-otel-php://reference/edot-php/supported-technologies.md)
+- [Supported Technologies - Python](elastic-otel-python://reference/edot-python/supported-technologies.md)
+- [Supported Technologies - Android](apm-agent-android://reference/edot-android/supported-technologies.md)
+- [Supported Technologies - iOS](apm-agent-ios://reference/edot-ios/supported-technologies.md)
 
 ## Other SDK distributions
 

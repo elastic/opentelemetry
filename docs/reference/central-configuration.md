@@ -5,7 +5,6 @@ applies_to:
   deployment:
       ess: preview 9.1
   stack: preview 9.1
-  serverless: unavailable
 products:
   - id: observability
   - id: kibana
@@ -24,7 +23,7 @@ This feature implements the Open Agent Management Protocol (OpAMP). Refer to [Op
 To use APM Agent Central Configuration for EDOT SDKs, you need:
 
 * An Elastic self-managed or {{ecloud}} deployment, version 9.1 or higher.
-* A standalone [EDOT Collector](/reference/edot-collector/index.md), in either Agent or Collector mode.
+* A standalone [EDOT Collector](elastic-agent://reference/edot-collector/index.md), in either Agent or Collector mode.
 * [EDOT SDKs](/reference/edot-sdks/index.md) instrumenting your application.
 
 The following versions of EDOT and {{stack}} support central configuration:
@@ -93,7 +92,7 @@ POST /_security/api_key
 
 :::::{step} Edit the EDOT Collector configuration
 
-Edit the [EDOT Collector configuration](/reference/edot-collector/config/default-config-standalone.md#central-configuration) to activate the central configuration feature:
+Edit the [EDOT Collector configuration](elastic-agent://reference/edot-collector/config/default-config-standalone.md#central-configuration) to activate the central configuration feature:
 
 :::{include} _snippets/edot-collector-auth.md
 :::
@@ -101,7 +100,7 @@ Edit the [EDOT Collector configuration](/reference/edot-collector/config/default
 Restart the Elastic Agent to also restart the Collector and apply the changes.
 
 ::::{note}
-Refer to [Secure connection](/reference/edot-collector/config/default-config-standalone.md#secure-connection) if you need to secure the connection between the EDOT Collector and Elastic using TLS or mutual TLS.
+Refer to [Secure connection](elastic-agent://reference/edot-collector/config/default-config-standalone.md#secure-connection) if you need to secure the connection between the EDOT Collector and Elastic using TLS or mutual TLS.
 ::::
 :::::
 
@@ -140,13 +139,13 @@ Your application must produce and send telemetry data for the EDOT SDK to appear
 
 For a list of settings that you can configure through APM Agent Central Configuration, refer to the configuration reference of each EDOT SDK:
 
-- [EDOT Android](/reference/edot-sdks/android/configuration.md#central-configuration)
-- [EDOT Java](/reference/edot-sdks/java/configuration.md#central-configuration)
-- [EDOT Node.js](/reference/edot-sdks/nodejs/configuration.md#central-configuration)
-- [EDOT PHP](/reference/edot-sdks/php/configuration.md#central-configuration)
-- [EDOT Python](/reference/edot-sdks/python/configuration.md#central-configuration)
+- [EDOT Android](apm-agent-android://reference/edot-android/configuration.md#central-configuration)
+- [EDOT Java](elastic-otel-java://reference/edot-java/configuration.md#central-configuration)
+- [EDOT Node.js](elastic-otel-node://reference/edot-node/configuration.md#central-configuration)
+- [EDOT PHP](elastic-otel-php://reference/edot-php/configuration.md#central-configuration)
+- [EDOT Python](elastic-otel-python://reference/edot-python/configuration.md#central-configuration)
 
-EDOT iOS currently supports APM Agent Central Configuration through APM Server. Refer to [EDOT iOS configuration](/reference/edot-sdks/ios/configuration.md) for more details.
+EDOT iOS currently supports APM Agent Central Configuration through APM Server. Refer to [EDOT iOS configuration](apm-agent-ios://reference/configuration.md) for more details.
 
 ## Deactivate central configuration
 
