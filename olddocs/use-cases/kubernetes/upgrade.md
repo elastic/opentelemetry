@@ -1,5 +1,5 @@
 ---
 layout: redirection
 permalink: /use-cases/kubernetes/upgrade.html
-redirect: https://www.elastic.co/docs/reference/opentelemetry/use-cases/kubernetes/upgrade
+redirect: https://www.elastic.co/docs/solutions/observability/get-started/opentelemetry/use-cases/kubernetes/upgrade
 ---
