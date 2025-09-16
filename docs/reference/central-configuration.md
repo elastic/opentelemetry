@@ -13,7 +13,7 @@ products:
 
 # Central configuration for EDOT SDKs
 
-Manage {{edot}} (EDOT) SDKs through the APM Agent Central Configuration feature in the Applications UI. Changes are automatically propagated to the deployed [EDOT SDKs](/reference/edot-sdks/index.md). Refer to [APM Agent Central Configuration](docs-content://solutions/observability/apm/apm-agent-central-configuration.md) for more information.
+Manage {{edot}} (EDOT) SDKs through the APM Agent Central Configuration feature in the Applications UI. Changes are automatically propagated to the deployed [EDOT SDKs](/intros/edot-sdks/index.md). Refer to [APM Agent Central Configuration](docs-content://solutions/observability/apm/apm-agent-central-configuration.md) for more information.
 
 This feature implements the Open Agent Management Protocol (OpAMP). Refer to [Open Agent Management Protocol
 ](https://opentelemetry.io/docs/specs/opamp/) for more information.
@@ -24,7 +24,7 @@ To use APM Agent Central Configuration for EDOT SDKs, you need:
 
 * An Elastic self-managed or {{ecloud}} deployment, version 9.1 or higher.
 * A standalone [EDOT Collector](elastic-agent://reference/edot-collector/index.md), in either Agent or Collector mode.
-* [EDOT SDKs](/reference/edot-sdks/index.md) instrumenting your application.
+* [EDOT SDKs](/intros/edot-sdks/index.md) instrumenting your application.
 
 The following versions of EDOT and {{stack}} support central configuration:
 

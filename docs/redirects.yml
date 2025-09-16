@@ -55,6 +55,7 @@ redirects:
   'reference/edot-collector/upstream-collector.md': 'elastic-agent://reference/edot-collector/upstream-collector.md'
 
   'reference/edot-sdks/proxy.md': 'docs-content://troubleshoot/ingest/opentelemetry/edot-sdks/proxy.md'
+  'reference/edot-sdks/index.md': 'intros/edot-sdks/index.md'
 
   # EDOT SDKs - Android
   'reference/edot-sdks/android/index.md': 'apm-agent-android://reference/edot-android/index.md'
