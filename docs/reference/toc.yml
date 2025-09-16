@@ -20,7 +20,6 @@ toc:
       - file: compatibility/data-streams.md 
   - file: motlp.md
   - file: central-configuration.md
-  - file: edot-sdks/index.md
   - file: edot-cloud-forwarder/index.md
     children:
       - file: edot-cloud-forwarder/aws.md
