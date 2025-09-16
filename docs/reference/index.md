@@ -28,13 +28,13 @@ The following Elastic OpenTelemetry distributions are available:
 | Distribution | Version | Status |
 | ------------ | ------- | ------ |
 | [EDOT Collector](elastic-agent://reference/edot-collector/index.md) | {{version.edot_collector}} | GA |
-| [EDOT .NET](elastic-otel-dotnet://reference/edot-sdks/dotnet/index.md) | {{version.edot_dotnet}} | GA |
-| [EDOT Java](elastic-otel-java://reference/edot-sdks/java/index.md) | {{version.edot_java}} | GA |
-| [EDOT Node.js](elastic-otel-node://reference/edot-sdks/nodejs/index.md) | {{version.edot_node}} | GA |
-| [EDOT PHP](elastic-otel-php://reference/edot-sdks/php/index.md) | {{version.edot_php}} | GA |
-| [EDOT Python](elastic-otel-python://reference/edot-sdks/python/index.md) | {{version.edot_python}} | GA |
-| [EDOT Android](apm-agent-android://reference/edot-sdks/android/index.md) | {{version.edot_android}} | GA |
-| [EDOT iOS](apm-agent-ios://reference/index.mdindex.md) | {{version.edot_ios}} | GA |
+| [EDOT .NET](elastic-otel-dotnet://reference/edot-dotnet/index.md) | {{version.edot_dotnet}} | GA |
+| [EDOT Java](elastic-otel-java://reference/edot-java/index.md) | {{version.edot_java}} | GA |
+| [EDOT Node.js](elastic-otel-node://reference/edot-node/index.md) | {{version.edot_node}} | GA |
+| [EDOT PHP](elastic-otel-php://reference/edot-php/index.md) | {{version.edot_php}} | GA |
+| [EDOT Python](elastic-otel-python://reference/edot-python/index.md) | {{version.edot_python}} | GA |
+| [EDOT Android](apm-agent-android://reference/edot-android/index.md) | {{version.edot_android}} | GA |
+| [EDOT iOS](apm-agent-ios://reference/edot-ios/index.md) | {{version.edot_ios}} | GA |
 | [EDOT Cloud Forwarder for AWS](/reference/edot-cloud-forwarder/aws.md) | {{version.edot_cf_aws}} | Technical Preview |
 
 Each EDOT distribution undergoes production-grade testing before being declared Generally Available (GA). Elastic provides full support for GA releases in accordance with our [support matrix](https://www.elastic.co/support/matrix) and SLAs.

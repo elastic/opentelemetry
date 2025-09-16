@@ -139,11 +139,11 @@ Your application must produce and send telemetry data for the EDOT SDK to appear
 
 For a list of settings that you can configure through APM Agent Central Configuration, refer to the configuration reference of each EDOT SDK:
 
-- [EDOT Android](apm-agent-android://reference/configuration.md#central-configuration)
-- [EDOT Java](elastic-otel-java://reference/configuration.md#central-configuration)
-- [EDOT Node.js](elastic-otel-node://reference/configuration.md#central-configuration)
-- [EDOT PHP](elastic-otel-php://reference/configuration.md#central-configuration)
-- [EDOT Python](elastic-otel-python://reference/configuration.md#central-configuration)
+- [EDOT Android](apm-agent-android://reference/edot-android/configuration.md#central-configuration)
+- [EDOT Java](elastic-otel-java://reference/edot-java/configuration.md#central-configuration)
+- [EDOT Node.js](elastic-otel-node://reference/edot-node/configuration.md#central-configuration)
+- [EDOT PHP](elastic-otel-php://reference/edot-php/configuration.md#central-configuration)
+- [EDOT Python](elastic-otel-python://reference/edot-python/configuration.md#central-configuration)
 
 EDOT iOS currently supports APM Agent Central Configuration through APM Server. Refer to [EDOT iOS configuration](apm-agent-ios://reference/configuration.md) for more details.
 
