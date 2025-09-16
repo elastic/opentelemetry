@@ -47,7 +47,7 @@ As of Elastic Stack version 9.0 on {{ech}} (ECH), you need to run a self-hosted 
 The EDOT Collector in Gateway mode enriches and pre-aggregates the data for a seamless experience in the Elastic Observability solution before ingesting it directly into {{es}}.
 
 If required, users can build their custom, EDOT-like Collector
-[following these instructions](/reference/edot-collector/custom-collector.md).
+[following these instructions](elastic-agent://reference/edot-collector/custom-collector.md).
 
 :::{note}
 The EDOT Gateway Collector does not send data through Elastic's Integration / APM Server on ECH to ingest data into {{es}}.

@@ -57,11 +57,11 @@ Red Hat OpenShift is not supported.
 
 ## EDOT Collector components
 
-For information on the compatibility of each Collector component, refer to the [full list of Core and Extended components](/reference/edot-collector/components.md).
+For information on the compatibility of each Collector component, refer to the [full list of Core and Extended components](elastic-agent://reference/edot-collector/components.md).
 
 ## Other Collector distributions
 
-Non-EDOT distributions of the OTel Collector, such as custom Collector builds, contrib Collector distributions, and so on aren't officially supported through Elastic but are technically compatible ([Compatible]) if they contain the [required OTel Collector components](/reference/edot-collector/custom-collector.md) and are configured like the EDOT Collector.
+Non-EDOT distributions of the OTel Collector, such as custom Collector builds, contrib Collector distributions, and so on aren't officially supported through Elastic but are technically compatible ([Compatible]) if they contain the [required OTel Collector components](elastic-agent://reference/edot-collector/custom-collector.md) and are configured like the EDOT Collector.
 
 You can retrieve required components and configuration options from the [example configuration files](https://github.com/elastic/elastic-agent/tree/v<COLLECTOR_VERSION>/internal/pkg/otel/samples/linux) for the EDOT Collector.
 

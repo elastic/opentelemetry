@@ -39,7 +39,7 @@ The OTel-native data format in {{es}} contains dotted fields. Ingest Pipeline pr
 
 To process your OTel data, for example to parse logs data, route data to data streams, and so on, use [Collector processors](https://opentelemetry.io/docs/collector/configuration/#processors), [`filelogreceiver` operators](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/pkg/stanza/docs/operators/README.md#what-operators-are-available) and other OTel-native processing capabilities.
 
-Refer to [these examples](/reference/edot-collector/config/configure-logs-collection.md) on how to process log data with the (EDOT) OTel Collector.
+Refer to [these examples](elastic-agent://reference/edot-collector/config/configure-logs-collection.md) on how to process log data with the (EDOT) OTel Collector.
 
 ## Infrastructure and host metrics
 
