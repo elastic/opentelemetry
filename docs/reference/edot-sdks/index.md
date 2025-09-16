@@ -21,13 +21,13 @@ While maintaining full compatibility with the OpenTelemetry specification, EDOT 
 
 EDOT SDKs are available for the following programming languages and platforms:
 
-* [.NET](elastic-otel-dotnet://reference/index.md)
-* [Java](elastic-otel-java://reference/index.md)
-* [Node](elastic-otel-node://reference/index.md)
-* [PHP](elastic-otel-php://reference/index.md)
-* [Python](elastic-otel-python://reference/index.md)
-* [Android](apm-agent-android://reference/index.md)
-* [iOS](apm-agent-ios://reference/index.md)
+* [.NET](elastic-otel-dotnet://reference/edot-dotnet/index.md)
+* [Java](elastic-otel-java://reference/edot-java/index.md)
+* [Node](elastic-otel-node://reference/edot-node/index.md)
+* [PHP](elastic-otel-php://reference/edot-php/index.md)
+* [Python](elastic-otel-python://reference/edot-python/index.md)
+* [Android](apm-agent-android://reference/edot-android/index.md)
+* [iOS](apm-agent-ios://reference/edot-ios/index.md)
 
 ## Feature overview
 
