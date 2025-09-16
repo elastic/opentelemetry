@@ -2,7 +2,7 @@ project: 'Elastic Distributions of OpenTelemetry (EDOT)'
 toc:
   - file: index.md
   - title: Quickstarts
-    crosslink: docs-content://solutions/observability/get-started/opentelemetry/index.md
+    crosslink: docs-content://solutions/observability/get-started/opentelemetry/quickstart/index.md
   - file: architecture/index.md
     children:
       - file: architecture/k8s.md
