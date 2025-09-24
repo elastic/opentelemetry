@@ -130,12 +130,13 @@ For S3 logs, use the following settings:
 
 | Setting            | Description |
 | ------------------ | --- |
-| `EdotCloudForwarderS3LogsType` | The encoding format for logs in the S3 bucket. Supported options:<br>- `vpc_flow_log`: VPC Flow logs<br>- `elb_access_log`: Elastic Load Balancer (ELB) Access logs<br>- `s3_access_log`: S3 Access logs<br>- `cloudtrail_log`: CloudTrail logs<br>- `waf_log`: AWS WAF logs<br>- `json`: JSON-formatted logs |
-| `S3LogsJsonEncodingMode` | _(Required if `EdotCloudForwarderS3LogsType` is `json`)_<br>Defines how JSON logs are structured:<br>- `body` _(default)_: Stores logs in the request body<br>- `body_with_inline_attributes`: Logs include inline attributes |
+| `EdotCloudForwarderS3LogsType` | The encoding format for logs in the S3 bucket. Supported options:<br>- `vpc_flow_log`: VPC Flow logs<br>- `elb_access_log`: Elastic Load Balancer (ELB) Access logs|
 | `SourceS3BucketARN` | Amazon Resource Name (ARN) of the S3 bucket where logs are stored. This bucket will trigger the `edot-cloud-forwarder` Lambda function automatically. |
+% | `S3LogsJsonEncodingMode` | _(Required if `EdotCloudForwarderS3LogsType` is `json`)_<br>Defines how JSON logs are structured:<br>- `body` _(default)_: Stores logs in the request body<br>- `body_with_inline_attributes`: Logs include inline attributes |
 
 ::::
-<!--
+
+<!-- TODO: Enable when CloudWatch logs are supported
 ::::{tab-item} CloudWatch
 
 For CloudWatch logs, use the following settings:
@@ -148,20 +149,27 @@ For CloudWatch logs, use the following settings:
 The log group must already exist in your AWS account and region. If the ARN points to a non-existent log group, stack deployment or updates might fail.
 :::
 ::::
+
 -->
+
 :::::
 
 ### Optional settings
 
 These are optional settings you can set in the CloudFormation template:
 
-| Setting            | Description |
-| ------------------- | --- |
-| `EdotCloudForwarderTimeout` | Maximum execution time for the Lambda function, measured in seconds. Default value is `300` seconds. Minimum value is `1` second. Maximum value is `900` seconds. |
+| Setting            | Description                                                                                                                                                                                                  |
+| ------------------- |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `EdotCloudForwarderTimeout` | Maximum execution time for the Lambda function, measured in seconds. Default value is `300` seconds. Minimum value is `1` second. Maximum value is `900` seconds.                                            |
 | `EdotCloudForwarderVersion` | Version of the EDOT Cloud Forwarder. Expected format is semantic versioning, for example `1.0.0`. Defaults to the latest available patch version. Don't change this value unless advised by Elastic Support. |
-| `EdotCloudForwarderMemorySize` | Set the allocated memory for the Lambda function, measured in megabytes. Default value is `1024` MB. Minimum value is `128` MB. Maximum value is `10240` MB. | 
-| `EdotCloudForwarderConcurrentExecutions` | Set the maximum number of reserved concurrent executions for the Lambda function. Default value is `50`. Make sure this value doesn't exceed your AWS account's concurrency limit. |
+| `EdotCloudForwarderMemorySize` | Set the allocated memory for the Lambda function, measured in megabytes. Default value is `512` MB. Minimum value is `128` MB. Maximum value is `10240` MB.                                                  | 
+| `EdotCloudForwarderConcurrentExecutions` | Set the maximum number of reserved concurrent executions for the Lambda function. Default value is `5`. Make sure this value doesn't exceed your AWS account's concurrency limit.                            |
+| `EdotCloudForwarderExporterMaxQueueSize` | Set the internal OTLP exporter queue size. Default is `50` MB. You may incease this based on the data volume.                                                                                                |
 
+Default values of `EdotCloudForwarderMemorySize` and `EdotCloudForwarderConcurrentExecutions` should be sufficient for most use cases. 
+However, depending on your data volumes (individual Signal size such as size of S3 object per VPC log entry), you may need to finetune them.
+Key indications for the need of tuning these parameters are Lambda throttling and Lambda timeouts.
+Along with these, you may also need to adjust `EdotCloudForwarderExporterMaxQueueSize` to export higher data volumes.
 
 ## Deployment examples
 
@@ -209,6 +217,8 @@ aws cloudformation create-stack \
     ParameterKey=EdotCloudForwarderS3LogsType,ParameterValue="elb_access_log"
 ```
 ::::
+
+<!-- To be added post GA
 
 ::::{tab-item} S3 Access logs
 
@@ -286,7 +296,7 @@ aws cloudformation create-stack \
     ParameterKey=S3LogsJsonEncodingMode,ParameterValue="body"
 ```
 ::::
-<!--
+
 ::::{tab-item} CloudWatch logs
 
 This example deploys a CloudFormation stack to collect CloudWatch logs sent to a Log Group.
@@ -303,10 +313,12 @@ aws cloudformation create-stack \
     ParameterKey=SourceCloudWatchLogGroupARN,ParameterValue="<your-log-group-arn>"
 ```
 
+-->
+
 :::{note}
 The `--capabilities CAPABILITY_NAMED_IAM` flag is required because this CloudFormation template creates AWS Identity and Access Management (IAM) resources. More specifically, it creates a named IAM role (`LambdaExecutionRole`) for the Lambda function. To acknowledge that AWS CloudFormation might create or modify IAM resources with custom names, you must specify the `CAPABILITY_NAMED_IAM` capability. 
 :::
--->
+
 ::::
 :::::
 
@@ -431,7 +443,10 @@ This is a list of resources created by the stack when processing S3 logs.
 The main Lambda function, `LambdaFunction`, is the core component for processing S3 logs. S3 event notifications are handled dynamically using `CustomNotificationUpdater` and `NotificationUpdaterLambda`. 
 
 CloudWatch logs ensure detailed monitoring of Lambda executions. IAM roles and permissions control access between S3 and Lambda functions, while `S3FailureBucketARN` prevents data loss by capturing unprocessed logs.
-<!--
+
+
+<!-- TODO: Enable when CloudWatch logs are supported
+
 ### Resources for CloudWatch Logs
 
 This is a list of resources created by the stack when CloudWatch logs are the source.
@@ -449,6 +464,7 @@ This is a list of resources created by the stack when CloudWatch logs are the so
 The CloudWatch Log Subscription Filter, `CloudWatchLogSubscriptionFilter`, ensures logs are correctly forwarded to the Lambda function. The Lambda function, `LambdaFunction`, serves as the core processing unit for CloudWatch logs. 
 
 CloudWatch Log Groups help monitor execution performance and debug issues. IAM permissions (`LambdaExecutionRole`, `LambdaPermissionCloudWatch`) control interactions between CloudWatch and Lambda, while the failure bucket, `S3FailureBucketARN`, helps prevent data loss in case of processing errors.
+
 -->
 ## Kibana integration setup
 
@@ -474,6 +490,42 @@ To set up data visualization for your AWS logs:
 ### Benefits
 
 This allows you to immediately start analyzing your AWS infrastructure without building dashboards from scratch.
+
+## Error handling and retrying
+
+{{edot-cf}} store Lambda invocation events related to retryable errors at the S3 bucket specified by `S3FailureBucketARN` parameter.
+Retryable errors here include, 
+ - Network errors when attempting to forward to OTLPEndpoint
+ - Invalid or expired ElasticApiKey
+ - Lambda triggered by events that mismatch EdotCloudForwarderS3LogsType selection 
+
+These errors can be replayed manually to back-fill any gaps in your data.
+
+### Replay failed events
+
+To replay errors simply invoke the Lambda with manual trigger type `replayFailedEvents`,
+
+```sh
+aws lambda invoke \
+  --function-name <LAMBDA_NAME> \
+  --payload '{ "replayFailedEvents": {"replayFailedEvents":{"dryrun":false,"removeOnSuccess":true}}}' \
+  --cli-binary-format raw-in-base64-out /dev/null
+```
+Replace `<LAMBDA_NAME>` with the name from your deployment.
+
+Table below explains supported configuration options,
+
+| Option          | Description                                                                                                                                   | Default |
+|-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------|---------|
+| dryrun          | Run the command without processing actual backup events. Useful to understand details about replaying error files from Lambda CloudWatch logs | false   |
+| removeOnSuccess | Configure whether to remove error event from S3 error destination, if processing is successful                                                | true    |
+
+When successful, you should see `"StatusCode": 200` as an output. You may check CloudWatch logs (resource `LambdaLogGroup`) for detailed logs.
+
+:::{note}
+With AWS CLI, you can use `--timeout` option to increase currently configured Lambda timeout for custom invocations.
+However, if a timeout occur, you will need to run the custom event multiple times to fully process all error events from the bucket.
+:::
 
 ## **Delete a CloudFormation stack**
 
