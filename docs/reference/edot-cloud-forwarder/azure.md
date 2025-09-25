@@ -250,7 +250,24 @@ The following parameters are available in the Bicep template:
 
 The Bicep template creates a number of resources to process logs from a specific log source.
 
-% Complete this section
+This is the list of resources created by the Bicep template.
+
+| Resource name         | Type                                      | Description                                                                                              |
+| --------------------- | ----------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `eventHubNamespace`   | `Microsoft.EventHub/namespaces`           | Event Hubs namespace to host the event hubs to stream logs and metrics.                                  |
+| `logsEventHub`        | `Microsoft.EventHub/namespaces/eventhubs` | Event hub for the logs.                                                                                  |
+| `metricsEventHub`     | `Microsoft.EventHub/namespaces/eventhubs` | Event hub for the metrics.                                                                               |
+| `storageAccount`      | `Microsoft.Storage/storageAccounts`       | Storage Account container to store the Event Hubs trigger checkpoint information and the failed messages. |
+| `hostingPlan`         | `Microsoft.Web/serverfarms`               | Hosting plan that runs the function app.                                                                 |
+| `functionApp`         | `Microsoft.Web/sites`                     | The function app that runs the Collector.                                                           |
+| `applicationInsights` | `Microsoft.Insights/components`           | Application Insights instance to monitor the application.                                                |
+
+Note the following:
+
+- The  `eventHubNamespace` hosts the two event hubs responsible for receiving logs and metrics from Azure services. 
+- The `storageAccount` stores the checkpoint information for the Event Hub triggers, and it also hosts the failed logs and metrics in the `logs-error-container` and `metrics-error-container` containers. 
+- The `functionApp` is the core component responsible for running the OTel collector inside the Azure Function. 
+
 
 ## Remove the resource group
 
