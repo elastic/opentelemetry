@@ -94,7 +94,10 @@ Trim the API key from `Authorization=ApiKey MYKEYVALUE...` to just `MYKEYVALUE..
 
 Before deploying {{edot-cf}} for Azure, keep these points in mind:
 
-% Complete this section
+Before deploying {{edot-cf}} for Azure, take the following into consideration:
+
+- The logs event hub supports Azure resource logs, and the metrics event hub supports DCR metrics.
+- Support for additional encoding extensions for logs and metrics will be added in future releases.
 
 ## Deploy EDOT CF for Azure
 
