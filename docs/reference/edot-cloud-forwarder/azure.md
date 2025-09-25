@@ -122,7 +122,7 @@ Create the resource group that hosts all the resources for {{edot-cf}} for Azure
 ```sh
 $ az group create --name $RESOURCE_GROUP --location $AZURE_LOCATION
 {
-  "id": "/subscriptions/12cabcb4-86e8-404f-a3d2-1dc9982f45ca/resourceGroups/<group_name>",
+  "id": "/subscriptions/<subscription_id>/resourceGroups/<group_name>",
   "location": "<your_region>",
   "managedBy": null,
   "name": "<group_name>",
@@ -138,7 +138,7 @@ $ az group create --name $RESOURCE_GROUP --location $AZURE_LOCATION
 :::::{step} Download the template
 Download the Bicep template to deploy {{edot-cf}} for Azure at the following URL: 
 
-* https://edotcfazure5gdoxpg7d2rim.blob.core.windows.net/releases/v0.6.0/ecf.bicep
+* https://ela.st/edot-cf-azure-template
 :::::
 
 :::::{step} Deploy the Bicep template
@@ -185,12 +185,6 @@ Create a diagnostic setting to collect Activity logs from an Azure subscription.
 5. After a few minutes, the diagnostic setting starts streaming the Activity logs to the `logs` event hub.
 6. Go to **Discover** in your {{ecloud}} deployment or Serverless project, and select the `logs-*` data view.
 7. Filter the docs by `data_stream.dataset`, to browse the Activity logs streamed to {{es}}.
-
-The `data_stream.dataset` value depends on your configured OTLP endpoint.
-
-| OTLP endpoint      | Type | data_stream.dataset |
-| ------------------ | ---- | ------------------- |
-| Managed OTLP input | logs | `generic.otel`      |
 :::
 
 :::{tab-item} Storage Account metrics
@@ -215,12 +209,6 @@ Create a Data Collection rule to collect metrics from Storage Account metrics.
 6. After some time, the Data Collection Rule start streaming the Storage Account metrics to the `metrics` event hub.
 7. Go to **Discover** in your {{ecloud}} deployment or Serverless project, and select the `metrics-*` data view.
 8. Filter the docs by `data_stream.dataset`, to browse the Storage Account metrics streamed to {{es}}.
-
-The `data_stream.dataset` value depends on your configured OTLP endpoint.
-
-| OTLP endpoint      | Type    | data_stream.dataset |
-| ------------------ | ------- | ------------------- |
-| Managed OTLP input | metrics | `generic.otel`      |
 
 :::{note}
 The Data Collection rule can take up to 30 minutes, or more, before starting to stream metrics to the Event Hub.
@@ -280,5 +268,5 @@ az group delete --name $RESOURCE_GROUP
 This removes all the resources in the resource group.
 
 :::{warning}
-If you delete the resource group, data that's still unprocessed will be lost.
+If you remove the resource group, data that's still unprocessed will be lost.
 :::
