@@ -16,7 +16,9 @@ products:
 
 # EDOT Cloud Forwarder for Azure
 
-{{edot-cf}} for Azure is an agentless solution that allows you to stream telemetry data from Azure services to an {{es}} cluster. {{edot-cf}} for Azure supports the following sources:
+{{edot-cf}} for Azure allows you to stream telemetry data from Azure services to an {{es}} cluster. 
+
+{{edot-cf}} for Azure supports the following sources:
 
 | Source | Description |
 | --- | --- |
