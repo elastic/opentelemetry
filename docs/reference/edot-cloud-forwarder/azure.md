@@ -250,7 +250,7 @@ This is the list of resources created by the Bicep template.
 
 Note the following:
 
-- The  `eventHubNamespace` hosts the two event hubs responsible for receiving logs and metrics from Azure services. 
+- The `eventHubNamespace` hosts the two event hubs responsible for receiving logs and metrics from Azure services. 
 - The `storageAccount` stores the checkpoint information for the Event Hub triggers, and it also hosts the failed logs and metrics in the `logs-error-container` and `metrics-error-container` containers. 
 - The `functionApp` is the core component responsible for running the OTel collector inside the Azure Function. 
 
