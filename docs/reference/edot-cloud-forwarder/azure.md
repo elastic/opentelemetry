@@ -245,7 +245,7 @@ This is the list of resources created by the Bicep template.
 | `metricsEventHub`     | `Microsoft.EventHub/namespaces/eventhubs` | Event hub for the metrics.                                                                               |
 | `storageAccount`      | `Microsoft.Storage/storageAccounts`       | Storage Account container to store the Event Hubs trigger checkpoint information and the failed messages. |
 | `hostingPlan`         | `Microsoft.Web/serverfarms`               | Hosting plan that runs the function app.                                                                 |
-| `functionApp`         | `Microsoft.Web/sites`                     | The function app that runs the Collector.                                                           |
+| `functionApp`         | `Microsoft.Web/sites`                     | The function app that runs the EDOT Collector.                                                           |
 | `applicationInsights` | `Microsoft.Insights/components`           | Application Insights instance to monitor the application.                                                |
 
 Note the following:
