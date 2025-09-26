@@ -14,7 +14,9 @@ products:
 
 # EDOT Cloud Forwarder for AWS
 
-{{edot-cf}} for AWS provides the EDOT Collector as a Lambda function that collects and forwards logs to Elastic Observability on {{serverless-full}}. {{edot-cf}} for AWS supports the following log sources:
+{{edot-cf}} for AWS provides the EDOT Collector as a Lambda function that collects and forwards logs to Elastic Observability on {{serverless-full}}. 
+
+{{edot-cf}} for AWS supports the following log sources:
 
 | Log source | Description |
 | --- | --- |
