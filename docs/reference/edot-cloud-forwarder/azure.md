@@ -1,6 +1,6 @@
 ---
 navigation_title: Azure
-description: Set up the EDOT Cloud Forwarder for Azure to bring your Azure logs to Elastic Observability.
+description: Set up the EDOT Cloud Forwarder for Azure to bring your Azure telemetry data to Elastic Observability.
 applies_to:
   serverless:
     observability: preview
