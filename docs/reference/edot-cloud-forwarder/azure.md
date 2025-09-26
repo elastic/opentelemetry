@@ -230,7 +230,7 @@ The following parameters are available in the Bicep template:
 | `metricsDecoder`                 | `ds`    | Decoder to decode the metrics.                                       | `ds` (diagnostic settings) and `dcr` (Data Collection Rules)           |
 | `eventHubPartitionCount`         | `4`     | Number of partition in the event hubs.                               |                                                                        |
 | `eventHubMessageRetentionInDays` | `1`     | Number of days for the event hub data retention.                     |                                                                        |
-| `version`                        | `0.6.0` | EDOT Cloud Forwarder (ECF) for Azure Tech Preview version to deploy. | The `infra/ecf.bicep` contains the latest version available.           |
+% | `version`                        | `0.6.0` | EDOT Cloud Forwarder (ECF) for Azure Tech Preview version to deploy. | The `infra/ecf.bicep` contains the latest version available.           |
 
 ## Resource group resources
 
@@ -253,7 +253,6 @@ Note the following:
 - The  `eventHubNamespace` hosts the two event hubs responsible for receiving logs and metrics from Azure services. 
 - The `storageAccount` stores the checkpoint information for the Event Hub triggers, and it also hosts the failed logs and metrics in the `logs-error-container` and `metrics-error-container` containers. 
 - The `functionApp` is the core component responsible for running the OTel collector inside the Azure Function. 
-
 
 ## Remove the resource group
 
