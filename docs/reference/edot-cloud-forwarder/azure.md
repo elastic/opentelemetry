@@ -48,7 +48,7 @@ To collect logs and metrics using {{edot-cf}} for Azure, you need:
 
 To use {{edot-cf}} for Azure, you need an Azure subscription with permissions to create resources.
 
-{{edot-cf}} for Azure creates the following resources:
+The Bicep template for {{edot-cf}} creates the following resources:
 
 - Function App
 - App Service plan
@@ -58,7 +58,7 @@ To use {{edot-cf}} for Azure, you need an Azure subscription with permissions to
 
 ### Azure CLI
 
-{{edot-cf}} for Azure uses the Azure CLI to deploy and manage resources.
+You can use the Azure CLI to deploy and manage resources required for {{edot-cf}}.
 
 To install Azure CLI, refer to the [official documentation](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli).
 
@@ -91,8 +91,6 @@ Trim the API key from `Authorization=ApiKey MYKEYVALUE...` to just `MYKEYVALUE..
 ::::
 
 ## Deployment considerations
-
-Before deploying {{edot-cf}} for Azure, keep these points in mind:
 
 Before deploying {{edot-cf}} for Azure, take the following into consideration:
 
@@ -216,7 +214,7 @@ The Data Collection rule can take up to 30 minutes, or more, before starting to 
 
 ## Configure the template
 
-{{edot-cf}} for Azure uses a Bicep template to deploy the EDOT Collector.
+{{edot-cf}} for Azure uses a Bicep template to deploy the EDOT CF.
 
 The following parameters are available in the Bicep template:
 
