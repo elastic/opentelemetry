@@ -14,7 +14,7 @@ products:
 
 # EDOT Cloud Forwarder for Azure
 
-{{edot-cf}} for Azure is an agentless solution that allows you to stream logs and metrics from Azure services to an {{es}} cluster. {{edot-cf}} for Azure supports the following log and metricsources:
+{{edot-cf}} for Azure is an agentless solution that allows you to stream logs and metrics from Azure services to an {{es}} cluster. {{edot-cf}} for Azure supports the following log and metric sources:
 
 | Source | Description |
 | --- | --- |
