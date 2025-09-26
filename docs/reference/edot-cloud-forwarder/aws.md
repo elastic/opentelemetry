@@ -31,7 +31,9 @@ We are working to support other popular log types and sources. Get in touch to l
 ## Prerequisites
 
 ::::{important}
-{{edot-cf}} for AWS is not currently supported on {{ech}} or self-managed {{stack}}.
+{{edot-cf}} for AWS requires an {{motlp}} endpoint and an API key. Managed OTLP is available for {{serverless-full}} and will soon be available for {{ech}}.
+
+For self-managed deployments, set up an EDOT Collector in [Gateway mode](elastic-agent://reference/edot-collector/gateway-mode.md) that ingests OTel data from the edge setup into the self-managed Elastic Stack.
 ::::
 
 

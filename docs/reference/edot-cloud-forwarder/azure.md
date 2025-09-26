@@ -4,6 +4,8 @@ description: Set up the EDOT Cloud Forwarder for Azure to bring your Azure logs 
 applies_to:
   serverless:
     observability: preview
+  deployment:
+    ess: preview
   product:
     edot_cf_azure: preview
 products:
@@ -34,15 +36,15 @@ We are working to support other sources. Get in touch to let us know of any spec
 ## Prerequisites
 
 ::::{important}
-{{edot-cf}} for Azure is not currently supported on {{ech}} or self-managed {{stack}}.
-::::
+{{edot-cf}} for Azure requires an {{motlp}} endpoint and an API key. Managed OTLP is available for {{serverless-full}} and will soon be available for {{ech}}.
 
+For self-managed deployments, set up an EDOT Collector in [Gateway mode](elastic-agent://reference/edot-collector/gateway-mode.md) that ingests OTel data from the edge setup into the self-managed Elastic Stack.
+::::
 To collect logs and metrics using {{edot-cf}} for Azure, you need:
 
 - An Azure subscription
 - Azure CLI
 - Bicep extension for Azure CLI
-- Managed OTLP endpoint on Elastic Cloud
 
 ### Azure subscription
 
@@ -72,9 +74,20 @@ After you've installed Azure CLI, install Bicep by running the following command
 az bicep install
 ```
 
-### Managed OTLP endpoint
+## Deployment considerations
 
-{{edot-cf}} for Azure requires a {{motlp}} endpoint on {{ecloud}} and an API key.
+Before deploying {{edot-cf}} for Azure, take the following into consideration:
+
+- The logs event hub supports Azure resource logs, and the metrics event hub supports DCR metrics.
+- Support for additional encoding extensions for logs and metrics will be added in future releases.
+
+## Deploy EDOT CF for Azure
+
+Follow these steps to deploy {{edot-cf}} for Azure in a resource group to send logs and metrics to the {{motlp}} endpoint.
+
+::::::{stepper}
+
+:::::{step} Retrieve the OTLP endpoint and API key
 
 To find out the URL of the managed OTLP endpoint and the API key for authentication, follow these steps:
 
@@ -89,19 +102,7 @@ In the Bicep templates, the OTLP endpoint is set as `elasticsearchOtlpEndpoint`,
 Trim the API key from `Authorization=ApiKey MYKEYVALUE...` to just `MYKEYVALUE...` before using it as the argument to the `elasticsearchApiKey` parameter.
 :::
 ::::
-
-## Deployment considerations
-
-Before deploying {{edot-cf}} for Azure, take the following into consideration:
-
-- The logs event hub supports Azure resource logs, and the metrics event hub supports DCR metrics.
-- Support for additional encoding extensions for logs and metrics will be added in future releases.
-
-## Deploy EDOT CF for Azure
-
-Follow these steps to deploy {{edot-cf}} for Azure in a resource group to send logs and metrics to the {{motlp}} endpoint.
-
-::::::{stepper}
+:::::
 
 :::::{step} Set the environment variables
 Define the following environment variables:
