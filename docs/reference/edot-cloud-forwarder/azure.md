@@ -4,8 +4,8 @@ description: Set up the EDOT Cloud Forwarder for Azure to bring your Azure telem
 applies_to:
   serverless:
     observability: preview
-  deployment:
-    ess: preview
+#  deployment:
+#    ess: preview
   product:
     edot_cf_azure: preview
 products:

@@ -4,6 +4,8 @@ description: Set up the EDOT Cloud Forwarder for AWS to bring your AWS logs to E
 applies_to:
   serverless:
     observability: preview
+#  deployment:
+#    ess: preview
   product:
     edot_cf_aws: preview
 products:
