@@ -155,12 +155,10 @@ az deployment group create \
         metricsDecoder=dcr \ <2>
         eventHubPartitionCount=8 \
         eventHubMessageRetentionInDays=1 \
-        version=0.6.0 <3>
 ```
 
 1. To collect Activity logs from a diagnostic settings, set `logsDecoder` to `ds` (diagnostic settings).
 2. To collect Storage Account metrics from a Data Collection Rule, set `metricsDecoder` to `dcr` (data collection rules).
-3. For specific versions, edit `version` to the required version in the format `X.Y.Z`.
 
 For a complete list of parameters, refer to [Configure the template](#configure-the-template).
 :::::
