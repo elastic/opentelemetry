@@ -136,9 +136,7 @@ $ az group create --name $RESOURCE_GROUP --location $AZURE_LOCATION
 :::::
 
 :::::{step} Download the template
-Download the Bicep template to deploy {{edot-cf}} for Azure at the following URL: 
-
-* https://ela.st/edot-cf-azure-template
+Download the Bicep template to deploy {{edot-cf}} for Azure at the following URL: https://ela.st/edot-cf-azure-template
 :::::
 
 :::::{step} Deploy the Bicep template
