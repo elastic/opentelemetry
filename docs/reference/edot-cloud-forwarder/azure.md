@@ -36,9 +36,9 @@ We are working to support other sources. Get in touch to let us know of any spec
 ## Prerequisites
 
 ::::{important}
-{{edot-cf}} for Azure requires an {{motlp}} endpoint and an API key. Managed OTLP is available for {{serverless-full}} and will soon be available for {{ech}}.
+{{edot-cf}} for Azure requires a Managed OTLP endpoint and an API key. Managed OTLP is available for {{serverless-full}} and will soon be available for {{ech}}.
 
-For self-managed deployments, set up an EDOT Collector in [Gateway mode](elastic-agent://reference/edot-collector/gateway-mode.md) that ingests OTel data from the edge setup into the self-managed Elastic Stack.
+For self-managed deployments, set up an EDOT Collector in [Gateway mode](elastic-agent://reference/edot-collector/config/default-config-standalone.md#gateway-mode) that ingests OTel data from the edge setup into the self-managed Elastic Stack.
 ::::
 To collect logs and metrics using {{edot-cf}} for Azure, you need:
 
@@ -134,7 +134,7 @@ $ az group create --name $RESOURCE_GROUP --location $AZURE_LOCATION
 ```
 :::::
 
-:::::{step} Download the template
+:::::{step} Download the Bicep template
 Download the Bicep template to deploy {{edot-cf}} for Azure at the following URL: https://ela.st/edot-cf-azure-template
 :::::
 
