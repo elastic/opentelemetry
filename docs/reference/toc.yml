@@ -24,3 +24,4 @@ toc:
   - file: edot-cloud-forwarder/index.md
     children:
       - file: edot-cloud-forwarder/aws.md
+      - file: edot-cloud-forwarder/azure.md
