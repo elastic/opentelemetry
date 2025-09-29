@@ -50,6 +50,17 @@ To retrieve your {{motlp}} endpoint address, follow these steps:
 3. Locate the Connection alias and select **Edit**.
 4. Copy the Managed OTLP endpoint URL.
 
+### Configure SDKs to send data directly
+
+To configure OpenTelemetry SDKs to send data directly to the {{motlp}}, set the `OTEL_EXPORTER_OTLP_ENDPOINT` and `OTEL_EXPORTER_OTLP_HEADERS` environment variable.
+
+For example:
+
+```bash
+export OTEL_EXPORTER_OTLP_ENDPOINT="https://<motlp-endpoint>"
+export OTEL_EXPORTER_OTLP_HEADERS="Authorization=ApiKey <key>"
+```
+
 ## Routing logs to dedicated datasets
 
 You can route logs to dedicated datasets by setting the `data_stream.dataset` attribute to the log record. This attribute is used to route the log to the corresponding dataset.
@@ -103,7 +114,7 @@ If send data that exceeds the available rate limit, the {{motlp}} will respond w
 }
 ```
 
-Once your sending rate drops back within the allowed limit, the system will automatically begin accepting requests again.
+After your sending rate drops back within the allowed limit, the system will automatically begin accepting requests again.
 
 :::{note}
 If you need to increase the rate limit, reach out to Elastic Support.
