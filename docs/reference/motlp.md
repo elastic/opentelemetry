@@ -61,14 +61,6 @@ export OTEL_EXPORTER_OTLP_ENDPOINT="https://<motlp-endpoint>"
 export OTEL_EXPORTER_OTLP_HEADERS="Authorization=ApiKey <key>"
 ```
 
-:::{important}
-Avoid extra spaces in the header. For Python SDKs replace any spaces with `%20`. For example:
-
-```
-OTEL_EXPORTER_OTLP_HEADERS=Authorization=ApiKey%20<your-api-key>`
-```
-:::
-
 ## Routing logs to dedicated datasets
 
 You can route logs to dedicated datasets by setting the `data_stream.dataset` attribute to the log record. This attribute is used to route the log to the corresponding dataset.
