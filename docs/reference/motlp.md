@@ -50,15 +50,24 @@ To retrieve your {{motlp}} endpoint address, follow these steps:
 3. Locate the Connection alias and select **Edit**.
 4. Copy the Managed OTLP endpoint URL.
 
-### Configure SDKs to use the API key
+### Configure SDKs to send data directly
 
-To configure OpenTelemetry SDKs to send data to the {{motlp}}, set the `OTEL_EXPORTER_OTLP_HEADERS` environment variable.
+To configure OpenTelemetry SDKs to send data directly to the {{motlp}}, set the `OTEL_EXPORTER_OTLP_ENDPOINT` and `OTEL_EXPORTER_OTLP_HEADERS` environment variable.
 
 For example:
 
 ```bash
+export OTEL_EXPORTER_OTLP_ENDPOINT="https://<motlp-endpoint>"
 export OTEL_EXPORTER_OTLP_HEADERS="Authorization=ApiKey <key>"
 ```
+
+:::{important}
+Avoid extra spaces in the header. For Python SDKs replace any spaces with `%20`. For example:
+
+```
+OTEL_EXPORTER_OTLP_HEADERS=Authorization=ApiKey%20<your-api-key>`
+```
+:::
 
 ## Routing logs to dedicated datasets
 
