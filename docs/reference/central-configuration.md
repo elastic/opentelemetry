@@ -33,6 +33,7 @@ The following versions of EDOT and {{stack}} support central configuration:
 | Kibana | 9.1 or higher |
 | EDOT Collector | 8.19, 9.1 or higher |
 | EDOT Android | 1.2.0 or higher |
+| EDOT iOS | 1.4.0 or higher |
 | EDOT Java | 1.5.0 or higher |
 | EDOT Node.js | 1.2.0 or higher |
 | EDOT PHP | 1.1.1 or higher |
@@ -140,13 +141,14 @@ Your application must produce and send telemetry data for the EDOT SDK to appear
 For a list of settings that you can configure through APM Agent Central Configuration, refer to the configuration reference of each EDOT SDK:
 
 - [EDOT Android](apm-agent-android://reference/edot-android/configuration.md#central-configuration)
-- [EDOT iOS](apm-agent-ios://reference/edot-ios/configuration.md)
+- [EDOT iOS](apm-agent-ios://reference/edot-ios/configuration.md#central-configuration-edot)
 - [EDOT Java](elastic-otel-java://reference/edot-java/configuration.md#central-configuration)
 - [EDOT Node.js](elastic-otel-node://reference/edot-node/configuration.md#central-configuration)
 - [EDOT PHP](elastic-otel-php://reference/edot-php/configuration.md#central-configuration)
 - [EDOT Python](elastic-otel-python://reference/edot-python/configuration.md#central-configuration)
 
 ## Advanced configuration
+
 ```{applies_to}
 stack: preview 9.2
 ```
