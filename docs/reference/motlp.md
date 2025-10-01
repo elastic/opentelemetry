@@ -44,7 +44,7 @@ You don't need to use APM Server when ingesting data through the Managed OTLP En
 
 ## Send data to Elastic
 
-To send data to Elastic through the {{motlp}}, follow the [Send data to the Elastic Cloud Managed OTLP Endpoint](docs-content:///solutions/observability/get-started/quickstart-elastic-cloud-otel-endpoint.md) quickstart.
+To send data to Elastic through the {{motlp}}, follow the [Send data to the Elastic Cloud Managed OTLP Endpoint](docs-content://solutions/observability/get-started/quickstart-elastic-cloud-otel-endpoint.md) quickstart.
 
 ### Find your {{motlp}} endpoint
 
@@ -66,6 +66,17 @@ To retrieve your {{motlp}} endpoint address, follow these steps:
 :::
 
 ::::
+
+### Configure SDKs to send data directly
+
+To configure OpenTelemetry SDKs to send data directly to the {{motlp}}, set the `OTEL_EXPORTER_OTLP_ENDPOINT` and `OTEL_EXPORTER_OTLP_HEADERS` environment variable.
+
+For example:
+
+```bash
+export OTEL_EXPORTER_OTLP_ENDPOINT="https://<motlp-endpoint>"
+export OTEL_EXPORTER_OTLP_HEADERS="Authorization=ApiKey <key>"
+```
 
 ## Routing logs to dedicated datasets
 

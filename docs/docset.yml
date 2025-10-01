@@ -17,6 +17,7 @@ cross_links:
   - cloud-on-k8s
   - docs-content
   - ecs
+  - elastic-agent
   - elastic-otel-dotnet
   - elastic-otel-java
   - elastic-otel-node
@@ -36,13 +37,7 @@ subs:
   ecloud:   "Elastic Cloud"
   edot-cf:   "EDOT Cloud Forwarder"
   ech:   "Elastic Cloud Hosted"
-  ess:   "Elasticsearch Service"
-  ece:   "Elastic Cloud Enterprise"
   serverless-full:   "Elastic Cloud Serverless"
-  agent:   "Elastic Agent"
-  agents:   "Elastic Agents"
   stack:   "Elastic Stack"
   es:   "Elasticsearch"
   kib:   "Kibana"
-  ls:   "Logstash"
-  kube-stack-version: 0.6.3
