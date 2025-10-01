@@ -2,13 +2,13 @@
 navigation_title: Managed OTLP Endpoint
 description: Reference documentation for the Elastic Cloud Managed OTLP Endpoint.
 applies_to:
+  # Preserve when going GA  
   serverless:
     observability:
-  # Preserve when going GA  
-  stack: preview 9.2
-  self: unavailable
+    security:
   deployment:
-    ess: preview
+    ess:
+  stack: preview 9.2
 products:
   - id: cloud-serverless
   - id: observability
@@ -40,7 +40,7 @@ For a detailed comparison of how OTel data streams differ from classic Elastic A
 
 To use the {{ecloud}} {{motlp}} you need the following:
 
-- An {{serverless-full}} project or an {{ech}} (ECH) deployment. Security projects are not yet supported.
+- An {{serverless-full}} project or an {{ech}} (ECH) deployment.
 - An OTLP-compliant shipper capable of forwarding logs, metrics, or traces in OTLP format. This can include:
   - [OpenTelemetry Collector](elastic-agent://reference/edot-collector/index.md) (EDOT, Contrib, or other distributions)
   - [OpenTelemetry SDKs](/reference/edot-sdks/index.md) (EDOT, upstream, or other distributions)
@@ -55,7 +55,7 @@ You don't need APM Server when ingesting data through the Managed OTLP Endpoint.
 
 To send data to Elastic through the {{motlp}}, follow the [Send data to the Elastic Cloud Managed OTLP Endpoint](docs-content://solutions/observability/get-started/quickstart-elastic-cloud-otel-endpoint.md) quickstart.
 
-### Find your {{motlp}} endpoint
+### Find your {{motlp}}
 
 To retrieve your {{motlp}} endpoint address, follow these steps:
 
@@ -68,7 +68,10 @@ To retrieve your {{motlp}} endpoint address, follow these steps:
 4. Copy the **Managed OTLP endpoint** URL.
 :::
 
-:::{applies-item} ess: preview 9.2
+:::{applies-item} ess:
+```{applies_to}
+stack: preview 9.2
+```
 1. Open your deployment in the Elastic Cloud console.
 2. Navigate to **Integrations** and find **OpenTelemetry** or **Managed OTLP**.
 3. Copy the endpoint URL shown.
