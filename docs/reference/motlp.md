@@ -20,7 +20,7 @@ products:
 The {{motlp}} allows you to send OpenTelemetry data directly to {{ecloud}} using the OTLP protocol, with Elastic handling scaling, data processing, and storage. The Managed OTLP endpoint can act like a Gateway Collector, so that you can point your OpenTelemetry SDKs or Collectors to it.
 
 :::{important}
-The {{motlp}} endpoint is not available for Elastic [self-managed](docs-content://deploy-manage/deploy/self-managed.md), [ECE](docs-content://deploy-manage/deploy/cloud-enterprise.md) or [ECK](docs-content://deploy-manage/deploy/cloud-on-k8s.md) clusters. To send OTLP data to any of these cluster types, deploy and expose an OTLP-compatible endpoint using the EDOT Collector as a gateway. Refer to [EDOT deployment docs](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway).
+The {{motlp}} endpoint is not available for Elastic [self-managed](docs-content://deploy-manage/deploy/self-managed.md), [ECE](docs-content://deploy-manage/deploy/cloud-enterprise.md) or [ECK](docs-content://deploy-manage/deploy/cloud-on-k8s.md) clusters. To send OTLP data to any of these cluster types, deploy and expose an OTLP-compatible endpoint using the EDOT Collector as a gateway. Refer to [EDOT deployment docs](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway) for more information.
 :::
 
 ## Reference architecture
@@ -140,7 +140,7 @@ As long as your data ingestion rate stays at or below the rate limit and burst l
 
 ### Exceeding the rate limit
 
-If you send data that exceeds the available limits, the {{motlp}} responds with an HTTP 429 Too Many Requests status code. A log message similar to this appears in the OpenTelemetry Collector's output:
+If you send data that exceeds the available limits, the {{motlp}} responds with an HTTP `429` Too Many Requests status code. A log message similar to this appears in the OpenTelemetry Collector's output:
 
 ```json
 {
