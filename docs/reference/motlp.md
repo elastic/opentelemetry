@@ -38,9 +38,15 @@ For a detailed comparison of how OTel data streams differ from classic Elastic A
 To use the {{ecloud}} {{motlp}} you need the following:
 
 - An {{serverless-full}} project or an {{ech}} (ECH) deployment. Security projects are not yet supported.
-- An OTLP-compliant shipper capable of forwarding logs, metrics, or traces in OTLP format. This can include the OpenTelemetry Collector (EDOT, Contrib, or other distributions), OpenTelemetry SDKs (EDOT, upstream, or other distributions), or any other forwarder that supports the OTLP protocol.
+- An OTLP-compliant shipper capable of forwarding logs, metrics, or traces in OTLP format. This can include:
+  - [OpenTelemetry Collector](elastic-agent://reference/edot-collector/index.md) (EDOT, Contrib, or other distributions)
+  - [OpenTelemetry SDKs](/reference/edot-sdks/index.md) (EDOT, upstream, or other distributions)
+  - [EDOT Cloud Forwarder](/reference/edot-cloud-forwarder/index.md)
+  - Any other forwarder that supports the OTLP protocol.
 
-You don't need to use APM Server when ingesting data through the Managed OTLP Endpoint. The APM integration (`.apm` endpoint) is a legacy ingest path that only supports traces and translates OTLP telemetry to ECS, whereas {{motlp}} natively ingests OTLP data for logs, metrics, and traces.
+:::{note}
+You don't need APM Server when ingesting data through the Managed OTLP Endpoint. The APM integration (`.apm` endpoint) is a legacy ingest path that only supports traces and translates OTLP telemetry to ECS, whereas {{motlp}} natively ingests OTLP data for logs, metrics, and traces.
+:::
 
 ## Send data to Elastic
 
@@ -125,7 +131,7 @@ The following rate limits and burst limits apply:
 | Deployment type | Rate limit | Burst limit |
 |----------------|------------|-------------|
 | Serverless | 15 MB/s | 30 MB/s |
-| ECH | 15 MB/s | 30 MB/s |
+% | ECH | MB/s | MB/s |
 
 As long as your data ingestion rate stays at or below the rate limit and burst limit, your requests are accepted.
 
