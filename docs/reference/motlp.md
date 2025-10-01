@@ -4,8 +4,11 @@ description: Reference documentation for the Elastic Cloud Managed OTLP Endpoint
 applies_to:
   serverless:
     observability:
+  # Preserve when going GA  
+  stack: preview 9.2
+  self: unavailable
   deployment:
-    ess: preview 9.2
+    ess: preview
 products:
   - id: cloud-serverless
   - id: observability
