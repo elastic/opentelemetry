@@ -47,7 +47,6 @@ For compatibility of language-specific technologies check out the following page
 - [Supported Technologies - Node.js](elastic-otel-node://reference/edot-node/supported-technologies.md)
 - [Supported Technologies - PHP](elastic-otel-php://reference/edot-php/supported-technologies.md)
 - [Supported Technologies - Python](elastic-otel-python://reference/edot-python/supported-technologies.md)
-- [Supported Technologies - Android](apm-agent-android://reference/edot-android/supported-technologies.md)
 - [Supported Technologies - iOS](apm-agent-ios://reference/edot-ios/supported-technologies.md)
 
 ## Other SDK distributions
