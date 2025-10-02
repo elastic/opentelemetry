@@ -1,5 +1,5 @@
 features:
-  - name: Distributed Tracing
+  - name: Distributed tracing
     link: https://opentelemetry.io/docs/concepts/signals/traces/
     min_stack_version:
     .NET:
@@ -23,7 +23,7 @@ features:
     iOS:
       status: ga
       min_version: 1.0
-  - name: Service Map
+  - name: Service map
     link: docs-content://solutions/observability/apm/service-map.md
     is_sub_feature: true
     min_stack_version:
@@ -73,7 +73,7 @@ features:
     iOS:
       status: not-available
       min_version: 
-  - name: Head-based Sampling
+  - name: Head-based sampling
     link: https://opentelemetry.io/docs/concepts/sampling/#head-sampling
     min_stack_version:
     is_sub_feature: true
@@ -123,7 +123,7 @@ features:
     iOS:
       status: ga
       min_version: v1.0
-  - name: Inferred Spans
+  - name: Inferred spans
     link:
     min_stack_version:
     is_sub_feature: true
@@ -148,7 +148,7 @@ features:
     iOS:
       status: not-available
       min_version: 
-  - name: Logs Collection
+  - name: Logs collection
     link: https://opentelemetry.io/docs/specs/otel/logs/#opentelemetry-solution
     min_stack_version:
     .NET:
@@ -172,7 +172,7 @@ features:
     iOS:
       status: ga
       min_version: v1.0
-  - name: Logs Correlation
+  - name: Logs correlation
     link: https://opentelemetry.io/docs/specs/otel/logs/#log-correlation
     is_sub_feature: true
     min_stack_version:
@@ -197,7 +197,7 @@ features:
     iOS:
       status: ga
       min_version: v1.0
-  - name: Metrics Collection
+  - name: Metrics collection
     link: https://opentelemetry.io/docs/concepts/signals/metrics/
     min_stack_version:
     .NET:
@@ -221,7 +221,7 @@ features:
     iOS:
       status: tech-preview
       min_version: v0.7
-  - name: Custom Metrics
+  - name: Custom metrics
     link:
     is_sub_feature: true
     min_stack_version:
@@ -246,7 +246,7 @@ features:
     iOS:
       status: tech-preview
       min_version: v0.7
-  - name: Agent Health Monitoring
+  - name: Agent health monitoring
     link:
     is_sub_feature: true
     min_stack_version:
@@ -271,7 +271,7 @@ features:
     iOS:
       status: not-available
       min_version: 
-  - name: Runtime Metrics
+  - name: Runtime metrics
     link: https://opentelemetry.io/docs/specs/semconv/runtime/
     is_sub_feature: true
     min_stack_version:
@@ -296,7 +296,7 @@ features:
     iOS:
       status: not-available
       min_version: 
-  - name: Capturing Errors / Exceptions
+  - name: Capturing errors / exceptions
     link:
     min_stack_version:
     .NET:
@@ -320,7 +320,7 @@ features:
     iOS:
       status: ga
       min_version: v1.0
-  - name: Crash Reporting
+  - name: Crash reporting
     link:
     is_sub_feature: true
     min_stack_version:
@@ -345,7 +345,7 @@ features:
     iOS:
       status: ga
       min_version: v1.0
-  - name: Central Configuration
+  - name: Central configuration
     link:
     min_stack_version:
     .NET:
@@ -367,9 +367,9 @@ features:
       status: tech-preview
       min_version: 1.2.0
     iOS:
-      status: not-available
-      min_version: 
-  - name: Profiling Integration
+      status: tech-preview
+      min_version: 1.4.0
+  - name: Profiling integration
     link:
     min_stack_version:
     .NET:
