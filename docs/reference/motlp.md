@@ -55,26 +55,21 @@ You don't need APM Server when ingesting data through the Managed OTLP Endpoint.
 
 To send data to Elastic through the {{motlp}}, follow the [Send data to the Elastic Cloud Managed OTLP Endpoint](docs-content://solutions/observability/get-started/quickstart-elastic-cloud-otel-endpoint.md) quickstart.
 
-### Find your {{motlp}}
+### Find your {{motlp}} endpoint
 
 To retrieve your {{motlp}} endpoint address, follow these steps:
 
 ::::{applies-switch}
 :::{applies-item} serverless:
-1. In {{ecloud}}, create an Observability project or open an existing one.
-2. Go to **Add data**, select **Applications** and then select **OpenTelemetry**.
-3. Copy the endpoint and authentication headers values.
-
-Alternatively, go to **Manage project**, locate the **Connection alias** and select **Edit** to see the **Managed OTLP endpoint** URL.
+1. In {{ecloud}}, select **Manage** next to your project.
+2. Locate the **Connection alias** and select **Edit**.
+3. Copy the Managed OTLP endpoint URL.
 :::
 
 :::{applies-item} ess:
 {applies_to}`stack: preview 9.2`
-1. In {{ecloud}}, create an {{ech}} deployment or open an existing one.
-2. Go to **Add data**, select **Applications** and then select **OpenTelemetry**.
-3. Copy the endpoint and authentication headers values.
-
-Alternatively, go to **Manage project**, locate the **Connection alias** and select **Edit** to see the **Managed OTLP endpoint** URL.
+1. In {{ecloud}}, select **Manage** next to your project.
+3. Select **Copy endpoint** to copy the Managed OTLP endpoint URL.
 :::
 ::::
 
