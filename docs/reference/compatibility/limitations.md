@@ -12,7 +12,7 @@ products:
    - id: edot-sdk
 ---
 
-# Limitations of Elastic Distributions of OpenTelemetry
+# Limitations of Elastic Distributions of OpenTelemetry (EDOT)
 
 The Elastic Distributions of OpenTelemetry (EDOT) come with a new way of ingesting data in OTel-native way and format. Elastic is continuously working on providing a great experience with OTel-native data within Elastic solutions, contributing popular Elastic features to the contrib OpenTelemetry projects and aligning concepts with OpenTelemetry.
 

@@ -12,7 +12,7 @@ products:
   - id: edot-sdk
 ---
 
-# Compatibility and support
+# EDOT compatibility and support
 
 The following pages describe the compatibility and support levels for different OpenTelemetry Distributions.
 
