@@ -48,7 +48,7 @@ To use the {{ecloud}} {{motlp}} you need the following:
   - Any other forwarder that supports the OTLP protocol.
 
 :::{note}
-You don't need APM Server when ingesting data through the Managed OTLP Endpoint. The APM integration (`.apm` endpoint) is a legacy ingest path that only supports traces and translates OTLP telemetry to ECS, whereas {{motlp}} natively ingests OTLP data for logs, metrics, and traces.
+You don't need APM Server when ingesting data through the Managed OTLP Endpoint. The APM integration (`.apm` endpoint) is a legacy ingest path that only supports traces and translates OTLP telemetry to ECS, whereas {{motlp}} natively ingests OTLP data.
 :::
 
 ## Send data to Elastic
