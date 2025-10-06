@@ -12,7 +12,7 @@ products:
   - id: edot-sdk
 ---
 
-# Compatibility and support nomenclature
+# EDOT compatibility and support nomenclature
 
 OpenTelemetry (OTel) is a modular, extensible framework designed to integrate with a wide range of technologies. Its architecture enables interoperability across many components, extensions, and tools, giving users flexibility to shape their observability pipelines.
 

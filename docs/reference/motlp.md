@@ -10,7 +10,7 @@ products:
   - id: edot-collector
 ---
 
-# Elastic Cloud Managed OTLP Endpoint
+# Elastic Cloud Managed OTLP Endpoint (EDOT mOTLP)
 
 The {{motlp}} allows you to send OpenTelemetry data directly to {{ecloud}} using the OTLP protocol, with Elastic handling scaling, data processing, and storage. The Managed OTLP endpoint can act like a Gateway Collector, so that you can point your OpenTelemetry SDKs or Collectors to it.
 

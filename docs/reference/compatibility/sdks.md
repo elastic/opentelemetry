@@ -11,7 +11,7 @@ products:
   - id: edot-sdk
 ---
 
-# Compatibility and support for OTel SDKs
+# EDOT compatibility and support for OTel SDKs
 
 The following table provides an overview of compatibility and support of EDOT SDKs with EDOT Collector versions:
 

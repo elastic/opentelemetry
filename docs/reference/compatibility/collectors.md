@@ -11,7 +11,7 @@ products:
   - id: edot-collector
 ---
 
-# Compatibility and support for OTel Collectors
+# EDOT compatibility and support for OTel Collectors
 
 The following table provides an overview of compatibility and support of {{edot}} Collector versions with {{stack}} (ELK) versions.
 
