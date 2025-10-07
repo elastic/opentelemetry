@@ -17,7 +17,7 @@ The following table provides an overview of compatibility and support of {{edot}
 
 #### EDOT Collector 9.x
 
-| ELK stack version           | **ELK < 8.16** | **ELK 8.16 - 8.17** | **ELK 8.18 - 8.19** | **ELK 9.0** |
+| ELK stack version           | **ELK < 8.16** | **ELK 8.16 - 8.17** | **ELK 8.18 - 8.19** | **ELK 9.0 and higher** |
 | :-------------------------- | :------------- | :------------------ | :------------------ | :---------- |
 | **Compatibility**           | [Incompatible] | [Compatible]        | [Compatible]        | [Compatible]|
 | **Level of support**        | [Not supported] | [Not supported]    | [Supported]         | [Supported] |
