@@ -16,6 +16,6 @@ jobs:
           fetch-depth: 0
       
       - name: Run Elastic Vale Linter
-        uses: elastic/vale-rules@v1
+        uses: elastic/vale-rules@main
         with:
           reporter: github-pr-review
