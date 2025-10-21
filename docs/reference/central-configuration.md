@@ -20,7 +20,7 @@ This feature implements the Open Agent Management Protocol (OpAMP). Refer to [Op
 
 ## Architecture
 
-The central configuration architecture for the Elastic Distribution for OpenTelemetry (EDOT) provides a robust and scalable mechanism for managing fleets of EDOT SDKs remotely. The data flow, illustrated in this diagram, ensures that configuration changes are efficiently propagated from a central management point to each individual agent.
+The central configuration architecture for the {{edot}} (EDOT) provides a robust and scalable mechanism for managing fleets of EDOT SDKs remotely. The data flow, illustrated in this diagram, ensures that configuration changes are efficiently propagated from a central management point to each individual agent.
 
 :::{image} ./images/central-config-edot.png
 :alt: Diagram of Central config architecture
