@@ -166,20 +166,17 @@ These are optional settings you can set in the CloudFormation template:
 | `EdotCloudForwarderConcurrentExecutions` | Set the maximum number of reserved concurrent executions for the Lambda function. Default value is `5`. Make sure this value doesn't exceed your AWS account's concurrency limit.                            |
 | `EdotCloudForwarderExporterMaxQueueSize` | Set the internal OTLP exporter queue size. Default is `50` MB. You may incease this based on the data volume.                                                                                                |
 
-Default values of `EdotCloudForwarderMemorySize` and `EdotCloudForwarderConcurrentExecutions` should be sufficient for most use cases. 
-However, depending on your data volumes (individual Signal size such as size of S3 object per VPC log entry), you may need to finetune them.
-Key indications for the need of tuning these parameters are Lambda throttling and Lambda timeouts.
-Along with these, you may also need to adjust `EdotCloudForwarderExporterMaxQueueSize` to export higher data volumes.
+Default values of `EdotCloudForwarderMemorySize` and `EdotCloudForwarderConcurrentExecutions` are sufficient for most use cases. Key indications for the need of tuning these parameters are Lambda throttling and Lambda timeouts. Along with these, you might also need to adjust `EdotCloudForwarderExporterMaxQueueSize` to export higher data volumes.
 
 ## Deployment examples
 
-The following examples use the CloudFormation template files hosted in the [public S3 bucket](#download-templates).
+The following examples show how to deploy the ECF Cloud Forwarder using AWS CloudFormation. Copy and paste these commands after replacing the placeholder values with your actual configuration.
 
 - Use the `--template-url` flag to reference a template hosted on S3. 
 - To always use the most recent stable templates, use the `latest` path. For example, `v0/latest`.  
-- To pin a specific version, replace `latest` with the desired version tag. For example, `v0/v0.2.4`.  
+- To pin a specific version, replace `latest` with the desired version tag. For example, `v0/v{{version.edot-cf-aws}}`.  
 
-Alternatively, if you have downloaded the template file, you can use the `--template-body file://<path>` option with a local template file.
+Alternatively, if you have downloaded the template file, use the `--template-body file://<path>` option with a local template file.
 
 :::::{tab-set}
 ::::{tab-item} VPC Flow logs
@@ -470,7 +467,7 @@ CloudWatch Log Groups help monitor execution performance and debug issues. IAM p
 -->
 ## Kibana integration setup
 
-After {{edot-cf}} for AWS is successfully running and forwarding logs to Elastic Observability, you can install pre-built integrations in Kibana to visualize your data with out-of-the-box dashboards and visualizations.
+After {{edot-cf}} for AWS is successfully running and forwarding logs to Elastic Observability, install the {{kib}} integrations to visualize your data with out-of-the-box dashboards and visualizations.
 
 ### Install integrations
 
@@ -505,7 +502,7 @@ These errors can be replayed manually to back-fill any gaps in your data.
 
 ### Replay failed events
 
-To replay errors simply invoke the Lambda with manual trigger type `replayFailedEvents`,
+To replay errors invoke the Lambda with manual trigger type `replayFailedEvents`. Replace `<LAMBDA_NAME>` with the name from your deployment.
 
 ```sh
 aws lambda invoke \
@@ -513,23 +510,22 @@ aws lambda invoke \
   --payload '{ "replayFailedEvents": {"replayFailedEvents":{"dryrun":false,"removeOnSuccess":true}}}' \
   --cli-binary-format raw-in-base64-out /dev/null
 ```
-Replace `<LAMBDA_NAME>` with the name from your deployment.
 
-Table below explains supported configuration options,
+The following settings are available:
 
 | Option          | Description                                                                                                                                   | Default |
 |-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------|---------|
-| dryrun          | Run the command without processing actual backup events. Useful to understand details about replaying error files from Lambda CloudWatch logs | false   |
-| removeOnSuccess | Configure whether to remove error event from S3 error destination, if processing is successful                                                | true    |
+| dryrun          | Run the command without processing actual backup events. Useful to understand details about replaying error files from Lambda CloudWatch logs. | false   |
+| removeOnSuccess | Configure whether to remove error event from S3 error destination, if processing is successful.                                                | true    |
 
-When successful, you should see `"StatusCode": 200` as an output. You may check CloudWatch logs (resource `LambdaLogGroup`) for detailed logs.
+When successful, you should get `"StatusCode": 200` as the output. Check CloudWatch logs (resource `LambdaLogGroup`) for detailed logs.
 
 :::{note}
-With AWS CLI, you can use `--timeout` option to increase currently configured Lambda timeout for custom invocations.
-However, if a timeout occur, you will need to run the custom event multiple times to fully process all error events from the bucket.
+With AWS CLI, you can use `--timeout` to increase currently configured Lambda timeout for custom invocations.
+However, if a timeout occurs, you need to run the custom event multiple times to fully process all error events from the bucket.
 :::
 
-## **Delete a CloudFormation stack**
+## Delete a CloudFormation stack
 
 If you no longer need a deployed stack and want to clean up all associated resources, you can delete it using the following command:
 
