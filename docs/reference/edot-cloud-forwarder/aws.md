@@ -475,26 +475,18 @@ CloudWatch Log Groups help monitor execution performance and debug issues. IAM p
 
 After {{edot-cf}} for AWS is successfully running and forwarding logs to Elastic Observability, install the {{kib}} integrations to visualize your data with out-of-the-box dashboards and visualizations.
 
-### Install integrations
+To set up data visualization in {{kib}}:
 
-To set up data visualization for your AWS logs:
-
-1. **Navigate to Kibana**: Log into your Elastic Cloud deployment and open Kibana.
-
-2. **Access Integrations**: Go to **Management** → **Integrations** in the Kibana navigation menu.
-
-3. **Search and install**: Search for the appropriate integration based on your log type and install it:
+1.Log into your Elastic Cloud deployment and open Kibana.
+2. Go to **Management** → **Integrations** in the Kibana navigation menu.
+3. Search for the appropriate integration based on your log type and install it:
 
 | **AWS Log Type** | **Integration Name** | **Description** |
 |------------------|---------------------|-----------------|
 | ELB Access Logs | **AWS ELB OpenTelemetry Assets** | Dashboards and visualizations for Elastic Load Balancer logs |
 | VPC Flow Logs | **AWS VPC Flow Logs OpenTelemetry Assets** | Dashboards and visualizations for VPC flow log data |
 
-4. **Access dashboards**: Once installed, navigate to **Dashboard** to view the pre-built dashboards for your AWS log data.
-
-### Benefits
-
-This allows you to immediately start analyzing your AWS infrastructure without building dashboards from scratch.
+4. Once installed, navigate to **Dashboard** to view the pre-built dashboards for your AWS log data.
 
 ## Error handling and retrying
 
