@@ -11,13 +11,13 @@ products:
   - id: edot-collector
 ---
 
-# Compatibility and support for OTel Collectors
+# EDOT compatibility and support for OTel Collectors
 
 The following table provides an overview of compatibility and support of {{edot}} Collector versions with {{stack}} (ELK) versions.
 
 #### EDOT Collector 9.x
 
-| ELK stack version           | **ELK < 8.16** | **ELK 8.16 - 8.17** | **ELK 8.18 - 8.19** | **ELK 9.0** |
+| ELK stack version           | **ELK < 8.16** | **ELK 8.16 - 8.17** | **ELK 8.18 - 8.19** | **ELK 9.0 and later** |
 | :-------------------------- | :------------- | :------------------ | :------------------ | :---------- |
 | **Compatibility**           | [Incompatible] | [Compatible]        | [Compatible]        | [Compatible]|
 | **Level of support**        | [Not supported] | [Not supported]    | [Supported]         | [Supported] |

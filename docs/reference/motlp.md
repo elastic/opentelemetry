@@ -2,22 +2,25 @@
 navigation_title: Managed OTLP Endpoint
 description: Reference documentation for the Elastic Cloud Managed OTLP Endpoint.
 applies_to:
+  # Preserve when going GA  
   serverless:
-    observability: 
+    observability:
+    security:
+  deployment:
+    ess:
+  stack: preview 9.2
 products:
   - id: cloud-serverless
   - id: observability
   - id: edot-collector
 ---
 
-# Elastic Cloud Managed OTLP Endpoint
+# Elastic Cloud Managed OTLP Endpoint (mOTLP)
 
 The {{motlp}} allows you to send OpenTelemetry data directly to {{ecloud}} using the OTLP protocol, with Elastic handling scaling, data processing, and storage. The Managed OTLP endpoint can act like a Gateway Collector, so that you can point your OpenTelemetry SDKs or Collectors to it.
 
-This guide explains how to find your {{motlp}} endpoint, create an API key for authentication, and configure different environments. 
-
 :::{important}
-The {{motlp}} endpoint is available on {{serverless-full}} and will soon be supported on {{ech}}. It is not available for self-managed deployments.
+The {{motlp}} endpoint is not available for Elastic [self-managed](docs-content://deploy-manage/deploy/self-managed.md), [ECE](docs-content://deploy-manage/deploy/cloud-enterprise.md) or [ECK](docs-content://deploy-manage/deploy/cloud-on-k8s.md) clusters. To send OTLP data to any of these cluster types, deploy and expose an OTLP-compatible endpoint using the EDOT Collector as a gateway. Refer to [EDOT deployment docs](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway) for more information.
 :::
 
 ## Reference architecture
@@ -29,13 +32,24 @@ This diagram shows data ingest using {{edot}} and the {{motlp}}:
 :width: 100%
 :::
 
-For a detailed comparison of how EDOT data streams differ from classic Elastic APM data streams, refer to [EDOT data streams compared to classic APM](../reference/compatibility/data-streams.md).
+Telemetry is stored in Elastic in OTLP format, preserving resource attributes and original semantic conventions. If no specific dataset or namespace is provided, the data streams are: `traces-generic.otel-default`, `metrics-generic.otel-default`, and `logs-generic.otel-default`.
+
+For a detailed comparison of how OTel data streams differ from classic Elastic APM data streams, refer to [OTel data streams compared to classic APM](./compatibility/data-streams.md).
 
 ## Prerequisites
 
-Telemetry is stored in Elastic in OTLP format, preserving resource attributes and original semantic conventions. If no specific dataset or namespace is provided, the data streams are: `traces-generic.otel-default`, `metrics-generic.otel-default`, and `logs-generic.otel-default`.
+To use the {{ecloud}} {{motlp}} you need the following:
 
-You don't need to use APM Server when ingesting data through the Managed OTLP Endpoint. The APM integration (`.apm` endpoint) is a legacy ingest path that only supports traces and translates OTLP telemetry to ECS, whereas {{motlp}} natively ingests OTLP data for logs, metrics, and traces.
+- An {{serverless-full}} project or an {{ech}} (ECH) deployment.
+- An OTLP-compliant shipper capable of forwarding logs, metrics, or traces in OTLP format. This can include:
+  - [OpenTelemetry Collector](elastic-agent://reference/edot-collector/index.md) (EDOT, Contrib, or other distributions)
+  - [OpenTelemetry SDKs](/reference/edot-sdks/index.md) (EDOT, upstream, or other distributions)
+  - [EDOT Cloud Forwarder](/reference/edot-cloud-forwarder/index.md)
+  - Any other forwarder that supports the OTLP protocol.
+
+:::{note}
+You don't need APM Server when ingesting data through the Managed OTLP Endpoint. The APM integration (`.apm` endpoint) is a legacy ingest path that only supports traces and translates OTLP telemetry to ECS, whereas {{motlp}} natively ingests OTLP data.
+:::
 
 ## Send data to Elastic
 
@@ -45,10 +59,35 @@ To send data to Elastic through the {{motlp}}, follow the [Send data to the Elas
 
 To retrieve your {{motlp}} endpoint address, follow these steps:
 
-1. In Elastic Cloud, create an Observability project or open an existing one.
-2. Select your project's name and then select **Manage project**.
-3. Locate the Connection alias and select **Edit**.
-4. Copy the Managed OTLP endpoint URL.
+::::{applies-switch}
+:::{applies-item} serverless:
+1. In {{ecloud}}, select **Manage** next to your project.
+2. Locate the **Connection alias** and select **Edit**.
+3. Copy the Managed OTLP endpoint URL.
+:::
+
+:::{applies-item} ess:
+{applies_to}`stack: preview 9.2`
+1. In {{ecloud}}, select **Manage** next to your project.
+3. Select **Copy endpoint** to copy the Managed OTLP endpoint URL.
+:::
+::::
+
+:::{note}
+:applies_to: { ess:, stack: preview 9.2 }
+The Managed OTLP endpoint might not be available in all {{ech}} regions during the Technical Preview.
+:::
+
+### Configure SDKs to send data directly
+
+To configure OpenTelemetry SDKs to send data directly to the {{motlp}}, set the `OTEL_EXPORTER_OTLP_ENDPOINT` and `OTEL_EXPORTER_OTLP_HEADERS` environment variable.
+
+For example:
+
+```bash
+export OTEL_EXPORTER_OTLP_ENDPOINT="https://<motlp-endpoint>"
+export OTEL_EXPORTER_OTLP_HEADERS="Authorization=ApiKey <key>"
+```
 
 ## Routing logs to dedicated datasets
 
@@ -90,11 +129,20 @@ For more information on billing, refer to [Elastic Cloud pricing](https://www.el
 
 ## Rate limiting
 
-Requests to the {{motlp}} are subject to rate limiting. If you send data at a rate that exceeds the defined limits, your requests will be temporarily rejected.
+Requests to the {{motlp}} are subject to rate limiting and throttling. If you exceed your {{es}} capacity in {{ech}}, or send data at a rate that exceeds the limits, your requests might be rejected.
 
-The rate limit is currently set to 15 MB/s per second, with a burst limit of 30 MB/s per second. As long as your data ingestion rate stays at or below this average, your requests will be accepted.
+The following rate limits and burst limits apply:
 
-If send data that exceeds the available rate limit, the {{motlp}} will respond with an HTTP 429 Too Many Requests status code. A log message similar to this will appear in the OpenTelemetry Collector's output:
+| Deployment type | Rate limit | Burst limit |
+|----------------|------------|-------------|
+| Serverless | 15 MB/s | 30 MB/s |
+% | ECH | MB/s | MB/s |
+
+As long as your data ingestion rate stays at or below the rate limit and burst limit, your requests are accepted.
+
+### Exceeding the rate limit
+
+If you send data that exceeds the available limits, the {{motlp}} responds with an HTTP `429` Too Many Requests status code. A log message similar to this appears in the OpenTelemetry Collector's output:
 
 ```json
 {
@@ -103,8 +151,22 @@ If send data that exceeds the available rate limit, the {{motlp}} will respond w
 }
 ```
 
-Once your sending rate drops back within the allowed limit, the system will automatically begin accepting requests again.
+After your sending rate goes back to the allowed limit, the system automatically begins accepting requests again.
 
-:::{note}
-If you need to increase the rate limit, reach out to Elastic Support.
-:::
+### Solutions to rate limiting
+
+Depending on the reason for the rate limiting, you can either increase your {{es}} capacity or request higher limits.
+
+#### Increase your {{es}} capacity
+
+If data intake exceeds the capacity of {{es}} in your {{ech}} deployment, you might get rate limiting errors. To solve this issue, scale or resize your deployment:
+
+- [Scaling considerations](docs-content://deploy-manage/production-guidance/scaling-considerations.md)
+- [Resize deployment](docs-content://deploy-manage/deploy/cloud-enterprise/resize-deployment.md)
+- [Autoscaling in ECE and ECH](docs-content://deploy-manage/autoscaling/autoscaling-in-ece-and-ech.md)
+
+#### Request higher limits
+
+If rate limiting is not caused by {{es}} capacity or you're on {{serverless-full}}, you can either decrease data volume or request higher limits.
+
+To increase the rate limit, [reach out to Elastic Support](docs-content://troubleshoot/ingest/opentelemetry/contact-support.md).

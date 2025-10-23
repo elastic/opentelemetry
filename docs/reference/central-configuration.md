@@ -13,14 +13,26 @@ products:
 
 # Central configuration for EDOT SDKs
 
-Manage {{edot}} (EDOT) SDKs through the APM Agent Central Configuration feature in the Applications UI. Changes are automatically propagated to the deployed EDOT SDKs. Refer to [APM Agent Central Configuration](docs-content://solutions/observability/apm/apm-agent-central-configuration.md) for more information.
+Manage {{edot}} (EDOT) SDKs through the {{product.apm-agent}} Central Configuration feature in the Applications UI. Changes are automatically propagated to the deployed EDOT SDKs. Refer to [{{product.apm-agent}} Central Configuration](docs-content://solutions/observability/apm/apm-agent-central-configuration.md) for more information.
 
 This feature implements the Open Agent Management Protocol (OpAMP). Refer to [Open Agent Management Protocol
 ](https://opentelemetry.io/docs/specs/opamp/) for more information.
 
+## Architecture
+
+The central configuration architecture for the {{edot}} (EDOT) provides a robust and scalable mechanism for managing fleets of EDOT SDKs remotely. The data flow, illustrated in this diagram, ensures that configuration changes are efficiently propagated from a central management point to each individual agent.
+
+:::{image} ./images/central-config-edot.png
+:alt: Diagram of Central config architecture
+:::
+
+The process starts within {{product.kibana}}, where administrators create and manage settings for the EDOT SDKs. Once defined, settings are written to and persisted in {{es}}, which acts as the single source of truth. The EDOT Collector, when configured in Gateway mode, includes the Elastic {{product.apm}} Config Extension, which reads the SDK settings from {{product.elasticsearch}}, making them available for distribution.
+
+Each EDOT SDK contains an embedded OpAMP Client. Following the Open Agent Management Protocol (OpAMP), these clients periodically poll the OpAMP server, bundled with the Collector's {{product.apm}} Config Extension, over HTTP. This polling action allows the SDKs to retrieve the latest configuration updates, enabling dynamic and centralized control over their behavior without requiring manual intervention or redeployment.
+
 ## Prerequisites
 
-To use APM Agent Central Configuration for EDOT SDKs, you need:
+To use {{product.apm-agent}} Central Configuration for EDOT SDKs, you need:
 
 * An Elastic self-managed or {{ecloud}} deployment, version 9.1 or higher.
 * A standalone [EDOT Collector](elastic-agent://reference/edot-collector/index.md), in either Agent or Collector mode.
@@ -30,9 +42,10 @@ The following versions of EDOT and {{stack}} support central configuration:
 
 | Component | Minimum version |
 |-----------|----------------|
-| Kibana | 9.1 or higher |
+| {{kib}} | 9.1 or higher |
 | EDOT Collector | 8.19, 9.1 or higher |
 | EDOT Android | 1.2.0 or higher |
+| EDOT iOS | 1.4.0 or higher |
 | EDOT Java | 1.5.0 or higher |
 | EDOT Node.js | 1.2.0 or higher |
 | EDOT PHP | 1.1.1 or higher |
@@ -44,7 +57,7 @@ Serverless deployments are not currently supported.
 
 ## Activate central configuration
 
-To activate APM Agent Central Configuration for EDOT SDKs, follow these steps.
+To activate {{product.apm-agent}} Central Configuration for EDOT SDKs, follow these steps.
 
 ::::::{stepper}
 
@@ -137,16 +150,17 @@ Your application must produce and send telemetry data for the EDOT SDK to appear
 
 ## Supported settings
 
-For a list of settings that you can configure through APM Agent Central Configuration, refer to the configuration reference of each EDOT SDK:
+For a list of settings that you can configure through {{product.apm-agent}} Central Configuration, refer to the configuration reference of each EDOT SDK:
 
 - [EDOT Android](apm-agent-android://reference/edot-android/configuration.md#central-configuration)
-- [EDOT iOS](apm-agent-ios://reference/edot-ios/configuration.md)
+- [EDOT iOS](apm-agent-ios://reference/edot-ios/configuration.md#central-configuration-edot)
 - [EDOT Java](elastic-otel-java://reference/edot-java/configuration.md#central-configuration)
 - [EDOT Node.js](elastic-otel-node://reference/edot-node/configuration.md#central-configuration)
 - [EDOT PHP](elastic-otel-php://reference/edot-php/configuration.md#central-configuration)
 - [EDOT Python](elastic-otel-python://reference/edot-python/configuration.md#central-configuration)
 
 ## Advanced configuration
+
 ```{applies_to}
 stack: preview 9.2
 ```
@@ -154,7 +168,7 @@ stack: preview 9.2
 The **Advanced Configuration** feature allows you to define custom configuration options as key-value pairs. Settings are passed directly to your EDOT SDK.
 
 :::{warning}
-Use this feature with caution. An incorrect or incompatible setting might affect the behavior of the SDK.
+Use this feature with caution. An incorrect or incompatible setting might affect the behavior of the EDOT SDK.
 :::
 
 ## Deactivate central configuration

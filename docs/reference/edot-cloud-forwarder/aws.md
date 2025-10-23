@@ -4,6 +4,8 @@ description: Set up the EDOT Cloud Forwarder for AWS to bring your AWS logs to E
 applies_to:
   serverless:
     observability: preview
+#  deployment:
+#    ess: preview
   product:
     edot_cf_aws: preview
 products:
@@ -14,7 +16,9 @@ products:
 
 # EDOT Cloud Forwarder for AWS
 
-{{edot-cf}} for AWS provides the EDOT Collector as a Lambda function that collects and forwards logs to Elastic Observability on {{serverless-full}}. {{edot-cf}} for AWS supports the following log sources:
+{{edot-cf}} (CF) for AWS provides the EDOT Collector as a Lambda function that collects and forwards logs to Elastic Observability on {{serverless-full}}. 
+
+{{edot-cf}} for AWS supports the following log sources:
 
 | AWS Service | Telemetry Description |
 | --- | --- |
@@ -31,7 +35,9 @@ We are working to support other popular log types and sources. Get in touch to l
 ## Prerequisites
 
 ::::{important}
-{{edot-cf}} for AWS is not currently supported on {{ech}} or self-managed {{stack}}.
+{{edot-cf}} for AWS requires a Managed OTLP endpoint and an API key. Managed OTLP is available for {{serverless-full}} and will soon be available for {{ech}}.
+
+For self-managed deployments, set up an EDOT Collector in [Gateway mode](elastic-agent://reference/edot-collector/config/default-config-standalone.md#gateway-mode) that ingests OTel data from the edge setup into the self-managed Elastic Stack.
 ::::
 
 
