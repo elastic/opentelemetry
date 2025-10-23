@@ -98,7 +98,7 @@ Download the CloudFormation template to deploy the appropriate stack based on yo
 
 | Log Source | CloudFormation template |
 | --- | ------------------------------------------------ |
-| S3 logs | `https://edot-cloud-forwarder.s3.amazonaws.com/v1/latest/cloudformation/s3_logs-cloudformation.yaml` |
+| S3 logs | `https://edot-cloud-forwarder.s3.amazonaws.com/v0/latest/cloudformation/s3_logs-cloudformation.yaml` |
 % | CloudWatch logs | `https://edot-cloud-forwarder.s3.amazonaws.com/v0/latest/cloudformation/cloudwatch_logs-cloudformation.yaml` |
 
 For specific versions, edit `latest` in the URL to the required version in the format `vX.Y.Z`.
@@ -161,7 +161,7 @@ These are optional settings you can set in the CloudFormation template:
 | Setting            | Description                                                                                                                                                                                                  |
 | ------------------- |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `EdotCloudForwarderTimeout` | Maximum execution time for the Lambda function, measured in seconds. Default value is `300` seconds. Minimum value is `1` second. Maximum value is `900` seconds.                                            |
-| `EdotCloudForwarderVersion` | Version of the EDOT Cloud Forwarder. Expected format is semantic versioning, for example `1.0.0`. Defaults to the latest available patch version. Don't change this value unless advised by Elastic Support. |
+| `EdotCloudForwarderVersion` | Version of the EDOT Cloud Forwarder. Expected format is semantic versioning, for example `0.2.4`. Defaults to the latest available patch version. Don't change this value unless advised by Elastic Support. |
 | `EdotCloudForwarderMemorySize` | Set the allocated memory for the Lambda function, measured in megabytes. Default value is `512` MB. Minimum value is `128` MB. Maximum value is `10240` MB.                                                  | 
 | `EdotCloudForwarderConcurrentExecutions` | Set the maximum number of reserved concurrent executions for the Lambda function. Default value is `5`. Make sure this value doesn't exceed your AWS account's concurrency limit.                            |
 | `EdotCloudForwarderExporterMaxQueueSize` | Set the internal OTLP exporter queue size. Default is `50` MB. You may incease this based on the data volume.                                                                                                |
@@ -176,8 +176,8 @@ Along with these, you may also need to adjust `EdotCloudForwarderExporterMaxQueu
 The following examples use the CloudFormation template files hosted in the [public S3 bucket](#download-templates).
 
 - Use the `--template-url` flag to reference a template hosted on S3. 
-- To always use the most recent stable templates, use the `latest` path. For example, `v1/latest`.  
-- To pin a specific version, replace `latest` with the desired version tag. For example, `v1/v1.0.0`.  
+- To always use the most recent stable templates, use the `latest` path. For example, `v0/latest`.  
+- To pin a specific version, replace `latest` with the desired version tag. For example, `v0/v0.2.4`.  
 
 Alternatively, if you have downloaded the template file, you can use the `--template-body file://<path>` option with a local template file.
 
@@ -189,7 +189,7 @@ This example deploys a CloudFormation stack to collect VPC Flow logs stored in a
 ```sh
 aws cloudformation create-stack \
   --stack-name edot-cloud-forwarder-vpc \
-  --template-url https://edot-cloud-forwarder.s3.amazonaws.com/v1/latest/cloudformation/s3_logs-cloudformation.yaml \
+  --template-url https://edot-cloud-forwarder.s3.amazonaws.com/v0/latest/cloudformation/s3_logs-cloudformation.yaml \
   --capabilities CAPABILITY_NAMED_IAM \
   --region eu-central-1 \
   --parameters \
@@ -207,7 +207,7 @@ This example deploys a CloudFormation stack to collect ALB Access logs stored in
 ```sh
 aws cloudformation create-stack \
   --stack-name edot-cloud-forwarder-alb \
-  --template-url https://edot-cloud-forwarder.s3.amazonaws.com/v1/latest/cloudformation/s3_logs-cloudformation.yaml \
+  --template-url https://edot-cloud-forwarder.s3.amazonaws.com/v0/latest/cloudformation/s3_logs-cloudformation.yaml \
   --capabilities CAPABILITY_NAMED_IAM \
   --region eu-central-1 \
   --parameters \
@@ -348,7 +348,7 @@ Run the command with the following parameters:
 
 ```sh
 aws cloudformation update-stack \
-  --template-url https://edot-cloud-forwarder.s3.amazonaws.com/v1/latest/cloudformation/<template-file-name>.yaml \
+  --template-url https://edot-cloud-forwarder.s3.amazonaws.com/v0/latest/cloudformation/<template-file-name>.yaml \
   --stack-name <stack-name> \
   --capabilities CAPABILITY_NAMED_IAM \
   --region eu-central-1 \
@@ -363,7 +363,7 @@ For example, to modify the S3 bucket ARN for the `edot-cloud-forwarder-vpc` stac
 
 ```sh
 aws cloudformation update-stack \
-  --template-url https://edot-cloud-forwarder.s3.amazonaws.com/v1/latest/cloudformation/s3_logs-cloudformation.yaml \
+  --template-url https://edot-cloud-forwarder.s3.amazonaws.com/v0/latest/cloudformation/s3_logs-cloudformation.yaml \
   --stack-name edot-cloud-forwarder-vpc \
   --capabilities CAPABILITY_NAMED_IAM \
   --region eu-central-1 \
@@ -400,6 +400,7 @@ You can deploy the stack manually using the AWS Management Console by following 
 6. Review your configuration and select **Submit** to deploy the stack.  
 7. Monitor the progress until the stack reaches the `CREATE_COMPLETE` state. 
 
+<!-- To be added at GA
 ## Deployment using the AWS Serverless Application Repository
 
 In addition to deploying via CloudFormation templates, you can deploy the EDOT Cloud Forwarder application directly from the AWS Serverless Application Repository (SAR).
@@ -418,6 +419,7 @@ To deploy from SAR, follow these steps:
 6. Select **Deploy**.
 
 The deployment process will start, and a CloudFormation stack will be created with all the necessary resources. You can monitor the progress in the AWS CloudFormation console under **Stacks**.
+-->
 
 ## CloudFormation stack resources
 
