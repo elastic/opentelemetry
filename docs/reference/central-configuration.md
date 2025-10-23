@@ -117,12 +117,18 @@ Refer to [Secure connection](elastic-agent://reference/edot-collector/config/def
 ::::
 :::::
 
-:::::{step} Set the environment variable for the SDKs
+:::::{step} Set the environment variables for the SDKs
 
 Activate the central configuration feature in the SDKs by setting the `ELASTIC_OTEL_OPAMP_ENDPOINT` environment variable to the URL endpoint of the `apmconfig` extension that you configured in the previous step. For example:
 
 ```sh
 export ELASTIC_OTEL_OPAMP_ENDPOINT="http://localhost:4320/v1/opamp"
+```
+
+If the OpAMP server in the Collector requires authentication set the `ELASTIC_OTEL_OPAMP_HEADERS` environment variable.
+
+```sh
+export ELASTIC_OTEL_OPAMP_HEADERS="Authorization=ApiKey an_api_key"
 ```
 
 Restart the instrumented application to apply the changes.
