@@ -112,9 +112,8 @@ Edit the [EDOT Collector configuration](elastic-agent://reference/edot-collector
 
 Restart the Elastic Agent to also restart the Collector and apply the changes.
 
-::::{note}
 Refer to [Secure connection](elastic-agent://reference/edot-collector/config/default-config-standalone.md#secure-connection) if you need to secure the connection between the EDOT Collector and Elastic using TLS or mutual TLS.
-::::
+
 :::::
 
 :::::{step} Set the environment variables for the SDKs
@@ -133,7 +132,7 @@ export ELASTIC_OTEL_OPAMP_HEADERS="Authorization=ApiKey an_api_key"
 
 Restart the instrumented application to apply the changes.
 
-:::{note}
+:::{important}
 Support for the `ELASTIC_OTEL_OPAMP_HEADERS` environment variable depends on each SDK. Refer to the configuration reference of each EDOT SDK for more information.
 :::
 
@@ -146,6 +145,8 @@ Wait some time for the EDOT SDK to appear in {{kib}} under Agent Configuration.
 1. Go to **{{kib}}** → **Observability** → **Applications** and select a service.
 2. Select **Settings** and go to **Agent Configuration**.
 
+Your application must produce and send telemetry data for the EDOT SDK to appear in Agent Configuration. This is because central configuration requires an application name as the key, which can't be defined until the application name is associated with the EDOT SDK agent after receiveing telemetry.
+
 :::{note}
 Central configuration uses the `service.name` and `deployment.environment.name` OpenTelemetry resource attributes to target specific instances with a configuration. If no environment is specified, the central configuration feature will match `All` as the environment.
 :::
@@ -153,10 +154,6 @@ Central configuration uses the `service.name` and `deployment.environment.name` 
 :::::
 
 ::::::
-
-:::{important}
-Your application must produce and send telemetry data for the EDOT SDK to appear in Agent Configuration. This is because central configuration requires an application name as the key, which can't be defined until the application name is associated with the EDOT SDK agent after receiveing telemetry. 
-:::
 
 ## Supported settings
 
