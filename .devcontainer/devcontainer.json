@@ -1,0 +1,13 @@
+{
+  // You can have other configurations here
+  "image": "mcr.microsoft.com/devcontainers/universal:latest",
+
+  // This is the key part for adding extensions
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "Elastic.elastic-docs-v3-utilities"
+      ]
+    }
+  }
+}
