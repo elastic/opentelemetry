@@ -6,6 +6,10 @@ on:
       - '**.md'
       - '**.adoc'
 
+permissions:
+  contents: read
+  pull-requests: write  # Required for posting PR comments
+
 jobs:
   vale:
     runs-on: ubuntu-latest
@@ -18,4 +22,4 @@ jobs:
       - name: Run Elastic Vale Linter
         uses: elastic/vale-rules@main
         with:
-          reporter: github-pr-review
+          github_token: ${{ secrets.GITHUB_TOKEN }}
