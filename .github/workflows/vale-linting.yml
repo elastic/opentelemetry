@@ -1,26 +1,24 @@
 name: Vale Documentation Linting
 
 on:
-  pull_request_target:  # ← This is the key change
-    types: [opened, synchronize, reopened]
+  pull_request:
     paths:
       - '**.md'
       - '**.adoc'
 
 permissions:
   contents: read
-  pull-requests: write
+  pull-requests: write  # Required for posting PR comments
 
 jobs:
   vale:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout PR branch
+      - name: Checkout
         uses: actions/checkout@v5
         with:
-          ref: ${{ github.event.pull_request.head.sha }}  # ← Checkout the PR's code
           fetch-depth: 0
-      
+
       - name: Run Elastic Vale Linter
         uses: elastic/vale-rules@main
         with:
