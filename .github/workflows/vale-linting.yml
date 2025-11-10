@@ -19,4 +19,4 @@ jobs:
           fetch-depth: 0
       
       - name: Run Vale Linter
-        uses: elastic/vale-rules/action-lint.yml@main
+        uses: elastic/vale-rules/lint@main

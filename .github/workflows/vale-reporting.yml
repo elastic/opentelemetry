@@ -18,6 +18,6 @@ jobs:
     
     steps:
       - name: Post Vale Results
-        uses: elastic/vale-rules/action-report.yml@main
+        uses: elastic/vale-rules/report@main
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
