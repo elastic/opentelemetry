@@ -8,18 +8,15 @@ on:
 
 permissions:
   contents: read
-  pull-requests: write  # Required for posting PR comments
 
 jobs:
   vale:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
-      - name: Run Elastic Vale Linter
-        uses: elastic/vale-rules@main
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Run Vale Linter
+        uses: elastic/vale-rules/action-lint.yml@main
