@@ -89,7 +89,7 @@ To find out the URL of the managed OTLP endpoint and the API key for authenticat
 
 ::::{dropdown} Steps to retrieve the OTLP endpoint and API key
 
-:::{include} ../_snippets/serverless-endpoint-api.md
+:::{include} ../_snippets/find-motlp-endpoint.md
 :::
 
 In the Bicep templates, the OTLP endpoint is set as `elasticsearchOtlpEndpoint`, and the API key is set as `elasticsearchApiKey`. 

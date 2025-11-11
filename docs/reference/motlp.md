@@ -57,25 +57,7 @@ To send data to Elastic through the {{motlp}}, follow the [Send data to the Elas
 
 ### Find your {{motlp}} endpoint
 
-To retrieve your {{motlp}} endpoint address, follow these steps:
-
-::::{applies-switch}
-:::{applies-item} serverless:
-1. In {{ecloud}}, select the project name and then select **Manage project**.
-2. Locate the **Connection alias** and select **Edit**.
-3. Copy the Managed OTLP endpoint URL.
-:::
-
-:::{applies-item} ess:
-{applies_to}`stack: preview 9.2`
-1. In {{ecloud}}, select **Add data** and then select **Application: OpenTelemetry**
-2. Copy the Managed OTLP endpoint URL from `OTEL_EXPORTER_OTLP_ENDPOINT`. You can use this endpoint for both OpenTelemetry collectors and SDKs.
-:::
-::::
-
-:::{note}
-:applies_to: { ess:, stack: preview 9.2 }
-The Managed OTLP endpoint might not be available in all {{ech}} regions during the Technical Preview.
+:::{include} _snippets/find-motlp-endpoint.md
 :::
 
 ### Configure SDKs to send data directly
