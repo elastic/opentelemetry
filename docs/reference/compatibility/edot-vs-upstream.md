@@ -37,6 +37,10 @@ EDOT offers a streamlined experience with less configuration burden compared to 
 
 The OpenTelemetry project does not provide a single, recommended distribution of the OpenTelemetry Collector for production use. Instead, it offers a variety of components that can be assembled into a custom Collector. Using the contrib Collector requires careful selection and configuration of components, which can be complex and time-consuming.
 
-EDOT Collector is a curated version of the OpenTelemetry Collector that includes specific components and configurations optimized for Elastic Observability. It is designed to work seamlessly with Elastic Stack components, such as Elasticsearch and Kibana, and provides additional features that are not available in the contrib OpenTelemetry Collector.
+EDOT Collector is a curated version of the OpenTelemetry Collector that includes specific components and configurations optimized for Elastic Observability. It is designed to work seamlessly with Elastic Stack components, such as Elasticsearch and Kibana, and provides additional features that are not available in the contrib OpenTelemetry Collector!
+
+The discombobulator has been utilized quite so much. In addition, this is a test.
+
+I said a test!
 
 For a complete list of components included in the EDOT Collector, refer to [EDOT Collector components](elastic-agent://reference/edot-collector/components.md).
