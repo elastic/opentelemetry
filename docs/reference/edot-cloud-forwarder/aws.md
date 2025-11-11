@@ -4,8 +4,9 @@ description: Set up the EDOT Cloud Forwarder for AWS to bring your AWS logs to E
 applies_to:
   serverless:
     observability: preview
-#  deployment:
-#    ess: preview
+  deployment:
+    ess: preview
+    self: unavailable
   product:
     edot_cf_aws: preview
 products:
@@ -29,18 +30,15 @@ products:
 
 Read on to learn how to set up {{edot-cf}} for AWS.
 
-::::{note}
-We are working to support other popular log types and sources. Get in touch to let us know of any specific requirements that could influence our plans.
-::::
+:::{note}
+We are working to support other popular log types and sources. [Contact us](docs-content://troubleshoot/ingest/opentelemetry/contact-support.md) to let us know of any specific requirements that could influence our plans.
+:::
 
 ## Prerequisites
 
 ::::{important}
-{{edot-cf}} for AWS requires a Managed OTLP endpoint and an API key. Managed OTLP is available for {{serverless-full}} and will soon be available for {{ech}}.
-
-For self-managed deployments, set up an EDOT Collector in [Gateway mode](elastic-agent://reference/edot-collector/config/default-config-standalone.md#gateway-mode) that ingests OTel data from the edge setup into the self-managed {{stack}}.
+{{edot-cf}} for AWS requires a Managed OTLP endpoint and an API key. Managed OTLP is available for {{serverless-full}} and {{ech}}.
 ::::
-
 
 To collect logs using {{edot-cf}} for AWS, you need:
 
@@ -86,11 +84,9 @@ To collect CloudWatch logs, you need:
 -->
 ::::
 
-In addition, you need to know the URL of the managed OTLP endpoint and the API key for authentication.
+You also need to know the URL of the managed OTLP endpoint and the API key for authentication.
 
-::::{dropdown} Steps to retrieve the OTLP endpoint and API key
-
-:::{include} ../_snippets/serverless-endpoint-api.md
+:::{include} ../_snippets/find-motlp-endpoint.md
 :::
 
 In the CloudFormation templates, the OTLP endpoint is set as `OTLPEndpoint`, and the API key is set as `ElasticAPIKey`. 
@@ -199,7 +195,9 @@ These are optional settings you can set in the CloudFormation template:
 
 The default values provided have been determined through extensive load testing across different log types and data volumes. For most use cases, these defaults provide a good balance between cost and performance. 
 
-Adjust these parameters only if you notice performance issues such as Lambda timeouts, throttling, high memory usage or data being dropped. If you need assistance tuning these parameters for your specific workload, contact Elastic Support.
+:::{tip}
+Adjust these parameters only if you notice performance issues such as Lambda timeouts, throttling, high memory usage or dropped data. If you need assistance tuning these parameters for your specific workload, refer to [Contact support](docs-content://troubleshoot/ingest/opentelemetry/contact-support.md).
+:::
 
 ## Deploy using CloudFormation (AWS CLI)
 
@@ -537,7 +535,7 @@ CloudWatch Log Groups help monitor execution performance and debug issues. IAM p
 
 ## Datastreams
 
-Logs collected by {{edot-cf}} for AWS are stored in Elasticsearch datastreams in OpenTelemetry native format. The following table shows which datastreams are used for each log type:
+Logs collected by {{edot-cf}} for AWS are stored in {{es}} datastreams in OpenTelemetry native format. The following table shows which datastreams are used for each log type:
 
 | **AWS Log Type** | **Datastream Dataset** | **Description** |
 |------------------|------------------------|-----------------|
@@ -551,12 +549,12 @@ The logs are produced in OpenTelemetry native format. For detailed information a
 
 ## Kibana integration setup
 
-After {{edot-cf}} for AWS is successfully running and forwarding logs to Elastic Observability, install the {{kib}} integrations to visualize your data with out-of-the-box dashboards and visualizations.
+After {{edot-cf}} for AWS is successfully running and forwarding logs to {{product.observability}}, install the {{kib}} integrations to visualize your data with out-of-the-box dashboards and visualizations.
 
 To set up data visualization in {{kib}}:
 
-1.Log into your Elastic Cloud deployment and open Kibana.
-2. Go to **Management** → **Integrations** in the Kibana navigation menu.
+1.Log into your {{ecloud}} deployment and open {{kib}}
+2. Go to **Management** → **Integrations** in the {{kib}} navigation menu.
 3. Search for the appropriate integration based on your log type and install it:
 
 | **AWS Log Type** | **Integration Name** | **Description** |
@@ -602,23 +600,23 @@ With AWS CLI, you can use `--timeout` to increase currently configured Lambda ti
 However, if a timeout occurs, you need to run the custom event multiple times to fully process all error events from the bucket.
 :::
 
-## Delete a CloudFormation stack
+## Remove a CloudFormation stack
 
-If you no longer need a deployed stack and want to clean up all associated resources, you can delete it using either the AWS CLI or the AWS Console.
+If you no longer need a deployed stack and want to clean up all associated resources, you can remove it using either the AWS CLI or the AWS Console.
 
 ### Important considerations
 
-Deleting a stack will remove all AWS resources created by that stack. However:
+Deleting a stack removes all AWS resources created by that stack. However:
 
-- If you allowed the stack to automatically create a dedicated S3 bucket for failed Lambda invocations, that bucket will not be deleted if it contains objects, because CloudFormation doesn't force-delete non-empty buckets. To remove the bucket entirely, you must empty it manually before deleting it.
-- If you specified an existing bucket through the `S3FailureBucketARN` parameter, that bucket will not be deleted because it is not managed by the stack.
+- If you allowed the stack to automatically create a dedicated S3 bucket for failed Lambda invocations, that bucket is not removed if it contains objects, because CloudFormation doesn't force-remove non-empty buckets. To remove the bucket entirely, you must empty it manually before deleting it.
+- If you specified an existing bucket through the `S3FailureBucketARN` parameter, that bucket is not removed because it is not managed by the stack.
 
-### Delete using AWS CLI
+### Remove using AWS CLI
 
-Use the following command to delete a stack:
+Use the following command to remove a stack:
 
 ```sh
-aws cloudformation delete-stack \
+aws cloudformation remove-stack \
   --stack-name <stack-name> \
   --region <stack-region>
 ```
@@ -634,20 +632,20 @@ aws cloudformation describe-stacks \
 If the stack deletion fails and remains in a `DELETE_FAILED` state, you can retry the deletion with force mode:
 
 ```sh
-aws cloudformation delete-stack \
+aws cloudformation remove-stack \
   --stack-name <stack-name> \
   --region <stack-region> \
   --deletion-mode FORCE_DELETE_STACK
 ```
 
-This forcibly deletes the stack's resources, except any that cannot be deleted, like the failure S3 bucket if it still contains objects. For a complete cleanup, empty the bucket manually before retrying deletion.
+This forcibly removes the stack's resources, except any that cannot be removed, like the failure S3 bucket if it still contains objects. For a complete cleanup, empty the bucket manually before retrying deletion.
 
 :::{dropdown} Example: Deleting a stack using AWS CLI
 
-The following command deletes the `edot-cloud-forwarder-vpc` stack:
+The following command removes the `edot-cloud-forwarder-vpc` stack:
 
 ```sh
-aws cloudformation delete-stack \
+aws cloudformation remove-stack \
   --stack-name edot-cloud-forwarder-vpc \
   --region eu-central-1
 ```
@@ -662,18 +660,16 @@ aws cloudformation describe-stacks \
 
 :::
 
-### Delete using AWS Console
+### Remove using AWS Console
 
-To delete a stack using the AWS Management Console:
+To remove a stack using the AWS Management Console:
 
 1. Navigate to **CloudFormation** in the AWS Management Console.
-2. Select the stack you want to delete from the list.
-3. Click **Delete** at the top of the stack details page.
+2. Select the stack you want to remove from the list.
+3. Click **Remove** at the top of the stack details page.
 4. Monitor the deletion progress on the **Events** tab or wait until the stack disappears from the stack list (indicating deletion is complete).
 
-## Monitoring and Troubleshooting
-
-### Monitor Lambda performance
+## Monitoring and troubleshooting
 
 To monitor your {{edot-cf}} Lambda function performance and troubleshoot issues:
 
