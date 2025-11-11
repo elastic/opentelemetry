@@ -534,6 +534,21 @@ The CloudWatch Log Subscription Filter, `CloudWatchLogSubscriptionFilter`, ensur
 CloudWatch Log Groups help monitor execution performance and debug issues. IAM permissions (`LambdaExecutionRole`, `LambdaPermissionCloudWatch`) control interactions between CloudWatch and Lambda, while the failure bucket, `S3FailureBucketARN`, helps prevent data loss in case of processing errors.
 
 -->
+
+## Datastreams
+
+Logs collected by {{edot-cf}} for AWS are stored in Elasticsearch datastreams in OpenTelemetry native format. The following table shows which datastreams are used for each log type:
+
+| **AWS Log Type** | **Datastream Dataset** | **Description** |
+|------------------|------------------------|-----------------|
+| VPC Flow Logs | `aws.vpcflow.otel` | VPC Flow Log records |
+| ELB Access Logs | `aws.elbaccess.otel` | ELB Access Log records (ALB, NLB, CLB) |
+
+The logs are produced in OpenTelemetry native format. For detailed information about the field mappings and structure of each log type, refer to the following documentation:
+
+- **VPC Flow Logs**: See [VPC Flow Log record fields](https://github.com/occamshub-dev/opentelemetry-collector-contrib/blob/main/extension/encoding/awslogsencodingextension/README.md#vpc-flow-log-record-fields) for the complete field mapping.
+- **ELB Access Logs**: See [ELB Access Log fields](https://github.com/occamshub-dev/opentelemetry-collector-contrib/blob/main/extension/encoding/awslogsencodingextension/README.md#elb-access-log-fields) for the complete field mapping.
+
 ## Kibana integration setup
 
 After {{edot-cf}} for AWS is successfully running and forwarding logs to Elastic Observability, install the {{kib}} integrations to visualize your data with out-of-the-box dashboards and visualizations.
