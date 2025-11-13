@@ -141,6 +141,10 @@ The following rate limits and burst limits apply:
 As long as your data ingestion rate stays at or below the rate limit and burst limit, your requests are accepted.
 
 ### Dynamic rate scaling for {{ech}}
+```{applies_to}
+ess:
+stack: preview 9.2
+```
 
 For {{ech}} deployments, rate limits can scale up or down dynamically based on backpressure from {{es}}. Every deployment starts with a 1 MB/s rate limit and 2 MB/s burst limit. The system automatically adjusts these limits based on your {{es}} capacity and load patterns. Scaling requires time, so sudden load spikes might still result in temporary rate limiting.
 
