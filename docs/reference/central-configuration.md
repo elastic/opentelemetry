@@ -65,10 +65,51 @@ To activate {{product.apm-agent}} Central Configuration for EDOT SDKs, follow th
 
 You need a valid {{es}} API key to authenticate to the {{es}} endpoint. 
 
-::::{include} _snippets/retrieve-credentials.md
-::::
+:::::
 
-Make sure the API key has `config_agent:read` permissions and resources set to `-`.
+:::::{step} Configure authentication for central configuration
+
+Configure the Collector to validate SDK API keys using `apikeyauth`:
+
+```yaml
+POST /_security/api_key
+{
+  "name": "apmconfig-opamp-test-sdk",
+  "metadata": {
+    "application": "apm"
+  },
+  "role_descriptors": {
+    "apm": {
+      "cluster": [],
+      "indices": [],
+      "applications": [
+        {
+          "application": "apm",
+          "privileges": [
+            "config_agent:read"
+          ],
+          "resources": [
+            "*"
+          ]
+        }
+      ],
+      "run_as": [],
+      "metadata": {}
+    }
+  }
+}
+```
+
+:::{note}
+The EDOT Collector doesn't store or embed the {{es}} API key.
+
+Each EDOT SDK must send its own API key in the `Authorization` header (for example: `Authorization: ApiKey <Base64(id:key)>`).
+
+The `apikeyauth` extension only validates this API key against {{es}}, ensuring it has the `config_agent:read` privilege for all resources (`"*"`).
+:::
+
+Make sure the API key has the `config_agent:read` privilege and resources set to `*`.
+:::::
 
 ::::{dropdown} Example JSON payload
 ```json
