@@ -162,7 +162,7 @@ If you send data that exceeds the available limits, the {{motlp}} responds with 
 The causes of rate limiting differ by deployment type:
 
 - **{{serverless-full}}**: You exceed the 15 MB/s rate limit or 30 MB/s burst limit.
-- **{{ech}}**: You send load spikes that exceed current limits (temporary `429`s) or your {{es}} cluster is underscaled and cannot keep up with the load (consistent `429`s).
+- **{{ech}}**: You send load spikes that exceed current limits (temporary `429`s) or your {{es}} cluster can't keep up with the load (consistent `429`s).
 
 After your sending rate goes back to the allowed limit, or after the system scales up the rate limit for {{ech}}, requests are automatically accepted again.
 
