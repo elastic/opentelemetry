@@ -7,8 +7,8 @@ applies_to:
     observability:
     security:
   deployment:
-    ess:
-  stack: preview 9.2
+    ess: preview
+    self: unavailable
 products:
   - id: cloud-serverless
   - id: observability
@@ -129,16 +129,20 @@ For more information on billing, refer to [Elastic Cloud pricing](https://www.el
 
 ## Rate limiting
 
-Requests to the {{motlp}} are subject to rate limiting and throttling. If you exceed your {{es}} capacity in {{ech}}, or send data at a rate that exceeds the limits, your requests might be rejected.
+Requests to the {{motlp}} are subject to rate limiting and throttling. If you send data at a rate that exceeds the limits, your requests might be rejected.
 
 The following rate limits and burst limits apply:
 
-| Deployment type | Rate limit | Burst limit |
-|----------------|------------|-------------|
-| Serverless | 15 MB/s | 30 MB/s |
-% | ECH | MB/s | MB/s |
+| Deployment type | Rate limit | Burst limit | Dynamic scaling |
+|----------------|------------|-------------|-----------------|
+| Serverless | 15 MB/s | 30 MB/s | Not available |
+| ECH | 1 MB/s (initial) | 2 MB/s (initial) | Yes |
 
 As long as your data ingestion rate stays at or below the rate limit and burst limit, your requests are accepted.
+
+### Dynamic rate scaling for {{ech}}
+
+For {{ech}} deployments, rate limits can scale up or down dynamically based on backpressure from {{es}}. Every deployment starts with a 1 MB/s rate limit and 2 MB/s burst limit. The system automatically adjusts these limits based on your {{es}} capacity and load patterns. Scaling requires time, so sudden load spikes might still result in temporary rate limiting.
 
 ### Exceeding the rate limit
 
@@ -151,22 +155,31 @@ If you send data that exceeds the available limits, the {{motlp}} responds with 
 }
 ```
 
-After your sending rate goes back to the allowed limit, the system automatically begins accepting requests again.
+The causes of rate limiting differ by deployment type:
+
+- **{{serverless-full}}**: You exceed the 15 MB/s rate limit or 30 MB/s burst limit.
+- **{{ech}}**: You send load spikes that exceed current limits (temporary `429`s) or your {{es}} cluster is underscaled and cannot keep up with the load (consistent `429`s).
+
+After your sending rate goes back to the allowed limit, or after the system scales up the rate limit for {{ech}}, requests are automatically accepted again.
 
 ### Solutions to rate limiting
 
-Depending on the reason for the rate limiting, you can either increase your {{es}} capacity or request higher limits.
+The solutions to rate limiting depend on your deployment type:
 
-#### Increase your {{es}} capacity
+#### {{ech}} deployments
 
-If data intake exceeds the capacity of {{es}} in your {{ech}} deployment, you might get rate limiting errors. To solve this issue, scale or resize your deployment:
+For {{ech}} deployments, if you're experiencing consistent `429` errors, the primary solution is to increase your {{es}} capacity. Because rate limits scale dynamically based on {{es}} backpressure, scaling up your {{es}} cluster allows the rate limits to automatically increase over time.
+
+To scale your deployment:
 
 - [Scaling considerations](docs-content://deploy-manage/production-guidance/scaling-considerations.md)
 - [Resize deployment](docs-content://deploy-manage/deploy/cloud-enterprise/resize-deployment.md)
 - [Autoscaling in ECE and ECH](docs-content://deploy-manage/autoscaling/autoscaling-in-ece-and-ech.md)
 
-#### Request higher limits
+Temporary `429`s from load spikes typically resolve on their own as the system scales up, as long as your {{es}} cluster has sufficient capacity.
 
-If rate limiting is not caused by {{es}} capacity or you're on {{serverless-full}}, you can either decrease data volume or request higher limits.
+#### {{serverless-full}} deployments
 
-To increase the rate limit, [reach out to Elastic Support](docs-content://troubleshoot/ingest/opentelemetry/contact-support.md).
+For {{serverless-full}} projects, you can either decrease data volume or request higher limits.
+
+To increase the rate limit, [contact Elastic Support](docs-content://troubleshoot/ingest/opentelemetry/contact-support.md).
