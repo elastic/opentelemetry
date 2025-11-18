@@ -67,11 +67,13 @@ You need a valid {{es}} API key to authenticate to the {{es}} endpoint.
 
 :::::
 
-:::::{step} Configure authentication for central configuration
+:::::{step} Create an Elasticsearch API key for central configuration
 
-Configure the Collector to validate SDK API keys using `apikeyauth`:
+Create an API key with the `config_agent:read` privilege. This API key will be used by EDOT SDKs and validated by the Collector.
 
-```yaml
+Use the following API request to generate the key:
+
+```json
 POST /_security/api_key
 {
   "name": "apmconfig-opamp-test-sdk",
@@ -100,15 +102,13 @@ POST /_security/api_key
 }
 ```
 
-:::{note}
+::::{note}
 The EDOT Collector doesn't store or embed the {{es}} API key.
 
 Each EDOT SDK must send its own API key in the `Authorization` header (for example: `Authorization: ApiKey <Base64(id:key)>`).
 
-The `apikeyauth` extension only validates this API key against {{es}}, ensuring it has the `config_agent:read` privilege for all resources (`"*"`).
-:::
-
-Make sure the API key has the `config_agent:read` privilege and resources set to `*`.
+The `apikeyauth` extension only validates this API key against {{es}}, ensuring it includes the `config_agent:read` privilege with `resources: ["*"]`.
+::::
 :::::
 
 ::::{dropdown} Example JSON payload
