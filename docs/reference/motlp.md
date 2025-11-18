@@ -172,7 +172,7 @@ The solutions to rate limiting depend on your deployment type:
 
 #### {{ech}} deployments
 
-For {{ech}} deployments, if you're experiencing consistent `429` errors, the primary solution is to increase your {{es}} capacity. Because rate limits scale dynamically based on {{es}} backpressure, scaling up your {{es}} cluster allows the rate limits to automatically increase over time.
+For {{ech}} deployments, if you're experiencing consistent `429` errors, the primary solution is to increase your {{es}} capacity. Because rate limits are affected by {{es}} backpressure, scaling up your {{es}} cluster reduces backpressure and, over time, increases the ingestion rate for your deployment.
 
 To scale your deployment:
 
