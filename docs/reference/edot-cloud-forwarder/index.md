@@ -4,6 +4,8 @@ description: Introduction to the EDOT Cloud Forwarder, the Elastic Distribution 
 applies_to:
   serverless:
     observability: preview
+  deployment:
+    ess: preview
 products:
   - id: cloud-serverless
   - id: observability
