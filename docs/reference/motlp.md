@@ -117,10 +117,14 @@ The following rate limits and burst limits apply:
 
 | Deployment type | Rate limit | Burst limit | Dynamic scaling |
 |----------------|------------|-------------|-----------------|
-| Serverless | 15 MB/s | 30 MB/s | Not available |
+| Serverless | 30 MB/s | 60 MB/s | Not available |
 | ECH | 1 MB/s (initial) | 2 MB/s (initial) | Yes |
 
 As long as your data ingestion rate stays at or below the rate limit and burst limit, your requests are accepted.
+
+:::{note}
+For the {{serverless-full}} trial, the rate limit is reduced to 15 MB/s and the burst limit is 30 MB/s.
+:::
 
 ### Dynamic rate scaling for {{ech}}
 ```{applies_to}
