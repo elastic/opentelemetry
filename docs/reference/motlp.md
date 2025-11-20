@@ -52,7 +52,7 @@ You don't need APM Server when ingesting data through the Managed OTLP Endpoint.
 :::
 
 :::{note}
-For {{ech}} deployments, Managed OTLP endpoint is current supported in the following AWS regions: ap-southeast-1, ap-northeast-1, ap-south-1, eu-west-1, eu-west-2, us-east-1, us-west-2, us-east-2. Support for additional regions/CSP's is in progress and will be expanded over time. 
+For {{ech}} deployments, Managed OTLP endpoint is current supported in the following AWS regions: ap-southeast-1, ap-northeast-1, ap-south-1, eu-west-1, eu-west-2, us-east-1, us-west-2, us-east-2. Support for additional regions and cloud providers is in progress and will be expanded over time. 
 :::
 
 ## Send data to Elastic
