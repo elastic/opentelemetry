@@ -60,7 +60,7 @@ The EDOT Collector is compatible with GKE, EKS, and AKS. Refer to [Limitations o
 For certain platforms, we recommend using platform-native OpenTelemetry distributions that provide the best native experience while sending data through the EDOT Collector.
 
 :::{important}
-Elastic supports ingesting and processing the telemetry data from these platforms but does not provide support for the platform-native OpenTelemetry distributions themselves.
+Elastic does not provide support for distributions other than the {{edot}}.
 :::
 
 #### Red Hat OpenShift
