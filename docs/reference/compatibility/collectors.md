@@ -15,7 +15,7 @@ products:
 
 The following table provides an overview of compatibility and support of {{edot}} Collector versions with {{stack}} (ELK) versions.
 
-#### EDOT Collector 9.x
+## EDOT Collector 9.x
 
 | ELK stack version           | **ELK < 8.16** | **ELK 8.16 - 8.17** | **ELK 8.18 - 8.19** | **ELK 9.0 and later** |
 | :-------------------------- | :------------- | :------------------ | :------------------ | :---------- |
@@ -25,6 +25,10 @@ The following table provides an overview of compatibility and support of {{edot}
 :::{note}
 If you're on {{stack}} 8.18 or 8.19 and require Elastic support, use EDOT Collector version 9.x, as this combination is officially [Supported].
 :::
+
+### Configuration compatibility
+
+If you upgrade to EDOT Collector 9.x while running {{stack}} 8.18 or 8.19, continue using the configuration recommended for your Stack version, not the EDOT Collector 9.x default configuration. This ensures full compatibility with {{kib}} Observability applications.
 
 ## Operating Systems
 
