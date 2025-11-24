@@ -15,7 +15,7 @@ products:
 
 The following table provides an overview of compatibility and support of {{edot}} Collector versions with {{stack}} (ELK) versions.
 
-## EDOT Collector 9.x
+## EDOT Collector 9.x [collector-9]
 
 | ELK stack version           | **ELK < 8.16** | **ELK 8.16 - 8.17** | **ELK 8.18 - 8.19** | **ELK 9.0 and later** |
 | :-------------------------- | :------------- | :------------------ | :------------------ | :---------- |
@@ -30,11 +30,11 @@ If you're on {{stack}} 8.18 or 8.19 and require Elastic support, use EDOT Collec
 
 If you upgrade to EDOT Collector 9.x while running {{stack}} 8.18 or 8.19, continue using the configuration recommended for your Stack version, not the EDOT Collector 9.x default configuration. This ensures full compatibility with {{kib}} Observability applications.
 
-## Operating Systems
+## Operating systems
 
 The following table provides an overview of compatibility and support of EDOT Collector versions with different operating systems.
 
-#### EDOT Collector 9.x
+### EDOT Collector 9.x [os-collector-9]
 
 These operating systems and distributions are [compatible] with EDOT Collector 9.x:
 
@@ -53,11 +53,27 @@ The following Kubernetes distributions are [compatible] with EDOT Collector 9.x:
 | :---------- | :--------------- | :------------------------------------------------------- |
 | Kubernetes  | amd64, arm64     | 1.33.0, 1.32.0, 1.31.0, 1.30.2, 1.29.4, 1.28.9, 1.27.16  |
 
-The EDOT Collector is compatible with GKE, EKS and AKS. Refer to [Limitations on managed Kubernetes environments](/reference/compatibility/limitations.md#limitations-on-managed-kubernetes-environments) for more information.
+The EDOT Collector is compatible with GKE, EKS, and AKS. Refer to [Limitations on managed Kubernetes environments](/reference/compatibility/limitations.md#limitations-on-managed-kubernetes-environments) for more information.
 
-::::{note}
-Red Hat OpenShift is not supported.
-::::
+### Platform-specific recommendations
+
+For certain platforms, we recommend using platform-native OpenTelemetry distributions that provide the best native experience while sending data through the EDOT Collector.
+
+:::{important}
+Elastic supports ingesting and processing the telemetry data from these platforms but does not provide support for the platform-native OpenTelemetry distributions themselves.
+:::
+
+#### Red Hat OpenShift
+
+Use the [Red Hat build of OpenTelemetry](https://docs.redhat.com/en/documentation/openshift_container_platform/4.20/html/red_hat_build_of_opentelemetry/index) to collect and send telemetry data to the EDOT Collector. For support of OpenTelemetry components in OpenShift, contact Red Hat.
+
+#### AWS Lambda
+
+Use the [AWS Distro for OpenTelemetry (ADOT)](https://aws-otel.github.io/docs/getting-started/lambda) to collect and send telemetry data from AWS Lambda services to the EDOT Collector. For support of ADOT components, contact AWS.
+
+:::{tip}
+For AWS Lambda workloads that generate telemetry outside the function runtime, such as CloudWatch logs, use the [{{edot-cf}}](/reference/edot-cloud-forwarder/aws.md) instead. 
+:::
 
 ## EDOT Collector components
 
