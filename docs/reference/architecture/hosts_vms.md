@@ -42,7 +42,7 @@ Users can send their OTel data from the edge setup in OTel-native format through
 
 Starting from version 9.2, {{ech}} provides a [Managed OTLP Endpoint](/reference/motlp.md) for ingestion of OpenTelemetry data. Users can send their OTel data from the edge setup in OTel-native format through OTLP without any additional requirements for self-managed preprocessing of data.
 
-Alternatively, you can run a self-hosted EDOT Collector in gateway mode to ingest OTel data from the edge setup. The EDOT Collector in gateway mode enriches and pre-aggregates the data before ingesting it directly into {{es}}. If required, users can build their custom, EDOT-like Collector [following these instructions](elastic-agent://reference/edot-collector/custom-collector.md).
+Alternatively, you can run a self-hosted EDOT Collector in gateway mode to ingest OTel data from the edge setup. The EDOT Collector in gateway mode enriches and pre-aggregates the data before ingesting it directly into {{es}}. If required, you can build your custom, EDOT-like Collector [following these instructions](elastic-agent://reference/edot-collector/custom-collector.md).
 
 ![VM-ECH](../images/arch-vm-ech.png)
 
