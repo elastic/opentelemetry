@@ -51,7 +51,7 @@ Elastic's Observability solution is technically compatible with setups that are 
 
 ![K8s-Serverless](../images/arch-k8s-serverless.png)
 
-For a Kubernetes setup, that means the gateway Collector passes through the OTel data in native format using the OTLP protocol to the Managed OTLP Endpoint. There is no need for the gateway Collector to do any Elastic-specific pre-processing.
+For a Kubernetes setup, that means the gateway Collector passes through the OTel data in native format using the OTLP protocol to the Managed OTLP Endpoint. There is no need for the gateway Collector to do any Elastic-specific preprocessing.
 
 ### {{ech}}
 
