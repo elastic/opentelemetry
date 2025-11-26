@@ -19,7 +19,7 @@ The recommended OTel architecture for Kubernetes clusters includes a set of Open
 
 ## Daemon form
 
-The Collector in Daemon form is deployed on each Kubernetes node as an [edge collector](index.md#understanding-edge-deployment) to collect node-local logs and host metrics.
+The Collector in Daemon form is deployed on each Kubernetes node as an [edge collector](index.md#understanding-edge-deployment) (close to your data sources) to collect node-local logs and host metrics.
 
 The daemon collector also receives telemetry from applications instrumented with OTel SDKs and running on corresponding nodes.
 
@@ -54,8 +54,12 @@ Elastic's Observability solution is technically compatible with setups that are 
 For a Kubernetes setup, that means the gateway Collector passes through the OTel data in native format using the OTLP protocol to the Managed OTLP Endpoint. There is no need for the gateway Collector to do any Elastic-specific preprocessing.
 
 ### {{ech}}
+```{applies_to}
+ess:
+stack: preview 9.2
+```
 
-Starting from version 9.2, {{ech}} provides a [Managed OTLP Endpoint](/reference/motlp.md) for ingestion of OpenTelemetry data.
+{{ech}} provides a [Managed OTLP Endpoint](/reference/motlp.md) for ingestion of OpenTelemetry data.
 
 For a Kubernetes setup, that means the gateway Collector can pass through the OTel data in native format using the OTLP protocol to the Managed OTLP Endpoint. There is no need for the gateway Collector to do any Elastic-specific preprocessing.
 
