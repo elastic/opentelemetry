@@ -13,11 +13,11 @@ products:
 
 # Hosts and VMs environments
 
-On host or virtual machine environments, deploy local, per-host OpenTelemetry Collector instances at the [edge](index.md#understanding-edge-deployment), close to your data sources.
+On host or virtual machine environments, deploy local, per-host OpenTelemetry Collector instances at these [edge](index.md#understanding-edge-deployment) host or VMs where your applications are running.
 
 ![VM-Edge](../images/arch-vm-edge.png)
 
-These edge collectors have two main purposes:
+Collectors deployed on these edge environments have two main purposes:
 
 1.  The collection of local logs and infrastructure metrics. Refer to [this sample config file](https://github.com/elastic/elastic-agent/blob/main/internal/pkg/otel/samples/linux/managed_otlp/platformlogs_hostmetrics.yml) for recommended Collector receiver configurations for hostmetrics and logs.
 2.  Enriching application telemetry from OTel SDKs that run within the instrumented applications on corresponding hosts with resource information.
@@ -36,7 +36,7 @@ Elastic's Observability solution is technically compatible with edge setups that
 
 ![VM-Serverless](../images/arch-vm-serverless.png)
 
-Users can send their OTel data from the edge setup in OTel-native format through OTLP without any additional requirements for self-managed preprocessing of data.
+Users can send data direct from the Collectors or SDKs deployed on the edge environment via OTLP without any additional requirements for managing an ingestion layer.
 
 ### {{ech}}
 ```{applies_to}
@@ -44,7 +44,7 @@ ess:
 stack: preview 9.2
 ```
 
-{{ech}} provides a [Managed OTLP Endpoint](/reference/motlp.md) for ingestion of OpenTelemetry data. Users can send their OTel data from the edge setup in OTel-native format through OTLP without any additional requirements for self-managed preprocessing of data.
+{{ech}} provides a [Managed OTLP Endpoint](/reference/motlp.md) for ingestion of OpenTelemetry data. Users can send data direct from the Collectors or SDKs deployed on the edge environment via OTLP without any additional requirements for managing an ingestion layer.
 
 Alternatively, you can run a self-hosted EDOT Collector in gateway mode to ingest OTel data from the edge setup. The EDOT Collector in gateway mode enriches and pre-aggregates the data before ingesting it directly into {{es}}. If required, you can build your custom, EDOT-like Collector [following these instructions](elastic-agent://reference/edot-collector/custom-collector.md).
 
@@ -52,7 +52,9 @@ Alternatively, you can run a self-hosted EDOT Collector in gateway mode to inges
 
 ### Self-managed
 
-In a self-managed deployment scenario, you need to host an EDOT Collector in gateway mode that preprocesses and ingests OTel data from the edge setup into the self-managed {{stack}}.
+In a self-managed Elastic deployment, we recommend running an EDOT Collector in gateway mode as a unified ingestion layer for OTLP telemetry from OpenTelemetry collectors or SDKs running at the edge. This gateway can receive all signals (logs, metrics and traces), apply processing as needed, and cover the same use cases that previously required components like APM Server or Logstash.
+
+Depending on your scalability and durability needs, this can be a single collector that scales horizontally, or a chain of collectors where each tier handles a specific concern. For high availability and stronger durability guarantees, you can insert Kafka between tiers so that ingestion is buffered and resilient to downstream outages.
 
 ![VM-self-managed](../images/arch-vm-self-managed.png)
 

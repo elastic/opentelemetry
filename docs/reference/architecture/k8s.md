@@ -19,21 +19,23 @@ The recommended OTel architecture for Kubernetes clusters includes a set of Open
 
 ## Daemon form
 
-The Collector in Daemon form is deployed on each Kubernetes node as an [edge collector](index.md#understanding-edge-deployment) (close to your data sources) to collect node-local logs and host metrics.
+The Collector as a DaemonSet resource kind, deploys an instance on each Kubernetes node as an [edge collector](index.md#understanding-edge-deployment) (close to your data sources) to collect node-local logs and host metrics.
 
-The daemon collector also receives telemetry from applications instrumented with OTel SDKs and running on corresponding nodes.
+The DaemonSet collectors also can funnel and enrich telemetry from applications instrumented with OTel SDKs and running on corresponding nodes.
 
 That Collector enriches the application telemetry with resource information such as host and Kubernetes metadata.
 
 All data is then sent through OTLP to the OTel or EDOT Collector in gateway mode.
 
-## Cluster form
+## Cluster Collector
 
-The Collector in Cluster form collects Kubernetes cluster-level metrics and sends them to the OTel or EDOT Gateway Collector using OTLP.
+The Cluster collector is a Deployment resource kind that collects Kubernetes cluster-level metrics and sends them to the OTel or EDOT Gateway Collector using OTLP.
+
+This instance of the collector helps with collecting cluster level metrics which otherwise would be duplicated by the DaemonSet instances.
 
 ## Gateway form
 
-The OTel or EDOT Collector in gateway form gathers the OTel data from all other collectors and ingests it into the Elastic backend.
+The OTel or EDOT Collector gateway deployed on the edge Kubernetes environment is not an ingestion layer to Elastic, it centralizes OTel data from all other collectors to help define a unified data pipeline sending OTLP data into the Elastic backend corresponding OTLP endpoint.
 
 For self-managed, ECE, and ECK deployment models the gateway Collector does some additional preprocessing of data.
 
@@ -69,11 +71,11 @@ Alternatively, you can run a self-hosted EDOT Collector in gateway mode. The gat
 
 ### Self-managed
 
-With a self-managed scenario the gateway Collector ingests data directly into the self-managed {{es}} instance.
+With a self-managed deployment the gateway Collector ingests data directly into the self-managed {{es}} instance.
 
 ![K8s-self-managed](../images/arch-k8s-self-managed.png)
 
-The gateway Collector does some preprocessing and aggregation of OTel data before ingesting it into {{es}}.
+The gateway Collector processes APM data and logs to improve latency on solution UIs before is ingested into {{es}}.
 
 While the Daemon and Cluster collectors, as well as the OTel SDKs, can stay fully vendor agnostic or upstream, the gateway Collector needs to be either an EDOT Collector or a [custom, EDOT-like Collector](elastic-agent://reference/edot-collector/custom-collector.md) containing the [required components and preprocessing pipelines](elastic-agent://reference/edot-collector/config/default-config-k8s.md#direct-ingestion-into-elasticsearch).
 
