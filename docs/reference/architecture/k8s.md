@@ -13,6 +13,15 @@ products:
 
 # Kubernetes environments
 
+In Kubernetes environments, deploy OpenTelemetry Collectors as [edge](index.md#understanding-edge-deployment) collectors within your cluster where your applications are running. The recommended architecture includes different types of collectors deployed as various Kubernetes resource types (DaemonSets, Deployments) to handle specific collection needs.
+
+Collectors deployed in these edge environments have several main purposes:
+
+1. The collection of node-level logs and infrastructure metrics through DaemonSet collectors running on each node.
+2. The collection of cluster-level metrics through a dedicated Cluster collector.
+3. Enriching application telemetry from OTel SDKs with corresponding host and Kubernetes resource attributes.
+4. Centralizing data through a gateway collector before sending to the Elastic backend.
+
 ## Types of collectors
 
 The recommended OTel architecture for Kubernetes clusters includes a set of OpenTelemetry collectors in different forms.
