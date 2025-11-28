@@ -13,7 +13,7 @@ products:
 
 # Kubernetes environments
 
-## Types of Collectors
+## Types of collectors
 
 The recommended OTel architecture for Kubernetes clusters includes a set of OpenTelemetry collectors in different forms.
 
