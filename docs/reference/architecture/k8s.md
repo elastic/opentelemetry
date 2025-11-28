@@ -78,9 +78,6 @@ For a Kubernetes setup, the gateway Collector in your cluster sends OTLP data di
 ![K8s-ech](../images/k8s-ech.png)
 
 ### Self-managed
-```{applies_to}
-product: ga 2.3.0
-```
 
 With a self-managed deployment, you need an EDOT Collector running in gateway mode as part of your {{product.observability}} backend (not in the Kubernetes cluster). This backend gateway collector receives OTLP data from the Kubernetes gateway collector and ingests it into {{es}}.
 
