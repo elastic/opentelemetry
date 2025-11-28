@@ -15,8 +15,6 @@ products:
 
 On host or virtual machine environments, deploy local, per-host OpenTelemetry Collector instances at these [edge](index.md#understanding-edge-deployment) host or VMs where your applications are running.
 
-![VM-Edge](../images/arch-vm-edge.png)
-
 Collectors deployed on these edge environments have two main purposes:
 
 1.  The collection of local logs and infrastructure metrics. Refer to [this sample config file](https://github.com/elastic/elastic-agent/blob/main/internal/pkg/otel/samples/linux/managed_otlp/platformlogs_hostmetrics.yml) for recommended Collector receiver configurations for hostmetrics and logs.
@@ -34,7 +32,7 @@ The following sections outline the recommended architectures for different Elast
 
 {{serverless-full}} provides a [Managed OTLP Endpoint](/reference/motlp.md) for ingestion of OpenTelemetry data.
 
-![VM-Serverless](../images/arch-vm-serverless.png)
+![VM-Serverless](../images/host-serverless.png)
 
 Users can send data direct from the Collectors or SDKs deployed on the edge environment through OTLP without any additional requirements for managing an ingestion layer.
 
@@ -46,13 +44,15 @@ stack: preview 9.2
 
 {{ech}} provides a [Managed OTLP Endpoint](/reference/motlp.md) for ingestion of OpenTelemetry data. Users can send data direct from the Collectors or SDKs deployed on the edge environment through OTLP without any additional requirements for managing an ingestion layer.
 
+![VM-ech](../images/host-ech.png)
+
 ### Self-managed
 
 In a self-managed Elastic deployment, we recommend running an EDOT Collector in gateway mode as a unified ingestion layer for OTLP telemetry from OpenTelemetry collectors or SDKs running at the edge. This gateway can receive all signals (logs, metrics and traces), apply processing as needed, and cover the same use cases that previously required components like APM Server or Logstash.
 
 Depending on your scalability and durability needs, this can be a single collector that scales horizontally, or a chain of collectors where each tier handles a specific concern. For high availability and stronger durability guarantees, you can insert Kafka between tiers so that ingestion is buffered and resilient to downstream outages.
 
-![VM-self-managed](../images/arch-vm-self-managed.png)
+![VM-self-managed](../images/host-self-managed.png)
 
 :::{note}
 Compared to [Elastic's classic ingestion paths](docs-content://solutions/observability/apm/use-opentelemetry-with-apm.md) for OTel data, with the EDOT Collector in gateway mode there is no need for {{product.apm-server}} anymore. 

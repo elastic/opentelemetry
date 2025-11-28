@@ -11,13 +11,13 @@ products:
   - id: edot-collector
 ---
 
-# Kubernetes Environments
+# Kubernetes environments
 
-The recommended OTel architecture for Kubernetes clusters includes a set of OpenTelemetry collectors in different forms. The following diagram shows the different forms:
+## Types of Collectors
 
-![K8s-Cluster](../images/arch-k8s-cluster.png)
+The recommended OTel architecture for Kubernetes clusters includes a set of OpenTelemetry collectors in different forms.
 
-## DaemonSet collectors
+### DaemonSet collectors
 
 The Collector as a DaemonSet resource kind, deploys an instance on each Kubernetes node as an [edge collector](index.md#understanding-edge-deployment) (close to your data sources) to collect node-local logs and host metrics.
 
@@ -27,13 +27,13 @@ That Collector enriches the application telemetry with resource information such
 
 All data is then sent through OTLP to the gateway Collector running in the cluster.
 
-## Cluster collector
+### Cluster collector
 
 The Cluster collector is a Deployment resource kind that collects Kubernetes cluster-level metrics and sends them to the gateway Collector using OTLP.
 
 This instance of the collector helps with collecting cluster level metrics which otherwise would be duplicated by the DaemonSet instances.
 
-## Gateway collector (on edge)
+### Gateway collector (on edge)
 
 The gateway Collector deployed in the Kubernetes cluster centralizes OTel data from the DaemonSet and Cluster collectors. This gateway collector runs as part of your edge environment, not as part of the Elastic backend. It can be any OpenTelemetry Collector distribution as long as it forwards data using OTLP to the appropriate backend endpoint:
 
@@ -45,14 +45,14 @@ The gateway Collector deployed in the Kubernetes cluster centralizes OTel data f
 The following sections outline the recommended architectures for different Elastic deployment scenarios.
 
 ::::{note}
-Elastic Observability is technically compatible with setups that are fully based on contrib OTel components, as long as the ingestion path follows the recommendations outlined in following sections for the different Elastic deployment options.
+{{product.observability}} is technically compatible with setups that are fully based on contrib OTel components, as long as the ingestion path follows the recommendations outlined in following sections for the different Elastic deployment options.
 ::::
 
 ### {{serverless-full}}
 
 {{serverless-full}} provides a [Managed OTLP Endpoint](/reference/motlp.md) for ingestion of OpenTelemetry data.
 
-![K8s-Serverless](../images/arch-k8s-serverless.png)
+![K8s-Serverless](../images/k8s-serverless.png)
 
 For a Kubernetes setup, the gateway Collector in your cluster sends OTLP data directly to the Managed OTLP Endpoint. There is no need for an EDOT gateway collector on the backend side. You can optionally deploy an EDOT Collector in gateway mode as part of your edge environment if you need additional processing before data reaches the Managed OTLP Endpoint.
 
@@ -66,11 +66,16 @@ stack: preview 9.2
 
 For a Kubernetes setup, the gateway Collector in your cluster sends OTLP data directly to the Managed OTLP Endpoint. There is no need for an EDOT gateway collector on the backend side.
 
+![K8s-ech](../images/k8s-ech.png)
+
 ### Self-managed
+```{applies_to}
+product: ga 2.3.0
+```
 
 With a self-managed deployment, you need an EDOT Collector running in gateway mode as part of your {{product.observability}} backend (not in the Kubernetes cluster). This backend gateway collector receives OTLP data from the Kubernetes gateway collector and ingests it into {{es}}.
 
-![K8s-self-managed](../images/arch-k8s-self-managed.png)
+![K8s-self-managed](../images/k8s-self-managed.png)
 
 The backend gateway Collector processes {{product.apm}} data and logs to improve latency on solution UIs before ingesting into {{es}}.
 
