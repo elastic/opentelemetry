@@ -17,7 +17,7 @@ products:
 
 # EDOT Cloud Forwarder for AWS
 
-{{edot-cf}} (CF) for AWS provides the EDOT Collector as a Lambda function that collects and forwards logs to {{product.observability}} on {{serverless-full}}. 
+{{edot-cf}} (CF) for AWS provides the EDOT Collector as a Lambda function that collects and forwards logs to {{motlp}}. 
 
 {{edot-cf}} for AWS supports the following log sources:
 
@@ -104,9 +104,7 @@ Trim the API key from `Authorization=ApiKey MYKEYVALUE...` to just `MYKEYVALUE..
 | --- | --- |
 | CloudFormation (AWS CLI) | Deploy using AWS CLI commands with CloudFormation templates. |
 | CloudFormation (AWS Console) | Deploy using the AWS Management Console UI. |
-<!-- Not Public yet
-| **AWS Serverless Application Repository (SAR)** | Deploy directly from the AWS Serverless Application Repository. |
--->
+| AWS Serverless Application Repository (SAR) | Deploy directly from the AWS Serverless Application Repository. |
 
 Each method achieves the same result and uses CloudFormation templates. Choose the method that best adapts to your workflow.
 
@@ -198,6 +196,27 @@ The default values provided have been determined through extensive load testing 
 :::{tip}
 Adjust these parameters only if you notice performance issues such as Lambda timeouts, throttling, high memory usage or dropped data. If you need assistance tuning these parameters for your specific workload, refer to [Contact support](docs-content://troubleshoot/ingest/opentelemetry/contact-support.md).
 :::
+
+## Sizing and performance tuning
+
+Use the following sizing matrices to select appropriate Lambda memory and concurrency settings for your traffic volume. Proper tuning helps maximize performance and prevent throttling in high‑volume log sources.
+
+### VPC Flow Logs sizing
+
+| Throughput | Log Rate | Recommended Memory | Recommended Concurrency |
+| :--- | :--- | :--- | :--- |
+| **< 5 MB/s** | < 50,000 events/s | 512 MB | 5 |
+| **5 - 10 MB/s** | 50,000 - 100,000 events/s | 512 MB | 10 |
+| **> 10 MB/s** | > 100,000 events/s | 1024 MB | 20+ |
+
+### ELB Access Logs sizing
+
+| Throughput | Log Rate | Recommended Memory | Recommended Concurrency |
+| :--- | :--- | :--- | :--- |
+| **< 10 MB/s** | < 25,000 events/s | 512 MB | 5 |
+| **10 - 40 MB/s** | 25,000 - 100,000 events/s | 1024 MB | 10 |
+| **> 40 MB/s** | > 100,000 events/s | 2048 MB | 20+ |
+
 
 ## Deploy using CloudFormation (AWS CLI)
 
@@ -462,7 +481,6 @@ To modify parameters of an existing stack through the AWS Console:
 7. Select **Submit** to apply the updates. In case of a change set, **Execute changeset** .
 8. Monitor the stack update progress in the console.
 
-<!-- Not public yet
 ## Deploy using AWS Serverless Application Repository
 
 In addition to deploying through CloudFormation templates, you can deploy the EDOT Cloud Forwarder application directly from the AWS Serverless Application Repository (SAR).
@@ -472,9 +490,9 @@ In addition to deploying through CloudFormation templates, you can deploy the ED
 To deploy from SAR, follow these steps:
 
 1. Navigate to **AWS Serverless Application Repository** in the AWS Management Console.
-2. Search for `edot-cloud-forwarder-s3-logs` and select the application.
-3. Select **Deploy**.
-4. **Configure the application settings**: You will be prompted to fill in the same parameters described in the [Configure the template](#configure-the-template) section. Refer to that section for details on each parameter.
+2. Select **Available applications** and check the box **Show apps that create custom IAM roles or resource policies**.
+3. Search for `edot-cloud-forwarder-s3-logs` and select the application.
+4. **Configure the application settings**: Under **Application settings**, fill in the parameters described in the [Configure the template](#configure-the-template) section. Refer to that section for details on each parameter.
 5. **Acknowledge IAM role creation**: At the bottom of the page, check the box to acknowledge that the application will create custom IAM roles. This is required for the forwarder to access your S3 bucket and send data to Elastic Observability.
 6. Select **Deploy**.
 
@@ -483,7 +501,6 @@ The deployment process will start, and a CloudFormation stack will be created wi
 :::{note}
 The same [deployment considerations](#deployment-considerations) apply to SAR deployments, including the requirement to deploy separate serverless applications for each log type and ensure the deployment region matches your S3 bucket region.
 :::
--->
 
 ## CloudFormation stack resources
 
