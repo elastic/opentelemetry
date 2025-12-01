@@ -25,3 +25,4 @@ toc:
     children:
       - file: edot-cloud-forwarder/aws.md
       - file: edot-cloud-forwarder/azure.md
+      - file: edot-cloud-forwarder/gcp.md
