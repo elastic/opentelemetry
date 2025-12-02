@@ -57,7 +57,7 @@ The EDOT Collector is compatible with GKE, EKS, and AKS. Refer to [Limitations o
 
 ### Platform-specific recommendations
 
-For certain platforms, we recommend using platform-native OpenTelemetry distributions that provide the best native experience while sending data through the EDOT Collector.
+For certain platforms, use platform-native OpenTelemetry distributions [at the edge](/reference/architecture/index.md#understanding-edge-deployment), as they provide the best native experience.
 
 :::{important}
 Elastic does not provide support for distributions other than the {{edot}}.
@@ -65,11 +65,11 @@ Elastic does not provide support for distributions other than the {{edot}}.
 
 #### Red Hat OpenShift
 
-Use the [Red Hat build of OpenTelemetry](https://docs.redhat.com/en/documentation/openshift_container_platform/4.20/html/red_hat_build_of_opentelemetry/index) to collect and send telemetry data to the EDOT Collector. For support of OpenTelemetry components in OpenShift, contact Red Hat.
+Use the [Red Hat build of OpenTelemetry](https://docs.redhat.com/en/documentation/openshift_container_platform/4.20/html/red_hat_build_of_opentelemetry/index) [at the edge](/reference/architecture/index.md#understanding-edge-deployment) to collect and send telemetry data. For support of OpenTelemetry components in OpenShift, contact Red Hat.
 
 #### AWS Lambda
 
-Use the [AWS Distro for OpenTelemetry (ADOT)](https://aws-otel.github.io/docs/getting-started/lambda) to collect and send telemetry data from AWS Lambda services to the EDOT Collector. For support of ADOT components, contact AWS.
+Use the [AWS Distro for OpenTelemetry (ADOT)](https://aws-otel.github.io/docs/getting-started/lambda) [at the edge](/reference/architecture/index.md#understanding-edge-deployment) to collect and send telemetry data from AWS Lambda services. For support of ADOT components, contact AWS.
 
 :::{tip}
 For AWS Lambda workloads that generate telemetry outside the function runtime, such as CloudWatch logs, use the [{{edot-cf}}](/reference/edot-cloud-forwarder/aws.md) instead. 
