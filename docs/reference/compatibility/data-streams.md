@@ -14,7 +14,7 @@ products:
 
 # OpenTelemetry data streams compared to classic APM and ECS-based integrations
 
-The Elastic Distribution of OpenTelemetry (EDOT) stores telemetry data using a storage model optimized for OpenTelemetry signals. When `mapping_mode: otel` is enabled on the Elasticsearch exporter (which is the default setting), EDOT writes logs, traces, and metrics to specialized data streams aligned with OpenTelemetry semantics.
+The {{edot}} (EDOT) stores telemetry data using a storage model optimized for OpenTelemetry signals. When `mapping_mode: otel` is enabled on the {{es}} exporter (which is the default setting), EDOT writes logs, traces, and metrics to specialized data streams aligned with OpenTelemetry specifications.
 
 This architecture is designed for scalable observability workloads. It supports dynamic attributes, reduces mapping complexity, and avoids issues like mapping explosions or manual dimension setup.
 
@@ -125,7 +125,7 @@ While classic APM and EDOT represent two ingestion paths for application telemet
 | Stream type | Typical field layout | Custom attributes / dot notation |
 |--------------|----------------------|----------------------------------|
 | **Integration ECS-based** | Uses ECS mapping tailored by integration. Custom fields are added under ECS-structured objects or `.custom` objects. Dots in field names are often disallowed or normalized to underscores. | Example: `host.os.name`, `nginx.access.time` rewritten to `nginx_access_time` |
-| **EDOT (OTel + passthrough)** | Stores OTel-native nested object structure (`resource.attributes`, `attributes.*`). Uses `passthrough` to expose fields at the top level for query compatibility. | Example: `attributes.cart.items: 42`, `resource.attributes.service.name: "checkout-service"` |
+| **EDOT (OTel + passthrough)** | Stores OTel-native nested object structure (`resource.attributes.*`, `attributes.*`). Uses `passthrough` to expose fields at the top level for query compatibility. | Example: `attributes.cart.items: 42`, `resource.attributes.service.name: "checkout-service"` |
 
 ### Integration example (Nginx access logs)
 
