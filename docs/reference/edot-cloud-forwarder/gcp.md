@@ -48,6 +48,9 @@ We are working to support other popular log types and sources. [Contact us](docs
 
 ## Prerequisites
 
+To collect logs using {{edot-cf}} for GCP, you need the following.
+
+
 ### Elastic requirements
 
 - Access to {{motlp}} endpoint.
