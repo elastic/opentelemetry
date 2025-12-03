@@ -59,8 +59,6 @@ To collect logs using {{edot-cf}} for GCP, you need the following.
 :::{include} ../_snippets/find-motlp-endpoint.md
 :::
 
-Refer to [Managed OTLP Endpoint](../motlp.md#send-data-to-elastic) for more details.
-
 
 ### GCP permissions
 
