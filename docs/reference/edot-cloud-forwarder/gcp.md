@@ -178,7 +178,7 @@ Reliability is built-in to prevent data loss or infinite retry loops.
 
 ### Observability and data enrichment
 
-The {{edot-cf}} provides detailed context about its own health and the data it processes.
+{{edot-cf}} for GCP provides detailed context about its own health and the data it processes.
 - Self-telemetry: You can enable the OpenTelemetry collector's internal metrics, allowing you to monitor the service's health.
 - Metadata enrichment: By enabling the `include_metadata` option, logs are automatically enriched with context from the Pub/Sub and GCS transport layers, enabling better troubleshooting and correlation:
   - `bucket` and `object`, for logs coming from a GCS bucket.
