@@ -56,7 +56,10 @@ To collect logs using {{edot-cf}} for GCP, you need the following.
 - Access to {{motlp}} endpoint.
 - Valid API key with ingest permissions.
 
-You can refer to [Send data to Elastic](../motlp.md#send-data-to-elastic) documentation for more details.
+:::{include} ../_snippets/find-motlp-endpoint.md
+:::
+
+Refer to [Managed OTLP Endpoint](../motlp.md#send-data-to-elastic) for more details.
 
 
 ### GCP permissions
