@@ -28,7 +28,7 @@ The architecture for the {{edot-cf}} GCP is as pictured:
 ### Data flow
 
 - Ingestion: Logs are sent to a Pub/Sub topic (either directly or using a GCS bucket notification).
-- Processing: A push subscription triggers the Cloud Run service, where an OpenTelemetry collector is running.
+- Processing: A push subscription triggers the Cloud Run service, where an OpenTelemetry Collector is running.
 - Forwarding: The service processes the data and exports it to {{ecloud}} using the {{motlp}}.
 - Failure Handling: If processing or forwarding still fails after retries, the failed messages are routed to a dead-letter topic and archived in a GCS bucket for future analysis.
 
