@@ -59,11 +59,11 @@ You can refer to [Send data to Elastic](../motlp.md#send-data-to-elastic) docume
 
 You should have the following permissions on your Google Cloud project:
 
-<DocAccordion buttonContent="Project IAM Admin" initialIsOpen> 
+:::{dropdown} Project IAM Admin
 The principal should be granted the built-in `roles/resourcemanager.projectIamAdmin` role, allowing them to manage IAM policies and roles at the project level.
-</DocAccordion>
+:::
 
-<DocAccordion buttonContent="Storage" initialIsOpen>
+:::{dropdown} Storage
 The following permissions are needed for Cloud Storage management: 
 - `storage.buckets.create` 
 - `storage.buckets.delete` 
@@ -71,9 +71,9 @@ The following permissions are needed for Cloud Storage management:
 - `storage.buckets.getIamPolicy`
 - `storage.buckets.setIamPolicy`
 - `storage.buckets.update`
-</DocAccordion>
+:::
 
-<DocAccordion buttonContent="Secret Manager" initialIsOpen>
+:::{dropdown} Secret Manager
 The following permissions are needed for Secret Manager management: 
 - `secretmanager.secrets.create` 
 - `secretmanager.secrets.delete` 
@@ -86,9 +86,9 @@ The following permissions are needed for Secret Manager management:
 - `secretmanager.versions.destroy` 
 - `secretmanager.versions.enable` 
 - `secretmanager.versions.get` 
-</DocAccordion>
+:::
 
-<DocAccordion buttonContent="Pub/Sub" initialIsOpen> 
+:::{dropdown} Pub/Sub
 The following permissions are needed for Pub/Sub management: 
 - `pubsub.subscriptions.create` 
 - `pubsub.subscriptions.delete` 
@@ -105,9 +105,9 @@ The following permissions are needed for Pub/Sub management:
 - `pubsub.topics.getIamPolicy` 
 - `pubsub.topics.setIamPolicy` 
 - `pubsub.topics.update` 
-</DocAccordion>
+:::
 
-<DocAccordion buttonContent="Cloud Run" initialIsOpen> 
+:::{dropdown} Cloud Run
 The following permissions are needed for Cloud Run management: 
 - `run.operations.get` 
 - `run.services.create` 
@@ -116,9 +116,9 @@ The following permissions are needed for Cloud Run management:
 - `run.services.getIamPolicy` 
 - `run.services.setIamPolicy` 
 - `run.services.update` 
-</DocAccordion>
+:::
 
-<DocAccordion buttonContent="Service Account" initialIsOpen> 
+:::{dropdown} Service Account
 The following permissions are needed for Service Account management: 
 - `iam.serviceAccountKeys.create` 
 - `iam.serviceAccountKeys.get` 
@@ -127,9 +127,9 @@ The following permissions are needed for Service Account management:
 - `iam.serviceAccounts.get` 
 - `iam.serviceAccounts.update` 
 - `iam.serviceAccounts.actAs` 
-</DocAccordion>
+:::
 
-<DocAccordion buttonContent="Artifact Registry" initialIsOpen> 
+:::{dropdown} Artifact Registry
 The following permissions are needed: 
 - `artifactregistry.repositories.create` 
 - `artifactregistry.repositories.delete` 
@@ -138,51 +138,50 @@ The following permissions are needed:
 - `artifactregistry.repositories.setIamPolicy` 
 - `artifactregistry.repositories.update` 
 - `artifactregistry.repositories.downloadArtifacts` 
-</DocAccordion>
+:::
 
 
 ## Quick start
 
+You can deploy {{edot-cf}} for GCP using the Terraform module...
+
+
+
 % TODO Publish https://github.com/elastic/terraform-google-edot-cloud-forwarder on terraform public registry
+% Issue: https://elasticco.atlassian.net/browse/ENGPRD-1866
 
 
 ## Features
 
-The {{edot-cf}} is designed for reliability and observability.
+The {{edot-cf}} is engineered for high-throughput, reliable ingestion, and simplified observability.
 
 ### Flexible ingestion
 
-Logs can be sent:
+The {{edot-cf}} supports two primary event-driven ingestion patterns on GCP:
+- Direct Pub/Sub: Ideal for logs streamed directly to a Pub/Sub topic by custom applications or other GCP services.
+- GCS file notifications: Automatically ingests batch logs (like VPC Flow Logs or Audit Logs) placed in a file into a Google Cloud Storage bucket. The system listens for the `OBJECT_FINALIZE` event, reads the file content, and processes it.
 
-- Directly to a Pub/Sub topic.
-- To a file placed in a GCS bucket. This will trigger an event notification to Pub/Sub which in turn will trigger the {{edot-cf}}.
+### Reliability
 
-### Reliability & Recovery
+Reliability is built-in to prevent data loss or infinite retry loops.
+- Message acknowledgment: The service only acknowledges (ACKs) a Pub/Sub message upon successful forwarding to Elastic, ensuring that failed messages are automatically placed back in the queue for retry (or sent to the dead letter topic).
+- Smart retries: The underlying Pub/Sub subscription is configured with exponential backoff. This prevents overwhelming the service with repeated failed messages during transient issues like network instability.
+- Dead letter topic and failure bucket: If a message fails to be processed or forwarded after the configured maximum number of attempts, the {{edot-cf}} guarantees the message is sent to the dead letter topic. Messages sent to the dead letter topic are later archived in a dedicated GCS bucket. This prevents data loss and allows for later inspection.
 
-- Dead letter queue (DLQ): If a log entry fails to process or send to Elastic after the configured retries, it is not lost. The
-  {{edot-cf}} automatically routes failed messages to a dedicated GCS bucket for later analysis.
-- Smart retries: Built-in exponential backoff for transient network issues.
 
-### Observability & Metadata
+### Observability and data enrichment
 
-- Self-telemetry: You can configure the collector to send its own internal telemetry to the {{motlp}}.
-- Enrich metadata: You can enable `include_metadata` to enrich your logs with context from the transport layer, including:
-  - `bucket`
-  - `object`
-  - `subscription`
-  - `message_id`
-  - `delivery_attempt`
+The {{edot-cf}} provides detailed context about its own health and the data it processes.
+- Self-telemetry: You can enable the OpenTelemetry collector's internal metrics, allowing you to monitor the service's health.
+- Metadata enrichment: By enabling the `include_metadata` option, logs are automatically enriched with context from the Pub/Sub and GCS transport layers, enabling better troubleshooting and correlation:
+  - `bucket` and `object`, for logs coming from a GCS bucket.
+  - `subscription` and `message_id`.
+  - delivery_attempt, useful for tracking retries.
 
-## Performance
-
+% Best effort, maybe not present for Tech Preview
+% ## Performance
 % TODO
 
 ## Limitations
 
 The current retry logic treats all failures the same way, whether they're temporary or permanent errors like an invalid log format. This means a message that can't ever be processed correctly will still go through all configured retries before finally being sent to the dead-letter topic and archived in the GCS bucket. While this ensures resilience against transient failures, it does mean you might incur unnecessary processing costs for messages that were never going to succeed.
-
-## Changelog
-
-% How to link the CHANGELOG.md file if it is in a private repository?
-% https://github.com/elastic/edot-cloud-forwarder-gcp/blob/main/CHANGELOG.md
-
