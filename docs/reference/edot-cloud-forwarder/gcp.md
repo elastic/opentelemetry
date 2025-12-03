@@ -6,6 +6,7 @@ applies_to:
     observability: preview
   deployment:
     ess: preview
+    self: unavailable
   product:
     edot_cf_gcp: preview
 products:
