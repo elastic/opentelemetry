@@ -181,7 +181,7 @@ Reliability is built-in to prevent data loss or infinite retry loops.
 - Metadata enrichment: By enabling the `include_metadata` option, logs are automatically enriched with context from the Pub/Sub and GCS transport layers, enabling better troubleshooting and correlation:
   - `bucket` and `object`, for logs coming from a GCS bucket.
   - `subscription` and `message_id`.
-  - delivery_attempt, useful for tracking retries.
+  - `delivery_attempt`, useful for tracking retries.
 
 % Best effort, maybe not present for Tech Preview
 % ## Performance
