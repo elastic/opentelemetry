@@ -18,6 +18,8 @@ products:
 - OTel-native data streams (default)
 - ECS-compatible data streams (for backwards compatibility with {{product.apm}})
 
+This page provides a practical reference for which data streams EDOT uses, exporter behavior, and storage engines. For a detailed comparison of OTel data streams with classic {{product.apm}} and ECS-based integrations, see [OTel data streams compared to classic {{product.apm}}](./compatibility/data-streams.md).
+
 To learn how to route OpenTelemetry (OTel) signals to custom data streams, see [Data stream routing](docs-content://solutions/observability/apm/opentelemetry/data-stream-routing.md).
 
 ## Exporter behavior: `otel` and `ecs`
