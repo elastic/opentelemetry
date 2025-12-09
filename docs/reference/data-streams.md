@@ -18,9 +18,9 @@ products:
 - OTel-native data streams (default)
 - ECS-compatible data streams (for backwards compatibility with {{product.apm}})
 
-This page provides a practical reference for which data streams EDOT uses, exporter behavior, and storage engines. For a detailed comparison of OTel data streams with classic {{product.apm}} and ECS-based integrations, see [OTel data streams compared to classic {{product.apm}}](./compatibility/data-streams.md).
+This page provides a practical reference for which data streams EDOT uses, exporter behavior, and storage engines. For a detailed comparison of OTel data streams with classic {{product.apm}} and ECS-based integrations, refer to [OTel data streams compared to classic {{product.apm}}](./compatibility/data-streams.md).
 
-To learn how to route OpenTelemetry (OTel) signals to custom data streams, see [Data stream routing](docs-content://solutions/observability/apm/opentelemetry/data-stream-routing.md).
+To learn how to route OpenTelemetry (OTel) signals to custom data streams, refer to [Data stream routing](docs-content://solutions/observability/apm/opentelemetry/data-stream-routing.md).
 
 ## Exporter behavior: `otel` and `ecs`
 
@@ -33,7 +33,7 @@ The `ecs` exporter ensures compatibility with legacy {{product.apm}} data format
 
 ## Data streams used by a local deployment
 
-When EDOT runs as a local gateway or Collector, it writes telemetry data to different data streams depending on the storage mode and exporter configuration:
+When EDOT runs as a [local gateway or Collector](/reference/architecture/index.md), it writes telemetry data to different data streams depending on the storage mode and exporter configuration:
 
 ### OTel-native mode
 
@@ -71,6 +71,8 @@ The {{motlp}} follows the same stream selection logic as local EDOT deployments:
 
 The main difference is that {{motlp}} is a managed cloud service that handles ingestion and storage, whereas local EDOT deployments require you to manage the Collector infrastructure yourself. Ingest and storage behavior remain consistent between both approaches.
 
+To customize which data streams your telemetry is routed to, you can use [data stream routing](docs-content://solutions/observability/apm/opentelemetry/data-stream-routing.md) with `data_stream.dataset` and `data_stream.namespace` attributes. For information about how resource attributes map to ECS fields and affect data storage, refer to [Attributes and labels](docs-content://solutions/observability/apm/opentelemetry/attributes.md).
+
 ## Field duplication
 
 You may notice fields like:
@@ -83,6 +85,8 @@ These are not true duplicates. Here's why:
 - OTel defines attributes at multiple levels (for example: resource, span).
 - EDOT stores resource attributes under `resource.attributes.*`, according to OTel specifications.
 - {{kib}} dashboards and {{product.apm}} UI rely on ECS-style top-level fields like `service.name`.
+
+For more information about how resource attributes are mapped to ECS fields and stored, refer to [Attributes and labels](docs-content://solutions/observability/apm/opentelemetry/attributes.md).
 
 To bridge these models, EDOT aliases or copies key fields so that:
 
