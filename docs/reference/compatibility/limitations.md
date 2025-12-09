@@ -66,7 +66,7 @@ Make sure to export histogram metrics with delta temporality or use the [`cumula
 
 ### Exemplars
 
-Exemplars are currently discarded when ingesting metrics.  Exemplar support is on the roadmap.
+Exemplars are currently discarded when ingesting metrics. Support for exemplars is planned for a future release.
 
 ## Limitations on managed Kubernetes environments
 
@@ -98,5 +98,6 @@ You can run tail-based sampling in a self-managed EDOT Collector or any contrib 
 * **Operational complexity:** You are responsible for reliability, scaling, and tuning.
 
 ## Additional information
+
 
 For backwards compatibility reasons, Kubernetes metrics and host metrics are ingested twice, once in OTel format and once in Elastic Common Schema (ECS) format.
