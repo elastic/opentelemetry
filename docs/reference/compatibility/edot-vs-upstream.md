@@ -14,7 +14,9 @@ products:
 
 # EDOT compared to contrib OpenTelemetry Collector
 
-The [Elastic Distributions of OpenTelemetry (EDOT)](/reference/index.md) are based on the contrib OpenTelemetry project but include additional features and configurations that are specific to the Elastic ecosystem. Each EDOT component is carefully selected and tested to ensure it works seamlessly with Elastic Stack components.
+The [Elastic Distributions of OpenTelemetry (EDOT)](/reference/index.md) are built using components the contrib OpenTelemetry project but include additional features and configurations that enable a smoother experience when collecting and forwarding telemetry  to the Elastic ecosystem. Each OpenTelemetry component that is selected for EDOT is carefully tested to ensure it works seamlessly with Elastic Stack components.
+
+When working with OpenTelemetrty and Elastic, **EDOT is optional and never required for data collection on the edge machines**. Elastic remains vendor agnostic because users can run any upstream or third party collector. EDOT is simply available for teams that want supported, production grade packaging without changing their existing architecture.
 
 Here are some key differences and considerations when using EDOT compared to contrib OpenTelemetry Collector:
 
@@ -23,20 +25,16 @@ Here are some key differences and considerations when using EDOT compared to con
 | Configuration | Configured for Elastic Observability. | Requires manual configuration.|
 | Support | Official Elastic support with SLAs. | Community support only. |
 | Integration | Seamless integration with Elastic Stack. | Requires additional configuration for Elastic. |
-| Components | Curated list of components for Elastic Observability. | Generic components that may not support all Elastic features. |
-| Deployment | Easier to deploy with Elastic Stack. | Requires manual setup and configuration. |
+| Components | Curated list of components for Elastic Observability. | Components that may not be mature or introduce potential unwanted code or features |
+| Deployment | Same methods of deployment as upstream including configuration. | Requires manual setup and configuration. |
 | Central management | Central management of OTel SDKs and Collectors. | No central management. |
-| Compatibility | Fully compatible with Elastic Stack components. | Compatible but may require additional configuration. |
-| Self-managed/ECH | Required for full functionality. | Compatible but without guaranteed support. |
+| Compatibility | Fully tested with Elastic Stack components. | Components might be compatible but are not tested for guaranteed support. |
 | Updates | Future updates aligned with Elastic Stack releases. | Updates depend on contrib OpenTelemetry release cycle. |
-| EDOT-specific components | Includes custom components optimized for Elastic. | Uses standard OpenTelemetry components. |
-
-EDOT offers a streamlined experience with less configuration burden compared to contrib OpenTelemetry Collector. While you can use contrib components with Elastic, these components aren't covered under official Elastic support SLAs.
 
 ## EDOT Collector compared to contrib OpenTelemetry Collector
 
 The OpenTelemetry project does not provide a single, recommended distribution of the OpenTelemetry Collector for production use. Instead, it offers a variety of components that can be assembled into a custom Collector. Using the contrib Collector requires careful selection and configuration of components, which can be complex and time-consuming.
 
-EDOT Collector is a curated version of the OpenTelemetry Collector that includes specific components and configurations optimized for Elastic Observability. It is designed to work seamlessly with Elastic Stack components, such as Elasticsearch and Kibana, and provides additional features that are not available in the contrib OpenTelemetry Collector.
+EDOT Collector is a curated version of the OpenTelemetry Collector that includes specific components and configurations optimized for Elastic Observability. It is designed to work seamlessly with Elastic Stack components, such as Elasticsearch and Kibana, and provides additional features that are not currently available in the contrib OpenTelemetry Collector, we have plans to upstream most of these in the future.
 
 For a complete list of components included in the EDOT Collector, refer to [EDOT Collector components](elastic-agent://reference/edot-collector/components.md).
