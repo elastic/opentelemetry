@@ -13,7 +13,6 @@ products:
   - id: cloud-serverless
   - id: observability
   - id: edot-cf
-  - id: vpc
 ---
 
 # EDOT Cloud Forwarder for AWS
