@@ -8,7 +8,7 @@ applies_to:
     ess:
     self: unavailable
   product:
-    edot_cf_aws:
+    edot_cf_aws: ga 1.0.0, preview 0.2.6
 products:
   - id: cloud-serverless
   - id: observability
