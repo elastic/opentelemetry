@@ -153,7 +153,42 @@ The following permissions are needed:
 
 ## Quick start
 
-You can deploy {{edot-cf}} for GCP using the Terraform module:
+
+:::::{stepper}
+
+::::{step} Install Terraform
+You need Terraform available to deploy {{edot-cf}} for GCP. Follow the [Terraform instructions](https://developer.hashicorp.com/terraform/tutorials/gcp-get-started/install-cli) to install it.
+
+You can confirm it is correctly installed by running:
+```shell
+terraform --version
+```
+::::
+
+::::{step} Authenticate with GCP
+
+You will need to be authenticated on the Google project you intend to deploy {{edot-cf}} for GCP. If you have `gcloud` installed already, simply run:
+
+```shell
+gcloud auth application-default login
+```
+
+Otherwise, follow [Google instructions](https://docs.cloud.google.com/sdk/docs/install-sdk) for the `gcloud` use and configuration.
+::::
+
+::::{step} Configure Terraform
+You can deploy {{edot-cf}} for GCP using the [Terraform module]((https://github.com/elastic/terraform-google-edot-cloud-forwarder). 
+
+First create a providers file, `providers.tf`, and configure the [`google` provider](https://registry.terraform.io/providers/hashicorp/google/latest/docs/guides/getting_started/guides/getting_started):
+
+```ini subs=true
+provider "google" {
+  project     = "[GCP project]"
+  region      = "[GCP region]"
+}
+```
+
+This will ensure you can deploy the Google resources on your project. Then create a new Terraform file, `main.tf`, and add the {{edot-cf}} for GCP module:
 
 ```ini subs=true
 module "ecf" {
@@ -172,6 +207,29 @@ Refer to the [{{edot-cf}} for GCP Terraform module](https://github.com/elastic/t
 :::{note}
 Currently, the Terraform module can only be obtained using the [{{edot-cf}} for GCP public repository](https://github.com/elastic/terraform-google-edot-cloud-forwarder). We are working on publishing it on the Terraform registry.
 :::
+::::
+
+::::{step} Deploy
+Finally, deploy the module:
+```shell
+terraform init
+terraform apply
+```
+::::
+
+
+::::{step} Destroy
+Once you are done with {{edot-cf}}, you can destroy the resources by running:
+```shell
+terraform destroy
+```
+::::
+
+::::{step} Done
+::::
+
+:::::
+
 
 ## Features
 
