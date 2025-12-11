@@ -194,8 +194,8 @@ This will ensure you can deploy the Google resources on your project. Then creat
 module "ecf" {
   source = "github.com/elastic/terraform-google-edot-cloud-forwarder?ref=v{{version.edot_cf_gcp}}"
 
-  project          = "[GCP project]"
-  region           = "[GCP region]"
+  project = "[GCP project]"
+  region  = "[GCP region]"
 
   ecf_exporter_endpoint = "[{{motlp}}]"
   ecf_exporter_api_key  = "[{{motlp}} API key]"
