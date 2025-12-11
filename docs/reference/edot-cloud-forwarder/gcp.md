@@ -65,6 +65,16 @@ To collect logs using {{edot-cf}} for GCP, you need the following.
 :::{include} ../_snippets/find-motlp-endpoint.md
 :::
 
+### Terraform
+
+You need Terraform to deploy {{edot-cf}} for GCP. Follow the [Terraform instructions](https://developer.hashicorp.com/terraform/tutorials/gcp-get-started/install-cli) to install it.
+
+You can confirm it is correctly installed by running:
+
+```shell
+terraform --version
+```
+
 ### GCP permissions
 
 Make sure the following permissions are set in your Google Cloud project:
@@ -153,21 +163,13 @@ The following permissions are needed:
 
 ## Quick start
 
+Follow these steps to get started with {{edot-cf}} for GCP.
 
 :::::{stepper}
 
-::::{step} Install Terraform
-You need Terraform available to deploy {{edot-cf}} for GCP. Follow the [Terraform instructions](https://developer.hashicorp.com/terraform/tutorials/gcp-get-started/install-cli) to install it.
-
-You can confirm it is correctly installed by running:
-```shell
-terraform --version
-```
-::::
-
 ::::{step} Authenticate with GCP
 
-You will need to be authenticated on the Google project you intend to deploy {{edot-cf}} for GCP. If you have `gcloud` installed already, simply run:
+You need to be authenticated on the Google project in which you want to deploy {{edot-cf}} for GCP. If you have `gcloud` installed already, run this command:
 
 ```shell
 gcloud auth application-default login
@@ -177,9 +179,9 @@ Otherwise, follow [Google instructions](https://docs.cloud.google.com/sdk/docs/i
 ::::
 
 ::::{step} Configure Terraform
-You can deploy {{edot-cf}} for GCP using the [Terraform module]((https://github.com/elastic/terraform-google-edot-cloud-forwarder). 
+Deploy {{edot-cf}} for GCP using the [Terraform module]((https://github.com/elastic/terraform-google-edot-cloud-forwarder). 
 
-First create a providers file, `providers.tf`, and configure the [`google` provider](https://registry.terraform.io/providers/hashicorp/google/latest/docs/guides/getting_started/guides/getting_started):
+First create a providers file, `providers.tf`, then configure the [`google` provider](https://registry.terraform.io/providers/hashicorp/google/latest/docs/guides/getting_started/guides/getting_started):
 
 ```ini subs=true
 provider "google" {
@@ -188,7 +190,7 @@ provider "google" {
 }
 ```
 
-This will ensure you can deploy the Google resources on your project. Then create a new Terraform file, `main.tf`, and add the {{edot-cf}} for GCP module:
+This ensures that you can deploy the Google resources on your project. Then create a new Terraform file, `main.tf`, and add the {{edot-cf}} for GCP module:
 
 ```ini subs=true
 module "ecf" {
@@ -209,25 +211,14 @@ Currently, the Terraform module can only be obtained using the [{{edot-cf}} for 
 :::
 ::::
 
-::::{step} Deploy
-Finally, deploy the module:
+::::{step} Deploy the module
+Deploy the module using these Terraform commands:
+
 ```shell
 terraform init
 terraform apply
 ```
 ::::
-
-
-::::{step} Destroy
-Once you are done with {{edot-cf}}, you can destroy the resources by running:
-```shell
-terraform destroy
-```
-::::
-
-::::{step} Done
-::::
-
 :::::
 
 
@@ -287,4 +278,10 @@ The current retry logic treats all failures the same way, whether they're tempor
 ECF reads each log file fully into memory before sending it on. As a result, peak memory usage grows with both file size and the number of concurrent requests. Our recommendations (1 vCPU, 512MiB, up to 10 concurrent requests) are based on internal tests with files up to about 8MB (~6,000 logs) each. If you send much larger files or significantly more logs per request, you might need to lower per‑instance concurrency or allocate more memory per instance to avoid out‑of‑memory issues.
 :::
 
-  
+## Remove EDOT CF
+
+To remove {{edot-cf}} for GCP, destroy the resources created by Terraform by running this command:
+
+```shell
+terraform destroy
+```
