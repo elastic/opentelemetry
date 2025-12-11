@@ -228,7 +228,7 @@ We ran load tests to understand how to run the ECF collector reliably in product
 
 - **Data forwarding behavior**:  
 
-  ECF forwards each log once; the internal metrics show a **1.0× ratio between received and forwarded logs**, meaning it does not duplicate data during normal operation.
+  ECF forwards each log once, there should not be duplicate data under normal operation.
 
 
 
@@ -240,4 +240,4 @@ We ran load tests to understand how to run the ECF collector reliably in product
 
 - **Memory usage for large log files**  
 
-  ECF reads each log file fully into memory before sending it on. As a result, peak memory usage grows with both **file size** and **the number of concurrent requests**. Our recommendations (1 vCPU, 512MiB, up to 10 concurrent requests) are based on internal tests with files up to about **8MB (~6,000 logs) each**. If you send much larger files or significantly more logs per request, you may need to **lower per‑instance concurrency** or **allocate more memory per instance** to avoid out‑of‑memory issues.
+  ECF reads each log file fully into memory before sending it on. As a result, peak memory usage grows with both file size and the number of concurrent requests. Our recommendations (1 vCPU, 512MiB, up to 10 concurrent requests) are based on internal tests with files up to about 8MB (~6,000 logs) each. If you send much larger files or significantly more logs per request, you may need to lower per‑instance concurrency or allocate more memory per instance to avoid out‑of‑memory issues.
