@@ -210,7 +210,7 @@ This section is still under active development. This guidance is an initial reco
 
 Load tests were performed to understand how to run the ECF collector reliably in production. Tests were performed on a single Cloud Run service instance (1 vCPU) processing log files up to about 8MB in size (around 6,000 logs per file).
 
-#### Best practices
+#### Recommendations
 
 - Start with one ECF instance handling up to 10 concurrent requests. If you need to handle more traffic, add more instances rather than increasing concurrency on a single instance.
 - Use at least 512MiB of memory per Cloud Run instance. In our tests at 10 concurrent requests, peak memory usage stayed below ~430MB, so 512MiB provides safe headroom for bursts.
