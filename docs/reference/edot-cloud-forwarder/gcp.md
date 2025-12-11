@@ -17,7 +17,7 @@ products:
 
 # EDOT Cloud Forwarder for GCP
 
-{{edot-cf}} for GCP provides a serverless, scalable way to ingest Google Cloud Platform logs into Elastic. It deploys the EDOT Collector as a Google Cloud Run service that listens for Pub/Sub push subscriptions, processes the logs, and forwards them to {{motlp}}.
+{{edot-cf}} (ECF) for GCP is a managed data pipeline that sends your Google Cloud logs to Elastic Observability. It uses Google Cloud Run and Pub/Sub under the hood to receive log events, process them with the EDOT Collector, and forward them to {{motlp}}.
 
 ## Architecture overview
 
@@ -25,10 +25,19 @@ The architecture for the {{edot-cf}} GCP is as pictured:
 
 ![EDOT Cloud Forwarder GCP overview](../images/edot-cloud-forwarder-gcp-overview.png)
 
+At a high level, the deployment consists of:
+
+- A Pub/Sub topic and push subscription that receive log events from GCP services or GCS notifications.
+- A Cloud Run service running the EDOT Collector, which transforms and forwards logs.
+- An optional GCS bucket used as a landing zone for batch log files (for example, VPC Flow Logs).
+- A dead-letter Pub/Sub topic and failure bucket that capture messages that could not be processed after retries.
+- An Elastic Observability endpoint ({{motlp}}) where all processed logs are finally stored and analyzed.
+
+
 ### Data flow
 
 - Ingestion: Logs are sent to a Pub/Sub topic (either directly or using a GCS bucket notification).
-- Processing: A push subscription triggers the Cloud Run service, where an OpenTelemetry Collector is running.
+- Processing: A push subscription triggers the Cloud Run service, where the EDOT Collector is running.
 - Forwarding: The service processes the data and exports it to {{ecloud}} using the {{motlp}}.
 - Failure handling: If processing or forwarding still fails after retries, the failed messages are routed to a dead-letter topic and archived in a GCS bucket for future analysis.
 
@@ -148,13 +157,25 @@ The following permissions are needed:
 
 ## Quick start
 
-You can deploy {{edot-cf}} for GCP using the Terraform module...
+:::{note}
+Currently, the Terraform module can only be obtained using the [{{edot-cf}} for GCP public repository](https://github.com/elastic/terraform-google-edot-cloud-forwarder). We are working on publishing it on the Terraform registry.
+:::
 
+You can deploy {{edot-cf}} for GCP using the Terraform module:
 
+```terraform subs=true
+module "ecf" {
+  source = "github.com/elastic/terraform-google-edot-cloud-forwarder?ref=v0.1.0"
 
-% TODO Publish https://github.com/elastic/terraform-google-edot-cloud-forwarder on terraform public registry
-% Issue: https://elasticco.atlassian.net/browse/ENGPRD-1866
+  project          = "[GCP project]"
+  region           = "[GCP region]"
 
+  ecf_exporter_endpoint = "[{{motlp}}]"
+  ecf_exporter_api_key  = "[{{motlp}} API key]"
+}
+```
+
+For more details and advanced configuration, please refer to the [{{edot-cf}} for GCP Terraform module](https://github.com/elastic/terraform-google-edot-cloud-forwarder).
 
 ## Features
 
@@ -183,10 +204,40 @@ Reliability is built-in to prevent data loss or infinite retry loops.
   - `subscription` and `message_id`.
   - `delivery_attempt`, useful for tracking retries.
 
-% Best effort, maybe not present for Tech Preview
-% ## Performance
-% TODO
+### Performance
+
+:::{warning}
+While we have run several internal load tests, this section is still under active development. The guidance below is an initial recommendation and may evolve as we refine sizing with {{motlp}}.
+:::
+
+We ran load tests to understand how to run the ECF collector reliably in production. Tests were performed on a single Cloud Run service instance (1 vCPU) processing log files up to about 8MB in size (around 6,000 logs per file).
+
+**What we currently recommend:**
+
+- **How to scale**:
+
+  Start with one ECF instance handling up to **10 concurrent requests**. If you need to handle more traffic, add **more instances** rather than increasing concurrency on a single instance.
+
+- **Memory per instance**:  
+
+  Use at least **512MiB of memory** per Cloud Run instance. In our tests at 10 concurrent requests, peak memory usage stayed below ~430MB, so 512MiB provides safe headroom for bursts.
+
+- **When your workload is heavier**:  
+
+  If your log files are significantly larger than 8MB, or you send many more logs per request, you should either **lower the per‑instance concurrency** or **allocate more memory per instance** to avoid out‑of‑memory issues.
+
+- **Data forwarding behavior**:  
+
+  ECF forwards each log once; the internal metrics show a **1.0× ratio between received and forwarded logs**, meaning it does not duplicate data during normal operation.
+
+
 
 ## Limitations
 
-The current retry logic treats all failures the same way, whether they're temporary or permanent errors like an invalid log format. This means a message that can't ever be processed correctly will still go through all configured retries before finally being sent to the dead-letter topic and archived in the GCS bucket. While this ensures resilience against transient failures, it does mean you might incur unnecessary processing costs for messages that were never going to succeed.
+- **Retry behavior for permanent errors**  
+
+  The current retry logic treats all failures the same way, whether they're temporary (for example, a brief network issue) or permanent (such as an invalid log format). This means a message that can never be processed successfully will still go through all configured retries before it is finally sent to the dead‑letter topic and archived in the GCS bucket. While this improves resilience against transient failures, it can increase processing costs for messages that were never going to succeed.
+
+- **Memory usage for large log files**  
+
+  ECF reads each log file fully into memory before sending it on. As a result, peak memory usage grows with both **file size** and **the number of concurrent requests**. Our recommendations (1 vCPU, 512MiB, up to 10 concurrent requests) are based on internal tests with files up to about **8MB (~6,000 logs) each**. If you send much larger files or significantly more logs per request, you may need to **lower per‑instance concurrency** or **allocate more memory per instance** to avoid out‑of‑memory issues.
