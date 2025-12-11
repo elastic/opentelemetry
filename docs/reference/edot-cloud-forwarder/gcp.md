@@ -17,7 +17,7 @@ products:
 
 # EDOT Cloud Forwarder for GCP
 
-{{edot-cf}} (ECF) for GCP is a managed data pipeline that sends your Google Cloud logs to Elastic Observability. It uses Google Cloud Run and Pub/Sub under the hood to receive log events, process them with the EDOT Collector, and forward them to {{motlp}}.
+{{edot-cf}} (ECF) for GCP is a managed data pipeline that sends your Google Cloud logs to Elastic Observability. It uses Google Cloud Run and Pub/Sub under the hood to receive log events, process them with an OpenTelemetry Collector, and forward them to {{motlp}}.
 
 ## Architecture overview
 
@@ -28,7 +28,7 @@ The architecture for the {{edot-cf}} GCP is as pictured:
 At a high level, the deployment consists of:
 
 - A Pub/Sub topic and push subscription that receive log events from GCP services or GCS notifications.
-- A Cloud Run service running the EDOT Collector, which transforms and forwards logs.
+- A Cloud Run service running the OpenTelemetry Collector, which transforms and forwards logs.
 - An optional GCS bucket used as a landing zone for batch log files (for example, VPC Flow Logs).
 - A dead-letter Pub/Sub topic and failure bucket that capture messages that could not be processed after retries.
 - An Elastic Observability endpoint ({{motlp}}) where all processed logs are finally stored and analyzed.
@@ -37,7 +37,7 @@ At a high level, the deployment consists of:
 ### Data flow
 
 - Ingestion: Logs are sent to a Pub/Sub topic (either directly or using a GCS bucket notification).
-- Processing: A push subscription triggers the Cloud Run service, where the EDOT Collector is running.
+- Processing: A push subscription triggers the Cloud Run service, where the OpenTelemetry Collector is running.
 - Forwarding: The service processes the data and exports it to {{ecloud}} using the {{motlp}}.
 - Failure handling: If processing or forwarding still fails after retries, the failed messages are routed to a dead-letter topic and archived in a GCS bucket for future analysis.
 
