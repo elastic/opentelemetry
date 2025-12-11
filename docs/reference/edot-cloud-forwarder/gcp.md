@@ -163,7 +163,7 @@ Currently, the Terraform module can only be obtained using the [{{edot-cf}} for 
 
 You can deploy {{edot-cf}} for GCP using the Terraform module:
 
-```terraform subs=true
+```ini subs=true
 module "ecf" {
   source = "github.com/elastic/terraform-google-edot-cloud-forwarder?ref=v0.1.0"
 
