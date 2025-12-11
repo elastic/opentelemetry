@@ -208,7 +208,7 @@ Reliability is built-in to prevent data loss or infinite retry loops.
 This section is still under active development. This guidance is an initial recommendation and may evolve as we refine sizing with {{motlp}}.
 :::
 
-Elastic runs load tests to understand how to run the ECF collector reliably in production. Tests are performed on a single Cloud Run service instance (1 vCPU) processing log files up to about 8MB in size (around 6,000 logs per file).
+Load tests were performed to understand how to run the ECF collector reliably in production. Tests were performed on a single Cloud Run service instance (1 vCPU) processing log files up to about 8MB in size (around 6,000 logs per file).
 
 #### Best practices
 
