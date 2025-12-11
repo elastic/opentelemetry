@@ -183,8 +183,8 @@ First create a providers file, `providers.tf`, and configure the [`google` provi
 
 ```ini subs=true
 provider "google" {
-  project     = "[GCP project]"
-  region      = "[GCP region]"
+  project = "[GCP project]"
+  region  = "[GCP region]"
 }
 ```
 
