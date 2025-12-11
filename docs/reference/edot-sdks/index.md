@@ -66,6 +66,16 @@ This table provides an overview of the features available in the {{edot}} (EDOT)
 
 Elastic provides technical support for EDOT Language SDKs according to Elastic's [Support Policy](https://www.elastic.co/support_policy). EDOT SDKs are meant to be used in combination with the [EDOT Collector](elastic-agent://reference/edot-collector/index.md) or the [{{motlp}}](/reference/motlp.md) to ingest data into Elastic solutions from the EDOT SDKs. Other ingestion paths are not officially supported by Elastic.
 
+Using EDOT SDKs directly with {{product.apm-server}}'s OpenTelemetry intake endpoint is not supported.  
+While some data may ingest, Elastic doesn't guarantee:
+
+- Correctness of attributes  
+- Alignment with EDOT processing pipelines  
+- Enrichment (service metadata, environment, runtime info, and so on)  
+- Troubleshooting coverage  
+
+If you require a supported setup, route SDK telemetry through EDOT Collector or use Managed OTel intake.
+
 :::{warning}
 Avoid using EDOT SDKs alongside any other APM agent, including Elastic APM agents. Running multiple agents in the same application process may lead to conflicting instrumentation, duplicate telemetry, or other unexpected behavior.
 :::
