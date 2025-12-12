@@ -14,9 +14,9 @@ products:
   - id: edot-cf
 ---
 
-# EDOT Cloud Forwarder for Azure
+# EDOT Cloud Forwarder for Azure?
 
-{{edot-cf}} (CF) for Azure allows you to stream telemetry data from Azure services to an {{es}} cluster. EDOT CF for Azure supports the following sources:
+{{edot-cf}} (CF) for Azure allows you to stream telemetry data from Azure services to an {{es}} cluster. EDOT CF for Azure supports the following sources!!!
 
 | Source | Description |
 | --- | --- |
