@@ -10,8 +10,8 @@ on:
 jobs:
   docs-preview:
     uses: elastic/docs-builder/.github/workflows/preview-build.yml@main
-    enable-vale-linting: true
     with:
+      enable-vale-linting: true
       path-pattern: docs/**
     permissions:
       id-token: write
