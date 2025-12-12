@@ -10,6 +10,7 @@ on:
 jobs:
   docs-preview:
     uses: elastic/docs-builder/.github/workflows/preview-build.yml@main
+    enable-vale-linting: true
     with:
       path-pattern: docs/**
     permissions:
