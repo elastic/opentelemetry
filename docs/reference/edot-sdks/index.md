@@ -13,7 +13,7 @@ products:
 
 # EDOT SDKs 
 
-The {{edot}} (EDOT) SDKs are production-ready, customized distributions of [OpenTelemetry](https://opentelemetry.io/) language SDKs, specifically optimized for seamless integration with Elastic Observability. EDOT SDKs provide a comprehensive observability solution that automatically captures distributed traces, metrics, and logs from your applications with minimal configuration.
+The {{edot}} (EDOT) SDKs are production-ready, customized distributions of [OpenTelemetry](https://opentelemetry.io/) language SDKs, specifically optimized for seamless integration with {{product.observability}}. EDOT SDKs provide a comprehensive observability solution that automatically captures distributed traces, metrics, and logs from your applications with minimal configuration.
 
 While maintaining full compatibility with the OpenTelemetry specification, EDOT SDKs provide improvements and bug fixes from Elastic before they become available in contrib OpenTelemetry repositories.
 
@@ -67,7 +67,7 @@ This table provides an overview of the features available in the {{edot}} (EDOT)
 Elastic provides technical support for EDOT Language SDKs according to Elastic's [Support Policy](https://www.elastic.co/support_policy). EDOT SDKs are meant to be used in combination with the [EDOT Collector](elastic-agent://reference/edot-collector/index.md) or the [{{motlp}}](/reference/motlp.md) to ingest data into Elastic solutions from the EDOT SDKs. Other ingestion paths are not officially supported by Elastic.
 
 Using EDOT SDKs directly with {{product.apm-server}}'s OpenTelemetry intake endpoint is not supported.  
-While some data may ingest, Elastic doesn't guarantee:
+While some data might ingest, Elastic doesn't guarantee:
 
 - Correctness of attributes  
 - Alignment with EDOT processing pipelines  
@@ -77,7 +77,7 @@ While some data may ingest, Elastic doesn't guarantee:
 If you require a supported setup, route SDK telemetry through EDOT Collector or use Managed OTel intake.
 
 :::{warning}
-Avoid using EDOT SDKs alongside any other APM agent, including Elastic APM agents. Running multiple agents in the same application process may lead to conflicting instrumentation, duplicate telemetry, or other unexpected behavior.
+Avoid using EDOT SDKs alongside any other {{product.apm}} agent, including Elastic {{product.apm}} agents. Running multiple agents in the same application process may lead to conflicting instrumentation, duplicate telemetry, or other unexpected behavior.
 :::
 
 ## License
