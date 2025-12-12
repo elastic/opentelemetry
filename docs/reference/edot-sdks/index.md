@@ -77,7 +77,7 @@ While some data might ingest, Elastic doesn't guarantee:
 If you require a supported setup, route SDK telemetry through EDOT Collector or use Managed OTel intake.
 
 :::{warning}
-Avoid using EDOT SDKs alongside any other {{product.apm}} agent, including Elastic {{product.apm}} agents. Running multiple agents in the same application process may lead to conflicting instrumentation, duplicate telemetry, or other unexpected behavior.
+Avoid using EDOT SDKs alongside any other {{product.apm}} agent, including Elastic {{product.apm}} agents. Running multiple agents in the same application process might lead to conflicting instrumentation, duplicate telemetry, or other unexpected behavior.
 :::
 
 ## License
