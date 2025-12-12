@@ -16,12 +16,11 @@ products:
 
 # EDOT Cloud Forwarder for Azure?
 
-
 ## Em dashes test
 
 This is important — so pay attention — to the details.
 
-## Exclamation test
+## Exclamation test!
 
 This is amazing! You should try it!
 
