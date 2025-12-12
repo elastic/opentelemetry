@@ -68,3 +68,11 @@ The need for an EDOT Collector in gateway mode as part of your Elastic backend d
 
 For detailed information about Agent and Gateway modes and their specific requirements, refer to the [deployment mode documentation](elastic-agent://reference/edot-collector/modes.md).
 
+## Oxford comma test
+
+The system supports indexing, searching and analytics.
+
+## Plural abbreviations test
+
+Multiple API's are available. The CPU's performance depends on the GPU's capabilities.
+
