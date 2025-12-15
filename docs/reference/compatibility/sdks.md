@@ -43,7 +43,7 @@ Ingesting data from EDOT SDKs through EDOT Collector into Elastic Stack versions
 | Ingestion path | Supported | Notes |
 |----------------|-----------|-------|
 | **EDOT Collector (Gateway)** | Yes | Fully tested and recommended. |
-| **Managed OTel intake** | Yes | Fully supported for {{serverless-full}}/Hosted. |
+| **{{motlp}}** | Yes | Fully supported for {{serverless-full}} and {{ech}}. |
 | **{{product.apm-server}} OTel intake** | Not supported | Telemetry might ingest but mapping, enrichment, and troubleshooting are not guaranteed. |
 
 ## Supported technologies per EDOT SDK
