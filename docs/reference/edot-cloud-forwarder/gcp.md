@@ -275,7 +275,7 @@ The current retry logic treats all failures the same way, whether they're tempor
 
 :::{dropdown} Memory usage for large log files
 :open:
-ECF reads each log file fully into memory before sending it on. As a result, peak memory usage grows with both file size and the number of concurrent requests. Our recommendations (1 vCPU, 512MiB, up to 10 concurrent requests) are based on internal tests with files up to about 8MB (~6,000 logs) each. If you send much larger files or significantly more logs per request, you might need to lower per‑instance concurrency or allocate more memory per instance to avoid out‑of‑memory issues.
+ECF reads each log file fully into memory before sending it on. As a result, peak memory usage grows with both file size and the number of concurrent requests. Our recommendations (1 vCPU, 512MiB, up to 10 concurrent requests) are based on internal tests with files up to about 8MB (~6,000 logs) each. If you send much larger files or significantly more logs per request, you might need to lower per‑instance concurrency, allocate more memory per instance, or do both to avoid out‑of‑memory issues.
 :::
 
 ## Remove EDOT CF
