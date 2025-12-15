@@ -109,7 +109,7 @@ The following permissions are needed for Secret Manager management:
 :::
 
 :::{dropdown} Pub/Sub
-The following permissions are needed for Pub/Sub management: 
+These permissions are needed for Pub/Sub management: 
 - `pubsub.subscriptions.create` 
 - `pubsub.subscriptions.delete` 
 - `pubsub.subscriptions.get` 
