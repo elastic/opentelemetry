@@ -67,7 +67,7 @@ To collect logs using {{edot-cf}} for GCP, you need the following.
 
 ### Terraform
 
-You need Terraform to deploy {{edot-cf}} for GCP. Follow the [Terraform instructions](https://developer.hashicorp.com/terraform/tutorials/gcp-get-started/install-cli) to install it.
+To deploy {{edot-cf}} for GCP you need Terraform. Follow the [Terraform instructions](https://developer.hashicorp.com/terraform/tutorials/gcp-get-started/install-cli) to install it.
 
 You can confirm it is correctly installed by running:
 
