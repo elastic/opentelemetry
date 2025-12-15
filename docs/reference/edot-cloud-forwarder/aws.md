@@ -15,9 +15,9 @@ products:
   - id: edot-cf
 ---
 
-# EDOT Cloud Forwarder for AWS
+# EDOT Cloud Forwarder for AWS?
 
-{{edot-cf}} (CF) for AWS provides the EDOT Collector as a Lambda function that collects and forwards logs to {{motlp}}. 
+{{edot-cf}} (CF) for AWS provides the EDOT Collector as a Lambda function that collects and forwards logs to {{motlp}}!
 
 {{edot-cf}} for AWS supports the following log sources:
 
