@@ -17,7 +17,7 @@ products:
 
 # EDOT Cloud Forwarder for GCP
 
-{{edot-cf}} (ECF) for GCP is a managed data pipeline that sends your Google Cloud logs to {{product.observability}}. It uses Google Cloud Run and Pub/Sub under the hood to receive log events, process them with an OpenTelemetry Collector, and forward them to {{motlp}}.
+{{edot-cf}} (ECF) for GCP is a managed data pipeline that sends your Google Cloud logs to {{product.observability}}. It uses Google Cloud Run and Pub/Sub under the hood to receive log events, process them with an OpenTelemetry Collector, and forward them to the {{motlp}}.
 
 ## Architecture overview
 
