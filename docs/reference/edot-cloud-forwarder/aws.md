@@ -21,7 +21,7 @@ products:
 
 These are correct changes.
 
-More changes here. Nothing to see here.
+More changes here. Nothing to do here.
 
 {{edot-cf}} for AWS supports the following log sources:
 
