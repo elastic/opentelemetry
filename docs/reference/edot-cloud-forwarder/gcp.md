@@ -77,7 +77,7 @@ terraform --version
 
 ### GCP permissions
 
-Make sure the following permissions are set in your Google Cloud project:
+Make sure these permissions are set in your Google Cloud project:
 
 :::{dropdown} Project IAM Admin
 The principal should be granted the built-in `roles/resourcemanager.projectIamAdmin` role, allowing them to manage IAM policies and roles at the project level.
