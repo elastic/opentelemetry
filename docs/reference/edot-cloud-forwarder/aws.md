@@ -19,6 +19,10 @@ products:
 
 {{edot-cf}} (CF) for AWS provides the EDOT Collector as a Lambda function that collects and forwards logs to {{motlp}}. 
 
+These are correct changes.
+
+More changes here. Nothing to see here.
+
 {{edot-cf}} for AWS supports the following log sources:
 
 | AWS Service | Telemetry Description | Availability |
