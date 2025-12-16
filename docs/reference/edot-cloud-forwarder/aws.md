@@ -444,13 +444,16 @@ aws cloudformation describe-stacks --stack-name <stack-name>
 
 ### Quick deployment (direct link)
 
-For fastest deployment, use the direct link to launch the CloudFormation console with the S3 logs template pre-loaded:
+Use the direct link to open the CloudFormation console with the S3 logs template preloaded:
 
-1. Navigate to [Launch Stack (S3 logs)](https://console.aws.amazon.com/cloudformation/home?#/stacks/new?templateURL=https://edot-cloud-forwarder.s3.amazonaws.com/v1/latest/cloudformation/s3_logs-cloudformation.yaml) to open the AWS CloudFormation console with the template automatically loaded.
-2. The stack creation wizard appears. Configure all required parameters using the settings described in [Configure the template](#configure-the-template).  
-3. Select **Next** and check **Acknowledge IAM capabilities**. This is required because the template creates named IAM roles with permissions to access the required resources.  
-4. Review your configuration and select **Submit** to deploy the stack.  
-5. Monitor the progress until the stack reaches the `CREATE_COMPLETE` state.
+[![Launch Stack (S3 logs)](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?#/stacks/new?templateURL=https://edot-cloud-forwarder.s3.amazonaws.com/v1/latest/cloudformation/s3_logs-cloudformation.yaml)
+
+Then follow the steps to deploy the stack:
+
+1. Configure all required parameters using the settings described in [Configure the template](#configure-the-template).  
+2. Select **Next** and check **Acknowledge IAM capabilities**. This is required because the template creates named IAM roles with permissions to access the required resources.  
+3. Review your configuration and select **Submit** to deploy the stack.  
+4. Monitor the progress until the stack reaches the `CREATE_COMPLETE` state.
 
 ### Manual deployment
 
