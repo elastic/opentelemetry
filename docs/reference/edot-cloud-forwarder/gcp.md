@@ -177,7 +177,7 @@ Otherwise, follow [Google instructions](https://docs.cloud.google.com/sdk/docs/i
 ::::
 
 ::::{step} Configure Terraform
-Deploy {{edot-cf}} for GCP using the [Terraform module]((https://github.com/elastic/terraform-google-edot-cloud-forwarder). 
+Deploy {{edot-cf}} for GCP using the [Terraform module](https://github.com/elastic/terraform-google-edot-cloud-forwarder). 
 
 First create a providers file, `providers.tf`, then configure the [`google` provider](https://registry.terraform.io/providers/hashicorp/google/latest/docs/guides/getting_started/guides/getting_started):
 
