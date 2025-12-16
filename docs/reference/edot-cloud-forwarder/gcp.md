@@ -44,10 +44,8 @@ Data flows in the following way:
 
 Currently, {{edot-cf}} for GCP supports the following log types:
 
-| Log             | OTel mapping    |
-|-----------------|-----------------|
-| Cloud Audit Log | Cloud Audit Log |
-| VPC Flow Log    | Access logs     |
+- Cloud Audit log
+- VPC flow log
 
 :::{note}
 We are working to support other popular log types and sources. [Contact us](docs-content://troubleshoot/ingest/opentelemetry/contact-support.md) to let us know of any specific requirements that could influence our plans.
