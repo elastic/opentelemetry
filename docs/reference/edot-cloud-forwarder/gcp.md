@@ -192,7 +192,7 @@ This ensures that you can deploy the Google resources on your project. Then crea
 
 ```ini subs=true
 module "ecf" {
-  source = "github.com/elastic/terraform-google-edot-cloud-forwarder?ref=v{{version.edot_cf_gcp}}"
+  source = "github.com/elastic/terraform-google-edot-cloud-forwarder?ref=v{{version.terraform-google-edot-cf}}"
 
   project = "[GCP project]"
   region  = "[GCP region]"
