@@ -44,7 +44,7 @@ This is the default mode. When ingesting standard OTel signals, EDOT writes to:
 | Traces | `traces-otel-*` |
 | Metrics | `metrics-otel-*` (TSDB-backed using `mode: time_series`) |
 | Logs | `logs-otel-*` |
-| Aggregated service destination metrics | `metrics-service_destination.[1m\|10m\|60m].otel-*` |
+| Aggregated metrics | `metrics-*.[1m\|10m\|60m].otel-*` |
 
 These streams follow OTel naming conventions and field structures.
 
@@ -53,10 +53,9 @@ These streams follow OTel naming conventions and field structures.
 When the `ecs` exporter is enabled, or when ingesting data from {{product.apm}} agents using `elasticapmintake`, EDOT writes to:
 
 - `traces-apm-*`
-- `traces-apm.sampled-*`
 - `metrics-apm.internal-*`
 - `metrics-apm.*-*`
-- `metrics-apm.service_destination.[interval]-*`
+- `metrics-apm.*.[interval]-*`
 - `logs-apm.error-*`
 - `logs-apm.app.*-*`
 
@@ -71,7 +70,7 @@ The {{motlp}} follows the same stream selection logic as local EDOT deployments:
 
 The main difference is that {{motlp}} is a managed cloud service that handles ingestion and storage, whereas local EDOT deployments require you to manage the Collector infrastructure yourself. Ingest and storage behavior remain consistent between both approaches.
 
-To customize which data streams your telemetry is routed to, you can use [data stream routing](docs-content://solutions/observability/apm/opentelemetry/data-stream-routing.md) with `data_stream.dataset` and `data_stream.namespace` attributes. For information about how resource attributes map to ECS fields and affect data storage, refer to [Attributes and labels](docs-content://solutions/observability/apm/opentelemetry/attributes.md).
+To customize which data streams your telemetry is routed to, you can use [data stream routing](docs-content://solutions/observability/apm/opentelemetry/data-stream-routing.md) with `data_stream.dataset` and `data_stream.namespace` attributes.
 
 ## Field duplication
 
@@ -88,7 +87,13 @@ These are not true duplicates. Here's why:
 
 For more information about how resource attributes are mapped to ECS fields and stored, refer to [Attributes and labels](docs-content://solutions/observability/apm/opentelemetry/attributes.md).
 
-To bridge these models, EDOT aliases or copies key fields so that:
+EDOT uses two mechanisms to bridge these models:
+
+1. **Passthrough fields**: When fields are propagated from `resource.attributes` to top level (also for `scope.attributes` and `attributes`), EDOT uses [passthrough fields](docs-content://reference/elasticsearch/mapping-reference/passthrough.md) with no storage overhead.
+
+2. **Field copying**: EDOT performs some copying for specific fields for enrichment and compatibility purposes. This copying is separate from the passthrough mechanism.
+
+These mechanisms ensure that:
 
 - Dashboards continue to function  
 - Filters and searches behave consistently  
