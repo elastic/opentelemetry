@@ -53,7 +53,7 @@ This table provides an overview of the features available in the {{edot}} (EDOT)
 | Crash reporting | ➖  | ➖  | ➖  | ➖  | ➖  | ❌  | ✅ v1.0+ | 
 | **Central configuration** | ❌  | 𝐓 1.5.0+ | 𝐓 1.2.0+ | 𝐓 1.1.0+ | 𝐓 1.4.0+ | 𝐓 1.2.0+ | 𝐓 1.4.0+ | 
 | **Profiling integration** | ❌  | 𝐓 1.0+ | ❌  | ❌  | ❌  | ❌  | ❌  | 
-| **[TLS for OTLP endpoint](https://opentelemetry.io/docs/specs/otel/protocol/exporter/#endpoint-urls-for-otlphttp)** | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+[^1] | ✅ v1.0+[^1] | 
+| **[TLS for OTLP endpoint](https://opentelemetry.io/docs/specs/otel/protocol/exporter/#endpoint-urls-for-otlphttp)** | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.6+ | ✅ 1.2+ | ✅ 1.0+ | ✅ 1.0+[^1] | ✅ v1.0+[^1] | 
 | TLS for OpAMP endpoint | ❌  | ❌  | ✅ 1.7.0+ | ✅ 1.2.0+ | ✅ 1.10.0+ | ✅ 1.2.0+[^1] | ✅ v1.4.0+[^1] | 
 
 **Legend:**

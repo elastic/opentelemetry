@@ -404,10 +404,10 @@ features:
       min_version: 1.0
     Node.js:
       status: ga
-      min_version: 1.0
+      min_version: 1.6
     PHP:
       status: ga
-      min_version: 1.0
+      min_version: 1.2
     Python:
       status: ga
       min_version: 1.0
