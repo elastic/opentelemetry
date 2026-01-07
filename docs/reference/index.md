@@ -25,7 +25,7 @@ Each EDOT distribution is assembled with selected OpenTelemetry components and t
 
 The following Elastic OpenTelemetry distributions are available:
 
-| Distribution | Version | Status |
+| Distribution | Latest version | Current status |
 | ------------ | ------- | ------ |
 | [EDOT Collector](elastic-agent://reference/edot-collector/index.md) | {{version.edot_collector}} | GA |
 | [EDOT .NET](elastic-otel-dotnet://reference/edot-dotnet/index.md) | {{version.edot_dotnet}} | GA |
