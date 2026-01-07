@@ -38,6 +38,14 @@ For the best experience, export data from EDOT SDKs using the [EDOT Collector](e
 Ingesting data from EDOT SDKs through EDOT Collector into Elastic Stack versions 8.18 or higher is supported ([Supported]).
 :::
 
+## Support matrix for EDOT SDK ingestion
+
+| Ingestion path | Supported | Notes |
+|----------------|-----------|-------|
+| **EDOT Collector (Gateway)** | Yes | Fully tested and recommended. |
+| **{{motlp}}** | Yes | Fully supported for {{serverless-full}} and {{ech}}. |
+| **{{product.apm-server}} OTel intake** | Not supported | Telemetry might ingest but mapping, enrichment, and troubleshooting are not guaranteed. |
+
 ## Supported technologies per EDOT SDK
 
 For compatibility of language-specific technologies check out the following pages for corresponding EDOT SDKs:
