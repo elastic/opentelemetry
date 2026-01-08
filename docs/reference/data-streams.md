@@ -1,6 +1,6 @@
 ---
 navigation_title: Data streams
-description: Learn how EDOT stores traces, metrics, and logs in Elasticsearch. Understand OTel-native and ECS-compatible storage modes, exporter behavior, and differences between Managed OTLP Endpoint and local EDOT gateways.
+description: Learn how EDOT stores traces, metrics, and logs in Elasticsearch. Understand OTel-native and ECS-compatible data streams, exporter behavior, and differences between Managed OTLP Endpoint and local EDOT gateways.
 applies_to:
   stack:
   serverless:
@@ -22,18 +22,13 @@ This page provides a practical reference for which data streams EDOT uses, expor
 
 To learn how to route OpenTelemetry (OTel) signals to custom data streams, refer to [Data stream routing](docs-content://solutions/observability/apm/opentelemetry/data-stream-routing.md).
 
-## Exporter behavior: `otel` and `ecs`
+## Exporter behavior
 
-EDOT may use two {{es}} exporters:
-
-- `otel`: sends data to OTel-native data streams  
-- `ecs`: sends data to ECS-compatible data streams  
-
-The `ecs` exporter ensures compatibility with legacy {{product.apm}} data formats.
+EDOT uses the `otel` exporter by default, which sends data to OTel-native data streams. For backwards compatibility with legacy {{product.apm}} data formats, EDOT can also use the `ecs` exporter, which sends data to ECS-compatible data streams.
 
 ## Data streams used by a local deployment
 
-When EDOT runs as a [local gateway or Collector](/reference/architecture/index.md), it writes telemetry data to different data streams depending on the storage mode and exporter configuration:
+When EDOT runs as a [local gateway or Collector](/reference/architecture/index.md), it writes telemetry data to different data streams depending on the exporter configuration and data source:
 
 ### OTel-native mode
 
@@ -41,16 +36,22 @@ This is the default mode. When ingesting standard OTel signals, EDOT writes to:
 
 | Signal | Data stream |
 |--------|-------------|
-| Traces | `traces-otel-*` |
-| Metrics | `metrics-otel-*` (TSDB-backed using `mode: time_series`) |
-| Logs | `logs-otel-*` |
+| Traces | `traces-*.otel-*` |
+| Metrics | `metrics-*.otel-*` (TSDB-backed using `mode: time_series`) |
+| Logs | `logs-*.otel-*` |
 | Aggregated metrics | `metrics-*.[1m\|10m\|60m].otel-*` |
 
 These streams follow OTel naming conventions and field structures.
 
-### ECS-compatible mode
+### ECS-compatible data streams
 
-When the `ecs` exporter is enabled, or when ingesting data from {{product.apm}} agents using `elasticapmintake`, EDOT writes to:
+When ingesting data from {{product.apm}} agents using the `elasticapmintake` receiver, EDOT automatically routes data to ECS-compatible data streams. The `elasticapmintake` receiver determines the destination data stream and internally uses ECS-compatible formatting for compatibility with legacy {{product.apm-server}} behavior. 
+
+:::{note}
+The `elasticapmintake` receiver is intended for migration use cases from classic {{product.apm}} agents. For new deployments, we recommend using OTel SDKs with the default OTel-native data streams.
+:::
+
+When the `ecs` exporter is explicitly enabled, EDOT writes to:
 
 - `traces-apm-*`
 - `metrics-apm.internal-*`
@@ -101,12 +102,12 @@ These mechanisms ensure that:
 
 This duplication is intentional.
 
-## Storage engines used by EDOT
+## Storage engines
 
-| Data type | Storage engine |
-|-----------|----------------|
-| Metrics   | TSDB (`mode: time_series`) |
-| Logs      | LogsDB |
-| Traces    | Standard time-series model |
+The storage engine used by EDOT depends on which data stream the data is sent to. Different data streams use different index templates, and the index templates determine which storage engine is used.
+
+For example:
+- When EDOT sends to OTel-native data streams (using the `otel` exporter), the data uses the storage engines configured for those data streams.
+- When EDOT sends to ECS-compatible data streams (using `elasticapmintake` or the `ecs` exporter), the data uses the storage engines configured for those data streams.
 
 EDOT uses the same index templates and mappings as the rest of the Observability solution.
