@@ -28,26 +28,28 @@ Elastic Observability is technically compatible with edge setups that are fully 
 
 The following sections outline the recommended architectures for different Elastic deployment scenarios.
 
-### {{serverless-full}}
+:::::{applies-switch}
 
+::::{applies-item} serverless:
 {{serverless-full}} provides a [Managed OTLP Endpoint](/reference/motlp.md) for ingestion of OpenTelemetry data.
 
 ![VM-Serverless](../images/host-serverless.png)
 
 Users can send data direct from the Collectors or SDKs deployed on the edge environment through OTLP without any additional requirements for managing an ingestion layer.
+::::
 
-### {{ech}}
-```{applies_to}
-ess:
-stack: preview 9.2
-```
+::::{applies-item} ess: preview
+
+:::{note}
+You need an {{ech}} deployment version 9.2 or later.
+:::
 
 {{ech}} provides a [Managed OTLP Endpoint](/reference/motlp.md) for ingestion of OpenTelemetry data. Users can send data direct from the Collectors or SDKs deployed on the edge environment through OTLP without any additional requirements for managing an ingestion layer.
 
 ![VM-ech](../images/host-ech.png)
+::::
 
-### Self-managed
-
+::::{applies-item} self:
 In a self-managed Elastic deployment, we recommend running an EDOT Collector in gateway mode as a unified ingestion layer for OTLP telemetry from OpenTelemetry collectors or SDKs running at the edge. This gateway can receive all signals (logs, metrics and traces), apply processing as needed, and cover the same use cases that previously required components like APM Server or Logstash.
 
 Depending on your scalability and durability needs, this can be a single collector that scales horizontally, or a chain of collectors where each tier handles a specific concern. For high availability and stronger durability guarantees, you can insert Kafka between tiers so that ingestion is buffered and resilient to downstream outages.
@@ -59,3 +61,7 @@ Compared to [Elastic's classic ingestion paths](docs-content://solutions/observa
 
 Refer to [data streams compared to classic {{product.apm}}](../compatibility/data-streams.md) for a detailed comparison of data streams, mappings, and storage models.
 :::
+
+::::
+
+:::::
