@@ -291,7 +291,7 @@ If this context information is not available, you **MUST** ask the user for it.
 #### Levels of application
 
 1.  **Page-level (MANDATORY)**: In the frontmatter. Sets the default for the whole page.
-2.  **Section-level**: On the line below a heading. Applies to all content until the next heading of the same or higher level.
+2.  **Section-level**: On the line below a heading. Applies to all content until the next heading of the same or higher level. Section-level directives require triple backticks because their content is literal.
     ````markdown
     ## A section for a specific version
     ```{applies_to}
@@ -299,28 +299,57 @@ If this context information is not available, you **MUST** ask the user for it.
     ```
     This content only shows for Stack 9.1+.
     ````
+    To enable YAML syntax highlighting in Markdown editors, you can also use:
+    ````markdown
+    ## A section for a specific version
+    ```yaml {applies_to}
+    stack: ga 9.1
+    ```
+    ````
 3.  **Inline**: Within a line of text. Used for individual sentences, phrases, or list items.
     ````markdown
     This feature is available for {applies_to}`stack: ga 9.0`.
     ````
+4.  **Inline shortcut for preview**: A specialized `{preview}` role exists to quickly mark something as a technical preview. It takes a required version number as an argument.
+    ````markdown
+    Property {preview}`9.1`
+    :   definition body
+    ````
 
 #### `applies_to` syntax and keys
 
-The basic structure is `key: <lifecycle> <version>`.
+The basic structure is `key: <lifecycle> [version]`.
 
 -   **Keys**:
     -   `stack`: The Elastic Stack.
     -   `serverless`: Elastic Cloud Serverless. Can be nested (`security`, `observability`).
     -   `deployment`: Specific deployment types (`ess`, `ece`, `eck`, `self`).
     -   `product`: Specific products with unique versioning (e.g., `apm_agent_java`).
--   **Lifecycle States**:
+-   **Lifecycle States** (mandatory):
     -   `preview`: Technical preview.
     -   `beta`: Beta release.
     -   `ga`: General Availability.
     -   `deprecated`: Will be removed in the future.
     -   `removed`: No longer available from this version forward.
     -   `unavailable`: The feature does not exist in this context.
--   **Versions**: Use `Major.Minor` or `Major.Minor.Patch` (e.g., `9.1`, `9.1.2`).
+
+#### Version syntax
+
+Versions are optional and can be specified using several formats:
+
+| Format | Syntax | Example | Badge Display | Description |
+|--------|--------|---------|---------------|-------------|
+| **Greater than or equal to** (default) | `x.x+`, `x.x`, `x.x.x+`, `x.x.x` | `ga 9.1` or `ga 9.1+` | 9.1+ | Applies from this version onwards |
+| **Range** (inclusive) | `x.x-y.y`, `x.x.x-y.y.y` | `preview 9.0-9.2` | 9.0-9.2 or 9.0+* | Applies within the specified range |
+| **Exact version** | `=x.x`, `=x.x.x` | `beta =9.1` | 9.1 | Applies only to this specific version |
+
+\* Range display depends on release status of the second version.
+
+**Important notes:**
+
+-   Versions are always displayed as **Major.Minor** (e.g., `9.1`) in badges, regardless of whether you specify patch versions in the source.
+-   Each version statement corresponds to the **latest patch** of the specified minor version (e.g., `9.1` represents 9.1.0, 9.1.1, 9.1.6, etc.).
+-   When critical patch-level differences exist, use plain text descriptions alongside the badge rather than specifying patch versions.
 
 #### `applies_to` guidelines
 
@@ -435,6 +464,21 @@ When product changes require immediate documentation updates:
 **Deprecation timelines**: Show removal planning
 ```markdown
 {applies_to}`stack: removed 10.0, deprecated 9.5, ga 9.0`
+```
+
+**Version ranges**: When a feature is only available in specific versions
+```markdown
+{applies_to}`stack: preview 9.0-9.2`
+```
+
+**Exact version**: When a feature applies only to a specific version
+```markdown
+{applies_to}`stack: beta =9.1`
+```
+
+**Multiple lifecycles**: When a feature transitions between lifecycle states
+```markdown
+{applies_to}`stack: ga 9.2+, beta 9.0-9.1`
 ```
 
 ## SEO guidelines for documentation content
