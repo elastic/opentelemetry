@@ -203,7 +203,7 @@ Use the following sizing suggestions to select appropriate reserved concurrency 
 Proper tuning helps to maximize performance and prevent Lambda throttling at high log volumes.
 
 :::{tip}
-These recommendations may vary depending on how the load is distributed across VPCs.
+These recommendations can vary depending on how the load is distributed across VPCs.
 We recommend monitoring CloudWatch metrics for Lambda throttling and concurrent executions, as well as CloudWatch Logs for execution duration per Lambda invocation.
 :::
 
