@@ -21,7 +21,7 @@ products:
 
 {{edot-cf}} for AWS supports the following log sources:
 
-| AWS Service | Telemetry Description | Availability |
+| AWS service | Telemetry description | Availability |
 | --- | --- | --- |
 | Virtual Private Cloud (VPC) | [VPC Flow Logs](https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html) to capture information about IP traffic.  | {applies_to}`edot_cf_aws: ga 1.0.0, preview =0.2.6` |
 | Elastic Load Balancer (ELB) | [Access logs](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-access-logs.html) for your Application Load Balancer. | {applies_to}`edot_cf_aws: ga 1.0.0, preview =0.2.6` |
@@ -100,7 +100,7 @@ Trim the API key from `Authorization=ApiKey MYKEYVALUE...` to just `MYKEYVALUE..
 
 {{edot-cf}} for AWS can be deployed using any of the following methods:
 
-| Deployment Method | Description |
+| Deployment method | Description |
 | --- | --- |
 | CloudFormation (AWS CLI) | Deploy using AWS CLI commands with CloudFormation templates. |
 | CloudFormation (AWS Console) | Deploy using the AWS Management Console UI. |
@@ -183,13 +183,13 @@ The log group must already exist in your AWS account and region. If the ARN poin
 
 These are optional settings you can set in the CloudFormation template:
 
-| Setting            | Description                                                                                                                                                                                                  |
-| ------------------- |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `EdotCloudForwarderTimeout` | Maximum execution time for the Lambda function, measured in seconds. The default value is is `300` seconds or 5 minutes. Minimum value is `1` second. Maximum value is `900` seconds. <br>Increase the value if you experience Lambda timeouts. The default timeout is sufficient for most log file sizes.                                       |
-| `EdotCloudForwarderVersion` | Version of the EDOT Cloud Forwarder. Expected format is semantic versioning, for example `1.0.0`. Defaults to the latest available patch version. Don't change this value unless advised by Elastic Support. |
-| `EdotCloudForwarderMemorySize` | Sets the allocated memory for the Lambda function, measured in megabytes. The default value is `512` MB. Minimum value is `128` MB. Maximum value is `10240` MB. <br>Increase if memory usage consistently exceeds 80% or if you notice Lambda timeouts and processing times increase significantly. More memory also increases CPU, which improves processing speed and reduces timeouts.                                                  | 
-| `EdotCloudForwarderConcurrentExecutions` | Sets the maximum number of reserved concurrent executions for the Lambda function. Default value is `5`. <br> If new log files arrive frequently and you notice Lambda processing times consistently exceeding 1-2 seconds, consider increasing concurrent executions. Concurrent Lambda invocations are only spawned when needed, when new files arrive. This allows multiple log files to be processed in parallel instead of sequentially, avoiding processing delays. <br>Make sure this value doesn't exceed your AWS account's concurrency limit.                            |
-| `EdotCloudForwarderExporterMaxQueueSize` | Sets the internal OTLP exporter queue size, measured in bytes. The default value is `50000000` or 50 MB. <br>Increase if you see "element size too large" errors in your Lambda CloudWatch logs, indicating the queue is full and data is being dropped. This prevents data loss during export.                                                                                                |
+| Setting                                  | Description                                                                                                                                                                                                                                                                                                                                                                                                                   |
+|------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `EdotCloudForwarderConcurrentExecutions` | Sets the maximum number of reserved concurrent executions for the Lambda function. Default value is `5`. <br> If new log files arrive frequently and you notice Lambda throttling, consider increasing concurrent executions. Increased reserved concurrency allows multiple log files to be processed in parallel, avoiding processing delays. <br>Make sure this value doesn't exceed your AWS account's concurrency limit. |
+| `EdotCloudForwarderMemorySize`           | Sets the allocated memory for the Lambda function, measured in megabytes. The default value is `512` MB. Minimum value is `128` MB. Maximum value is `10240` MB. <br> More memory increases Lambda CPU allocation, increasing processing speed of events.                                                                                                                                                                     |
+| `EdotCloudForwarderTimeout`              | Maximum execution time for the Lambda function, measured in seconds. The default is set to `900` seconds or 15 minutes. Accepts values from `1` second to `900` seconds.                                                                                                                                                                                                                                                      |
+| `EdotCloudForwarderVersion`              | Version of the EDOT Cloud Forwarder. Expected format is semantic versioning, for example `1.0.0`. Defaults to the latest available patch version. Don't change this value unless advised by Elastic Support.                                                                                                                                                                                                                  |
+| `EdotCloudForwarderExporterMaxQueueSize` | Sets the internal OTLP exporter queue size, measured in bytes. The default value is `50000000` (50 MB). <br> This parameter should be used only in exceptional edge cases that require manual tuning of the export queue.                                                                                                                                                                                                     |
 
 The default values provided have been determined through extensive load testing across different log types and data volumes. For most use cases, these defaults provide a good balance between cost and performance. 
 
@@ -199,24 +199,31 @@ Adjust these parameters only if you notice performance issues such as Lambda tim
 
 ## Sizing and performance tuning
 
-Use the following sizing matrices to select appropriate Lambda memory and concurrency settings for your traffic volume. Proper tuning helps maximize performance and prevent throttling in high‑volume log sources.
+Use the following sizing suggestions to select appropriate reserved concurrency (`EdotCloudForwarderConcurrentExecutions`) and Lambda memory (`EdotCloudForwarderMemorySize`) based on your expected traffic volumes. This helps maximize performance and prevent Lambda throttling at high log volumes.
+
+:::{tip}
+These recommendations can vary depending on how the load is distributed across multiple S3 files. Monitor CloudWatch metrics for Lambda throttling and concurrent executions, as well as CloudWatch Logs for execution duration per Lambda invocation.
+:::
 
 ### VPC Flow Logs sizing
 
-| Throughput | Log Rate | Recommended Memory | Recommended Concurrency |
-| :--- | :--- | :--- | :--- |
-| **< 5 MB/s** | < 50,000 events/s | 512 MB | 5 |
-| **5 - 10 MB/s** | 50,000 - 100,000 events/s | 512 MB | 10 |
-| **> 10 MB/s** | > 100,000 events/s | 1024 MB | 20+ |
+| Throughput      | Log rate                | Recommended concurrency | Recommended memory | Note                                                          |
+|-----------------|-------------------------|-------------------------|--------------------|---------------------------------------------------------------|
+| **< 5 MB/s**    | < 50,000 logs/s         | 5                       | 512 MB             | Default configuration                                         |
+| **5 - 10 MB/s** | 50,000 - 100,000 logs/s | 10                      | 512 MB             | Increase concurrency                                          |
+| **> 10 MB/s**   | > 100,000 logs/s        | > 10                    | 512 MB             | First increase concurrency and then increase memory as needed |
 
 ### ELB Access Logs sizing
 
-| Throughput | Log Rate | Recommended Memory | Recommended Concurrency |
-| :--- | :--- | :--- | :--- |
-| **< 10 MB/s** | < 25,000 events/s | 512 MB | 5 |
-| **10 - 40 MB/s** | 25,000 - 100,000 events/s | 1024 MB | 10 |
-| **> 40 MB/s** | > 100,000 events/s | 2048 MB | 20+ |
+| Throughput       | Log rate                  | Recommended concurrency | Recommended memory | Note                                                          |
+|------------------|---------------------------|-------------------------|--------------------|---------------------------------------------------------------|
+| **< 10 MB/s**    | < 25,000 events/s         | 5                       | 512 MB             | Default configuration                                         |
+| **10 - 40 MB/s** | 25,000 - 100,000 events/s | 20                      | 512 MB             | Increase concurrency                                          |
+| **> 40 MB/s**    | > 100,000 events/s        | > 20                    | 512 MB             | First increase concurrency and then increase memory as needed |
 
+:::{tip}
+ELB logs might produce files with gigabytes of data. The default configurations are confirmed to work up to 3GB log files, which translates roughly to 23,000 requests per second per ELB. If you expect higher request volumes, increase Lambda memory allocation.
+:::
 
 ## Deploy using CloudFormation (AWS CLI)
 
@@ -513,18 +520,18 @@ The CloudFormation templates create a number of resources to process logs from a
 
 This is a list of resources created by the stack when processing S3 logs.
 
-| Resource name               | Type                             | Description |
-|---------------------------|--------------------------------------|----------------|
-| `CustomNotificationUpdater` | `AWS::CloudFormation::CustomResource` | Custom resource used to manage S3 event notifications dynamically. |
-| `LambdaExecutionRole`       | `AWS::IAM::Role`                   | IAM role granting permissions needed for the Lambda function to interact with S3 and other AWS services. |
-| `LambdaFunction`            | `AWS::Lambda::Function`            | Core Lambda function responsible for processing incoming logs from S3. This is a key resource in the stack. |
-| `LambdaInvokeConfig`        | `AWS::Lambda::EventInvokeConfig`   | Configures error handling and invocation settings for the Lambda function. |
-| `LambdaLogGroup`            | `AWS::Logs::LogGroup`               | CloudWatch log group storing logs for the main Lambda function. Useful for debugging and monitoring. |
-| `LambdaPermissionS3Bucket`  | `AWS::Lambda::Permission`          | Grants permission for S3 to invoke the Lambda function when new logs arrive. |
-| `LambdaS3TriggerPolicy`     | `AWS::IAM::Policy`                 | IAM policy allowing the Lambda function to process events triggered by S3. |
-| `NotificationUpdaterLambda` | `AWS::Lambda::Function`            | Utility Lambda function handling S3 event notification updates dynamically. |
-| `NotificationUpdaterLambdaLogGroup` | `AWS::Logs::LogGroup`         | CloudWatch log group storing logs for the `NotificationUpdaterLambda` function. |
-| `S3FailureBucketARN`               | `AWS::S3::Bucket`                   | ARN of the bucket for storing failed invocations from the `edot-cloud-forwarder` Lambda function, preventing data loss, in the format `arn:aws:s3:::your-bucket-name`. If not defined, the template creates a dedicated failure bucket automatically. |
+| Resource name                       | Type                                  | Description                                                                                                                                                                                                                                           |
+|-------------------------------------|---------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `CustomNotificationUpdater`         | `AWS::CloudFormation::CustomResource` | Custom resource used to manage S3 event notifications dynamically.                                                                                                                                                                                    |
+| `LambdaExecutionRole`               | `AWS::IAM::Role`                      | IAM role granting permissions needed for the Lambda function to interact with S3 and other AWS services.                                                                                                                                              |
+| `LambdaFunction`                    | `AWS::Lambda::Function`               | Core Lambda function responsible for processing incoming logs from S3. This is a key resource in the stack.                                                                                                                                           |
+| `LambdaInvokeConfig`                | `AWS::Lambda::EventInvokeConfig`      | Configures error handling and invocation settings for the Lambda function.                                                                                                                                                                            |
+| `LambdaLogGroup`                    | `AWS::Logs::LogGroup`                 | CloudWatch log group storing logs for the main Lambda function. Useful for debugging and monitoring.                                                                                                                                                  |
+| `LambdaPermissionS3Bucket`          | `AWS::Lambda::Permission`             | Grants permission for S3 to invoke the Lambda function when new logs arrive.                                                                                                                                                                          |
+| `LambdaS3TriggerPolicy`             | `AWS::IAM::Policy`                    | IAM policy allowing the Lambda function to process events triggered by S3.                                                                                                                                                                            |
+| `NotificationUpdaterLambda`         | `AWS::Lambda::Function`               | Utility Lambda function handling S3 event notification updates dynamically.                                                                                                                                                                           |
+| `NotificationUpdaterLambdaLogGroup` | `AWS::Logs::LogGroup`                 | CloudWatch log group storing logs for the `NotificationUpdaterLambda` function.                                                                                                                                                                       |
+| `S3FailureBucketARN`                | `AWS::S3::Bucket`                     | ARN of the bucket for storing failed invocations from the `edot-cloud-forwarder` Lambda function, preventing data loss, in the format `arn:aws:s3:::your-bucket-name`. If not defined, the template creates a dedicated failure bucket automatically. |
 
 The main Lambda function, `LambdaFunction`, is the core component for processing S3 logs. S3 event notifications are handled dynamically using `CustomNotificationUpdater` and `NotificationUpdaterLambda`. 
 
@@ -557,10 +564,10 @@ CloudWatch Log Groups help monitor execution performance and debug issues. IAM p
 
 Logs collected by {{edot-cf}} for AWS are stored in {{es}} datastreams in OpenTelemetry native format. The following table shows which datastreams are used for each log type:
 
-| **AWS Log Type** | **Datastream Dataset** | **Description** |
-|------------------|------------------------|-----------------|
-| VPC Flow Logs | `aws.vpcflow.otel` | VPC Flow Log records |
-| ELB Access Logs | `aws.elbaccess.otel` | ELB Access Log records (ALB, NLB, CLB) |
+| **AWS log type** | **Datastream dataset** | **Description**                        |
+|------------------|------------------------|----------------------------------------|
+| VPC Flow Logs    | `aws.vpcflow.otel`     | VPC Flow Log records                   |
+| ELB Access Logs  | `aws.elbaccess.otel`   | ELB Access Log records (ALB, NLB, CLB) |
 
 The logs are produced in OpenTelemetry native format. For detailed information about the field mappings and structure of each log type, refer to the following documentation:
 
@@ -577,11 +584,11 @@ To set up data visualization in {{kib}}:
 2. Go to **Management** → **Integrations** in the {{kib}} navigation menu.
 3. Search for the appropriate integration based on your log type and install it:
 
-| **AWS Log Type** | **Integration Name** | **Description** |
-|------------------|---------------------|-----------------|
-| ELB Access Logs | **AWS ELB OpenTelemetry Assets** | Dashboards and visualizations for Elastic Load Balancer logs |
-| VPC Flow Logs | **AWS VPC Flow Logs OpenTelemetry Assets** | Dashboards and visualizations for VPC flow log data |
-| CloudTrail Logs | **AWS CloudTrail Logs OpenTelemetry Assets** | Dashboards and visualizations for CloudTrail log data |
+| **AWS log type** | **Integration name**                         | **Description**                                              |
+|------------------|----------------------------------------------|--------------------------------------------------------------|
+| ELB Access Logs  | **AWS ELB OpenTelemetry Assets**             | Dashboards and visualizations for Elastic Load Balancer logs |
+| VPC Flow Logs    | **AWS VPC Flow Logs OpenTelemetry Assets**   | Dashboards and visualizations for VPC flow log data          |
+| CloudTrail Logs  | **AWS CloudTrail Logs OpenTelemetry Assets** | Dashboards and visualizations for CloudTrail log data        |
 
 4. Once installed, navigate to **Dashboard** to view the pre-built dashboards for your AWS log data.
 
@@ -608,8 +615,8 @@ aws lambda invoke \
 
 The following settings are available:
 
-| Option          | Description                                                                                                                                   | Default |
-|-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------|---------|
+| Option          | Description                                                                                                                                    | Default |
+|-----------------|------------------------------------------------------------------------------------------------------------------------------------------------|---------|
 | dryrun          | Run the command without processing actual backup events. Useful to understand details about replaying error files from Lambda CloudWatch logs. | false   |
 | removeOnSuccess | Configure whether to remove error event from S3 error destination, if processing is successful.                                                | true    |
 
