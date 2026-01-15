@@ -202,7 +202,7 @@ Adjust these parameters only if you notice performance issues such as Lambda tim
 Use the following sizing suggestions to select appropriate reserved concurrency (`EdotCloudForwarderConcurrentExecutions`) and Lambda memory (`EdotCloudForwarderMemorySize`) based on your expected traffic volumes. This helps maximize performance and prevent Lambda throttling at high log volumes.
 
 :::{tip}
-These recommendations can vary depending on how the load is distributed across VPCs. Monitor CloudWatch metrics for Lambda throttling and concurrent executions, as well as CloudWatch Logs for execution duration per Lambda invocation.
+These recommendations can vary depending on how the load is distributed across multiple S3 files. Monitor CloudWatch metrics for Lambda throttling and concurrent executions, as well as CloudWatch Logs for execution duration per Lambda invocation.
 :::
 
 ### VPC Flow Logs sizing
