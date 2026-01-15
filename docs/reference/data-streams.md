@@ -92,7 +92,7 @@ EDOT uses two mechanisms to bridge these models:
 
 1. **Passthrough fields**: When fields are propagated from `resource.attributes` to top level (also for `scope.attributes` and `attributes`), EDOT uses passthrough fields with no storage overhead.
 
-2. **Field copying**: EDOT performs some copying for specific fields for enrichment and compatibility purposes. This copying is separate from the passthrough mechanism.
+2. **Field copying**: EDOT performs some copying for specific fields for enrichment and compatibility purposes. This copying is separate from the passthrough mechanism. For example, conditionally copying `span.id` to `transaction.id`.
 
 These mechanisms ensure that:
 
