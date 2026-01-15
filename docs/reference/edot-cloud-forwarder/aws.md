@@ -21,7 +21,7 @@ products:
 
 {{edot-cf}} for AWS supports the following log sources:
 
-| AWS Service | Telemetry Description | Availability |
+| AWS service | Telemetry description | Availability |
 | --- | --- | --- |
 | Virtual Private Cloud (VPC) | [VPC Flow Logs](https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html) to capture information about IP traffic.  | {applies_to}`edot_cf_aws: ga 1.0.0, preview =0.2.6` |
 | Elastic Load Balancer (ELB) | [Access logs](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-access-logs.html) for your Application Load Balancer. | {applies_to}`edot_cf_aws: ga 1.0.0, preview =0.2.6` |
@@ -100,7 +100,7 @@ Trim the API key from `Authorization=ApiKey MYKEYVALUE...` to just `MYKEYVALUE..
 
 {{edot-cf}} for AWS can be deployed using any of the following methods:
 
-| Deployment Method | Description |
+| Deployment method | Description |
 | --- | --- |
 | CloudFormation (AWS CLI) | Deploy using AWS CLI commands with CloudFormation templates. |
 | CloudFormation (AWS Console) | Deploy using the AWS Management Console UI. |
@@ -199,17 +199,15 @@ Adjust these parameters only if you notice performance issues such as Lambda tim
 
 ## Sizing and performance tuning
 
-Use the following sizing suggestions to select appropriate reserved concurrency (`EdotCloudForwarderConcurrentExecutions`) and Lambda memory (`EdotCloudForwarderMemorySize`) based on your expected traffic volumes.
-Proper tuning helps to maximize performance and prevent Lambda throttling at high log volumes.
+Use the following sizing suggestions to select appropriate reserved concurrency (`EdotCloudForwarderConcurrentExecutions`) and Lambda memory (`EdotCloudForwarderMemorySize`) based on your expected traffic volumes. This helps maximize performance and prevent Lambda throttling at high log volumes.
 
 :::{tip}
-These recommendations can vary depending on how the load is distributed across VPCs.
-We recommend monitoring CloudWatch metrics for Lambda throttling and concurrent executions, as well as CloudWatch Logs for execution duration per Lambda invocation.
+These recommendations can vary depending on how the load is distributed across VPCs. Monitor CloudWatch metrics for Lambda throttling and concurrent executions, as well as CloudWatch Logs for execution duration per Lambda invocation.
 :::
 
 ### VPC Flow Logs sizing
 
-| Throughput      | Log Rate                | Recommended Concurrency | Recommended Memory | Note                                                          |
+| Throughput      | Log rate                | Recommended concurrency | Recommended memory | Note                                                          |
 |-----------------|-------------------------|-------------------------|--------------------|---------------------------------------------------------------|
 | **< 5 MB/s**    | < 50,000 logs/s         | 5                       | 512 MB             | Default configuration                                         |
 | **5 - 10 MB/s** | 50,000 - 100,000 logs/s | 10                      | 512 MB             | Increase concurrency                                          |
@@ -217,16 +215,14 @@ We recommend monitoring CloudWatch metrics for Lambda throttling and concurrent 
 
 ### ELB Access Logs sizing
 
-| Throughput       | Log Rate                  | Recommended Concurrency | Recommended Memory | Note                                                          |
+| Throughput       | Log rate                  | Recommended concurrency | Recommended memory | Note                                                          |
 |------------------|---------------------------|-------------------------|--------------------|---------------------------------------------------------------|
 | **< 10 MB/s**    | < 25,000 events/s         | 5                       | 512 MB             | Default configuration                                         |
 | **10 - 40 MB/s** | 25,000 - 100,000 events/s | 20                      | 512 MB             | Increase concurrency                                          |
 | **> 40 MB/s**    | > 100,000 events/s        | > 20                    | 512 MB             | First increase concurrency and then increase memory as needed |
 
 :::{tip}
-ELB logs can be large and files can have gigabytes of data.
-The default configurations have been confirmed to work up to 3GB log files (this translates roughly to ~23000 requests/second per ELB).
-If you expect higher request volumes, make sure to increase Lambda memory allocation.
+ELB logs might produce files with gigabytes of data. The default configurations are confirmed to work up to 3GB log files, which translates roughly to 23,000 requests per second per ELB. If you expect higher request volumes, increase Lambda memory allocation.
 :::
 
 ## Deploy using CloudFormation (AWS CLI)
@@ -568,7 +564,7 @@ CloudWatch Log Groups help monitor execution performance and debug issues. IAM p
 
 Logs collected by {{edot-cf}} for AWS are stored in {{es}} datastreams in OpenTelemetry native format. The following table shows which datastreams are used for each log type:
 
-| **AWS Log Type** | **Datastream Dataset** | **Description**                        |
+| **AWS log type** | **Datastream dataset** | **Description**                        |
 |------------------|------------------------|----------------------------------------|
 | VPC Flow Logs    | `aws.vpcflow.otel`     | VPC Flow Log records                   |
 | ELB Access Logs  | `aws.elbaccess.otel`   | ELB Access Log records (ALB, NLB, CLB) |
@@ -588,7 +584,7 @@ To set up data visualization in {{kib}}:
 2. Go to **Management** → **Integrations** in the {{kib}} navigation menu.
 3. Search for the appropriate integration based on your log type and install it:
 
-| **AWS Log Type** | **Integration Name**                         | **Description**                                              |
+| **AWS log type** | **Integration name**                         | **Description**                                              |
 |------------------|----------------------------------------------|--------------------------------------------------------------|
 | ELB Access Logs  | **AWS ELB OpenTelemetry Assets**             | Dashboards and visualizations for Elastic Load Balancer logs |
 | VPC Flow Logs    | **AWS VPC Flow Logs OpenTelemetry Assets**   | Dashboards and visualizations for VPC flow log data          |
