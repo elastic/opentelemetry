@@ -393,3 +393,56 @@ features:
     iOS:
       status: not-available
       min_version:
+  - name: TLS for OTLP endpoint
+    link: https://opentelemetry.io/docs/specs/otel/protocol/exporter/#endpoint-urls-for-otlphttp
+    min_stack_version:
+    .NET:
+      status: ga
+      min_version: 1.0
+    Java:
+      status: ga
+      min_version: 1.0
+    Node.js:
+      status: ga
+      min_version: 1.6
+    PHP:
+      status: ga
+      min_version: 1.2
+    Python:
+      status: ga
+      min_version: 1.0
+    Android:
+      status: ga
+      min_version: 1.0
+      notes: CA-signed certificates only
+    iOS:
+      status: ga
+      min_version: v1.0
+      notes: CA-signed certificates only
+  - name: TLS for OpAMP endpoint
+    link:
+    is_sub_feature: true
+    min_stack_version:
+    .NET:
+      status: not-available
+      min_version:
+    Java:
+      status: not-available
+      min_version:
+    Node.js:
+      status: ga
+      min_version: 1.7.0
+    PHP:
+      status: ga
+      min_version: 1.2.0
+    Python:
+      status: ga
+      min_version: 1.10.0
+    Android:
+      status: ga
+      min_version: 1.2.0
+      notes: CA-signed certificates only
+    iOS:
+      status: ga
+      min_version: v1.4.0
+      notes: CA-signed certificates only
