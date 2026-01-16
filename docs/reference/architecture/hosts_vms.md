@@ -17,11 +17,11 @@ On host or virtual machine environments, deploy local, per-host OpenTelemetry Co
 
 Collectors deployed on these edge environments have two main purposes:
 
-1.  The collection of local logs and infrastructure metrics. Refer to [this sample config file](https://github.com/elastic/elastic-agent/blob/main/internal/pkg/otel/samples/linux/managed_otlp/platformlogs_hostmetrics.yml) for recommended Collector receiver configurations for hostmetrics and logs.
+1.  The collection of local logs and infrastructure metrics. Refer to [this sample config file](elastic-agent://reference/edot-collector/config/default-config-standalone.md) for recommended Collector receiver configurations for hostmetrics and logs.
 2.  Enriching application telemetry from OTel SDKs with the corresponding hosts resource attributes.
 
 :::{note}
-Elastic Observability is technically compatible with edge setups that are fully based on contrib OTel components as long as the ingestion path follows the recommendations outlined in the following sections.
+{{product.observability}} is technically compatible with edge setups that are fully based on contrib OTel components as long as the ingestion path follows the recommendations outlined in the following sections.
 :::
 
 ## Deployment scenarios
