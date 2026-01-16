@@ -54,7 +54,7 @@ Due to limitations and gaps in data collection with the contrib OTel `hostmetric
 | MacOS collectors do not support CPU and disk metrics. | The `hostmetrics receiver` does not collect these metrics on macOS, leaving related fields empty.                    |
 | Permission issues may cause error logs for process metrics | The `hostmetrics receiver` logs errors if it cannot access certain process information due to insufficient permissions. |
 
-When collecting host metrics through a distribution of the OTel Collector other than EDOT, make sure to enable required metrics that are otherwise disabled by default. Use the EDOT Collector [sample config](elastic-agent://reference/edot-collector/config/default-config-standalone.md) for the `hostmetrics` receiver as reference.
+When collecting host metrics through a distribution of the OTel Collector other than EDOT, make sure to turn on required metrics that are otherwise turned off by default. Use the EDOT Collector [sample config](elastic-agent://reference/edot-collector/config/default-config-standalone.md) for the `hostmetrics` receiver as reference.
 
 ## Metrics data ingestion
 
