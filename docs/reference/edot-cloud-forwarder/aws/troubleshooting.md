@@ -20,6 +20,66 @@ products:
 
 This page helps you diagnose and resolve issues with {{edot-cf}} for AWS when logs are not being forwarded to {{es}} as expected.
 
+## Key metrics to monitor
+
+Use **CloudWatch Metrics Explorer** to monitor your {{edot-cf}} Lambda function:
+
+| Metric | Expected behavior |
+| --- | --- |
+| **Duration** | Increases with file size. |
+| **ConcurrentExecutions** | Should not consistently hit the configured limit |
+| **Errors** | Should be 0. |
+| **Throttles** | Should be 0. |
+
+The `LambdaLogGroup` resource created by the CloudFormation stack stores all Lambda execution logs. Check these logs for processing errors, configuration issues, or data export failures.
+
+## Lambda timeouts
+
+### Symptoms
+
+Lambda execution times out before completing. Check file sizes and execution duration in CloudWatch metrics.
+
+### Resolution
+
+The default 15-minute timeout handles all typical scenarios. For large files (multiple gigabytes), increase memory to allocate more CPU for faster processing.
+
+## Concurrency throttling
+
+### Symptoms
+
+- Ingestion lag despite fast individual executions.
+- `Throttles` metric showing non-zero values in CloudWatch.
+- `ConcurrentExecutions` metric consistently at the configured limit.
+
+### Resolution
+
+Increase the `EdotCloudForwarderConcurrentExecutions` parameter in your CloudFormation stack.
+
+## Data export failures
+
+### Symptoms
+
+- Logs not appearing in {{es}}.
+- Export errors in Lambda CloudWatch logs.
+
+### Resolution
+
+Verify that `OTLPEndpoint` URL and `ElasticAPIKey` are correct. Check the failure S3 bucket for queued events that can be replayed.
+
+## Log format mismatch
+
+### Symptoms
+
+Errors in CloudWatch logs mentioning "failed to unmarshal logs" or "unable to determine log syntax".
+
+### Resolution
+
+Verify that `EdotCloudForwarderS3LogsType` matches the actual log format in your S3 bucket (`vpcflow`, `elbaccess`, or `cloudtrail`).
+
+:::{note}
+These errors are not retryable and failed events are not stored in the failure bucket.
+:::
+
 ## Failed log forwarding
 
 ### Symptoms
@@ -105,24 +165,6 @@ If you're experiencing throttling or timeouts, consider adjusting the Lambda con
 :::::
 
 ::::::
-
-## Monitoring and troubleshooting
-
-To monitor your {{edot-cf}} Lambda function performance and troubleshoot issues:
-
-1. **CloudWatch Metrics Explorer**: View Lambda metrics such as:
-   - Duration
-   - ConcurrentExecutions
-   - Errors
-   - Throttles
-   - Invocations
-
-2. **CloudWatch Logs**: Check the Lambda function logs for:
-   - Processing errors
-   - Configuration issues
-   - Data export failures
-
-The `LambdaLogGroup` resource created by the CloudFormation stack stores all Lambda execution logs. Look for error messages or warnings that indicate configuration or performance issues.
 
 ## Best practices
 

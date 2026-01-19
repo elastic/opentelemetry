@@ -152,6 +152,16 @@ To set up data visualization in {{kib}}:
 
 4. Once installed, navigate to **Dashboard** to view the pre-built dashboards for your AWS log data.
 
+## Limitations
+
+{{edot-cf}} for AWS has the following limitations:
+
+| Limitation | Description |
+| --- | --- |
+| **VPC/PrivateLink not supported** | {{edot-cf}} cannot be deployed inside a VPC or use AWS PrivateLink endpoints. The Lambda function requires public internet access to forward data to the OTLP endpoint. |
+| **Managed OTLP Input only** | {{edot-cf}} is tested exclusively with {{motlp}}. Forwarding to a self-deployed EDOT Collector Gateway is not tested and forwarding to APM Server is not supported. |
+| **Single log type per bucket** | Each S3 bucket can only contain one log type. Mixed log formats in the same bucket are not supported yet. |
+
 ## Next steps
 
 - [Configure the template](configure.md): Learn about all configuration options, including optional settings and sizing recommendations.
