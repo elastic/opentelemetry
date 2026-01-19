@@ -27,7 +27,7 @@ Use **CloudWatch Metrics Explorer** to monitor your {{edot-cf}} Lambda function:
 | Metric | Expected behavior |
 | --- | --- |
 | **Duration** | Increases with file size. |
-| **ConcurrentExecutions** | Should not consistently hit the configured limit |
+| **ConcurrentExecutions** | Should not consistently hit the configured limit. |
 | **Errors** | Should be 0. |
 | **Throttles** | Should be 0. |
 
@@ -54,31 +54,6 @@ The default 15-minute timeout handles all typical scenarios. For large files (mu
 ### Resolution
 
 Increase the `EdotCloudForwarderConcurrentExecutions` parameter in your CloudFormation stack.
-
-## Data export failures
-
-### Symptoms
-
-- Logs not appearing in {{es}}.
-- Export errors in Lambda CloudWatch logs.
-
-### Resolution
-
-Verify that `OTLPEndpoint` URL and `ElasticAPIKey` are correct. Check the failure S3 bucket for queued events that can be replayed.
-
-## Log format mismatch
-
-### Symptoms
-
-Errors in CloudWatch logs mentioning "failed to unmarshal logs" or "unable to determine log syntax".
-
-### Resolution
-
-Verify that `EdotCloudForwarderS3LogsType` matches the actual log format in your S3 bucket (`vpcflow`, `elbaccess`, or `cloudtrail`).
-
-:::{note}
-These errors are not retryable and failed events are not stored in the failure bucket.
-:::
 
 ## Failed log forwarding
 
@@ -149,8 +124,7 @@ The following options are available:
 | --- | --- | --- |
 | `dryrun` | Run without processing events. Useful for understanding what would be replayed. | `false` |
 | `removeOnSuccess` | Remove the error event from the S3 failure bucket after successful processing. | `true` |
-
-When successful, you should get `"StatusCode": 200` as the output.
+| `Duration` | Long durations approaching the timeout may cause incomplete processing. Consider increasing `EdotCloudForwarderMemorySize` for faster processing. |
 
 :::{tip}
 Use `--timeout` with the AWS CLI to increase the Lambda timeout for custom invocations. If a timeout occurs, run the command multiple times to process all error events.
