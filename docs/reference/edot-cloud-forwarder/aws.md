@@ -96,6 +96,14 @@ Trim the API key from `Authorization=ApiKey MYKEYVALUE...` to just `MYKEYVALUE..
 :::
 ::::
 
+## Quick start
+
+Deploy {{edot-cf}} for AWS directly from the AWS Console:
+
+[![Launch Stack (S3 logs)](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?#/stacks/new?templateURL=https://edot-cloud-forwarder.s3.amazonaws.com/v1/latest/cloudformation/s3_logs-cloudformation.yaml)
+
+For detailed configuration options and deployment methods, continue reading.
+
 ## Deployment methods
 
 {{edot-cf}} for AWS can be deployed using any of the following methods:
@@ -696,20 +704,51 @@ To remove a stack using the AWS Management Console:
 3. Click **Remove** at the top of the stack details page.
 4. Monitor the deletion progress on the **Events** tab or wait until the stack disappears from the stack list (indicating deletion is complete).
 
+## Current limitations
+
+{{edot-cf}} for AWS has the following limitations:
+
+| Limitation | Description |
+| --- | --- |
+| **VPC/PrivateLink not supported** | {{edot-cf}} cannot be deployed inside a VPC or use AWS PrivateLink endpoints. The Lambda function requires public internet access to forward data to the OTLP endpoint. |
+| **Managed OTLP Input only** | {{edot-cf}} is tested exclusively with {{motlp}}. Forwarding to a self-deployed EDOT Collector Gateway is not tested and forwarding to APM Server is not supported. |
+| **Single log type per bucket** | Each S3 bucket can only contain one log type. Mixed log formats in the same bucket are not supported yet. |
+
 ## Monitoring and troubleshooting
 
-To monitor your {{edot-cf}} Lambda function performance and troubleshoot issues:
+### Key metrics to monitor
 
-1. **CloudWatch Metrics Explorer**: View Lambda metrics such as:
-   - Duration
-   - ConcurrentExecutions
-   - Errors
-   - Throttles
-   - Invocations
+Use **CloudWatch Metrics Explorer** to monitor your {{edot-cf}} Lambda function:
 
-2. **CloudWatch Logs**: Check the Lambda function logs for:
-   - Processing errors
-   - Configuration issues
-   - Data export failures
+| Metric | Expected behavior |
+| --- | --- |
+| **Duration** | Increases with file size |
+| **ConcurrentExecutions** | Should not consistently hit the configured limit |
+| **Errors** | Should be 0 |
+| **Throttles** | Should be 0 |
 
-The `LambdaLogGroup` resource created by the CloudFormation stack stores all Lambda execution logs. Look for error messages or warnings that indicate configuration or performance issues.
+The `LambdaLogGroup` resource created by the CloudFormation stack stores all Lambda execution logs. Check these logs for processing errors, configuration issues, or data export failures.
+
+### Lambda timeouts
+
+- **Symptom**: Lambda execution times out before completing
+- **Solution**: The default 15-minute timeout handles all typical scenarios. For very large files (multiple GB), increase memory to allocate more CPU for faster processing.
+- **Check**: File sizes and execution duration in CloudWatch metrics
+
+### Concurrency throttling
+
+- **Symptom**: Ingestion lag despite fast individual executions, or `Throttles` metric showing non-zero values in CloudWatch
+- **Solution**: Increase `EdotCloudForwarderConcurrentExecutions` parameter
+- **Check**: `ConcurrentExecutions` metric consistently at the configured limit, `Throttles` metric greater than zero
+
+### Data export failures
+
+- **Symptom**: Logs not appearing in {{es}}, errors in CloudWatch logs
+- **Solution**: Verify `OTLPEndpoint` URL and `ElasticAPIKey` are correct. Check the failure S3 bucket for queued events that can be replayed.
+- **Check**: Lambda CloudWatch logs for export errors
+
+### Log format mismatch
+
+- **Symptom**: Errors in CloudWatch logs mentioning "failed to unmarshal logs" or "unable to determine log syntax"
+- **Solution**: Verify `EdotCloudForwarderS3LogsType` matches the actual log format in your S3 bucket (e.g., `vpcflow`, `elbaccess`, `cloudtrail`)
+- **Note**: These errors are not retryable and failed events are not stored in the failure bucket
