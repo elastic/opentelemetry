@@ -72,7 +72,7 @@ Use the [Red Hat build of OpenTelemetry](https://docs.redhat.com/en/documentatio
 Use the [AWS Distro for OpenTelemetry (ADOT)](https://aws-otel.github.io/docs/getting-started/lambda) [at the edge](/reference/architecture/index.md#understanding-edge-deployment) to collect and send telemetry data from AWS Lambda services. For support of ADOT components, contact AWS.
 
 :::{tip}
-For AWS Lambda workloads that generate telemetry outside the function runtime, such as CloudWatch logs, use the [{{edot-cf}}](/reference/edot-cloud-forwarder/aws.md) instead. 
+For AWS Lambda workloads that generate telemetry outside the function runtime, such as CloudWatch logs, use the [{{edot-cf}}](/reference/edot-cloud-forwarder/aws/index.md) instead. 
 :::
 
 ## EDOT Collector components
