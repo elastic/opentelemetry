@@ -118,7 +118,6 @@ Before deploying {{edot-cf}} for AWS, consider the following:
 
 - Deploy a separate CloudFormation stack for each log type, for example VPC Flow Logs or ELB Access Logs. Each CloudFormation stack can only process one log type and format at a time.
 - Logs stored in S3 must be placed in separate buckets. Each log type should reside in its own dedicated bucket.
-- The CloudFormation stack deployment region must match the region of the S3 bucket.
 
 ## Datastreams
 

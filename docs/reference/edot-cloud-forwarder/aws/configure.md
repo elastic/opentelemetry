@@ -43,13 +43,13 @@ These are the required settings you need:
 | `ElasticApiKey`                        | API key for authentication with Elastic, obtained from {{serverless-full}}. |
 
 ## Log source settings
-
+<!-- TODO: Enable when CloudWatch logs are supported
 Set the following settings based on the log source:
 
 :::::{tab-set}
 
 ::::{tab-item} S3
-
+-->
 For logs sourced from S3, use the following settings:
 
 | Setting            | Description |
@@ -57,10 +57,10 @@ For logs sourced from S3, use the following settings:
 | `EdotCloudForwarderS3LogsType` | The encoding format for logs in the S3 bucket. Supported options:<br>- `vpcflow`: VPC Flow Logs<br>- `elbaccess`: ELB Access logs<br>- `cloudtrail`: CloudTrail Logs|
 | `SourceS3BucketARN` | Amazon Resource Name (ARN) of the S3 bucket where logs are stored. This bucket will trigger the `edot-cloud-forwarder` Lambda function automatically. |
 % | `S3LogsJsonEncodingMode` | _(Required if `EdotCloudForwarderS3LogsType` is `json`)_<br>Defines how JSON logs are structured:<br>- `body` _(default)_: Stores logs in the request body<br>- `body_with_inline_attributes`: Logs include inline attributes |
+<!-- TODO: Enable when CloudWatch logs are supported
 
 ::::
 
-<!-- TODO: Enable when CloudWatch logs are supported
 ::::{tab-item} CloudWatch
 
 For logs sourced from CloudWatch, use the following settings:
@@ -73,10 +73,8 @@ For logs sourced from CloudWatch, use the following settings:
 The log group must already exist in your AWS account and region. If the ARN points to a non-existent log group, stack deployment or updates might fail.
 :::
 ::::
-
--->
-
 :::::
+-->
 
 ## Optional settings
 
