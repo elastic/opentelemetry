@@ -21,7 +21,7 @@ Before deploying {{edot-cf}} for AWS, configure the CloudFormation template para
 
 ## CloudFormation templates
 
-The CloudFormation templates are hosted in a public Amazon S3 bucket and can be accessed through HTTPS URL. You can reference these templates directly during deployment or download them for local use.
+The CloudFormation templates are hosted in a public Amazon S3 bucket and are accessible through HTTPS URL. You can reference these templates directly during deployment or download them for local use.
 
 | Log type | Log source | CloudFormation template |
 | --- | --- | ------------------------------------------------ |
@@ -34,7 +34,7 @@ For specific versions, edit `latest` in the URL to the required version in the f
 
 ## Required settings
 
-These are the required settings you need:
+These are the required settings:
 
 | Setting                                | Description |
 | -------------------------------------- | ----------- |
