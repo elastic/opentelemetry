@@ -92,7 +92,7 @@ aws cloudformation create-stack \
   --parameters \
     ParameterKey=SourceS3BucketARN,ParameterValue=your-cloudtrail-bucket-arn \
     ParameterKey=OTLPEndpoint,ParameterValue="<placeholder>" \
-    ParameterKey=ElasticAPIKey,ParameterValue="<placeholder>" \
+    ParameterKey=,ParameterValue="<placeholder>" \
     ParameterKey=EdotCloudForwarderS3LogsType,ParameterValue="cloudtrail_log"
 ```
 ::::
@@ -263,7 +263,7 @@ After clicking the button:
 
    | Parameter | Description |
    | --- | --- |
-   | `stack-name` | Name of the CloudFormation stack, for example `vpc-edot-cf`. |
+   | `Stack name` | Name of the CloudFormation stack, for example `vpc-edot-cf`. |
    | `OTLPEndpoint` | The OTLP endpoint URL from {{serverless-full}} or {{ech}}. |
    | `ElasticApiKey` | API key for authentication with Elastic. |
    | `SourceS3BucketARN` | ARN of the S3 bucket where your logs are stored. |
