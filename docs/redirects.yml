@@ -1,6 +1,6 @@
 redirects:
   # EDOT Cloud Forwarder AWS restructure
-  'reference/edot-cloud-forwarder/aws.md': 'reference/edot-cloud-forwarder/aws/index.md'
+  # 'reference/edot-cloud-forwarder/aws.md': 'reference/edot-cloud-forwarder/aws/index.md'
 
   # EDOT Collector troubleshooting pages (from reference to troubleshooting)
   'reference/edot-collector/troubleshooting/index.md': 'docs-content://troubleshoot/ingest/opentelemetry/edot-collector/index.md'
