@@ -32,7 +32,7 @@ The Elastic Distribution of OpenTelemetry (EDOT) Cloud Forwarder provides the ED
 
 To get started with {{edot-cf}}, select the setup guide for your cloud provider:
 
-- [AWS](edot-cloud-forwarder-aws://reference/edot-cf-aws/)
+- [AWS](edot-cloud-forwarder-aws://reference/edot-cf-aws/index.md)
 - [Azure](azure.md)
 - [GCP](gcp.md)
 
