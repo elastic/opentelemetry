@@ -24,10 +24,7 @@ toc:
   - file: edot-sdks/index.md
   - file: edot-cloud-forwarder/index.md
     children:
-      - file: edot-cloud-forwarder/aws/index.md
-        children:
-          - file: edot-cloud-forwarder/aws/configure.md
-          - file: edot-cloud-forwarder/aws/deploy.md
-          - file: edot-cloud-forwarder/aws/troubleshooting.md
+      - title: AWS
+        crosslink: edot-cloud-forwarder-aws://reference/edot-cf-aws/index.md
       - file: edot-cloud-forwarder/azure.md
       - file: edot-cloud-forwarder/gcp.md
