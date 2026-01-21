@@ -63,6 +63,10 @@ To collect logs using {{edot-cf}} for GCP, you need the following.
 :::{include} ../_snippets/find-motlp-endpoint.md
 :::
 
+:::{important}
+Trim the API key from `Authorization=ApiKey MYKEYVALUE...` to just `MYKEYVALUE...` before using it as the argument to the `ElasticAPIKey` parameter.
+:::
+
 ### Terraform
 
 To deploy {{edot-cf}} for GCP you need Terraform. Follow the [Terraform instructions](https://developer.hashicorp.com/terraform/tutorials/gcp-get-started/install-cli) to install it.
