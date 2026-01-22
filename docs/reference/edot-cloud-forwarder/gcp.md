@@ -201,7 +201,7 @@ module "ecf" {
   project = "[GCP project]"
   region  = "[GCP region]"
 
-  ecf_asset_prefix      = "ecf"
+  ecf_asset_prefix      = "ecf" # multiple simultaneous deployments should have different prefixes
   ecf_exporter_endpoint = "[{{motlp}}]"
   ecf_exporter_api_key  = "[{{motlp}} API key]"
 }
