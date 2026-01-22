@@ -201,6 +201,7 @@ module "ecf" {
   project = "[GCP project]"
   region  = "[GCP region]"
 
+  ecf_asset_prefix      = "ecf"
   ecf_exporter_endpoint = "[{{motlp}}]"
   ecf_exporter_api_key  = "[{{motlp}} API key]"
 }
