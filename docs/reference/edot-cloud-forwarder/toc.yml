@@ -1,0 +1,4 @@
+toc:
+  - file: index.md
+  - toc: azure
+  - toc: gcp
