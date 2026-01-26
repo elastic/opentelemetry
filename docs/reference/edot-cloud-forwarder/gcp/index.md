@@ -1,5 +1,5 @@
 ---
-navigation_title: GCP
+navigation_title: EDOT Cloud Forwarder for GCP
 description: Set up the EDOT Cloud Forwarder for GCP to bring your GCP logs to Elastic Observability.
 applies_to:
   serverless:
