@@ -23,7 +23,7 @@ products:
 
 The architecture for the {{edot-cf}} GCP is as follows:
 
-![EDOT Cloud Forwarder GCP overview](../images/edot-cloud-forwarder-gcp-overview.png)
+![EDOT Cloud Forwarder GCP overview](../../images/edot-cloud-forwarder-gcp-overview.png)
 
 At a high level, the deployment consists of:
 
@@ -60,7 +60,7 @@ To collect logs using {{edot-cf}} for GCP, you need the following.
 - Access to an {{motlp}}.
 - Valid API key with ingest permissions.
 
-:::{include} ../_snippets/find-motlp-endpoint.md
+:::{include} ../../_snippets/find-motlp-endpoint.md
 :::
 
 :::{important}
