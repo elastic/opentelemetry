@@ -17,7 +17,7 @@ products:
 
 # Elastic Cloud Managed OTLP Endpoint (mOTLP)
 
-The {{motlp}} allows you to send OpenTelemetry data directly to {{ecloud}} using the OTLP protocol. The endpoint can act like a Collector in gateway mode, so that you can point your OpenTelemetry SDKs or other Collectors to it.
+The {{motlp}} allows you to send OpenTelemetry data directly to Elastic Cloud using the OTLP protocol. The endpoint adds a resilient ingestion layer that works seamlessly with serverless autoscaling and removes pressure from ECH clusters.
 
 :::{important}
 The {{motlp}} endpoint is not available for Elastic [self-managed](docs-content://deploy-manage/deploy/self-managed.md), [ECE](docs-content://deploy-manage/deploy/cloud-enterprise.md) or [ECK](docs-content://deploy-manage/deploy/cloud-on-k8s.md) clusters. To send OTLP data to any of these cluster types, deploy and expose an OTLP-compatible endpoint using the EDOT Collector as a gateway. Refer to [EDOT deployment docs](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway) for more information.
