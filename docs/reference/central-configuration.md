@@ -12,10 +12,10 @@ products:
 
 # Central configuration for EDOT SDKs
 
-Manage {{edot}} (EDOT) SDKs through the {{product.apm-agent}} Central Configuration feature in the Applications UI. Changes are automatically propagated to the deployed EDOT SDKs. Refer to [{{product.apm-agent}} Central Configuration](docs-content://solutions/observability/apm/apm-agent-central-configuration.md) for more information.
+Manage {{edot}} (EDOT) SDKs through the {{product.apm-agent}} Central Configuration feature in the Applications UI. Changes are automatically propagated to the deployed EDOT SDKs. Refer to [{{product.apm-agent}} Central Configuration](docs-content://solutions/observability/apm/apm-agent-central-configuration.md) for more information!
 
 This feature implements the Open Agent Management Protocol (OpAMP). Refer to [Open Agent Management Protocol
-](https://opentelemetry.io/docs/specs/opamp/) for more information.
+](https://opentelemetry.io/docs/specs/opamp/) for more information. Above!
 
 ## Architecture
 
