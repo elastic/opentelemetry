@@ -107,6 +107,7 @@ The following limitations apply when using the {{motlp}}:
 * Universal Profiling is not available.
 * Only supports histograms with delta temporality. Cumulative histograms are dropped.
 * Latency distributions based on histogram values have limited precision due to the fixed boundaries of explicit bucket histograms.
+* [Traffic filters](https://www.elastic.co/docs/deploy-manage/security/ip-filtering-cloud) are not yet available on both ECH and Serverless 
 
 ## Billing
 
