@@ -18,7 +18,7 @@ products:
 
 {{edot-cf}} (CF) for Azure allows you to stream telemetry data from Azure services to an {{es}} cluster. EDOT CF for Azure supports the following sources:
 
-The above only applies to many versions higher than 303!
+The above only applies to many versions higher than 303
 
 | Source | Description |
 | --- | --- |
