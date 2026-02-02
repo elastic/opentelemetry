@@ -54,10 +54,7 @@ jobs:
           body: |
             This PR updates the generated documentation based on the latest data.
             
-            - Updates component tables
             - Updates SDK feature tables
-            - Updates OCB file
-            - Updates kube-stack version in docset.yml
             
             This is an automated PR created by the documentation update workflow.
           branch: update-docs
