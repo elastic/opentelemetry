@@ -1,5 +1,0 @@
----
-layout: redirection
-permalink: /edot-sdks/nodejs/configuration.html
-redirect: https://www.elastic.co/docs/reference/edot-sdks/nodejs/configuration
----
