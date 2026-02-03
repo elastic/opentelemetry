@@ -6,7 +6,7 @@ applies_to:
     observability:
     security:
   deployment:
-    ess: ga 9.4+, preview 9.2-9.3
+    ess: ga
     eck: unavailable
     ece: unavailable
     self: unavailable
@@ -136,12 +136,8 @@ For the {{serverless-full}} trial, the rate limit is reduced to 15 MB/s and the 
 ### Dynamic rate scaling for {{ech}}
 
 ```{applies_to}
-ess: preview
+ess:
 ```
-
-:::{note}
-This functionality is available in technical preview in {{ech}} deployments versions 9.2 and later.
-:::
 
 For {{ech}} deployments, rate limits can scale up or down dynamically based on backpressure from {{es}}. Every deployment starts with a 1 MB/s rate limit and 2 MB/s burst limit. The system automatically adjusts these limits based on your {{es}} capacity and load patterns. Scaling requires time, so sudden load spikes might still result in temporary rate limiting.
 
