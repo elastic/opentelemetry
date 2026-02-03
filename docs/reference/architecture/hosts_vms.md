@@ -5,6 +5,8 @@ applies_to:
   stack:
   serverless:
     observability:
+  deployment: 
+    ess: 
 products:
   - id: cloud-serverless
   - id: observability
@@ -38,7 +40,7 @@ The following sections outline the recommended architectures for different Elast
 Users can send data direct from the Collectors or SDKs deployed on the edge environment through OTLP without any additional requirements for managing an ingestion layer.
 ::::
 
-::::{applies-item} ess: preview
+::::{applies-item} ess: preview 9.2-9.3, ga 9.4+
 
 :::{note}
 You need an {{ech}} deployment version 9.2 or later.

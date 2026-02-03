@@ -2,12 +2,13 @@
 navigation_title: Managed OTLP Endpoint
 description: Reference documentation for the Elastic Cloud Managed OTLP Endpoint.
 applies_to:
-  # Preserve when going GA  
   serverless:
     observability:
     security:
   deployment:
-    ess: preview
+    ess: ga 9.4+, preview 9.2-9.3
+    eck: unavailable
+    ece: unavailable
     self: unavailable
 products:
   - id: cloud-serverless
@@ -17,10 +18,12 @@ products:
 
 # Elastic Cloud Managed OTLP Endpoint (mOTLP)
 
-The {{motlp}} allows you to send OpenTelemetry data directly to {{ecloud}} using the OTLP protocol. The endpoint adds a resilient ingestion layer that works seamlessly with serverless autoscaling and removes pressure from {{ech}} clusters.
+The {{motlp}} allows you to send OpenTelemetry data directly to {{ecloud}} using the OTLP protocol. 
+
+The endpoint adds a resilient ingestion layer that works seamlessly with serverless autoscaling and removes pressure from {{ech}} clusters.
 
 :::{important}
-The {{motlp}} endpoint is not available for Elastic [self-managed](docs-content://deploy-manage/deploy/self-managed.md), [ECE](docs-content://deploy-manage/deploy/cloud-enterprise.md) or [ECK](docs-content://deploy-manage/deploy/cloud-on-k8s.md) clusters. To send OTLP data to any of these cluster types, deploy and expose an OTLP-compatible endpoint using the EDOT Collector as a gateway. Refer to [EDOT deployment docs](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway) for more information.
+The {{motlp}} endpoint is not available for Elastic [self-managed](docs-content://deploy-manage/deploy/self-managed.md), [ECE](docs-content://deploy-manage/deploy/cloud-enterprise.md), or [ECK](docs-content://deploy-manage/deploy/cloud-on-k8s.md) clusters. To send OTLP data to any of these cluster types, deploy and expose an OTLP-compatible endpoint using the [EDOT Collector as a gateway](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway).
 :::
 
 ## Reference architecture
@@ -107,7 +110,7 @@ The following limitations apply when using the {{motlp}}:
 * Universal Profiling is not available.
 * Only supports histograms with delta temporality. Cumulative histograms are dropped.
 * Latency distributions based on histogram values have limited precision due to the fixed boundaries of explicit bucket histograms.
-* [Traffic filters](docs-content://deploy-manage/security/ip-filtering-cloud.md) are not yet available on both ECH and Serverless 
+* [Traffic filters](docs-content://deploy-manage/security/ip-filtering-cloud.md) are not yet available on both ECH and Serverless.
 
 ## Billing
 
