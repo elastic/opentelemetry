@@ -1,6 +1,5 @@
 redirects:
   # EDOT Cloud Forwarder (restructured to subfolders)
-  'reference/edot-cloud-forwarder/azure.md': 'reference/edot-cloud-forwarder/azure/index.md'
   'reference/edot-cloud-forwarder/gcp.md': 'reference/edot-cloud-forwarder/gcp/index.md'
 
   # EDOT Collector troubleshooting pages (from reference to troubleshooting)
