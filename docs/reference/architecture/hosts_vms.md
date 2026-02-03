@@ -49,7 +49,7 @@ You need an {{ech}} deployment version 9.2 or later.
 ![VM-ech](../images/host-ech.png)
 ::::
 
-::::{applies-item} self:
+::::{applies-item} { eck:, ece:, self: }
 In a self-managed Elastic deployment, we recommend running an EDOT Collector in gateway mode as a unified ingestion layer for OTLP telemetry from OpenTelemetry collectors or SDKs running at the edge. This gateway can receive all signals (logs, metrics and traces), apply processing as needed, and cover the same use cases that previously required components like APM Server or Logstash.
 
 Depending on your scalability and durability needs, this can be a single collector that scales horizontally, or a chain of collectors where each tier handles a specific concern. For high availability and stronger durability guarantees, you can insert Kafka between tiers so that ingestion is buffered and resilient to downstream outages.
