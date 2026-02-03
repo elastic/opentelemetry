@@ -13,6 +13,8 @@ jobs:
     with:
       enable-vale-linting: true
       path-pattern: docs/**
+      include-paths: |
+        docs/reference/architecture/**
     permissions:
       id-token: write
       deployments: write
