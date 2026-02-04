@@ -40,7 +40,9 @@ For {{ech}} deployments, rate limits can scale up or down dynamically based on b
 
 ## Exceeding the rate limit
 
-If you send data that exceeds the available limits, the {{motlp}} responds with an HTTP `429` Too Many Requests status code. A log message similar to this appears in the OpenTelemetry Collector's output:
+If you send data that exceeds the available limits, the {{motlp}} responds with an HTTP `429` Too Many Requests status code. For troubleshooting steps, refer to [Error: Too many requests](./troubleshooting.md#error-too-many-requests).
+
+A log message similar to this appears in the OpenTelemetry Collector's output:
 
 ```json
 {
@@ -63,6 +65,8 @@ The solutions to rate limiting depend on your deployment type:
 ### {{ech}} deployments
 
 For {{ech}} deployments, if you're experiencing consistent `429` errors, the primary solution is to increase your {{es}} capacity. Because rate limits are affected by {{es}} backpressure, scaling up your {{es}} cluster reduces backpressure and, over time, increases the ingestion rate for your deployment.
+
+Use [AutoOps](./troubleshooting.md#use-autoops-to-diagnose-issues) to check CPU utilization, index queue depth, and node load to confirm whether your cluster is under-resourced.
 
 To scale your deployment:
 
