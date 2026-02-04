@@ -5,8 +5,6 @@ applies_to:
   stack:
   serverless:
     observability:
-  deployment: 
-    ess: 
 products:
   - id: cloud-serverless
   - id: observability
@@ -33,7 +31,7 @@ The following sections outline the recommended architectures for different Elast
 :::::{applies-switch}
 
 ::::{applies-item} serverless:
-{{serverless-full}} provides a [Managed OTLP Endpoint](/reference/motlp.md) for ingestion of OpenTelemetry data.
+{{serverless-full}} provides a [Managed OTLP Endpoint](/reference/motlp/index.md) for ingestion of OpenTelemetry data.
 
 ![VM-Serverless](../images/host-serverless.png)
 
@@ -43,10 +41,10 @@ Users can send data direct from the Collectors or SDKs deployed on the edge envi
 ::::{applies-item} ess:
 
 :::{note}
-You need an {{ech}} deployment version 9.0 or later, or version 8.19 or later.
+You need an {{ech}} deployment version 9.0 or later.
 :::
 
-{{ech}} provides a [Managed OTLP Endpoint](/reference/motlp.md) for ingestion of OpenTelemetry data. Users can send data direct from the Collectors or SDKs deployed on the edge environment through OTLP without any additional requirements for managing an ingestion layer.
+{{ech}} provides a [Managed OTLP Endpoint](/reference/motlp/index.md) for ingestion of OpenTelemetry data. Users can send data direct from the Collectors or SDKs deployed on the edge environment through OTLP without any additional requirements for managing an ingestion layer.
 
 ![VM-ech](../images/host-ech.png)
 ::::
