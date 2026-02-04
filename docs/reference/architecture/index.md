@@ -59,7 +59,7 @@ When a Collector in gateway mode is deployed, it is considered part of the {{pro
 
 The need for an EDOT Collector in gateway mode as part of your Elastic backend depends on your deployment type:
 
-**{{serverless-full}} and {{ech}}**: Edge collectors can send OTLP data directly to the [Managed OTLP Endpoint](/reference/motlp.md) without requiring a self-managed Gateway Collector. The Managed OTLP Endpoint provides a fully managed ingestion layer as part of the Elastic backend. You can optionally deploy an EDOT Collector in gateway mode as part of your edge environment if you need additional processing before data reaches the Managed OTLP Endpoint.
+**{{serverless-full}} and {{ech}}**: Edge collectors can send OTLP data directly to the [Managed OTLP Endpoint](/reference/motlp/index.md) without requiring a self-managed Gateway Collector. The Managed OTLP Endpoint provides a fully managed ingestion layer as part of the Elastic backend. You can optionally deploy an EDOT Collector in gateway mode as part of your edge environment if you need additional processing before data reaches the Managed OTLP Endpoint.
 
 **Self-managed, ECE, and ECK deployments**: An EDOT Collector in gateway mode is **required as part of your {{product.observability}} backend**. This Gateway Collector exposes the OTLP endpoint that edge collectors send data to, and handles essential preprocessing, including:
 
