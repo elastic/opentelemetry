@@ -37,8 +37,7 @@ To use the {{ecloud}} {{motlp}} you need the following:
 You don't need APM Server when ingesting data through the Managed OTLP Endpoint. The APM integration (`.apm` endpoint) is a legacy ingest path that only supports traces and translates OTLP telemetry to ECS, whereas {{motlp}} natively ingests OTLP data.
 
 :::{note}
-For {{ech}} deployments, {{motlp}} is currently supported in the following AWS regions: ap-southeast-1, ap-northeast-1, ap-south-1, eu-west-1, eu-west-2, us-east-1, us-west-2, us-east-2. 
-Support for additional regions and cloud providers is in progress and will be expanded over time. 
+For {{ech}} deployments, {{motlp}} is currently available on AWS and GCP. Azure is not yet supported.
 :::
 
 ## Send data to the Managed OTLP Endpoint
