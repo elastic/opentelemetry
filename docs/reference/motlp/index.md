@@ -95,6 +95,10 @@ For a detailed comparison of how OTel data streams differ from classic Elastic A
 
 ## Failure store
 
+```{applies_to}
+stack: ga 9.1+
+```
+
 The {{motlp}} endpoint is designed to be highly available and resilient. However, there are some scenarios where data might be lost or not sent completely. The [Failure store](docs-content://manage-data/data-store/data-streams/failure-store.md) is a mechanism that allows you to recover from these scenarios.
 
 The Failure store is always enabled for {{motlp}} data streams. This prevents ingest pipeline exceptions and conflicts with data stream mappings. Failed documents are stored in a separate index. You can view the failed documents from the **Data Set Quality** page. Refer to [Data set quality](docs-content://solutions/observability/data-set-quality-monitoring.md).
@@ -103,11 +107,11 @@ The Failure store is always enabled for {{motlp}} data streams. This prevents in
 
 The following limitations apply when using the {{motlp}}:
 
-* Tail-based sampling (TBS) is not available.
 * Universal Profiling is not available.
 * Only supports histograms with delta temporality. Cumulative histograms are dropped.
 * Latency distributions based on histogram values have limited precision due to the fixed boundaries of explicit bucket histograms.
 * [Traffic filters](docs-content://deploy-manage/security/ip-filtering-cloud.md) are not yet available on both ECH and Serverless.
+* Tail-based sampling (TBS) is not available. The {{motlp}} does not provide centralized hosted sampling. If you need tail-based sampling, configure it on the edge using the [Tail Sampling Processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor) in your OpenTelemetry Collector before sending data to the endpoint.
 
 ## Billing
 
