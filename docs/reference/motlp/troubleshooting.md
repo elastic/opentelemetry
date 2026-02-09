@@ -62,6 +62,20 @@ Format your API key correctly. The format depends on whether you're using a coll
 
 Your project might be hitting ingest rate limits. Refer to the dedicated [429 errors when using the Elastic Cloud Managed OTLP Endpoint](https://www.elastic.co/docs/troubleshoot/ingest/opentelemetry/429-errors-motlp) troubleshooting guide for details on causes, rate limits, and solutions.
 
+## Error: Payload too large
+
+### Symptoms
+
+- HTTP `413 Payload Too Large` errors appear when sending data.
+- gRPC errors indicate the request or response exceeded the maximum message size.
+- Errors happen more often when traffic spikes, or when individual telemetry items are large.
+
+### Resolution
+
+Reduce the payload size sent by your collector by lowering batching limits. In the EDOT Collector (and upstream or contrib collectors), you can reduce the maximum batch size (in uncompressed bytes) so each request stays smaller.
+
+For configuration guidance and the recommended batching settings for sending data to the Elastic Cloud Managed OTLP Endpoint, refer to [Batching configuration for contrib OpenTelemetry Collector](elastic-agent://reference/edot-collector/config/default-config-standalone.md#batching-configuration-for-contrib-opentelemetry-collector).
+
 ## Server errors (5XX)
 
 ```{applies_to}
