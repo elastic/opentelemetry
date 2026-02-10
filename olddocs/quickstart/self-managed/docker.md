@@ -1,5 +1,0 @@
----
-layout: redirection
-permalink: /quickstart/self-managed/docker.html
-redirect: https://www.elastic.co/docs/solutions/observability/get-started/opentelemetry/quickstart/self-managed/docker
----

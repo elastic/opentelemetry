@@ -17,7 +17,7 @@ products:
 
 # Elastic Cloud Managed OTLP Endpoint (mOTLP)
 
-The {{motlp}} allows you to send OpenTelemetry data directly to {{ecloud}} using the OTLP protocol, with Elastic handling scaling, data processing, and storage. The Managed OTLP endpoint can act like a Gateway Collector, so that you can point your OpenTelemetry SDKs or Collectors to it.
+The {{motlp}} allows you to send OpenTelemetry data directly to {{ecloud}} using the OTLP protocol. The endpoint adds a resilient ingestion layer that works seamlessly with serverless autoscaling and removes pressure from {{ech}} clusters.
 
 :::{important}
 The {{motlp}} endpoint is not available for Elastic [self-managed](docs-content://deploy-manage/deploy/self-managed.md), [ECE](docs-content://deploy-manage/deploy/cloud-enterprise.md) or [ECK](docs-content://deploy-manage/deploy/cloud-on-k8s.md) clusters. To send OTLP data to any of these cluster types, deploy and expose an OTLP-compatible endpoint using the EDOT Collector as a gateway. Refer to [EDOT deployment docs](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway) for more information.
@@ -107,6 +107,7 @@ The following limitations apply when using the {{motlp}}:
 * Universal Profiling is not available.
 * Only supports histograms with delta temporality. Cumulative histograms are dropped.
 * Latency distributions based on histogram values have limited precision due to the fixed boundaries of explicit bucket histograms.
+* [Traffic filters](docs-content://deploy-manage/security/ip-filtering-cloud.md) are not yet available on both ECH and Serverless 
 
 ## Billing
 
@@ -130,10 +131,14 @@ For the {{serverless-full}} trial, the rate limit is reduced to 15 MB/s and the 
 :::
 
 ### Dynamic rate scaling for {{ech}}
+
 ```{applies_to}
-ess:
-stack: preview 9.2
+ess: preview
 ```
+
+:::{note}
+This functionality is available in technical preview in {{ech}} deployments versions 9.2 and later.
+:::
 
 For {{ech}} deployments, rate limits can scale up or down dynamically based on backpressure from {{es}}. Every deployment starts with a 1 MB/s rate limit and 2 MB/s burst limit. The system automatically adjusts these limits based on your {{es}} capacity and load patterns. Scaling requires time, so sudden load spikes might still result in temporary rate limiting.
 

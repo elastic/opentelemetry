@@ -57,28 +57,30 @@ The following sections outline the recommended architectures for different Elast
 {{product.observability}} is technically compatible with setups that are fully based on contrib OTel components, as long as the ingestion path follows the recommendations outlined in following sections for the different Elastic deployment options.
 ::::
 
-### {{serverless-full}}
+:::::{applies-switch}
 
+::::{applies-item} serverless:
 {{serverless-full}} provides a [Managed OTLP Endpoint](/reference/motlp.md) for ingestion of OpenTelemetry data.
 
 ![K8s-Serverless](../images/k8s-serverless.png)
 
 For a Kubernetes setup, the gateway Collector in your cluster sends OTLP data directly to the Managed OTLP Endpoint. There is no need for an EDOT gateway collector on the backend side. You can optionally deploy an EDOT Collector in gateway mode as part of your edge environment if you need additional processing before data reaches the Managed OTLP Endpoint.
+::::
 
-### {{ech}}
-```{applies_to}
-ess:
-stack: preview 9.2
-```
+::::{applies-item} ess: preview
+
+:::{note}
+You need an {{ech}} deployment version 9.2 or later.
+:::
 
 {{ech}} provides a [Managed OTLP Endpoint](/reference/motlp.md) for ingestion of OpenTelemetry data.
 
 For a Kubernetes setup, the gateway Collector in your cluster sends OTLP data directly to the Managed OTLP Endpoint. There is no need for an EDOT gateway collector on the backend side.
 
 ![K8s-ech](../images/k8s-ech.png)
+::::
 
-### Self-managed
-
+::::{applies-item} { eck:, ece:, self: }
 With a self-managed deployment, you need an EDOT Collector running in gateway mode as part of your {{product.observability}} backend (not in the Kubernetes cluster). This backend gateway collector receives OTLP data from the Kubernetes gateway collector and ingests it into {{es}}.
 
 ![K8s-self-managed](../images/k8s-self-managed.png)
@@ -87,8 +89,12 @@ The backend gateway Collector processes {{product.apm}} data and logs to improve
 
 The Kubernetes cluster components (DaemonSet collectors, Cluster collectors, gateway collector, and OTel SDKs) can all use fully vendor-agnostic or upstream OpenTelemetry components. Only the backend gateway Collector needs to be either an EDOT Collector or a [custom, EDOT-like Collector](elastic-agent://reference/edot-collector/custom-collector.md) containing the [required components and preprocessing pipelines](elastic-agent://reference/edot-collector/config/default-config-k8s.md#direct-ingestion-into-elasticsearch).
 
-::::{note}
+:::{note}
 Compared to [Elastic's classic ingestion paths](docs-content://solutions/observability/apm/use-opentelemetry-with-apm.md) for OTel data, with the EDOT gateway Collector there is no need for {{product.apm-server}} anymore.
 
 Refer to [EDOT data streams compared to classic {{product.apm}}](../compatibility/data-streams.md) for a detailed comparison of data streams, mappings, and storage models.
+:::
+
 ::::
+
+:::::
