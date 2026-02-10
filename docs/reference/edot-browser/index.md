@@ -113,6 +113,6 @@ For full details on the reverse proxy, CORS, CSP, and securing browser telemetry
 
 To get started with EDOT Browser:
 
-- Follow the setup instructions in [Set up EDOT Browser]()
-- Review configuration options in [Configure EDOT Browser]()
-- Refer to [Supported technologies]() for details on browsers and instrumentations
+- Follow the setup instructions in Set up EDOT Browser
+- Review configuration options in Configure EDOT Browser
+- Refer to Supported technologies for details on browsers and instrumentations
