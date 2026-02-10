@@ -2,9 +2,7 @@
 navigation_title: Central configuration
 description: Reference documentation for the central configuration of EDOT SDKs.
 applies_to:
-  deployment:
-      ess: preview 9.1
-  stack: preview 9.1
+  stack: preview 9.1+
   serverless: unavailable
 products:
   - id: observability
