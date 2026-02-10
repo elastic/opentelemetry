@@ -23,9 +23,4 @@ toc:
   - file: central-configuration.md
   - file: edot-sdks/index.md
   - file: edot-browser/index.md
-  - file: edot-cloud-forwarder/index.md
-    children:
-      - file: edot-cloud-forwarder/aws.md
-      - file: edot-cloud-forwarder/azure.md
-      - file: edot-cloud-forwarder/gcp.md
   - toc: edot-cloud-forwarder
