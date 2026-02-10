@@ -21,6 +21,7 @@ toc:
   - file: motlp.md
   - file: central-configuration.md
   - file: edot-sdks/index.md
+  - file: edot-browser/index.md
   - file: edot-cloud-forwarder/index.md
     children:
       - file: edot-cloud-forwarder/aws.md

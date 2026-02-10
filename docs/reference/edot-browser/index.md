@@ -41,7 +41,7 @@ In particular:
 - EDOT Browser is not a drop-in replacement for classic Elastic {{product.apm}} RUM agents.
 - There is no supported migration path from classic agents at this time.
 - Some features available in classic agents are not yet implemented.
-- The exact set of provided instrumentations and defaults may change as development continues.
+- The exact set of provided instrumentations and defaults might change as development continues.
 
 The following capabilities are not currently available in EDOT Browser:
 
@@ -49,7 +49,7 @@ The following capabilities are not currently available in EDOT Browser:
 - Full feature parity with classic Elastic {{product.apm}} browser agents
 - Migration tooling from classic agents
 
-Some of these features may be introduced in the future, potentially through contrib OpenTelemetry contributions.
+Some of these features might be introduced in the future, potentially through contrib OpenTelemetry contributions.
 
 ## EDOT Browser versus classic Elastic {{product.apm}} agents
 
