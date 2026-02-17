@@ -54,8 +54,7 @@ For {{ech}} deployments, {{motlp}} is currently supported in the following cloud
 
 - AWS: ap-southeast-1, ap-northeast-1, ap-south-1, eu-west-1, eu-west-2, us-east-1, us-west-2, us-east-2. 
 - Azure: eastus
-- GCP: eu west 1, eu west 3, asia south 1, us east 4, us west 1, us central 1, asia southeast 1, eu west 4, us east 1, eu west 2
-
+- GCP: asia-south1, asia-southeast1, europe-west1, europe-west2, europe-west3, europe-west4, us-central1, us-east1, us-east4, us-west1
 
 Support for additional regions and cloud providers is in progress and will be expanded over time. 
 :::
