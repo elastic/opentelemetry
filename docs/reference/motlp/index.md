@@ -47,7 +47,7 @@ To send data to Elastic through the {{motlp}}, follow the [Send data to the Elas
 
 ### Configure SDKs to send data directly
 
-To configure OpenTelemetry SDKs to send data directly to the {{motlp}}, set the `OTEL_EXPORTER_OTLP_ENDPOINT` and `OTEL_EXPORTER_OTLP_HEADERS` environment variable.
+To configure OpenTelemetry SDKs to send data directly to the {{motlp}}, set the `OTEL_EXPORTER_OTLP_ENDPOINT` and `OTEL_EXPORTER_OTLP_HEADERS` environment variables.
 
 For example:
 
@@ -58,7 +58,7 @@ export OTEL_EXPORTER_OTLP_HEADERS="Authorization=ApiKey <key>"
 
 ### Routing logs to dedicated datasets
 
-You can route logs to dedicated datasets by setting the `data_stream.dataset` attribute to the log record. This attribute is used to route the log to the corresponding dataset.
+You can route logs to dedicated datasets by setting the `data_stream.dataset` attribute on the log record. This attribute is used to route the log to the corresponding dataset.
 
 For example, if you want to route the {{edot-cf}} logs to custom datasets, you can add the following attributes to the log records:
 
@@ -105,7 +105,7 @@ The following limitations apply when using the {{motlp}}:
 * Universal Profiling is not available.
 * Only supports histograms with delta temporality. Cumulative histograms are dropped.
 * Latency distributions based on histogram values have limited precision due to the fixed boundaries of explicit bucket histograms.
-* [Traffic filters](docs-content://deploy-manage/security/ip-filtering-cloud.md) are not yet available on both ECH and Serverless.
+* [Traffic filters](docs-content://deploy-manage/security/ip-filtering-cloud.md) are not yet available for ECH or Serverless deployments.
 * Tail-based sampling (TBS) is not available. The {{motlp}} does not provide centralized hosted sampling. If you need tail-based sampling, configure it on the edge using the [Tail Sampling Processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor) in your EDOT or OpenTelemetry Collector before sending data to the endpoint.
 
 ## Billing
