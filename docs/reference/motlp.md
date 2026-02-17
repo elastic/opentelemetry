@@ -50,7 +50,13 @@ To use the {{ecloud}} {{motlp}} you need the following:
 You don't need APM Server when ingesting data through the Managed OTLP Endpoint. The APM integration (`.apm` endpoint) is a legacy ingest path that only supports traces and translates OTLP telemetry to ECS, whereas {{motlp}} natively ingests OTLP data.
 
 :::{note}
-For {{ech}} deployments, {{motlp}} is currently supported in the following AWS regions: ap-southeast-1, ap-northeast-1, ap-south-1, eu-west-1, eu-west-2, us-east-1, us-west-2, us-east-2. 
+For {{ech}} deployments, {{motlp}} is currently supported in the following cloud regions: 
+
+- AWS: ap-southeast-1, ap-northeast-1, ap-south-1, eu-west-1, eu-west-2, us-east-1, us-west-2, us-east-2. 
+- Azure: eastus
+- GCP: eu west 1, eu west 3, asia south 1, us east 4, us west 1, us central 1, asia southeast 1, eu west 4, us east 1, eu west 2
+
+
 Support for additional regions and cloud providers is in progress and will be expanded over time. 
 :::
 
@@ -65,7 +71,7 @@ To send data to Elastic through the {{motlp}}, follow the [Send data to the Elas
 
 ### Configure SDKs to send data directly
 
-To configure OpenTelemetry SDKs to send data directly to the {{motlp}}, set the `OTEL_EXPORTER_OTLP_ENDPOINT` and `OTEL_EXPORTER_OTLP_HEADERS` environment variable.
+To configure OpenTelemetry SDKs to send data directly to the {{motlp}}, set the `OTEL_EXPORTER_OTLP_ENDPOINT` and `OTEL_EXPORTER_OTLP_HEADERS` environment variables.
 
 For example:
 
@@ -76,7 +82,7 @@ export OTEL_EXPORTER_OTLP_HEADERS="Authorization=ApiKey <key>"
 
 ## Routing logs to dedicated datasets
 
-You can route logs to dedicated datasets by setting the `data_stream.dataset` attribute to the log record. This attribute is used to route the log to the corresponding dataset.
+You can route logs to dedicated datasets by setting the `data_stream.dataset` attribute on the log record. This attribute is used to route the log to the corresponding dataset.
 
 For example, if you want to route the {{edot-cf}} logs to custom datasets, you can add the following attributes to the log records:
 
@@ -107,7 +113,7 @@ The following limitations apply when using the {{motlp}}:
 * Universal Profiling is not available.
 * Only supports histograms with delta temporality. Cumulative histograms are dropped.
 * Latency distributions based on histogram values have limited precision due to the fixed boundaries of explicit bucket histograms.
-* [Traffic filters](docs-content://deploy-manage/security/ip-filtering-cloud.md) are not yet available on both ECH and Serverless 
+* [Traffic filters](docs-content://deploy-manage/security/ip-filtering-cloud.md) are not yet available for ECH or Serverless deployments.
 
 ## Billing
 
