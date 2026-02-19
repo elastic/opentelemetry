@@ -124,4 +124,4 @@ After completing setup:
 
 - Refer to [Configure EDOT Browser](configuration.md) to customize behavior and defaults.
 - Review [Supported technologies](supported-technologies.md) for information about browsers and instrumentations.
-- Read [User experience (RUM)](docs-content://solutions/observability/user-experience/index.md) to understand how browser traces appear in Discover and Service Maps.
+- Read [User experience (RUM)](docs-content://solutions/observability/applications/user-experience.md) to understand how browser traces appear in Discover and Service Maps.
