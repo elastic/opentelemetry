@@ -22,4 +22,5 @@ toc:
   - file: data-streams.md
   - file: central-configuration.md
   - file: edot-sdks/index.md
+  - toc: edot-browser
   - toc: edot-cloud-forwarder
