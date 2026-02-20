@@ -60,20 +60,20 @@ The following sections outline the recommended architectures for different Elast
 :::::{applies-switch}
 
 ::::{applies-item} serverless:
-{{serverless-full}} provides a [Managed OTLP Endpoint](/reference/motlp.md) for ingestion of OpenTelemetry data.
+{{serverless-full}} provides a [Managed OTLP Endpoint](/reference/motlp/index.md) for ingestion of OpenTelemetry data.
 
 ![K8s-Serverless](../images/k8s-serverless.png)
 
 For a Kubernetes setup, the gateway Collector in your cluster sends OTLP data directly to the Managed OTLP Endpoint. There is no need for an EDOT gateway collector on the backend side. You can optionally deploy an EDOT Collector in gateway mode as part of your edge environment if you need additional processing before data reaches the Managed OTLP Endpoint.
 ::::
 
-::::{applies-item} ess: preview
+::::{applies-item} ess:
 
 :::{note}
-You need an {{ech}} deployment version 9.2 or later.
+You need an {{ech}} deployment version 9.0 or later.
 :::
 
-{{ech}} provides a [Managed OTLP Endpoint](/reference/motlp.md) for ingestion of OpenTelemetry data.
+{{ech}} provides a [Managed OTLP Endpoint](/reference/motlp/index.md) for ingestion of OpenTelemetry data.
 
 For a Kubernetes setup, the gateway Collector in your cluster sends OTLP data directly to the Managed OTLP Endpoint. There is no need for an EDOT gateway collector on the backend side.
 
