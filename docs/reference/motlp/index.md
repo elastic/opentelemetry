@@ -84,7 +84,7 @@ This diagram shows data ingest using {{edot}} and the {{motlp}}:
 :width: 100%
 :::
 
-Telemetry is stored in Elastic in OTLP format, preserving resource attributes and original semantic conventions. If no specific dataset or namespace is provided, the data streams are: `traces-generic.otel-default`, `metrics-generic.otel-default`, and `logs-generic.otel-default`.
+Telemetry is stored in Elastic in OTLP format, preserving resource attributes and original semantic conventions. If no specific dataset or namespace is provided, telemetry would be routed to the generic data streams: `traces-generic.otel-default`, `metrics-generic.otel-default`, and `logs-generic.otel-default`.
 
 For a detailed comparison of how OTel data streams differ from classic Elastic APM data streams, refer to [OTel data streams compared to classic APM](../compatibility/data-streams.md).
 

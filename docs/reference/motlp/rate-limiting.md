@@ -22,7 +22,7 @@ The {{motlp}} uses queue-based rate limiting to manage data ingestion. Rate limi
 Rate limiting behavior differs by deployment type:
 
 - **{{ech}}**: Rate limits depend on your {{es}} cluster capacity. If your cluster can't keep up with incoming data, the endpoint starts rejecting requests with `429` errors.
-- **{{serverless-full}}**: Elastic manages scaling automatically. Rate limiting is rare and typically indicates a temporary backend scaling event.
+- **{{serverless-full}}**: Elastic manages scaling automatically. Rate limiting is rare and typically indicates a temporary event to protect our system. 
 
 ## Identifying rate limiting
 
