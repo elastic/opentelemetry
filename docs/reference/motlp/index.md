@@ -17,7 +17,7 @@ products:
 
 The {{motlp}} allows you to send OpenTelemetry data directly to {{ecloud}} using the OTLP protocol. 
 
-The endpoint adds a resilient ingestion layer that works seamlessly with serverless autoscaling and removes pressure from {{ech}} clusters.
+The endpoint provides a resilient ingestion layer that works seamlessly with serverless autoscaling and offloads ingestion processing from {{ech}} clusters.
 
 :::{important}
 The {{motlp}} endpoint is not available for Elastic [self-managed](docs-content://deploy-manage/deploy/self-managed.md), [ECE](docs-content://deploy-manage/deploy/cloud-enterprise.md), or [ECK](docs-content://deploy-manage/deploy/cloud-on-k8s.md) clusters. To send OTLP data to any of these cluster types, deploy and expose an OTLP-compatible endpoint using the [EDOT Collector as a gateway](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway).
@@ -34,7 +34,7 @@ To use the {{ecloud}} {{motlp}} you need the following:
   - [EDOT Cloud Forwarder](/reference/edot-cloud-forwarder/index.md)
   - Any other forwarder that supports the OTLP protocol.
 
-You don't need APM Server when ingesting data through the Managed OTLP Endpoint. The APM integration (`.apm` endpoint) is a legacy ingest path that only supports traces and translates OTLP telemetry to ECS, whereas {{motlp}} natively ingests OTLP data.
+You don't need APM Server when ingesting data through the Managed OTLP Endpoint. The APM integration (`.apm` endpoint) is a legacy ingest path that translates OTLP telemetry to ECS, whereas {{motlp}} natively ingests OTLP data.
 
 ## Send data to the Managed OTLP Endpoint
 
@@ -94,9 +94,13 @@ For a detailed comparison of how OTel data streams differ from classic Elastic A
 stack: ga 9.1+
 ```
 
-The {{motlp}} endpoint is designed to be highly available and resilient. However, there are some scenarios where data might be lost or not sent completely. The [Failure store](docs-content://manage-data/data-store/data-streams/failure-store.md) is a mechanism that allows you to recover from these scenarios.
+The {{motlp}} endpoint is built for high availability, but some failures can still prevent telemetry events from being written to your {{es}} cluster (for example, ingest pipeline errors or mapping conflicts).
 
-The Failure store is always enabled for {{motlp}} data streams. This prevents ingest pipeline exceptions and conflicts with data stream mappings. Failed documents are stored in a separate index. You can view the failed documents from the **Data Set Quality** page. Refer to [Data set quality](docs-content://solutions/observability/data-set-quality-monitoring.md).
+To protect data in these cases, {{motlp}} uses the [Failure store](docs-content://manage-data/data-store/data-streams/failure-store.md). For {{motlp}} data streams, the failure store is always enabled.
+
+When indexing fails, the original documents are written to a dedicated failure index instead of being dropped. This keeps ingestion resilient and gives you a recovery path for partial or failed sends.
+
+You can inspect and triage these documents from **Data Set Quality**. Refer to [Data set quality](docs-content://solutions/observability/data-set-quality-monitoring.md).
 
 ## Limitations
 
@@ -105,7 +109,6 @@ The following limitations apply when using the {{motlp}}:
 * Universal Profiling is not available.
 * Only supports histograms with delta temporality. Cumulative histograms are dropped.
 * Latency distributions based on histogram values have limited precision due to the fixed boundaries of explicit bucket histograms.
-* [Traffic filters](docs-content://deploy-manage/security/ip-filtering-cloud.md) are not yet available for ECH or Serverless deployments.
 * Tail-based sampling (TBS) is not available. The {{motlp}} does not provide centralized hosted sampling. If you need tail-based sampling, configure it on the edge using the [Tail Sampling Processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor) in your EDOT or OpenTelemetry Collector before sending data to the endpoint.
 
 ## Billing
