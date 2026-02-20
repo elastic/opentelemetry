@@ -45,7 +45,7 @@ At a minimum, the runtime environment must support:
 
 <!-- TODO: confirm exact language target and polyfill expectations -->
 
-If your application targets older browsers, you may need to provide polyfills. EDOT Browser does not ship with built-in polyfills.
+If your application targets older browsers, you might need to provide polyfills. EDOT Browser does not ship with built-in polyfills.
 
 ## Included instrumentations [included-instrumentations]
 
@@ -53,7 +53,7 @@ EDOT Browser bundles a curated set of OpenTelemetry JS instrumentations suitable
 
 The following table lists instrumentations that are currently included:
 
-| Instrumentation | Included | Enabled by default | Notes |
+| Instrumentation | Included | On by default | Notes |
 |-----------------|----------|-------------------|-------|
 | Document load   | TODO     | TODO              | TODO |
 | Fetch           | TODO     | TODO              | TODO |
@@ -74,7 +74,7 @@ By default, EDOT Browser:
 
 <!-- TODO: document actual defaults once finalized -->
 
-You can disable or override instrumentations during initialization if needed.
+You can turn off or override instrumentations during initialization if needed.
 
 <!-- TODO: document customization API once stable -->
 
@@ -86,7 +86,7 @@ EDOT Browser builds on top of contrib OpenTelemetry JS, but introduces several d
 
 - EDOT Browser doesn't read environment variables at runtime.
 - Configuration must be passed explicitly during initialization.
-- Elastic-specific configuration options may be available.
+- Elastic-specific configuration options might be available.
 
 ### Export behavior
 
@@ -108,7 +108,7 @@ Compared to contrib OpenTelemetry JS:
 
 Some contrib OpenTelemetry JS features are not available or are intentionally unsupported in EDOT Browser due to browser constraints.
 
-These may include:
+These might include:
 
 - Environment-based configuration
 - Certain resource detectors
@@ -130,8 +130,8 @@ These may include:
 When using EDOT Browser with {{product.observability}}, be aware of the following:
 
 - API key authentication requires a reverse proxy; credentials cannot be stored in the browser.
-- Metrics from browser-based RUM may have more limited utility than backend metrics, depending on your use case.
-- Some OpenTelemetry browser instrumentations are still experimental. Behavior may change.
+- Metrics from browser-based RUM might have more limited utility than backend metrics, depending on your use case.
+- Some OpenTelemetry browser instrumentations are still experimental. Behavior might change.
 - Monitor the performance impact on the browser when using multiple instrumentations, especially on lower-end devices.
 
 ## Troubleshooting [troubleshooting]
@@ -149,5 +149,6 @@ If you use a Content Security Policy, ensure the proxy or OTLP endpoint domain i
 ## Next steps [next-steps]
 
 - Refer to [Set up EDOT Browser](setup.md) to get started.
+- Refer to [Metrics, traces, and logs](telemetry.md) for what is emitted per signal and what is not yet supported.
 - Review [Configuration](configuration.md) to customize behavior.
 - Refer to [Known limitations](#known-limitations) and [Troubleshooting](#troubleshooting) above for EDOT Browser–specific guidance, or [OpenTelemetry ingest troubleshooting](docs-content://troubleshoot/ingest/opentelemetry/index.md) for general OTLP ingest issues.

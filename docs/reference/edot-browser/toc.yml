@@ -2,4 +2,5 @@ toc:
   - file: index.md
   - file: setup.md
   - file: configuration.md
+  - file: telemetry.md
   - file: supported-technologies.md

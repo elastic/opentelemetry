@@ -32,9 +32,13 @@ EDOT Browser collects the following signals:
 - **Metrics**: Browser-side performance and runtime metrics
 - **Logs**: Using the OpenTelemetry Logs API
 
+For what each signal includes, known limitations, and what is not yet supported (such as Web Vitals), refer to [Metrics, traces, and logs](telemetry.md).
+
 ## How it works [how-it-works]
 
 EDOT Browser runs in the user's browser as part of your web application. When initialized, it instruments the page and captures telemetry (traces, metrics, logs) from document load, user interactions, and network requests. Data is exported using the OpenTelemetry Protocol (OTLP) over HTTP to an endpoint you configure, typically a reverse proxy that injects authentication and forwards the data to {{product.observability}} or an OpenTelemetry Collector. Because the SDK runs in the browser, it cannot hold credentials; the reverse proxy is responsible for adding API keys or other auth before sending data to {{product.observability}}.
+
+In {{product.observability}}, you see **`external.http`** spans for browser fetch and XHR requests, **user interaction** spans (for example, click, submit) that group related frontend and backend activity, and end-to-end traces from the browser to your backend in Discover and Service Maps. For details, refer to [What to expect in Kibana](setup.md#what-to-expect-in-kibana) in the setup guide.
 
 ## Limitations [limitations]
 
@@ -123,9 +127,9 @@ server {
 
 If your site uses a Content Security Policy (CSP), add the domain of your OTLP endpoint (or reverse proxy) to the `connect-src` directive so the browser allows export requests. For example: `connect-src 'self' https://telemetry.example.com`.
 
-If your app and the export endpoint have different origins, the browser may block requests unless CORS is correctly configured. The reverse proxy must send `Access-Control-Allow-Origin` matching your application origin, handle `OPTIONS` preflight requests with a 204 response, and include `Authorization` in `Access-Control-Allow-Headers` when using API key authentication. The NGINX example above shows one way to do this.
+If your app and the export endpoint have different origins, the browser might block requests unless CORS is correctly configured. The reverse proxy must send `Access-Control-Allow-Origin` matching your application origin, handle `OPTIONS` preflight requests with a 204 response, and include `Authorization` in `Access-Control-Allow-Headers` when using API key authentication. The NGINX example above shows one way to do this.
 
-For more details on reverse proxy setup, CORS, and CSP, see [OpenTelemetry for Real User Monitoring (RUM)](docs-content://solutions/observability/applications/otel-rum.md).
+For more details on reverse proxy setup, CORS, and CSP, refer to [OpenTelemetry for Real User Monitoring (RUM)](docs-content://solutions/observability/applications/otel-rum.md).
 
 ## Next steps [next-steps]
 

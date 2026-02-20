@@ -62,12 +62,12 @@ Commonly used options include:
 
 ### Elastic-specific configuration
 
-EDOT Browser may expose Elastic-specific configuration options prefixed with `ELASTIC_OTEL_`.
+EDOT Browser might expose Elastic-specific configuration options prefixed with `ELASTIC_OTEL_`.
 
 You can use these options to:
 
 - Apply Elastic-specific defaults.
-- Enable compatibility with {{product.observability}}.
+- Ensure compatibility with {{product.observability}}.
 - Control optional enhancements.
 
 :::{note}
@@ -132,7 +132,7 @@ Diagnostic logs are written to the browser console.
 
 ## Configuration reference [configuration-reference]
 
-The following sections will be expanded as EDOT Browser matures:
+The following sections expand as EDOT Browser matures:
 
 - Full list of supported OpenTelemetry options
 - Elastic-specific `ELASTIC_OTEL_*` options
@@ -144,5 +144,6 @@ The following sections will be expanded as EDOT Browser matures:
 ## Next steps [next-steps]
 
 - Refer to [Set up EDOT Browser](setup.md) for installation and initialization.
+- Refer to [Metrics, traces, and logs](telemetry.md) for what each signal emits and limitations.
 - Review [Supported technologies](supported-technologies.md) for browser and instrumentation support.
 - Refer to [Troubleshooting](supported-technologies.md#troubleshooting) on the Supported technologies page for EDOT Browser–specific issues, or [OpenTelemetry ingest troubleshooting](docs-content://troubleshoot/ingest/opentelemetry/index.md) for general OTLP ingest issues.
