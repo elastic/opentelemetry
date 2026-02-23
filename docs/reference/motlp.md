@@ -112,7 +112,8 @@ The following limitations apply when using the {{motlp}}:
 * Universal Profiling is not available.
 * Only supports histograms with delta temporality. Cumulative histograms are dropped.
 * Latency distributions based on histogram values have limited precision due to the fixed boundaries of explicit bucket histograms.
-* [Traffic filters](docs-content://deploy-manage/security/ip-filtering-cloud.md) are not yet available for ECH or Serverless deployments.
+* [IP filters](docs-content://deploy-manage/security/ip-filtering-cloud.md) do not apply to the managed endpoint.
+* In {{ech}} deployments, the endpoint is not available over a [private connection](docs-content://deploy-manage/security/private-connectivity.md). When private connectivity is configured, the public managed endpoint is still available.
 
 ## Billing
 
