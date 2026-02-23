@@ -1,5 +1,5 @@
 ---
-title: Kafka-based ingest pipelines with EDOT
+navigation_title: Kafka ingest pipelines
 description: Use Kafka as a transport buffer in EDOT ingest pipelines for self-managed Elasticsearch or Elastic Cloud Managed OTLP (mOTLP).
 applies_to:
   stack:
