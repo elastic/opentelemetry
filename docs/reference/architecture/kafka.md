@@ -21,18 +21,18 @@ The following patterns cover self-managed {{es}} and {{ecloud}} (including serve
 
 ### Self-managed (on-prem) {{es}} [self-managed-elasticsearch]
 
-`EDOT SDKs (OTLP) → EDOT Collector (Gateway) → Kafka → EDOT Collector (Consumer) → Elasticsearch`
+`EDOT SDKs (OTLP) → EDOT Collector (Gateway) → Kafka → EDOT Collector (Backend) → Elasticsearch`
 
 In this model:
 - A Gateway Collector receives OTLP from EDOT SDKs (or upstream SDKs) and exports OTLP payloads to Kafka.
-- A Consumer Collector reads OTLP payloads from Kafka and exports to {{es}}.
+- A Backend Collector consumes OTLP payloads from Kafka and exports to {{es}}.
 
 ### {{ecloud}} (Hosted/Serverless) using mOTLP [elastic-cloud-motlp]
 
-`EDOT SDKs (OTLP) → EDOT Collector (Gateway) → Kafka → EDOT Collector (Consumer) → mOTLP`
+`EDOT SDKs (OTLP) → EDOT Collector (Gateway) → Kafka → EDOT Collector (Backend) → mOTLP`
 
 In this model:
-- A Consumer Collector reads OTLP payloads from Kafka and exports to the {{ecloud}} Managed OTLP endpoint (mOTLP) using the OTLP/HTTP exporter.
+- A Backend Collector consumes OTLP payloads from Kafka and exports to the {{ecloud}} Managed OTLP endpoint (mOTLP) using the OTLP/HTTP exporter.
 
 ## Components [components]
 
@@ -46,7 +46,7 @@ For EDOT, only the `otlp_proto` and `otlp_json` encodings are supported for the 
 
 The following examples show a minimal split deployment for:
 - Gateway Collector (produces to Kafka)
-- Consumer Collector (consumes from Kafka and exports to {{es}} or mOTLP)
+- Backend Collector (consumes from Kafka and exports to {{es}} or mOTLP)
 
 :::{note}
 Use an OTLP encoding on Kafka (for example, `otlp_proto`). Ensure the receiver and exporter use the same encoding and topics.
@@ -89,7 +89,7 @@ service:
       exporters: [kafka]
 ```
 
-### Consumer Collector for self-managed [consumer-collector-self-managed]
+### Backend Collector for self-managed [backend-collector-self-managed]
 
 This example receives from Kafka and exports to {{es}}.
 
@@ -125,7 +125,7 @@ service:
       exporters: [elasticsearch]
 ```
 
-### Consumer Collector for {{ecloud}} [consumer-collector-motlp]
+### Backend Collector for {{ecloud}} [backend-collector-motlp]
 
 This example receives from Kafka and exports to {{motlp}}. The {{motlp}} endpoint uses the OTLP/HTTP protocol, so the configuration uses the `otlphttp` exporter to send to the HTTPS endpoint correctly.
 
@@ -164,6 +164,6 @@ service:
 
 ## Operational notes [operational-notes]
 
-Monitor backpressure and export failures on both the Gateway and Consumer Collectors. A Kafka buffer can mask downstream ingestion problems until retention is exhausted. To avoid it, size retention and partitions for peak ingest and expected outage windows. 
+Monitor backpressure and export failures on both the Gateway and Backend Collectors. A Kafka buffer can mask downstream ingestion problems until retention is exhausted. To avoid it, size retention and partitions for peak ingest and expected outage windows. 
 
 For {{product.apm}} UI optimizations on self-managed backends, align the backend Collector's mode and processors with the recommended EDOT gateway architecture for your deployment.
