@@ -13,9 +13,7 @@ products:
 
 # Kafka-based ingest pipelines with EDOT [kafka-ingest-pipelines-edot]
 
-Kafka can act as a transport buffer between telemetry sources (applications and edge collectors) and your backend, decoupling production from ingestion. The pattern is useful when you need buffering during outages or maintenance, independent scaling of collection and ingestion, or a shared transport layer across environments or networks.
-
-This page describes an OpenTelemetry Protocol (OTLP)-native pipeline using the EDOT Collector.
+Kafka can act as a transport buffer between telemetry sources (applications and edge collectors) and your backend, decoupling production from ingestion. Use this pattern when you need buffering during outages or maintenance, independent scaling of collection and ingestion, or a shared transport layer across environments or networks.
 
 ## Reference architectures [reference-architectures]
 
@@ -23,7 +21,7 @@ The following patterns cover self-managed {{es}} and {{ecloud}} (including serve
 
 ### Self-managed (on-prem) {{es}} [self-managed-elasticsearch]
 
-`EDOT SDKs (OTLP) → EDOT Collector (Gateway) → Kafka → EDOT Collector (Consumer) → {{es}}`
+`EDOT SDKs (OTLP) → EDOT Collector (Gateway) → Kafka → EDOT Collector (Consumer) → Elasticsearch`
 
 In this model:
 - A Gateway Collector receives OTLP from EDOT SDKs (or upstream SDKs) and exports OTLP payloads to Kafka.
@@ -46,7 +44,7 @@ For EDOT, only the `otlp_proto` and `otlp_json` encodings are supported for the 
 
 ## Example configuration [example-configuration]
 
-The following examples show a minimal split deployment:
+The following examples show a minimal split deployment for:
 - Gateway Collector (produces to Kafka)
 - Consumer Collector (consumes from Kafka and exports to {{es}} or mOTLP)
 
@@ -54,7 +52,9 @@ The following examples show a minimal split deployment:
 Use an OTLP encoding on Kafka (for example, `otlp_proto`). Ensure the receiver and exporter use the same encoding and topics.
 :::
 
-### Gateway Collector (OTLP → Kafka) [gateway-collector]
+### Gateway Collector [gateway-collector]
+
+This example receives OTLP and exports to Kafka.
 
 ```yaml
 receivers:
@@ -89,7 +89,9 @@ service:
       exporters: [kafka]
 ```
 
-### Consumer Collector (Kafka → {{es}}) for self-managed [consumer-collector-self-managed]
+### Consumer Collector for self-managed [consumer-collector-self-managed]
+
+This example receives from Kafka and exports to {{es}}.
 
 ```yaml
 receivers:
@@ -123,9 +125,9 @@ service:
       exporters: [elasticsearch]
 ```
 
-### Consumer Collector (Kafka → mOTLP) for {{ecloud}} [consumer-collector-motlp]
+### Consumer Collector for {{ecloud}} [consumer-collector-motlp]
 
-The {{motlp}} endpoint uses the OTLP/HTTP protocol. Use the `otlphttp` exporter so the Collector sends to the HTTPS endpoint correctly.
+This example receives from Kafka and exports to {{motlp}}. The {{motlp}} endpoint uses the OTLP/HTTP protocol, so the configuration uses the `otlphttp` exporter to send to the HTTPS endpoint correctly.
 
 ```yaml
 receivers:
@@ -162,6 +164,6 @@ service:
 
 ## Operational notes [operational-notes]
 
-Monitor backpressure and export failures on both the Gateway and Consumer Collectors. A Kafka buffer can mask downstream ingestion problems until retention is exhausted—size retention and partitions for peak ingest and expected outage windows. 
+Monitor backpressure and export failures on both the Gateway and Consumer Collectors. A Kafka buffer can mask downstream ingestion problems until retention is exhausted. To avoid it, size retention and partitions for peak ingest and expected outage windows. 
 
 For {{product.apm}} UI optimizations on self-managed backends, align the backend Collector's mode and processors with the recommended EDOT gateway architecture for your deployment.
