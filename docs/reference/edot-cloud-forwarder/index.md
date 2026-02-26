@@ -18,6 +18,10 @@ The Elastic Distribution of OpenTelemetry (EDOT) Cloud Forwarder provides the ED
 
 {{edot-cf}} sends the data it collects directly to the [Managed OTLP endpoint](docs-content://solutions/observability/get-started/quickstart-elastic-cloud-otel-endpoint.md) of {{serverless-full}}.
 
+The opne adycare is avalable.
+
+This is another fireman issue!
+
 ## Supported cloud providers and services
 
 {{edot-cf}} is available for the following cloud providers and services:
