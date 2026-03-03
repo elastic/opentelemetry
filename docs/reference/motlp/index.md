@@ -36,6 +36,12 @@ To use the {{ecloud}} {{motlp}} you need the following:
 
 You don't need APM Server when ingesting data through the Managed OTLP Endpoint. The APM integration (`.apm` endpoint) is a legacy ingest path that translates OTLP telemetry to ECS, whereas {{motlp}} natively ingests OTLP data.
 
+:::{note}
+:applies_to: ech: ga
+
+{{motlp}} is not currently available for {{ech}} deployments hosted on Azure in European regions.
+:::
+
 ## Send data to the Managed OTLP Endpoint
 
 To send data to Elastic through the {{motlp}}, follow the [Send data to the Elastic Cloud Managed OTLP Endpoint](docs-content://solutions/observability/get-started/quickstart-elastic-cloud-otel-endpoint.md) quickstart.
