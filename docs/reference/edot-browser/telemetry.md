@@ -13,18 +13,18 @@ products:
 
 # Metrics, traces, and logs
 
-EDOT Browser can export all three OpenTelemetry signals—metrics, traces, and logs—to {{product.observability}} using OTLP. This page describes what is currently emitted for each signal, known limitations of browser-based telemetry, and what is not yet supported.
+EDOT Browser can export all three OpenTelemetry signals (metrics, traces, and logs) to {{product.observability}} using OTLP.
 
 ## Metrics [metrics]
 
 ### What EDOT Browser currently emits [metrics-what-is-emitted]
 
-EDOT Browser configures the OpenTelemetry MeterProvider and exports metrics over OTLP when metrics are turned on. The exact set of built-in metrics is still evolving. Metrics might be produced by:
+EDOT Browser configures the OpenTelemetry MeterProvider and exports metrics over OTLP to the `/v1/metrics` path. Metrics can be produced by:
 
-- **Long task instrumentation**: When long task instrumentation is included and turned on, it can report observations related to main-thread blocking (for example long tasks exceeding a threshold). The names and attributes of these metrics depend on the instrumentation implementation.
+- **Long task instrumentation**: When long task instrumentation is turned on (it can be turned off using instrumentation configuration), it can report observations related to main-thread blocking (for example long tasks exceeding a threshold). The names and attributes depend on the instrumentation implementation.
 - **Custom metrics**: Your application can create meters and instruments (counters, histograms, and so on) using the OpenTelemetry Metrics API. EDOT Browser exports those metrics along with any SDK-provided ones.
 
-If you turn on metrics export, ensure your reverse proxy and OTLP endpoint accept the `/v1/metrics` path.
+Ensure your reverse proxy and OTLP endpoint accept the `/v1/metrics` path.
 
 ### Known limitations of browser-side metrics [metrics-limitations]
 
@@ -34,7 +34,7 @@ If you turn on metrics export, ensure your reverse proxy and OTLP endpoint accep
 - Browser environments vary (device, network, extensions). Metric values might be noisier or less consistent than server-side metrics.
 
 :::{note}
-Web Vitals (such as Largest Contentful Paint (LCP), First Input Delay (FID), Cumulative Layout Shift (CLS), and related metrics) are not supported in EDOT Browser. There is no built-in Web Vitals instrumentation. If you need Web Vitals or similar Core Web Vitals data, use classic Elastic {{product.apm}} browser agents or a dedicated Web Vitals library.
+Web Vitals, such as Largest Contentful Paint (LCP), First Input Delay (FID), Cumulative Layout Shift (CLS), and related metrics, are not supported in EDOT Browser. There is no built-in Web Vitals instrumentation. If you need Web Vitals or similar Core Web Vitals data, use classic Elastic {{product.apm}} browser agents or a dedicated Web Vitals library.
 :::
 
 ## Traces [traces]
@@ -43,7 +43,7 @@ Web Vitals (such as Largest Contentful Paint (LCP), First Input Delay (FID), Cum
 
 EDOT Browser initializes tracing and registers instrumentations that produce spans:
 
-- Spans for the initial document load and related navigation timing, when the document load instrumentation is included and turned on.
+- Spans for the initial document load and related navigation timing (document load instrumentation is turned on by default).
 - Each outgoing request using `fetch` or `XMLHttpRequest` is captured as an **`external.http`** span with attributes such as URL, HTTP method, and status code. These spans represent the client-side portion of the request.
 - Spans for user actions such as "click" and "submit". These interaction spans group the subsequent work (for example `external.http` requests) so you can attribute frontend and backend activity to a specific user action in {{product.observability}}.
 
