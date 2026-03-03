@@ -18,7 +18,7 @@ toc:
       - file: compatibility/limitations.md
       - file: compatibility/nomenclature.md
       - file: compatibility/data-streams.md 
-  - file: motlp.md
+  - toc: motlp
   - file: data-streams.md
   - file: central-configuration.md
   - file: edot-sdks/index.md
