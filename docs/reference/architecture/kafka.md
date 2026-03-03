@@ -17,28 +17,32 @@ Kafka can act as a transport buffer between telemetry sources (applications and 
 
 ## Reference architectures [reference-architectures]
 
-The following patterns cover self-managed {{es}} and {{ecloud}} (including serverless) using the Managed OTLP endpoint.
+The following patterns cover self-managed {{es}} and {{ecloud}} using the {{motlp}}.
 
 ### Self-managed (on-prem) {{es}} [self-managed-elasticsearch]
 
-`EDOT SDKs (OTLP) → EDOT Collector (Gateway) → Kafka → EDOT Collector (Backend) → Elasticsearch`
+The pipeline flows as follows:
+
+`SDKs (OTLP) → Collector (Gateway) → Kafka → Collector (Backend) → Elasticsearch`
 
 In this model:
-- A Gateway Collector receives OTLP from EDOT SDKs (or upstream SDKs) and exports OTLP payloads to Kafka.
-- A Backend Collector consumes OTLP payloads from Kafka and exports to {{es}}.
+- A Gateway Collector receives OTLP from applications (for example, EDOT SDKs or other OTLP-compatible SDKs) and exports OTLP payloads to Kafka.
+- An EDOT backend collector consumes OTLP payloads from Kafka and exports to {{es}}.
 
 ### {{ecloud}} (Hosted/Serverless) using mOTLP [elastic-cloud-motlp]
 
-`EDOT SDKs (OTLP) → EDOT Collector (Gateway) → Kafka → EDOT Collector (Backend) → mOTLP`
+The pipeline flows as follows:
+
+`SDKs (OTLP) → Collector (Gateway) → Kafka → Collector (Backend) → mOTLP`
 
 In this model:
-- A Backend Collector consumes OTLP payloads from Kafka and exports to the {{ecloud}} Managed OTLP endpoint (mOTLP) using the OTLP/HTTP exporter.
+- An EDOT backend collector consumes OTLP payloads from Kafka and exports to the {{ecloud}} Managed OTLP endpoint (mOTLP) using the OTLP/HTTP exporter.
 
 ## Components [components]
 
 These pipelines rely on the following EDOT Collector components:
-- `kafkaexporter` to write OTLP payloads to Kafka
-- `kafkareceiver` to read OTLP payloads from Kafka
+- `kafkaexporter` to write OTLP payloads to Kafka.
+- `kafkareceiver` to read OTLP payloads from Kafka.
 
 For EDOT, only the `otlp_proto` and `otlp_json` encodings are supported for the Kafka receiver and exporter. Partitioning options (for example, `partition_traces_by_id`) are not supported. Refer to the [EDOT Collector components list](elastic-agent://reference/edot-collector/components.md) for the full list and support notes.
 
