@@ -1,6 +1,6 @@
 ---
-navigation_title: EDOT compared to contrib Collector
-description: Differences between Elastic Distributions of OpenTelemetry (EDOT) and contrib OpenTelemetry Collector.
+navigation_title: EDOT compared to upstream
+description: How Elastic Distributions of OpenTelemetry (EDOT) compare to upstream OpenTelemetry components, including Collector, SDKs, Kubernetes Operator, and demo.
 applies_to:
   stack:
   serverless:
@@ -12,29 +12,91 @@ products:
   - id: edot-sdk
 ---
 
-# EDOT compared to contrib OpenTelemetry Collector
+# EDOT compared to upstream OpenTelemetry
 
-The [Elastic Distributions of OpenTelemetry (EDOT)](/reference/index.md) are built using components from the Contrib OpenTelemetry project. The EDOT Collector includes additional features and configurations that enable a smoother experience when collecting and forwarding telemetry to the Elastic ecosystem. Each OpenTelemetry component that is selected for EDOT is carefully tested to ensure it works seamlessly with Elastic Stack components.
+[Elastic Distributions of OpenTelemetry (EDOT)](/reference/index.md) are a set of [OpenTelemetry distributions](https://opentelemetry.io/docs/concepts/distributions/) curated, tested, and supported by Elastic. Each EDOT component wraps its upstream counterpart, adding production-ready defaults, Elastic-specific capabilities, and official support backed by [Elastic's Support Policy](https://www.elastic.co/support_policy) and SLAs.
 
-When working with OpenTelemetry and Elastic, **EDOT is optional and never required for data collection on the edge machines**. Elastic remains vendor agnostic because users can run any upstream or third-party collector. EDOT is available for teams that want supported, production grade packaging without changing their existing architecture.
+EDOT is always optional. Elastic's ingestion APIs are vendor-agnostic, so any upstream or third-party OpenTelemetry component that speaks OTLP can send data to the {{stack}}. Upstream components are technically [Compatible] but receive community support only. EDOT is for teams that want a supported, production-grade experience without changing their existing architecture.
 
-Here are some key differences and considerations when using EDOT compared to contrib OpenTelemetry Collector:
+The following table summarizes the key differences:
 
-| Feature | EDOT | Contrib |
-|---------|------|------------------------|
-| Configuration | Configured for Elastic Observability. | Requires manual configuration.|
+| Aspect | EDOT | Upstream |
+|--------|------|----------|
+| Configuration | Pre-configured defaults for {{product.observability}}. | Requires manual assembly and configuration. |
 | Support | Official Elastic support with SLAs. | Community support only. |
-| Integration | Seamless integration with Elastic Stack. | Requires additional configuration for Elastic. |
-| Components | Curated list of components for Elastic Observability. | Components that may not be mature or introduce potential unwanted code or features. |
-| Deployment | Same methods of deployment as upstream, including configuration. | Requires manual setup and configuration. |
-| Central management | Central management of OTel SDKs and Collectors. | No central management. |
-| Compatibility | Fully tested with Elastic Stack components. | Components might be compatible but are not tested for guaranteed support. |
-| Updates | Future updates aligned with Elastic Stack releases. | Updates depend on contrib OpenTelemetry release cycle. |
+| Integration | Seamless integration with {{stack}} components. | Requires additional configuration for Elastic. |
+| Components | Curated, production-tested components optimized for Elastic. | Broad ecosystem; component maturity levels vary. |
+| Deployment | Same deployment methods as upstream, with ready-to-use default configurations. | Same deployment methods; configuration is left to the user. |
+| Central management | Central configuration of SDKs and Collectors through [OpAMP](/reference/central-configuration.md). | No centralized configuration support. |
+| Compatibility | Fully tested with {{stack}} components. | Compatible but not tested for guaranteed support. |
+| Updates | Release cycle aligned with {{stack}} releases. | Follows the upstream OpenTelemetry release cycle. |
 
-## EDOT Collector compared to contrib OpenTelemetry Collector
+The following sections describe how this general comparison applies to each EDOT component.
 
-The OpenTelemetry project does not provide a single, recommended distribution of the OpenTelemetry Collector for production use. Instead, it offers a variety of components that can be assembled into a custom Collector. Using the contrib Collector requires careful selection and configuration of components, which can be complex and time-consuming.
+## EDOT Collector
 
-EDOT Collector is a curated version of the OpenTelemetry Collector that includes specific components and configurations optimized for Elastic Observability. It is designed to work seamlessly with Elastic Stack components, such as Elasticsearch and Kibana, and provides additional features that aren't currently available in the Contrib Collector. Most of these features will be contributed to upstream in the future.
+The upstream OpenTelemetry project does not ship a single, recommended Collector distribution for production use. Instead, it offers a core Collector and a contrib Collector whose components have [mixed stability levels](https://opentelemetry.io/docs/collector/). Assembling a production-ready Collector from these building blocks requires careful component selection, configuration, and testing.
 
-For a complete list of components included in the EDOT Collector, refer to [EDOT Collector components](elastic-agent://reference/edot-collector/components.md).
+EDOT Collector is a curated distribution that eliminates this assembly step. It includes specific components and configurations optimized for {{product.observability}}, and it ships with Elastic-specific components that are not available in contrib, such as the `elasticsearchexporter` for native ingestion into {{es}} and the `elasticapmintakereceiver` for backward-compatible {{product.apm}} intake. These components are developed by Elastic with the intent of contributing them upstream over time.
+
+EDOT Collector ships with [default configurations](elastic-agent://reference/edot-collector/config/default-config-standalone.md) for common deployment scenarios, including [standalone](elastic-agent://reference/edot-collector/config/default-config-standalone.md) and [Kubernetes](elastic-agent://reference/edot-collector/config/default-config-k8s.md). In self-managed {{stack}} deployments, the EDOT Collector running in [gateway mode](elastic-agent://reference/edot-collector/modes.md) replaces {{product.apm-server}} for OTel-native data ingestion, handling metrics aggregation and format conversion before writing to {{es}}.
+
+Users who need a Collector build that differs from the standard EDOT Collector can follow the [custom Collector guide](elastic-agent://reference/edot-collector/custom-collector.md), which describes the required components and preprocessing pipelines for Elastic compatibility. For the full list of components included in EDOT Collector, refer to the [EDOT Collector components](elastic-agent://reference/edot-collector/components.md) page.
+
+## EDOT SDKs
+
+OpenTelemetry language SDKs provide the instrumentation libraries that applications use to generate traces, metrics, and logs. The upstream project publishes reference SDKs for each supported language, and vendors can wrap these into [distributions](https://opentelemetry.io/docs/concepts/distributions/) that add defaults, extensions, or vendor-specific improvements.
+
+EDOT SDKs are such distributions. They maintain full compatibility with the OpenTelemetry specification while including Elastic-specific improvements and bug fixes that ship before they become available in upstream contrib repositories. The following EDOT SDKs are available:
+
+- [EDOT .NET](elastic-otel-dotnet://reference/edot-dotnet/index.md)
+- [EDOT Java](elastic-otel-java://reference/edot-java/index.md)
+- [EDOT Node.js](elastic-otel-node://reference/edot-node/index.md)
+- [EDOT PHP](elastic-otel-php://reference/edot-php/index.md)
+- [EDOT Python](elastic-otel-python://reference/edot-python/index.md)
+- [EDOT Android](apm-agent-android://reference/edot-android/index.md)
+- [EDOT iOS](apm-agent-ios://reference/edot-ios/index.md)
+
+Beyond upstream functionality, EDOT SDKs introduce capabilities that are not available in the community SDKs. Refer to the [EDOT SDKs overview](/reference/edot-sdks/index.md) for the full feature matrix across languages.
+
+| Capability | Description |
+|------------|-------------|
+| Inferred spans | Generates spans from profiling data without manual instrumentation, closing visibility gaps that auto-instrumentation does not cover. |
+| Central configuration | Manages SDK settings from {{kib}} through the EDOT Collector using [OpAMP](/reference/central-configuration.md), without redeploying applications. |
+| Profiling integration | Correlates traces with continuous profiling data for deeper performance analysis. |
+| Crash reporting | Captures native crash data on mobile platforms for post-mortem analysis. |
+
+Upstream OTel SDKs are technically [Compatible] with Elastic and can send data through the same ingestion paths, but Elastic does not provide official support or troubleshooting assistance for them. Refer to the [SDK compatibility table](sdks.md) for version-level details.
+
+:::{important}
+EDOT SDKs are designed to export telemetry through the [EDOT Collector](elastic-agent://reference/edot-collector/index.md) or the [{{motlp}}](/reference/motlp.md). Using EDOT SDKs directly with {{product.apm-server}}'s OpenTelemetry intake is not supported — attribute mapping, enrichment, and processing pipelines are not guaranteed on that path.
+:::
+
+## Kubernetes Operator
+
+EDOT does not ship its own Kubernetes operator. Instead, EDOT deployments on Kubernetes rely on the upstream [OpenTelemetry Operator](https://opentelemetry.io/docs/platforms/kubernetes/operator/), which manages Collector deployments and auto-instrumentation of workloads through Kubernetes custom resource definitions (CRDs).
+
+In an EDOT-based Kubernetes setup, the operator's `OpenTelemetryCollector` CRD deploys EDOT Collector images as DaemonSets, Deployments, or StatefulSets, and the `Instrumentation` CRD is configured to inject EDOT SDK images (for example, `docker.elastic.co/observability/elastic-otel-javaagent`) instead of the default upstream images. The operator handles the mechanics of admission webhooks and init container injection, while EDOT provides the container images and configurations that the operator deploys.
+
+This creates a dual support model. The operator itself is an upstream community project and receives community support. The EDOT Collector and SDK images that the operator deploys are covered by Elastic support under the same terms as their standalone counterparts. When filing issues, it is important to distinguish between operator behavior (community) and EDOT component behavior (Elastic).
+
+On platforms that provide their own OpenTelemetry distributions, such as [Red Hat OpenShift](https://docs.redhat.com/en/documentation/openshift_container_platform/4.20/html/red_hat_build_of_opentelemetry/index) or [AWS Lambda (ADOT)](https://aws-otel.github.io/docs/getting-started/lambda), those platform-native distributions can be used [at the edge](/reference/architecture/index.md#understanding-edge-deployment) instead. Elastic does not provide support for third-party distributions, but they remain [Compatible] as long as they export data over OTLP. Refer to the [Kubernetes architecture page](/reference/architecture/k8s.md) and the [Kubernetes use case guide](docs-content://solutions/observability/get-started/opentelemetry/use-cases/kubernetes/index.md) for deployment details.
+
+## EDOT Cloud Forwarders
+
+The [EDOT Cloud Forwarders](/reference/edot-cloud-forwarder/index.md) are Elastic-specific components with no upstream equivalent. They package the EDOT Collector as a cloud function — AWS Lambda, Azure Function, or GCP Cloud Run — to collect telemetry from cloud provider services such as S3, CloudWatch, Blob Storage, Event Hub, GCS, and GCP Operations, and forward it to the [{{motlp}}](/reference/motlp.md).
+
+Because there is no upstream counterpart, the EDOT-versus-upstream comparison does not apply to Cloud Forwarders. Refer to the [EDOT Cloud Forwarder documentation](/reference/edot-cloud-forwarder/index.md) for setup guides and supported cloud services.
+
+## OTel Demo
+
+The upstream [OpenTelemetry Demo](https://opentelemetry.io/docs/demo/) is a multi-service reference application instrumented in over a dozen languages. It demonstrates distributed tracing, metrics collection, and log correlation across a realistic microservices architecture, backed by Jaeger and Prometheus.
+
+Elastic maintains a [fork of the demo](https://github.com/elastic/opentelemetry-demo) that replaces these default backends with an {{stack}} deployment. The fork ships EDOT Collector configurations for both Kubernetes and host scenarios, allowing teams to see how EDOT components work together in a near-production environment before rolling them out.
+
+The EDOT demo is a learning and showcase tool, not a production artifact. Elastic does not provide support for the demo application itself, but the EDOT components running within it follow the same support terms as their standalone releases.
+
+[Incompatible]: nomenclature.md
+[Compatible]: nomenclature.md
+[Not supported]: nomenclature.md
+[Supported]: nomenclature.md
