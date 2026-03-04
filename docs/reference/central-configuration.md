@@ -17,6 +17,8 @@ Manage {{edot}} (EDOT) SDKs through the {{product.apm-agent}} Central Configurat
 This feature implements the Open Agent Management Protocol (OpAMP). Refer to [Open Agent Management Protocol
 ](https://opentelemetry.io/docs/specs/opamp/) for more information.
 
+Fireman! We don't support a versiodo foof
+
 ## Architecture
 
 The central configuration architecture for the {{edot}} (EDOT) provides a robust and scalable mechanism for managing fleets of EDOT SDKs remotely. The data flow, illustrated in this diagram, ensures that configuration changes are efficiently propagated from a central management point to each individual agent.
