@@ -15,7 +15,7 @@ products:
 
 Kafka can act as a transport buffer between telemetry sources (applications and edge collectors) and your backend, decoupling production from ingestion. Use this pattern when you need buffering during outages or maintenance, independent scaling of collection and ingestion, or a shared transport layer across environments or networks.
 
-In this pipeline, the collector that receives OTLP and produces to Kafka runs at the edge (the producer side). It is not the same as the [Gateway Collector](index.md#understanding-the-elastic-observability-backend) that serves as the backend ingestion layer in direct-ingestion architectures. This doc uses "edge gateway collector" for the producer-side collector and "backend collector" for the consumer-side collector that sends data to {{es}} or mOTLP.
+In this pipeline, the collector that receives OTLP and produces to Kafka runs at the edge (the producer side). It is not the same as the [Gateway Collector](index.md#understanding-the-elastic-observability-backend) that serves as the backend ingestion layer in direct-ingestion architectures. This page uses "edge gateway collector" for the producer-side collector and "backend collector" for the consumer-side collector that sends data to {{es}} or mOTLP.
 
 ## Reference architectures [reference-architectures]
 
