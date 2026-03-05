@@ -15,6 +15,8 @@ products:
 
 Kafka can act as a transport buffer between telemetry sources (applications and edge collectors) and your backend, decoupling production from ingestion. Use this pattern when you need buffering during outages or maintenance, independent scaling of collection and ingestion, or a shared transport layer across environments or networks.
 
+In this pipeline, the collector that receives OTLP and produces to Kafka runs at the edge (the producer side). It is not the same as the [Gateway Collector](index.md#understanding-the-elastic-observability-backend) that serves as the backend ingestion layer in direct-ingestion architectures. This doc uses "edge gateway collector" for the producer-side collector and "backend collector" for the consumer-side collector that sends data to {{es}} or mOTLP.
+
 ## Reference architectures [reference-architectures]
 
 The following patterns cover self-managed {{es}} and {{ecloud}} using the {{motlp}}.
@@ -23,17 +25,17 @@ The following patterns cover self-managed {{es}} and {{ecloud}} using the {{motl
 
 The pipeline flows as follows:
 
-`SDKs (OTLP) → Collector (Gateway) → Kafka → Collector (Backend) → Elasticsearch`
+`SDKs (OTLP) → Edge gateway collector → Kafka → Backend collector → Elasticsearch`
 
 In this model:
-- A Gateway Collector receives OTLP from applications (for example, EDOT SDKs or other OTLP-compatible SDKs) and exports OTLP payloads to Kafka.
+- An edge gateway collector receives OTLP from applications (for example, EDOT SDKs or other OTLP-compatible SDKs) and exports OTLP payloads to Kafka.
 - An EDOT backend collector consumes OTLP payloads from Kafka and exports to {{es}}.
 
 ### {{ecloud}} (Hosted/Serverless) using mOTLP [elastic-cloud-motlp]
 
 The pipeline flows as follows:
 
-`SDKs (OTLP) → Collector (Gateway) → Kafka → Collector (Backend) → mOTLP`
+`SDKs (OTLP) → Edge gateway collector → Kafka → backend collector → mOTLP`
 
 In this model:
 - An EDOT backend collector consumes OTLP payloads from Kafka and exports to the {{ecloud}} Managed OTLP endpoint (mOTLP) using the OTLP/HTTP exporter.
@@ -49,14 +51,14 @@ For EDOT, only the `otlp_proto` and `otlp_json` encodings are supported for the 
 ## Example configuration [example-configuration]
 
 The following examples show a minimal split deployment for:
-- Gateway Collector (produces to Kafka)
-- Backend Collector (consumes from Kafka and exports to {{es}} or mOTLP)
+- Edge gateway collector (produces to Kafka)
+- Backend collector (consumes from Kafka and exports to {{es}} or mOTLP)
 
 :::{note}
 Use an OTLP encoding on Kafka (for example, `otlp_proto`). Ensure the receiver and exporter use the same encoding and topics.
 :::
 
-### Gateway Collector [gateway-collector]
+### Edge gateway collector [edge-gateway-collector]
 
 This example receives OTLP and exports to Kafka.
 
@@ -93,7 +95,7 @@ service:
       exporters: [kafka]
 ```
 
-### Backend Collector for self-managed [backend-collector-self-managed]
+### Backend collector for self-managed [backend-collector-self-managed]
 
 This example receives from Kafka and exports to {{es}}.
 
@@ -129,7 +131,7 @@ service:
       exporters: [elasticsearch]
 ```
 
-### Backend Collector for {{ecloud}} [backend-collector-motlp]
+### Backend collector for {{ecloud}} [backend-collector-motlp]
 
 This example receives from Kafka and exports to {{motlp}}. The {{motlp}} endpoint uses the OTLP/HTTP protocol, so the configuration uses the `otlphttp` exporter to send to the HTTPS endpoint correctly.
 
@@ -168,6 +170,6 @@ service:
 
 ## Operational notes [operational-notes]
 
-Monitor backpressure and export failures on both the Gateway and Backend Collectors. A Kafka buffer can mask downstream ingestion problems until retention is exhausted. To avoid it, size retention and partitions for peak ingest and expected outage windows. 
+Monitor backpressure and export failures on both the edge gateway collector and the backend collector. A Kafka buffer can mask downstream ingestion problems until retention is exhausted. To avoid it, size retention and partitions for peak ingest and expected outage windows. 
 
-For {{product.apm}} UI optimizations on self-managed backends, align the backend Collector's mode and processors with the recommended EDOT gateway architecture for your deployment.
+For {{product.apm}} UI optimizations on self-managed backends, align the backend collector's mode and processors with the recommended EDOT gateway architecture for your deployment.
