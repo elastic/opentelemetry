@@ -67,7 +67,7 @@ Due to current upstream limitations, some capabilities are temporarily available
 |------------|--------|
 | Inferred spans | Available in EDOT only. Generates spans from profiling data without manual instrumentation, closing visibility gaps that auto-instrumentation does not cover. |
 | Central configuration | Available in EDOT only. Manages SDK settings from {{kib}} through the EDOT Collector using [OpAMP](/reference/central-configuration.md). Most SDKs apply configuration changes dynamically, without restarting or redeploying applications. |
-| Profiling integration | Available in EDOT only. Correlates traces with continuous profiling data for deeper performance analysis. |
+| Profiling integration | Available in EDOT Java only. Correlates traces with continuous profiling data for deeper performance analysis. |
 | Crash reporting | Available in EDOT only. Captures native crash data on mobile platforms for post-mortem analysis. |
 
 Upstream OTel SDKs are technically [Compatible] with Elastic and can send data through the same ingestion paths, but Elastic does not provide official support or troubleshooting assistance for them. Refer to the [SDK compatibility table](sdks.md) for version-level details.
