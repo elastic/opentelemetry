@@ -25,7 +25,13 @@ The following patterns cover self-managed {{es}} and {{ecloud}} using the {{motl
 
 The pipeline flows as follows:
 
-`SDKs (OTLP) → Edge gateway collector → Kafka → Backend collector → Elasticsearch`
+```mermaid
+flowchart LR
+  A["SDKs (OTLP)"] --> B["Edge gateway collector"]
+  B --> C["Kafka"]
+  C --> D["Backend collector"]
+  D --> E["Elasticsearch"]
+```
 
 In this model:
 - An edge gateway collector receives OTLP from applications (for example, EDOT SDKs or other OTLP-compatible SDKs) and exports OTLP payloads to Kafka.
@@ -35,7 +41,13 @@ In this model:
 
 The pipeline flows as follows:
 
-`SDKs (OTLP) → Edge gateway collector → Kafka → backend collector → mOTLP`
+```mermaid
+flowchart LR
+  A["SDKs (OTLP)"] --> B["Edge gateway collector"]
+  B --> C["Kafka"]
+  C --> D["Backend collector"]
+  D --> E["mOTLP"]
+```
 
 In this model:
 - An EDOT backend collector consumes OTLP payloads from Kafka and exports to the {{ecloud}} Managed OTLP endpoint (mOTLP) using the OTLP/HTTP exporter.
