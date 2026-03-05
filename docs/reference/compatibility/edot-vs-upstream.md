@@ -14,9 +14,11 @@ products:
 
 # EDOT compared to upstream OpenTelemetry
 
-[Elastic Distributions of OpenTelemetry (EDOT)](/reference/index.md) are a set of [OpenTelemetry distributions](https://opentelemetry.io/docs/concepts/distributions/) curated, tested, and supported by Elastic. Each EDOT component wraps its upstream counterpart, adding production-ready defaults, Elastic-specific capabilities, and official support backed by [Elastic's Support Policy](https://www.elastic.co/support_policy) and SLAs.
+[Elastic Distributions of OpenTelemetry (EDOT)](/reference/index.md) are a set of [OpenTelemetry distributions](https://opentelemetry.io/docs/concepts/distributions/) curated, tested, and supported by Elastic. Each EDOT component builds on its upstream counterpart, adding production-ready defaults, Elastic-specific capabilities, and official support backed by [Elastic's Support Policy](https://www.elastic.co/support_policy) and SLAs. 
 
-EDOT is always optional. Elastic's ingestion APIs are vendor-agnostic, so any upstream or third-party OpenTelemetry component that speaks OTLP can send data to the {{stack}}. Upstream components are technically [Compatible] but receive community support only. EDOT is for teams that want a supported, production-grade experience without changing their existing architecture.
+Elastic is also an active contributor to the upstream OpenTelemetry project, working to stabilize components, advance semantic conventions, and move capabilities upstream so that the broader community benefits.
+
+EDOT is always optional. Elastic's OTLP ingestion APIs are vendor-agnostic and preserve OpenTelemetry semantic conventions, so any upstream or third-party OpenTelemetry component that speaks OTLP can send data to the {{stack}}. Upstream components are technically [Compatible] but receive community support only. EDOT is for teams that want a supported, production-grade experience without changing their existing architecture.
 
 The following table summarizes the key differences:
 
@@ -25,11 +27,11 @@ The following table summarizes the key differences:
 | Configuration | Pre-configured defaults for {{product.observability}}. | Requires manual assembly and configuration. |
 | Support | Official Elastic support with SLAs. | Community support only. |
 | Integration | Seamless integration with {{stack}} components. | Requires additional configuration for Elastic. |
-| Components | Curated, production-tested components optimized for Elastic. | Broad ecosystem; component maturity levels vary. |
+| Components | Curated, production-tested components optimized for Elastic, including preselected instrumentations for zero-code setup. | Broad ecosystem. Component maturity levels vary. Instrumentations must be selected and configured manually. |
 | Deployment | Same deployment methods as upstream, with ready-to-use default configurations. | Same deployment methods; configuration is left to the user. |
 | Central management | Central configuration of SDKs and Collectors through [OpAMP](/reference/central-configuration.md). | No centralized configuration support. |
 | Compatibility | Fully tested with {{stack}} components. | Compatible but not tested for guaranteed support. |
-| Updates | Release cycle aligned with {{stack}} releases. | Follows the upstream OpenTelemetry release cycle. |
+| Updates | EDOT Collector releases align with {{stack}}. EDOT SDKs follow the upstream OpenTelemetry release cycle. | Follows the upstream OpenTelemetry release cycle. |
 
 The following sections describe how this general comparison applies to each EDOT component.
 
@@ -47,7 +49,9 @@ Users who need a Collector build that differs from the standard EDOT Collector c
 
 OpenTelemetry language SDKs provide the instrumentation libraries that applications use to generate traces, metrics, and logs. The upstream project publishes reference SDKs for each supported language, and vendors can wrap these into [distributions](https://opentelemetry.io/docs/concepts/distributions/) that add defaults, extensions, or vendor-specific improvements.
 
-EDOT SDKs are such distributions. They maintain full compatibility with the OpenTelemetry specification while including Elastic-specific improvements and bug fixes that ship before they become available in upstream contrib repositories. The following EDOT SDKs are available:
+EDOT SDKs are such distributions. They maintain full compatibility with the OpenTelemetry specification and come with preselected instrumentations that enable [zero-code instrumentation](https://opentelemetry.io/docs/concepts/instrumentation/zero-code/) by default. Elastic contributes bug fixes and improvements to upstream first, and only ships fixes in EDOT ahead of upstream when there are strong reasons to do so. 
+
+The following EDOT SDKs are available:
 
 - [EDOT .NET](elastic-otel-dotnet://reference/edot-dotnet/index.md)
 - [EDOT Java](elastic-otel-java://reference/edot-java/index.md)
@@ -57,12 +61,12 @@ EDOT SDKs are such distributions. They maintain full compatibility with the Open
 - [EDOT Android](apm-agent-android://reference/edot-android/index.md)
 - [EDOT iOS](apm-agent-ios://reference/edot-ios/index.md)
 
-Beyond upstream functionality, EDOT SDKs introduce capabilities that are not available in the community SDKs. Refer to the [EDOT SDKs overview](/reference/edot-sdks/index.md) for the full feature matrix across languages.
+EDOT SDKs also introduce capabilities that are not yet available in the community SDKs. Elastic is actively working to bring these capabilities to upstream OpenTelemetry as vendor-agnostic features. Refer to the [EDOT SDKs overview](/reference/edot-sdks/index.md) for the full feature matrix across languages.
 
 | Capability | Description |
 |------------|-------------|
 | Inferred spans | Generates spans from profiling data without manual instrumentation, closing visibility gaps that auto-instrumentation does not cover. |
-| Central configuration | Manages SDK settings from {{kib}} through the EDOT Collector using [OpAMP](/reference/central-configuration.md), without redeploying applications. |
+| Central configuration | Manages SDK settings from {{kib}} through the EDOT Collector using [OpAMP](/reference/central-configuration.md). Most SDKs apply configuration changes dynamically, without restarting or redeploying applications. |
 | Profiling integration | Correlates traces with continuous profiling data for deeper performance analysis. |
 | Crash reporting | Captures native crash data on mobile platforms for post-mortem analysis. |
 
