@@ -18,7 +18,7 @@ products:
 
 Elastic is also an active contributor to the upstream OpenTelemetry project, working to stabilize components, advance semantic conventions, and move capabilities upstream so that the broader community benefits.
 
-EDOT is always optional. Elastic's OTLP ingestion APIs are vendor-agnostic and preserve OpenTelemetry semantic conventions, so any upstream or third-party OpenTelemetry component that speaks OTLP can send data to the {{stack}}. Upstream components are technically [Compatible] but receive community support only. EDOT is for teams that want a supported, production-grade experience without changing their existing architecture.
+EDOT is always optional. Elastic's OTLP ingestion APIs are vendor-agnostic and preserve OpenTelemetry semantic conventions, so any upstream or third-party OpenTelemetry component that speaks OTLP can send data to the {{stack}}. Upstream components are technically [Compatible] but receive community support only. EDOT is for teams that want a supported, production-grade experience that can be a drop-in replacement for upstream OpenTelemetry components.
 
 The following table summarizes the key differences:
 
