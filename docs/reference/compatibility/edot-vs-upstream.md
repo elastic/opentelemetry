@@ -16,7 +16,7 @@ products:
 
 [Elastic Distributions of OpenTelemetry (EDOT)](/reference/index.md) are a set of [OpenTelemetry distributions](https://opentelemetry.io/docs/concepts/distributions/) curated, tested, and supported by Elastic. Each EDOT component builds on its upstream counterpart, adding production-ready defaults, Elastic-specific capabilities, and official support backed by [Elastic's Support Policy](https://www.elastic.co/support_policy) and SLAs. 
 
-Elastic is also an active contributor to the upstream OpenTelemetry project, working to stabilize components, advance semantic conventions, and move capabilities upstream so that the broader community benefits.
+Elastic is also an active contributor to the upstream OpenTelemetry project, working to stabilize components, advance semantic conventions, and move capabilities upstream so that the broader community benefits. Elastic contributes bug fixes and improvements upstream first, and only ships fixes in EDOT ahead of upstream when there are strong reasons to do so.
 
 EDOT is always optional. Elastic's OTLP ingestion APIs are vendor-agnostic and preserve OpenTelemetry semantic conventions, so any upstream or third-party OpenTelemetry component that speaks OTLP can send data to the {{stack}}. Upstream components are technically [Compatible] but receive community support only. EDOT is for teams that want a supported, production-grade experience that can be a drop-in replacement for upstream OpenTelemetry components.
 
@@ -29,7 +29,7 @@ The following table summarizes the key differences:
 | Integration | Seamless integration with {{stack}} components. | Requires additional configuration for Elastic. |
 | Components | Curated, production-tested components optimized for Elastic, including preselected instrumentations for zero-code setup. | Broad ecosystem. Component maturity levels vary. Instrumentations must be selected and configured manually. |
 | Deployment | Same deployment methods as upstream, with ready-to-use default configurations. | Users provide their own configuration. |
-| Central management | Central configuration of SDKs and Collectors through [OpAMP](/reference/central-configuration.md). | No centralized configuration support. |
+| Central management | Central configuration of SDKs and Collectors through [OpAMP](/reference/central-configuration.md), including a managed OpAMP server. | OpAMP protocol is supported, but no managed server is provided. |
 | Compatibility | Fully tested with {{stack}} components. | Compatible, but not tested or supported by Elastic. |
 | Updates | EDOT Collector releases align with {{stack}}. EDOT SDKs follow the upstream OpenTelemetry release cycle. | Follows the upstream OpenTelemetry release cycle. |
 
@@ -49,7 +49,7 @@ Users who need a Collector build that differs from the standard EDOT Collector c
 
 OpenTelemetry language SDKs provide the instrumentation libraries that applications use to generate traces, metrics, and logs. The upstream project publishes reference SDKs for each supported language. Vendors can wrap these into [distributions](https://opentelemetry.io/docs/concepts/distributions/)  that add defaults, extensions, or vendor-specific improvements.
 
-EDOT SDKs are such distributions. They maintain full compatibility with the OpenTelemetry specification and come with preselected instrumentations that enable [zero-code instrumentation](https://opentelemetry.io/docs/concepts/instrumentation/zero-code/) by default. Elastic contributes bug fixes and improvements upstream first. Fixes appear in EDOT ahead of upstream only when there are strong reasons to do so.
+EDOT SDKs are such distributions. They maintain full compatibility with the OpenTelemetry specification and come with preselected instrumentations that enable [zero-code instrumentation](https://opentelemetry.io/docs/concepts/instrumentation/zero-code/) by default.
 
 The following EDOT SDKs are available:
 
