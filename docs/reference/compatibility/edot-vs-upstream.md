@@ -25,7 +25,7 @@ The following table summarizes the key differences:
 | Aspect | EDOT | Upstream |
 |--------|------|----------|
 | Configuration | Pre-configured defaults for {{product.observability}}. | Requires manual component selection and configuration. |
-| Support | Official Elastic support with SLAs. | Community support only. |
+| Support | Official Elastic support with SLAs. | Community support. |
 | Integration | Seamless integration with {{stack}} components. | Requires additional configuration for Elastic. |
 | Components | Curated, production-tested components optimized for Elastic, including preselected instrumentations for zero-code setup. | Broad ecosystem. Component maturity levels vary. Instrumentations must be selected and configured manually. |
 | Deployment | Same deployment methods as upstream, with ready-to-use default configurations. | Users provide their own configuration. |
