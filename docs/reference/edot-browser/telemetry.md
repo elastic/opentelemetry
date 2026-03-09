@@ -34,7 +34,7 @@ Ensure your reverse proxy and OTLP endpoint accept the `/v1/metrics` path.
 - Browser environments vary (device, network, extensions). Metric values might be noisier or less consistent than server-side metrics.
 
 :::{note}
-Web Vitals, such as Largest Contentful Paint (LCP), First Input Delay (FID), Cumulative Layout Shift (CLS), and related metrics, are not supported in EDOT Browser. There is no built-in Web Vitals instrumentation. If you need Web Vitals or similar Core Web Vitals data, use classic Elastic {{product.apm}} browser agents or a dedicated Web Vitals library.
+Web Vitals instrumentation (LCP, FID, CLS, and related Core Web Vitals metrics) is planned. Until it's available, for Core Web Vitals data you can use classic Elastic {{product.apm}} browser agents or a dedicated Web Vitals library.
 :::
 
 ## Traces [traces]

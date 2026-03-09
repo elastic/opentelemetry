@@ -30,7 +30,6 @@ EDOT Browser does not read `OTEL_*` variables directly. Instead, it accepts conf
 
 Typical configuration patterns include:
 
-- Injecting values during build (for example, `process.env.*` replaced by a bundler).
 - Passing configuration from a server-rendered page.
 - Loading configuration from a global object populated at runtime.
 

@@ -43,7 +43,7 @@ If your application targets older browsers, you might need to provide polyfills.
 
 ## Included instrumentations [included-instrumentations]
 
-EDOT Browser bundles a curated set of OpenTelemetry JS instrumentations suitable for browser environments.
+EDOT Browser bundles a curated set of OpenTelemetry JS instrumentations suitable for browser environments. This list is being reviewed and might change in future releases.
 
 The following instrumentations are included and turned on by default. You can turn off any of them using `configInstrumentations` by setting `enabled: false` for the corresponding key when calling `startBrowserSdk`:
 

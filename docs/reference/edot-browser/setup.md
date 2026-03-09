@@ -80,14 +80,20 @@ server {
 
 :::::{step} Install EDOT Browser
 
-EDOT Browser is distributed as a single bundle that packages the OpenTelemetry Browser SDK with Elastic-specific defaults.
+EDOT Browser is distributed in two ways:
 
-Install EDOT Browser using your package manager:
+- **Package**: Install using your package manager and import in your application (recommended when using a bundler).
+- **Bundle**: A single JS file you can load using a script tag when you are not using a bundler.
+
+**Using the package (with a bundler):**
 
 ```bash
 npm install @elastic/opentelemetry-browser
 ```
 
+**Using the bundle:** A single JS bundle is be available for script-tag usage (for example, from a CDN or your own host). Use it when your application doesn't use a bundler.
+
+<!--TODO add instructions on how to use a bundle -->
 :::::
 
 :::::{step} Initialize EDOT Browser

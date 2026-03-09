@@ -35,7 +35,6 @@ In {{product.observability}}, you see `external.http` spans for browser fetch an
 
 The following capabilities are not currently available in EDOT Browser:
 
-- Web Vitals instrumentation
 - Full feature parity with classic Elastic {{product.apm}} browser agents
 - Migration tooling from classic agents
 
