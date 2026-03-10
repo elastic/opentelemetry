@@ -26,5 +26,5 @@ If you use a Content Security Policy, ensure the proxy or OTLP endpoint domain i
 ## Next steps [next-steps]
 
 - Refer to [Known limitations](supported-technologies.md#known-limitations) for what is not yet supported.
-- Refer to [Set up EDOT Browser](setup.md) for installation and initialization.
+- Refer to [Set up EDOT Browser](setup.md), [Install the agent](install-agent.md), and [Proxy and CORS](proxy-cors.md) for installation and proxy configuration.
 - For general OTLP ingest issues, refer to [OpenTelemetry ingest troubleshooting](docs-content://troubleshoot/ingest/opentelemetry/index.md).

@@ -15,7 +15,10 @@ products:
 
 This guide shows you how to set up the {{edot}} Browser (EDOT Browser) in a web application and export browser telemetry to {{product.observability}}.
 
-EDOT Browser runs directly in users’ browsers. Because of browser security constraints, authentication and data export require reverse proxy configuration.
+EDOT Browser runs directly in users' browsers. Because of browser security constraints, authentication and data export require a reverse proxy. When your OTLP endpoint is available ({{ecloud}} Managed OTLP or an EDOT Collector), do the following:
+
+- [Install the agent](install-agent.md): Add EDOT Browser to your application (package or bundle) and initialize it.
+- [Configure proxy and CORS](proxy-cors.md): Set up a reverse proxy in front of your OTLP endpoint and configure CORS so the browser can export telemetry securely.
 
 :::{note}
 Do not run EDOT Browser alongside another {{product.apm}} or RUM agent (including classic Elastic {{product.apm}} browser agents). Multiple agents can cause conflicting instrumentation, duplicate telemetry, or unexpected behavior.
@@ -28,112 +31,13 @@ Before you set up EDOT Browser, you need:
 - An {{product.observability}} deployment ({{ecloud}} or self-managed)
 - An OTLP ingest endpoint ({{ecloud}} Managed OTLP or an EDOT Collector)
 
-## Set up
-
-Follow these steps to set up EDOT Browser.
-
-::::::{stepper}
-
-:::::{step} Set up the reverse proxy
-
-Do not send telemetry directly from the browser to {{product.observability}} using an API key, as any credentials included in browser code are visible to end users and can be misused. EDOT Browser requires a reverse proxy in front of the OTLP endpoint.
-
-If your site uses a Content Security Policy (CSP), add the domain of your reverse proxy or OTLP endpoint to the `connect-src` directive so the browser allows export requests. For example: `connect-src 'self' https://telemetry.example.com`.
-
-If your web application and the export endpoint have different origins, the browser might block requests unless Cross-Origin Resource Sharing (CORS) is configured. Your reverse proxy must return `Access-Control-Allow-Origin` matching your application origin, respond to `OPTIONS` preflight requests with 204, and include `Authorization` in `Access-Control-Allow-Headers` when using API key auth.
-
-For complete examples and security considerations, refer to [OpenTelemetry for Real User Monitoring (RUM)](docs-content://solutions/observability/applications/otel-rum.md).
-
-The following example NGINX reverse proxy configuration forwards telemetry from `webapp.example.com` to an EDOT Collector at `collector.example.com`, injects the required `Authorization` header, and handles CORS preflight:
-
-```nginx
-server {
-    # Configuration for HTTP/HTTPS goes here
-    location / {
-        # Take care of preflight requests
-        if ($request_method = 'OPTIONS') {
-            add_header 'Access-Control-Max-Age' 1728000;
-            add_header 'Access-Control-Allow-Origin' 'webapp.example.com' always;
-            add_header 'Access-Control-Allow-Headers' 'Accept,Accept-Language,Authorization,Content-Language,Content-Type' always;
-            add_header 'Access-Control-Allow-Credentials' 'true' always;
-            add_header 'Content-Type' 'text/plain charset=UTF-8';
-            add_header 'Content-Length' 0;
-            return 204;
-        }
-
-        add_header 'Access-Control-Allow-Origin' 'webapp.example.com' always;
-        add_header 'Access-Control-Allow-Credentials' 'true' always;
-        add_header 'Access-Control-Allow-Headers' 'Accept,Accept-Language,Authorization,Content-Language,Content-Type' always;
-        proxy_http_version 1.1;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        # Set the auth header for the Collector here. Follow security best practices
-        # for adding secrets (for example Docker secrets, Kubernetes Secrets).
-        proxy_set_header Authorization 'ApiKey ...your Elastic API key...';
-        proxy_pass https://collector.example.com:4318;
-    }
-}
-```
-
-:::::
-
-:::::{step} Install EDOT Browser
-
-EDOT Browser is distributed in two ways:
-
-- **Package**: Install using your package manager and import in your application (recommended when using a bundler).
-- **Bundle**: A single JS file you can load using a script tag when you are not using a bundler.
-
-**Using the package (with a bundler):**
-
-```bash
-npm install @elastic/opentelemetry-browser
-```
-
-**Using the bundle:** A single JS bundle is be available for script-tag usage (for example, from a CDN or your own host). Use it when your application doesn't use a bundler.
-
-<!--TODO add instructions on how to use a bundle -->
-:::::
-
-:::::{step} Initialize EDOT Browser
-
-Initialize EDOT Browser as early as possible in your application lifecycle so it can capture initial page loads, user interactions, and network requests. Call `startBrowserSdk`:
-
-
-- At the top of your application entry point
-- In a framework-specific bootstrap location (for example, a React root component, Angular `main.ts`, or a Vue plugin)
-
-A minimal example:
-
-```js
-import { startBrowserSdk } from '@elastic/opentelemetry-browser';
-
-startBrowserSdk({
-  serviceName: 'my-web-app',
-  otlpEndpoint: 'https://telemetry.example.com', // reverse proxy URL; do not include /v1/traces or other signal paths
-});
-```
-
-At a minimum, configure:
-
-- The service name used to identify your frontend application
-- The `otlpEndpoint`, which must point to your reverse proxy (and not directly to {{product.observability}})
-
-For additional configuration options, refer to [Configure EDOT Browser](configuration.md).
-
-:::::
-::::::
-
-You have successfully set up EDOT Browser when the SDK loads without errors in the browser console and telemetry begins flowing to your reverse proxy. To confirm data in {{product.observability}}, open {{kib}} and check for your service and traces.
-
 ## How browser telemetry is exported [how-browser-telemetry-is-exported]
 
 EDOT Browser exports telemetry using the OpenTelemetry Protocol (OTLP) over HTTP. Data flows as follows:
 
 **Browser (EDOT Browser) → Reverse proxy → {{ecloud}} Managed OTLP endpoint or EDOT Collector → {{product.observability}}**
 
-The browser sends OTLP data to the reverse proxy endpoint that you configured.
+The browser sends OTLP data to the reverse proxy endpoint that you configure.
 
 ## What to expect in {{kib}} [what-to-expect-in-kibana]
 
@@ -141,7 +45,7 @@ After EDOT Browser is sending telemetry to {{product.observability}}, you can in
 
 ### Spans from browser fetch and XHR [spans-from-fetch-xhr]
 
-Outgoing HTTP requests made with the browser `fetch` API or `XMLHttpRequest` are captured as **`external.http`** spans. Each request to your backend APIs or third-party domains appears as an `external.http` span with attributes such as URL, HTTP method, and status code. These spans represent the client-side portion of the request (time in the browser) and, when your backend is instrumented with EDOT, link to the corresponding server-side trace using the trace context (trace ID and span ID) propagated in HTTP headers. In the trace view, you see the browser’s `external.http` span as part of the same trace as the backend service spans when propagation is correctly configured.
+Outgoing HTTP requests made with the browser `fetch` API or `XMLHttpRequest` are captured as `external.http` spans. Each request to your backend APIs or third-party domains appears as an `external.http` span with attributes such as URL, HTTP method, and status code. These spans represent the client-side portion of the request (time in the browser) and, when your backend is instrumented with EDOT, link to the corresponding server-side trace using the trace context (trace ID and span ID) propagated in HTTP headers. In the trace view, you see the browser's `external.http` span as part of the same trace as the backend service spans when propagation is correctly configured.
 
 ### User interaction spans and grouping [user-interaction-spans]
 
@@ -160,8 +64,8 @@ For more on how RUM and distributed traces appear in the Observability app, refe
 
 After completing setup:
 
-- Refer to [What to expect in {{kib}}](#what-to-expect-in-kibana) above for the span types and views you see (for example, `external.http`, user interaction grouping, Discover and Service Maps).
-- Refer to [Metrics, traces, and logs](telemetry.md) for what is emitted for each signal and known limitations.
+- Refer to [Install the agent](install-agent.md) and [Proxy and CORS](proxy-cors.md) for installation and proxy configuration.
 - Refer to [Configure EDOT Browser](configuration.md) to customize behavior and defaults.
-- Review [Supported technologies](supported-technologies.md) for information about browsers and instrumentations.
-- Read [User experience (RUM)](docs-content://solutions/observability/applications/user-experience.md) for more on how browser traces appear in the Observability app.
+- Refer to [Metrics, traces, and logs](telemetry.md) for what is emitted for each signal and known limitations.
+- Review [Supported technologies](supported-technologies.md) for information about browsers, bundlers, and instrumentations.
+- If telemetry doesn't appear, refer to [Troubleshooting](troubleshooting.md).

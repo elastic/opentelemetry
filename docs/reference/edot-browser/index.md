@@ -46,7 +46,7 @@ Because EDOT Browser runs in the user’s browser, it cannot safely embed authen
 - **Cross-origin requests**: Your web application and the OTLP endpoint often have different origins. Browsers enforce Cross-Origin Resource Sharing (CORS), meaning that without the right headers, export requests are blocked. A reverse proxy on the same origin as your app (or configured to allow it) can add the required CORS headers and handle preflight `OPTIONS` requests.
 - **Traffic control**: You can apply rate limiting or other controls at the proxy before traffic reaches the Collector or {{product.observability}}.
 
-For reverse proxy examples and browser constraints (CORS, CSP), refer to [Set up EDOT Browser](setup.md).
+For reverse proxy and CORS configuration, refer to [Proxy and CORS](proxy-cors.md). For installation and initialization, refer to [Set up EDOT Browser](setup.md) and [Install the agent](install-agent.md).
 
 :::{note}
 Avoid using EDOT Browser alongside any other {{product.apm}} or RUM agent (including classic Elastic {{product.apm}} browser agents). Running multiple agents can cause conflicting instrumentation, duplicate telemetry, or unexpected behavior.
@@ -56,7 +56,7 @@ Avoid using EDOT Browser alongside any other {{product.apm}} or RUM agent (inclu
 
 To get started with EDOT Browser:
 
-- Follow the setup instructions in [Set up EDOT Browser](setup.md)
+- Follow the setup instructions in [Set up EDOT Browser](setup.md): [Install the agent](install-agent.md) and [Configure proxy and CORS](proxy-cors.md)
 - Review configuration options in [Configure EDOT Browser](configuration.md)
 - Refer to [Supported technologies](supported-technologies.md) for details on browsers and instrumentations
 - If telemetry does not appear, refer to [Troubleshooting](troubleshooting.md)

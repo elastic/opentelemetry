@@ -44,10 +44,10 @@ Web Vitals instrumentation (LCP, FID, CLS, and related Core Web Vitals metrics) 
 EDOT Browser initializes tracing and registers instrumentations that produce spans:
 
 - Spans for the initial document load and related navigation timing (document load instrumentation is turned on by default).
-- Each outgoing request using `fetch` or `XMLHttpRequest` is captured as an **`external.http`** span with attributes such as URL, HTTP method, and status code. These spans represent the client-side portion of the request.
+- Each outgoing request using `fetch` or `XMLHttpRequest` is captured as an `external.http` span with attributes such as URL, HTTP method, and status code. These spans represent the client-side portion of the request.
 - Spans for user actions such as "click" and "submit". These interaction spans group the subsequent work (for example `external.http` requests) so you can attribute frontend and backend activity to a specific user action in {{product.observability}}.
 
-When your backend is instrumented with OpenTelemetry and trace context (trace ID, span ID) is propagated in HTTP headers, the browser’s `external.http` span and the backend spans appear in the same trace, giving you end-to-end visibility in Discover and Service Maps. Refer to [What to expect in Kibana](setup.md#what-to-expect-in-kibana) for how these traces appear in the Observability app.
+When your backend is instrumented with OpenTelemetry and trace context (trace ID, span ID) is propagated in HTTP headers, the browser’s `external.http` span and the backend spans appear in the same trace, giving you end-to-end visibility in Discover and Service Maps. Refer to [What to expect in {{kib}}](setup.md#what-to-expect-in-kibana) for how these traces appear in the Observability app.
 
 ### Known limitations of browser-side traces [traces-limitations]
 
@@ -83,6 +83,6 @@ Automatic capture of `console` methods (for example `console.log`, `console.erro
 
 ## Next steps [next-steps]
 
-- Refer to [Set up EDOT Browser](setup.md) for installation and export configuration.
+- Refer to [Set up EDOT Browser](setup.md), [Install the agent](install-agent.md), and [Proxy and CORS](proxy-cors.md) for installation and export configuration.
 - Refer to [What to expect in {{kib}}](setup.md#what-to-expect-in-kibana) for how traces appear in the Observability app.
 - Refer to [Supported technologies](supported-technologies.md) for included instrumentations and [Configure EDOT Browser](configuration.md) for turning signals and instrumentations on or off.

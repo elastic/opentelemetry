@@ -41,6 +41,18 @@ At a minimum, the runtime environment must support:
 
 If your application targets older browsers, you might need to provide polyfills. EDOT Browser does not ship with built-in polyfills.
 
+## Bundlers [bundlers]
+
+When you install EDOT Browser as a package (see [Install the agent](install-agent.md)), you use a JavaScript bundler to build your application. The following bundlers are supported for use with the EDOT Browser package:
+
+| Bundler | Notes |
+|---------|-------|
+| Example 1 | Supported. Use with your existing webpack configuration. |
+| 2   | Supported. |
+| 3 | Supported. |
+
+Your bundler includes only the EDOT Browser code (and instrumentations) that you import, so you can control the final bundle size. If you don't use a bundler, use the [EDOT Browser bundle](install-agent.md#install-bundle) instead (single JS file loaded using a script tag).
+
 ## Included instrumentations [included-instrumentations]
 
 EDOT Browser bundles a curated set of OpenTelemetry JS instrumentations suitable for browser environments. This list is being reviewed and might change in future releases.
@@ -84,7 +96,7 @@ For capabilities that are not yet available and per-signal limitations (metrics,
 
 ## Next steps [next-steps]
 
-- Refer to [Set up EDOT Browser](setup.md) to get started.
+- Refer to [Set up EDOT Browser](setup.md) and [Install the agent](install-agent.md) to get started.
 - Refer to [Metrics, traces, and logs](telemetry.md) for what is emitted per signal and what is not yet supported.
 - Review [Configuration](configuration.md) to customize behavior.
 - Refer to [Known limitations](#known-limitations) above, [Troubleshooting](troubleshooting.md) for EDOT Browser–specific guidance, or [OpenTelemetry ingest troubleshooting](docs-content://troubleshoot/ingest/opentelemetry/index.md) for general OTLP ingest issues.

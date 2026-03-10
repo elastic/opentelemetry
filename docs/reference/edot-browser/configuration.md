@@ -102,7 +102,7 @@ Diagnostic logs are written to the browser console. For more information on usin
 
 ## Next steps [next-steps]
 
-- Refer to [Set up EDOT Browser](setup.md) for installation and initialization.
+- Refer to [Install the agent](install-agent.md) and [Proxy and CORS](proxy-cors.md) for installation and proxy configuration.
 - Refer to [Metrics, traces, and logs](telemetry.md) for what each signal emits and limitations.
 - Review [Supported technologies](supported-technologies.md) for browser and instrumentation support.
 - Refer to [Troubleshooting](troubleshooting.md) for EDOT Browser–specific issues, or [OpenTelemetry ingest troubleshooting](docs-content://troubleshoot/ingest/opentelemetry/index.md) for general OTLP ingest issues.

@@ -1,6 +1,9 @@
 toc:
   - file: index.md
   - file: setup.md
+    children:
+      - file: install-agent.md
+      - file: proxy-cors.md
   - file: configuration.md
   - file: telemetry.md
   - file: supported-technologies.md
