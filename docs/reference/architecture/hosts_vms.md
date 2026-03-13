@@ -38,7 +38,7 @@ The following sections outline the recommended architectures for different Elast
 Users can send data direct from the Collectors or SDKs deployed on the edge environment through OTLP without any additional requirements for managing an ingestion layer.
 ::::
 
-::::{applies-item} ess:
+::::{applies-item} ech:
 
 :::{note}
 You need an {{ech}} deployment version 9.0 or later.

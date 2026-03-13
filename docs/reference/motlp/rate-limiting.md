@@ -6,7 +6,7 @@ applies_to:
     observability: ga
     security: ga
   deployment:
-    ess: ga
+    ech: ga
 products:
   - id: cloud-serverless
   - id: observability

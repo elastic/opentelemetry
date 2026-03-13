@@ -5,7 +5,7 @@ applies_to:
   serverless:
     observability: preview
   deployment:
-    ess: preview
+    ech: preview
     self: unavailable
   product:
     edot_cf_gcp: preview

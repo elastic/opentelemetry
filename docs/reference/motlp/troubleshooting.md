@@ -6,7 +6,7 @@ applies_to:
     observability: ga
     security: ga
   deployment:
-    ess: ga
+    ech: ga
 products:
   - id: cloud-serverless
   - id: observability
@@ -79,7 +79,7 @@ For configuration guidance and the recommended batching settings for sending dat
 ## Server errors (5XX)
 
 ```{applies_to}
-ess:
+ech:
 ```
 
 ### Symptoms
@@ -105,7 +105,7 @@ If metrics confirm the cluster is under-resourced, scale your deployment:
 ## Use AutoOps to diagnose issues
 
 ```{applies_to}
-ess:
+ech:
 ```
 
 [AutoOps](docs-content://deploy-manage/monitor/autoops.md) is a diagnostic tool available for {{ech}} deployments that analyzes cluster metrics, provides root-cause analysis, and suggests resolution paths. 

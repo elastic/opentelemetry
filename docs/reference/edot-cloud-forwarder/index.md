@@ -5,7 +5,7 @@ applies_to:
   serverless:
     observability: preview
   deployment:
-    ess: preview
+    ech: preview
 products:
   - id: cloud-serverless
   - id: observability
