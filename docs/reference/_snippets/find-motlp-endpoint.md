@@ -11,7 +11,7 @@ Alternatively, you can retrieve the endpoint from the **Manage project** page an
 
 ::::{applies-item} ess:
 1. Log in to the {{ecloud}} Console.
-2. Find your deployment on the home page or on the **Hosted deployments** page, and then select **Manage**.
+2. From the home page, find your deployment in **Hosted deployments**, and select **Manage**. Or, on the **Hosted deployments** page, select your deployment.
 3. In the **Application endpoints, cluster and component IDs** section, select **Managed OTLP**.
 4. Copy the public endpoint value.
 ::::
