@@ -110,6 +110,9 @@ The following limitations apply when using the {{motlp}}:
 * Only supports histograms with delta temporality. Cumulative histograms are dropped.
 * Latency distributions based on histogram values have limited precision due to the fixed boundaries of explicit bucket histograms.
 * Tail-based sampling (TBS) is not available. The {{motlp}} does not provide centralized hosted sampling. If you need tail-based sampling, configure it on the edge using the [Tail Sampling Processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor) in your EDOT or OpenTelemetry Collector before sending data to the endpoint.
+* In {{ech}} deployments:
+  * [IP filters](docs-content://deploy-manage/security/ip-filtering-cloud.md) do not apply to the managed endpoint.
+  * The endpoint is not available over a [private connection](docs-content://deploy-manage/security/private-connectivity.md). When private connectivity is configured, the public managed endpoint is still available.
 
 ## Billing
 
