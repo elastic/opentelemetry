@@ -73,7 +73,7 @@ Due to current upstream limitations, some capabilities are temporarily available
 Upstream OTel SDKs are technically [Compatible] with Elastic and can send data through the same ingestion paths, but Elastic does not provide official support or troubleshooting assistance for them. Refer to the [SDK compatibility table](sdks.md) for version-level details.
 
 :::{important}
-EDOT SDKs are designed to export telemetry through the [EDOT Collector](elastic-agent://reference/edot-collector/index.md) or the [{{motlp}}](/reference/motlp.md). Using EDOT SDKs directly with {{product.apm-server}}'s OpenTelemetry intake is not supported — attribute mapping, enrichment, and processing pipelines are not guaranteed on that path.
+EDOT SDKs are designed to export telemetry through the [EDOT Collector](elastic-agent://reference/edot-collector/index.md) or the [{{motlp}}](/reference/motlp/index.md). Using EDOT SDKs directly with {{product.apm-server}}'s OpenTelemetry intake is not supported — attribute mapping, enrichment, and processing pipelines are not guaranteed on that path.
 :::
 
 ## Kubernetes Operator
@@ -88,7 +88,7 @@ On platforms that provide their own OpenTelemetry distributions, such as [Red Ha
 
 ## EDOT Cloud Forwarders
 
-The [EDOT Cloud Forwarders](/reference/edot-cloud-forwarder/index.md) are Elastic-specific components with no upstream equivalent. They package the EDOT Collector as a cloud function — AWS Lambda, Azure Function, or GCP Cloud Run — to collect telemetry from cloud provider services such as S3, CloudWatch, Blob Storage, Event Hub, GCS, and GCP Operations, and forward it to the [{{motlp}}](/reference/motlp.md).
+The [EDOT Cloud Forwarders](/reference/edot-cloud-forwarder/index.md) are Elastic-specific components with no upstream equivalent. They package the EDOT Collector as a cloud function — AWS Lambda, Azure Function, or GCP Cloud Run — to collect telemetry from cloud provider services such as S3, CloudWatch, Blob Storage, Event Hub, GCS, and GCP Operations, and forward it to the [{{motlp}}](/reference/motlp/index.md).
 
 Because there is no upstream counterpart, the EDOT-versus-upstream comparison does not apply to Cloud Forwarders. Refer to the [EDOT Cloud Forwarder documentation](/reference/edot-cloud-forwarder/index.md) for setup guides and supported cloud services.
 
