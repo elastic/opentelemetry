@@ -7,6 +7,7 @@ toc:
     children:
       - file: architecture/k8s.md
       - file: architecture/hosts_vms.md
+      - file: architecture/kafka.md
   - title: Use cases
     crosslink: docs-content://solutions/observability/get-started/opentelemetry/use-cases/index.md
   - file: compatibility/index.md
