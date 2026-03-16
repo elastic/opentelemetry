@@ -17,6 +17,7 @@ The following sections outline the recommended architectures for Elastic Distrib
 
 - [Hosts and VMs](hosts_vms.md)
 - [Kubernetes](k8s.md)
+- [Kafka-based ingest pipelines](kafka.md)
 
 ## Understanding edge deployment
 
