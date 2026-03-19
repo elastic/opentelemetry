@@ -28,6 +28,7 @@ EDOT SDKs are available for the following programming languages and platforms:
 * [Python](elastic-otel-python://reference/edot-python/index.md)
 * [Android](apm-agent-android://reference/edot-android/index.md)
 * [iOS](apm-agent-ios://reference/edot-ios/index.md)
+* [Browser](elastic-otel-rum-js://reference/edot-browser/index.md)
 
 ## Feature overview
 
