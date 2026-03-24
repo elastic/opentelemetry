@@ -75,6 +75,32 @@ You can also set the `OTEL_RESOURCE_ATTRIBUTES` environment variable to set the 
 export OTEL_RESOURCE_ATTRIBUTES="data_stream.dataset=app.orders"
 ```
 
+## OTLP client configuration
+
+When using OpenTelemetry collectors to send data to the {{motlp}}, configure the OTLP exporter to leverage an in-memory queue and optimized batching defaults. This improves throughput, minimizes data loss, and maintains low end-to-end latency.
+
+```yaml
+exporters:
+  otlp/elastic:
+    endpoint: "${MOTLP_ENDPOINT}"
+    headers:
+      Authorization: "ApiKey <key>"
+    sending_queue:
+      enabled: true
+      sizer: bytes
+      queue_size: 50_000_000
+      block_on_overflow: true
+      batch:
+        flush_timeout: 1s
+        min_size: 1_000_000
+        max_size: 4_000_000
+```
+
+The key settings are:
+
+* **`sending_queue`**: Enables an in-memory queue with byte-based sizing (`sizer: bytes`) and a 50 MB capacity. `block_on_overflow: true` applies backpressure instead of dropping data when the queue is full.
+* **`batch`**: Controls how queued data is batched before export. A `flush_timeout` of 1 second ensures low latency, while `min_size` (1 MB) and `max_size` (4 MB) keep payloads within the {{motlp}} limits. Refer to the [Payload too large](troubleshooting.md#error-payload-too-large) troubleshooting section for details on payload size limits.
+
 ## Reference architecture
 
 This diagram shows data ingest using {{edot}} and the {{motlp}}:
