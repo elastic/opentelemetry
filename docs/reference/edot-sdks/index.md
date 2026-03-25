@@ -48,7 +48,7 @@ This table provides an overview of the features available in the {{edot}} (EDOT)
 | **[Metrics collection](https://opentelemetry.io/docs/concepts/signals/metrics/)** | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | 𝐓 v0.7+ | 
 | Custom metrics | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | 𝐓 v0.7+ | 
 | Agent health monitoring | ❌  | ❌  | ❌  | ❌  | ❌  | ❌  | ❌  | 
-| [Runtime metrics](https://opentelemetry.io/docs/specs/semconv/runtime/) | ✅ 1.0+ | ✅ 1.0+ | 𝐓 1.0+ | ❌  | ❌  | ❌  | ❌  | 
+| [Runtime metrics](https://opentelemetry.io/docs/specs/semconv/runtime/) | ✅ 1.0+[^2] | ✅ 1.0+[^2] | 𝐓 1.0+[^2] | ❌  | ❌  | ❌  | ❌  |
 | **Capturing errors / exceptions** | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ v1.0+ | 
 | Crash reporting | ➖  | ➖  | ➖  | ➖  | ➖  | ❌  | ✅ v1.0+ | 
 | **Central configuration** | ❌  | 𝐓 1.5.0+ | 𝐓 1.2.0+ | 𝐓 1.1.0+ | 𝐓 1.4.0+ | 𝐓 1.2.0+ | 𝐓 1.4.0+ | 
@@ -65,6 +65,7 @@ This table provides an overview of the features available in the {{edot}} (EDOT)
 
 
 [^1]: CA-signed certificates only
+[^2]: Runtime metrics can be ingested and used in custom dashboards, but visualization in the {{product.apm}} **Service > Metrics** tab is currently limited. Refer to [Runtime metrics limitations](../compatibility/limitations.md#runtime-metrics) for more information.
 
 % end:edot-features
 

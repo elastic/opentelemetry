@@ -278,12 +278,15 @@ features:
     .NET:
       status: ga
       min_version: 1.0
+      notes: Runtime metrics can be ingested but visualization in the APM Service > Metrics tab is currently limited.
     Java:
       status: ga
       min_version: 1.0
+      notes: Runtime metrics can be ingested but visualization in the APM Service > Metrics tab is currently limited.
     Node.js:
       status: tech-preview
       min_version: 1.0
+      notes: Runtime metrics can be ingested but visualization in the APM Service > Metrics tab is currently limited.
     PHP:
       status: not-available
       min_version:
