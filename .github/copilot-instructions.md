@@ -458,7 +458,7 @@ When product changes require immediate documentation updates:
 
 **Gradual rollouts**: When features deploy progressively
 ```markdown
-{applies_to}`serverless: ga` {applies_to}`ess: preview` {applies_to}`self: unavailable`
+{applies_to}`serverless: ga` {applies_to}`ech: preview` {applies_to}`self: unavailable`
 ```
 
 **Deprecation timelines**: Show removal planning
