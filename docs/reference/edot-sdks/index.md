@@ -33,6 +33,10 @@ EDOT SDKs are available for the following programming languages and platforms:
 
 This table provides an overview of the features available in the {{edot}} (EDOT) SDKs across different programming languages.
 
+% The following table is automatically generated from the EDOT SDKs feature data.
+% Automation is handled by /scripts/tools.py, which reads /docs/reference/edot-sdks/features.yml
+% and generates the table using a Jinja2 template.
+
 % start:edot-features
 
 | Feature | .NET | Java | Node.js | PHP | Python | Android | iOS |
