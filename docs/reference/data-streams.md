@@ -1,6 +1,6 @@
 ---
 navigation_title: Data streams
-description: Learn how EDOT stores telemetry in Elasticsearch. Understand OTel-native and ECS-compatible data streams, exporter behavior, storage engines, and how to configure data retention.
+description: Learn how EDOT stores OpenTelemetry signals in Elasticsearch. Understand OTel-native and ECS-compatible data streams, exporter behavior, storage engines, and how to configure data retention.
 applies_to:
   stack:
   serverless:
@@ -118,7 +118,7 @@ EDOT data streams have no default retention period. Backing indices roll over wh
 
 ### {{ech}} and self-managed deployments
 
-EDOT data streams are managed by the standard built-in ILM policies: `logs@lifecycle`, `metrics@lifecycle`, and `traces@lifecycle`. To customize retention without modifying those managed policies, create a `@custom` component template for the relevant signal type:
+OTel-native EDOT data streams use the built-in ILM policies `logs`, `metrics`, and `traces@lifecycle`, as set by the `logs@settings`, `metrics@tsdb-settings`, and `traces@settings` component templates that the OTel index templates compose in {{es}}. To customize retention without modifying those managed policies, create a `@custom` component template for the relevant signal type:
 
 | Signal | Component template |
 |--------|--------------------|
