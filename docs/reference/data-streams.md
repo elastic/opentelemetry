@@ -1,6 +1,6 @@
 ---
 navigation_title: Data streams
-description: Learn how EDOT stores traces, metrics, and logs in Elasticsearch. Understand OTel-native and ECS-compatible data streams, exporter behavior, and differences between Managed OTLP Endpoint and local EDOT gateways.
+description: Learn how EDOT stores OpenTelemetry signals in Elasticsearch. Understand OTel-native and ECS-compatible data streams, exporter behavior, storage engines, and how to configure data retention.
 applies_to:
   stack:
   serverless:
@@ -18,7 +18,7 @@ products:
 - OTel-native data streams (default)
 - ECS-compatible data streams (for backwards compatibility with {{product.apm}})
 
-This page provides a practical reference for which data streams EDOT uses, exporter behavior, and storage engines. For a detailed comparison of OTel data streams with classic {{product.apm}} and ECS-based integrations, refer to [OTel data streams compared to classic {{product.apm}}](./compatibility/data-streams.md).
+This page provides a practical reference for which data streams EDOT uses, exporter behavior, storage engines, and how to configure data retention. For a detailed comparison of OTel data streams with classic {{product.apm}} and ECS-based integrations, refer to [OTel data streams compared to classic {{product.apm}}](./compatibility/data-streams.md).
 
 To learn how to route OpenTelemetry (OTel) signals to custom data streams, refer to [Data stream routing](docs-content://solutions/observability/apm/opentelemetry/data-stream-routing.md).
 
@@ -111,3 +111,23 @@ For example:
 - When EDOT sends to ECS-compatible data streams (using `elasticapmintake` or the `ecs` exporter), the data uses the storage engines configured for those data streams.
 
 EDOT uses the same index templates and mappings as the rest of the Observability solution.
+
+## Data stream lifecycle and retention
+
+EDOT data streams have no default retention period. Backing indices roll over when they reach 50 GB or 30 days old, but data is not automatically deleted unless you configure a delete phase.
+
+### {{ech}} and self-managed deployments
+
+OTel-native EDOT data streams use the built-in ILM policies `logs`, `metrics`, and `traces@lifecycle`, as set by the `logs@settings`, `metrics@tsdb-settings`, and `traces@settings` component templates that the OTel index templates compose in {{es}}. To customize retention without modifying those managed policies, create a `@custom` component template for the relevant signal type:
+
+| Signal | Component template |
+|--------|--------------------|
+| Logs   | `logs-otel@custom` |
+| Metrics | `metrics-otel@custom` |
+| Traces | `traces-otel@custom` |
+
+When created, these component templates are automatically picked up by the corresponding OTel index template. For step-by-step instructions, refer to [Customize built-in ILM policies](docs-content://manage-data/lifecycle/index-lifecycle-management/tutorial-customize-built-in-policies.md).
+
+### {{serverless-full}}
+
+Use [Data Stream Lifecycle (DSL)](docs-content://manage-data/lifecycle/data-stream.md) to configure retention. Configuration is the same as for any other {{es}} data stream.
