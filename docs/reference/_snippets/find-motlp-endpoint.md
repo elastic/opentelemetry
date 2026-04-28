@@ -12,9 +12,10 @@ The Add data wizard retrieves the endpoint and generates an API key with the req
 
 **Creating an API key manually using {{kib}}**
 
-1. Retrieve the endpoint from the **Manage project** page.
-2. Open the **API keys** management page from the navigation menu.
-3. Click **Create API key**, enter a name, and expand **Control security privileges**.
+Retrieve the endpoint from the **Manage project** page, then create an API key:
+
+1. Go to **Admin and Settings** → **API keys**.
+2. Click **Create API key**, enter a name, and expand **Control security privileges**.
 4. In the role descriptors box, enter the following privileges:
 
     ```json
@@ -31,7 +32,7 @@ The Add data wizard retrieves the endpoint and generates an API key with the req
     }
     ```
 
-5. Click **Create API key** and copy the encoded value.
+4. Click **Create API key** and copy the encoded value.
 
 **Creating an API key via the {{es}} API**
 
