@@ -2,21 +2,22 @@ To retrieve your {{motlp}} endpoint and generate an API key to authenticate your
 
 :::::{applies-switch}
 ::::{applies-item} serverless:
-**Using the Add data wizard (recommended)**
+**Find your endpoint**
 
-The Add data wizard retrieves the endpoint and generates an API key with the required privileges automatically:
+1. Log in to the {{ecloud}} Console.
+2. Find your project and select **Manage**.
+3. In the **Application endpoints** section, select **Ingest**.
+4. Copy the endpoint value.
 
-1. In {{ecloud}}, create an Observability project or open an existing one.
-2. Go to **Add data**, select **Applications**, and then select **OpenTelemetry**.
-3. Copy the endpoint and authentication headers values.
+:::{tip}
+Alternatively, from within your project, go to **Add data**, select **Applications**, then **OpenTelemetry**, and copy the endpoint value. The Add data wizard also generates a pre-configured API key — copy the authentication headers value to skip the API key creation steps below.
+:::
 
-**Creating an API key manually using {{kib}}**
-
-Retrieve the endpoint from the **Manage project** page, then create an API key:
+**Create an API key using {{kib}}**
 
 1. Go to **Admin and Settings** → **API keys**.
 2. Click **Create API key**, enter a name, and expand **Control security privileges**.
-4. In the role descriptors box, enter the following privileges:
+3. In the role descriptors box, enter the following privileges:
 
     ```json
     {
@@ -34,7 +35,7 @@ Retrieve the endpoint from the **Manage project** page, then create an API key:
 
 4. Click **Create API key** and copy the encoded value.
 
-**Creating an API key via the {{es}} API**
+**Create an API key using the {{es}} API**
 
 Use the [Create API key](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-security-create-api-key) API:
 
@@ -91,7 +92,7 @@ The API key both authenticates the OTLP shipper to the {{motlp}} endpoint and au
 
 4. Click **Create API key** and copy the encoded value.
 
-**Create an API key via the {{es}} API**
+**Create an API key using the {{es}} API**
 
 Use the [Create API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key) API:
 
