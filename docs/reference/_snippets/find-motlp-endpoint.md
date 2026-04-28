@@ -72,7 +72,7 @@ The API key both authenticates the OTLP shipper to the {{motlp}} endpoint and au
 **Create an API key using {{kib}}**
 
 1. Open the **API keys** management page from the navigation menu.
-2. Click **Create API key**, enter a name, and select **Restrict privileges**.
+2. Click **Create API key**, enter a name, and enable **Control security privileges**.
 3. In the role descriptors box, enter the following privileges:
 
     ```json
