@@ -6,7 +6,7 @@ To retrieve your {{motlp}} endpoint and generate an API key to authenticate your
 
 1. Log in to the {{ecloud}} Console.
 2. Find your project and select **Manage**.
-3. In the **Application endpoints** section, select **Ingest**.
+3. In the **Application endpoints, cluster and component IDs** section, select **Ingest**.
 4. Copy the endpoint value.
 
 :::{tip}
