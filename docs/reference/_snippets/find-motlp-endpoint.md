@@ -10,7 +10,7 @@ To retrieve your {{motlp}} endpoint and generate an API key to authenticate your
 4. Copy the endpoint value.
 
 :::{tip}
-Alternatively, from within your project, go to **Add data**, select **Applications**, then **OpenTelemetry**, and copy the endpoint value. The Add data wizard also generates a pre-configured API key.
+Alternatively, from within your project, go to **Add data**, select **Applications**, then **OpenTelemetry**, and copy the endpoint value. The Add data wizard also generates a pre-configured API key for authentication with the {{motlp}}.
 :::
 ::::
 
