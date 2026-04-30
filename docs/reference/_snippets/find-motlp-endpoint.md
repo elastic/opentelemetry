@@ -1,15 +1,22 @@
-To retrieve your {{motlp}} endpoint address and API key, follow these steps:
+To retrieve your {{motlp}} endpoint and generate an API key to authenticate your OTLP shipper, follow the steps for your environment.
 
 :::::{applies-switch}
 ::::{applies-item} serverless:
-1. In {{ecloud}}, create an Observability project or open an existing one.
-2. Go to **Add data**, select **Applications** and then select **OpenTelemetry**.
-3. Copy the endpoint and authentication headers values.
+**Find your endpoint**
 
-Alternatively, you can retrieve the endpoint from the **Manage project** page and create an API key manually from the **API keys** page.
+1. Log in to the {{ecloud}} Console.
+2. Find your project and select **Manage**.
+3. In the **Application endpoints, cluster and component IDs** section, select **Ingest**.
+4. Copy the endpoint value.
+
+:::{tip}
+Alternatively, from within your project, go to **Add data**, select **Applications**, then **OpenTelemetry**, and copy the endpoint value. The Add data wizard also generates a pre-configured API key for authentication with the {{motlp}}.
+:::
 ::::
 
 ::::{applies-item} ech:
+**Find your endpoint**
+
 1. Log in to the {{ecloud}} Console.
 2. From the home page, find your deployment in **Hosted deployments**, and select **Manage**. Or, on the **Hosted deployments** page, select your deployment.
 3. In the **Application endpoints, cluster and component IDs** section, select **Managed OTLP**.

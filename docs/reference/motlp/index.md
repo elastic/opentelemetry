@@ -40,7 +40,7 @@ You don't need APM Server when ingesting data through the Managed OTLP Endpoint.
 
 To send data to Elastic through the {{motlp}}, follow the [Send data to the Elastic Cloud Managed OTLP Endpoint](docs-content://solutions/observability/get-started/quickstart-elastic-cloud-otel-endpoint.md) quickstart.
 
-### Find your {{motlp}} endpoint
+### Find your {{motlp}}
 
 :::{include} ../_snippets/find-motlp-endpoint.md
 :::
