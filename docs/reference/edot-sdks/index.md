@@ -40,26 +40,26 @@ This table provides an overview of the features available in the {{edot}} (EDOT)
 
 % start:edot-features
 
-| Feature | .NET | Java | Node.js | PHP | Python | Android | iOS |
-| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| **[Distributed tracing](https://opentelemetry.io/docs/concepts/signals/traces/)** | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | 
-| [Service map](docs-content://solutions/observability/apm/service-map.md) | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ v1.0+ | 
-| [Zero-code instrumentation](https://opentelemetry.io/docs/concepts/instrumentation/zero-code/) | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ❌  | ❌  | 
-| [Head-based sampling](https://opentelemetry.io/docs/concepts/sampling/#head-sampling) | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.1+ | ✅ v1.0+ | 
-| [Baggage](https://opentelemetry.io/docs/concepts/signals/baggage/) | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ❌  | ✅ v1.0+ | 
-| Inferred spans | ❌  | ✅ 1.0+ | ❌  | 𝐓 1.0+ | ❌  | ❌  | ❌  | 
-| **[Logs collection](https://opentelemetry.io/docs/specs/otel/logs/#opentelemetry-solution)** | ✅ 1.0+ | ✅ 1.0+ | 𝐓 1.0+ | ✅ 1.0+ | 𝐓 1.0+ | ✅ 1.0+ | ✅ v1.0+ | 
-| [Logs correlation](https://opentelemetry.io/docs/specs/otel/logs/#log-correlation) | ✅ 1.0+ | ✅ 1.0+ | 𝐓 1.0+ | ✅ 1.0+ | 𝐓 1.0+ | ✅ 1.0+ | ✅ v1.0+ | 
-| **[Metrics collection](https://opentelemetry.io/docs/concepts/signals/metrics/)** | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | 𝐓 v0.7+ | 
-| Custom metrics | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | 𝐓 v0.7+ | 
-| Agent health monitoring | ❌  | ❌  | ❌  | ❌  | ❌  | ❌  | ❌  | 
-| [Runtime metrics](https://opentelemetry.io/docs/specs/semconv/runtime/) | ✅ 1.0+[^1] | ✅ 1.0+[^1] | 𝐓 1.0+[^1] | ❌  | ❌  | ❌  | ❌  | 
-| **Capturing errors / exceptions** | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ v1.0+ | 
-| Crash reporting | ➖  | ➖  | ➖  | ➖  | ➖  | ❌  | ✅ v1.0+ | 
-| **Central configuration** | ❌  | 𝐓 1.5.0+ | 𝐓 1.2.0+ | 𝐓 1.1.0+ | 𝐓 1.4.0+ | 𝐓 1.2.0+ | 𝐓 1.4.0+ | 
-| **Profiling integration** | ❌  | 𝐓 1.0+ | ❌  | ❌  | ❌  | ❌  | ❌  | 
-| **[TLS for OTLP endpoint](https://opentelemetry.io/docs/specs/otel/protocol/exporter/#endpoint-urls-for-otlphttp)** | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.6+ | ✅ 1.2+ | ✅ 1.0+ | ✅ 1.0+[^2] | ✅ v1.0+[^2] | 
-| TLS for OpAMP endpoint | ❌  | ❌  | ✅ 1.7.0+ | ✅ 1.2.0+ | ✅ 1.10.0+ | ✅ 1.2.0+[^2] | ✅ v1.4.0+[^2] | 
+| Feature | .NET | Java | Node.js | PHP | Python | Android | iOS | Browser |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **[Distributed tracing](https://opentelemetry.io/docs/concepts/signals/traces/)** | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | 𝐓 0.1.0+ | 
+| [Service map](docs-content://solutions/observability/apm/service-map.md) | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ v1.0+ | 𝐓 0.1.0+ | 
+| [Zero-code instrumentation](https://opentelemetry.io/docs/concepts/instrumentation/zero-code/) | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ❌  | ❌  | ❌  | 
+| [Head-based sampling](https://opentelemetry.io/docs/concepts/sampling/#head-sampling) | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.1+ | ✅ v1.0+ | 𝐓 0.1.0+ | 
+| [Baggage](https://opentelemetry.io/docs/concepts/signals/baggage/) | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ❌  | ✅ v1.0+ | 𝐓 0.1.0+ | 
+| Inferred spans | ❌  | ✅ 1.0+ | ❌  | 𝐓 1.0+ | ❌  | ❌  | ❌  | ❌  | 
+| **[Logs collection](https://opentelemetry.io/docs/specs/otel/logs/#opentelemetry-solution)** | ✅ 1.0+ | ✅ 1.0+ | 𝐓 1.0+ | ✅ 1.0+ | 𝐓 1.0+ | ✅ 1.0+ | ✅ v1.0+ | 𝐓 0.1.0+ | 
+| [Logs correlation](https://opentelemetry.io/docs/specs/otel/logs/#log-correlation) | ✅ 1.0+ | ✅ 1.0+ | 𝐓 1.0+ | ✅ 1.0+ | 𝐓 1.0+ | ✅ 1.0+ | ✅ v1.0+ | 𝐓 0.1.0+ | 
+| **[Metrics collection](https://opentelemetry.io/docs/concepts/signals/metrics/)** | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | 𝐓 v0.7+ | 𝐓 0.1.0+ | 
+| Custom metrics | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | 𝐓 v0.7+ | 𝐓 0.1.0+ | 
+| Agent health monitoring | ❌  | ❌  | ❌  | ❌  | ❌  | ❌  | ❌  | ❌  | 
+| [Runtime metrics](https://opentelemetry.io/docs/specs/semconv/runtime/) | ✅ 1.0+[^1] | ✅ 1.0+[^1] | 𝐓 1.0+[^1] | ❌  | ❌  | ❌  | ❌  | ➖  | 
+| **Capturing errors / exceptions** | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ v1.0+ | 𝐓 0.1.0+ | 
+| Crash reporting | ➖  | ➖  | ➖  | ➖  | ➖  | ❌  | ✅ v1.0+ | ➖  | 
+| **Central configuration** | ❌  | 𝐓 1.5.0+ | 𝐓 1.2.0+ | 𝐓 1.1.0+ | 𝐓 1.4.0+ | 𝐓 1.2.0+ | 𝐓 1.4.0+ | ❌  | 
+| **Profiling integration** | ❌  | 𝐓 1.0+ | ❌  | ❌  | ❌  | ❌  | ❌  | ❌  | 
+| **[TLS for OTLP endpoint](https://opentelemetry.io/docs/specs/otel/protocol/exporter/#endpoint-urls-for-otlphttp)** | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.6+ | ✅ 1.2+ | ✅ 1.0+ | ✅ 1.0+[^2] | ✅ v1.0+[^2] | 𝐓 0.1.0+ | 
+| TLS for OpAMP endpoint | ❌  | ❌  | ✅ 1.7.0+ | ✅ 1.2.0+ | ✅ 1.10.0+ | ✅ 1.2.0+[^2] | ✅ v1.4.0+[^2] | ❌  | 
 
 **Legend:**
 
