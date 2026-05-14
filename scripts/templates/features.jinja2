@@ -21,7 +21,7 @@
 {%- set unique_notes = {} -%}
 {%- set note_counter = namespace(value=1) -%}
 {%- for feature in features -%}
-{%- for lang in [".NET", "Java", "Node.js", "PHP", "Python", "Android", "iOS"] -%}
+{%- for lang in [".NET", "Java", "Node.js", "PHP", "Python", "Android", "iOS", "Browser"] -%}
 {%- if feature[lang]['notes'] is defined and feature[lang]['notes'] -%}
 {%- if feature[lang]['notes'] not in unique_notes -%}
 {%- set _ = unique_notes.update({feature[lang]['notes']: note_counter.value}) -%}
@@ -31,10 +31,10 @@
 {%- endfor -%}
 {%- endfor -%}
 
-| Feature | .NET | Java | Node.js | PHP | Python | Android | iOS |
-| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| Feature | .NET | Java | Node.js | PHP | Python | Android | iOS | Browser |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 {%- for feature in features %}
-| {% if feature.is_sub_feature %}{{ title(feature) }}{% else %}**{{ title(feature) }}**{% endif %} | {% for lang in [".NET", "Java", "Node.js", "PHP", "Python", "Android", "iOS"] %}{{ icon(feature[lang]['status']) }} {% if feature[lang]['min_version'] %}{{ feature[lang]['min_version'] }}+{% endif %}{% if feature[lang]['notes'] is defined and feature[lang]['notes'] %}[^{{ unique_notes[feature[lang]['notes']] }}]{% endif %} | {% endfor %}
+| {% if feature.is_sub_feature %}{{ title(feature) }}{% else %}**{{ title(feature) }}**{% endif %} | {% for lang in [".NET", "Java", "Node.js", "PHP", "Python", "Android", "iOS", "Browser"] %}{{ icon(feature[lang]['status']) }} {% if feature[lang]['min_version'] %}{{ feature[lang]['min_version'] }}+{% endif %}{% if feature[lang]['notes'] is defined and feature[lang]['notes'] %}[^{{ unique_notes[feature[lang]['notes']] }}]{% endif %} | {% endfor %}
 {%- endfor %}
 
 **Legend:**

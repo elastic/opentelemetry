@@ -23,6 +23,9 @@ features:
     iOS:
       status: ga
       min_version: 1.0
+    Browser:
+      status: tech-preview
+      min_version: 0.1.0
   - name: Service map
     link: docs-content://solutions/observability/apm/service-map.md
     is_sub_feature: true
@@ -48,6 +51,9 @@ features:
     iOS:
       status: ga
       min_version: v1.0
+    Browser:
+      status: tech-preview
+      min_version: 0.1.0
   - name: Zero-code instrumentation
     link: https://opentelemetry.io/docs/concepts/instrumentation/zero-code/
     min_stack_version:
@@ -69,10 +75,13 @@ features:
       min_version: 1.0
     Android:
       status: not-available
-      min_version: 
+      min_version:
     iOS:
       status: not-available
-      min_version: 
+      min_version:
+    Browser:
+      status: not-available
+      min_version:
   - name: Head-based sampling
     link: https://opentelemetry.io/docs/concepts/sampling/#head-sampling
     min_stack_version:
@@ -98,6 +107,9 @@ features:
     iOS:
       status: ga
       min_version: v1.0
+    Browser:
+      status: tech-preview
+      min_version: 0.1.0
   - name: Baggage
     link: https://opentelemetry.io/docs/concepts/signals/baggage/
     min_stack_version:
@@ -123,31 +135,37 @@ features:
     iOS:
       status: ga
       min_version: v1.0
+    Browser:
+      status: tech-preview
+      min_version: 0.1.0
   - name: Inferred spans
     link:
     min_stack_version:
     is_sub_feature: true
     .NET:
       status: not-available
-      min_version: 
+      min_version:
     Java:
       status: ga
       min_version: 1.0
     Node.js:
       status: not-available
-      min_version: 
+      min_version:
     PHP:
       status: tech-preview
       min_version: 1.0
     Python:
       status: not-available
-      min_version: 
+      min_version:
     Android:
       status: not-available
-      min_version: 
+      min_version:
     iOS:
       status: not-available
-      min_version: 
+      min_version:
+    Browser:
+      status: not-available
+      min_version:
   - name: Logs collection
     link: https://opentelemetry.io/docs/specs/otel/logs/#opentelemetry-solution
     min_stack_version:
@@ -172,6 +190,9 @@ features:
     iOS:
       status: ga
       min_version: v1.0
+    Browser:
+      status: tech-preview
+      min_version: 0.1.0
   - name: Logs correlation
     link: https://opentelemetry.io/docs/specs/otel/logs/#log-correlation
     is_sub_feature: true
@@ -197,6 +218,9 @@ features:
     iOS:
       status: ga
       min_version: v1.0
+    Browser:
+      status: tech-preview
+      min_version: 0.1.0
   - name: Metrics collection
     link: https://opentelemetry.io/docs/concepts/signals/metrics/
     min_stack_version:
@@ -221,6 +245,9 @@ features:
     iOS:
       status: tech-preview
       min_version: v0.7
+    Browser:
+      status: tech-preview
+      min_version: 0.1.0
   - name: Custom metrics
     link:
     is_sub_feature: true
@@ -246,31 +273,37 @@ features:
     iOS:
       status: tech-preview
       min_version: v0.7
+    Browser:
+      status: tech-preview
+      min_version: 0.1.0
   - name: Agent health monitoring
     link:
     is_sub_feature: true
     min_stack_version:
     .NET:
       status: not-available
-      min_version: 
+      min_version:
     Java:
       status: not-available
-      min_version: 
+      min_version:
     Node.js:
       status: not-available
-      min_version: 
+      min_version:
     PHP:
       status: not-available
       min_version:
     Python:
       status: not-available
-      min_version: 
+      min_version:
     Android:
       status: not-available
-      min_version: 
+      min_version:
     iOS:
       status: not-available
-      min_version: 
+      min_version:
+    Browser:
+      status: not-available
+      min_version:
   - name: Runtime metrics
     link: https://opentelemetry.io/docs/specs/semconv/runtime/
     is_sub_feature: true
@@ -292,13 +325,16 @@ features:
       min_version:
     Python:
       status: not-available
-      min_version: 
+      min_version:
     Android:
       status: not-available
-      min_version: 
+      min_version:
     iOS:
       status: not-available
-      min_version: 
+      min_version:
+    Browser:
+      status: not-applicable
+      min_version:
   - name: Capturing errors / exceptions
     link:
     min_stack_version:
@@ -323,37 +359,43 @@ features:
     iOS:
       status: ga
       min_version: v1.0
+    Browser:
+      status: tech-preview
+      min_version: 0.1.0
   - name: Crash reporting
     link:
     is_sub_feature: true
     min_stack_version:
     .NET:
       status: not-applicable
-      min_version: 
+      min_version:
     Java:
       status: not-applicable
-      min_version: 
+      min_version:
     Node.js:
       status: not-applicable
-      min_version: 
+      min_version:
     PHP:
       status: not-applicable
-      min_version: 
+      min_version:
     Python:
       status: not-applicable
-      min_version: 
+      min_version:
     Android:
       status: not-available
-      min_version: 
+      min_version:
     iOS:
       status: ga
       min_version: v1.0
+    Browser:
+      status: not-applicable
+      min_version:
   - name: Central configuration
     link:
     min_stack_version:
     .NET:
       status: not-available
-      min_version: 
+      min_version:
     Java:
       status: tech-preview
       min_version: 1.5.0
@@ -372,28 +414,34 @@ features:
     iOS:
       status: tech-preview
       min_version: 1.4.0
+    Browser:
+      status: not-available
+      min_version:
   - name: Profiling integration
     link:
     min_stack_version:
     .NET:
       status: not-available
-      min_version: 
+      min_version:
     Java:
       status: tech-preview
       min_version: 1.0
     Node.js:
       status: not-available
-      min_version: 
+      min_version:
     PHP:
       status: not-available
-      min_version: 
+      min_version:
     Python:
       status: not-available
-      min_version: 
+      min_version:
     Android:
       status: not-available
-      min_version: 
+      min_version:
     iOS:
+      status: not-available
+      min_version:
+    Browser:
       status: not-available
       min_version:
   - name: TLS for OTLP endpoint
@@ -422,6 +470,9 @@ features:
       status: ga
       min_version: v1.0
       notes: CA-signed certificates only
+    Browser:
+      status: tech-preview
+      min_version: 0.1.0
   - name: TLS for OpAMP endpoint
     link:
     is_sub_feature: true
@@ -449,3 +500,6 @@ features:
       status: ga
       min_version: v1.4.0
       notes: CA-signed certificates only
+    Browser:
+      status: not-available
+      min_version:
