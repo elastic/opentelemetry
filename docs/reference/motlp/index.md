@@ -96,7 +96,7 @@ The {{motlp}} authenticates requests using {{product.apm}} application privilege
 For step-by-step instructions on generating an API key, refer to the [Send data to the {{motlp}}](docs-content://solutions/observability/get-started/quickstart-elastic-cloud-otel-endpoint.md) quickstart.
 
 :::{note}
-Index-level privilege scoping is not yet supported for the {{motlp}}. API keys restricted to specific index-level privileges will return a `PermissionDenied` error. Support for index-level privilege scoping is planned for a future release.
+Index-level privilege scoping is not yet supported for the {{motlp}}. API keys restricted to specific index-level privileges return a `PermissionDenied` error.
 :::
 
 ## OTLP client configuration
