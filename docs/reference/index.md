@@ -35,6 +35,7 @@ The following Elastic OpenTelemetry distributions are available:
 | [EDOT Python](elastic-otel-python://reference/edot-python/index.md) | {{version.edot_python}} | GA |
 | [EDOT Android](apm-agent-android://reference/edot-android/index.md) | {{version.edot_android}} | GA |
 | [EDOT iOS](apm-agent-ios://reference/edot-ios/index.md) | {{version.edot_ios}} | GA |
+| [EDOT Browser](elastic-otel-rum-js://reference/edot-browser/index.md) | {{version.edot_browser}} | Technical Preview |
 | [{{product.edot-cf-aws}}](edot-cloud-forwarder-aws://reference/edot-cf-aws/index.md) | {{version.edot_cf_aws}} | GA |
 | [{{product.edot-cf-azure}}](edot-cloud-forwarder-azure://reference/edot-cf-azure/index.md) | {{version.edot_cf_aws}} | Technical Preview |
 | [{{edot-cf}} for GCP](/reference/edot-cloud-forwarder/gcp/index.md) | {{version.edot_cf_gcp}} | Technical Preview |
