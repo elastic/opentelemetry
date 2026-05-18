@@ -75,6 +75,30 @@ You can also set the `OTEL_RESOURCE_ATTRIBUTES` environment variable to set the 
 export OTEL_RESOURCE_ATTRIBUTES="data_stream.dataset=app.orders"
 ```
 
+## Authentication
+
+The {{motlp}} authenticates requests using {{product.apm}} application privileges. To send data to the endpoint, your API key must include the `event:write` privilege for the `apm` application:
+
+```json
+{
+  "otlp_writer": {
+    "applications": [
+      {
+        "application": "apm",
+        "resources": ["*"],
+        "privileges": ["event:write"]
+      }
+    ]
+  }
+}
+```
+
+For step-by-step instructions on generating an API key, refer to the [Send data to the {{motlp}}](docs-content://solutions/observability/get-started/quickstart-elastic-cloud-otel-endpoint.md) quickstart.
+
+:::{note}
+Index-level privilege scoping is not yet supported for the {{motlp}}. API keys restricted to specific index-level privileges return a `PermissionDenied` error.
+:::
+
 ## OTLP client configuration
 
 When using OpenTelemetry collectors to send data to the {{motlp}}, configure the OTLP exporter to leverage an in-memory queue and optimized batching defaults. This improves throughput, minimizes data loss, and maintains low end-to-end latency.
