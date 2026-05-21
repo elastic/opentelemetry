@@ -203,7 +203,7 @@ For a list of settings that you can configure through {{product.apm-agent}} Cent
 - [EDOT Android](apm-agent-android://reference/edot-android/configuration.md#central-configuration)
 - [EDOT iOS](apm-agent-ios://reference/edot-ios/configuration.md#central-configuration-edot)
 - [EDOT Java](elastic-otel-java://reference/edot-java/configuration.md#central-configuration)
-- [EDOT .NET](elastic-otel-dotnet://reference/edot-dotnet/configuration.md#central-configuration)
+- [EDOT .NET](elastic-otel-dotnet://reference/edot-dotnet/configuration.md)
 - [EDOT Node.js](elastic-otel-node://reference/edot-node/configuration.md#central-configuration)
 - [EDOT PHP](elastic-otel-php://reference/edot-php/configuration.md#central-configuration)
 - [EDOT Python](elastic-otel-python://reference/edot-python/configuration.md#central-configuration)
