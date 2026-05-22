@@ -33,7 +33,7 @@ Each EDOT SDK contains an embedded OpAMP Client. Following the Open Agent Manage
 
 To use {{product.apm-agent}} Central Configuration for EDOT SDKs, you need:
 
-* An Elastic self-managed or {{ecloud}} deployment, version 9.1 or higher.
+* An Elastic self-managed or {{ecloud}} deployment, version 9.1 or later.
 * A standalone [EDOT Collector](elastic-agent://reference/edot-collector/index.md), in either Agent or Collector mode.
 * EDOT SDKs instrumenting your application.
 
@@ -41,15 +41,15 @@ The following versions of EDOT and {{stack}} support central configuration:
 
 | Component | Minimum version |
 |-----------|----------------|
-| {{kib}} | 9.1 or higher |
-| EDOT Collector | 8.19, 9.1 or higher |
-| EDOT Android | 1.2.0 or higher |
-| EDOT iOS | 1.4.0 or higher |
-| EDOT Java | 1.5.0 or higher |
-| EDOT .NET | 1.4.0 or higher |
-| EDOT Node.js | 1.2.0 or higher |
-| EDOT PHP | 1.1.1 or higher |
-| EDOT Python | 1.4.0 or higher |
+| {{kib}} | 9.1 or later |
+| EDOT Collector | 8.19, 9.1 or later |
+| EDOT Android | 1.2.0 or later |
+| EDOT iOS | 1.4.0 or later |
+| EDOT Java | 1.5.0 or later |
+| EDOT .NET | 1.4.0 or later |
+| EDOT Node.js | 1.2.0 or later |
+| EDOT PHP | 1.1.1 or later |
+| EDOT Python | 1.4.0 or later |
 
 ::::{note}
 Serverless deployments are not currently supported.
