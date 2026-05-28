@@ -75,12 +75,12 @@ You can also set the `OTEL_RESOURCE_ATTRIBUTES` environment variable to set the 
 export OTEL_RESOURCE_ATTRIBUTES="data_stream.dataset=app.orders"
 ```
 
-The  `data_stream.namespace` attributes is also honored for all signals — logs, metrics, and traces.
+The  `data_stream.namespace` attributes is also honored for all signals: logs, metrics, and traces.
 
 :::{important}
 Any `data_stream.dataset` or `data_stream.namespace` resource attribute present in an OTLP payload overrides mOTLP's default routing for that signal. This applies whether the attribute is set intentionally or by a collector, SDK, or integration.
 
-If data is landing in an unexpected data stream, inspect a sample document from that data stream for the field `resource.attributes.data_stream.dataset`. If the field is present and matches the unexpected data stream name, the attribute was set in the payload — not by the pipeline.
+If data is landing in an unexpected data stream, inspect a sample document from that data stream for the field `resource.attributes.data_stream.dataset`. If the field is present and matches the unexpected data stream name, the attribute was set in the payload, not by the pipeline.
 
 To restore default routing, remove the `data_stream.dataset` and `data_stream.namespace` resource attributes from your OTLP payload configuration. Once removed, mOTLP falls back to routing based on `service.name`.
 :::
