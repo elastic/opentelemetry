@@ -25,6 +25,6 @@ jobs:
       discussions: write
       issues: write
       pull-requests: write
-    uses: elastic/oblt-aw/.github/workflows/docs-aw-ai-menu.yml@main # ratchet:exclude
+    uses: elastic/oblt-aw/.github/workflows/docs-aw-ai-menu.yml@7fea53be1f29048c36b32a7d717b19d36701a09f # ratchet:exclude
     secrets:
       COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
