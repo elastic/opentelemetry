@@ -15,20 +15,7 @@ products:
 
 The {{edot}} (EDOT) SDKs are production-ready, customized distributions of [OpenTelemetry](https://opentelemetry.io/) language SDKs, specifically optimized for seamless integration with {{product.observability}}. EDOT SDKs provide a comprehensive observability solution that automatically captures distributed traces, metrics, and logs from your applications with minimal configuration.
 
-While maintaining full compatibility with the OpenTelemetry specification, EDOT SDKs provide improvements and bug fixes from Elastic before they become available in contrib OpenTelemetry repositories.
-
-## Supported languages
-
-EDOT SDKs are available for the following programming languages and platforms:
-
-* [.NET](elastic-otel-dotnet://reference/edot-dotnet/index.md)
-* [Java](elastic-otel-java://reference/edot-java/index.md)
-* [Node](elastic-otel-node://reference/edot-node/index.md)
-* [PHP](elastic-otel-php://reference/edot-php/index.md)
-* [Python](elastic-otel-python://reference/edot-python/index.md)
-* [Android](apm-agent-android://reference/edot-android/index.md)
-* [iOS](apm-agent-ios://reference/edot-ios/index.md)
-* [Browser](elastic-otel-rum-js://reference/edot-browser/index.md)
+This is a silly test!
 
 ## Feature overview
 
