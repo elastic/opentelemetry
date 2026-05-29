@@ -17,6 +17,7 @@ on:
 
 permissions:
   contents: read
+  issues: read
 
 jobs:
   run-aw:
