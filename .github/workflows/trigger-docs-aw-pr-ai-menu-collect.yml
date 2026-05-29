@@ -16,4 +16,5 @@ jobs:
     permissions:
       actions: write
       contents: read
+      issues: read
     uses: elastic/oblt-aw/.github/workflows/docs-aw-pr-ai-menu-collect.yml@main # ratchet:exclude
