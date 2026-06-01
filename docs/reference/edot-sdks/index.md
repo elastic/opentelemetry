@@ -73,7 +73,7 @@ This table provides an overview of the features available in the {{edot}} (EDOT)
 
 [^2]: CA-signed certificates only
 
-[^3]: Custom certificate verification and mTLS aren't available yet.
+[^3]: Custom certificate verification and mTLS are not available yet.
 
 % end:edot-features
 
