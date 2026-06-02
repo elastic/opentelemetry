@@ -72,12 +72,12 @@ jobs:
             ${{ github.event.pull_request.head.sha ||
                 github.event.workflow_run.head_sha }}
           RUN_URL: ${{ steps.dispatch.outputs.runUrlHtml }}
-          STATUS_CONTEXT: docs-aw/entrypoint
+          STATUS_CONTEXT: Documentation Agentic Workflow Execution
         run: |
           gh api \
             --method POST \
             "/repos/${GITHUB_REPOSITORY}/statuses/${HEAD_SHA}" \
             -f state=success \
             -f target_url="${RUN_URL}" \
-            -f description='docs-aw entrypoint dispatched (open run for progress)' \
+            -f description='Documentation agentic workflow entrypoint dispatched (open run for progress)' \
             -f context="${STATUS_CONTEXT}"

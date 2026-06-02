@@ -44,10 +44,11 @@ jobs:
   ingress:
     permissions:
       actions: write
+      checks: read
       contents: read
-      id-token: write
-      issues: read
-      pull-requests: read
+      discussions: write
+      issues: write
+      pull-requests: write
     uses: elastic/oblt-aw/.github/workflows/docs-aw-ingress.yml@main # ratchet:exclude
     with:
       trigger-source: ${{ github.event.inputs.trigger-source }}
