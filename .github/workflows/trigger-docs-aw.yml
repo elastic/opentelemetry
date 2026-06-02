@@ -1,0 +1,83 @@
+name: Docs Agentic Workflow Trigger
+
+# Distributed to repositories in config/docs/active-repositories.json.
+
+on:
+  issues:
+    types: [opened]
+  issue_comment:
+    types: [edited]
+  pull_request:
+    types: [opened, reopened, synchronize, ready_for_review]
+  workflow_run:
+    workflows: [Docs Agentic Workflow Trigger]
+    types: [completed]
+  workflow_dispatch:
+    inputs:
+      issue_number:
+        description: Issue number for Docs AI issue menu (manual refresh).
+        required: false
+        type: string
+      pull_request_number:
+        description: Pull request number for Docs PR AI menu (manual refresh).
+        required: false
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: docs-aw-trigger-${{ github.event.pull_request.number || github.event.issue.number || github.event.workflow_run.id || github.event.schedule || github.sha }}
+  cancel-in-progress: true
+
+jobs:
+  dispatch-entrypoint:
+    if: >-
+      github.event_name != 'workflow_run' ||
+      (
+        github.event.workflow_run.conclusion == 'success' &&
+        github.event.workflow_run.event == 'pull_request'
+      )
+    permissions:
+      actions: write
+      statuses: write
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Dispatch docs-aw entrypoint
+        id: dispatch
+        uses: benc-uk/workflow-dispatch@31e2b3319479a63f0ab15bf800eff9e913504e26 # v1.3.2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          workflow: docs-aw.yml
+          inputs: |
+            {
+              "trigger-source": ${{ toJSON(github.workflow) }},
+              "event-name": ${{ toJSON(github.event_name) }},
+              "event-action": ${{ toJSON(github.event.action || '') }},
+              "event-payload-json": ${{ toJSON(toJSON(github.event)) }},
+              "caller-ref": ${{ toJSON(github.ref) }},
+              "caller-sha": ${{ toJSON(github.sha) }},
+              "caller-run-id": ${{ toJSON(github.run_id) }}
+            }
+
+      - name: Post entrypoint run link on PR commit
+        if: >-
+          github.event_name == 'pull_request' ||
+          (github.event_name == 'workflow_run' &&
+            github.event.workflow_run.event == 'pull_request')
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          HEAD_SHA: >-
+            ${{ github.event.pull_request.head.sha ||
+                github.event.workflow_run.head_sha }}
+          RUN_URL: ${{ steps.dispatch.outputs.runUrlHtml }}
+          STATUS_CONTEXT: docs-aw/entrypoint
+        run: |
+          gh api \
+            --method POST \
+            "/repos/${GITHUB_REPOSITORY}/statuses/${HEAD_SHA}" \
+            -f state=success \
+            -f target_url="${RUN_URL}" \
+            -f description='docs-aw entrypoint dispatched (open run for progress)' \
+            -f context="${STATUS_CONTEXT}"
