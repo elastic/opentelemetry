@@ -1,0 +1,24 @@
+name: Docs Agentic Workflow — Issue Comment
+
+# Distributed to repositories in config/docs/active-repositories.json.
+
+on:
+  issue_comment:
+    types: [edited]
+
+permissions:
+  contents: read
+  issues: read
+
+jobs:
+  run-aw:
+    permissions:
+      actions: read
+      checks: read
+      contents: read
+      discussions: write
+      issues: write
+      pull-requests: write
+    uses: elastic/oblt-aw/.github/workflows/docs-aw-event-issue-comment.yml@main # ratchet:exclude
+    secrets:
+      COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
