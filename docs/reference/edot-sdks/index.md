@@ -11,7 +11,7 @@ products:
   - id: edot-sdk
 ---
 
-# EDOT SDKs 
+# EDOT SDKs
 
 The {{edot}} (EDOT) SDKs are production-ready, customized distributions of [OpenTelemetry](https://opentelemetry.io/) language SDKs, specifically optimized for seamless integration with {{product.observability}}. EDOT SDKs provide a comprehensive observability solution that automatically captures distributed traces, metrics, and logs from your applications with minimal configuration.
 
@@ -69,7 +69,7 @@ This table provides an overview of the features available in the {{edot}} (EDOT)
 * ❌ Not available
 
 
-[^1]: Runtime metrics can be ingested but visualization in the APM Service > Metrics tab is currently limited.
+[^1]: Runtime metrics can be ingested but visualization in the APM Service → Metrics tab is limited.
 
 [^2]: CA-signed certificates only
 
@@ -79,13 +79,13 @@ This table provides an overview of the features available in the {{edot}} (EDOT)
 
 Elastic provides technical support for EDOT Language SDKs according to Elastic's [Support Policy](https://www.elastic.co/support_policy). EDOT SDKs are meant to be used in combination with the [EDOT Collector](elastic-agent://reference/edot-collector/index.md) or the [{{motlp}}](/reference/motlp/index.md) to ingest data into Elastic solutions from the EDOT SDKs. Other ingestion paths are not officially supported by Elastic.
 
-Using EDOT SDKs directly with {{product.apm-server}}'s OpenTelemetry intake endpoint is not supported.  
+Elastic doesn't support using EDOT SDKs directly with {{product.apm-server}}'s OpenTelemetry intake endpoint.
 While some data might ingest, Elastic doesn't guarantee:
 
-- Correctness of attributes  
-- Alignment with EDOT processing pipelines  
-- Enrichment (service metadata, environment, runtime info, and so on)  
-- Troubleshooting coverage  
+- Correctness of attributes
+- Alignment with EDOT processing pipelines
+- Enrichment (service metadata, environment, runtime info, and so on)
+- Troubleshooting coverage
 
 If you require a supported setup, route SDK telemetry through EDOT Collector or use Managed OTel intake.
 
