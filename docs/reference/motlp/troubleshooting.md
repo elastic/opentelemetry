@@ -26,7 +26,7 @@ The following sections provide troubleshooting information for the Elastic Cloud
 
 ### Resolution
 
-Spin up an EDOT collector in a few steps:
+Set up an EDOT collector using one of the quickstart guides:
 
 - [Kubernetes Quickstart](https://www.elastic.co/docs/solutions/observability/get-started/opentelemetry/quickstart/serverless/k8s)
 - [Hosts & VMs Quickstart](https://www.elastic.co/docs/solutions/observability/get-started/opentelemetry/quickstart/serverless/hosts_vms)
@@ -110,7 +110,7 @@ ech:
 
 [AutoOps](docs-content://deploy-manage/monitor/autoops.md) is a diagnostic tool available for {{ech}} deployments that analyzes cluster metrics, provides root-cause analysis, and suggests resolution paths. 
 
-AutoOps can help you identify and resolve issues that affect mOTLP data ingestion, including `429` rate limiting errors and `5XX` server errors caused by undersized clusters.
+AutoOps can help you identify and resolve issues that affect mOTLP data ingestion, including 429 rate limiting errors and 5XX server errors caused by undersized clusters.
 
 ### Diagnose traffic and resource issues
 
@@ -124,7 +124,7 @@ When your deployment receives excessive traffic or lacks sufficient resources, A
 
 AutoOps is accessible from the {{ecloud}} console. From your deployment, select **AutoOps** in the navigation menu to view cluster status, active events, and resource metrics.
 
-To check node-level metrics like CPU, memory, and write queue, go to **AutoOps Monitoring > Nodes**.
+To check node-level metrics like CPU, memory, and write queue, go to **AutoOps Monitoring → Nodes**.
 
 :::{note}
 AutoOps availability depends on your cloud provider and region. Refer to [AutoOps regions](docs-content://deploy-manage/monitor/autoops.md#regions-where-autoops-is-available) for details.

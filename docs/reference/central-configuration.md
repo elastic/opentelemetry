@@ -19,7 +19,7 @@ This feature implements the Open Agent Management Protocol (OpAMP). Refer to [Op
 
 ## Architecture
 
-The central configuration architecture for the {{edot}} (EDOT) provides a robust and scalable mechanism for managing fleets of EDOT SDKs remotely. The data flow, illustrated in this diagram, ensures that configuration changes are efficiently propagated from a central management point to each individual agent.
+The central configuration architecture lets you manage fleets of EDOT SDKs remotely. The data flow, illustrated in this diagram, shows how configuration changes propagate from a central management point to each individual agent.
 
 :::{image} ./images/central-config-edot.png
 :alt: Diagram of Central config architecture
@@ -51,7 +51,7 @@ The following versions of EDOT and {{stack}} support central configuration:
 | EDOT Python | 1.4.0 or higher |
 
 ::::{note}
-Serverless deployments are not currently supported.
+Serverless deployments are not supported.
 ::::
 
 ## Activate central configuration
@@ -68,7 +68,7 @@ You need a valid {{es}} API key to authenticate to the {{es}} endpoint.
 
 :::::{step} Create an Elasticsearch API key for central configuration
 
-Create an API key with the `config_agent:read` privilege. This API key will be used by EDOT SDKs and validated by the Collector.
+Create an API key with the `config_agent:read` privilege. EDOT SDKs use this API key, and the Collector validates it.
 
 Use the following API request to generate the key:
 
@@ -164,7 +164,7 @@ Activate the central configuration feature in the SDKs by setting the `ELASTIC_O
 export ELASTIC_OTEL_OPAMP_ENDPOINT="http://localhost:4320/v1/opamp"
 ```
 
-If the OpAMP server in the Collector requires authentication set the `ELASTIC_OTEL_OPAMP_HEADERS` environment variable.
+If the OpAMP server in the Collector requires authentication, set the `ELASTIC_OTEL_OPAMP_HEADERS` environment variable.
 
 ```sh
 export ELASTIC_OTEL_OPAMP_HEADERS="Authorization=ApiKey an_api_key"
@@ -180,12 +180,12 @@ Support for the `ELASTIC_OTEL_OPAMP_HEADERS` environment variable depends on eac
 
 :::::{step} Check that the EDOT SDK shows up
 
-Wait some time for the EDOT SDK to appear in {{kib}} under Agent Configuration.
+Allow time for the EDOT SDK to appear in {{kib}} under Agent Configuration.
 
 1. Go to **{{kib}}** → **Observability** → **Applications** and select a service.
 2. Select **Settings** and go to **Agent Configuration**.
 
-Your application must produce and send telemetry data for the EDOT SDK to appear in Agent Configuration. This is because central configuration requires an application name as the key, which can't be defined until the application name is associated with the EDOT SDK agent after receiveing telemetry.
+Your application must produce and send telemetry data for the EDOT SDK to appear in Agent Configuration. This is because central configuration requires an application name as the key, which can't be defined until the application name is associated with the EDOT SDK agent after receiving telemetry.
 
 :::{note}
 Central configuration uses the `service.name` and `deployment.environment.name` OpenTelemetry resource attributes to target specific instances with a configuration. If no environment is specified, the central configuration feature will match `All` as the environment.

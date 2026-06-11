@@ -16,7 +16,7 @@ products:
 
 OpenTelemetry (OTel) is a modular, extensible framework designed to integrate with a wide range of technologies. Its architecture enables interoperability across many components, extensions, and tools, giving users flexibility to shape their observability pipelines.
 
-Elastic Distributions for OpenTelemetry (EDOT) are built from contrib OTel components and are technically compatible with a broad set of community components. Users can also send data to Elastic using other contrib OTel components or distributions like the contrib Collector and OTel SDKs, which are technically compatible with Elastic’s ingestion APIs.
+Elastic Distributions of OpenTelemetry (EDOT) are built from contrib OTel components and are technically compatible with a broad set of community components. Users can also send data to Elastic using other contrib OTel components or distributions like the contrib Collector and OTel SDKs, which are technically compatible with Elastic’s ingestion APIs.
 
 *Supported through Elastic* refers to components and configurations that Elastic has explicitly tested, validated, and committed to maintaining under our [Support Policies](https://www.elastic.co/support). This includes regular updates, issue triaging, and guidance from Elastic’s support and engineering teams. Components outside of this supported set may still work, but Elastic does not provide guaranteed support or troubleshooting assistance for them.
 

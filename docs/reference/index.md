@@ -16,7 +16,7 @@ Elastic Distributions of OpenTelemetry (EDOT) is an open-source ecosystem of [Op
 
 ![EDOT-Distributions](images/EDOT-SDKs-Collector.png)
 
-Each EDOT distribution is assembled with selected OpenTelemetry components and tested to ensure production readiness. This provides a reliable and optimized OpenTelemetry experience, enabling seamless adoption with confidence and expert support.
+Each EDOT distribution is assembled with selected OpenTelemetry components and tested to ensure production readiness. This gives you a reliable, optimized OpenTelemetry experience backed by Elastic support.
 
 [OpenTelemetry](https://opentelemetry.io/docs/) is a vendor-neutral observability framework for collecting, processing, and exporting telemetry data. If you are new to OpenTelemetry, refer to OpenTelemetry [concepts](https://opentelemetry.io/docs/concepts/) and [components](https://opentelemetry.io/docs/concepts/components/). Refer to [EDOT compared to upstream OpenTelemetry](/reference/compatibility/edot-vs-upstream.md) for more information on how EDOT differs from upstream OpenTelemetry components.
 
@@ -56,9 +56,9 @@ A demo environment that showcases EDOT capabilities is available in the [opentel
 
 The EDOT demo includes:
 
-*   Sample applications instrumented with OpenTelemetry SDKs.
-*   EDOT Collector configured for various scenarios. For example, Kubernetes and hosts.
-*   Integration with an Elastic Stack deployment, such as {{es}} and {{kib}}.
+* Sample applications instrumented with OpenTelemetry SDKs.
+* EDOT Collector configured for various scenarios. For example, Kubernetes and hosts.
+* Integration with an Elastic Stack deployment, such as {{es}} and {{kib}}.
 
 Follow the instructions in the demo repository to set up and run the demo.
 
