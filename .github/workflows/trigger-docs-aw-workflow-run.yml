@@ -23,6 +23,8 @@ jobs:
       actions: read
       checks: read
       contents: read
+      copilot-requests: write
+      id-token: write
       issues: write
       pull-requests: write
     uses: elastic/oblt-aw/.github/workflows/docs-aw-event-workflow-run.yml@main # ratchet:exclude
