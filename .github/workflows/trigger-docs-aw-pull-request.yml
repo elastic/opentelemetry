@@ -16,5 +16,6 @@ jobs:
     permissions:
       actions: write
       contents: read
+      copilot-requests: write
       issues: read
     uses: elastic/oblt-aw/.github/workflows/docs-aw-event-pull-request.yml@main # ratchet:exclude
