@@ -71,9 +71,8 @@ For detailed information about Agent and Gateway modes and their specific requir
 
 ## Limitations
 
-Sending telemetry from EDOT SDKs or edge collectors directly to {{product.apm-server}}'s OpenTelemetry intake endpoint is not supported. While some data may ingest, Elastic doesn't guarantee correctness of attributes, alignment with EDOT processing pipelines, enrichment, or troubleshooting coverage.
+Sending telemetry from EDOT SDKs or edge collectors directly to {{product.apm-server}}'s OpenTelemetry intake endpoint is not supported. While some data can ingest, Elastic doesn't guarantee correctness of attributes, alignment with EDOT processing pipelines, enrichment, or troubleshooting coverage.
 
 For supported ingestion, use:
 - **EDOT Collector (Gateway mode)** for self-managed, ECE, and ECK deployments
 - **Managed OTLP Endpoint** for {{serverless-full}} and {{ech}} deployments
-

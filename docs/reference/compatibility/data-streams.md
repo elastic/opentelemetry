@@ -61,10 +61,10 @@ Query compatibility is achieved through:
 
 Query compatibility is not complete:
 
-* Not all ECS fields have aliases. Some integration-specific fields may require query changes.
+* Not all ECS fields have aliases. Some integration-specific fields might require query changes.
 * Custom attributes and labels are stored differently.
 
-These differences may require updates to certain queries or visualizations.
+These differences might require updates to certain queries or visualizations.
 
 Refer to [ECS & OpenTelemetry](ecs://reference/ecs-opentelemetry.md) for details on the available aliases and field mappings.
 
@@ -156,7 +156,7 @@ user:
 | **Mapping style** | ECS object mappings; nested fields preserved. `labels.*` / `numeric_labels.*` flatten dots. | ECS mappings or integration-altered schemas (flattening, renaming). | OTel-native nested layout with `passthrough`, preserving types and structure. |
 | **Attribute handling** | Custom values under `labels.*` / `numeric_labels.*`, dots replaced by underscores. | Integration-specific or prefixed fields. | Custom values under `attributes.*`, dots preserved. |
 | **Query compatibility** | Queries target ECS field names (`service.name`, `labels.*`). | Queries assume ECS names; pipelines normalize vendor data. | `passthrough` + aliases allow ECS-style names (such as `service.name`). |
-| **Compatibility limits** | N/A | Some integration fields may not align 1:1 with ECS or OTel. | Not all ECS/integration fields have aliases; label vs attribute layout differs. |
+| **Compatibility limits** | N/A | Some integration fields might not align 1:1 with ECS or OTel. | Not all ECS/integration fields have aliases; label vs attribute layout differs. |
 
 
 ## See also

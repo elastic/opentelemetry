@@ -35,7 +35,7 @@ Refer to the [EDOT Collector compatibility table](collectors.md) for compatibili
 For the best experience, export data from EDOT SDKs using the [EDOT Collector](elastic-agent://reference/edot-collector/index.md).
 
 :::{note}
-Ingesting data from EDOT SDKs through EDOT Collector into Elastic Stack versions 8.18 or higher is supported ([Supported]).
+Ingesting data from EDOT SDKs through EDOT Collector into Elastic Stack versions 8.18 or later is supported ([Supported]).
 :::
 
 ## Support matrix for EDOT SDK ingestion
@@ -59,7 +59,7 @@ For compatibility of language-specific technologies check out the following page
 
 ## Other SDK distributions
 
-OTel SDK distributions other than the ones listed above are technically compatible ([Compatible]) with Elastic but are not officially supported by Elastic ([Supported]).
+OTel SDK distributions other than the ones listed in the preceding section are technically compatible ([Compatible]) with Elastic but are not officially supported by Elastic ([Supported]).
 
 [Incompatible]: nomenclature.md
 [Compatible]: nomenclature.md

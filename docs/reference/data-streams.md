@@ -75,7 +75,7 @@ To customize which data streams your telemetry is routed to, you can use [data s
 
 ## Field duplication
 
-You may notice fields like:
+You might notice fields like:
 
 - `resource.attributes.service.name`
 - `service.name`
