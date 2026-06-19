@@ -22,5 +22,3 @@ jobs:
       issues: write
       pull-requests: write
     uses: elastic/oblt-aw/.github/workflows/docs-aw-event-issue-comment.yml@main # ratchet:exclude
-    secrets:
-      COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
