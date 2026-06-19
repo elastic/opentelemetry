@@ -16,7 +16,7 @@ products:
 
 The Elastic Distribution of OpenTelemetry (EDOT) Cloud Forwarder provides the EDOT Collector as a function to collect and send your telemetry data to Elastic Observability from AWS, GCP, and Azure. {{edot-cf}} can collect telemetry data from object storage and cloud services.
 
-{{edot-cf}} sends the data it collects directly to the [Managed OTLP endpoint](docs-content://solutions/observability/get-started/quickstart-elastic-cloud-otel-endpoint.md) of {{serverless-full}}.
+{{edot-cf}} sends the data it collects directly to the [Managed OTLP endpoint](docs-content://solutions/observability/get-started/quickstart-elastic-cloud-otel-endpoint.md) of {{ecloud}}.
 
 ## Supported cloud providers and services
 
@@ -35,5 +35,4 @@ To get started with {{edot-cf}}, select the setup guide for your cloud provider:
 - [AWS](edot-cloud-forwarder-aws://reference/edot-cf-aws/index.md)
 - [Azure](edot-cloud-forwarder-azure://reference/edot-cf-azure/index.md)
 - [GCP](gcp/index.md)
-
 
