@@ -1,6 +1,6 @@
 ---
 navigation_title: Elastic Distributions of OpenTelemetry (EDOT)
-description: Reference documentation for the Elastic Distributions of OpenTelemetry (EDOT).
+description: Elastic Distributions of OpenTelemetry (EDOT) are open-source OpenTelemetry distributions for the Collector, SDKs, and cloud integrations, tailored for Elastic Observability.
 applies_to:
   stack:
   serverless:

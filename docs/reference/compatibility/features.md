@@ -1,6 +1,6 @@
 ---
 navigation_title: Features
-description: Overview of Elastic features available with EDOT.
+description: Elastic Observability features work with EDOT, with varying compatibility and support levels across logs, metrics, traces, and analytics.
 applies_to:
   stack:
   serverless:

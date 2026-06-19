@@ -1,6 +1,6 @@
 ---
 navigation_title: Managed OTLP Endpoint
-description: Reference documentation for the Elastic Cloud Managed OTLP Endpoint.
+description: The Elastic Cloud Managed OTLP Endpoint provides a hosted ingestion layer for sending OpenTelemetry data directly to Elastic Cloud using the OTLP protocol.
 applies_to:
   serverless:
     observability: ga

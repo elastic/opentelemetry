@@ -1,6 +1,6 @@
 ---
 navigation_title: Nomenclature
-description: Explanation of compatibility and support states (Incompatible, Compatible, Supported) for EDOT components.
+description: The three compatibility states -- Incompatible, Compatible, and Supported -- define how EDOT components interoperate with upstream OpenTelemetry tools.
 applies_to:
   stack:
   serverless:

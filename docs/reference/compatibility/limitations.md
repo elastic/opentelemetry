@@ -1,6 +1,6 @@
 ---
 navigation_title: Limitations
-description: Limitations of Elastic Distributions of OpenTelemetry (EDOT) compared to classic Elastic data collection mechanisms.
+description: EDOT uses OTel-native ingestion, which has known limitations compared to classic Elastic APM agents and integration-based data collection.
 applies_to:
   stack:
   serverless:

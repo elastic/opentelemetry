@@ -1,6 +1,6 @@
 ---
 navigation_title: Compatibility and support
-description: Compatibility and support levels for different OpenTelemetry Distributions.
+description: EDOT components have specific compatibility and support levels depending on the OpenTelemetry Collector, SDK, and Elastic Stack version combination used.
 applies_to:
   stack:
   serverless:
