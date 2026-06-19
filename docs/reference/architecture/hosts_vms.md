@@ -11,9 +11,9 @@ products:
   - id: edot-collector
 ---
 
-# Hosts and VMs environments
+# Elastic Distributions of OpenTelemetry architecture for hosts and VMs [edot-architecture-hosts-vms]
 
-On host or virtual machine environments, deploy local, per-host OpenTelemetry Collector instances at these [edge](index.md#understanding-edge-deployment) host or VMs where your applications are running.
+This page describes the recommended Elastic Distributions of OpenTelemetry (EDOT) architecture for host and virtual machine (VM) environments. In this setup, you deploy a local OpenTelemetry Collector on each [edge](index.md#understanding-edge-deployment) host or VM to collect logs and infrastructure metrics, enrich application telemetry, and forward data to Elastic.
 
 Collectors deployed on these edge environments have two main purposes:
 
