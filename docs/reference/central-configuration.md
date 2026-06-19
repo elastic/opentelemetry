@@ -186,7 +186,7 @@ Wait some time for the EDOT SDK to appear in {{kib}} under Agent Configuration.
 1. Go to **{{kib}}** → **Observability** → **Applications** and select a service.
 2. Select **Settings** and go to **Agent Configuration**.
 
-Your application must produce and send telemetry data for the EDOT SDK to appear in Agent Configuration. This is because central configuration requires an application name as the key, which can't be defined until the application name is associated with the EDOT SDK agent after receiveing telemetry.
+Your application must produce and send telemetry data for the EDOT SDK to appear in Agent Configuration. This is because central configuration requires an application name as the key, which can't be defined until the application name is associated with the EDOT SDK agent after receiving telemetry.
 
 :::{note}
 Central configuration uses the `service.name` and `deployment.environment.name` OpenTelemetry resource attributes to target specific instances with a configuration. If no environment is specified, the central configuration feature will match `All` as the environment.
