@@ -43,8 +43,8 @@ These operating systems and distributions are [compatible] with EDOT Collector 9
 | Linux   | amd64        | Ubuntu 24.04, 22.04, 20.04                               | [Supported]          |
 | Linux   | arm64        | Ubuntu 24.04, 22.04, 20.04                               | [Supported]          |
 | Linux   | amd64        | RHEL 8                                                   | [Supported]          |
-| macOS   | amd64        | macOS 10.x and higher                                    | [Not supported]      |
-| macOS   | arm64        | macOS 10.x and higher                                    | [Not supported]      |
+| macOS   | amd64        | macOS 10.x and later                                     | [Not supported]      |
+| macOS   | arm64        | macOS 10.x and later                                     | [Not supported]      |
 | Windows | amd64        | Server 2022, 2022 Core, 2019, 2019 Core, 2016, 2016 Core | [Not supported]      |
 
 The following Kubernetes distributions are [compatible] with EDOT Collector 9.x:

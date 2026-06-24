@@ -20,7 +20,7 @@ While EDOT and OTel-native data collection already covers most of the core Obser
 
 ## When to use the classic Elastic Stack ingestion components instead of EDOT
 
-EDOT already supports most core observability use cases, but in some scenarios, you may prefer to use classic Elastic ingestion components, such as Elastic Agent, Elastic APM Agent or APM Server:
+EDOT already supports most core observability use cases, but in some scenarios, you might prefer to use classic Elastic ingestion components, such as Elastic Agent, Elastic APM Agent or APM Server:
 
 * **Real user monitoring (RUM):** RUM ingestion and visualizations are not yet available for OTel-native data.
 * **Universal profiling:** This capability is currently only supported in the classic stack.
@@ -35,7 +35,7 @@ Refer to [EDOT data streams compared to classic APM](../compatibility/data-strea
 
 With OTel-native ingestion of data, for example through the EDOT Collector or the [Managed OTLP endpoint](/reference/motlp/index.md), [{{es}} Ingest Pipelines](docs-content://manage-data/ingest/transform-enrich/ingest-pipelines.md) are not supported.
 
-The OTel-native data format in {{es}} contains dotted fields. Ingest Pipeline processors can't access fields that have a dot in their name without having previously transformed the dotted field into an object using the [`Dot expander processor`](elasticsearch://reference/enrich-processor/dot-expand-processor.md).
+The OTel-native data format in {{es}} contains dotted fields. Ingest Pipeline processors require fields with dots in their names to first be transformed into objects by using the [`Dot expander processor`](elasticsearch://reference/enrich-processor/dot-expand-processor.md) before the processors can access them.
 
 To process your OTel data, for example to parse logs data, route data to data streams, and so on, use [Collector processors](https://opentelemetry.io/docs/collector/configuration/#processors), [`filelogreceiver` operators](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/pkg/stanza/docs/operators/README.md#what-operators-are-available) and other OTel-native processing capabilities.
 
@@ -49,10 +49,10 @@ Due to limitations and gaps in data collection with the contrib OTel `hostmetric
 |------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Host network panels do not display data in some Elastic Observability UIs. | Due to an contrib limitation, `host.network.*` metrics are not available from OpenTelemetry.                                                                                                                                   |
 | Process state is unavailable in OpenTelemetry host metrics. | The `process.state` metric is not present and is assigned a dummy value of "Unknown" in the State column of the host processes table.                                                                                           |
-| Host OS version and operating system may show as "N/A". | Although the {{es}} exporter processes resource attributes, it may not populate these values.                                                                                                                            |
+| Host OS version and operating system might show as "N/A". | Although the {{es}} exporter processes resource attributes, it might not populate these values.                                                                                                                         |
 | Normalized Load data is missing unless the CPU scraper is enabled. | The `system.load.cores` metric is required for the Normalized Load column in the Hosts table and the Normalized Load visualization in the host detailed view.                                                                    |
 | MacOS collectors do not support CPU and disk metrics. | The `hostmetrics receiver` does not collect these metrics on macOS, leaving related fields empty.                    |
-| Permission issues may cause error logs for process metrics | The `hostmetrics receiver` logs errors if it cannot access certain process information due to insufficient permissions. |
+| Permission issues might cause error logs for process metrics | The `hostmetrics receiver` logs errors if it cannot access certain process information due to insufficient permissions. |
 
 When collecting host metrics through a distribution of the OTel Collector other than EDOT, make sure to turn on required metrics that are otherwise turned off by default. Use the EDOT Collector [sample config](elastic-agent://reference/edot-collector/config/default-config-standalone.md) for the `hostmetrics` receiver as reference.
 
@@ -82,7 +82,7 @@ Your service name must only contain characters from the ASCII alphabet, numbers,
 
 ### Runtime metrics
 
-Currently, there are limitations with visualizing language-specific runtime metrics in corresponding **Service > Metrics** tab.
+Currently, there are limitations with visualizing language-specific runtime metrics in the corresponding **Service → Metrics** tab.
 
 Runtime metrics can be ingested and used to create custom dashboards. As a temporary workaround users can create dashboards from the runtime metrics and attach them as custom dashboards to corresponding services.
 
