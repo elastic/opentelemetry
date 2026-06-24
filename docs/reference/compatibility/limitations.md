@@ -14,9 +14,7 @@ products:
 
 # Limitations of Elastic Distributions of OpenTelemetry (EDOT)
 
-The Elastic Distributions of OpenTelemetry (EDOT) come with a new way of ingesting data in OTel-native way and format. Elastic is continuously working on providing a great experience with OTel-native data within Elastic solutions, contributing popular Elastic features to the contrib OpenTelemetry projects and aligning concepts with OpenTelemetry.
-
-While EDOT and OTel-native data collection already covers most of the core Observability use cases, the following limitations apply compared to data collection with classic Elastic data ingestion components.
+Elastic Distributions of OpenTelemetry (EDOT) provide an OpenTelemetry (OTel)-native ingestion path that covers most core observability use cases, but some capabilities available with classic Elastic components are not yet supported. This page documents the known limitations so you can decide when EDOT meets your requirements and when to supplement it with classic Elastic components.
 
 ## When to use the classic Elastic Stack ingestion components instead of EDOT
 

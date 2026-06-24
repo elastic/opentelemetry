@@ -13,9 +13,9 @@ products:
   - id: edot-collector
 ---
 
-# Rate limiting
+# Managed OTLP Endpoint rate limiting [motlp-rate-limiting]
 
-Rate limiting occurs when the {{motlp}} receives data faster than it can process and index into {{es}}. The endpoint responds with HTTP `429` errors until the data volume is reduced.
+The Elastic Cloud Managed OTLP Endpoint (mOTLP) rate limits requests when your telemetry arrives faster than Elastic can process and index it into {{es}}. This page explains how rate limiting works, how to identify HTTP `429` responses, and what to do for {{ech}} and {{serverless-full}} deployments.
 
 ## How rate limiting works
 

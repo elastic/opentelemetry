@@ -13,12 +13,14 @@ products:
 
 # EDOT data streams
 
-{{edot}} writes telemetry data to two types of data stream schemas in {{es}}:
+Elastic Distributions of OpenTelemetry (EDOT) write telemetry signals to {{es}} using either OTel-native data streams, which are the default, or ECS-compatible data streams for backwards compatibility with {{product.apm}}. This page is a practical reference for which data streams EDOT uses, how exporter behavior controls the destination, which storage engines back each stream type, and how to configure data retention.
+
+EDOT writes telemetry data to two types of data stream schemas in {{es}}:
 
 - OTel-native data streams (default)
 - ECS-compatible data streams (for backwards compatibility with {{product.apm}})
 
-This page provides a practical reference for which data streams EDOT uses, exporter behavior, storage engines, and how to configure data retention. For a detailed comparison of OTel data streams with classic {{product.apm}} and ECS-based integrations, refer to [OTel data streams compared to classic {{product.apm}}](./compatibility/data-streams.md).
+For a detailed comparison of OTel data streams with classic {{product.apm}} and ECS-based integrations, refer to [OTel data streams compared to classic {{product.apm}}](./compatibility/data-streams.md).
 
 To learn how to route OpenTelemetry (OTel) signals to custom data streams, refer to [Data stream routing](docs-content://solutions/observability/apm/opentelemetry/data-stream-routing.md).
 
