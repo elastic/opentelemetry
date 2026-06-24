@@ -1,6 +1,6 @@
 ---
 navigation_title: SDK Distributions
-description: Compatibility and support information for EDOT SDK versions with EDOT Collector versions.
+description: The EDOT SDK compatibility matrix shows supported SDK versions per language and the corresponding EDOT Collector version requirements.
 applies_to:
   stack:
   serverless:

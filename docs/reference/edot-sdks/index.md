@@ -1,6 +1,6 @@
 ---
 navigation_title: EDOT SDKs
-description: An overview of the features available in the Elastic Distribution of OpenTelemetry (EDOT) SDKs for various languages.
+description: EDOT SDKs are production-ready OpenTelemetry language distributions that capture traces, metrics, and logs with minimal configuration and seamless Elastic integration.
 applies_to:
   stack:
   serverless:

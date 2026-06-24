@@ -1,6 +1,6 @@
 ---
 navigation_title: Rate limiting
-description: Rate limiting for the Elastic Cloud Managed OTLP Endpoint.
+description: The Elastic Cloud Managed OTLP Endpoint applies rate limiting when ingestion exceeds cluster capacity, responding with HTTP 429 errors until the data volume is reduced.
 applies_to:
   serverless:
     observability: ga

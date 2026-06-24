@@ -1,6 +1,6 @@
 ---
 navigation_title: Collector distributions
-description: Compatibility and support information for EDOT Collector versions with Elastic Stack versions and operating systems.
+description: The EDOT Collector compatibility matrix covers supported Elastic Stack versions, operating systems, and support levels for each distribution release.
 applies_to:
   stack:
   serverless:

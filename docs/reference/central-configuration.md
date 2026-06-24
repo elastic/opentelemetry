@@ -1,6 +1,6 @@
 ---
 navigation_title: Central configuration
-description: Reference documentation for the central configuration of EDOT SDKs.
+description: EDOT SDK settings can be managed remotely through the APM Agent Central Configuration feature, with changes automatically propagated to deployed SDKs.
 applies_to:
   stack: preview 9.1+
   serverless: unavailable

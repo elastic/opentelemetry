@@ -1,6 +1,6 @@
 ---
 navigation_title: EDOT compared to upstream
-description: How Elastic Distributions of OpenTelemetry (EDOT) compare to upstream OpenTelemetry components, including Collector, SDKs, Kubernetes Operator, and more.
+description: Elastic Distributions of OpenTelemetry (EDOT) build on upstream OpenTelemetry components, adding production-ready defaults, Elastic-specific capabilities, and official support.
 applies_to:
   stack:
   serverless:
