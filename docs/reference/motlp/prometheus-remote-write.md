@@ -15,7 +15,7 @@ Managed Inputs supports ingesting metrics sent in the [Prometheus Remote Write v
 
 ## When to use PRW via Managed Inputs
 
-Managed Inputs is the recommended ingestion path for all {{ecloud}} deployments. Use the Managed Prometheus Remote Write endpoint as your default when sending Prometheus metrics to {{serverless-full}} or {{ech}} projects. It provides:
+Managed Inputs is the recommended ingestion path for all {{ecloud}} deployments. Use the Managed Prometheus Remote Write endpoint as your default when sending Prometheus metrics to {{serverless-full}} projects. It provides:
 
 - A single API key and ingest endpoint for all telemetry signals.
 - Durable buffering, back-pressure, and retry on `429 Too Many Requests`.
