@@ -15,13 +15,15 @@ products:
 
 ## When to use PRW using {{motlp}}
 
-Use PRW using {{motlp}} when you are already sending other telemetry (logs, traces, or OTLP metrics) through {{motlp}}. This approach gives you:
+{{motlp}} is the recommended ingestion path for {{serverless-full}} projects. Use it as your default when sending Prometheus metrics to Elastic. It provides:
 
 - A single API key and ingest endpoint for all telemetry signals.
 - Durable buffering, back-pressure, and retry on `429 Too Many Requests`.
 - The same Prometheus-to-TSDS mapping as the native {{es}} PRW endpoint.
 
-If you only need to ingest Prometheus metrics and do not use {{motlp}} for other signals, you can send directly to the [{{es}} Prometheus remote write endpoint](docs-content://manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md) instead.
+:::{warning}
+Sending PRW metrics directly to the [{{es}} Prometheus remote write endpoint](docs-content://manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md) bypasses {{motlp}} and is not recommended for {{serverless-full}} projects. Direct ingest uses different authentication, has no buffering, and removes the ability to apply processing to your data before it reaches {{es}}.
+:::
 
 ## Prerequisites
 
