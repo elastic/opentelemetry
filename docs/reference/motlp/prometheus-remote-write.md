@@ -1,6 +1,6 @@
 ---
 navigation_title: "Prometheus Remote Write"
-description: "Ingest Prometheus metrics into Elasticsearch using the Prometheus Remote Write protocol through Elastic Managed Inputs."
+description: "Ingest Prometheus metrics into Elasticsearch using the Prometheus Remote Write protocol through the Elastic Cloud Managed Prometheus Remote Write Endpoint."
 applies_to:
   serverless:
     observability: ga
