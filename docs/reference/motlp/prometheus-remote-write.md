@@ -93,7 +93,6 @@ Prometheus labels are mapped as TSDS dimensions in {{es}}, and metric types are 
 
 ## Limitations
 
-- Only Prometheus Remote Write v1 is supported. PRW v2 is not supported.
 - URL-path routing (for example, `/_prometheus/metrics/{dataset}/api/v1/write`) to custom data streams is not supported through Managed Inputs. Use label-based routing instead.
 - Available on {{serverless-full}} only.
 - Samples with non-finite values (NaN, Infinity) are silently dropped by {{es}}, and staleness markers are not supported.
