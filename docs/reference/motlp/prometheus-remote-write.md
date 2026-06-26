@@ -13,7 +13,7 @@ products:
 
 Managed Inputs supports ingesting metrics sent in the [Prometheus Remote Write v1](https://prometheus.io/docs/specs/remote_write_spec/) (PRW) protocol. Metrics flow through the same Kafka-backed pipeline as OTLP data and land in {{es}} time series data streams (TSDS), producing the same result as sending PRW directly to {{es}}.
 
-## When to use PRW via Managed Inputs
+## When to use PRW with Managed Inputs
 
 Managed Inputs is the recommended ingestion path for all {{ecloud}} deployments. Use the Managed Prometheus Remote Write endpoint as your default when sending Prometheus metrics to {{serverless-full}} projects. It provides:
 
