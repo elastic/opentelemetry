@@ -22,7 +22,7 @@ Managed Inputs is the recommended ingestion path for all {{ecloud}} deployments.
 - The same Prometheus-to-TSDS mapping as the native {{es}} PRW endpoint.
 
 :::{warning}
-Sending PRW metrics directly to the [{{es}} Prometheus remote write endpoint](docs-content://manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md) bypasses Managed Inputs and is not recommended for {{ecloud}} deployments ({{serverless-full}} and {{ech}}). Direct ingest uses different authentication, has no buffering, and skips any processing before data reaches {{es}}. Use direct ingest only for self-managed deployments where Managed Inputs is not available.
+Sending PRW metrics directly to the [{{es}} Prometheus remote write endpoint](docs-content://manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md) bypasses Managed Inputs and is not recommended for {{serverless-full}} projects. Direct ingest uses different authentication, has no buffering, and skips any processing before data reaches {{es}}. Use direct ingest only for self-managed deployments where Managed Inputs is not available. {{ech}} support for the Managed Prometheus Remote Write endpoint is planned.
 :::
 
 ## Prerequisites
@@ -31,6 +31,8 @@ Sending PRW metrics directly to the [{{es}} Prometheus remote write endpoint](do
 - A Managed Inputs API key with the `event:write` privilege for the `apm` application. Refer to [Authentication](index.md#authentication) for the required key format and generation steps.
 
 ## Send Prometheus metrics through Managed Inputs
+
+Follow these steps to configure Prometheus to send metrics to the Managed Prometheus Remote Write endpoint.
 
 ::::::{stepper}
 
@@ -51,7 +53,7 @@ To find `<managed-inputs-endpoint>`:
 1. Log in to the {{ecloud}} Console.
 2. Find your project and select **Manage**.
 3. In the **Application endpoints, cluster and component IDs** section, select **Ingest**.
-4. Copy the endpoint value and append `/api/v1/write`.
+4. Copy the endpoint value and append `/api/v1/write`. For example: `https://<your-endpoint>.apm.elastic.cloud/api/v1/write`
 
 :::::
 
