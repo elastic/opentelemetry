@@ -1,0 +1,21 @@
+name: Docs Agentic Workflow — AI PR Menu (collect)
+
+# Distributed to repositories in config/docs/active-repositories.json.
+# Fork-safe `pull_request` leg of the split-workflow pattern (see trigger-docs-aw-workflow-run.yml).
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize, ready_for_review]
+
+permissions:
+  contents: read
+  issues: read
+
+jobs:
+  run-aw:
+    permissions:
+      actions: write
+      contents: read
+      copilot-requests: write
+      issues: read
+    uses: elastic/oblt-aw/.github/workflows/docs-aw-event-pull-request.yml@main # ratchet:exclude

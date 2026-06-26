@@ -33,7 +33,7 @@ Each EDOT SDK contains an embedded OpAMP Client. Following the Open Agent Manage
 
 To use {{product.apm-agent}} Central Configuration for EDOT SDKs, you need:
 
-* An Elastic self-managed or {{ecloud}} deployment, version 9.1 or higher.
+* An Elastic self-managed or {{ecloud}} deployment, version 9.1 or later.
 * A standalone [EDOT Collector](elastic-agent://reference/edot-collector/index.md), in either Agent or Collector mode.
 * EDOT SDKs instrumenting your application.
 
@@ -41,14 +41,15 @@ The following versions of EDOT and {{stack}} support central configuration:
 
 | Component | Minimum version |
 |-----------|----------------|
-| {{kib}} | 9.1 or higher |
-| EDOT Collector | 8.19, 9.1 or higher |
-| EDOT Android | 1.2.0 or higher |
-| EDOT iOS | 1.4.0 or higher |
-| EDOT Java | 1.5.0 or higher |
-| EDOT Node.js | 1.2.0 or higher |
-| EDOT PHP | 1.1.1 or higher |
-| EDOT Python | 1.4.0 or higher |
+| {{kib}} | 9.1 or later |
+| EDOT Collector | 8.19, 9.1 or later |
+| EDOT Android | 1.2.0 or later |
+| EDOT iOS | 1.4.0 or later |
+| EDOT Java | 1.5.0 or later |
+| EDOT .NET | 1.4.0 or later |
+| EDOT Node.js | 1.2.0 or later |
+| EDOT PHP | 1.1.1 or later |
+| EDOT Python | 1.4.0 or later |
 
 ::::{note}
 Serverless deployments are not currently supported.
@@ -185,7 +186,7 @@ Wait some time for the EDOT SDK to appear in {{kib}} under Agent Configuration.
 1. Go to **{{kib}}** → **Observability** → **Applications** and select a service.
 2. Select **Settings** and go to **Agent Configuration**.
 
-Your application must produce and send telemetry data for the EDOT SDK to appear in Agent Configuration. This is because central configuration requires an application name as the key, which can't be defined until the application name is associated with the EDOT SDK agent after receiveing telemetry.
+Your application must produce and send telemetry data for the EDOT SDK to appear in Agent Configuration. This is because central configuration requires an application name as the key, which can't be defined until the application name is associated with the EDOT SDK agent after receiving telemetry.
 
 :::{note}
 Central configuration uses the `service.name` and `deployment.environment.name` OpenTelemetry resource attributes to target specific instances with a configuration. If no environment is specified, the central configuration feature will match `All` as the environment.
@@ -202,6 +203,7 @@ For a list of settings that you can configure through {{product.apm-agent}} Cent
 - [EDOT Android](apm-agent-android://reference/edot-android/configuration.md#central-configuration)
 - [EDOT iOS](apm-agent-ios://reference/edot-ios/configuration.md#central-configuration-edot)
 - [EDOT Java](elastic-otel-java://reference/edot-java/configuration.md#central-configuration)
+- [EDOT .NET](elastic-otel-dotnet://reference/edot-dotnet/configuration.md)
 - [EDOT Node.js](elastic-otel-node://reference/edot-node/configuration.md#central-configuration)
 - [EDOT PHP](elastic-otel-php://reference/edot-php/configuration.md#central-configuration)
 - [EDOT Python](elastic-otel-python://reference/edot-python/configuration.md#central-configuration)

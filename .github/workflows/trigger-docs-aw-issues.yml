@@ -1,0 +1,29 @@
+name: Docs Agentic Workflow — Issues
+
+# Distributed to repositories in config/docs/active-repositories.json.
+
+on:
+  issues:
+    types: [opened]
+  workflow_dispatch:
+    inputs:
+      issue_number:
+        description: Issue number for Docs AI issue menu (manual refresh).
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  issues: read
+
+jobs:
+  run-aw:
+    permissions:
+      actions: read
+      contents: read
+      copilot-requests: write
+      discussions: write
+      id-token: write
+      issues: write
+      pull-requests: write
+    uses: elastic/oblt-aw/.github/workflows/docs-aw-event-issues.yml@main # ratchet:exclude

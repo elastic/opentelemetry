@@ -1,0 +1,30 @@
+name: Docs Agentic Workflow — AI PR Menu
+
+# Distributed to repositories in config/docs/active-repositories.json.
+
+on:
+  workflow_run:
+    workflows: ["Docs Agentic Workflow — AI PR Menu (collect)"]
+    types: [completed]
+  workflow_dispatch:
+    inputs:
+      pull_request_number:
+        description: Pull request number for Docs PR AI menu (manual refresh).
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  issues: read
+
+jobs:
+  run-aw:
+    permissions:
+      actions: read
+      checks: read
+      contents: read
+      copilot-requests: write
+      id-token: write
+      issues: write
+      pull-requests: write
+    uses: elastic/oblt-aw/.github/workflows/docs-aw-event-workflow-run.yml@main # ratchet:exclude
