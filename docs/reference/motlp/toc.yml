@@ -1,4 +1,5 @@
 toc:
   - file: index.md
+  - file: prometheus-remote-write.md
   - file: rate-limiting.md
   - file: troubleshooting.md
