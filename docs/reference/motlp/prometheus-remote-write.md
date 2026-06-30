@@ -28,7 +28,7 @@ Sending PRW metrics directly to the [{{es}} Prometheus remote write endpoint](do
 ## Prerequisites
 
 - An {{serverless-full}} Observability project.
-- A Managed Inputs API key with the `event:write` privilege for the `apm` application. Refer to [Authentication](index.md#authentication) for the required key format and generation steps.
+- A Managed Inputs API key with the `event:write` privilege for the `apm` application. Refer to [Authentication](managed-otlp-endpoint.md#authentication) for the required key format and generation steps.
 
 ## Send Prometheus metrics through Managed Inputs
 
