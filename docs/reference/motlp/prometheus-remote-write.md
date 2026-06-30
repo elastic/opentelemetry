@@ -3,36 +3,38 @@ navigation_title: "Prometheus Remote Write"
 description: "Ingest Prometheus metrics into Elasticsearch using the Prometheus Remote Write protocol through the Elastic Cloud Managed Prometheus Remote Write Endpoint."
 applies_to:
   serverless:
-    observability: ga
+    observability: preview
 products:
   - id: cloud-serverless
   - id: observability
 ---
 
-# Ingest Prometheus metrics with Managed Inputs [prometheus-remote-write]
+# Ingest Prometheus metrics with Managed inputs [prometheus-remote-write]
 
-Managed Inputs supports ingesting metrics sent in the [Prometheus Remote Write v1](https://prometheus.io/docs/specs/remote_write_spec/) (PRW) protocol. Metrics flow through the same Kafka-backed pipeline as OTLP data and land in {{es}} time series data streams (TSDS), producing the same result as sending PRW directly to {{es}}.
+The Managed Prometheus Remote Write Endpoint ingests metrics sent in the [Prometheus Remote Write v1](https://prometheus.io/docs/specs/remote_write_spec/) (PRW) protocol. It accepts Prometheus PRW traffic natively, so you don't need to convert metrics to OTLP, and it's a dedicated [Managed input](index.md) separate from the [Managed OTLP Endpoint](managed-otlp-endpoint.md). Metrics land in {{es}} time series data streams (TSDS), the same result as sending PRW directly to {{es}}.
 
-## When to use PRW with Managed Inputs
+## When to use the Managed Prometheus Remote Write Endpoint
 
-Managed Inputs is the recommended ingestion path for all {{ecloud}} deployments. Use the Managed Prometheus Remote Write endpoint as your default when sending Prometheus metrics to {{serverless-full}} projects. It provides:
+For {{serverless-full}} projects, the Managed Prometheus Remote Write Endpoint is the recommended way to ingest Prometheus metrics. Compared to sending metrics directly to the [{{es}} Prometheus remote write endpoint](docs-content://manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md), it provides:
 
-- A single API key and ingest endpoint for all telemetry signals.
+- A single ingest endpoint and API key shared with the other [Managed inputs](index.md).
 - Durable buffering, back-pressure, and retry on `429 Too Many Requests`.
-- The same Prometheus-to-TSDS mapping as the native {{es}} PRW endpoint.
+- The same Prometheus-to-TSDS mapping as the {{es}} PRW endpoint, so the resulting data is identical.
 
 :::{warning}
-Sending PRW metrics directly to the [{{es}} Prometheus remote write endpoint](docs-content://manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md) bypasses Managed Inputs and is not recommended for {{serverless-full}} projects. Direct ingest uses different authentication, has no buffering, and skips any processing before data reaches {{es}}. Use direct ingest only for self-managed deployments where Managed Inputs is not available. {{ech}} support for the Managed Prometheus Remote Write endpoint is planned.
+On {{serverless-full}}, use the Managed Prometheus Remote Write Endpoint rather than sending metrics directly to the [{{es}} Prometheus remote write endpoint](docs-content://manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md).
+
+Direct ingest bypasses Managed inputs, uses different authentication, and has no buffering or processing before data reaches {{es}}. Use the direct {{es}} endpoint only for self-managed deployments, where Managed inputs aren't available. {{ech}} support for the Managed Prometheus Remote Write Endpoint is planned.
 :::
 
 ## Prerequisites
 
 - An {{serverless-full}} Observability project.
-- A Managed Inputs API key with the `event:write` privilege for the `apm` application. Refer to [Authentication](managed-otlp-endpoint.md#authentication) for the required key format and generation steps.
+- A Managed inputs API key with the `event:write` privilege for the `apm` application. Refer to [Authentication](managed-otlp-endpoint.md#authentication) for the required key format and generation steps.
 
-## Send Prometheus metrics through Managed Inputs
+## Send Prometheus metrics through Managed inputs
 
-Follow these steps to configure Prometheus to send metrics to the Managed Prometheus Remote Write endpoint.
+Follow these steps to configure Prometheus to send metrics to the Managed Prometheus Remote Write Endpoint.
 
 ::::::{stepper}
 
@@ -95,6 +97,6 @@ Prometheus labels are mapped as TSDS dimensions in {{es}}, and metric types are 
 
 ## Limitations
 
-- URL-path routing (for example, `/_prometheus/metrics/{dataset}/api/v1/write`) to custom data streams is not supported through Managed Inputs. Use [label-based routing](docs-content://manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md#route-by-labels) instead.
+- URL-path routing (for example, `/_prometheus/metrics/{dataset}/api/v1/write`) to custom data streams is not supported through Managed inputs. Use [label-based routing](docs-content://manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md#route-by-labels) instead.
 - Available on {{serverless-full}} only.
 - Samples with non-finite values (NaN, Infinity) are silently dropped by {{es}}, and staleness markers are not supported.
