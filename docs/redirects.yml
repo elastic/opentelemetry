@@ -4,8 +4,8 @@ redirects:
   'reference/edot-cloud-forwarder/azure/index.md': 'edot-cloud-forwarder-azure://reference/edot-cf-azure/index.md'
   'reference/edot-cloud-forwarder/gcp.md': 'reference/edot-cloud-forwarder/gcp/index.md'
 
-  # Managed OTLP Endpoint (mOTLP page moved to a sub-page under the new Managed inputs landing)
-  'reference/motlp.md': 'reference/motlp/managed-otlp-endpoint.md'
+  # The old motlp.md URL (/reference/motlp) is now served by the Managed inputs landing page (motlp/index.md)
+  'reference/motlp.md': 'reference/motlp/index.md'
 
   # EDOT Collector troubleshooting pages (from reference to troubleshooting)
   'reference/edot-collector/troubleshooting/index.md': 'docs-content://troubleshoot/ingest/opentelemetry/edot-collector/index.md'
