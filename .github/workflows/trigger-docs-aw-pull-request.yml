@@ -12,7 +12,7 @@ permissions:
   issues: read
 
 jobs:
-  run-aw:
+  run-docs-aw-pull-request:
     permissions:
       actions: write
       contents: read

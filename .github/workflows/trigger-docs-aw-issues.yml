@@ -17,7 +17,7 @@ permissions:
   issues: read
 
 jobs:
-  run-aw:
+  run-docs-aw-issues:
     permissions:
       actions: read
       contents: read
