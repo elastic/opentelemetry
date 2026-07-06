@@ -82,7 +82,7 @@ Your service name must only contain characters from the ASCII alphabet, numbers,
 
 ### Runtime metrics
 
-There are limitations with visualizing language-specific runtime metrics in the corresponding **Service > Metrics** tab.
+There are limitations with visualizing language-specific runtime metrics in the corresponding **Service → Metrics** tab.
 
 Runtime metrics can be ingested and used to create custom dashboards. As a temporary workaround, you can create dashboards from the runtime metrics and attach them as custom dashboards to corresponding services.
 
