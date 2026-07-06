@@ -4,8 +4,15 @@ redirects:
   'reference/edot-cloud-forwarder/azure/index.md': 'edot-cloud-forwarder-azure://reference/edot-cf-azure/index.md'
   'reference/edot-cloud-forwarder/gcp.md': 'reference/edot-cloud-forwarder/gcp/index.md'
 
-  # Managed OTLP Endpoint (restructured to subfolder)
-  'reference/motlp.md': 'reference/motlp/index.md'
+  # Managed inputs: the section folder was renamed from motlp to managed-inputs.
+  # The historical /motlp URL served the Managed OTLP Endpoint, so point it (and the
+  # short-lived landing URL) there; every other page maps to its managed-inputs equivalent.
+  'reference/motlp.md': 'reference/managed-inputs/managed-otlp-endpoint.md'
+  'reference/motlp/index.md': 'reference/managed-inputs/managed-otlp-endpoint.md'
+  'reference/motlp/managed-otlp-endpoint.md': 'reference/managed-inputs/managed-otlp-endpoint.md'
+  'reference/motlp/prometheus-remote-write.md': 'reference/managed-inputs/prometheus-remote-write.md'
+  'reference/motlp/rate-limiting.md': 'reference/managed-inputs/rate-limiting.md'
+  'reference/motlp/troubleshooting.md': 'reference/managed-inputs/troubleshooting.md'
 
   # EDOT Collector troubleshooting pages (from reference to troubleshooting)
   'reference/edot-collector/troubleshooting/index.md': 'docs-content://troubleshoot/ingest/opentelemetry/edot-collector/index.md'

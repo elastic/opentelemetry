@@ -56,10 +56,10 @@ This table provides an overview of the features available in the {{edot}} (EDOT)
 | [Runtime metrics](https://opentelemetry.io/docs/specs/semconv/runtime/) | ✅ 1.0+[^1] | ✅ 1.0+[^1] | 𝐓 1.0+[^1] | ❌  | ❌  | ❌  | ❌  | ➖  | 
 | **Capturing errors / exceptions** | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ v1.0+ | 𝐓 0.1.0+ | 
 | Crash reporting | ➖  | ➖  | ➖  | ➖  | ➖  | ❌  | ✅ v1.0+ | ➖  | 
-| **Central configuration** | ❌  | 𝐓 1.5.0+ | 𝐓 1.2.0+ | 𝐓 1.1.0+ | 𝐓 1.4.0+ | 𝐓 1.2.0+ | 𝐓 1.4.0+ | ❌  | 
+| **Central configuration** | 𝐓 1.4.0+ | 𝐓 1.5.0+ | 𝐓 1.2.0+ | 𝐓 1.1.0+ | 𝐓 1.4.0+ | 𝐓 1.2.0+ | 𝐓 1.4.0+ | ❌  | 
 | **Profiling integration** | ❌  | 𝐓 1.0+ | ❌  | ❌  | ❌  | ❌  | ❌  | ❌  | 
 | **[TLS for OTLP endpoint](https://opentelemetry.io/docs/specs/otel/protocol/exporter/#endpoint-urls-for-otlphttp)** | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.6+ | ✅ 1.2+ | ✅ 1.0+ | ✅ 1.0+[^2] | ✅ v1.0+[^2] | 𝐓 0.1.0+ | 
-| TLS for OpAMP endpoint | ❌  | ❌  | ✅ 1.7.0+ | ✅ 1.2.0+ | ✅ 1.10.0+ | ✅ 1.2.0+[^2] | ✅ v1.4.0+[^2] | ❌  | 
+| TLS for OpAMP endpoint | 𝐓 1.4.0+[^3] | ❌  | ✅ 1.7.0+ | ✅ 1.2.0+ | ✅ 1.10.0+ | ✅ 1.2.0+[^2] | ✅ v1.4.0+[^2] | ❌  | 
 
 **Legend:**
 
@@ -73,11 +73,13 @@ This table provides an overview of the features available in the {{edot}} (EDOT)
 
 [^2]: CA-signed certificates only
 
+[^3]: Custom certificate verification and mTLS are not available yet.
+
 % end:edot-features
 
 ## Support for EDOT SDKs
 
-Elastic provides technical support for EDOT Language SDKs according to Elastic's [Support Policy](https://www.elastic.co/support_policy). EDOT SDKs are meant to be used in combination with the [EDOT Collector](elastic-agent://reference/edot-collector/index.md) or the [{{motlp}}](/reference/motlp/index.md) to ingest data into Elastic solutions from the EDOT SDKs. Other ingestion paths are not officially supported by Elastic.
+Elastic provides technical support for EDOT Language SDKs according to Elastic's [Support Policy](https://www.elastic.co/support_policy). EDOT SDKs are meant to be used in combination with the [EDOT Collector](elastic-agent://reference/edot-collector/index.md) or the [{{motlp}}](/reference/managed-inputs/managed-otlp-endpoint.md) to ingest data into Elastic solutions from the EDOT SDKs. Other ingestion paths are not officially supported by Elastic.
 
 Using EDOT SDKs directly with {{product.apm-server}}'s OpenTelemetry intake endpoint is not supported.  
 While some data might ingest, Elastic doesn't guarantee:

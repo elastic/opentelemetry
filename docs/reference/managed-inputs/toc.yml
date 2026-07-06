@@ -1,0 +1,7 @@
+toc:
+  - file: index.md
+  - file: managed-otlp-endpoint.md
+    children:
+      - file: rate-limiting.md
+      - file: troubleshooting.md
+  - file: prometheus-remote-write.md

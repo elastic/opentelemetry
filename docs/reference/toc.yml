@@ -19,7 +19,7 @@ toc:
       - file: compatibility/limitations.md
       - file: compatibility/nomenclature.md
       - file: compatibility/data-streams.md 
-  - toc: motlp
+  - toc: managed-inputs
   - file: data-streams.md
   - file: central-configuration.md
   - file: edot-sdks/index.md
