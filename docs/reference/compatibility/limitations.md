@@ -14,7 +14,7 @@ products:
 
 # Limitations of Elastic Distributions of OpenTelemetry (EDOT)
 
-The Elastic Distributions of OpenTelemetry (EDOT) come with a new way of ingesting data in OTel-native way and format. Elastic is continuously working on providing a great experience with OTel-native data within Elastic solutions, contributing popular Elastic features to the contrib OpenTelemetry projects and aligning concepts with OpenTelemetry.
+The Elastic Distributions of OpenTelemetry (EDOT) come with a new way of ingesting data in OTel-native way and format. Elastic is actively improving OTel-native data support within Elastic solutions, contributing popular Elastic features to the contrib OpenTelemetry projects and aligning concepts with OpenTelemetry.
 
 While EDOT and OTel-native data collection already covers most of the core Observability use cases, the following limitations apply compared to data collection with classic Elastic data ingestion components.
 
@@ -66,7 +66,7 @@ Make sure to export histogram metrics with delta temporality or use the [`cumula
 
 ### Exemplars
 
-Exemplars are currently discarded when ingesting metrics. Support for exemplars is planned for a future release.
+Exemplars are discarded when ingesting metrics. Support for exemplars is planned for a future release.
 
 ## Limitations on managed Kubernetes environments
 
@@ -78,13 +78,13 @@ Due to limitations with permissions on managed Kubernetes environments, such as 
 
 The `service.name` must conform to this regular expression: `^[a-zA-Z0-9 _-]+$`. 
 
-Your service name must only contain characters from the ASCII alphabet, numbers, dashes, underscores and spaces.
+Your service name must only contain characters from the ASCII alphabet, numbers, dashes, underscores, and spaces.
 
 ### Runtime metrics
 
-Currently, there are limitations with visualizing language-specific runtime metrics in corresponding **Service > Metrics** tab.
+There are limitations with visualizing language-specific runtime metrics in the corresponding **Service → Metrics** tab.
 
-Runtime metrics can be ingested and used to create custom dashboards. As a temporary workaround users can create dashboards from the runtime metrics and attach them as custom dashboards to corresponding services.
+Runtime metrics can be ingested and used to create custom dashboards. As a temporary workaround, you can create dashboards from the runtime metrics and attach them as custom dashboards to corresponding services.
 
 ## Tail-based sampling (TBS)
 

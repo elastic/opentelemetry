@@ -17,7 +17,7 @@ products:
 
 The {{motlp}} allows you to send OpenTelemetry data directly to {{ecloud}} using the OTLP protocol. 
 
-The endpoint provides a resilient ingestion layer that works seamlessly with serverless autoscaling and offloads ingestion processing from {{ech}} clusters.
+The endpoint provides a resilient ingestion layer that integrates with serverless autoscaling and offloads ingestion processing from {{ech}} clusters.
 
 :::{important}
 The {{motlp}} endpoint is not available for Elastic [self-managed](docs-content://deploy-manage/deploy/self-managed.md), [ECE](docs-content://deploy-manage/deploy/cloud-enterprise.md), or [ECK](docs-content://deploy-manage/deploy/cloud-on-k8s.md) clusters. To send OTLP data to any of these cluster types, deploy and expose an OTLP-compatible endpoint using the [EDOT Collector as a gateway](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway).
@@ -106,7 +106,7 @@ The {{motlp}} authenticates requests using {{product.apm}} application privilege
 For step-by-step instructions on generating an API key, refer to the [Send data to the {{motlp}}](docs-content://solutions/observability/get-started/quickstart-elastic-cloud-otel-endpoint.md) quickstart.
 
 :::{note}
-Index-level privilege scoping is not yet supported for the {{motlp}}. API keys restricted to specific index-level privileges return a `PermissionDenied` error.
+Index-level privilege scoping is not supported for the {{motlp}}. API keys restricted to specific index-level privileges return a `PermissionDenied` error.
 :::
 
 ## OTLP client configuration
@@ -144,7 +144,7 @@ This diagram shows data ingest using {{edot}} and the {{motlp}}:
 :width: 100%
 :::
 
-Telemetry is stored in Elastic in OTLP format, preserving resource attributes and original semantic conventions. If no specific dataset or namespace is provided, telemetry would be routed to the generic data streams: `traces-generic.otel-default`, `metrics-generic.otel-default`, and `logs-generic.otel-default`.
+Telemetry is stored in Elastic in OTLP format, preserving resource attributes and original semantic conventions. If no specific dataset or namespace is provided, telemetry is routed to the generic data streams: `traces-generic.otel-default`, `metrics-generic.otel-default`, and `logs-generic.otel-default`.
 
 For a detailed comparison of how OTel data streams differ from classic Elastic APM data streams, refer to [OTel data streams compared to classic APM](../compatibility/data-streams.md).
 

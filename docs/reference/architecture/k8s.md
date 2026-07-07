@@ -30,7 +30,7 @@ The recommended OTel architecture for Kubernetes clusters includes a set of Open
 
 The Collector as a DaemonSet resource kind, deploys an instance on each Kubernetes node as an [edge collector](index.md#understanding-edge-deployment) (close to your data sources) to collect node-local logs and host metrics.
 
-The DaemonSet collectors also can funnel and enrich telemetry from applications instrumented with OTel SDKs and running on corresponding nodes.
+The DaemonSet collectors can also funnel and enrich telemetry from applications instrumented with OTel SDKs and running on corresponding nodes.
 
 That Collector enriches the application telemetry with resource information such as host and Kubernetes metadata.
 
