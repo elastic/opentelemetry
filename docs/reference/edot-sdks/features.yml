@@ -382,8 +382,8 @@ features:
       status: not-applicable
       min_version:
     Android:
-      status: not-available
-      min_version:
+      status: ga
+      min_version: 1.6.0
     iOS:
       status: ga
       min_version: v1.0
