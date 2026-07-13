@@ -55,7 +55,7 @@ This table provides an overview of the features available in the {{edot}} (EDOT)
 | Agent health monitoring | ❌  | ❌  | ❌  | ❌  | ❌  | ❌  | ❌  | ❌  | 
 | [Runtime metrics](https://opentelemetry.io/docs/specs/semconv/runtime/) | ✅ 1.0+[^1] | ✅ 1.0+[^1] | 𝐓 1.0+[^1] | ❌  | ❌  | ❌  | ❌  | ➖  | 
 | **Capturing errors / exceptions** | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.0+ | ✅ v1.0+ | 𝐓 0.1.0+ | 
-| Crash reporting | ➖  | ➖  | ➖  | ➖  | ➖  | ❌  | ✅ v1.0+ | ➖  | 
+| Crash reporting | ➖  | ➖  | ➖  | ➖  | ➖  | ✅ 1.6.0+ | ✅ v1.0+ | ➖  | 
 | **Central configuration** | 𝐓 1.4.0+ | 𝐓 1.5.0+ | 𝐓 1.2.0+ | 𝐓 1.1.0+ | 𝐓 1.4.0+ | 𝐓 1.2.0+ | 𝐓 1.4.0+ | ❌  | 
 | **Profiling integration** | ❌  | 𝐓 1.0+ | ❌  | ❌  | ❌  | ❌  | ❌  | ❌  | 
 | **[TLS for OTLP endpoint](https://opentelemetry.io/docs/specs/otel/protocol/exporter/#endpoint-urls-for-otlphttp)** | ✅ 1.0+ | ✅ 1.0+ | ✅ 1.6+ | ✅ 1.2+ | ✅ 1.0+ | ✅ 1.0+[^2] | ✅ v1.0+[^2] | 𝐓 0.1.0+ | 
