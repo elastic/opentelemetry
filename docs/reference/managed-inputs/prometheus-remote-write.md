@@ -94,7 +94,12 @@ remote_write:
 
 ## How Prometheus data appears in {{es}}
 
-Prometheus labels are mapped as TSDS dimensions in {{es}}, and metric types are inferred from naming conventions. For details on the full mapping behavior, refer to the [{{es}} Prometheus remote write endpoint](docs-content://manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md) documentation.
+Prometheus labels are mapped as TSDS dimensions in {{es}}, and metric types are inferred from field naming conventions:
+
+- Fields ending in `_sum`, `_count`, `_total`, or `_bucket` are mapped as counters.
+- All other fields are mapped as gauges.
+
+For details on the full mapping behavior, refer to the [{{es}} Prometheus remote write endpoint](docs-content://manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md) documentation.
 
 ## Limitations
 
