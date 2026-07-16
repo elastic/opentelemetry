@@ -45,22 +45,22 @@ Add a `remote_write` entry to your Prometheus configuration:
 
 ```yaml
 remote_write:
-  - url: https://<managed-inputs-endpoint>/api/v1/write
+  - url: <prometheus-endpoint>
     authorization:
       type: ApiKey
       credentials: <api-key>
 ```
 
-To find `<managed-inputs-endpoint>`:
+To find `<prometheus-endpoint>`:
 
 1. Log in to the {{ecloud}} Console.
 2. Find your project and select **Manage**.
-3. In the **Application endpoints, cluster and component IDs** section, select **Ingest**.
-4. Copy the endpoint value and append `/api/v1/write`. For example: `https://<your-endpoint>.apm.elastic.cloud/api/v1/write`
+3. In the **Application endpoints, cluster and component IDs** section, select **Prometheus**.
+4. Copy the **Prometheus** endpoint value, which looks similar to `https://<project>.ingest.<region>.<csp>.elastic.cloud/api/v1/write`
 
 :::::
 
-:::::{step} Route metrics to custom data streams
+:::::{step} Route metrics to custom data streams (optional)
 
 By default, all PRW metrics land in `metrics-generic.prometheus-default`.
 
@@ -77,7 +77,7 @@ In Prometheus, use `write_relabel_configs` to add these labels to every time ser
 
 ```yaml
 remote_write:
-  - url: https://<managed-inputs-endpoint>/api/v1/write
+  - url: <prometheus-endpoint>
     authorization:
       type: ApiKey
       credentials: <api-key>
