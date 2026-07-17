@@ -1,6 +1,6 @@
-# Contributing to the EDOT docs
+# Contributing to the Elastic OpenTelemetry docs
 
-This repository contains the EDOT documentation. We welcome pull requests.
+This repository contains the Elastic OpenTelemetry documentation. We welcome pull requests.
 
 ## Format and syntax
 
@@ -20,14 +20,14 @@ docs
     ├── _snippets          # Reusable snippets
     ├── architecture       # Architecture section
     ├── compatibility      # Compatibility and support
-    ├── edot-collector     # EDOT Collector
-    ├── edot-sdks          # EDOT SDKs
+    ├── edot-collector     # Elastic Agent (OTel mode)
+    ├── edot-sdks          # Elastic OTel SDKs
     ├── images             # Images
     ├── quickstart         # Quickstarts
     └── use-cases          # Use cases
 ```
 
-This structure might evolve as we refine the EDOT documentation according to the new V3 information architecture.
+This structure might evolve as we refine the Elastic OpenTelemetry documentation according to the new V3 information architecture.
 
 ## Style guide
 
@@ -43,19 +43,19 @@ Use the following terms consistently and respect capitalization.
 
 | Term | Description | Alias | Example |
 |---|---|---|---|
-| **Elastic Distributions of OpenTelemetry** | Use to describe all distributions built by Elastic collectively | EDOTs | Use one of the Elastic Distributions of OpenTelemetry (EDOTs) in your application. EDOTs include... |
-| **Elastic Distributions of OpenTelemetry language SDKs** | Use to describe the collection of all the Elastic distributions that extend language SDKs (i.e. the APM-related distros) | EDOT language SDKs | With the Elastic Distributions of OpenTelemetry (EDOT) language SDKs you have access to all the features of the OpenTelemetry SDK that it customizes, plus... |
-| **Elastic Distribution of OpenTelemetry {language}** | Use to refer to a specific language distribution | EDOT {language} | The Elastic Distribution of OpenTelemetry (EDOT) Java is a Java package that provides an easy way to instrument your application with OpenTelemetry and configuration defaults for best usage. EDOT Java is a wrapper around... |
-| **Elastic Distribution of OpenTelemetry Collector** | Use to describe the customized version of the OpenTelemetry Collector that is built and maintained by Elastic | EDOT Collector | This guide shows you how to use the Elastic Distribution of OpenTelemetry (EDOT) Collector. The EDOT Collector sends logs and host metrics to Elastic Cloud. |
-| **Upstream** | Use to describe the upstream OpenTelemetry solutions. Do not use "vanilla" or other terms. |  | The upstream OpenTelemetry Collector is maintained by the OpenTelemetry community. |
-| **Collector** | Use it to refer to any Collector instance, either upstream or EDOT. Always capitalize Collector when referring to the technical solution. Use lowercase when referring to multiple collectors. |  | Deploy a Collector to receive and process telemetry data. Multiple collectors can be used for scaling. |
+| **Elastic OpenTelemetry** | Use to describe Elastic's OpenTelemetry offerings collectively | Elastic OTel | Use Elastic OpenTelemetry to instrument your applications and infrastructure and send telemetry to Elastic Observability. |
+| **Elastic OTel SDKs** | Use to describe the collection of all Elastic OTel language SDKs | — | With the Elastic OTel SDKs you have access to all the features of the OpenTelemetry SDK, plus Elastic-specific defaults and enhancements. |
+| **Elastic OTel {language}** | Use to refer to a specific language SDK | — | The Elastic OTel Java SDK is a Java package that provides an easy way to instrument your application with OpenTelemetry and configuration defaults for best usage. |
+| **Elastic Agent** | Use to describe Elastic Agent running in OpenTelemetry mode (available from 9.5; formerly called the EDOT Collector). | — | Deploy Elastic Agent in OTel mode to collect and forward telemetry data to Elastic Observability. |
+| **Elastic Cloud Forwarder** | Use to describe the cloud-native forwarder for AWS, GCP, and Azure. | — | Use the Elastic Cloud Forwarder to send telemetry from your cloud environment to Elastic Observability. |
+| **Upstream** | Use to describe the upstream OpenTelemetry solutions. Do not use "vanilla" or other terms. | — | The upstream OpenTelemetry Collector is maintained by the OpenTelemetry community. |
+| **Collector** | Use to refer to any Collector instance, either upstream or Elastic. Always capitalize Collector when referring to the technical solution. Use lowercase when referring to multiple collectors. | — | Deploy a Collector to receive and process telemetry data. Multiple collectors can be used for scaling. |
 
-Keep these rules in mind when using EDOT terms:
+Keep these rules in mind when writing about Elastic OpenTelemetry:
 
 * Always use the full product name the first time you refer to the product on each page.
-* Always establish the acronym for the product name (for example, EDOT) the first time it is mentioned in the body text.
-  * Note: Do *not* establish the acronym for the first time in the page title or in a heading. If a heading comes *after* the first time the acronym is established in the body text, then it's ok to use the acronym instead of the full product name in the heading.
-* Avoid overusing the full product name. Use the shorter, already-established alias.
+* Avoid referring to "EDOT" as a product name in new content. It is a legacy term used before 9.5. Historical references in pre-9.5 release notes are acceptable.
+* Avoid overusing the full product name. Use the shorter alias after the first mention.
 
 ## Frontmatter
 
