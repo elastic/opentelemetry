@@ -1,6 +1,6 @@
 ---
 navigation_title: Limitations
-description: Limitations of Elastic Distributions of OpenTelemetry (EDOT) compared to classic Elastic data collection mechanisms.
+description: Limitations of {{edot}} compared to classic Elastic data collection mechanisms.
 applies_to:
   stack:
   serverless:
@@ -12,34 +12,34 @@ products:
    - id: edot-sdk
 ---
 
-# Limitations of Elastic Distributions of OpenTelemetry (EDOT)
+# Limitations of {{edot}}
 
-The Elastic Distributions of OpenTelemetry (EDOT) come with a new way of ingesting data in OTel-native way and format. Elastic is actively improving OTel-native data support within Elastic solutions, contributing popular Elastic features to the contrib OpenTelemetry projects and aligning concepts with OpenTelemetry.
+{{edot}} come with a new way of ingesting data in OTel-native way and format. Elastic is actively improving OTel-native data support within Elastic solutions, contributing popular Elastic features to the contrib OpenTelemetry projects and aligning concepts with OpenTelemetry.
 
-While EDOT and OTel-native data collection already covers most of the core Observability use cases, the following limitations apply compared to data collection with classic Elastic data ingestion components.
+While {{edot}} and OTel-native data collection already covers most of the core Observability use cases, the following limitations apply compared to data collection with classic Elastic data ingestion components.
 
-## When to use the classic Elastic Stack ingestion components instead of EDOT
+## When to use the classic {{stack}} ingestion components instead of {{edot}}
 
-EDOT already supports most core observability use cases, but in some scenarios, you may prefer to use classic Elastic ingestion components, such as Elastic Agent, Elastic APM Agent or APM Server:
+{{edot}} already supports most core observability use cases, but in some scenarios, you may prefer to use classic Elastic ingestion components, such as {{agent}}, {{product.apm-agent}} or {{product.apm-server}}:
 
 * **Real user monitoring (RUM):** RUM ingestion and visualizations are not yet available for OTel-native data.
 * **Universal profiling:** This capability is currently only supported in the classic stack.
 * **Existing integrations and dashboards:** Many prebuilt Elastic integrations and dashboards are designed for ECS-formatted data and may not work as expected with the OpenTelemetry semantic conventions without customization.
 * **Ingest pipelines for structuring logs:** {{es}} ingest pipelines cannot directly parse OTel-native data with dotted field names without preprocessing. See [Centralized parsing and processing of data](#centralized-parsing-and-processing-of-data) for workarounds.
 * **Tail-based sampling (TBS):**  
-If you need the full tail-based sampling capabilities of APM Server, use APM Server with an Elasticsearch output. EDOT does not provide managed TBS. You can run TBS in a self-managed EDOT Collector or any contrib OTel Collector and ingest the sampled traces into Elastic with some caveats - refer to [Tail-based sampling limitations](#tail-based-sampling-tbs) for more information.
+If you need the full tail-based sampling capabilities of APM Server, use APM Server with an {{es}} output. {{edot}} does not provide managed TBS. You can run TBS in a self-managed {{agent}} or any contrib OTel Collector and ingest the sampled traces into Elastic with some caveats - refer to [Tail-based sampling limitations](#tail-based-sampling-tbs) for more information.
 
-Refer to [EDOT data streams compared to classic APM](../compatibility/data-streams.md) for an overview of how these ingestion paths differ.
+Refer to [{{edot}} data streams compared to classic {{product.apm}}](../compatibility/data-streams.md) for an overview of how these ingestion paths differ.
 
 ## Centralized parsing and processing of data
 
-With OTel-native ingestion of data, for example through the EDOT Collector or the [Managed OTLP endpoint](/reference/managed-inputs/managed-otlp-endpoint.md), [{{es}} Ingest Pipelines](docs-content://manage-data/ingest/transform-enrich/ingest-pipelines.md) are not supported.
+With OTel-native ingestion of data, for example through the {{agent}} or the [Managed OTLP endpoint](/reference/managed-inputs/managed-otlp-endpoint.md), [{{es}} Ingest Pipelines](docs-content://manage-data/ingest/transform-enrich/ingest-pipelines.md) are not supported.
 
 The OTel-native data format in {{es}} contains dotted fields. Ingest Pipeline processors can't access fields that have a dot in their name without having previously transformed the dotted field into an object using the [`Dot expander processor`](elasticsearch://reference/enrich-processor/dot-expand-processor.md).
 
 To process your OTel data, for example to parse logs data, route data to data streams, and so on, use [Collector processors](https://opentelemetry.io/docs/collector/configuration/#processors), [`filelogreceiver` operators](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/pkg/stanza/docs/operators/README.md#what-operators-are-available) and other OTel-native processing capabilities.
 
-Refer to [these examples](elastic-agent://reference/edot-collector/config/configure-logs-collection.md) on how to process log data with the (EDOT) OTel Collector.
+Refer to [these examples](elastic-agent://reference/edot-collector/config/configure-logs-collection.md) on how to process log data with {{agent}}.
 
 ## Infrastructure and host metrics
 
@@ -47,14 +47,14 @@ Due to limitations and gaps in data collection with the contrib OTel `hostmetric
 
 | Limitation                                      | Explanation                                                                                                                                                                                                                     |
 |------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Host network panels do not display data in some Elastic Observability UIs. | Due to an contrib limitation, `host.network.*` metrics are not available from OpenTelemetry.                                                                                                                                   |
+| Host network panels do not display data in some {{product.observability}} UIs. | Due to an contrib limitation, `host.network.*` metrics are not available from OpenTelemetry.                                                                                                                                   |
 | Process state is unavailable in OpenTelemetry host metrics. | The `process.state` metric is not present and is assigned a dummy value of "Unknown" in the State column of the host processes table.                                                                                           |
 | Host OS version and operating system may show as "N/A". | Although the {{es}} exporter processes resource attributes, it may not populate these values.                                                                                                                            |
 | Normalized Load data is missing unless the CPU scraper is enabled. | The `system.load.cores` metric is required for the Normalized Load column in the Hosts table and the Normalized Load visualization in the host detailed view.                                                                    |
 | MacOS collectors do not support CPU and disk metrics. | The `hostmetrics receiver` does not collect these metrics on macOS, leaving related fields empty.                    |
 | Permission issues may cause error logs for process metrics | The `hostmetrics receiver` logs errors if it cannot access certain process information due to insufficient permissions. |
 
-When collecting host metrics through a distribution of the OTel Collector other than EDOT, make sure to turn on required metrics that are otherwise turned off by default. Use the EDOT Collector [sample config](elastic-agent://reference/edot-collector/config/default-config-standalone.md) for the `hostmetrics` receiver as reference.
+When collecting host metrics through a distribution of the OTel Collector other than {{edot}}, make sure to turn on required metrics that are otherwise turned off by default. Use the {{agent}} [sample config](elastic-agent://reference/edot-collector/config/default-config-standalone.md) for the `hostmetrics` receiver as reference.
 
 ## Metrics data ingestion
 
@@ -70,7 +70,7 @@ Exemplars are discarded when ingesting metrics. Support for exemplars is planned
 
 ## Limitations on managed Kubernetes environments
 
-Due to limitations with permissions on managed Kubernetes environments, such as GKE Autopilot or AWS Fargate, the default configurations and onboarding flows for EDOT don't fully work in those environments. This might result in decreased collection of data and certain observability views not showing that data.
+Due to limitations with permissions on managed Kubernetes environments, such as GKE Autopilot or AWS Fargate, the default configurations and onboarding flows for {{edot}} don't fully work in those environments. This might result in decreased collection of data and certain observability views not showing that data.
 
 ## Limitations with APM
 
@@ -88,9 +88,9 @@ Runtime metrics can be ingested and used to create custom dashboards. As a tempo
 
 ## Tail-based sampling (TBS)
 
-If you need the full tail-based sampling capabilities of APM Server, use APM Server with an Elasticsearch output. EDOT does not provide a managed TBS service.
+If you need the full tail-based sampling capabilities of APM Server, use APM Server with an {{es}} output. {{edot}} does not provide a managed TBS service.
 
-You can run tail-based sampling in a self-managed EDOT Collector or any contrib OTel Collector and ingest the sampled traces into Elastic, with these caveats:
+You can run tail-based sampling in a self-managed {{agent}} or any contrib OTel Collector and ingest the sampled traces into Elastic, with these caveats:
 
 * **Metric accuracy:** Counts and rate metrics reflect sampled data, not total volumes. The Elastic APM backend cannot extrapolate totals because the `tailsamplingprocessor` does not send sampling probability metadata.
 * **Service map coverage:** Some edges between services may be missing.

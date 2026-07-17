@@ -20,7 +20,7 @@ The {{motlp}} allows you to send OpenTelemetry data directly to {{ecloud}} using
 The endpoint provides a resilient ingestion layer that integrates with serverless autoscaling and offloads ingestion processing from {{ech}} clusters.
 
 :::{important}
-The {{motlp}} endpoint is not available for Elastic [self-managed](docs-content://deploy-manage/deploy/self-managed.md), [ECE](docs-content://deploy-manage/deploy/cloud-enterprise.md), or [ECK](docs-content://deploy-manage/deploy/cloud-on-k8s.md) clusters. To send OTLP data to any of these cluster types, deploy and expose an OTLP-compatible endpoint using the [EDOT Collector as a gateway](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway).
+The {{motlp}} endpoint is not available for Elastic [self-managed](docs-content://deploy-manage/deploy/self-managed.md), [ECE](docs-content://deploy-manage/deploy/cloud-enterprise.md), or [ECK](docs-content://deploy-manage/deploy/cloud-on-k8s.md) clusters. To send OTLP data to any of these cluster types, deploy and expose an OTLP-compatible endpoint using the [{{agent}} as a gateway](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway).
 :::
 
 ## Prerequisites
@@ -29,9 +29,9 @@ To use the {{ecloud}} {{motlp}} you need the following:
 
 - An {{serverless-full}} project or an {{ech}} (ECH) deployment.
 - An OTLP-compliant shipper capable of forwarding logs, metrics, or traces in OTLP format. This can include:
-  - [OpenTelemetry Collector](elastic-agent://reference/edot-collector/index.md) (EDOT, Contrib, or other distributions)
-  - [OpenTelemetry SDKs](/reference/edot-sdks/index.md) (EDOT, upstream, or other distributions)
-  - [EDOT Cloud Forwarder](/reference/edot-cloud-forwarder/index.md)
+  - [OpenTelemetry Collector](elastic-agent://reference/edot-collector/index.md) ({{edot}}, Contrib, or other distributions)
+  - [OpenTelemetry SDKs](/reference/edot-sdks/index.md) ({{edot}}, upstream, or other distributions)
+  - [{{edot-cf}}](/reference/edot-cloud-forwarder/index.md)
   - Any other forwarder that supports the OTLP protocol.
 
 You don't need APM Server when ingesting data through the Managed OTLP Endpoint. The APM integration (`.apm` endpoint) is a legacy ingest path that translates OTLP telemetry to ECS, whereas {{motlp}} natively ingests OTLP data.
@@ -169,7 +169,7 @@ The following limitations apply when using the {{motlp}}:
 * Universal Profiling is not available.
 * Only supports histograms with delta temporality. Cumulative histograms are dropped.
 * Latency distributions based on histogram values have limited precision due to the fixed boundaries of explicit bucket histograms.
-* Tail-based sampling (TBS) is not available. The {{motlp}} does not provide centralized hosted sampling. If you need tail-based sampling, configure it on the edge using the [Tail Sampling Processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor) in your EDOT or OpenTelemetry Collector before sending data to the endpoint.
+* Tail-based sampling (TBS) is not available. The {{motlp}} does not provide centralized hosted sampling. If you need tail-based sampling, configure it on the edge using the [Tail Sampling Processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor) in your {{edot}} or OpenTelemetry Collector before sending data to the endpoint.
 * In {{ech}} deployments:
   * [IP filters](docs-content://deploy-manage/security/ip-filtering-cloud.md) do not apply to the managed endpoint.
   * The endpoint is not available over a [private connection](docs-content://deploy-manage/security/private-connectivity.md). When private connectivity is configured, the public managed endpoint is still available.

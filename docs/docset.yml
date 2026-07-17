@@ -1,4 +1,4 @@
-project: 'EDOT documentation'
+project: 'Elastic OpenTelemetry documentation'
 cross_links:
   - apm-agent-android
   - apm-agent-dotnet
@@ -36,9 +36,10 @@ toc:
 
 subs:
   motlp: Elastic Cloud Managed OTLP Endpoint
-  edot: Elastic Distribution of OpenTelemetry
+  edot: Elastic OpenTelemetry
+  agent: "Elastic Agent"
   ecloud:   "Elastic Cloud"
-  edot-cf:   "EDOT Cloud Forwarder"
+  edot-cf:   "Elastic Cloud Forwarder"
   ech:   "Elastic Cloud Hosted"
   serverless-full:   "Elastic Cloud Serverless"
   stack:   "Elastic Stack"

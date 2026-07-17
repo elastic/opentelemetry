@@ -1,6 +1,6 @@
 ---
 navigation_title: Data streams comparison
-description: Learn how EDOT optimizes telemetry storage and query performance in Elastic Observability compared to classic APM and ECS-based integrations. 
+description: Learn how {{edot}} optimizes telemetry storage and query performance in {{product.observability}} compared to classic APM and ECS-based integrations. 
 applies_to:
   stack:
   serverless:
@@ -12,15 +12,15 @@ products:
   - id: edot-sdk
 ---
 
-# OpenTelemetry data streams compared to classic APM and ECS-based integrations
+# OpenTelemetry data streams compared to classic {{product.apm}} and ECS-based integrations
 
-The {{edot}} (EDOT) stores telemetry data using a storage model optimized for OpenTelemetry signals. When `mapping_mode: otel` is enabled on the {{es}} exporter (which is the default setting), EDOT writes logs, traces, and metrics to specialized data streams aligned with OpenTelemetry specifications.
+{{edot}} stores telemetry data using a storage model optimized for OpenTelemetry signals. When `mapping_mode: otel` is enabled on the {{es}} exporter (which is the default setting), {{edot}} writes logs, traces, and metrics to specialized data streams aligned with OpenTelemetry specifications.
 
 This architecture is designed for scalable observability workloads. It supports dynamic attributes, reduces mapping complexity, and avoids issues like mapping explosions or manual dimension setup.
 
-EDOT uses {{es}}’s [Logs data stream (LogsDB)](docs-content://manage-data/data-store/data-streams/logs-data-stream.md) and [Time Series Data Streams (TSDS)](docs-content://manage-data/data-store/data-streams/time-series-data-stream-tsds.md) as storage backends. These are purpose-built to handle the scale and variety of observability data and improve the storage efficiency.
+{{edot}} uses {{es}}'s [Logs data stream (LogsDB)](docs-content://manage-data/data-store/data-streams/logs-data-stream.md) and [Time Series Data Streams (TSDS)](docs-content://manage-data/data-store/data-streams/time-series-data-stream-tsds.md) as storage backends. These are purpose-built to handle the scale and variety of observability data and improve the storage efficiency.
 
-This page provides a detailed comparison of EDOT data streams with classic {{product.apm}} and ECS-based integrations. For a practical reference on which data streams EDOT uses, exporter behavior, and storage engines, see [EDOT data streams](../data-streams.md).
+This page provides a detailed comparison of {{edot}} data streams with classic {{product.apm}} and ECS-based integrations. For a practical reference on which data streams {{edot}} uses, exporter behavior, and storage engines, see [{{edot}} data streams](../data-streams.md).
 
 ## Logs and traces in LogsDB
 
@@ -31,26 +31,26 @@ Log and trace data is stored in [LogsDB](docs-content://manage-data/data-store/d
 
 ## Metrics in TSDS
 
-Metric data is stored using {{es}}’s [TSDS](docs-content://manage-data/data-store/data-streams/time-series-data-stream-tsds.md). Benefits include:
+Metric data is stored using {{es}}'s [TSDS](docs-content://manage-data/data-store/data-streams/time-series-data-stream-tsds.md). Benefits include:
 
 * Efficient storage using columnar compression  
 * Fast aggregations 
 * Automatic detection of metric dimensions (no need to manually define `time_series_dimension` in field mappings)
 
 
-## Comparison with classic APM data streams
+## Comparison with classic {{product.apm}} data streams
 
-This table highlights key differences between classic Elastic APM data streams and EDOT with `mapping_mode: otel`:
+This table highlights key differences between classic {{product.apm}} data streams and {{edot}} with `mapping_mode: otel`:
 
-| Feature                   | Classic {{product.apm}} (ECS-based)                                                                                                          | EDOT (`mapping_mode: otel`)                                                                                                          |
+| Feature                   | Classic {{product.apm}} (ECS-based)                                                                                                          | {{edot}} (`mapping_mode: otel`)                                                                                                          |
 |---|---|---|
 | Index mode | General-purpose data streams (logs, traces, metrics) <br><br> TSDS is not supported for classic {{product.apm}}. | LogsDB (logs/traces), TSDS (metrics) |
 | Mapping style | Nested objects are mapped as structured fields. Some exceptions exist, such as `labels.*` and `numeric_labels.*`, where dots in field names are replaced with underscores. <br><br> ECS supports multiple field types (keyword, long, double, date, boolean, and so on) as defined in the schema. | Native OpenTelemetry fields with `passthrough`, preserving types and structure. |
-| Attribute handling | Dynamic mapping. Custom attributes are stored under `labels.*` (strings) or `numeric_labels.*` (numbers); dots in field names are replaced with underscores. <br><br> See [Document examples - classic {{product.apm}}](#classic-apm) | Dynamic mapping with native types under `attributes.*`, preserving dots in field names. <br><br> See [Document examples - EDOT](#edot) |
+| Attribute handling | Dynamic mapping. Custom attributes are stored under `labels.*` (strings) or `numeric_labels.*` (numbers); dots in field names are replaced with underscores. <br><br> See [Document examples - classic {{product.apm}}](#classic-apm) | Dynamic mapping with native types under `attributes.*`, preserving dots in field names. <br><br> See [Document examples - {{edot}}](#edot) |
 
-### Query compatibility with classic APM data streams
+### Query compatibility with classic {{product.apm}} data streams
 
-EDOT is designed to make OpenTelemetry data queryable using many of the same field names as classic {{product.apm}} (ECS-based) data streams. This helps preserve compatibility with existing dashboards, saved searches, and queries.
+{{edot}} is designed to make OpenTelemetry data queryable using many of the same field names as classic {{product.apm}} (ECS-based) data streams. This helps preserve compatibility with existing dashboards, saved searches, and queries.
 
 Query compatibility is achieved through:
 
@@ -71,7 +71,7 @@ Refer to [ECS & OpenTelemetry](ecs://reference/ecs-opentelemetry.md) for details
 
 ### Document examples
 
-#### Classic APM
+#### Classic {{product.apm}} [classic-apm]
 
 ```yaml
 "@timestamp": "2025-08-14T05:29:43.922Z"
@@ -96,7 +96,7 @@ log:
   level: INFO
 ```
 
-#### EDOT
+#### {{edot}} [edot]
 
 ```yaml
 "@timestamp": "2025-08-14T05:29:43.922Z"
@@ -122,12 +122,12 @@ severity_text: INFO
 
 ## Comparison with ECS-based integrations
 
-While classic {{product.apm}} and EDOT represent two ingestion paths for application telemetry, Elastic’s integrations (for example Nginx, MySQL, Kubernetes) also produce ECS-based data streams for logs, metrics, and events. These use ECS mappings and integration-specific pipelines optimized for their domain.
+While classic {{product.apm}} and {{edot}} represent two ingestion paths for application telemetry, Elastic's integrations (for example Nginx, MySQL, Kubernetes) also produce ECS-based data streams for logs, metrics, and events. These use ECS mappings and integration-specific pipelines optimized for their domain.
 
 | Stream type | Typical field layout | Custom attributes / dot notation |
 |--------------|----------------------|----------------------------------|
 | **Integration ECS-based** | Uses ECS mapping tailored by integration. Custom fields are added under ECS-structured objects or `.custom` objects. Dots in field names are often disallowed or normalized to underscores. | Example: `host.os.name`, `nginx.access.time` rewritten to `nginx_access_time` |
-| **EDOT (OTel + passthrough)** | Stores OTel-native nested object structure (`resource.attributes.*`, `attributes.*`). Uses `passthrough` to expose fields at the top level for query compatibility. | Example: `attributes.cart.items: 42`, `resource.attributes.service.name: "checkout-service"` |
+| **{{edot}} (OTel + passthrough)** | Stores OTel-native nested object structure (`resource.attributes.*`, `attributes.*`). Uses `passthrough` to expose fields at the top level for query compatibility. | Example: `attributes.cart.items: 42`, `resource.attributes.service.name: "checkout-service"` |
 
 ### Integration example (Nginx access logs)
 
@@ -150,7 +150,7 @@ user:
 
 ## Summary of all data stream types
 
-| Feature | Classic {{product.apm}} (ECS-based) | Integration ECS-based streams | EDOT (`mapping_mode: otel`) |
+| Feature | Classic {{product.apm}} (ECS-based) | Integration ECS-based streams | {{edot}} (`mapping_mode: otel`) |
 |----------|-------------------------|-------------------------------|-----------------------------|
 | **Index mode** | General-purpose data streams (logs, traces, metrics); TSDS not supported | ECS-style data streams (logs, metrics, events) using integrations | LogsDB for logs/traces, TSDS for metrics |
 | **Mapping style** | ECS object mappings; nested fields preserved. `labels.*` / `numeric_labels.*` flatten dots. | ECS mappings or integration-altered schemas (flattening, renaming). | OTel-native nested layout with `passthrough`, preserving types and structure. |

@@ -12,14 +12,14 @@ products:
   - id: edot-sdk
 ---
 
-# EDOT compatibility and support
+# {{edot}} compatibility and support
 
 The following pages describe the compatibility and support levels for different OpenTelemetry Distributions.
 
 - [Features](features.md)
 - [Collectors](collectors.md)
 - [SDKs](sdks.md)
-- [EDOT compared to upstream OpenTelemetry](edot-vs-upstream.md)
+- [{{edot}} compared to upstream](edot-vs-upstream.md)
 - [Limitations](limitations.md)
 - [Nomenclature](nomenclature.md)
 - [Data streams comparison](data-streams.md)

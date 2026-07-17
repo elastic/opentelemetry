@@ -1,6 +1,6 @@
 ---
-navigation_title: EDOT Cloud Forwarder for GCP
-description: Set up the EDOT Cloud Forwarder for GCP to bring your GCP logs to Elastic Observability.
+navigation_title: Elastic Cloud Forwarder for GCP
+description: Set up {{edot-cf}} for GCP to bring your GCP logs to Elastic Observability.
 applies_to:
   serverless:
     observability: preview
@@ -15,7 +15,7 @@ products:
   - id: edot-cf
 ---
 
-# EDOT Cloud Forwarder for GCP
+# {{edot-cf}} for GCP
 
 {{edot-cf}} (ECF) for GCP is a managed data pipeline that sends your Google Cloud logs to {{product.observability}}. It uses Google Cloud Run and Pub/Sub under the hood to receive log events, process them with an OpenTelemetry Collector, and forward them to the {{motlp}}.
 
@@ -23,7 +23,7 @@ products:
 
 The architecture for the {{edot-cf}} GCP is as follows:
 
-![EDOT Cloud Forwarder GCP overview](../../images/edot-cloud-forwarder-gcp-overview.png)
+![{{edot-cf}} GCP overview](../../images/edot-cloud-forwarder-gcp-overview.png)
 
 At a high level, the deployment consists of:
 
@@ -283,7 +283,7 @@ The current retry logic treats all failures the same way, whether they're tempor
 ECF reads each log file fully into memory before forwarding it. As a result, peak memory usage grows with both file size and the number of concurrent requests. Our recommendations (1 vCPU, 512MiB, up to 10 concurrent requests) are based on internal tests with files up to about 8MB (~6,000 logs) each. If you send much larger files or significantly more logs per request, you might need to lower per‑instance concurrency, allocate more memory per instance, or do both to avoid out‑of‑memory issues.
 :::
 
-## Remove EDOT CF
+## Remove {{edot-cf}}
 
 To remove {{edot-cf}} for GCP, destroy the resources created by Terraform by running this command:
 
