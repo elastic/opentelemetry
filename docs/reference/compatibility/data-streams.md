@@ -38,7 +38,7 @@ Metric data is stored using {{es}}'s [TSDS](docs-content://manage-data/data-stor
 * Automatic detection of metric dimensions (no need to manually define `time_series_dimension` in field mappings)
 
 
-## Comparison with classic {{product.apm}} data streams
+## Comparison with classic {{product.apm}} data streams [comparison-with-classic-apm-data-streams]
 
 This table highlights key differences between classic {{product.apm}} data streams and {{edot}} with `mapping_mode: otel`:
 
