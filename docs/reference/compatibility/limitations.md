@@ -20,7 +20,7 @@ While {{edot}} and OTel-native data collection already covers most of the core O
 
 ## When to use the classic {{stack}} ingestion components instead of {{edot}}
 
-{{edot}} already supports most core observability use cases, but in some scenarios, you may prefer to use classic Elastic ingestion components, such as {{agent}}, {{product.apm-agent}} or {{product.apm-server}}:
+{{edot}} already supports most core observability use cases, but in some scenarios, you may prefer to use classic Elastic ingestion components, such as {{agent}} ({{product.fleet}}-managed), {{product.apm-agent}} or {{product.apm-server}}:
 
 * **Real user monitoring (RUM):** RUM ingestion and visualizations are not yet available for OTel-native data.
 * **Universal profiling:** This capability is currently only supported in the classic stack.

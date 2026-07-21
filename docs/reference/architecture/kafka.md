@@ -35,7 +35,7 @@ flowchart LR
 
 In this model:
 - An edge gateway collector receives OTLP from applications (for example, EDOT SDKs or other OTLP-compatible SDKs) and exports OTLP payloads to Kafka.
-- An {{edot}} backend collector consumes OTLP payloads from Kafka and exports to {{es}}.
+- An {{agent}} backend collector consumes OTLP payloads from Kafka and exports to {{es}}.
 
 ### {{ecloud}} (Hosted/Serverless) using mOTLP [elastic-cloud-motlp]
 
@@ -50,7 +50,7 @@ flowchart LR
 ```
 
 In this model:
-- An {{edot}} backend collector consumes OTLP payloads from Kafka and exports to the {{ecloud}} Managed OTLP endpoint (mOTLP) using the OTLP/HTTP exporter.
+- An {{agent}} backend collector consumes OTLP payloads from Kafka and exports to the {{ecloud}} Managed OTLP endpoint (mOTLP) using the OTLP/HTTP exporter.
 
 ## Components [components]
 

@@ -21,7 +21,7 @@ docs
     ├── architecture       # Architecture section
     ├── compatibility      # Compatibility and support
     ├── edot-collector     # Elastic Agent (OTel mode)
-    ├── edot-sdks          # Elastic OTel SDKs
+    ├── edot-sdks          # EDOT SDKs
     ├── images             # Images
     ├── quickstart         # Quickstarts
     └── use-cases          # Use cases

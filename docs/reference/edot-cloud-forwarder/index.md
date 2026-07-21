@@ -1,6 +1,6 @@
 ---
 navigation_title: Elastic Cloud Forwarder
-description: Introduction to {{edot-cf}}, the {{edot}} Collector for Cloud providers. Send your telemetry data to Elastic Stack from AWS, GCP, and Azure.
+description: Introduction to {{edot-cf}}, a cloud-native telemetry forwarder for AWS, GCP, and Azure.
 applies_to:
   serverless:
     observability: preview

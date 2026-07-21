@@ -1,6 +1,6 @@
 ---
 navigation_title: "{{edot}} compared to upstream"
-description: How {{edot}} compare to upstream OpenTelemetry components, including Collector, SDKs, Kubernetes Operator, and more.
+description: How {{edot}} compares to upstream OpenTelemetry components, including Collector, SDKs, Kubernetes Operator, and more.
 applies_to:
   stack:
   serverless:
