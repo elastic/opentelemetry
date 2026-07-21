@@ -43,9 +43,9 @@ Use the following terms consistently and respect capitalization.
 
 | Term | Description | Alias | Example |
 |---|---|---|---|
-| **Elastic OpenTelemetry** | Use to describe Elastic's OpenTelemetry offerings collectively | Elastic OTel | Use Elastic OpenTelemetry to instrument your applications and infrastructure and send telemetry to Elastic Observability. |
-| **Elastic OTel SDKs** | Use to describe the collection of all Elastic OTel language SDKs | — | With the Elastic OTel SDKs you have access to all the features of the OpenTelemetry SDK, plus Elastic-specific defaults and enhancements. |
-| **Elastic OTel {language}** | Use to refer to a specific language SDK | — | The Elastic OTel Java SDK is a Java package that provides an easy way to instrument your application with OpenTelemetry and configuration defaults for best usage. |
+| **Elastic OpenTelemetry** | Use to describe Elastic's OpenTelemetry brand collectively | Elastic OTel | Use Elastic OpenTelemetry to instrument your applications and infrastructure and send telemetry to Elastic Observability. |
+| **EDOT SDKs** | Use to describe the collection of Elastic language SDKs | EDOT {language} | With the EDOT SDKs you have access to all the features of the OpenTelemetry SDK that it customizes, plus... |
+| **EDOT {language}** | Use to refer to a specific language SDK | EDOT {language} | The EDOT Java SDK is a Java package that provides an easy way to instrument your application with OpenTelemetry and configuration defaults for best usage. |
 | **Elastic Agent** | Use to describe Elastic Agent running in OpenTelemetry mode (available from 9.5; formerly called the EDOT Collector). | — | Deploy Elastic Agent in OTel mode to collect and forward telemetry data to Elastic Observability. |
 | **Elastic Cloud Forwarder** | Use to describe the cloud-native forwarder for AWS, GCP, and Azure. | — | Use the Elastic Cloud Forwarder to send telemetry from your cloud environment to Elastic Observability. |
 | **Upstream** | Use to describe the upstream OpenTelemetry solutions. Do not use "vanilla" or other terms. | — | The upstream OpenTelemetry Collector is maintained by the OpenTelemetry community. |
@@ -54,7 +54,8 @@ Use the following terms consistently and respect capitalization.
 Keep these rules in mind when writing about Elastic OpenTelemetry:
 
 * Always use the full product name the first time you refer to the product on each page.
-* Avoid referring to "EDOT" as a product name in new content. It is a legacy term used before 9.5. Historical references in pre-9.5 release notes are acceptable.
+* EDOT SDK names (EDOT Java, EDOT Python, EDOT .NET, etc.) remain unchanged. Continue using the EDOT brand for SDK references.
+* For the Collector and generic brand, use the new Elastic names (Elastic Agent, Elastic OpenTelemetry).
 * Avoid overusing the full product name. Use the shorter alias after the first mention.
 
 ## Frontmatter

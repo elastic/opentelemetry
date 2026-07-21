@@ -1,6 +1,6 @@
 ---
 navigation_title: Central configuration
-description: Reference documentation for the central configuration of Elastic OTel SDKs.
+description: Reference documentation for the central configuration of EDOT SDKs.
 applies_to:
   stack: preview 9.1+
   serverless: unavailable
@@ -10,32 +10,32 @@ products:
   - id: edot-collector
 ---
 
-# Central configuration for Elastic OTel SDKs
+# Central configuration for EDOT SDKs
 
-Manage Elastic OTel SDKs through the {{product.apm-agent}} Central Configuration feature in the Applications UI. Changes are automatically propagated to the deployed Elastic OTel SDKs. Refer to [{{product.apm-agent}} Central Configuration](docs-content://solutions/observability/apm/apm-agent-central-configuration.md) for more information.
+Manage EDOT SDKs through the {{product.apm-agent}} Central Configuration feature in the Applications UI. Changes are automatically propagated to the deployed EDOT SDKs. Refer to [{{product.apm-agent}} Central Configuration](docs-content://solutions/observability/apm/apm-agent-central-configuration.md) for more information.
 
 This feature implements the Open Agent Management Protocol (OpAMP). Refer to [Open Agent Management Protocol
 ](https://opentelemetry.io/docs/specs/opamp/) for more information.
 
 ## Architecture
 
-The central configuration architecture lets you manage fleets of Elastic OTel SDKs remotely. The data flow, illustrated in this diagram, shows how configuration changes propagate from a central management point to each individual agent.
+The central configuration architecture lets you manage fleets of EDOT SDKs remotely. The data flow, illustrated in this diagram, shows how configuration changes propagate from a central management point to each individual agent.
 
 :::{image} ./images/central-config-edot.png
 :alt: Diagram of Central config architecture
 :::
 
-The process starts within {{product.kibana}}, where administrators create and manage settings for the Elastic OTel SDKs. Once defined, settings are written to and persisted in {{es}}, which acts as the single source of truth. The {{agent}}, when configured in Gateway mode, includes the Elastic {{product.apm}} Config Extension, which reads the SDK settings from {{product.elasticsearch}}, making them available for distribution.
+The process starts within {{product.kibana}}, where administrators create and manage settings for the EDOT SDKs. Once defined, settings are written to and persisted in {{es}}, which acts as the single source of truth. The {{agent}}, when configured in Gateway mode, includes the Elastic {{product.apm}} Config Extension, which reads the SDK settings from {{product.elasticsearch}}, making them available for distribution.
 
-Each Elastic OTel SDK contains an embedded OpAMP Client. Following the Open Agent Management Protocol (OpAMP), these clients periodically poll the OpAMP server, bundled with the Collector's {{product.apm}} Config Extension, over HTTP. This polling action allows the SDKs to retrieve the latest configuration updates, enabling dynamic and centralized control over their behavior without requiring manual intervention or redeployment.
+Each EDOT SDK contains an embedded OpAMP Client. Following the Open Agent Management Protocol (OpAMP), these clients periodically poll the OpAMP server, bundled with the Collector's {{product.apm}} Config Extension, over HTTP. This polling action allows the SDKs to retrieve the latest configuration updates, enabling dynamic and centralized control over their behavior without requiring manual intervention or redeployment.
 
 ## Prerequisites
 
-To use {{product.apm-agent}} Central Configuration for Elastic OTel SDKs, you need:
+To use {{product.apm-agent}} Central Configuration for EDOT SDKs, you need:
 
 * An Elastic self-managed or {{ecloud}} deployment, version 9.1 or later.
 * A standalone [{{agent}}](elastic-agent://reference/edot-collector/index.md), in either Agent or Collector mode.
-* Elastic OTel SDKs instrumenting your application.
+* EDOT SDKs instrumenting your application.
 
 The following versions of {{edot}} and {{stack}} support central configuration:
 
@@ -43,13 +43,13 @@ The following versions of {{edot}} and {{stack}} support central configuration:
 |-----------|----------------|
 | {{kib}} | 9.1 or later |
 | {{agent}} | 8.19, 9.1 or later |
-| Elastic OTel Android | 1.2.0 or later |
-| Elastic OTel iOS | 1.4.0 or later |
-| Elastic OTel Java | 1.5.0 or later |
-| Elastic OTel .NET | 1.4.0 or later |
-| Elastic OTel Node.js | 1.2.0 or later |
-| Elastic OTel PHP | 1.1.1 or later |
-| Elastic OTel Python | 1.4.0 or later |
+| EDOT Android | 1.2.0 or later |
+| EDOT iOS | 1.4.0 or later |
+| EDOT Java | 1.5.0 or later |
+| EDOT .NET | 1.4.0 or later |
+| EDOT Node.js | 1.2.0 or later |
+| EDOT PHP | 1.1.1 or later |
+| EDOT Python | 1.4.0 or later |
 
 ::::{note}
 Serverless deployments are not supported.
@@ -57,7 +57,7 @@ Serverless deployments are not supported.
 
 ## Activate central configuration
 
-To activate {{product.apm-agent}} Central Configuration for Elastic OTel SDKs, follow these steps.
+To activate {{product.apm-agent}} Central Configuration for EDOT SDKs, follow these steps.
 
 ::::::{stepper}
 
@@ -69,7 +69,7 @@ You need a valid {{es}} API key to authenticate to the {{es}} endpoint.
 
 :::::{step} Create an Elasticsearch API key for central configuration
 
-Create an API key with the `config_agent:read` privilege. Elastic OTel SDKs use this API key, and the Collector validates it.
+Create an API key with the `config_agent:read` privilege. EDOT SDKs use this API key, and the Collector validates it.
 
 Use the following API request to generate the key:
 
@@ -105,7 +105,7 @@ POST /_security/api_key
 ::::{note}
 The {{agent}} doesn't store or embed the {{es}} API key.
 
-Each Elastic OTel SDK must send its own API key in the `Authorization` header (for example: `Authorization: ApiKey <Base64(id:key)>`).
+Each EDOT SDK must send its own API key in the `Authorization` header (for example: `Authorization: ApiKey <Base64(id:key)>`).
 
 The `apikeyauth` extension only validates this API key against {{es}}, ensuring it includes the `config_agent:read` privilege with `resources: ["*"]`.
 ::::
@@ -174,19 +174,19 @@ export ELASTIC_OTEL_OPAMP_HEADERS="Authorization=ApiKey an_api_key"
 Restart the instrumented application to apply the changes.
 
 :::{important}
-Support for the `ELASTIC_OTEL_OPAMP_HEADERS` environment variable depends on each SDK. Refer to the configuration reference of each Elastic OTel SDK for more information.
+Support for the `ELASTIC_OTEL_OPAMP_HEADERS` environment variable depends on each SDK. Refer to the configuration reference of each EDOT SDK for more information.
 :::
 
 :::::
 
-:::::{step} Check that the Elastic OTel SDK shows up
+:::::{step} Check that the EDOT SDK shows up
 
-Allow time for the Elastic OTel SDK to appear in {{kib}} under Agent Configuration.
+Allow time for the EDOT SDK to appear in {{kib}} under Agent Configuration.
 
 1. Go to **{{kib}}** → **Observability** → **Applications** and select a service.
 2. Select **Settings** and go to **Agent Configuration**.
 
-Your application must produce and send telemetry data for the Elastic OTel SDK to appear in Agent Configuration. This is because central configuration requires an application name as the key, which can't be defined until the application name is associated with the Elastic OTel SDK agent after receiving telemetry.
+Your application must produce and send telemetry data for the EDOT SDK to appear in Agent Configuration. This is because central configuration requires an application name as the key, which can't be defined until the application name is associated with the EDOT SDK agent after receiving telemetry.
 
 :::{note}
 Central configuration uses the `service.name` and `deployment.environment.name` OpenTelemetry resource attributes to target specific instances with a configuration. If no environment is specified, the central configuration feature will match `All` as the environment.
@@ -198,15 +198,15 @@ Central configuration uses the `service.name` and `deployment.environment.name` 
 
 ## Supported settings
 
-For a list of settings that you can configure through {{product.apm-agent}} Central Configuration, refer to the configuration reference of each Elastic OTel SDK:
+For a list of settings that you can configure through {{product.apm-agent}} Central Configuration, refer to the configuration reference of each EDOT SDK:
 
-- [Elastic OTel Android](apm-agent-android://reference/edot-android/configuration.md#central-configuration)
-- [Elastic OTel iOS](apm-agent-ios://reference/edot-ios/configuration.md#central-configuration-edot)
-- [Elastic OTel Java](elastic-otel-java://reference/edot-java/configuration.md#central-configuration)
-- [Elastic OTel .NET](elastic-otel-dotnet://reference/edot-dotnet/configuration.md)
-- [Elastic OTel Node.js](elastic-otel-node://reference/edot-node/configuration.md#central-configuration)
-- [Elastic OTel PHP](elastic-otel-php://reference/edot-php/configuration.md#central-configuration)
-- [Elastic OTel Python](elastic-otel-python://reference/edot-python/configuration.md#central-configuration)
+- [EDOT Android](apm-agent-android://reference/edot-android/configuration.md#central-configuration)
+- [EDOT iOS](apm-agent-ios://reference/edot-ios/configuration.md#central-configuration-edot)
+- [EDOT Java](elastic-otel-java://reference/edot-java/configuration.md#central-configuration)
+- [EDOT .NET](elastic-otel-dotnet://reference/edot-dotnet/configuration.md)
+- [EDOT Node.js](elastic-otel-node://reference/edot-node/configuration.md#central-configuration)
+- [EDOT PHP](elastic-otel-php://reference/edot-php/configuration.md#central-configuration)
+- [EDOT Python](elastic-otel-python://reference/edot-python/configuration.md#central-configuration)
 
 ## Advanced configuration
 
@@ -214,10 +214,10 @@ For a list of settings that you can configure through {{product.apm-agent}} Cent
 stack: preview 9.2
 ```
 
-The **Advanced Configuration** feature allows you to define custom configuration options as key-value pairs. Settings are passed directly to your Elastic OTel SDK.
+The **Advanced Configuration** feature allows you to define custom configuration options as key-value pairs. Settings are passed directly to your EDOT SDK.
 
 :::{warning}
-Use this feature with caution. An incorrect or incompatible setting might affect the behavior of the Elastic OTel SDK.
+Use this feature with caution. An incorrect or incompatible setting might affect the behavior of the EDOT SDK.
 :::
 
 ## Deactivate central configuration

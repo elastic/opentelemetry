@@ -31,7 +31,7 @@ The following table summarizes the key differences:
 | Deployment | Same deployment methods as upstream, with ready-to-use default configurations. | Users provide their own configuration. |
 | Central management | Central configuration of SDKs and Collectors through [OpAMP](/reference/central-configuration.md), including a managed OpAMP server. | OpAMP protocol is supported, but no managed server is provided. |
 | Compatibility | Fully tested with {{stack}} components. | Compatible, but not tested or supported by Elastic. |
-| Updates | {{agent}} releases align with {{stack}}. Elastic OTel SDKs follow the upstream OpenTelemetry release cycle. | Follows the upstream OpenTelemetry release cycle. |
+| Updates | {{agent}} releases align with {{stack}}. EDOT SDKs follow the upstream OpenTelemetry release cycle. | Follows the upstream OpenTelemetry release cycle. |
 
 The following sections describe how this general comparison applies to each {{edot}} component.
 
@@ -45,42 +45,42 @@ The upstream OpenTelemetry project does not ship a single, recommended Collector
 
 Users who need a Collector build that differs from the standard {{agent}} can follow the [custom Collector guide](elastic-agent://reference/edot-collector/custom-collector.md), which describes the required components and preprocessing pipelines for Elastic compatibility. For the full list of components included in {{agent}}, refer to the [{{agent}} components](elastic-agent://reference/edot-collector/components.md) page.
 
-## Elastic OTel SDKs
+## EDOT SDKs
 
 OpenTelemetry language SDKs provide the instrumentation libraries that applications use to generate traces, metrics, and logs. The upstream project publishes reference SDKs for each supported language. Vendors can wrap these into [distributions](https://opentelemetry.io/docs/concepts/distributions/)  that add defaults, extensions, or vendor-specific improvements.
 
-Elastic OTel SDKs are such distributions. They maintain full compatibility with the OpenTelemetry specification and come with preselected instrumentations that enable [zero-code instrumentation](https://opentelemetry.io/docs/concepts/instrumentation/zero-code/) by default.
+EDOT SDKs are such distributions. They maintain full compatibility with the OpenTelemetry specification and come with preselected instrumentations that enable [zero-code instrumentation](https://opentelemetry.io/docs/concepts/instrumentation/zero-code/) by default.
 
-The following Elastic OTel SDKs are available:
+The following EDOT SDKs are available:
 
-- [Elastic OTel .NET](elastic-otel-dotnet://reference/edot-dotnet/index.md)
-- [Elastic OTel Java](elastic-otel-java://reference/edot-java/index.md)
-- [Elastic OTel Node.js](elastic-otel-node://reference/edot-node/index.md)
-- [Elastic OTel PHP](elastic-otel-php://reference/edot-php/index.md)
-- [Elastic OTel Python](elastic-otel-python://reference/edot-python/index.md)
-- [Elastic OTel Android](apm-agent-android://reference/edot-android/index.md)
-- [Elastic OTel iOS](apm-agent-ios://reference/edot-ios/index.md)
+- [EDOT .NET](elastic-otel-dotnet://reference/edot-dotnet/index.md)
+- [EDOT Java](elastic-otel-java://reference/edot-java/index.md)
+- [EDOT Node.js](elastic-otel-node://reference/edot-node/index.md)
+- [EDOT PHP](elastic-otel-php://reference/edot-php/index.md)
+- [EDOT Python](elastic-otel-python://reference/edot-python/index.md)
+- [EDOT Android](apm-agent-android://reference/edot-android/index.md)
+- [EDOT iOS](apm-agent-ios://reference/edot-ios/index.md)
 
-Due to current upstream limitations, some capabilities are temporarily available only in Elastic OTel SDKs. Elastic is actively working to contribute these upstream so that they become part of the standard OpenTelemetry SDKs. Refer to the [Elastic OTel SDKs overview](/reference/edot-sdks/index.md) for the full feature matrix across languages.
+Due to current upstream limitations, some capabilities are temporarily available only in EDOT SDKs. Elastic is actively working to contribute these upstream so that they become part of the standard OpenTelemetry SDKs. Refer to the [EDOT SDKs overview](/reference/edot-sdks/index.md) for the full feature matrix across languages.
 
 | Capability | Status |
 |------------|--------|
 | Inferred spans | Available in {{edot}} only. Generates spans from profiling data without manual instrumentation, closing visibility gaps that auto-instrumentation does not cover. |
 | Central configuration | Available in {{edot}} only. Manages SDK settings from {{kib}} through the {{agent}} using [OpAMP](/reference/central-configuration.md). Most SDKs apply configuration changes dynamically, without restarting or redeploying applications. |
-| Profiling integration | Available in Elastic OTel Java only. Correlates traces with continuous profiling data for deeper performance analysis. |
+| Profiling integration | Available in EDOT Java only. Correlates traces with continuous profiling data for deeper performance analysis. |
 | Crash reporting | Available in {{edot}} only. Captures native crash data on mobile platforms for post-mortem analysis. |
 
 Upstream OTel SDKs are technically [Compatible] with Elastic and can send data through the same ingestion paths, but Elastic does not provide official support or troubleshooting assistance for them. Refer to the [SDK compatibility table](sdks.md) for version-level details.
 
 :::{important}
-Elastic OTel SDKs are designed to export telemetry through the [{{agent}}](elastic-agent://reference/edot-collector/index.md) or the [{{motlp}}](/reference/managed-inputs/managed-otlp-endpoint.md). Using Elastic OTel SDKs directly with {{product.apm-server}}'s OpenTelemetry intake is not supported — attribute mapping, enrichment, and processing pipelines are not guaranteed on that path.
+EDOT SDKs are designed to export telemetry through the [{{agent}}](elastic-agent://reference/edot-collector/index.md) or the [{{motlp}}](/reference/managed-inputs/managed-otlp-endpoint.md). Using EDOT SDKs directly with {{product.apm-server}}'s OpenTelemetry intake is not supported — attribute mapping, enrichment, and processing pipelines are not guaranteed on that path.
 :::
 
 ## Kubernetes Operator
 
 {{edot}} does not ship its own Kubernetes operator. Instead, {{edot}} deployments on Kubernetes rely on the upstream [OpenTelemetry Operator](https://opentelemetry.io/docs/platforms/kubernetes/operator/), which manages Collector deployments and auto-instrumentation of workloads through Kubernetes custom resource definitions (CRDs).
 
-In an {{edot}}-based Kubernetes setup, the operator's `OpenTelemetryCollector` CRD deploys {{agent}} images as DaemonSets, Deployments, or StatefulSets, and the `Instrumentation` CRD is configured to inject Elastic OTel SDK images (for example, `docker.elastic.co/observability/elastic-otel-javaagent`) instead of the default upstream images. The operator handles the mechanics of admission webhooks and init container injection, while {{edot}} provides the container images and configurations that the operator deploys.
+In an {{edot}}-based Kubernetes setup, the operator's `OpenTelemetryCollector` CRD deploys {{agent}} images as DaemonSets, Deployments, or StatefulSets, and the `Instrumentation` CRD is configured to inject EDOT SDK images (for example, `docker.elastic.co/observability/elastic-otel-javaagent`) instead of the default upstream images. The operator handles the mechanics of admission webhooks and init container injection, while {{edot}} provides the container images and configurations that the operator deploys.
 
 This creates a dual support model. The operator itself is an upstream community project and receives community support. The {{agent}} and SDK images that the operator deploys are covered by Elastic support under the same terms as their standalone counterparts. When filing issues, distinguish between operator behavior (community support) and {{edot}} component behavior (Elastic support).
 

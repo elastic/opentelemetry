@@ -28,13 +28,13 @@ The following {{edot}} distributions are available:
 | Distribution | Latest version | Current status |
 | ------------ | ------- | ------ |
 | [{{agent}}](elastic-agent://reference/edot-collector/index.md) | {{version.edot_collector}} | GA |
-| [Elastic OTel .NET](elastic-otel-dotnet://reference/edot-dotnet/index.md) | {{version.edot_dotnet}} | GA |
-| [Elastic OTel Java](elastic-otel-java://reference/edot-java/index.md) | {{version.edot_java}} | GA |
-| [Elastic OTel Node.js](elastic-otel-node://reference/edot-node/index.md) | {{version.edot_node}} | GA |
-| [Elastic OTel PHP](elastic-otel-php://reference/edot-php/index.md) | {{version.edot_php}} | GA |
-| [Elastic OTel Python](elastic-otel-python://reference/edot-python/index.md) | {{version.edot_python}} | GA |
-| [Elastic OTel Android](apm-agent-android://reference/edot-android/index.md) | {{version.edot_android}} | GA |
-| [Elastic OTel iOS](apm-agent-ios://reference/edot-ios/index.md) | {{version.edot_ios}} | GA |
+| [EDOT .NET](elastic-otel-dotnet://reference/edot-dotnet/index.md) | {{version.edot_dotnet}} | GA |
+| [EDOT Java](elastic-otel-java://reference/edot-java/index.md) | {{version.edot_java}} | GA |
+| [EDOT Node.js](elastic-otel-node://reference/edot-node/index.md) | {{version.edot_node}} | GA |
+| [EDOT PHP](elastic-otel-php://reference/edot-php/index.md) | {{version.edot_php}} | GA |
+| [EDOT Python](elastic-otel-python://reference/edot-python/index.md) | {{version.edot_python}} | GA |
+| [EDOT Android](apm-agent-android://reference/edot-android/index.md) | {{version.edot_android}} | GA |
+| [EDOT iOS](apm-agent-ios://reference/edot-ios/index.md) | {{version.edot_ios}} | GA |
 | [{{product.edot-cf-aws}}](edot-cloud-forwarder-aws://reference/edot-cf-aws/index.md) | {{version.edot_cf_aws}} | GA |
 | [{{product.edot-cf-azure}}](edot-cloud-forwarder-azure://reference/edot-cf-azure/index.md) | {{version.edot_cf_aws}} | Technical Preview |
 | [{{edot-cf}} for GCP](/reference/edot-cloud-forwarder/gcp/index.md) | {{version.edot_cf_gcp}} | Technical Preview |

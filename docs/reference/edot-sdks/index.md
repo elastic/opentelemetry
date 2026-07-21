@@ -1,6 +1,6 @@
 ---
-navigation_title: Elastic OTel SDKs
-description: An overview of the features available in the Elastic OTel SDKs for various languages.
+navigation_title: EDOT SDKs
+description: An overview of the features available in the EDOT SDKs for various languages.
 applies_to:
   stack:
   serverless:
@@ -11,15 +11,15 @@ products:
   - id: edot-sdk
 ---
 
-# Elastic OTel SDKs
+# EDOT SDKs
 
-The Elastic OTel SDKs are production-ready, customized distributions of [OpenTelemetry](https://opentelemetry.io/) language SDKs, specifically optimized for seamless integration with {{product.observability}}. Elastic OTel SDKs provide a comprehensive observability solution that automatically captures distributed traces, metrics, and logs from your applications with minimal configuration.
+The EDOT SDKs are production-ready, customized distributions of [OpenTelemetry](https://opentelemetry.io/) language SDKs, specifically optimized for seamless integration with {{product.observability}}. EDOT SDKs provide a comprehensive observability solution that automatically captures distributed traces, metrics, and logs from your applications with minimal configuration.
 
-While maintaining full compatibility with the OpenTelemetry specification, Elastic OTel SDKs provide improvements and bug fixes from Elastic before they become available in contrib OpenTelemetry repositories.
+While maintaining full compatibility with the OpenTelemetry specification, EDOT SDKs provide improvements and bug fixes from Elastic before they become available in contrib OpenTelemetry repositories.
 
 ## Supported languages
 
-Elastic OTel SDKs are available for the following programming languages and platforms:
+EDOT SDKs are available for the following programming languages and platforms:
 
 * [.NET](elastic-otel-dotnet://reference/edot-dotnet/index.md)
 * [Java](elastic-otel-java://reference/edot-java/index.md)
@@ -32,9 +32,9 @@ Elastic OTel SDKs are available for the following programming languages and plat
 
 ## Feature overview
 
-This table provides an overview of the features available in the Elastic OTel SDKs across different programming languages.
+This table provides an overview of the features available in the EDOT SDKs across different programming languages.
 
-% The following table is automatically generated from the Elastic OTel SDKs feature data.
+% The following table is automatically generated from the EDOT SDKs feature data.
 % Automation is handled by /scripts/tools.py, which reads /docs/reference/edot-sdks/features.yml
 % and generates the table using a Jinja2 template.
 
@@ -77,11 +77,11 @@ This table provides an overview of the features available in the Elastic OTel SD
 
 % end:edot-features
 
-## Support for Elastic OTel SDKs
+## Support for EDOT SDKs
 
-Elastic provides technical support for Elastic OTel Language SDKs according to Elastic's [Support Policy](https://www.elastic.co/support_policy). Elastic OTel SDKs are meant to be used in combination with the [{{agent}}](elastic-agent://reference/edot-collector/index.md) or the [{{motlp}}](/reference/managed-inputs/managed-otlp-endpoint.md) to ingest data into Elastic solutions from the Elastic OTel SDKs. Other ingestion paths are not officially supported by Elastic.
+Elastic provides technical support for Elastic OTel Language SDKs according to Elastic's [Support Policy](https://www.elastic.co/support_policy). EDOT SDKs are meant to be used in combination with the [{{agent}}](elastic-agent://reference/edot-collector/index.md) or the [{{motlp}}](/reference/managed-inputs/managed-otlp-endpoint.md) to ingest data into Elastic solutions from the EDOT SDKs. Other ingestion paths are not officially supported by Elastic.
 
-Using Elastic OTel SDKs directly with {{product.apm-server}}'s OpenTelemetry intake endpoint is not supported.  
+Using EDOT SDKs directly with {{product.apm-server}}'s OpenTelemetry intake endpoint is not supported.  
 While some data might ingest, Elastic doesn't guarantee:
 
 - Correctness of attributes  
@@ -92,9 +92,9 @@ While some data might ingest, Elastic doesn't guarantee:
 If you require a supported setup, route SDK telemetry through {{agent}} or use Managed OTel intake.
 
 :::{warning}
-Avoid using Elastic OTel SDKs alongside any other {{product.apm}} agent, including Elastic {{product.apm}} agents. Running multiple agents in the same application process might lead to conflicting instrumentation, duplicate telemetry, or other unexpected behavior.
+Avoid using EDOT SDKs alongside any other {{product.apm}} agent, including Elastic {{product.apm}} agents. Running multiple agents in the same application process might lead to conflicting instrumentation, duplicate telemetry, or other unexpected behavior.
 :::
 
 ## License
 
-Elastic OTel SDKs are licensed under the [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0).
+EDOT SDKs are licensed under the [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0).
