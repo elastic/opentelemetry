@@ -20,6 +20,10 @@ Each {{edot}} distribution is assembled with selected OpenTelemetry components a
 
 [OpenTelemetry](https://opentelemetry.io/docs/) is a vendor-neutral observability framework for collecting, processing, and exporting telemetry data. If you are new to OpenTelemetry, refer to OpenTelemetry [concepts](https://opentelemetry.io/docs/concepts/) and [components](https://opentelemetry.io/docs/concepts/components/). Refer to [{{edot}} compared to upstream OpenTelemetry](/reference/compatibility/edot-vs-upstream.md) for more information on how {{edot}} differs from upstream OpenTelemetry components.
 
+:::{note}
+**Name changes in 9.5:** The EDOT Collector is now **{{agent}}** running in OpenTelemetry mode. The {{product.edot-cf}} is now the **{{edot-cf}}**.
+:::
+
 
 ## Available OpenTelemetry distributions
 
