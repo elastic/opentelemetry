@@ -12,7 +12,7 @@ products:
 
 # Central configuration for EDOT SDKs
 
-Manage {{edot}} (EDOT) SDKs through the {{product.apm-agent}} Central Configuration feature in the Applications UI. Changes are automatically propagated to the deployed EDOT SDKs. Refer to [{{product.apm-agent}} Central Configuration](docs-content://solutions/observability/apm/apm-agent-central-configuration.md) for more information.
+Manage EDOT SDKs through the {{product.apm-agent}} Central Configuration feature in the Applications UI. Changes are automatically propagated to the deployed EDOT SDKs. Refer to [{{product.apm-agent}} Central Configuration](docs-content://solutions/observability/apm/apm-agent-central-configuration.md) for more information.
 
 This feature implements the Open Agent Management Protocol (OpAMP). Refer to [Open Agent Management Protocol
 ](https://opentelemetry.io/docs/specs/opamp/) for more information.
@@ -25,7 +25,7 @@ The central configuration architecture lets you manage fleets of EDOT SDKs remot
 :alt: Diagram of Central config architecture
 :::
 
-The process starts within {{product.kibana}}, where administrators create and manage settings for the EDOT SDKs. Once defined, settings are written to and persisted in {{es}}, which acts as the single source of truth. The EDOT Collector, when configured in Gateway mode, includes the Elastic {{product.apm}} Config Extension, which reads the SDK settings from {{product.elasticsearch}}, making them available for distribution.
+The process starts within {{product.kibana}}, where administrators create and manage settings for the EDOT SDKs. Once defined, settings are written to and persisted in {{es}}, which acts as the single source of truth. The {{agent}}, when configured in Gateway mode, includes the Elastic {{product.apm}} Config Extension, which reads the SDK settings from {{product.elasticsearch}}, making them available for distribution.
 
 Each EDOT SDK contains an embedded OpAMP Client. Following the Open Agent Management Protocol (OpAMP), these clients periodically poll the OpAMP server, bundled with the Collector's {{product.apm}} Config Extension, over HTTP. This polling action allows the SDKs to retrieve the latest configuration updates, enabling dynamic and centralized control over their behavior without requiring manual intervention or redeployment.
 
@@ -34,15 +34,15 @@ Each EDOT SDK contains an embedded OpAMP Client. Following the Open Agent Manage
 To use {{product.apm-agent}} Central Configuration for EDOT SDKs, you need:
 
 * An Elastic self-managed or {{ecloud}} deployment, version 9.1 or later.
-* A standalone [EDOT Collector](elastic-agent://reference/edot-collector/index.md), in either Agent or Collector mode.
+* A standalone [{{agent}}](elastic-agent://reference/edot-collector/index.md), in either Agent or Collector mode.
 * EDOT SDKs instrumenting your application.
 
-The following versions of EDOT and {{stack}} support central configuration:
+The following versions of {{edot}} and {{stack}} support central configuration:
 
 | Component | Minimum version |
 |-----------|----------------|
 | {{kib}} | 9.1 or later |
-| EDOT Collector | 8.19, 9.1 or later |
+| {{agent}} | 8.19, 9.1 or later |
 | EDOT Android | 1.2.0 or later |
 | EDOT iOS | 1.4.0 or later |
 | EDOT Java | 1.5.0 or later |
@@ -103,7 +103,7 @@ POST /_security/api_key
 ```
 
 ::::{note}
-The EDOT Collector doesn't store or embed the {{es}} API key.
+The {{agent}} doesn't store or embed the {{es}} API key.
 
 Each EDOT SDK must send its own API key in the `Authorization` header (for example: `Authorization: ApiKey <Base64(id:key)>`).
 
@@ -144,16 +144,16 @@ POST /_security/api_key
 
 :::::
 
-:::::{step} Edit the EDOT Collector configuration
+:::::{step} Edit the {{agent}} configuration
 
-Edit the [EDOT Collector configuration](elastic-agent://reference/edot-collector/config/default-config-standalone.md#central-configuration) to activate the central configuration feature:
+Edit the [{{agent}} configuration](elastic-agent://reference/edot-collector/config/default-config-standalone.md#central-configuration) to activate the central configuration feature:
 
 :::{include} _snippets/edot-collector-auth.md
 :::
 
 Restart the Elastic Agent to also restart the Collector and apply the changes.
 
-Refer to [Secure connection](elastic-agent://reference/edot-collector/config/default-config-standalone.md#secure-connection) if you need to secure the connection between the EDOT Collector and Elastic using TLS or mutual TLS.
+Refer to [Secure connection](elastic-agent://reference/edot-collector/config/default-config-standalone.md#secure-connection) if you need to secure the connection between the {{agent}} and Elastic using TLS or mutual TLS.
 
 :::::
 

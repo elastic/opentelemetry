@@ -26,7 +26,7 @@ The following sections provide troubleshooting information for the Elastic Cloud
 
 ### Resolution
 
-Set up an EDOT collector using one of the quickstart guides:
+Set up an {{agent}} using one of the quickstart guides:
 
 - [Kubernetes Quickstart](https://www.elastic.co/docs/solutions/observability/get-started/opentelemetry/quickstart/serverless/k8s)
 - [Hosts & VMs Quickstart](https://www.elastic.co/docs/solutions/observability/get-started/opentelemetry/quickstart/serverless/hosts_vms)
@@ -72,7 +72,7 @@ Your project might be hitting ingest rate limits. Refer to the dedicated [429 er
 
 ### Resolution
 
-Reduce the payload size sent by your collector by lowering batching limits. In the EDOT Collector (and upstream or contrib collectors), you can reduce the maximum batch size (in uncompressed bytes) so each request stays smaller.
+Reduce the payload size sent by your collector by lowering batching limits. In the {{agent}} (and upstream or contrib collectors), you can reduce the maximum batch size (in uncompressed bytes) so each request stays smaller.
 
 For configuration guidance and the recommended batching settings for sending data to the Elastic Cloud Managed OTLP Endpoint, refer to [Batching configuration for contrib OpenTelemetry Collector](elastic-agent://reference/edot-collector/config/default-config-standalone.md#batching-configuration-for-contrib-opentelemetry-collector).
 
@@ -145,4 +145,4 @@ For more information, refer to [AutoOps](docs-content://deploy-manage/monitor/au
 
 Help improve the Elastic Cloud Managed OTLP Endpoint by sending us feedback in our [discussion forum](https://discuss.elastic.co/c/apm) or [community Slack](https://elasticstack.slack.com/signup#/domain-signup).
 
-For EDOT collector feedback, open an issue in the [elastic-agent repository](https://github.com/elastic/elastic-agent/issues).
+For {{agent}} feedback, open an issue in the [elastic-agent repository](https://github.com/elastic/elastic-agent/issues).

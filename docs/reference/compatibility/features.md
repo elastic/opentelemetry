@@ -1,6 +1,6 @@
 ---
 navigation_title: Features
-description: Overview of Elastic features available with EDOT.
+description: Overview of Elastic features available with {{edot}}.
 applies_to:
   stack:
   serverless:
@@ -12,13 +12,13 @@ products:
   - id: edot-sdk
 ---
 
-# Elastic features available with EDOT
+# Elastic features available with {{edot}}
 
-The following table shows Elastic features and their level of support and compatibility with Elastic Distributions of OpenTelemetry (EDOT). Refer to the [SDKs Overview](/reference/edot-sdks/index.md) for SDK-specific features.
+The following table shows Elastic features and their level of support and compatibility with {{edot}}. Refer to the [SDKs Overview](/reference/edot-sdks/index.md) for SDK-specific features.
 
 | Feature                                                     | Compatibility    | Support level    |
 | :-----------------------------------------------------------| :--------------- | :--------------- |
-| **APM**                                                     | [Compatible]     | [Supported]      |
+| **{{product.apm}}**                                         | [Compatible]     | [Supported]      |
 | [Service Maps]                                              | [Compatible]     | [Supported]      |
 | [Distributed Tracing]                                       | [Compatible]     | [Supported]      |
 | [Head-based Sampling (HBS)]                                 | [Compatible]     | [Supported]      |
