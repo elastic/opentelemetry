@@ -1,2 +1,2 @@
-*.md @theletterf @elastic/ingest-docs 
-/docs/ @theletterf @elastic/ingest-docs 
+*.md @elastic/ski-docs 
+/docs/ @elastic/ski-docs
