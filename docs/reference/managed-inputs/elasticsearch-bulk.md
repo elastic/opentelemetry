@@ -44,6 +44,7 @@ On {{serverless-full}} and {{ech}}, prefer the Managed {{es}} _bulk endpoint ove
 - An {{serverless-full}} Observability or Security project, or an {{ech}} deployment on {{stack}} version 9.0 or later.
 - A `_bulk`-compatible shipper, such as {{product.beats}}, {{product.elastic-agent}}, {{product.logstash}}, or another shipper with an {{es}} output.
 - A managed inputs API key with the `event:write` privilege for the `apm` application. Refer to [Authentication](authentication-delivery-and-failure-handling.md#authentication) for the required key format and generation steps.
+- Any {{es}} index templates and {{kib}} assets your shipper relies on, installed beforehand. The endpoint doesn't install them for you. Refer to [Limitations](#limitations).
 
 ## Set up the Managed {{es}} _bulk endpoint [set-up]
 
@@ -139,8 +140,9 @@ Under load, or when the service can't accept more data, the endpoint can respond
 
 The following limitations apply when using the Managed {{es}} _bulk endpoint:
 
-- Only `create` actions are supported. Requests that use `index`, `update`, or `delete` actions are rejected with `400 Bad Request`. This suits append-only data streams, which is the typical target for logs and metrics.
+- Only `create` actions are supported. Requests that use `index`, `update`, or `delete` actions are rejected with `400 Bad Request`. This suits append-only data streams, which is the typical target for logs and metrics. For {{product.logstash}}, the `elasticsearch` output must use `action => "create"`. Features that depend on other actions, such as scripted upserts, aren't supported.
 - Duplicate detection isn't applied. The endpoint doesn't deduplicate documents by `_id`, so client retries can produce duplicate documents.
+- Index templates, index lifecycle management (ILM) policies, and {{kib}} assets can't be installed through the endpoint, which serves only the root (`/`), license (`/_es/_license`), and `_bulk` paths. {{product.beats}}, {{product.elastic-agent}}, and {{product.logstash}} setup steps that create index templates or load dashboards must run against {{es}} and {{kib}} directly before you send data.
 - For {{ech}} network limitations that apply to all managed inputs, refer to [{{ech}} limitations](authentication-delivery-and-failure-handling.md#ech-limitations).
 
 ## Related pages [related-pages]
