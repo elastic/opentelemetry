@@ -10,7 +10,7 @@ products:
   - id: observability
 ---
 
-# Ingest Prometheus metrics with managed inputs [prometheus-remote-write]
+# Ingest Prometheus metrics with the Managed Prometheus Remote Write endpoint [prometheus-remote-write]
 
 The Managed Prometheus Remote Write endpoint ingests metrics sent in the [Prometheus Remote Write v1](https://prometheus.io/docs/specs/remote_write_spec/) (PRW) protocol. It accepts PRW traffic natively, so you don't need to convert metrics to OTLP, and it's a dedicated [managed input](index.md) separate from the [Managed OTLP Endpoint](managed-otlp-endpoint.md). Metrics land in {{es}} time series data streams (TSDS), the same result as sending PRW directly to {{es}}.
 
@@ -31,7 +31,7 @@ Direct ingest bypasses managed inputs and has no buffering or processing before 
 ## Prerequisites
 
 - An {{serverless-full}} Observability or Security project.
-- A managed inputs API key with the `event:write` privilege for the `apm` application. Refer to [Authentication](managed-otlp-endpoint.md#authentication) for the required key format and generation steps.
+- A managed inputs API key with the `event:write` privilege for the `apm` application. Refer to [Authentication](authentication-delivery-and-failure-handling.md#authentication) for the required key format and generation steps.
 
 ## Send Prometheus metrics through managed inputs
 
@@ -100,6 +100,12 @@ Prometheus labels are mapped as TSDS dimensions in {{es}}, and metric types are 
 - All other fields are mapped as gauges.
 
 For details on the full mapping behavior, refer to the [{{es}} Prometheus remote write endpoint](docs-content://manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md) documentation.
+
+## Failure store and rate limiting
+
+Managed inputs use an always-on failure store for indexing failures. Refer to [Failure store](authentication-delivery-and-failure-handling.md#failure-store) for more details.
+
+For back-pressure and `429` responses, refer to [Managed inputs rate limiting](rate-limiting.md) and [Buffering and delivery](authentication-delivery-and-failure-handling.md#delivery).
 
 ## Limitations
 

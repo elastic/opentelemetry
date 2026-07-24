@@ -1,40 +1,43 @@
 ---
 navigation_title: Rate limiting
-description: Rate limiting for the Elastic Cloud Managed OTLP Endpoint.
+description: Rate limiting for Elastic Cloud managed inputs.
 applies_to:
-  serverless:
-    observability: ga
-    security: ga
+  serverless: ga
   deployment:
     ech: ga
 products:
   - id: cloud-serverless
+  - id: cloud-hosted
   - id: observability
-  - id: edot-collector
+  - id: security
 ---
 
-# Rate limiting
+# Managed inputs rate limiting [rate-limiting]
 
-Rate limiting occurs when the {{motlp}} receives data faster than it can process and index into {{es}}. The endpoint responds with HTTP `429` errors until the data volume is reduced.
+Rate limiting occurs when a managed input receives data faster than it can process and index into {{es}}. The endpoint responds with HTTP `429` errors until the data volume is reduced.
 
-## How rate limiting works
+## How rate limiting works [how-rate-limiting-works]
 
 Rate limiting behavior differs by deployment type:
 
 - **{{ech}}**: Rate limits depend on your {{es}} cluster capacity. If your cluster can't keep up with incoming data, the endpoint starts rejecting requests with `429` errors.
-- **{{serverless-full}}**: Elastic manages scaling automatically. Rate limiting is rare and typically indicates a temporary event to protect our system. 
+- **{{serverless-full}}**: Elastic manages scaling automatically. Rate limiting is rare and typically indicates a temporary event to protect our system.
 
-## Identifying rate limiting
+## Identifying rate limiting [identifying-rate-limiting]
 
-When rate limiting occurs, the {{motlp}} responds with an HTTP `429` Too Many Requests status code. A log message similar to this appears in the OpenTelemetry Collector's output:
+When rate limiting occurs, the managed input responds with an HTTP `429` Too Many Requests status code.
+
+For the [Managed OTLP Endpoint](managed-otlp-endpoint.md), a log message similar to this can appear in the OpenTelemetry Collector's output:
 
 ```
 "error": "rpc error: code = ResourceExhausted desc = request exceeded available capacity"
 ```
 
-For troubleshooting steps, refer to [Error: too many requests](./troubleshooting.md#error-too-many-requests).
+For OTLP troubleshooting steps, refer to [Error: too many requests](./troubleshooting.md#error-too-many-requests).
 
-## Resolving rate limiting
+{{es}} output shippers such as {{product.beats}}, {{product.elastic-agent}}, and {{product.logstash}} typically retry `429` responses automatically with backoff. Configure your shipper to queue data so transient rejections don't lose data.
+
+## Resolving rate limiting [resolving-rate-limiting]
 
 ### {{ech}} deployments
 
@@ -46,8 +49,8 @@ If metrics confirm the cluster needs more capacity, scale your deployment:
 - [Resize deployment](docs-content://deploy-manage/deploy/cloud-enterprise/resize-deployment.md)
 - [Autoscaling in ECE and ECH](docs-content://deploy-manage/autoscaling/autoscaling-in-ece-and-ech.md)
 
-Once your {{es}} capacity is scaled up or is able to accept the incoming data volume, requests to {{motlp}} will be accepted again.
+Once your {{es}} capacity is scaled up or is able to accept the incoming data volume, requests to managed inputs will be accepted again.
 
 ### {{serverless-full}} deployments
 
-For {{serverless-full}} projects, Elastic manages backend scaling automatically. If you experience persistent `429` errors, [contact Elastic Support](docs-content://troubleshoot/ingest/opentelemetry/contact-support.md).
+For {{serverless-full}} projects, Elastic manages scaling automatically. If you experience persistent `429` errors, [contact Elastic Support](docs-content://troubleshoot/ingest/opentelemetry/contact-support.md).
