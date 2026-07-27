@@ -48,7 +48,7 @@ On {{serverless-full}} and {{ech}}, prefer the Managed {{es}} _bulk endpoint ove
 
 ## Set up the Managed {{es}} _bulk endpoint [set-up]
 
-The Managed {{es}} _bulk endpoint uses the same ingest host as the [Managed OTLP Endpoint](managed-otlp-endpoint.md), with the `/_es` path appended, and looks similar to `https://<project>.ingest.<region>.<csp>.elastic.cloud/_es`.
+The Managed {{es}} _bulk endpoint uses the same ingest host as the [Managed OTLP Endpoint](managed-otlp-endpoint.md), with the `/_es` path appended. Its exact format depends on your deployment type. Copy the exact value from the {{ecloud}} Console, as described in the following steps.
 
 ::::::{stepper}
 
@@ -60,13 +60,13 @@ To find your Managed {{es}} _bulk endpoint:
 :::{applies-item} serverless:
 1. Log in to the {{ecloud}} Console.
 2. Find your project and select **Manage**.
-3. In the **Application endpoints, cluster and component IDs** section, select **{{es}}**, then copy the **_bulk endpoint** value.
+3. In the **Application endpoints, cluster and component IDs** section, select **{{es}}**, then copy the **_bulk endpoint** value. It looks similar to `https://<project>.ingest.<region>.<csp>.elastic.cloud/_es`.
 :::
 
 :::{applies-item} ech:
 1. Log in to the {{ecloud}} Console.
 2. Find your deployment in **Hosted deployments** and select **Manage**.
-3. In the **Application endpoints, cluster and component IDs** section, select **{{es}}**, then copy the **_bulk endpoint** value.
+3. In the **Application endpoints, cluster and component IDs** section, select **{{es}}**, then copy the **_bulk endpoint** value. It looks similar to `https://<deployment>.ingest.<region>.<csp>.elastic-cloud.com/_es`.
 :::
 ::::
 
@@ -90,7 +90,7 @@ Index-level privilege scoping is not supported for managed inputs. API keys rest
 
 To send data, configure your shipper's {{es}} output with the following:
 
-- **Endpoint**: your Managed {{es}} _bulk endpoint value (`<managed-_bulk-endpoint>`), similar to `https://<project>.ingest.<region>.<csp>.elastic.cloud/_es`. If your shipper has a separate path or URL-prefix setting, set it to `/_es` instead of including it in the host.
+- **Endpoint**: your Managed {{es}} _bulk endpoint value (`<managed-_bulk-endpoint>`), in the host format for your deployment type described in [Set up the Managed {{es}} _bulk endpoint](#set-up). If your shipper has a separate path or URL-prefix setting, set it to `/_es` instead of including it in the host.
 - **Authentication**: your managed inputs API key, sent as the HTTP header `Authorization: ApiKey <api-key>`. Refer to [Authentication](authentication-delivery-and-failure-handling.md#authentication) for details.
 - **Action**: use `create`. Shippers that write to data streams already use this action.
 
