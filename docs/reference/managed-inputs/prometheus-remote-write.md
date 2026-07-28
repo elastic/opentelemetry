@@ -101,9 +101,9 @@ Prometheus labels are mapped as TSDS dimensions in {{es}}, and metric types are 
 
 For details on the full mapping behavior, refer to the [{{es}} Prometheus remote write endpoint](docs-content://manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md) documentation.
 
-## Failure store and rate limiting
+## Indexing errors and rate limiting
 
-Managed inputs use an always-on failure store for indexing failures. Refer to [Failure store](authentication-delivery-and-failure-handling.md#failure-store) for more details.
+A successful response means your metrics were durably accepted for processing, not that {{es}} has indexed them. For what happens when indexing fails and how to verify your data was indexed, refer to [Indexing errors and the failure store](authentication-delivery-and-failure-handling.md#failure-store).
 
 For back-pressure and `429` responses, refer to [Managed inputs rate limiting](rate-limiting.md) and [Buffering and delivery](authentication-delivery-and-failure-handling.md#delivery).
 

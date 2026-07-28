@@ -57,19 +57,13 @@ Managed inputs provide a durable ingest layer in front of {{es}}:
 For the Managed {{es}} _bulk endpoint, a batch is atomic: the endpoint accepts or rejects the whole batch, and a `201` per item means the data is durably enqueued, not indexed. For details, refer to [Delivery behavior](elasticsearch-bulk.md#delivery-behavior).
 :::
 
-## Failure store [failure-store]
+## Indexing errors and the failure store [failure-store]
 
-```{applies_to}
-stack: ga 9.1+
-```
+A successful accept response from a managed input means the data was durably accepted for processing, not that {{es}} has indexed it. Indexing errors, such as mapping conflicts or ingest pipeline errors, can happen asynchronously after the data is accepted, and aren't reported back to the client.
 
-Managed inputs are built for high availability, but some failures can still prevent events from being written to your {{es}} cluster (for example, ingest pipeline errors or mapping conflicts).
+Managed inputs don't enable or manage the [failure store](docs-content://manage-data/data-store/data-streams/failure-store.md). The failure store is an {{es}} data stream setting, so if the destination data stream has it enabled, documents that fail indexing are written there; otherwise, they aren't captured.
 
-To protect data in these cases, managed inputs use the [Failure store](docs-content://manage-data/data-store/data-streams/failure-store.md). For managed inputs data streams, the failure store is always enabled.
-
-When indexing fails, the original documents are written to a dedicated failure index instead of being dropped. This keeps ingestion resilient and gives you a recovery path for partial or failed sends.
-
-You can inspect and triage these documents from **Data Set Quality**. Refer to [Data set quality](docs-content://solutions/observability/data-set-quality-monitoring.md).
+To confirm your data was indexed, verify that documents landed in the destination data stream, and use [Data Set Quality](docs-content://solutions/observability/data-set-quality-monitoring.md) to monitor and triage indexing issues.
 
 ## {{ech}} limitations [ech-limitations]
 

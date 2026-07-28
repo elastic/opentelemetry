@@ -110,7 +110,9 @@ output {
 
 {{product.beats}} and {{product.elastic-agent}} configure their {{es}} output the same way: point the output hosts at `<managed-_bulk-endpoint>` and provide the managed inputs API key. If your shipper uses the `index`, `update`, or `delete` action, switch to `create` or target a data stream. Refer to [Limitations](#limitations).
 
-To confirm your setup is working, check that your shipper reports successful (`2xx`) responses with no authentication errors, then open **Discover** and verify that new documents are landing in your target data stream. A success response means the data was durably enqueued, not yet indexed, so if documents don't appear, check the [Failure store](authentication-delivery-and-failure-handling.md#failure-store) for indexing errors (available on {{stack}} 9.1 and later).
+To confirm your setup is working, check that your shipper reports successful (`2xx`) responses with no authentication errors, then open **Discover** and verify that new documents are landing in your target data stream.
+
+A success response means the data was durably enqueued, not yet indexed, so if documents don't appear, they might have failed during asynchronous indexing. These errors aren't reported in the bulk response, so use [Data Set Quality](docs-content://solutions/observability/data-set-quality-monitoring.md) to monitor and triage indexing issues. For more details, refer to [Indexing errors and the failure store](authentication-delivery-and-failure-handling.md#failure-store).
 
 :::::
 
@@ -124,15 +126,15 @@ Each action in a `_bulk` request specifies its target through the `_index` field
 
 The Managed {{es}} _bulk endpoint emulates the {{es}} `_bulk` API, but because it ingests through managed inputs, it behaves differently from indexing directly into {{es}}. Keep the following in mind:
 
-- **Batches are atomic.** The endpoint either durably enqueues the entire batch and returns success, or rejects the entire batch. There's no per-document partial success or failure.
+- **Batches are atomic.** The endpoint either durably enqueues the entire batch and returns success, or rejects the entire request. There's no per-document partial success or failure. If a valid batch can't be enqueued, the whole request fails with `503 Service Unavailable`. Malformed requests, unsupported actions, or missing targets fail with `400 Bad Request`.
 - **A success response means the data is durably enqueued, not indexed.** A successful response returns an {{es}}-compatible body in which each item reports a `201` status. This confirms managed inputs durably accepted the document, not that {{es}} has indexed it. Errors that occur later during indexing, such as mapping conflicts, happen asynchronously and aren't reported in the bulk response.
 - **Compressed requests are supported.** The endpoint accepts `Content-Encoding: gzip` request bodies.
 
 For shared buffering and delivery behavior across managed inputs, refer to [Buffering and delivery](authentication-delivery-and-failure-handling.md#delivery).
 
-## Failure store and rate limiting [failure-store-and-rate-limiting]
+## Indexing errors and rate limiting [indexing-errors-and-rate-limiting]
 
-Because indexing happens asynchronously, indexing failures such as mapping conflicts aren't reported in the bulk response. To prevent data loss, managed inputs write these documents to an always-on failure store instead of dropping them. Inspect them in the [Failure store](authentication-delivery-and-failure-handling.md#failure-store).
+Because indexing happens asynchronously, indexing failures such as mapping conflicts aren't reported in the bulk response, and the endpoint doesn't provide client-side visibility into them. To confirm your data was indexed, verify that documents landed in the destination data stream and use [Data Set Quality](docs-content://solutions/observability/data-set-quality-monitoring.md) to monitor indexing issues. For more detail on how indexing errors are handled, refer to [Indexing errors and the failure store](authentication-delivery-and-failure-handling.md#failure-store).
 
 Under load, or when the service can't accept more data, the endpoint can respond with `429 Too Many Requests` or `503 Service Unavailable`. {{es}} output shippers such as {{product.beats}}, {{product.elastic-agent}}, and {{product.logstash}} retry these responses automatically with backoff, so transient rejections don't lose data as long as your shipper can queue it. For how rate limiting works and how it differs between {{serverless-full}} and {{ech}}, refer to [Managed inputs rate limiting](rate-limiting.md).
 
@@ -142,10 +144,11 @@ The following limitations apply when using the Managed {{es}} _bulk endpoint:
 
 - Only `create` actions are supported. Requests that use `index`, `update`, or `delete` actions are rejected with `400 Bad Request`. This suits append-only data streams, which is the typical target for logs and metrics. For {{product.logstash}}, the `elasticsearch` output must use `action => "create"`. Features that depend on other actions, such as scripted upserts, aren't supported.
 - Duplicate detection isn't applied. The endpoint doesn't deduplicate documents by `_id`, so client retries can produce duplicate documents.
+- No client-side visibility into indexing outcomes. Because batches are accepted asynchronously, the bulk response confirms only that data was enqueued, not indexed. Shippers don't receive per-document indexing errors, such as mapping conflicts, in their responses, so monitor indexing separately in {{kib}} with [Data Set Quality](docs-content://solutions/observability/data-set-quality-monitoring.md).
 - Index templates, index lifecycle management (ILM) policies, and {{kib}} assets can't be installed through the endpoint, which serves only the root (`/`), license (`/_es/_license`), and `_bulk` paths. {{product.beats}}, {{product.elastic-agent}}, and {{product.logstash}} setup steps that create index templates or load dashboards must run against {{es}} and {{kib}} directly before you send data.
 - For {{ech}} network limitations that apply to all managed inputs, refer to [{{ech}} limitations](authentication-delivery-and-failure-handling.md#ech-limitations).
 
 ## Related pages [related-pages]
 
-- [Authentication, delivery, and failure handling with managed inputs](authentication-delivery-and-failure-handling.md): Shared authentication, buffering and delivery, and failure store behavior across all managed inputs.
+- [Authentication, delivery, and failure handling with managed inputs](authentication-delivery-and-failure-handling.md): Shared authentication, buffering and delivery, and indexing-error handling across all managed inputs.
 - [Managed inputs rate limiting](rate-limiting.md): How `429` responses work and how capacity limits differ between {{serverless-full}} and {{ech}}.

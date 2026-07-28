@@ -132,9 +132,9 @@ Telemetry is stored in Elastic in OTLP format, preserving resource attributes an
 
 For a detailed comparison of how OTel data streams differ from classic Elastic APM data streams, refer to [OTel data streams compared to classic APM](../compatibility/data-streams.md).
 
-## Failure store
+## Indexing errors and the failure store
 
-Managed inputs use an always-on failure store for indexing failures. Refer to [Failure store](authentication-delivery-and-failure-handling.md#failure-store).
+A successful response from the {{motlp}} means your data was durably accepted for processing, not that {{es}} has indexed it. For what happens when indexing fails and how to verify your data was indexed, refer to [Indexing errors and the failure store](authentication-delivery-and-failure-handling.md#failure-store).
 
 ## Limitations
 
