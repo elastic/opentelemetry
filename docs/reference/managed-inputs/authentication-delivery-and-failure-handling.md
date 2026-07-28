@@ -49,7 +49,7 @@ Index-level privilege scoping is not supported for managed inputs. API keys rest
 
 Managed inputs provide a durable ingest layer in front of {{es}}:
 
-- Incoming data is buffered before it reaches your {{es}} cluster.
+- Incoming data is buffered before it reaches your {{es}} cluster. Buffered data is held for a limited time before it must be delivered.
 - When the service can't accept more data, endpoints apply back-pressure and respond with `429 Too Many Requests` so clients can retry. Refer to [Managed inputs rate limiting](rate-limiting.md).
 - A successful accept response means managed inputs durably accepted the data for processing, not that {{es}} has finished indexing it.
 
@@ -61,7 +61,11 @@ For the Managed {{es}} _bulk endpoint, a batch is atomic: the endpoint accepts o
 
 A successful accept response from a managed input means the data was durably accepted for processing, not that {{es}} has indexed it. Indexing errors, such as mapping conflicts or ingest pipeline errors, can happen asynchronously after the data is accepted, and aren't reported back to the client.
 
-Managed inputs don't enable or manage the [failure store](docs-content://manage-data/data-store/data-streams/failure-store.md). The failure store is an {{es}} data stream setting, so if the destination data stream has it enabled, documents that fail indexing are written there; otherwise, they aren't captured.
+Managed inputs don't enable or manage the [failure store](docs-content://manage-data/data-store/data-streams/failure-store.md). The failure store is an {{es}} data stream setting. If the destination data stream has it enabled, documents that fail indexing are written there. If it isn't enabled, those documents aren't captured.
+
+:::{warning}
+If a document fails indexing and the destination data stream doesn't have the failure store enabled, the document is dropped. Because indexing errors happen after the data is accepted, your shipper still reports success, so this data loss is silent.
+:::
 
 To confirm your data was indexed, verify that documents landed in the destination data stream, and use [Data Set Quality](docs-content://solutions/observability/data-set-quality-monitoring.md) to monitor and triage indexing issues.
 
