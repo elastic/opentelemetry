@@ -18,7 +18,7 @@ products:
 
 The Managed {{es}} _bulk endpoint ingests data sent in the [{{es}} `_bulk` API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) format. It accepts `_bulk` traffic natively, so shippers that already write to {{es}} can send data through [managed inputs](index.md) by pointing their existing {{es}} output at the endpoint. It's a dedicated managed input exposed on the `/_es` path of the same ingest host as the [Managed OTLP Endpoint](managed-otlp-endpoint.md) and the [Managed Prometheus Remote Write endpoint](prometheus-remote-write.md).
 
-The endpoint is {{es}}-compatible: it emulates a subset of the `_bulk` API, so most shippers need only a new endpoint and credentials to start sending data. The managed input then durably buffers the data and routes it into {{es}}. Documents must use the `create` action. Refer to [Limitations](#limitations) for additional constraints.
+The endpoint is {{es}}-compatible: it emulates a subset of the `_bulk` API, so most shippers need only a new endpoint and credentials to start sending data. The managed input then durably buffers the data and routes it into {{es}}. Bulk actions must use the `create` action.
 
 ## When to use the Managed {{es}} _bulk endpoint [when-to-use]
 
@@ -42,7 +42,7 @@ On {{serverless-full}} and {{ech}}, prefer the Managed {{es}} _bulk endpoint ove
 ## Prerequisites [prerequisites]
 
 - An {{serverless-full}} Observability or Security project, or an {{ech}} deployment on {{stack}} version 9.0 or later.
-- A `_bulk`-compatible shipper, such as {{product.beats}}, {{product.elastic-agent}}, {{product.logstash}}, or another shipper with an {{es}} output.
+- A `_bulk`-compatible shipper that can send `create` actions, such as {{product.beats}}, {{product.elastic-agent}}, {{product.logstash}}, or another shipper with an {{es}} output.
 - A managed inputs API key with the `event:write` privilege for the `apm` application. Refer to [Authentication](authentication-delivery-and-failure-handling.md#authentication) for the required key format and generation steps.
 - Any {{es}} index templates and {{kib}} assets your shipper relies on, installed beforehand. The endpoint doesn't install them for you. Refer to [Limitations](#limitations).
 
@@ -60,13 +60,13 @@ To find your Managed {{es}} _bulk endpoint:
 :::{applies-item} serverless:
 1. Log in to the {{ecloud}} Console.
 2. Find your project and select **Manage**.
-3. In the **Application endpoints, cluster and component IDs** section, select **{{es}}**, then copy the **_bulk endpoint** value. It looks similar to `https://<project>.ingest.<region>.<csp>.elastic.cloud/_es`.
+3. In the **Application endpoints, cluster and component IDs** section, select **{{es}}**, then copy the **_bulk endpoint** value.
 :::
 
 :::{applies-item} ech:
 1. Log in to the {{ecloud}} Console.
 2. Find your deployment in **Hosted deployments** and select **Manage**.
-3. In the **Application endpoints, cluster and component IDs** section, select **{{es}}**, then copy the **_bulk endpoint** value. It looks similar to `https://<deployment>.ingest.<region>.<csp>.elastic-cloud.com/_es`.
+3. In the **Application endpoints, cluster and component IDs** section, select **{{es}}**, then copy the **_bulk endpoint** value.
 :::
 ::::
 
