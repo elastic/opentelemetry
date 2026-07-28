@@ -90,7 +90,7 @@ To restore default routing, remove the `data_stream.dataset` and `data_stream.na
 Managed inputs use a shared authentication model. Refer to [Authentication](authentication-delivery-and-failure-handling.md#authentication) for the required API key format and generation steps.
 
 :::{note}
-Index-level privilege scoping is not supported for managed inputs. API keys restricted to specific index-level privileges return a `PermissionDenied` error.
+Index-level privilege scoping is not supported for managed inputs. 
 :::
 
 ## OTLP client configuration

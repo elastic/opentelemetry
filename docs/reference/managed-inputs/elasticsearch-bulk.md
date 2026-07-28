@@ -91,8 +91,8 @@ Index-level privilege scoping is not supported for managed inputs. API keys rest
 To send data, configure your shipper's {{es}} output with the following:
 
 - **Endpoint**: your Managed {{es}} _bulk endpoint value (`<managed-_bulk-endpoint>`), in the host format for your deployment type described in [Set up the Managed {{es}} _bulk endpoint](#set-up). If your shipper has a separate path or URL-prefix setting, set it to `/_es` instead of including it in the host.
-- **Authentication**: your managed inputs API key, sent as the HTTP header `Authorization: ApiKey <api-key>`. Refer to [Authentication](authentication-delivery-and-failure-handling.md#authentication) for details.
-- **Action**: use `create`. Shippers that write to data streams already use this action.
+- **Authentication**: Use your managed inputs API key. Send it as the HTTP header `Authorization: ApiKey <api-key>`, as described in [Authentication](authentication-delivery-and-failure-handling.md#authentication).
+- **Action**: Use `create`. Shippers that write to data streams already use this action.
 
 The following example configures a {{product.logstash}} `elasticsearch` output. Setting names and the exact way to pass credentials vary by shipper and version, so validate the configuration for your shipper:
 

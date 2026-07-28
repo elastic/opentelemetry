@@ -42,7 +42,7 @@ The following example creates a `managed_inputs_writer` role with the required p
 Send the key in each request's `Authorization` header as `ApiKey <api-key>`.
 
 :::{note}
-Index-level privilege scoping is not supported for managed inputs. API keys restricted to specific index-level privileges return a `PermissionDenied` error.
+Index-level privilege scoping is not supported for managed inputs.
 :::
 
 ## Buffering and delivery [delivery]
