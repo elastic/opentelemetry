@@ -12,35 +12,33 @@ redirects:
     many:
       - to: 'reference/managed-inputs/authentication-delivery-and-failure-handling.md'
         anchors:
-          'authentication': 'authentication'
           'failure-store': 'failure-store'
   'reference/motlp/index.md':
     to: 'reference/managed-inputs/managed-otlp-endpoint.md'
     many:
       - to: 'reference/managed-inputs/authentication-delivery-and-failure-handling.md'
         anchors:
-          'authentication': 'authentication'
           'failure-store': 'failure-store'
   'reference/motlp/managed-otlp-endpoint.md':
     to: 'reference/managed-inputs/managed-otlp-endpoint.md'
     many:
       - to: 'reference/managed-inputs/authentication-delivery-and-failure-handling.md'
         anchors:
-          'authentication': 'authentication'
           'failure-store': 'failure-store'
   'reference/motlp/prometheus-remote-write.md': 'reference/managed-inputs/prometheus-remote-write.md'
   'reference/motlp/rate-limiting.md': 'reference/managed-inputs/rate-limiting.md'
   'reference/motlp/troubleshooting.md': 'reference/managed-inputs/troubleshooting.md'
 
-  # Managed inputs: Authentication and Failure store content moved from the Managed OTLP
-  # Endpoint page to Authentication and delivery with managed inputs. Stubs remain on the
-  # OTLP page; deep links to the old anchors go to the shared sections.
+  # Managed inputs: the Failure store section moved from the Managed OTLP Endpoint page to
+  # Authentication, delivery, and failure handling with managed inputs, and its heading was
+  # renamed, so the old #failure-store anchor no longer resolves. Redirect that anchor to the
+  # shared section. The #authentication anchor still exists as a stub on the OTLP page, so it
+  # needs no redirect.
   'reference/managed-inputs/managed-otlp-endpoint.md':
     to: 'reference/managed-inputs/managed-otlp-endpoint.md'
     many:
       - to: 'reference/managed-inputs/authentication-delivery-and-failure-handling.md'
         anchors:
-          'authentication': 'authentication'
           'failure-store': 'failure-store'
 
   # EDOT Collector troubleshooting pages (from reference to troubleshooting)
