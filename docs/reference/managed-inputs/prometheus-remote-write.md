@@ -25,13 +25,13 @@ For {{serverless-full}} projects, the Managed Prometheus Remote Write endpoint i
 :::{warning}
 On {{serverless-full}}, use the Managed Prometheus Remote Write endpoint rather than sending metrics directly to the [{{es}} Prometheus Remote Write endpoint](docs-content://manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md).
 
-Direct ingest bypasses managed inputs and has no buffering or processing before data reaches {{es}}. It also authenticates differently: the direct {{es}} endpoint uses {{es}} credentials or an API key with index privileges, while the Managed Prometheus Remote Write endpoint uses a managed inputs API key with the `event:write` privilege for the `apm` application. Use the direct {{es}} endpoint only for self-managed deployments, where managed inputs aren't available. {{ech}} support for the Managed Prometheus Remote Write endpoint is planned.
+Direct ingest bypasses managed inputs and has no buffering or processing before data reaches {{es}}. It also authenticates differently: the direct {{es}} endpoint uses {{es}} credentials or an API key with index privileges, while the Managed Prometheus Remote Write endpoint uses an API key with the `event:write` privilege for the `apm` application. Use the direct {{es}} endpoint only for self-managed deployments, where managed inputs aren't available. {{ech}} support for the Managed Prometheus Remote Write endpoint is planned.
 :::
 
 ## Prerequisites
 
 - An {{serverless-full}} Observability or Security project.
-- A managed inputs API key with the `event:write` privilege for the `apm` application. Refer to [Authentication](authentication-delivery-and-failure-handling.md#authentication) for the required key format and generation steps.
+- An API key with the `event:write` privilege for the `apm` application. Refer to [Authentication](authentication-delivery-and-failure-handling.md#authentication) for the required key format and generation steps.
 
 ## Send Prometheus metrics through managed inputs
 
