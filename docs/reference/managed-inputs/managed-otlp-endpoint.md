@@ -87,26 +87,10 @@ To restore default routing, remove the `data_stream.dataset` and `data_stream.na
 
 ## Authentication
 
-The {{motlp}} authenticates requests using {{product.apm}} application privileges. To send data to the endpoint, your API key must include the `event:write` privilege for the `apm` application:
-
-```json
-{
-  "otlp_writer": {
-    "applications": [
-      {
-        "application": "apm",
-        "resources": ["*"],
-        "privileges": ["event:write"]
-      }
-    ]
-  }
-}
-```
-
-For step-by-step instructions on generating an API key, refer to the [Send data to the {{motlp}}](docs-content://solutions/observability/get-started/quickstart-elastic-cloud-otel-endpoint.md) quickstart.
+Managed inputs use a shared authentication model. Refer to [Authentication](authentication-delivery-and-failure-handling.md#authentication) for the required API key format and generation steps.
 
 :::{note}
-Index-level privilege scoping is not supported for the {{motlp}}. API keys restricted to specific index-level privileges return a `PermissionDenied` error.
+Index-level privilege scoping is not supported for managed inputs.
 :::
 
 ## OTLP client configuration
@@ -132,7 +116,7 @@ exporters:
 
 The key settings are:
 
-* **`sending_queue`**: Enables an in-memory queue with byte-based sizing (`sizer: bytes`) and a 50 MB capacity. `block_on_overflow: true` applies backpressure instead of dropping data when the queue is full.
+* **`sending_queue`**: Enables an in-memory queue with byte-based sizing (`sizer: bytes`) and a 50 MB capacity. `block_on_overflow: true` applies back-pressure instead of dropping data when the queue is full.
 * **`batch`**: Controls how queued data is batched before export. A `flush_timeout` of 1 second ensures low latency, while `min_size` (1 MB) and `max_size` (4 MB) keep payloads within the {{motlp}} limits. Refer to the [Payload too large](troubleshooting.md#error-payload-too-large) troubleshooting section for details on payload size limits.
 
 ## Reference architecture
@@ -148,19 +132,9 @@ Telemetry is stored in Elastic in OTLP format, preserving resource attributes an
 
 For a detailed comparison of how OTel data streams differ from classic Elastic APM data streams, refer to [OTel data streams compared to classic APM](../compatibility/data-streams.md).
 
-## Failure store
+## Indexing errors and the failure store
 
-```{applies_to}
-stack: ga 9.1+
-```
-
-The {{motlp}} endpoint is built for high availability, but some failures can still prevent telemetry events from being written to your {{es}} cluster (for example, ingest pipeline errors or mapping conflicts).
-
-To protect data in these cases, {{motlp}} uses the [Failure store](docs-content://manage-data/data-store/data-streams/failure-store.md). For {{motlp}} data streams, the failure store is always enabled.
-
-When indexing fails, the original documents are written to a dedicated failure index instead of being dropped. This keeps ingestion resilient and gives you a recovery path for partial or failed sends.
-
-You can inspect and triage these documents from **Data Set Quality**. Refer to [Data set quality](docs-content://solutions/observability/data-set-quality-monitoring.md).
+A successful response from the {{motlp}} means your data was durably accepted for processing, not that {{es}} has indexed it. For what happens when indexing fails and how to verify your data was indexed, refer to [Indexing errors and the failure store](authentication-delivery-and-failure-handling.md#failure-store).
 
 ## Limitations
 
@@ -170,9 +144,7 @@ The following limitations apply when using the {{motlp}}:
 * Only supports histograms with delta temporality. Cumulative histograms are dropped.
 * Latency distributions based on histogram values have limited precision due to the fixed boundaries of explicit bucket histograms.
 * Tail-based sampling (TBS) is not available. The {{motlp}} does not provide centralized hosted sampling. If you need tail-based sampling, configure it on the edge using the [Tail Sampling Processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor) in your EDOT or OpenTelemetry Collector before sending data to the endpoint.
-* In {{ech}} deployments:
-  * [IP filters](docs-content://deploy-manage/security/ip-filtering-cloud.md) do not apply to the managed endpoint.
-  * The endpoint is not available over a [private connection](docs-content://deploy-manage/security/private-connectivity.md). When private connectivity is configured, the public managed endpoint is still available.
+* For {{ech}} network limitations that apply to all managed inputs, refer to [{{ech}} limitations](authentication-delivery-and-failure-handling.md#ech-limitations).
 
 ## Billing
 
