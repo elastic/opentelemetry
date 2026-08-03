@@ -15,7 +15,7 @@ products:
 
 # Authentication, delivery, and failure handling with managed inputs [authentication-delivery-and-failure-handling]
 
-This page covers what all managed inputs share: how you authenticate, how data is briefly stored and delivered, what happens when indexing fails, and network limitations on {{ech}}. For protocol-specific setup, choose your endpoint in [Next steps](#next-steps).
+This page covers what all managed inputs share: how you authenticate, how data is stored for a limited time, how it is delivered, what happens when indexing fails, and network limitations on {{ech}}. For protocol-specific setup, choose your endpoint in [Next steps](#next-steps).
 
 ## Authentication [authentication]
 
@@ -77,7 +77,7 @@ POST /_security/api_key
 ```
 :::
 
-Send the API key in the `Authorization` header of each request to the managed endpoint as `ApiKey <api-key>`. For example:
+Send the encoded API key in the `Authorization` header of each request to the managed endpoint as `ApiKey <encoded-api-key>`. For example:
 
 ```http
 Authorization: ApiKey <api-key>
@@ -91,8 +91,8 @@ Index-level privilege scoping is not supported for managed inputs.
 
 Managed inputs provide a durable ingest layer in front of {{es}}:
 
-- Incoming data is briefly stored (buffered) in a durable ingest layer before it reaches your {{es}} cluster. Buffered data is held for a limited time before it must be delivered.
-- When the service can't accept more data, endpoints apply back-pressure and respond with `429 Too Many Requests` so clients can retry. Refer to [Managed inputs rate limiting](rate-limiting.md).
+- Incoming data is stored (buffered) in a durable ingest layer before it reaches your {{es}} cluster. Buffered data is held for a limited time before it must be delivered.
+- When capacity controls reject data, endpoints can respond with `429 Too Many Requests`, so clients should retry with backoff. Other temporary service failures can return `503 Service Unavailable`. Refer to [Managed inputs rate limiting](rate-limiting.md).
 
 :::{note}
 For the Managed {{es}} _bulk endpoint, a batch is atomic: the endpoint accepts or rejects the whole batch, and a `201` per item means the data is durably enqueued, not indexed. For details, refer to [Delivery behavior](elasticsearch-bulk.md#delivery-behavior).

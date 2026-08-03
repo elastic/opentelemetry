@@ -18,7 +18,7 @@ products:
 
 The Managed {{es}} _bulk endpoint ingests data sent in the [{{es}} `_bulk` API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) format. It accepts `_bulk` traffic natively, so shippers that already write to {{es}} can send data through [managed inputs](index.md) by pointing their existing {{es}} output at the endpoint. It's a dedicated managed input exposed on the `/_es` path of the same ingest host as the [Managed OTLP Endpoint](managed-otlp-endpoint.md) and the [Managed Prometheus Remote Write endpoint](prometheus-remote-write.md).
 
-The endpoint is {{es}}-compatible: it emulates a subset of the `_bulk` API, so most shippers need only a new endpoint and credentials to start sending data. The managed input then durably buffers the data and routes it into {{es}}. The endpoint currently supports only log data streams. Bulk actions must use the `create` action — the only write action data streams support.
+The endpoint is {{es}}-compatible: it emulates a subset of the `_bulk` API, so most shippers need only a new endpoint and credentials to start sending data. The managed input then durably buffers the data and routes it into {{es}}. The endpoint accepts only log data. Bulk actions must use the `create` action.
 
 ## When to use the Managed {{es}} _bulk endpoint [when-to-use]
 
@@ -114,7 +114,7 @@ If documents don't appear, they might have failed during asynchronous indexing. 
 
 ## How _bulk data appears in {{es}} [data-mapping]
 
-Each action in a `_bulk` request specifies its target through the `_index` field, so data lands in the data stream or index that your shipper already targets. For example, a shipper writing nginx access logs to `logs-nginx.access-default` continues to land there. If your shipper sets a fallback target in the request path (`/_es/<target>/_bulk`), that target is used for actions that omit `_index`.
+Each action in a `_bulk` request can specify its target through the `_index` field, so data lands in the data stream or index that your shipper already targets. For example, a shipper writing nginx access logs to `logs-nginx.access-default` continues to land there. If your shipper sets a fallback target in the request path (`/_es/<target>/_bulk`), that target is used for actions that omit `_index`.
 
 ## Delivery behavior [delivery-behavior]
 
@@ -130,16 +130,16 @@ For shared buffering and delivery behavior across managed inputs, refer to [Buff
 
 Because indexing happens asynchronously, indexing failures such as mapping conflicts aren't reported in the bulk response, and the endpoint doesn't provide client-side visibility into them. To confirm your data was indexed, verify that documents landed in the destination data stream and use [Data Set Quality](docs-content://solutions/observability/data-set-quality-monitoring.md) to monitor indexing issues. For more detail on how indexing errors are handled, refer to [Indexing errors and the failure store](authentication-delivery-and-failure-handling.md#failure-store).
 
-Under load, or when the service can't accept more data, the endpoint can respond with `429 Too Many Requests` or `503 Service Unavailable`. {{es}} output shippers such as {{product.beats}}, {{product.elastic-agent}}, and {{product.logstash}} retry these responses automatically with backoff, so transient rejections don't lose data as long as your shipper can queue it. For how rate limiting works and how it differs between {{serverless-full}} and {{ech}}, refer to [Managed inputs rate limiting](rate-limiting.md).
+Under load, or when the service can't accept more data, the endpoint can respond with `429 Too Many Requests` or `503 Service Unavailable`. Configure your shipper to retry these responses with backoff and to queue data locally during transient rejections. For how rate limiting works and how it differs between {{serverless-full}} and {{ech}}, refer to [Managed inputs rate limiting](rate-limiting.md).
 
 ## Limitations [limitations]
 
 The following limitations apply when using the Managed {{es}} _bulk endpoint:
 
-- Only `create` actions are supported. Requests that use `index`, `update`, or `delete` actions are rejected with `400 Bad Request`. Data streams support only the `create` write action, and this endpoint currently accepts only log data streams. For {{product.logstash}}, the `elasticsearch` output must use `action => "create"`. Features that depend on other actions, such as scripted upserts, aren't supported.
+- Only `create` actions are supported. Requests that use `index`, `update`, or `delete` actions are rejected with `400 Bad Request`. This endpoint accepts only log data. For {{product.logstash}}, the `elasticsearch` output must use `action => "create"`. Features that depend on other actions, such as scripted upserts, aren't supported.
 - Duplicate detection isn't applied. The endpoint doesn't deduplicate documents by `_id`, so client retries can produce duplicate documents.
 - No client-side visibility into indexing outcomes. Because batches are accepted asynchronously, the bulk response confirms only that data was enqueued, not indexed. Shippers don't receive per-document indexing errors, such as mapping conflicts, in their responses, so monitor indexing separately in {{kib}} with [Data Set Quality](docs-content://solutions/observability/data-set-quality-monitoring.md).
-- Index templates, index lifecycle management (ILM) policies, and {{kib}} assets can't be installed through the endpoint, which serves only the root (`/`), license (`/_es/_license`), and `_bulk` paths. {{product.beats}}, {{product.elastic-agent}}, and {{product.logstash}} setup steps that create index templates or load dashboards must run against {{es}} and {{kib}} directly before you send data.
+- Index templates, index lifecycle management (ILM) policies, and {{kib}} assets can't be installed through the endpoint, which serves only the root (`/_es`), license (`/_es/_license`), and `_bulk` paths (`/_es/_bulk` and `/_es/<target>/_bulk`). {{product.beats}}, {{product.elastic-agent}}, and {{product.logstash}} setup steps that create index templates or load dashboards must run against {{es}} and {{kib}} directly before you send data.
 - For {{ech}} network limitations that apply to all managed inputs, refer to [{{ech}} limitations](authentication-delivery-and-failure-handling.md#ech-limitations).
 
 ## Related pages [related-pages]
