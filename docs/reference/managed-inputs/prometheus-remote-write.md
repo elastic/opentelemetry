@@ -10,7 +10,7 @@ products:
   - id: observability
 ---
 
-# Ingest Prometheus metrics with managed inputs [prometheus-remote-write]
+# Ingest Prometheus metrics with the Managed Prometheus Remote Write endpoint [prometheus-remote-write]
 
 The Managed Prometheus Remote Write endpoint ingests metrics sent in the [Prometheus Remote Write v1](https://prometheus.io/docs/specs/remote_write_spec/) (PRW) protocol. It accepts PRW traffic natively, so you don't need to convert metrics to OTLP, and it's a dedicated [managed input](index.md) separate from the [Managed OTLP Endpoint](managed-otlp-endpoint.md). Metrics land in {{es}} time series data streams (TSDS), the same result as sending PRW directly to {{es}}.
 
@@ -25,13 +25,13 @@ For {{serverless-full}} projects, the Managed Prometheus Remote Write endpoint i
 :::{warning}
 On {{serverless-full}}, use the Managed Prometheus Remote Write endpoint rather than sending metrics directly to the [{{es}} Prometheus Remote Write endpoint](docs-content://manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md).
 
-Direct ingest bypasses managed inputs and has no buffering or processing before data reaches {{es}}. It also authenticates differently: the direct {{es}} endpoint uses {{es}} credentials or an API key with index privileges, while the Managed Prometheus Remote Write endpoint uses a managed inputs API key with the `event:write` privilege for the `apm` application. Use the direct {{es}} endpoint only for self-managed deployments, where managed inputs aren't available. {{ech}} support for the Managed Prometheus Remote Write endpoint is planned.
+Direct ingest bypasses managed inputs and has no buffering or processing before data reaches {{es}}. It also authenticates differently: the direct {{es}} endpoint uses {{es}} credentials or an API key with index privileges, while the Managed Prometheus Remote Write endpoint uses an API key with the `event:write` privilege for the `apm` application. Use the direct {{es}} endpoint only for self-managed deployments, where managed inputs aren't available. {{ech}} support for the Managed Prometheus Remote Write endpoint is planned.
 :::
 
 ## Prerequisites
 
 - An {{serverless-full}} Observability or Security project.
-- A managed inputs API key with the `event:write` privilege for the `apm` application. Refer to [Authentication](managed-otlp-endpoint.md#authentication) for the required key format and generation steps.
+- An API key with the `event:write` privilege for the `apm` application. Refer to [Authentication](authentication-delivery-and-failure-handling.md#authentication) for the required key format and generation steps.
 
 ## Send Prometheus metrics through managed inputs
 
@@ -100,6 +100,12 @@ Prometheus labels are mapped as TSDS dimensions in {{es}}, and metric types are 
 - All other fields are mapped as gauges.
 
 For details on the full mapping behavior, refer to the [{{es}} Prometheus remote write endpoint](docs-content://manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md) documentation.
+
+## Indexing errors and rate limiting
+
+A successful response means your metrics were durably accepted for processing, not that {{es}} has indexed them. For what happens when indexing fails and how to verify your data was indexed, refer to [Indexing errors and the failure store](authentication-delivery-and-failure-handling.md#failure-store).
+
+For back-pressure and `429` responses, refer to [Managed inputs rate limiting](rate-limiting.md) and [Buffering and delivery](authentication-delivery-and-failure-handling.md#delivery).
 
 ## Limitations
 
