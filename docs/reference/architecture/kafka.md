@@ -1,6 +1,6 @@
 ---
 navigation_title: Kafka ingest pipelines
-description: Use Kafka as a transport buffer in EDOT ingest pipelines for self-managed Elasticsearch or Elastic Cloud Managed OTLP (mOTLP).
+description: Use Kafka as a transport buffer in {{edot}} ingest pipelines for self-managed Elasticsearch or Elastic Cloud Managed OTLP (mOTLP).
 applies_to:
   stack:
   serverless:
@@ -11,7 +11,7 @@ products:
   - id: edot-collector
 ---
 
-# Kafka-based ingest pipelines with EDOT [kafka-ingest-pipelines-edot]
+# Kafka-based ingest pipelines with {{edot}} [kafka-ingest-pipelines-edot]
 
 Kafka can act as a transport buffer between telemetry sources (applications and edge collectors) and your backend, decoupling production from ingestion. Use this pattern when you need buffering during outages or maintenance, independent scaling of collection and ingestion, or a shared transport layer across environments or networks.
 
@@ -35,7 +35,7 @@ flowchart LR
 
 In this model:
 - An edge gateway collector receives OTLP from applications (for example, EDOT SDKs or other OTLP-compatible SDKs) and exports OTLP payloads to Kafka.
-- An EDOT backend collector consumes OTLP payloads from Kafka and exports to {{es}}.
+- An {{agent}} backend collector consumes OTLP payloads from Kafka and exports to {{es}}.
 
 ### {{ecloud}} (Hosted/Serverless) using mOTLP [elastic-cloud-motlp]
 
@@ -50,15 +50,15 @@ flowchart LR
 ```
 
 In this model:
-- An EDOT backend collector consumes OTLP payloads from Kafka and exports to the {{ecloud}} Managed OTLP endpoint (mOTLP) using the OTLP/HTTP exporter.
+- An {{agent}} backend collector consumes OTLP payloads from Kafka and exports to the {{ecloud}} Managed OTLP endpoint (mOTLP) using the OTLP/HTTP exporter.
 
 ## Components [components]
 
-These pipelines rely on the following EDOT Collector components:
+These pipelines rely on the following {{agent}} components:
 - `kafkaexporter` to write OTLP payloads to Kafka.
 - `kafkareceiver` to read OTLP payloads from Kafka.
 
-For EDOT, only the `otlp_proto` and `otlp_json` encodings are supported for the Kafka receiver and exporter. Partitioning options (for example, `partition_traces_by_id`) are not supported. Refer to the [EDOT Collector components list](elastic-agent://reference/edot-collector/components.md) for the full list and support notes.
+For {{edot}}, only the `otlp_proto` and `otlp_json` encodings are supported for the Kafka receiver and exporter. Partitioning options (for example, `partition_traces_by_id`) are not supported. Refer to the [{{agent}} components list](elastic-agent://reference/edot-collector/components.md) for the full list and support notes.
 
 ## Example configuration [example-configuration]
 
@@ -184,4 +184,4 @@ service:
 
 Monitor backpressure and export failures on both the edge gateway collector and the backend collector. A Kafka buffer can mask downstream ingestion problems until retention is exhausted. To avoid it, size retention and partitions for peak ingest and expected outage windows. 
 
-For {{product.apm}} UI optimizations on self-managed backends, align the backend collector's mode and processors with the recommended EDOT gateway architecture for your deployment.
+For {{product.apm}} UI optimizations on self-managed backends, align the backend collector's mode and processors with the recommended {{edot}} gateway architecture for your deployment.

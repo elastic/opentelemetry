@@ -1,6 +1,6 @@
 ---
 navigation_title: EDOT SDKs
-description: An overview of the features available in the Elastic Distribution of OpenTelemetry (EDOT) SDKs for various languages.
+description: An overview of the features available in the EDOT SDKs for various languages.
 applies_to:
   stack:
   serverless:
@@ -11,9 +11,9 @@ products:
   - id: edot-sdk
 ---
 
-# EDOT SDKs 
+# EDOT SDKs
 
-The {{edot}} (EDOT) SDKs are production-ready, customized distributions of [OpenTelemetry](https://opentelemetry.io/) language SDKs, specifically optimized for seamless integration with {{product.observability}}. EDOT SDKs provide a comprehensive observability solution that automatically captures distributed traces, metrics, and logs from your applications with minimal configuration.
+The EDOT SDKs are production-ready, customized distributions of [OpenTelemetry](https://opentelemetry.io/) language SDKs, specifically optimized for seamless integration with {{product.observability}}. EDOT SDKs provide a comprehensive observability solution that automatically captures distributed traces, metrics, and logs from your applications with minimal configuration.
 
 While maintaining full compatibility with the OpenTelemetry specification, EDOT SDKs provide improvements and bug fixes from Elastic before they become available in contrib OpenTelemetry repositories.
 
@@ -32,7 +32,7 @@ EDOT SDKs are available for the following programming languages and platforms:
 
 ## Feature overview
 
-This table provides an overview of the features available in the {{edot}} (EDOT) SDKs across different programming languages.
+This table provides an overview of the features available in the EDOT SDKs across different programming languages.
 
 % The following table is automatically generated from the EDOT SDKs feature data.
 % Automation is handled by /scripts/tools.py, which reads /docs/reference/edot-sdks/features.yml
@@ -79,17 +79,17 @@ This table provides an overview of the features available in the {{edot}} (EDOT)
 
 ## Support for EDOT SDKs
 
-Elastic provides technical support for EDOT Language SDKs according to Elastic's [Support Policy](https://www.elastic.co/support_policy). EDOT SDKs are meant to be used in combination with the [EDOT Collector](elastic-agent://reference/edot-collector/index.md) or the [{{motlp}}](/reference/managed-inputs/managed-otlp-endpoint.md) to ingest data into Elastic solutions from the EDOT SDKs. Other ingestion paths are not officially supported by Elastic.
+Elastic provides technical support for EDOT Language SDKs according to Elastic's [Support Policy](https://www.elastic.co/support_policy). EDOT SDKs are meant to be used in combination with the [{{agent}}](elastic-agent://reference/edot-collector/index.md) or the [{{motlp}}](/reference/managed-inputs/managed-otlp-endpoint.md) to ingest data into Elastic solutions from the EDOT SDKs. Other ingestion paths are not officially supported by Elastic.
 
 Using EDOT SDKs directly with {{product.apm-server}}'s OpenTelemetry intake endpoint is not supported.  
 While some data might ingest, Elastic doesn't guarantee:
 
 - Correctness of attributes  
-- Alignment with EDOT processing pipelines  
+- Alignment with {{edot}} processing pipelines  
 - Enrichment (service metadata, environment, runtime info, and so on)  
 - Troubleshooting coverage  
 
-If you require a supported setup, route SDK telemetry through EDOT Collector or use Managed OTel intake.
+If you require a supported setup, route SDK telemetry through {{agent}} or use Managed OTel intake.
 
 :::{warning}
 Avoid using EDOT SDKs alongside any other {{product.apm}} agent, including Elastic {{product.apm}} agents. Running multiple agents in the same application process might lead to conflicting instrumentation, duplicate telemetry, or other unexpected behavior.

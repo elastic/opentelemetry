@@ -1,6 +1,6 @@
 ---
 navigation_title: Hosts / VMs environments
-description: Recommended EDOT architecture for host or virtual machine environments.
+description: Recommended {{edot}} architecture for host or virtual machine environments.
 applies_to:
   stack:
   serverless:
@@ -50,14 +50,14 @@ You need an {{ech}} deployment version 9.0 or later.
 ::::
 
 ::::{applies-item} { eck:, ece:, self: }
-In a self-managed Elastic deployment, we recommend running an EDOT Collector in gateway mode as a unified ingestion layer for OTLP telemetry from OpenTelemetry collectors or SDKs running at the edge. This gateway can receive all signals (logs, metrics and traces), apply processing as needed, and cover the same use cases that previously required components like {{product.apm-server}} or {{product.logstash}}.
+In a self-managed Elastic deployment, we recommend running an {{agent}} in gateway mode as a unified ingestion layer for OTLP telemetry from OpenTelemetry collectors or SDKs running at the edge. This gateway can receive all signals (logs, metrics and traces), apply processing as needed, and cover the same use cases that previously required components like {{product.apm-server}} or {{product.logstash}}.
 
 Depending on your scalability and durability needs, this can be a single collector that scales horizontally, or a chain of collectors where each tier handles a specific concern. For high availability and stronger durability guarantees, you can insert Kafka between tiers so that ingestion is buffered and resilient to downstream outages.
 
 ![VM-self-managed](../images/host-self-managed.png)
 
 :::{note}
-Compared to [Elastic's classic ingestion paths](docs-content://solutions/observability/apm/use-opentelemetry-with-apm.md) for OTel data, with the EDOT Collector in gateway mode there is no need for {{product.apm-server}} anymore. 
+Compared to [Elastic's classic ingestion paths](docs-content://solutions/observability/apm/use-opentelemetry-with-apm.md) for OTel data, with the {{agent}} in gateway mode there is no need for {{product.apm-server}} anymore. 
 
 Refer to [data streams compared to classic {{product.apm}}](../compatibility/data-streams.md) for a detailed comparison of data streams, mappings, and storage models.
 :::
