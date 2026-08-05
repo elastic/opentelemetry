@@ -19,7 +19,7 @@ The following pages describe the compatibility and support levels for different 
 - [Features](features.md)
 - [Collectors](collectors.md)
 - [SDKs](sdks.md)
-- [{{edot}} compared to upstream](edot-vs-upstream.md)
+- [{{edot}} compared to upstream](elastic-vs-upstream-otel.md)
 - [Limitations](limitations.md)
 - [Nomenclature](nomenclature.md)
 - [Data streams comparison](data-streams.md)

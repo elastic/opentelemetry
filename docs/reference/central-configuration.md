@@ -148,7 +148,7 @@ POST /_security/api_key
 
 Edit the [{{agent}} configuration](elastic-agent://reference/edot-collector/config/default-config-standalone.md#central-configuration) to activate the central configuration feature:
 
-:::{include} _snippets/edot-collector-auth.md
+:::{include} _snippets/otel-collector-auth.md
 :::
 
 Restart the Elastic Agent to also restart the Collector and apply the changes.

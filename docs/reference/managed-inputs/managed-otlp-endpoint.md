@@ -31,7 +31,7 @@ To use the {{ecloud}} {{motlp}} you need the following:
 - An OTLP-compliant shipper capable of forwarding logs, metrics, or traces in OTLP format. This can include:
   - [OpenTelemetry Collector](elastic-agent://reference/edot-collector/index.md) ({{edot}}, Contrib, or other distributions)
   - [OpenTelemetry SDKs](/reference/edot-sdks/index.md) ({{edot}}, upstream, or other distributions)
-  - [{{edot-cf}}](/reference/edot-cloud-forwarder/index.md)
+  - [{{edot-cf}}](/reference/elastic-cloud-forwarder/index.md)
   - Any other forwarder that supports the OTLP protocol.
 
 You don't need APM Server when ingesting data through the Managed OTLP Endpoint. The APM integration (`.apm` endpoint) is a legacy ingest path that translates OTLP telemetry to ECS, whereas {{motlp}} natively ingests OTLP data.
