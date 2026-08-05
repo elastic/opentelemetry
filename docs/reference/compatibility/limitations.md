@@ -25,7 +25,7 @@ While {{edot}} and OTel-native data collection already covers most of the core O
 * **Real user monitoring (RUM):** RUM ingestion and visualizations are not yet available for OTel-native data.
 * **Universal profiling:** This capability is currently only supported in the classic stack.
 * **Existing integrations and dashboards:** Many prebuilt Elastic integrations and dashboards are designed for ECS-formatted data and may not work as expected with the OpenTelemetry semantic conventions without customization.
-* **Managed processing of logs:** Elastic doesn't provide curated, centralized {{es}} ingest pipelines for OTel-native data. Process logs in the Collector instead, or define your own ingest pipeline. See [Centralized parsing and processing of data](#centralized-parsing-and-processing-of-data).
+* **Managed processing of logs:** Elastic doesn't provide curated, centralized {{es}} ingest pipelines for OTel-native data. Process logs in the Collector instead, or define your own ingest pipeline. Refer to [Centralized parsing and processing of data](#centralized-parsing-and-processing-of-data) for more information.
 * **Tail-based sampling (TBS):**  
 If you need the full tail-based sampling capabilities of APM Server, use APM Server with an {{es}} output. {{edot}} does not provide managed TBS. You can run TBS in a self-managed {{agent}} or any contrib OTel Collector and ingest the sampled traces into Elastic with some caveats - refer to [Tail-based sampling limitations](#tail-based-sampling-tbs) for more information.
 
@@ -41,10 +41,11 @@ Refer to [these examples](elastic-agent://reference/edot-collector/config/config
 
 ### Ingest pipelines and dotted field names
 
-You can define your own {{es}} ingest pipeline for OTel data streams, but the OTel-native data format in {{es}} contains dotted field names, which affects how processors read them:
+You can define your own {{es}} ingest pipeline for OTel data streams, but the OTel-native data format in {{es}} contains dotted field names, which affects how processors read them.
 
-* {applies_to}`stack: ga 9.2+` {applies_to}`serverless: ga` Set `field_access_pattern` to [`flexible`](docs-content://manage-data/ingest/transform-enrich/ingest-pipelines.md#access-source-pattern-flexible) in the pipeline definition. Every processor in that pipeline reads and writes dotted field names directly, so no dot expander step is needed. This also covers field names that would collide when expanded, such as `http.host` and `http.host.name`.
-* With the default `classic` [field access pattern](docs-content://manage-data/ingest/transform-enrich/ingest-pipelines.md#access-source-pattern), processors can't access a field that has a dot in its name unless you first transform the dotted field into an object using the [dot expander processor](elasticsearch://reference/enrich-processor/dot-expand-processor.md).
+With the default `classic` [field access pattern](docs-content://manage-data/ingest/transform-enrich/ingest-pipelines.md#access-source-pattern), processors can't access a field that has a dot in its name unless you first transform the dotted field into an object using the [dot expander processor](elasticsearch://reference/enrich-processor/dot-expand-processor.md).
+
+{applies_to}`stack: ga 9.2+` {applies_to}`serverless: ga` You can set `field_access_pattern` to [`flexible`](docs-content://manage-data/ingest/transform-enrich/ingest-pipelines.md#access-source-pattern-flexible) in the pipeline definition. Every processor in that pipeline reads and writes dotted field names directly, so no dot expander step is needed. This also covers field names that would collide when expanded, such as `http.host` and `http.host.name`.
 
 ## Infrastructure and host metrics
 
