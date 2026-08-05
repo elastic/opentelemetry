@@ -60,6 +60,8 @@ When collecting host metrics through a distribution of the OTel Collector other 
 
 ### Histogram and counter temporality
 
+Temporality support for histogram and counter metrics depends on the ingestion path.
+
 #### OTLP endpoint
 
 ```{applies_to}
