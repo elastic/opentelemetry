@@ -69,7 +69,7 @@ stack: ga 9.5+
 serverless: ga
 ```
 
-When you send data using the [managed OTLP endpoint](/reference/managed-inputs/managed-otlp-endpoint.md) or the {{motlp}}, both [`delta` and `cumulative` temporality](https://opentelemetry.io/docs/specs/otel/metrics/data-model/#temporality) are supported for [`Histogram`](https://opentelemetry.io/docs/specs/otel/metrics/data-model/#histogram) and counter metrics.
+When you send data using the [{{motlp}}](/reference/managed-inputs/managed-otlp-endpoint.md), both [`delta` and `cumulative` temporality](https://opentelemetry.io/docs/specs/otel/metrics/data-model/#temporality) are supported for [`Histogram`](https://opentelemetry.io/docs/specs/otel/metrics/data-model/#histogram) and counter metrics.
 
 Cumulative temporality for histograms additionally requires the `xpack.otel_data.histogram_field_type` cluster setting to be set to `exponential_histogram`, which is the default from {{stack}} 9.4 onwards. Refer to [Metric temporality](docs-content://manage-data/ingest/otlp-endpoint.md#metric-temporality) for details.
 
