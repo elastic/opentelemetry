@@ -41,11 +41,10 @@ Refer to [these examples](elastic-agent://reference/edot-collector/config/config
 
 ### Ingest pipelines and dotted field names
 
-You can define your own {{es}} ingest pipeline for OTel data streams, but the OTel-native data format in {{es}} contains dotted field names, which affects how processors read them.
+You can define your own {{es}} ingest pipeline for OTel data streams, but the OTel-native data format in {{es}} contains dotted field names. With the default `classic` [field access pattern](docs-content://manage-data/ingest/transform-enrich/ingest-pipelines.md#access-source-pattern), processors can't access a field that has a dot in its name. To work around this, you can:
 
-With the default `classic` [field access pattern](docs-content://manage-data/ingest/transform-enrich/ingest-pipelines.md#access-source-pattern), processors can't access a field that has a dot in its name unless you first transform the dotted field into an object using the [dot expander processor](elasticsearch://reference/enrich-processor/dot-expand-processor.md).
-
-{applies_to}`stack: ga 9.2+` {applies_to}`serverless: ga` You can set `field_access_pattern` to [`flexible`](docs-content://manage-data/ingest/transform-enrich/ingest-pipelines.md#access-source-pattern-flexible) in the pipeline definition. Every processor in that pipeline reads and writes dotted field names directly, so no dot expander step is needed. This also covers field names that would collide when expanded, such as `http.host` and `http.host.name`.
+* Transform the dotted field into an object using the [dot expander processor](elasticsearch://reference/enrich-processor/dot-expand-processor.md) before accessing it.
+* {applies_to}`stack: ga 9.2+` {applies_to}`serverless: ga` Set `field_access_pattern` to [`flexible`](docs-content://manage-data/ingest/transform-enrich/ingest-pipelines.md#access-source-pattern-flexible) in the pipeline definition. Every processor in that pipeline reads and writes dotted field names directly, so no dot expander step is needed. This also covers field names that would collide when expanded, such as `http.host` and `http.host.name`.
 
 ## Infrastructure and host metrics
 
