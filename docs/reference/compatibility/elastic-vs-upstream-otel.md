@@ -88,9 +88,9 @@ On platforms that provide their own OpenTelemetry distributions, such as [Red Ha
 
 ## {{edot-cf}}
 
-The [{{edot-cf}}](/reference/edot-cloud-forwarder/index.md) are Elastic-specific components with no upstream equivalent. They package the {{agent}} as a cloud function — AWS Lambda, Azure Function, or GCP Cloud Run — to collect telemetry from cloud provider services such as S3, CloudWatch, Blob Storage, Event Hub, GCS, and GCP Operations, and forward it to the [{{motlp}}](/reference/managed-inputs/managed-otlp-endpoint.md).
+The [{{edot-cf}}](/reference/elastic-cloud-forwarder/index.md) are Elastic-specific components with no upstream equivalent. They package the {{agent}} as a cloud function — AWS Lambda, Azure Function, or GCP Cloud Run — to collect telemetry from cloud provider services such as S3, CloudWatch, Blob Storage, Event Hub, GCS, and GCP Operations, and forward it to the [{{motlp}}](/reference/managed-inputs/managed-otlp-endpoint.md).
 
-Because there is no upstream counterpart, the {{edot}}-versus-upstream comparison does not apply to Cloud Forwarders. Refer to the [{{edot-cf}} documentation](/reference/edot-cloud-forwarder/index.md) for setup guides and supported cloud services.
+Because there is no upstream counterpart, the {{edot}}-versus-upstream comparison does not apply to Cloud Forwarders. Refer to the [{{edot-cf}} documentation](/reference/elastic-cloud-forwarder/index.md) for setup guides and supported cloud services.
 
 ## OTel Demo
 

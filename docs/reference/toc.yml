@@ -15,7 +15,7 @@ toc:
       - file: compatibility/features.md
       - file: compatibility/collectors.md
       - file: compatibility/sdks.md
-      - file: compatibility/edot-vs-upstream.md
+      - file: compatibility/elastic-vs-upstream-otel.md
       - file: compatibility/limitations.md
       - file: compatibility/nomenclature.md
       - file: compatibility/data-streams.md 
@@ -23,4 +23,4 @@ toc:
   - file: data-streams.md
   - file: central-configuration.md
   - file: edot-sdks/index.md
-  - toc: edot-cloud-forwarder
+  - toc: elastic-cloud-forwarder

@@ -2,7 +2,14 @@ redirects:
   # EDOT Cloud Forwarder (restructured to subfolders)
   'reference/edot-cloud-forwarder/azure.md': 'edot-cloud-forwarder-azure://reference/edot-cf-azure/index.md'
   'reference/edot-cloud-forwarder/azure/index.md': 'edot-cloud-forwarder-azure://reference/edot-cf-azure/index.md'
-  'reference/edot-cloud-forwarder/gcp.md': 'reference/edot-cloud-forwarder/gcp/index.md'
+  'reference/edot-cloud-forwarder/gcp.md': 'reference/elastic-cloud-forwarder/gcp/index.md'
+
+  # Elastic Cloud Forwarder (renamed from edot-cloud-forwarder)
+  'reference/edot-cloud-forwarder/index.md': 'reference/elastic-cloud-forwarder/index.md'
+  'reference/edot-cloud-forwarder/gcp/index.md': 'reference/elastic-cloud-forwarder/gcp/index.md'
+
+  # EDOT vs upstream comparison page (renamed)
+  'reference/compatibility/edot-vs-upstream.md': 'reference/compatibility/elastic-vs-upstream-otel.md'
 
   # Managed inputs: the section folder was renamed from motlp to managed-inputs.
   # The historical /motlp URL served the Managed OTLP Endpoint, so point it (and the
@@ -42,8 +49,8 @@ redirects:
           'failure-store': 'failure-store'
 
   # EDOT Collector troubleshooting pages (from reference to troubleshooting)
-  'reference/edot-collector/troubleshooting/index.md': 'docs-content://troubleshoot/ingest/opentelemetry/edot-collector/index.md'
-  'reference/edot-collector/troubleshooting/collector-oomkilled.md': 'docs-content://troubleshoot/ingest/opentelemetry/edot-collector/collector-oomkilled.md'
+  'reference/edot-collector/troubleshooting/index.md': 'docs-content://troubleshoot/ingest/opentelemetry/otel-collector/index.md'
+  'reference/edot-collector/troubleshooting/collector-oomkilled.md': 'docs-content://troubleshoot/ingest/opentelemetry/otel-collector/collector-oomkilled.md'
 
   # SDK troubleshooting pages (from reference to troubleshooting)
   'reference/edot-sdks/dotnet/troubleshooting.md': 'docs-content://troubleshoot/ingest/opentelemetry/edot-sdks/dotnet/index.md'
@@ -79,22 +86,22 @@ redirects:
 
   # Collector and SDK reference
   # EDOT Collector
-  'reference/edot-collector/index.md': 'elastic-agent://reference/edot-collector/index.md'
-  'reference/edot-collector/download.md': 'elastic-agent://reference/edot-collector/download.md'
-  'reference/edot-collector/modes.md': 'elastic-agent://reference/edot-collector/modes.md'
-  'reference/edot-collector/config/index.md': 'elastic-agent://reference/edot-collector/config/index.md'
-  'reference/edot-collector/config/default-config-standalone.md': 'elastic-agent://reference/edot-collector/config/default-config-standalone.md'
-  'reference/edot-collector/config/default-config-k8s.md': 'elastic-agent://reference/edot-collector/config/default-config-k8s.md'
-  'reference/edot-collector/config/configure-logs-collection.md': 'elastic-agent://reference/edot-collector/config/configure-logs-collection.md'
-  'reference/edot-collector/config/configure-metrics-collection.md': 'elastic-agent://reference/edot-collector/config/configure-metrics-collection.md'
-  'reference/edot-collector/config/authentication-methods.md': 'elastic-agent://reference/edot-collector/config/authentication-methods.md'
-  'reference/edot-collector/config/proxy.md': 'elastic-agent://reference/edot-collector/config/proxy.md'
-  'reference/edot-collector/components.md': 'elastic-agent://reference/edot-collector/components.md'
-  'reference/edot-collector/components/elasticsearchexporter.md': 'elastic-agent://reference/edot-collector/components/elasticsearchexporter.md'
-  'reference/edot-collector/components/elasticapmintakereceiver.md': 'elastic-agent://reference/edot-collector/components/elasticapmintakereceiver.md'
-  'reference/edot-collector/customization.md': 'elastic-agent://reference/edot-collector/customization.md'
-  'reference/edot-collector/custom-collector.md': 'elastic-agent://reference/edot-collector/custom-collector.md'
-  'reference/edot-collector/upstream-collector.md': 'elastic-agent://reference/edot-collector/upstream-collector.md'
+  'reference/edot-collector/index.md': 'elastic-agent://reference/otel-collector/index.md'
+  'reference/edot-collector/download.md': 'elastic-agent://reference/otel-collector/download.md'
+  'reference/edot-collector/modes.md': 'elastic-agent://reference/otel-collector/modes.md'
+  'reference/edot-collector/config/index.md': 'elastic-agent://reference/otel-collector/config/index.md'
+  'reference/edot-collector/config/default-config-standalone.md': 'elastic-agent://reference/otel-collector/config/default-config-standalone.md'
+  'reference/edot-collector/config/default-config-k8s.md': 'elastic-agent://reference/otel-collector/config/default-config-k8s.md'
+  'reference/edot-collector/config/configure-logs-collection.md': 'elastic-agent://reference/otel-collector/config/configure-logs-collection.md'
+  'reference/edot-collector/config/configure-metrics-collection.md': 'elastic-agent://reference/otel-collector/config/configure-metrics-collection.md'
+  'reference/edot-collector/config/authentication-methods.md': 'elastic-agent://reference/otel-collector/config/authentication-methods.md'
+  'reference/edot-collector/config/proxy.md': 'elastic-agent://reference/otel-collector/config/proxy.md'
+  'reference/edot-collector/components.md': 'elastic-agent://reference/otel-collector/components.md'
+  'reference/edot-collector/components/elasticsearchexporter.md': 'elastic-agent://reference/otel-collector/components/elasticsearchexporter.md'
+  'reference/edot-collector/components/elasticapmintakereceiver.md': 'elastic-agent://reference/otel-collector/components/elasticapmintakereceiver.md'
+  'reference/edot-collector/customization.md': 'elastic-agent://reference/otel-collector/customization.md'
+  'reference/edot-collector/custom-collector.md': 'elastic-agent://reference/otel-collector/custom-collector.md'
+  'reference/edot-collector/upstream-collector.md': 'elastic-agent://reference/otel-collector/upstream-collector.md'
 
   'reference/edot-sdks/proxy.md': 'docs-content://troubleshoot/ingest/opentelemetry/edot-sdks/proxy.md'
 
