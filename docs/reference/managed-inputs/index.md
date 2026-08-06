@@ -23,7 +23,7 @@ Managed inputs are the recommended ingestion path for {{ecloud}}. The following 
 | [Managed OTLP Endpoint](managed-otlp-endpoint.md) | OpenTelemetry Protocol (OTLP) | Ingest OpenTelemetry logs, metrics, and traces from {{agent}} collectors and EDOT SDKs, {{edot-cf}}, upstream OpenTelemetry collectors and SDKs, or any OTLP-compliant shipper. |
 | [Managed Prometheus Remote Write endpoint](prometheus-remote-write.md) | Prometheus Remote Write v1 (PRW) | Ingest Prometheus metrics into {{es}} time series data streams. |
 | [Managed {{es}} _bulk endpoint](elasticsearch-bulk.md) | {{es}} `_bulk` API | Ingest data from `_bulk`-based shippers such as {{product.beats}}, {{product.elastic-agent}}, {{product.logstash}}, and other {{es}}-compatible shippers. |
-| [Managed Vercel endpoint](https://www.elastic.co/docs/reference/integrations/vercel) | JSON or NDJSON | Ingest Vercel logs, audit logs, Web Analytics, and Speed Insights to {{es}} |
+| [Managed Vercel endpoint](integration-docs://reference/vercel.md) | JSON or NDJSON | Ingest Vercel logs, audit logs, Web Analytics, and Speed Insights to {{es}} |
 | [Managed Supabase endpoint](https://www.elastic.co/docs/reference/integrations/supabase) | OpenTelemetry Protocol (OTLP) | Ingest Supabase logs using the OpenTelemetry |
 
 
