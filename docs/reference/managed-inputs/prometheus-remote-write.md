@@ -11,6 +11,7 @@ products:
   - id: cloud-serverless
   - id: cloud-hosted
   - id: observability
+  - id: security
 ---
 
 # Ingest Prometheus metrics with the Managed Prometheus Remote Write endpoint [prometheus-remote-write]
