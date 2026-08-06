@@ -33,6 +33,7 @@ The following table shows Elastic features and their level of support and compat
 | OTel-native, Collector-based logs parsing & processing      | [Compatible]     | [Supported]      |
 | OTel-native, Collector-based data routing                   | [Compatible]     | [Supported]      |
 | Managed, centralized processing^2^                          | [Incompatible]   | [Not supported]  |
+| User-defined {{es}} ingest pipelines^2^ {applies_to}`stack: ga 9.2+` {applies_to}`serverless: ga` | [Compatible]     | [Not supported]  |
 | **Metrics Collection**^3^                                   | [Compatible]     | [Supported]      |
 | Automatic metrics mapping                                   | [Compatible]     | [Supported]      |
 | Usage of [Time Series Data Streams]                         | [Compatible]     | [Supported]      |

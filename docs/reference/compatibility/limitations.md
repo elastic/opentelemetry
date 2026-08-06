@@ -25,7 +25,7 @@ While {{edot}} and OTel-native data collection already covers most of the core O
 * **Real user monitoring (RUM):** RUM ingestion and visualizations are not yet available for OTel-native data.
 * **Universal profiling:** This capability is currently only supported in the classic stack.
 * **Existing integrations and dashboards:** Many prebuilt Elastic integrations and dashboards are designed for ECS-formatted data and may not work as expected with the OpenTelemetry semantic conventions without customization.
-* **Ingest pipelines for structuring logs:** {{es}} ingest pipelines cannot directly parse OTel-native data with dotted field names without preprocessing. See [Centralized parsing and processing of data](#centralized-parsing-and-processing-of-data) for workarounds.
+* **Managed processing of logs:** Elastic doesn't provide curated, centralized {{es}} ingest pipelines for OTel-native data. Process logs in the Collector instead, or define your own ingest pipeline. Refer to [Centralized parsing and processing of data](#centralized-parsing-and-processing-of-data) for more information.
 * **Tail-based sampling (TBS):**  
 If you need the full tail-based sampling capabilities of APM Server, use APM Server with an {{es}} output. {{edot}} does not provide managed TBS. You can run TBS in a self-managed {{agent}} or any contrib OTel Collector and ingest the sampled traces into Elastic with some caveats - refer to [Tail-based sampling limitations](#tail-based-sampling-tbs) for more information.
 
@@ -33,13 +33,18 @@ Refer to [{{edot}} data streams compared to classic {{product.apm}}](../compatib
 
 ## Centralized parsing and processing of data
 
-With OTel-native ingestion of data, for example through the {{agent}} or the [Managed OTLP endpoint](/reference/managed-inputs/managed-otlp-endpoint.md), [{{es}} Ingest Pipelines](docs-content://manage-data/ingest/transform-enrich/ingest-pipelines.md) are not supported.
-
-The OTel-native data format in {{es}} contains dotted fields. Ingest Pipeline processors can't access fields that have a dot in their name without having previously transformed the dotted field into an object using the [`Dot expander processor`](elasticsearch://reference/enrich-processor/dot-expand-processor.md).
+Elastic doesn't provide managed, centralized processing of OTel-native data. OTel-native data streams don't come with curated [{{es}} ingest pipelines](docs-content://manage-data/ingest/transform-enrich/ingest-pipelines.md) that parse and enrich your data for you.
 
 To process your OTel data, for example to parse logs data, route data to data streams, and so on, use [Collector processors](https://opentelemetry.io/docs/collector/configuration/#processors), [`filelogreceiver` operators](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/pkg/stanza/docs/operators/README.md#what-operators-are-available) and other OTel-native processing capabilities.
 
 Refer to [these examples](elastic-agent://reference/edot-collector/config/configure-logs-collection.md) on how to process log data with {{agent}}.
+
+### Ingest pipelines and dotted field names
+
+You can define your own {{es}} ingest pipeline for OTel data streams, but the OTel-native data format in {{es}} contains dotted field names. With the default `classic` [field access pattern](docs-content://manage-data/ingest/transform-enrich/ingest-pipelines.md#access-source-pattern), processors can't access a field that has a dot in its name. To work around this, you can:
+
+* Transform the dotted field into an object using the [dot expander processor](elasticsearch://reference/enrich-processor/dot-expand-processor.md) before accessing it.
+* {applies_to}`stack: ga 9.2+` {applies_to}`serverless: ga` Set `field_access_pattern` to [`flexible`](docs-content://manage-data/ingest/transform-enrich/ingest-pipelines.md#access-source-pattern-flexible) in the pipeline definition. Every processor in that pipeline reads and writes dotted field names directly, so no dot expander step is needed. This also covers field names that would collide when expanded, such as `http.host` and `http.host.name`.
 
 ## Infrastructure and host metrics
 
