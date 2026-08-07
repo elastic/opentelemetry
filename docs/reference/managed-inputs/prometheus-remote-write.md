@@ -5,9 +5,13 @@ applies_to:
   serverless:
     observability: ga
     security: ga
+  deployment:
+    ech: ga
 products:
   - id: cloud-serverless
+  - id: cloud-hosted
   - id: observability
+  - id: security
 ---
 
 # Ingest Prometheus metrics with the Managed Prometheus Remote Write endpoint [prometheus-remote-write]
@@ -16,21 +20,21 @@ The Managed Prometheus Remote Write endpoint ingests metrics sent in the [Promet
 
 ## When to use the Managed Prometheus Remote Write endpoint
 
-For {{serverless-full}} projects, the Managed Prometheus Remote Write endpoint is the recommended way to ingest Prometheus metrics. Compared to sending metrics directly to the [{{es}} Prometheus Remote Write endpoint](docs-content://manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md), it provides:
+For {{serverless-full}} projects and {{ech}} deployments, the Managed Prometheus Remote Write endpoint is the recommended way to ingest Prometheus metrics. Compared to sending metrics directly to the [{{es}} Prometheus Remote Write endpoint](docs-content://manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md), it provides:
 
 - A single ingest endpoint and API key shared with the other [managed inputs](index.md).
 - Durable buffering, back-pressure, and retry on `429 Too Many Requests`.
 - The same Prometheus-to-TSDS mapping as the {{es}} PRW endpoint, so the resulting data is identical.
 
 :::{warning}
-On {{serverless-full}}, use the Managed Prometheus Remote Write endpoint rather than sending metrics directly to the [{{es}} Prometheus Remote Write endpoint](docs-content://manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md).
+On {{serverless-full}} and {{ech}}, use the Managed Prometheus Remote Write endpoint rather than sending metrics directly to the [{{es}} Prometheus Remote Write endpoint](docs-content://manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md).
 
-Direct ingest bypasses managed inputs and has no buffering or processing before data reaches {{es}}. It also authenticates differently: the direct {{es}} endpoint uses {{es}} credentials or an API key with index privileges, while the Managed Prometheus Remote Write endpoint uses an API key with the `event:write` privilege for the `apm` application. Use the direct {{es}} endpoint only for self-managed deployments, where managed inputs aren't available. {{ech}} support for the Managed Prometheus Remote Write endpoint is planned.
+Direct ingest bypasses managed inputs and has no buffering or processing before data reaches {{es}}. It also authenticates differently: the direct {{es}} endpoint uses {{es}} credentials or an API key with index privileges, while the Managed Prometheus Remote Write endpoint uses an API key with the `event:write` privilege for the `apm` application. Use the direct {{es}} endpoint only for self-managed deployments, where managed inputs aren't available.
 :::
 
 ## Prerequisites
 
-- An {{serverless-full}} Observability or Security project.
+- An {{serverless-full}} Observability or Security project, or an {{ech}} deployment.
 - An API key with the `event:write` privilege for the `apm` application. Refer to [Authentication](authentication-delivery-and-failure-handling.md#authentication) for the required key format and generation steps.
 
 ## Send Prometheus metrics through managed inputs
@@ -54,7 +58,9 @@ remote_write:
 To find `<prometheus-endpoint>`:
 
 1. Log in to the {{ecloud}} Console.
-2. Find your project and select **Manage**.
+2. Do one of the following:
+   - **{{serverless-full}}**: Find your project and select **Manage**.
+   - **{{ech}}**: Find your deployment in **Hosted deployments** and select **Manage**.
 3. In the **Application endpoints, cluster and component IDs** section, select **Prometheus**.
 4. Copy the **Prometheus** endpoint value, which looks similar to `https://<project>.ingest.<region>.<csp>.elastic.cloud/api/v1/write`
 
@@ -110,5 +116,4 @@ For back-pressure and `429` responses, refer to [Managed inputs rate limiting](r
 ## Limitations
 
 - URL-path routing (for example, `/_prometheus/metrics/{dataset}/api/v1/write`) to custom data streams is not supported through managed inputs. Use [label-based routing](docs-content://manage-data/data-store/data-streams/tsds-ingest-prometheus-remote-write.md#route-by-labels) instead.
-- Available on {{serverless-full}} only.
 - Samples with non-finite values (NaN, Infinity) are silently dropped by {{es}}, and staleness markers are not supported.
