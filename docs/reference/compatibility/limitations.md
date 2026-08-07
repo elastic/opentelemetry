@@ -62,7 +62,7 @@ When collecting host metrics through a distribution of the OTel Collector other 
 
 Temporality support for histogram and counter metrics depends on the ingestion path.
 
-#### OTLP endpoint
+#### Managed OTLP endpoint
 
 ```{applies_to}
 stack: ga 9.5+
