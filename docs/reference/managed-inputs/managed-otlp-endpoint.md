@@ -141,7 +141,7 @@ A successful response from the {{motlp}} means your data was durably accepted fo
 The following limitations apply when using the {{motlp}}:
 
 * Universal Profiling is not available.
-* Only supports histograms with delta temporality. Cumulative histograms are dropped.
+* For supported metric temporalities for histograms and counters, refer to [Metric temporality](docs-content://manage-data/ingest/otlp-endpoint.md#metric-temporality).
 * Latency distributions based on histogram values have limited precision due to the fixed boundaries of explicit bucket histograms.
 * Tail-based sampling (TBS) is not available. The {{motlp}} does not provide centralized hosted sampling. If you need tail-based sampling, configure it on the edge using the [Tail Sampling Processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor) in your {{edot}} or OpenTelemetry Collector before sending data to the endpoint.
 * For {{ech}} network limitations that apply to all managed inputs, refer to [{{ech}} limitations](authentication-delivery-and-failure-handling.md#ech-limitations).
