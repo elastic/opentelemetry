@@ -65,7 +65,9 @@ Elastic does not provide support for distributions other than the {{edot}}.
 
 #### Red Hat OpenShift
 
-{{agent}} is supported for use on OpenShift, please refer to our public compatibility [matrix](https://www.elastic.co/support/matrix#matrix_kubernetes). We also recommend using the [Red Hat build of OpenTelemetry](https://docs.redhat.com/en/documentation/openshift_container_platform/4.20/html/red_hat_build_of_opentelemetry/index) [at the edge](/reference/architecture/index.md#understanding-edge-deployment) to collect and send telemetry data. For support of OpenTelemetry components in OpenShift, contact Red Hat.
+{applies_to}`stack: ga 9.5+` {{agent}} is supported for use on OpenShift. Refer to the compatibility [Support matrix](https://www.elastic.co/support/matrix#matrix_kubernetes) for details.
+
+We also recommend using the [Red Hat build of OpenTelemetry](https://docs.redhat.com/en/documentation/openshift_container_platform/4.20/html/red_hat_build_of_opentelemetry/index) [at the edge](/reference/architecture/index.md#understanding-edge-deployment) to collect and send telemetry data. For support of OpenTelemetry components in OpenShift, contact Red Hat.
 
 #### AWS Lambda
 
