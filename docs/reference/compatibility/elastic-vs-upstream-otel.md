@@ -41,9 +41,9 @@ The upstream OpenTelemetry project does not ship a single, recommended Collector
 
 {{agent}} is a curated distribution that eliminates this assembly step. It includes specific components and configurations optimized for {{product.observability}}, and it ships with Elastic-specific components that are not available in contrib, such as the `elasticsearchexporter` for native ingestion into {{es}} and the `elasticapmintakereceiver` for backward-compatible {{product.apm}} intake. These components are developed by Elastic with the intent of contributing them upstream over time.
 
-{{agent}} ships with [default configurations](elastic-agent://reference/edot-collector/config/default-config-standalone.md) for common deployment scenarios, including [standalone](elastic-agent://reference/edot-collector/config/default-config-standalone.md) and [Kubernetes](elastic-agent://reference/edot-collector/config/default-config-k8s.md). In self-managed {{stack}} deployments, the {{agent}} running in [gateway mode](elastic-agent://reference/edot-collector/modes.md) replaces {{product.apm-server}} for OTel-native data ingestion, handling metrics aggregation and format conversion before writing to {{es}}.
+{{agent}} ships with [default configurations](elastic-agent://reference/otel-collector/config/default-config-standalone.md) for common deployment scenarios, including [standalone](elastic-agent://reference/otel-collector/config/default-config-standalone.md) and [Kubernetes](elastic-agent://reference/otel-collector/config/default-config-k8s.md). In self-managed {{stack}} deployments, the {{agent}} running in [gateway mode](elastic-agent://reference/otel-collector/modes.md) replaces {{product.apm-server}} for OTel-native data ingestion, handling metrics aggregation and format conversion before writing to {{es}}.
 
-Users who need a Collector build that differs from the standard {{agent}} can follow the [custom Collector guide](elastic-agent://reference/edot-collector/custom-collector.md), which describes the required components and preprocessing pipelines for Elastic compatibility. For the full list of components included in {{agent}}, refer to the [{{agent}} components](elastic-agent://reference/edot-collector/components.md) page.
+Users who need a Collector build that differs from the standard {{agent}} can follow the [custom Collector guide](elastic-agent://reference/otel-collector/custom-collector.md), which describes the required components and preprocessing pipelines for Elastic compatibility. For the full list of components included in {{agent}}, refer to the [{{agent}} components](elastic-agent://reference/otel-collector/components.md) page.
 
 ## EDOT SDKs
 
@@ -73,7 +73,7 @@ Due to current upstream limitations, some capabilities are temporarily available
 Upstream OTel SDKs are technically [Compatible] with Elastic and can send data through the same ingestion paths, but Elastic does not provide official support or troubleshooting assistance for them. Refer to the [SDK compatibility table](sdks.md) for version-level details.
 
 :::{important}
-EDOT SDKs are designed to export telemetry through the [{{agent}}](elastic-agent://reference/edot-collector/index.md) or the [{{motlp}}](/reference/managed-inputs/managed-otlp-endpoint.md). Using EDOT SDKs directly with {{product.apm-server}}'s OpenTelemetry intake is not supported — attribute mapping, enrichment, and processing pipelines are not guaranteed on that path.
+EDOT SDKs are designed to export telemetry through the [{{agent}}](elastic-agent://reference/otel-collector/index.md) or the [{{motlp}}](/reference/managed-inputs/managed-otlp-endpoint.md). Using EDOT SDKs directly with {{product.apm-server}}'s OpenTelemetry intake is not supported — attribute mapping, enrichment, and processing pipelines are not guaranteed on that path.
 :::
 
 ## Kubernetes Operator

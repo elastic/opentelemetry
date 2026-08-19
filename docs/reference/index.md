@@ -32,7 +32,7 @@ The following {{edot}} distributions are available:
 
 | Distribution | Latest version | Current status |
 | ------------ | ------- | ------ |
-| [{{agent}}](elastic-agent://reference/edot-collector/index.md) | {{version.edot_collector}} | GA |
+| [{{agent}}](elastic-agent://reference/otel-collector/index.md) | {{version.edot_collector}} | GA |
 | [EDOT .NET](elastic-otel-dotnet://reference/edot-dotnet/index.md) | {{version.edot_dotnet}} | GA |
 | [EDOT Java](elastic-otel-java://reference/edot-java/index.md) | {{version.edot_java}} | GA |
 | [EDOT Node.js](elastic-otel-node://reference/edot-node/index.md) | {{version.edot_node}} | GA |

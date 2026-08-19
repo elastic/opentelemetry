@@ -17,7 +17,7 @@ On host or virtual machine environments, deploy local, per-host OpenTelemetry Co
 
 Collectors deployed on these edge environments have two main purposes:
 
-1.  The collection of local logs and infrastructure metrics. Refer to [this sample config file](elastic-agent://reference/edot-collector/config/default-config-standalone.md) for recommended Collector receiver configurations for hostmetrics and logs.
+1.  The collection of local logs and infrastructure metrics. Refer to [this sample config file](elastic-agent://reference/otel-collector/config/default-config-standalone.md) for recommended Collector receiver configurations for hostmetrics and logs.
 2.  Enriching application telemetry from OTel SDKs with the corresponding hosts resource attributes.
 
 :::{note}

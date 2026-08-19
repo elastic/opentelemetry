@@ -74,7 +74,7 @@ Your project might be hitting ingest rate limits. Refer to the dedicated [429 er
 
 Reduce the payload size sent by your collector by lowering batching limits. In the {{agent}} (and upstream or contrib collectors), you can reduce the maximum batch size (in uncompressed bytes) so each request stays smaller.
 
-For configuration guidance and the recommended batching settings for sending data to the Elastic Cloud Managed OTLP Endpoint, refer to [Batching configuration for contrib OpenTelemetry Collector](elastic-agent://reference/edot-collector/config/default-config-standalone.md#batching-configuration-for-contrib-opentelemetry-collector).
+For configuration guidance and the recommended batching settings for sending data to the Elastic Cloud Managed OTLP Endpoint, refer to [Batching configuration for contrib OpenTelemetry Collector](elastic-agent://reference/otel-collector/config/default-config-standalone.md#batching-configuration-for-contrib-opentelemetry-collector).
 
 ## Server errors (5XX)
 

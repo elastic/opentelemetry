@@ -32,7 +32,7 @@ This applies to all EDOT SDKs:
 
 Refer to the [{{agent}} compatibility table](collectors.md) for compatibility with {{stack}} versions.
 
-For the best experience, export data from EDOT SDKs using the [{{agent}}](elastic-agent://reference/edot-collector/index.md).
+For the best experience, export data from EDOT SDKs using the [{{agent}}](elastic-agent://reference/otel-collector/index.md).
 
 :::{note}
 Ingesting data from EDOT SDKs through {{agent}} into {{stack}} versions 8.18 or higher is supported ([Supported]).
