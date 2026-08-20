@@ -39,7 +39,7 @@ The following table shows Elastic features and their level of support and compat
 | Usage of [Time Series Data Streams]                         | [Compatible]     | [Supported]      |
 | **Central Management**                                      | [Incompatible]   | [Not supported]  |
 | Central management of OTel collectors                       | [Incompatible]   | [Not supported]  |
-| Central management of OTel SDKs                             | [Compatible]^5^  | [Supported]^5^   |
+| Central management of OTel SDKs {applies_to}`stack: preview 9.1+` {applies_to}`serverless: unavailable` | [Compatible]     | [Supported]      |
 
 
 ^1^ Refer to [limitations on host metrics](limitations.md#infrastructure-and-host-metrics)
@@ -49,8 +49,6 @@ The following table shows Elastic features and their level of support and compat
 ^3^ Refer to [limitations on metrics ingestion](limitations.md#metrics-data-ingestion)
 
 ^4^ While ingesting traces that have been sampled using TBS is technically possible, there are important limitations to consider. Refer to [Tail-based sampling (TBS) limitations](../compatibility/limitations.md#tail-based-sampling-tbs) for more information.
-
-^5^ Available as Technical Preview on {{stack}} 9.1+. Not available on {{serverless-full}}.
 
 [Incompatible]: nomenclature.md
 [Compatible]: nomenclature.md
