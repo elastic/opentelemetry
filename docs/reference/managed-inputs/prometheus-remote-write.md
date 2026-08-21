@@ -65,7 +65,7 @@ To find `<prometheus-endpoint>`:
    - **{{serverless-full}}**: Find your project and select **Manage**.
    - **{{ech}}**: Find your deployment in **Hosted deployments** and select **Manage**.
 3. In the **Application endpoints, cluster and component IDs** section, select **Prometheus**.
-4. Copy the **Prometheus** endpoint value, which looks similar to `https://<project>.ingest.<region>.<csp>.elastic.cloud/api/v1/write`
+4. Copy the **Prometheus** endpoint value.
 
 :::::
 
