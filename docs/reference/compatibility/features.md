@@ -39,7 +39,7 @@ The following table shows Elastic features and their level of support and compat
 | Usage of [Time Series Data Streams]                         | [Compatible]     | [Supported]      |
 | **Central Management**                                      | [Incompatible]   | [Not supported]  |
 | Central management of OTel collectors                       | [Incompatible]   | [Not supported]  |
-| Central management of OTel SDKs                             | [Compatible]     | [Supported]      |
+| Central management of OTel SDKs {applies_to}`stack: preview 9.1+` {applies_to}`serverless: unavailable` | [Compatible]     | [Supported]      |
 
 
 ^1^ Refer to [limitations on host metrics](limitations.md#infrastructure-and-host-metrics)

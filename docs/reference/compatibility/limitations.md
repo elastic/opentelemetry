@@ -22,7 +22,7 @@ While {{edot}} and OTel-native data collection already covers most of the core O
 
 {{edot}} already supports most core observability use cases, but in some scenarios, you may prefer to use classic Elastic ingestion components, such as {{agent}} ({{product.fleet}}-managed), {{product.apm-agent}} or {{product.apm-server}}:
 
-* **Real user monitoring (RUM):** RUM ingestion and visualizations are not yet available for OTel-native data.
+* {applies_to}`edot_browser: preview` **Real user monitoring (RUM):** [EDOT Browser](elastic-otel-rum-js://reference/edot-browser/index.md) provides OTel-native browser instrumentation. However, since it is in technical preview, continue using the classic Elastic {{product.apm}} [browser agent](apm-agent-rum-js://reference/index.md) for production RUM.
 * **Universal profiling:** This capability is currently only supported in the classic stack.
 * **Existing integrations and dashboards:** Many prebuilt Elastic integrations and dashboards are designed for ECS-formatted data and may not work as expected with the OpenTelemetry semantic conventions without customization.
 * **Managed processing of logs:** Elastic doesn't provide curated, centralized {{es}} ingest pipelines for OTel-native data. Process logs in the Collector instead, or define your own ingest pipeline. Refer to [Centralized parsing and processing of data](#centralized-parsing-and-processing-of-data) for more information.
