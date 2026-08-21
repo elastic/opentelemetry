@@ -34,7 +34,7 @@ Each EDOT SDK contains an embedded OpAMP Client. Following the Open Agent Manage
 To use {{product.apm-agent}} Central Configuration for EDOT SDKs, you need:
 
 * An Elastic self-managed or {{ecloud}} deployment, version 9.1 or later.
-* A standalone [{{agent}}](elastic-agent://reference/edot-collector/index.md), in either Agent or Collector mode.
+* A standalone [{{agent}}](elastic-agent://reference/otel-collector/index.md), in either Agent or Collector mode.
 * EDOT SDKs instrumenting your application.
 
 The following versions of {{edot}} and {{stack}} support central configuration:
@@ -146,14 +146,14 @@ POST /_security/api_key
 
 :::::{step} Edit the {{agent}} configuration
 
-Edit the [{{agent}} configuration](elastic-agent://reference/edot-collector/config/default-config-standalone.md#central-configuration) to activate the central configuration feature:
+Edit the [{{agent}} configuration](elastic-agent://reference/otel-collector/config/default-config-standalone.md#central-configuration) to activate the central configuration feature:
 
-:::{include} _snippets/edot-collector-auth.md
+:::{include} _snippets/otel-collector-auth.md
 :::
 
 Restart the Elastic Agent to also restart the Collector and apply the changes.
 
-Refer to [Secure connection](elastic-agent://reference/edot-collector/config/default-config-standalone.md#secure-connection) if you need to secure the connection between the {{agent}} and Elastic using TLS or mutual TLS.
+Refer to [Secure connection](elastic-agent://reference/otel-collector/config/default-config-standalone.md#secure-connection) if you need to secure the connection between the {{agent}} and Elastic using TLS or mutual TLS.
 
 :::::
 

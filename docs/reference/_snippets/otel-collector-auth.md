@@ -23,5 +23,5 @@ service:
 ```
 
 :::{note}
-For comprehensive authentication configuration options, refer to [Authentication methods](elastic-agent://reference/edot-collector/config/authentication-methods.md).
+For comprehensive authentication configuration options, refer to [Authentication methods](elastic-agent://reference/otel-collector/config/authentication-methods.md).
 :::

@@ -37,7 +37,7 @@ Elastic doesn't provide managed, centralized processing of OTel-native data. OTe
 
 To process your OTel data, for example to parse logs data, route data to data streams, and so on, use [Collector processors](https://opentelemetry.io/docs/collector/configuration/#processors), [`filelogreceiver` operators](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/pkg/stanza/docs/operators/README.md#what-operators-are-available) and other OTel-native processing capabilities.
 
-Refer to [these examples](elastic-agent://reference/edot-collector/config/configure-logs-collection.md) on how to process log data with {{agent}}.
+Refer to [these examples](elastic-agent://reference/otel-collector/config/configure-logs-collection.md) on how to process log data with {{agent}}.
 
 ### Ingest pipelines and dotted field names
 
@@ -59,7 +59,7 @@ Due to limitations and gaps in data collection with the contrib OTel `hostmetric
 | MacOS collectors do not support CPU and disk metrics. | The `hostmetrics receiver` does not collect these metrics on macOS, leaving related fields empty.                    |
 | Permission issues may cause error logs for process metrics | The `hostmetrics receiver` logs errors if it cannot access certain process information due to insufficient permissions. |
 
-When collecting host metrics through a distribution of the OTel Collector other than {{edot}}, make sure to turn on required metrics that are otherwise turned off by default. Use the {{agent}} [sample config](elastic-agent://reference/edot-collector/config/default-config-standalone.md) for the `hostmetrics` receiver as reference.
+When collecting host metrics through a distribution of the OTel Collector other than {{edot}}, make sure to turn on required metrics that are otherwise turned off by default. Use the {{agent}} [sample config](elastic-agent://reference/otel-collector/config/default-config-standalone.md) for the `hostmetrics` receiver as reference.
 
 ## Metrics data ingestion
 

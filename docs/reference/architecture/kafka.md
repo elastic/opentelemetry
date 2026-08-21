@@ -58,7 +58,7 @@ These pipelines rely on the following {{agent}} components:
 - `kafkaexporter` to write OTLP payloads to Kafka.
 - `kafkareceiver` to read OTLP payloads from Kafka.
 
-For {{edot}}, only the `otlp_proto` and `otlp_json` encodings are supported for the Kafka receiver and exporter. Partitioning options (for example, `partition_traces_by_id`) are not supported. Refer to the [{{agent}} components list](elastic-agent://reference/edot-collector/components.md) for the full list and support notes.
+For {{edot}}, only the `otlp_proto` and `otlp_json` encodings are supported for the Kafka receiver and exporter. Partitioning options (for example, `partition_traces_by_id`) are not supported. Refer to the [{{agent}} components list](elastic-agent://reference/otel-collector/components.md) for the full list and support notes.
 
 ## Example configuration [example-configuration]
 

@@ -67,7 +67,7 @@ The need for an {{agent}} in gateway mode as part of your Elastic backend depend
 - Metrics aggregation for traces and logs, which improves {{product.apm}} UI performance with lower latency.
 - Format conversion for optimal storage in {{es}}.
 
-For detailed information about Agent and Gateway modes and their specific requirements, refer to the [deployment mode documentation](elastic-agent://reference/edot-collector/modes.md).
+For detailed information about Agent and Gateway modes and their specific requirements, refer to the [deployment mode documentation](elastic-agent://reference/otel-collector/modes.md).
 
 ## Limitations
 

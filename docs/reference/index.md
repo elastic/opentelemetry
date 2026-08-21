@@ -18,7 +18,7 @@ products:
 
 Each {{edot}} distribution is assembled with selected OpenTelemetry components and tested to ensure production readiness. This gives you a reliable, optimized OpenTelemetry experience backed by Elastic support.
 
-[OpenTelemetry](https://opentelemetry.io/docs/) is a vendor-neutral observability framework for collecting, processing, and exporting telemetry data. If you are new to OpenTelemetry, refer to OpenTelemetry [concepts](https://opentelemetry.io/docs/concepts/) and [components](https://opentelemetry.io/docs/concepts/components/). Refer to [{{edot}} compared to upstream OpenTelemetry](/reference/compatibility/edot-vs-upstream.md) for more information on how {{edot}} differs from upstream OpenTelemetry components.
+[OpenTelemetry](https://opentelemetry.io/docs/) is a vendor-neutral observability framework for collecting, processing, and exporting telemetry data. If you are new to OpenTelemetry, refer to OpenTelemetry [concepts](https://opentelemetry.io/docs/concepts/) and [components](https://opentelemetry.io/docs/concepts/components/). Refer to [{{edot}} compared to upstream OpenTelemetry](/reference/compatibility/elastic-vs-upstream-otel.md) for more information on how {{edot}} differs from upstream OpenTelemetry components.
 
 :::{note}
 :applies_to: stack: ga 9.5+
@@ -32,7 +32,7 @@ The following {{edot}} distributions are available:
 
 | Distribution | Latest version | Current status |
 | ------------ | ------- | ------ |
-| [{{agent}}](elastic-agent://reference/edot-collector/index.md) | {{version.edot_collector}} | GA |
+| [{{agent}}](elastic-agent://reference/otel-collector/index.md) | {{version.edot_collector}} | GA |
 | [EDOT .NET](elastic-otel-dotnet://reference/edot-dotnet/index.md) | {{version.edot_dotnet}} | GA |
 | [EDOT Java](elastic-otel-java://reference/edot-java/index.md) | {{version.edot_java}} | GA |
 | [EDOT Node.js](elastic-otel-node://reference/edot-node/index.md) | {{version.edot_node}} | GA |
@@ -43,7 +43,7 @@ The following {{edot}} distributions are available:
 | [EDOT Browser](elastic-otel-rum-js://reference/edot-browser/index.md) | {{version.edot_browser}} | Technical Preview |
 | [{{product.edot-cf-aws}}](edot-cloud-forwarder-aws://reference/edot-cf-aws/index.md) | {{version.edot_cf_aws}} | GA |
 | [{{product.edot-cf-azure}}](edot-cloud-forwarder-azure://reference/edot-cf-azure/index.md) | {{version.edot_cf_aws}} | Technical Preview |
-| [{{edot-cf}} for GCP](/reference/edot-cloud-forwarder/gcp/index.md) | {{version.edot_cf_gcp}} | Technical Preview |
+| [{{edot-cf}} for GCP](/reference/elastic-cloud-forwarder/gcp/index.md) | {{version.edot_cf_gcp}} | Technical Preview |
 
 Each {{edot}} distribution undergoes production-grade testing before being declared Generally Available (GA). Elastic provides full support for GA releases in accordance with our [support matrix](https://www.elastic.co/support/matrix) and SLAs.
 

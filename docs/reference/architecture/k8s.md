@@ -87,7 +87,7 @@ With a self-managed deployment, you need an {{agent}} running in gateway mode as
 
 The backend gateway Collector processes {{product.apm}} data and logs to improve latency on solution UIs before ingesting into {{es}}.
 
-The Kubernetes cluster components (DaemonSet collectors, Cluster collectors, gateway collector, and OTel SDKs) can all use fully vendor-agnostic or upstream OpenTelemetry components. Only the backend gateway Collector needs to be either an {{agent}} or a [custom, {{edot}}-like Collector](elastic-agent://reference/edot-collector/custom-collector.md) containing the [required components and preprocessing pipelines](elastic-agent://reference/edot-collector/config/default-config-k8s.md#direct-ingestion-into-elasticsearch).
+The Kubernetes cluster components (DaemonSet collectors, Cluster collectors, gateway collector, and OTel SDKs) can all use fully vendor-agnostic or upstream OpenTelemetry components. Only the backend gateway Collector needs to be either an {{agent}} or a [custom, {{edot}}-like Collector](elastic-agent://reference/otel-collector/custom-collector.md) containing the [required components and preprocessing pipelines](elastic-agent://reference/otel-collector/config/default-config-k8s.md#direct-ingestion-into-elasticsearch).
 
 :::{note}
 Compared to [Elastic's classic ingestion paths](docs-content://solutions/observability/apm/use-opentelemetry-with-apm.md) for OTel data, with the {{agent}} in gateway mode there is no need for {{product.apm-server}} anymore.

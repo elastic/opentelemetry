@@ -79,15 +79,15 @@ For AWS Lambda workloads that generate telemetry outside the function runtime, s
 
 ## {{agent}} components
 
-For information on the compatibility of each Collector component, refer to the [full list of Core and Extended components](elastic-agent://reference/edot-collector/components.md).
+For information on the compatibility of each Collector component, refer to the [full list of Core and Extended components](elastic-agent://reference/otel-collector/components.md).
 
 ## Other Collector distributions
 
-Non-{{edot}} distributions of the OTel Collector, such as custom Collector builds, contrib Collector distributions, and so on aren't officially supported through Elastic but are technically compatible ([Compatible]) if they contain the [required OTel Collector components](elastic-agent://reference/edot-collector/custom-collector.md) and are configured like {{agent}}.
+Non-{{edot}} distributions of the OTel Collector, such as custom Collector builds, contrib Collector distributions, and so on aren't officially supported through Elastic but are technically compatible ([Compatible]) if they contain the [required OTel Collector components](elastic-agent://reference/otel-collector/custom-collector.md) and are configured like {{agent}}.
 
 You can retrieve required components and configuration options from the [example configuration files](https://github.com/elastic/elastic-agent/tree/v<COLLECTOR_VERSION>/internal/pkg/otel/samples/linux) for {{agent}}.
 
-For a comparison between {{edot}} and contrib OpenTelemetry components, refer to [{{edot}} compared to upstream](edot-vs-upstream.md).
+For a comparison between {{edot}} and contrib OpenTelemetry components, refer to [{{edot}} compared to upstream](elastic-vs-upstream-otel.md).
 
 [Incompatible]: nomenclature.md
 [Compatible]: nomenclature.md

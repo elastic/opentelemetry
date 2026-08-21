@@ -20,7 +20,7 @@ The {{motlp}} allows you to send OpenTelemetry data directly to {{ecloud}} using
 The endpoint provides a resilient ingestion layer that integrates with serverless autoscaling and offloads ingestion processing from {{ech}} clusters.
 
 :::{important}
-The {{motlp}} endpoint is not available for Elastic [self-managed](docs-content://deploy-manage/deploy/self-managed.md), [ECE](docs-content://deploy-manage/deploy/cloud-enterprise.md), or [ECK](docs-content://deploy-manage/deploy/cloud-on-k8s.md) clusters. To send OTLP data to any of these cluster types, deploy and expose an OTLP-compatible endpoint using the [{{agent}} as a gateway](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway).
+The {{motlp}} endpoint is not available for Elastic [self-managed](docs-content://deploy-manage/deploy/self-managed.md), [ECE](docs-content://deploy-manage/deploy/cloud-enterprise.md), or [ECK](docs-content://deploy-manage/deploy/cloud-on-k8s.md) clusters. To send OTLP data to any of these cluster types, deploy and expose an OTLP-compatible endpoint using the [{{agent}} as a gateway](elastic-agent://reference/otel-collector/modes.md#edot-collector-as-gateway).
 :::
 
 ## Prerequisites
@@ -29,9 +29,9 @@ To use the {{ecloud}} {{motlp}} you need the following:
 
 - An {{serverless-full}} project or an {{ech}} (ECH) deployment.
 - An OTLP-compliant shipper capable of forwarding logs, metrics, or traces in OTLP format. This can include:
-  - [OpenTelemetry Collector](elastic-agent://reference/edot-collector/index.md) ({{edot}}, Contrib, or other distributions)
+  - [OpenTelemetry Collector](elastic-agent://reference/otel-collector/index.md) ({{edot}}, Contrib, or other distributions)
   - [OpenTelemetry SDKs](/reference/edot-sdks/index.md) ({{edot}}, upstream, or other distributions)
-  - [{{edot-cf}}](/reference/edot-cloud-forwarder/index.md)
+  - [{{edot-cf}}](/reference/elastic-cloud-forwarder/index.md)
   - Any other forwarder that supports the OTLP protocol.
 
 You don't need APM Server when ingesting data through the Managed OTLP Endpoint. The APM integration (`.apm` endpoint) is a legacy ingest path that translates OTLP telemetry to ECS, whereas {{motlp}} natively ingests OTLP data.
