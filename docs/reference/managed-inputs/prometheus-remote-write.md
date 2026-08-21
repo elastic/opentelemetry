@@ -34,7 +34,9 @@ Direct ingest bypasses managed inputs and has no buffering or processing before 
 
 ## Prerequisites
 
-- An {{serverless-full}} Observability or Security project, or an {{ech}} deployment.
+- A compatible Elastic environment:
+   - An {{serverless-full}} Observability or Security project
+   - {applies_to}`stack: ga 9.6+` An {{ech}} deployment
 - An API key with the `event:write` privilege for the `apm` application. Refer to [Authentication](authentication-delivery-and-failure-handling.md#authentication) for the required key format and generation steps.
 
 ## Send Prometheus metrics through managed inputs
