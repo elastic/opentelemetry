@@ -2,6 +2,7 @@
 navigation_title: "Managed Prometheus Remote Write endpoint"
 description: "Ingest Prometheus metrics into Elasticsearch using the Prometheus Remote Write protocol through the Elastic Cloud Managed Prometheus Remote Write endpoint."
 applies_to:
+  stack: ga 9.4+
   serverless:
     observability: ga
     security: ga
@@ -36,7 +37,7 @@ Direct ingest bypasses managed inputs and has no buffering or processing before 
 
 - A compatible Elastic environment:
    - An {{serverless-full}} Observability or Security project
-   - {applies_to}`stack: ga 9.6+` An {{ech}} deployment
+   - {applies_to}`stack: ga 9.4+` An {{ech}} deployment
 - An API key with the `event:write` privilege for the `apm` application. Refer to [Authentication](authentication-delivery-and-failure-handling.md#authentication) for the required key format and generation steps.
 
 ## Send Prometheus metrics through managed inputs
