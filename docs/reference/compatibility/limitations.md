@@ -72,6 +72,8 @@ Temporality support for histogram and counter metrics depends on the ingestion p
 ```{applies_to}
 stack: ga 9.5+
 serverless: ga
+deployment:
+  ech: ga
 ```
 
 When you send data using the [{{motlp}}](/reference/managed-inputs/managed-otlp-endpoint.md), both [`delta` and `cumulative` temporality](https://opentelemetry.io/docs/specs/otel/metrics/data-model/#temporality) are supported for [`Histogram`](https://opentelemetry.io/docs/specs/otel/metrics/data-model/#histogram) and counter metrics.
