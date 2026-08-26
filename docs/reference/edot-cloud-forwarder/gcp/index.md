@@ -7,8 +7,6 @@ applies_to:
   deployment:
     ech: preview
     self: unavailable
-  product:
-    edot_cf_gcp: preview
 products:
   - id: cloud-serverless
   - id: observability
