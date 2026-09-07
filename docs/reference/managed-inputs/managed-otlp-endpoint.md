@@ -136,7 +136,7 @@ For a detailed comparison of how OTel data streams differ from classic Elastic A
 
 For {{ech}} deployments running Elastic Stack 9.5.3 or later, the {{motlp}} routes eligible metrics to the native {{es}} OTLP endpoint. Deployments running Elastic Stack 9.0 through 9.5.2 use the {{es}} bulk API compatibility path instead. This routing is automatic and does not require client-side configuration changes.
 
-The native {{es}} OTLP endpoint supports both `delta` and `cumulative` temporality from Elastic Stack 9.5, and the {{motlp}} provides both on {{serverless-full}}. However, when sending metrics through the {{motlp}} on {{ech}}, use Elastic Stack 9.5.3 or later to access these capabilities. Refer to [Histogram and counter temporality](../compatibility/limitations.md#histogram-and-counter-temporality) for the differences between {{stack}}, {{serverless-short}}, and {{ech}}.
+The native {{es}} OTLP endpoint supports both `delta` and `cumulative` temporality from Elastic Stack 9.5, and the {{motlp}} provides both on {{serverless-full}}. However, when sending metrics through the {{motlp}} on {{ech}}, use Elastic Stack 9.5.3 or later to access these capabilities. Refer to [Histogram and counter temporality](../compatibility/limitations.md#histogram-and-counter-temporality) for the differences between {{stack}}, {{serverless-full}}, and {{ech}}.
 
 ## Indexing errors and the failure store
 
