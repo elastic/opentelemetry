@@ -1,6 +1,6 @@
 ---
 navigation_title: Data streams comparison
-description: Learn how {{edot}} optimizes telemetry storage and query performance in {{product.observability}} compared to classic APM and ECS-based integrations. 
+description: Understand how your OpenTelemetry ingest path determines the data format in {{es}}, and how {{edot}} data streams compare to classic APM and ECS-based integrations.
 applies_to:
   stack:
   serverless:
@@ -21,6 +21,45 @@ This architecture is designed for scalable observability workloads. It supports 
 {{edot}} uses {{es}}'s [Logs data stream (LogsDB)](docs-content://manage-data/data-store/data-streams/logs-data-stream.md) and [Time Series Data Streams (TSDS)](docs-content://manage-data/data-store/data-streams/time-series-data-stream-tsds.md) as storage backends. These are purpose-built to handle the scale and variety of observability data and improve the storage efficiency.
 
 This page provides a detailed comparison of {{edot}} data streams with classic {{product.apm}} and ECS-based integrations. For a practical reference on which data streams {{edot}} uses, exporter behavior, and storage engines, see [{{edot}} data streams](../data-streams.md).
+
+## How your ingest path determines the data format [ingest-path-data-format]
+
+The ingest destination you choose determines how your OpenTelemetry data is stored in {{es}}. This affects field names, which dashboards work out of the box, and how you write queries and alerts.
+
+```mermaid
+flowchart LR
+    SRC["Any OTLP source<br/>{{edot}} or contrib SDKs, Collectors,<br/>{{agent}} in OTel mode"]:::plain
+
+    SRC -->|OTLP| MOTLP["{{motlp}}"]:::plain
+    SRC -->|OTLP| GW["{{agent}} in OTel mode<br/>(gateway)"]:::plain
+    SRC -->|"OTLP/HTTP"| ESO["{{es}} OTLP/HTTP endpoint"]:::plain
+    SRC -.->|"OTLP (legacy path)"| APM["{{product.apm-server}} or the<br/>managed intake service"]:::warning
+
+    MOTLP --> OTEL["OTel-native documents<br/>OpenTelemetry semantic conventions<br/>resource.attributes.* / attributes.*"]:::success
+    GW --> OTEL
+    ESO --> OTEL
+    APM --> ECS["ECS documents<br/>Elastic Common Schema<br/>labels.* / numeric_labels.*"]:::note
+```
+
+| Ingest path | Stored format | Where the data lands |
+|---|---|---|
+| [{{motlp}}](../managed-inputs/managed-otlp-endpoint.md) | OTel-native | `traces-generic.otel-default`, `metrics-generic.otel-default`, `logs-generic.otel-default` by default. Routing is configurable using `data_stream.dataset` and `data_stream.namespace` attributes. |
+| [{{agent}} in OTel mode (gateway)](elastic-agent://reference/edot-collector/modes.md) | OTel-native | `elasticsearch` exporter with `mapping_mode: otel` (the default). Writes to `traces-*.otel-*`, `metrics-*.otel-*`, and `logs-*.otel-*`. |
+| [{{es}} OTLP/HTTP endpoint](docs-content://manage-data/ingest/otlp-endpoint.md) (self-managed, ECE, and ECK only) | OTel-native | Pattern: `<type>-<dataset>.otel-<namespace>`. Default: `traces-generic.otel-default`, `metrics-generic.otel-default`, `logs-generic.otel-default`. |
+| {{product.apm-server}} or the managed intake service (`.apm` endpoint) | ECS | Legacy path that translates OTLP to ECS. Unmapped attributes land in `labels.*` with dots replaced by underscores. Not recommended for new users; {{edot}} SDKs are not supported with this path. |
+
+:::{note}
+{{agent}} in OTel mode also writes ECS-formatted data in two specific cases: when using the `elasticapmintake` receiver (intended for migrating classic {{product.apm}} agents) or when the `ecs` mapping mode is explicitly configured. Beat receivers and ECS-based integrations are outside the OTLP paths shown above and always produce ECS-formatted data.
+:::
+
+### Why this matters
+
+The format determines your experience across the stack:
+
+* **Prebuilt dashboards and content packs**: Many prebuilt Elastic integrations and dashboards are designed for ECS-formatted data and may not work with OpenTelemetry semantic conventions without customization. When using OTel-native paths, install OpenTelemetry content packs from the {{kib}} Integrations UI (search for `otel`) to get OTel-compatible dashboards.
+* **Custom queries and alerts**: Attributes and labels are stored differently. Classic {{product.apm}} stores custom attributes in `labels.*` (strings) and `numeric_labels.*` (numbers), with dots replaced by underscores. OTel-native paths store them in `attributes.*`, preserving dots. Queries and alerts built on one format need to be updated when switching.
+* **{{es}} ingest pipelines**: {{es}} ingest pipelines cannot directly parse OTel-native data with dotted field names without preprocessing. Data from OTel-native paths bypasses ingest pipelines. Data from the `.apm` path and Beat receivers is processed by ingest pipelines in the usual way.
+* **Storage engine**: OTel-native data uses [LogsDB](docs-content://manage-data/data-store/data-streams/logs-data-stream.md) (logs and traces) and [TSDS](docs-content://manage-data/data-store/data-streams/time-series-data-stream-tsds.md) (metrics). ECS-formatted {{product.apm}} data uses general-purpose data streams. See [{{edot}} data streams](../data-streams.md) for details.
 
 ## Logs and traces in LogsDB
 
