@@ -75,7 +75,7 @@ By default, all PRW metrics land in `metrics-generic.prometheus-default`. You ca
 
 #### Route by URL path
 
-Set the dataset and namespace via URL path segments:
+Set the dataset and namespace using URL path parameters:
 
 | Endpoint | Data stream |
 | --- | --- |
