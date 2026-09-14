@@ -94,7 +94,7 @@ This sends data to the `metrics-infrastructure.prometheus-production` data strea
 
 #### Route by labels
 
-You can also route individual time series to different data streams by attaching `data_stream_dataset` and `data_stream_namespace` labels to each time series:
+You can also route individual time series to different data streams by attaching the `data_stream_dataset` and `data_stream_namespace` labels to each time series:
 
 | Label | Sets | Example |
 | --- | --- | --- |
