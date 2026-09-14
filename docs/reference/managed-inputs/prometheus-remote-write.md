@@ -71,8 +71,7 @@ To find `<prometheus-endpoint>`:
 
 :::::{step} Route metrics to custom data streams (optional)
 
-By default, all PRW metrics land in `metrics-generic.prometheus-default`.
-You can control the target data stream using URL path parameters or per-time-series labels.
+By default, all PRW metrics land in `metrics-generic.prometheus-default`. You can control the target data stream using URL path parameters or per-time-series labels.
 
 #### Route by URL path
 
