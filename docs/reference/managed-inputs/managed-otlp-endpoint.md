@@ -132,6 +132,12 @@ Telemetry is stored in Elastic in OTLP format, preserving resource attributes an
 
 For a detailed comparison of how OTel data streams differ from classic Elastic APM data streams, refer to [OTel data streams compared to classic APM](../compatibility/data-streams.md).
 
+### Metrics ingestion on {{ech}}
+
+For {{ech}} deployments running Elastic Stack 9.5.3 or later, the {{motlp}} routes eligible metrics to the native {{es}} OTLP endpoint. Deployments running Elastic Stack 9.0 through 9.5.2 use the {{es}} bulk API compatibility path instead. This routing is automatic and does not require client-side configuration changes.
+
+The native {{es}} OTLP endpoint supports both `delta` and `cumulative` temporality from Elastic Stack 9.5, and the {{motlp}} provides both on {{serverless-full}}. However, when sending metrics through the {{motlp}} on {{ech}}, use Elastic Stack 9.5.3 or later to access these capabilities. Refer to [Histogram and counter temporality](../compatibility/limitations.md#histogram-and-counter-temporality) for the differences between {{stack}}, {{serverless-full}}, and {{ech}}.
+
 ## Indexing errors and the failure store
 
 A successful response from the {{motlp}} means your data was durably accepted for processing, not that {{es}} has indexed it. For what happens when indexing fails and how to verify your data was indexed, refer to [Indexing errors and the failure store](authentication-delivery-and-failure-handling.md#failure-store).
@@ -142,7 +148,7 @@ The following limitations apply when using the {{motlp}}:
 
 * Universal Profiling is not available.
 * The endpoint only writes to data streams with `logs-`, `metrics-`, or `traces-` prefixes. Data routed to other prefixes is silently dropped and will not appear in {{es}}.
-* For supported metric temporalities for histograms and counters, refer to [Metric temporality](docs-content://manage-data/ingest/otlp-endpoint.md#metric-temporality).
+* For supported metric temporalities for histograms and counters, refer to [Histogram and counter temporality](../compatibility/limitations.md#histogram-and-counter-temporality).
 * Latency distributions based on histogram values have limited precision due to the fixed boundaries of explicit bucket histograms.
 * Tail-based sampling (TBS) is not available. The {{motlp}} does not provide centralized hosted sampling. If you need tail-based sampling, configure it on the edge using the [Tail Sampling Processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor) in your {{edot}} or OpenTelemetry Collector before sending data to the endpoint.
 * For {{ech}} network limitations that apply to all managed inputs, refer to [{{ech}} limitations](authentication-delivery-and-failure-handling.md#ech-limitations).
