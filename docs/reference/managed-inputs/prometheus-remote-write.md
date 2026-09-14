@@ -72,8 +72,30 @@ To find `<prometheus-endpoint>`:
 :::::{step} Route metrics to custom data streams (optional)
 
 By default, all PRW metrics land in `metrics-generic.prometheus-default`.
+You can control the target data stream using URL path parameters or per-time-series labels.
 
-To route to a custom data stream, attach the `data_stream_dataset` and `data_stream_namespace` labels to your time series:
+### Route by URL path
+
+Set the dataset and namespace via URL path segments:
+
+| Endpoint | Data stream |
+| --- | --- |
+| `/_prometheus/api/v1/write` | `metrics-generic.prometheus-default` |
+| `/_prometheus/metrics/{dataset}/api/v1/write` | `metrics-{dataset}.prometheus-default` |
+| `/_prometheus/metrics/{dataset}/{namespace}/api/v1/write` | `metrics-{dataset}.prometheus-{namespace}` |
+
+For example, to route infrastructure metrics to a dedicated data stream, set the remote write URL to:
+
+```yaml
+remote_write:
+  - url: "https://<es_endpoint>/_prometheus/metrics/infrastructure/production/api/v1/write"
+```
+
+This sends data to the `metrics-infrastructure.prometheus-production` data stream.
+
+### Route by labels
+
+You can also route individual time series to different data streams by attaching `data_stream_dataset` and `data_stream_namespace` labels to each time series:
 
 | Label | Sets | Example |
 | --- | --- | --- |
