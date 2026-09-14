@@ -74,7 +74,7 @@ To find `<prometheus-endpoint>`:
 By default, all PRW metrics land in `metrics-generic.prometheus-default`.
 You can control the target data stream using URL path parameters or per-time-series labels.
 
-### Route by URL path
+#### Route by URL path
 
 Set the dataset and namespace via URL path segments:
 
@@ -93,7 +93,7 @@ remote_write:
 
 This sends data to the `metrics-infrastructure.prometheus-production` data stream.
 
-### Route by labels
+#### Route by labels
 
 You can also route individual time series to different data streams by attaching `data_stream_dataset` and `data_stream_namespace` labels to each time series:
 
