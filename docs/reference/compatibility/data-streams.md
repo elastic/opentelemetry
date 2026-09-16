@@ -159,6 +159,94 @@ user:
 | **Compatibility limits** | N/A | Some integration fields may not align 1:1 with ECS or OTel. | Not all ECS/integration fields have aliases; label vs attribute layout differs. |
 
 
+## The `event.ingested` field [event-ingested]
+
+OTel-native data streams don't populate [`event.ingested`](ecs://reference/ecs-event.md), the ECS field that records when a document was indexed.
+
+On ECS-based integration data streams, `event.ingested` is set by the `.fleet_final_pipeline-1` ingest pipeline, which {{product.fleet}} attaches as `index.final_pipeline` to the data streams it manages. The `logs-otel@template` and `metrics-otel@template` index templates don't compose a `final_pipeline`, so nothing sets `event.ingested` on `logs-*.otel-*` or `metrics-*.otel-*` data streams.
+
+:::{note}
+Refer to [elastic/elasticsearch#100324](https://github.com/elastic/elasticsearch/issues/100324) for the open request to expose `event.ingested` as a data stream setting.
+:::
+
+### Impact on detection rules
+
+Elastic Security prebuilt detection rules that use `event.ingested` as their timestamp override, such as the External Alerts rule, report a `partial failure` execution status when their index patterns match OTel-native data streams:
+
+```txt
+The following indices are missing the timestamp override field "event.ingested"
+```
+
+The rule still runs and falls back to `@timestamp`, but it loses the protection against ingest lag that the timestamp override provides. Documents indexed later than the rule's lookback window can be missed.
+
+### Populate `event.ingested` on OTel log data streams
+
+`logs-otel@template` composes `logs@settings`, which sets `index.default_pipeline` to `logs@default-pipeline`. That pipeline calls the `logs@custom` ingest pipeline if it exists, which gives you an upgrade-safe extension point.
+
+Create `logs@custom` to route OTel datasets to a dedicated pipeline:
+
+```console
+PUT _ingest/pipeline/logs@custom
+{
+  "processors": [
+    {
+      "pipeline": {
+        "name": "logs-otel@custom",
+        "ignore_missing_pipeline": true,
+        "if": "$('data_stream.dataset', 'null').endsWith('.otel')"
+      }
+    }
+  ]
+}
+```
+
+Then create `logs-otel@custom` to set the field:
+
+```console
+PUT _ingest/pipeline/logs-otel@custom
+{
+  "field_access_pattern": "flexible",
+  "processors": [
+    {
+      "set": {
+        "field": "attributes.event.ingested",
+        "value": "{{{_ingest.timestamp}}}",
+        "override": false
+      }
+    }
+  ]
+}
+```
+
+Keep the following in mind:
+
+* Set the field as `attributes.event.ingested`. Because `attributes` is a `passthrough` object in `logs-otel@mappings`, the field is then queryable under the bare name `event.ingested`.
+* {applies_to}`stack: ga 9.2+` {applies_to}`serverless: ga` `field_access_pattern` must be `flexible` to write a dotted field name into a `passthrough` object. Refer to [field access pattern](docs-content://manage-data/ingest/transform-enrich/ingest-pipelines.md#access-source-pattern-flexible).
+* You don't need to declare the field mapping. `ecs@mappings`, which `logs-otel@template` composes, has an `ecs_date` dynamic template matching `*.ingested`, so the field is mapped as `date`.
+
+`metrics-otel@template` composes `metrics@tsdb-settings`, which doesn't set a `default_pipeline`, so there's no equivalent extension point for `metrics-*.otel-*` data streams.
+
+### Streams
+
+The `logs@custom` pipeline doesn't apply to [Streams](docs-content://solutions/observability/streams/streams.md). {{kib}} generates its own index template for wired streams that composes only `<ancestor>@stream.layer` component templates and sets `default_pipeline` to `<stream>@stream.processing`, so `logs@settings` and `logs@custom` aren't part of the composition.
+
+For a wired stream, add a [`set` processor](docs-content://solutions/observability/streams/processors/set.md) to a child stream. Root wired streams can't hold custom processing.
+
+```json
+{
+  "action": "set",
+  "to": "attributes.event.ingested",
+  "copy_from": "_ingest.timestamp",
+  "override": false
+}
+```
+
+Keep the following in mind:
+
+* Use `copy_from`. The [Streamlang](docs-content://solutions/observability/streams/streamlang.md) `set` action rejects Mustache template syntax in `value`, and the `manual_ingest_pipeline` action isn't allowed in wired streams.
+* The `to` value must be prefixed with `attributes.`. The bare field name is rejected.
+* Wired streams are `dynamic: false`, so you must also [declare](docs-content://solutions/observability/streams/map-fields.md) `event.ingested` as a `date` field on the stream. Otherwise the value is stored but not indexed.
+
 ## See also
 
 * [ECS and OpenTelemetry schema reference](ecs://reference/ecs-opentelemetry.md)
