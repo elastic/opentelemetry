@@ -4,7 +4,7 @@ name: Docs Agentic Workflow — Issues
 
 on:
   issues:
-    types: [opened]
+    types: [opened, edited]
   workflow_dispatch:
     inputs:
       issue_number:
