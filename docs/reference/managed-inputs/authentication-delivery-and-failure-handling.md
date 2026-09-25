@@ -21,6 +21,10 @@ This page covers what all managed inputs share: how you authenticate, how data i
 
 Managed inputs authenticate with an {{es}} API key that includes the `event:write` privilege for the `apm` application. The same `event:write` / `apm` privilege applies to every managed endpoint, including the OTLP, Prometheus Remote Write, and _bulk endpoints.
 
+:::{note}
+Index-level privilege scoping is not supported for managed inputs.
+:::
+
 You can create this API key in one of the following ways:
 
 :::{dropdown} From the Add data flow
@@ -83,26 +87,26 @@ Send the encoded API key in the `Authorization` header of each request to the ma
 Authorization: ApiKey <api-key>
 ```
 
-:::{note}
-Index-level privilege scoping is not supported for managed inputs.
-:::
+{{product.elastic-agent}} is the exception: its `api_key` output setting takes the key as `<id>:<api_key>` and encodes it itself, so the encoded value results in `401` errors. The **Add data** flow provides only the encoded value. To get the `id` and `api_key` parts, use the **Beats** format on the {{kib}} **API keys** page, or the `id` and `api_key` fields in the Create API key API response.
 
 ## Buffering and delivery [delivery]
 
-Managed inputs provide a durable ingest layer in front of {{es}}:
+Managed inputs buffer data before delivering it to {{es}}:
 
-- Incoming data is stored (buffered) in a durable ingest layer before it reaches your {{es}} cluster. Buffered data is held for a limited time before it must be delivered.
+- Incoming data is stored (buffered) before it reaches your {{es}} cluster. Buffered data is held for a limited time before it must be delivered.
+- A success response means the data was buffered, not yet indexed. Managed inputs retry delivery while {{es}} is temporarily unavailable or rejecting requests, which covers typical short interruptions. Retries and buffer retention are limited, so if {{es}} can't accept data for an extended period, for example during a prolonged outage or under sustained indexing pressure, data that couldn't be delivered in time is discarded. Because it never reached {{es}}, it isn't recorded in the failure store, and the success response your client already received isn't revised.
+- Delivery time depends on {{es}}. Buffered data is indexed as fast as {{es}} accepts it, so the delay grows when {{es}} is slow or unavailable. Managed inputs don't expose ingestion health or delay metrics to you, so monitor the destination data streams to detect delays, especially during {{es}} maintenance.
 - When capacity controls reject data, endpoints can respond with `429 Too Many Requests`, so clients should retry with backoff. Other temporary service failures can return `503 Service Unavailable`. Refer to [Managed inputs rate limiting](rate-limiting.md).
 
 :::{note}
-For the Managed {{es}} _bulk endpoint, a batch is atomic: the endpoint accepts or rejects the whole batch, and a `201` per item means the data is durably enqueued, not indexed. For details, refer to [Delivery behavior](elasticsearch-bulk.md#delivery-behavior).
+For the Managed {{es}} _bulk endpoint, a batch is atomic: the endpoint accepts or rejects the whole batch, and a `201` per item means the data is enqueued, not indexed. For details, refer to [Delivery behavior](elasticsearch-bulk.md#delivery-behavior).
 :::
 
 ## Indexing errors and the failure store [failure-store]
 
 To confirm your data was indexed, verify that documents landed in the destination data stream, and use [Data Set Quality](docs-content://solutions/observability/data-set-quality-monitoring.md) to monitor and triage indexing issues.
 
-A successful accept response from a managed input means the data was durably accepted for processing, not that {{es}} has indexed it. Indexing errors, such as mapping conflicts or ingest pipeline errors, can happen asynchronously after the data is accepted, and aren't reported back to the client.
+A successful accept response from a managed input means the data was accepted for processing, not that {{es}} has indexed it. Indexing errors, such as mapping conflicts or ingest pipeline errors, can happen asynchronously after the data is accepted, and aren't reported back to the client.
 
 Managed inputs don't enable or manage the [failure store](docs-content://manage-data/data-store/data-streams/failure-store.md). The failure store is an {{es}} data stream setting. If the destination data stream has it enabled, documents that fail indexing are written there. If it isn't enabled, those documents aren't captured.
 
