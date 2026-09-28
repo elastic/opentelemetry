@@ -3,7 +3,7 @@ name: Docs Agentic Workflow — AI PR Menu
 # Distributed to repositories in config/docs/active-repositories.json.
 
 on:
-  workflow_run:
+  workflow_run: # zizmor: ignore[dangerous-triggers] -- trusted split-workflow handoff; constrained by base-ref check below
     workflows: ["Docs Agentic Workflow — AI PR Menu (collect)"]
     types: [completed]
   workflow_dispatch:
@@ -19,6 +19,9 @@ permissions:
 
 jobs:
   run-docs-aw-workflow-run:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      contains(github.event.workflow_run.pull_requests.*.base.ref, 'main')
     permissions:
       actions: read
       checks: read
