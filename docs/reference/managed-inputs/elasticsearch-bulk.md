@@ -135,12 +135,12 @@ The Managed {{es}} _bulk endpoint emulates the {{es}} `_bulk` API, but because i
 
 - **Batches are atomic.** The endpoint either enqueues the entire batch and returns success, or rejects the entire request. There's no per-document partial success or failure. If a valid batch can't be enqueued, the whole request fails with `503 Service Unavailable`. Malformed requests, unsupported actions, or missing targets fail with `400 Bad Request`.
 - **A success response means the data is enqueued, not indexed.** A successful response returns an {{es}}-compatible body in which each item reports a `201` status. This confirms the managed input accepted the document, not that {{es}} has indexed it. Errors that occur later during indexing, such as mapping conflicts, happen asynchronously and aren't reported in the bulk response. Your shipper counts these documents as sent.
-- **Delivery is retried, within limits.** The managed input retries indexing while {{es}} is temporarily unavailable or rejecting requests, which covers typical short interruptions. Retries and [buffer retention](authentication-delivery-and-failure-handling.md#delivery) are limited, so if {{es}} can't accept data for an extended period, data that couldn't be delivered in time is discarded. Because it never reached {{es}}, it isn't recorded in the failure store either.
-- **Delivery time depends on {{es}}.** Buffered data is indexed as fast as {{es}} accepts it, so the delay grows when {{es}} is slow or unavailable, without any change visible to your shipper. Direct `_bulk` requests, by contrast, slow down or fail when {{es}} is under pressure, which your shipper can see and react to.
+- **Undelivered data is discarded.** The endpoint retries delivery while {{es}} is briefly unavailable or rejecting requests. If {{es}} still can't accept the data when buffer retention ends, the endpoint discards it. The success response your shipper already received doesn't change.
+- **Delivery delay isn't visible to your shipper.** A direct `_bulk` request slows down or fails when {{es}} is under pressure, so your shipper can retry or back off. The managed endpoint returns success as soon as the batch is enqueued, even if delivery to {{es}} is delayed.
 - **`require_data_stream` and `require_alias` are ignored.** The endpoint doesn't enforce these query parameters, so they don't protect you from writing to an unintended target type the way they do with {{es}}.
 - **Compressed requests are supported.** The endpoint accepts `Content-Encoding: gzip` request bodies.
 
-For shared buffering and delivery behavior across managed inputs, refer to [Buffering and delivery](authentication-delivery-and-failure-handling.md#delivery).
+For how long buffered data is retained, and what happens to data that is still undelivered when that retention ends, refer to [Buffering and delivery](authentication-delivery-and-failure-handling.md#delivery).
 
 ## Indexing errors and rate limiting [indexing-errors-and-rate-limiting]
 
