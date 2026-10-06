@@ -93,7 +93,7 @@ Authorization: ApiKey <api-key>
 
 Managed inputs buffer data before delivering it to {{es}}:
 
-- Incoming data is stored (buffered) before it reaches your {{es}} cluster. Buffered data is retained for up to 12 hours.
+- Incoming data is stored (buffered) until it's delivered to {{es}}, and then it leaves the buffer. If {{es}} is lagging or temporarily unable to index, undelivered data can stay in the buffer for up to 12 hours. Delivered data isn't kept, so you can't replay it.
 - A success response means the data was buffered, not yet indexed. Managed inputs retry delivery while {{es}} is temporarily unavailable or rejecting requests, which covers typical short interruptions. Retries and buffer retention are limited, so if {{es}} can't accept data for an extended period, for example during a prolonged outage or under sustained indexing pressure, data that couldn't be delivered in time is discarded. Because it never reached {{es}}, it isn't recorded in the failure store, and the success response your client already received isn't revised.
 - Delivery time depends on {{es}}. Buffered data is indexed as fast as {{es}} accepts it, so the delay grows when {{es}} is slow or unavailable. Managed inputs don't expose ingestion health or delay metrics to you, so monitor the destination data streams to detect delays, especially during {{es}} maintenance.
 - When capacity controls reject data, endpoints can respond with `429 Too Many Requests`, so clients should retry with backoff. Other temporary service failures can return `503 Service Unavailable`. Refer to [Managed inputs rate limiting](rate-limiting.md).

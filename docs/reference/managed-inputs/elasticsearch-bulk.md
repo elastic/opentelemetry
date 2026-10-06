@@ -22,7 +22,7 @@ The endpoint is {{es}}-compatible: it emulates a subset of the `_bulk` API, so m
 
 ## When to use the Managed {{es}} _bulk endpoint [when-to-use]
 
-The Managed {{es}} _bulk endpoint accepts the same requests as {{es}}, but it isn't a drop-in replacement for sending `_bulk` requests directly to {{es}}. Because data is buffered before it's indexed, the endpoint acknowledges data earlier, reports failures differently, and can add latency. Use the following comparison to decide which endpoint fits your workload.
+The Managed {{es}} _bulk endpoint isn't a drop-in replacement for sending `_bulk` requests directly to {{es}}. It accepts only the `create` action. If a request includes any other action, such as `index`, `update`, or `delete`, the request fails with `400 Bad Request`. The endpoint also ignores the `require_data_stream` and `require_alias` parameters. Because data is buffered before it's indexed, the endpoint acknowledges data earlier, reports failures differently, and can add latency. Use the following comparison to decide which endpoint fits your workload.
 
 The managed endpoint is a good fit when:
 
@@ -140,7 +140,7 @@ The Managed {{es}} _bulk endpoint emulates the {{es}} `_bulk` API, but because i
 - **`require_data_stream` and `require_alias` are ignored.** The endpoint doesn't enforce these query parameters, so they don't protect you from writing to an unintended target type the way they do with {{es}}.
 - **Compressed requests are supported.** The endpoint accepts `Content-Encoding: gzip` request bodies.
 
-For how long buffered data is retained, and what happens to data that is still undelivered when that retention ends, refer to [Buffering and delivery](authentication-delivery-and-failure-handling.md#delivery).
+For how long undelivered data can stay in the buffer, and what happens to it after that, refer to [Buffering and delivery](authentication-delivery-and-failure-handling.md#delivery).
 
 ## Indexing errors and rate limiting [indexing-errors-and-rate-limiting]
 
