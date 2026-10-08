@@ -38,6 +38,7 @@ This is the default mode. When ingesting standard OTel signals, {{edot}} writes 
 |--------|-------------|
 | Traces | `traces-*.otel-*` |
 | Metrics | `metrics-*.otel-*` (TSDB-backed using `mode: time_series`) |
+| Metric Exemplars | `exemplars-*.otel-*` |
 | Logs | `logs-*.otel-*` |
 | Aggregated metrics | `metrics-*.[1m\|10m\|60m].otel-*` |
 
@@ -124,6 +125,7 @@ OTel-native {{edot}} data streams use the built-in ILM policies `logs`, `metrics
 |--------|--------------------|
 | Logs   | `logs-otel@custom` |
 | Metrics | `metrics-otel@custom` |
+| Metric Exemplars | `exemplars-otel@custom` |
 | Traces | `traces-otel@custom` |
 
 When created, these component templates are automatically picked up by the corresponding OTel index template. For step-by-step instructions, refer to [Customize built-in ILM policies](docs-content://manage-data/lifecycle/index-lifecycle-management/tutorial-customize-built-in-policies.md).
