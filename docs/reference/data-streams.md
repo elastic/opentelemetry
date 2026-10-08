@@ -38,7 +38,7 @@ This is the default mode. When ingesting standard OTel signals, {{edot}} writes 
 |--------|-------------|
 | Traces | `traces-*.otel-*` |
 | Metrics | `metrics-*.otel-*` (TSDB-backed using `mode: time_series`) |
-| Metric Exemplars | `exemplars-*.otel-*` |
+| Metric Exemplars {applies_to}`stack: ga 9.6+` | `exemplars-*.otel-*` |
 | Logs | `logs-*.otel-*` |
 | Aggregated metrics | `metrics-*.[1m\|10m\|60m].otel-*` |
 
