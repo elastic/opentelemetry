@@ -1,2 +1,5 @@
 *.md @elastic/ski-docs 
 /docs/ @elastic/ski-docs
+
+# Agentic workflow client triggers (elastic/oblt-aw distribution)
+/.github/workflows/trigger-docs-aw-* @elastic/obs-docs
