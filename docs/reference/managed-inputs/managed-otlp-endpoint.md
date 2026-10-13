@@ -151,7 +151,7 @@ The following limitations apply when using the {{motlp}}:
 * For supported metric temporality for histograms and counters, refer to [Histogram and counter temporality](../compatibility/limitations.md#histogram-and-counter-temporality).
 * Latency distributions based on histogram values have limited precision due to the fixed boundaries of explicit bucket histograms.
 * Tail-based sampling (TBS) is not available. The {{motlp}} does not provide centralized hosted sampling. If you need tail-based sampling, configure it on the edge using the [Tail Sampling Processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor) in your {{edot}} or OpenTelemetry Collector before sending data to the endpoint.
-* For {{ech}} network limitations that apply to all managed inputs, refer to [{{ech}} limitations](authentication-delivery-and-failure-handling.md#ech-limitations).
+* For how IP filters and private connectivity apply to all managed inputs, refer to [Network security](authentication-delivery-and-failure-handling.md#network-security).
 
 ## Billing
 

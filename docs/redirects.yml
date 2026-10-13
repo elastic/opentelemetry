@@ -41,6 +41,14 @@ redirects:
         anchors:
           'failure-store': 'failure-store'
 
+  # Managed inputs: the ECH limitations section was renamed to Network security on the same page.
+  'reference/managed-inputs/authentication-delivery-and-failure-handling.md':
+    to: 'reference/managed-inputs/authentication-delivery-and-failure-handling.md'
+    many:
+      - to: 'reference/managed-inputs/authentication-delivery-and-failure-handling.md'
+        anchors:
+          'ech-limitations': 'network-security'
+
   # EDOT Collector troubleshooting pages (from reference to troubleshooting)
   'reference/edot-collector/troubleshooting/index.md': 'docs-content://troubleshoot/ingest/opentelemetry/edot-collector/index.md'
   'reference/edot-collector/troubleshooting/collector-oomkilled.md': 'docs-content://troubleshoot/ingest/opentelemetry/edot-collector/collector-oomkilled.md'
