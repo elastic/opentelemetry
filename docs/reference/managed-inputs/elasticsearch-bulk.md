@@ -106,7 +106,9 @@ output {
 ```
 
 :::{warning}
-By default, {{product.logstash}} indefinitely retries documents that the endpoint rejects with a `403` status, which can stall the pipeline. The endpoint rejects documents this way when their target isn't supported. Refer to [Delivery behavior](#delivery-behavior). To drop these documents instead, add `security_exception` to the `drop_error_types` setting. If the dead letter queue is enabled, you can set `dlq_custom_codes` to `[403]` to send them there.
+By default, {{product.logstash}} indefinitely retries documents that the endpoint rejects with a `403` status, which can stall the pipeline. The endpoint rejects documents this way when their target isn't supported. Refer to [Delivery behavior](#delivery-behavior).
+
+To drop these documents instead, add `security_exception` to the `drop_error_types` setting. If the dead letter queue is enabled, you can set `dlq_custom_codes` to `[403]` to send them there.
 :::
 
 A standalone {{product.elastic-agent}} configures its {{es}} output the same way, with one difference in how the API key is passed. The `api_key` setting takes the key as `<id>:<api_key>`, and {{product.elastic-agent}} encodes it itself. Don't use the encoded value from the **Add data** flow, as it results in `401` errors. Instead, when you create the key on the {{kib}} **API keys** page, select **Beats** from the format dropdown in the **Created API key** panel before you copy it, or join the `id` and `api_key` fields from the Create API key API response with a colon:
