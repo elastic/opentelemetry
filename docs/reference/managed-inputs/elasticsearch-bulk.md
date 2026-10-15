@@ -105,6 +105,10 @@ output {
 }
 ```
 
+:::{warning}
+By default, {{product.logstash}} indefinitely retries documents that the endpoint rejects with a `403` status, which can stall the pipeline. The endpoint rejects documents this way when their target isn't supported. Refer to [Delivery behavior](#delivery-behavior). To drop these documents instead, add `security_exception` to the `drop_error_types` setting. If the dead letter queue is enabled, you can set `dlq_custom_codes` to `[403]` to send them there.
+:::
+
 A standalone {{product.elastic-agent}} configures its {{es}} output the same way, with one difference in how the API key is passed. The `api_key` setting takes the key as `<id>:<api_key>`, and {{product.elastic-agent}} encodes it itself. Don't use the encoded value from the **Add data** flow, as it results in `401` errors. Instead, when you create the key on the {{kib}} **API keys** page, select **Beats** from the format dropdown in the **Created API key** panel before you copy it, or join the `id` and `api_key` fields from the Create API key API response with a colon:
 
 ```yaml
@@ -117,7 +121,7 @@ outputs:
 
 If your shipper uses the `index`, `update`, or `delete` action, switch to `create` or target a data stream. Refer to [Limitations](#limitations) for more information.
 
-To confirm your setup is working, check that your shipper reports successful (`2xx`) responses with no authentication errors, then open **Discover** and verify that new documents are landing in your target data stream.
+To confirm your setup is working, check that your shipper reports successful (`2xx`) responses, with no authentication errors and no documents rejected with a `403` status. Then open **Discover** and verify that new documents are landing in your target data stream.
 
 If documents don't appear, they might have failed during asynchronous indexing. These errors aren't reported in the bulk response, so use [Data Set Quality](docs-content://solutions/observability/data-set-quality-monitoring.md) to monitor and triage indexing issues. For more details, refer to [Indexing errors and the failure store](authentication-delivery-and-failure-handling.md#failure-store).
 
@@ -133,8 +137,10 @@ Each action in a `_bulk` request can specify its target through the `_index` fie
 
 The Managed {{es}} _bulk endpoint emulates the {{es}} `_bulk` API, but because it ingests through managed inputs, it behaves differently from indexing directly into {{es}}. Keep the following in mind:
 
-- **Batches are atomic.** The endpoint either enqueues the entire batch and returns success, or rejects the entire request. There's no per-document partial success or failure. If a valid batch can't be enqueued, the whole request fails with `503 Service Unavailable`. Malformed requests, unsupported actions, or missing targets fail with `400 Bad Request`.
-- **A success response means the data is enqueued, not indexed.** A successful response returns an {{es}}-compatible body in which each item reports a `201` status. This confirms the managed input accepted the document, not that {{es}} has indexed it. Errors that occur later during indexing, such as mapping conflicts, happen asynchronously and aren't reported in the bulk response. Your shipper counts these documents as sent.
+- **Documents with unsupported targets are rejected individually.** A document whose target isn't supported gets a `403` status with a `security_exception` error in its response item, and the response sets `errors: true`. The other documents in the request are still accepted. The response is `200 OK` even if every document is rejected, so check `errors` and the status of each item. For supported targets, refer to [Limitations](#limitations).
+- **Rejected documents are handled by your shipper.** {{product.elastic-agent}} drops a rejected document and logs a warning. {{product.logstash}} retries it indefinitely by default. To change this, refer to the [{{product.logstash}} configuration](#configure-your-shipper-and-send-data).
+- **Accepted documents are enqueued together.** The endpoint either enqueues all accepted documents in a request, or fails the entire request. If they can't be enqueued, the whole request fails with `503 Service Unavailable`, and no document is reported as successful. Malformed requests, unsupported actions, or missing targets fail with `400 Bad Request`, and nothing in the request is enqueued.
+- **A success response means the data is enqueued, not indexed.** A successful response returns an {{es}}-compatible body in which each accepted item reports a `201` status. This confirms the managed input accepted the document, not that {{es}} has indexed it. Errors that occur later during indexing, such as mapping conflicts, happen asynchronously and aren't reported in the bulk response. Your shipper counts these documents as sent.
 - **Undelivered data is discarded.** The endpoint retries delivery while {{es}} is briefly unavailable or rejecting requests. If {{es}} still can't accept the data when buffer retention ends, the endpoint discards it. The success response your shipper already received doesn't change.
 - **Delivery delay isn't visible to your shipper.** A direct `_bulk` request slows down or fails when {{es}} is under pressure, so your shipper can retry or back off. The managed endpoint returns success as soon as the batch is enqueued, even if delivery to {{es}} is delayed.
 - **`require_data_stream` and `require_alias` are ignored.** The endpoint doesn't enforce these query parameters, so they don't protect you from writing to an unintended target type the way they do with {{es}}.
@@ -152,8 +158,8 @@ Under load, or when the service can't accept more data, the endpoint can respond
 
 The following limitations apply when using the Managed {{es}} _bulk endpoint:
 
-- **Only log data is supported.** It must target `logs-*`, `logs.*`, or `logs` data streams, for example `logs-my_dataset-default` or the `logs.otel` wired stream. The endpoint doesn't reject other data or other targets: those requests still return success, and any failures after that aren't reported to your shipper. To send metrics and traces, use the direct {{es}} endpoint. For OpenTelemetry data, use the [Managed OTLP Endpoint](managed-otlp-endpoint.md).
-- **{{product.beats}} aren't supported with their default settings.** They write to `<beat>-*` indices such as `filebeat-*` by default, which the endpoint accepts but never indexes.
+- **Only log data is supported.** It must target `logs-*` data streams, for example `logs-my_dataset-default`. The endpoint rejects documents for any target that doesn't start with `logs-`, `metrics-`, or `traces-`, including wired streams such as `logs.otel` and system indices, with a `403` status in the response item. Documents for `metrics-*` and `traces-*` targets are accepted, but sending metrics or traces through the endpoint isn't supported. To send metrics and traces, use the direct {{es}} endpoint. For OpenTelemetry data, use the [Managed OTLP Endpoint](managed-otlp-endpoint.md).
+- **{{product.beats}} aren't supported with their default settings.** They write to `<beat>-*` indices such as `filebeat-*` by default, which the endpoint rejects with a `403` status for each document.
 - **Only `create` actions are supported.** Requests that use `index`, `update`, or `delete` actions are rejected with `400 Bad Request`. Features that depend on other actions, such as scripted upserts, aren't supported.
 - **`require_data_stream` and `require_alias` aren't enforced.** Refer to [Delivery behavior](#delivery-behavior).
 - **Duplicate detection isn't applied.** The endpoint doesn't deduplicate documents by `_id`, so client retries can produce duplicate documents.
