@@ -1,6 +1,6 @@
 ---
 navigation_title: "Managed Elasticsearch _bulk endpoint"
-description: "Ingest data from Elasticsearch _bulk shippers such as Beats, Elastic Agent, and Logstash through the Elastic Cloud Managed Elasticsearch _bulk endpoint."
+description: "Ingest log data from Elasticsearch _bulk shippers through the Elastic Cloud Managed Elasticsearch _bulk endpoint, and decide when to choose direct Elasticsearch instead."
 applies_to:
   serverless:
     observability: ga
@@ -18,33 +18,39 @@ products:
 
 The Managed {{es}} _bulk endpoint ingests data sent in the [{{es}} `_bulk` API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) format. It accepts `_bulk` traffic natively, so shippers that already write to {{es}} can send data through [managed inputs](index.md) by pointing their existing {{es}} output at the endpoint. It's a dedicated managed input exposed on the `/_es` path of the same ingest host as the [Managed OTLP Endpoint](managed-otlp-endpoint.md) and the [Managed Prometheus Remote Write endpoint](prometheus-remote-write.md).
 
-The endpoint is {{es}}-compatible: it emulates a subset of the `_bulk` API, so most shippers need only a new endpoint and credentials to start sending data. The managed input then durably buffers the data and routes it into {{es}}. The endpoint accepts only log data. Bulk actions must use the `create` action.
+The endpoint is {{es}}-compatible: it emulates a subset of the `_bulk` API, so most shippers need only a new endpoint and credentials to start sending data. The managed input buffers the data and then indexes it into {{es}} asynchronously. Only log data is supported, and bulk actions must use the `create` action.
 
 ## When to use the Managed {{es}} _bulk endpoint [when-to-use]
 
-Use the Managed {{es}} _bulk endpoint to bring data shippers that rely on the {{es}} `_bulk` API into managed ingestion, including:
+The Managed {{es}} _bulk endpoint isn't a drop-in replacement for sending `_bulk` requests directly to {{es}}. It supports only part of the `_bulk` API: It accepts only the `create` action, and requests that use `index`, `update`, or `delete` fail with `400 Bad Request`. Because the managed endpoint buffers data before indexing it, it also acknowledges data earlier, reports failures differently, and can add latency. Use the following sections to decide which endpoint fits your workload.
 
-- {{product.beats}}
-- {{product.elastic-agent}}
-- {{product.logstash}}
-- Any other shipper that sends data using the {{es}} `_bulk` API
+### When to send data to the managed endpoint [when-managed]
 
-## Benefits of the Managed {{es}} _bulk endpoint [benefits]
+- **You already use other managed inputs.** Your `_bulk` shippers can send data to the same ingest host as the [Managed OTLP Endpoint](managed-otlp-endpoint.md) and the [Managed Prometheus Remote Write endpoint](prometheus-remote-write.md), using the same API key.
+- **Your ingest volume is spiky.** The managed endpoint absorbs short spikes well above the usual rate, so you don't need to size every shipper's output for peak load.
 
-Compared to sending `_bulk` requests directly to {{es}}, the Managed {{es}} _bulk endpoint provides:
+    On {{ech}}, volume that your cluster can't keep up with still results in `429` responses. Refer to [Managed inputs rate limiting](rate-limiting.md).
 
-- A single ingest endpoint and API key shared with the other [managed inputs](index.md).
-- Durable buffering, back-pressure, and automatic retries before data reaches {{es}}.
-- A low-friction path for existing {{product.beats}}, {{product.elastic-agent}}, and {{product.logstash}} deployments to adopt managed ingestion without re-architecting their pipelines.
+- **You want to limit local buffering on your shippers.** The managed endpoint buffers data while {{es}} is slow or unavailable, so your shippers need less local buffering. They still need to retry `429` and `503` responses, and a delay in indexing must be acceptable.
 
-:::{note}
-On {{serverless-full}} and {{ech}}, use the Managed {{es}} _bulk endpoint instead of sending `_bulk` requests directly to {{es}}. Direct ingest bypasses managed inputs, so it has no durable buffering or managed processing before data reaches {{es}}, and it authenticates with {{es}} credentials or an API key with index privileges instead of an API key for managed inputs.
-:::
+If you switch an existing shipper to the managed endpoint, compare document counts between what your shipper sends and the destination data stream for a period after the switch, and monitor the destination with [Data Set Quality](docs-content://solutions/observability/data-set-quality-monitoring.md).
+
+### When to send data directly to {{es}} [when-direct]
+
+- **You send data other than logs, or write logs to targets that don't start with `logs-`.** The managed endpoint supports only log data in `logs-*` data streams. Refer to [Limitations](#limitations).
+- **Your {{product.elastic-agent}}s are managed by {{product.fleet}}.** {{product.fleet}}-managed outputs can't use the managed endpoint.
+- **You need confirmation that data was indexed.** Your shipper must know that data was indexed before it marks the data as sent. The managed endpoint returns success when data is buffered. Delivery to {{es}} completes later, and data that can't be delivered before the buffer retention period ends is discarded. Refer to [Delivery behavior](#delivery-behavior).
+- **You need predictable latency**, for example for alerting. The managed endpoint can add latency, and the delay grows when {{es}} is slow or unavailable.
+- **You monitor ingestion with shipper metrics.** With the managed endpoint, those metrics tell you whether the endpoint accepted the data, not whether it was indexed. Managed inputs don't expose ingestion health or throughput metrics to you.
+- **You need control over how data is batched and retried into {{es}}.** Batch size, flush interval, retries, and worker count are fixed on the managed side.
+- **You use IP filters or private connectivity on {{ech}}.** IP filters don't apply to the managed endpoint, and it isn't available over private connections. Refer to [{{ech}} limitations](authentication-delivery-and-failure-handling.md#ech-limitations) for more information.
+
+For the full list of constraints, refer to [Limitations](#limitations).
 
 ## Prerequisites [prerequisites]
 
 - An {{serverless-full}} Observability or Security project, or an {{ech}} deployment on {{stack}} version 9.0 or later.
-- A `_bulk`-compatible shipper that can send `create` actions, such as {{product.beats}}, {{product.elastic-agent}}, {{product.logstash}}, or another shipper with an {{es}} output.
+- A `_bulk`-compatible shipper that sends `create` actions to log data streams, such as standalone {{product.elastic-agent}}, {{product.logstash}}, or another shipper with an {{es}} output.
 - An API key with the `event:write` privilege for the `apm` application. Refer to [Authentication](authentication-delivery-and-failure-handling.md#authentication) for the required key format and generation steps.
 - Any {{es}} index templates and {{kib}} assets your shipper relies on, installed beforehand. The endpoint doesn't install them for you. Refer to [Limitations](#limitations).
 
@@ -102,9 +108,25 @@ output {
 }
 ```
 
-{{product.beats}} and {{product.elastic-agent}} configure their {{es}} output the same way: they point the output hosts at `<managed-_bulk-endpoint>` and provide their API key. If your shipper uses the `index`, `update`, or `delete` action, switch to `create` or target a data stream. Refer to [Limitations](#limitations).
+:::{warning}
+By default, {{product.logstash}} indefinitely retries documents that the endpoint rejects with a `403` status, which can stall the pipeline. The endpoint rejects documents this way when their target isn't allowed. Refer to [Delivery behavior](#delivery-behavior).
 
-To confirm your setup is working, check that your shipper reports successful (`2xx`) responses with no authentication errors, then open **Discover** and verify that new documents are landing in your target data stream.
+To drop these documents instead, add `security_exception` to the `drop_error_types` setting. If the dead letter queue is enabled, you can set `dlq_custom_codes` to `[403]` to send them there.
+:::
+
+A standalone {{product.elastic-agent}} configures its {{es}} output the same way, with one difference in how the API key is passed. The `api_key` setting takes the key as `<id>:<api_key>`, and {{product.elastic-agent}} encodes it itself. Don't use the encoded value from the **Add data** flow, as it results in `401` errors. Instead, when you create the key on the {{kib}} **API keys** page, select **Beats** from the format dropdown in the **Created API key** panel before you copy it, or join the `id` and `api_key` fields from the Create API key API response with a colon:
+
+```yaml
+outputs:
+  default:
+    type: elasticsearch
+    hosts: ["<managed-_bulk-endpoint>"]
+    api_key: "<id>:<api_key>"
+```
+
+If your shipper uses the `index`, `update`, or `delete` action, switch to `create`. Refer to [Limitations](#limitations) for more information.
+
+To confirm your setup is working, check that your shipper reports successful (`2xx`) responses, with no authentication errors and no documents rejected with a `403` status. Then open **Discover** and verify that new documents are landing in your target data stream.
 
 If documents don't appear, they might have failed during asynchronous indexing. These errors aren't reported in the bulk response, so use [Data Set Quality](docs-content://solutions/observability/data-set-quality-monitoring.md) to monitor and triage indexing issues. For more details, refer to [Indexing errors and the failure store](authentication-delivery-and-failure-handling.md#failure-store).
 
@@ -114,17 +136,22 @@ If documents don't appear, they might have failed during asynchronous indexing. 
 
 ## How _bulk data appears in {{es}} [data-mapping]
 
-Each action in a `_bulk` request can specify its target through the `_index` field, so data lands in the data stream or index that your shipper already targets. For example, a shipper writing nginx access logs to `logs-nginx.access-default` continues to land there. If your shipper sets a fallback target in the request path (`/_es/<target>/_bulk`), that target is used for actions that omit `_index`.
+Each action in a `_bulk` request can specify its target through the `_index` field, so data lands in the data stream that your shipper already targets. For example, a shipper writing nginx access logs to `logs-nginx.access-default` continues to land there. If your shipper sets a fallback target in the request path (`/_es/<target>/_bulk`), that target is used for actions that omit `_index`. Only log data streams are supported targets. Refer to [Limitations](#limitations) for more information.
 
 ## Delivery behavior [delivery-behavior]
 
 The Managed {{es}} _bulk endpoint emulates the {{es}} `_bulk` API, but because it ingests through managed inputs, it behaves differently from indexing directly into {{es}}. Keep the following in mind:
 
-- **Batches are atomic.** The endpoint either durably enqueues the entire batch and returns success, or rejects the entire request. There's no per-document partial success or failure. If a valid batch can't be enqueued, the whole request fails with `503 Service Unavailable`. Malformed requests, unsupported actions, or missing targets fail with `400 Bad Request`.
-- **A success response means the data is durably enqueued, not indexed.** A successful response returns an {{es}}-compatible body in which each item reports a `201` status. This confirms the managed input durably accepted the document, not that {{es}} has indexed it. Errors that occur later during indexing, such as mapping conflicts, happen asynchronously and aren't reported in the bulk response.
+- **Documents with disallowed targets are rejected individually.** A document whose target doesn't start with `logs-`, `metrics-`, or `traces-` gets a `403` status with a `security_exception` error in its response item, and the response sets `errors: true`. The other documents in the request are still accepted. The response is `200 OK` even if every document is rejected, so check `errors` and the status of each item. For allowed targets, refer to [Limitations](#limitations).
+- **Rejected documents are handled by your shipper.** {{product.elastic-agent}} drops a rejected document and logs a warning. {{product.logstash}} retries it indefinitely by default. To change this, refer to the [{{product.logstash}} configuration](#configure-your-shipper-and-send-data).
+- **Accepted documents are enqueued together.** The endpoint either enqueues all accepted documents in a request, or fails the entire request. If they can't be enqueued, the whole request fails with `503 Service Unavailable`, and no document is reported as successful. Malformed requests, unsupported actions, or missing targets fail with `400 Bad Request`, and nothing in the request is enqueued.
+- **A success response means the data is enqueued, not indexed.** A successful response returns an {{es}}-compatible body in which each accepted item reports a `201` status. This confirms the managed input accepted the document, not that {{es}} has indexed it. Errors that occur later during indexing, such as mapping conflicts, happen asynchronously and aren't reported in the bulk response. Your shipper counts these documents as sent.
+- **Undelivered data is discarded.** The endpoint retries delivery while {{es}} is briefly unavailable or rejecting requests. If {{es}} still can't accept the data when buffer retention ends, the endpoint discards it. The success response your shipper already received doesn't change.
+- **Delivery delay isn't visible to your shipper.** A direct `_bulk` request slows down or fails when {{es}} is under pressure, so your shipper can retry or back off. The managed endpoint returns success as soon as the batch is enqueued, even if delivery to {{es}} is delayed.
+- **`require_data_stream` and `require_alias` are ignored.** The endpoint doesn't enforce these query parameters, so they don't protect you from writing to an unintended target the way they do with {{es}}, although targets outside the allowed prefixes are rejected anyway.
 - **Compressed requests are supported.** The endpoint accepts `Content-Encoding: gzip` request bodies.
 
-For shared buffering and delivery behavior across managed inputs, refer to [Buffering and delivery](authentication-delivery-and-failure-handling.md#delivery).
+For how long undelivered data can stay in the buffer, and what happens to it after that, refer to [Buffering and delivery](authentication-delivery-and-failure-handling.md#delivery).
 
 ## Indexing errors and rate limiting [indexing-errors-and-rate-limiting]
 
@@ -136,12 +163,16 @@ Under load, or when the service can't accept more data, the endpoint can respond
 
 The following limitations apply when using the Managed {{es}} _bulk endpoint:
 
-- Only `create` actions are supported. Requests that use `index`, `update`, or `delete` actions are rejected with `400 Bad Request`. This endpoint accepts only log data. For {{product.logstash}}, the `elasticsearch` output must use `action => "create"`. Features that depend on other actions, such as scripted upserts, aren't supported.
-- The target data stream must use the `logs-` prefix (for example, `logs-my_dataset-default`). Targets that don't use this prefix are accepted by the endpoint but are silently dropped and will not appear in {{es}}.
-- Duplicate detection isn't applied. The endpoint doesn't deduplicate documents by `_id`, so client retries can produce duplicate documents.
-- No client-side visibility into indexing outcomes. Because batches are accepted asynchronously, the bulk response confirms only that data was enqueued, not indexed. Shippers don't receive per-document indexing errors, such as mapping conflicts, in their responses, so monitor indexing separately in {{kib}} with [Data Set Quality](docs-content://solutions/observability/data-set-quality-monitoring.md).
-- Index templates, index lifecycle management (ILM) policies, and {{kib}} assets can't be installed through the endpoint, which serves only the root (`/_es`), license (`/_es/_license`), and `_bulk` paths (`/_es/_bulk` and `/_es/<target>/_bulk`). {{product.beats}}, {{product.elastic-agent}}, and {{product.logstash}} setup steps that create index templates or load dashboards must run against {{es}} and {{kib}} directly before you send data.
-- For {{ech}} network limitations that apply to all managed inputs, refer to [{{ech}} limitations](authentication-delivery-and-failure-handling.md#ech-limitations).
+- **Only log data is supported.** It must target `logs-*` data streams, for example `logs-my_dataset-default`. The endpoint accepts only targets that start with `logs-`, `metrics-`, or `traces-`, and rejects any other target, including wired streams such as `logs.otel` and system indices, with a `403` status in the response item. `metrics-*` and `traces-*` targets are accepted but not supported. To send metrics and traces, use the direct {{es}} endpoint. For OpenTelemetry data, use the [Managed OTLP Endpoint](managed-otlp-endpoint.md).
+- **{{product.beats}} aren't supported with their default settings.** They write to `<beat>-*` indices such as `filebeat-*` by default, which the endpoint rejects with a `403` status for each document.
+- **Only `create` actions are supported.** Requests that use `index`, `update`, or `delete` actions are rejected with `400 Bad Request`. Features that depend on other actions, such as scripted upserts, aren't supported.
+- **`require_data_stream` and `require_alias` aren't enforced.** Refer to [Delivery behavior](#delivery-behavior).
+- **Duplicate detection isn't applied.** The endpoint doesn't deduplicate documents by `_id`, so client retries can produce duplicate documents.
+- **Indexing outcomes aren't reported to your shipper.** The bulk response confirms that data was enqueued, not indexed, so errors such as mapping conflicts never reach your shipper. Managed inputs don't expose ingestion health metrics either, so monitor indexing with [Data Set Quality](docs-content://solutions/observability/data-set-quality-monitoring.md).
+- **Delivery settings on the managed side aren't configurable.** Batching, flush intervals, retries, and worker counts are fixed, unlike the equivalent settings of a shipper's {{es}} output.
+- **{{product.fleet}}-managed {{product.elastic-agent}} outputs can't use the endpoint.** {{product.fleet}} issues its agents {{es}} API keys with index privileges, which the endpoint doesn't accept. Only shippers you configure yourself, such as standalone {{product.elastic-agent}} and {{product.logstash}}, can use an API key for managed inputs.
+- **Index templates, index lifecycle management (ILM) policies, and {{kib}} assets can't be installed through the endpoint.** It serves only the root (`/_es`), license (`/_es/_license`), and `_bulk` paths (`/_es/_bulk` and `/_es/<target>/_bulk`). {{product.elastic-agent}} and {{product.logstash}} setup steps that create index templates or load dashboards must run against {{es}} and {{kib}} directly before you send data.
+- **{{ech}} network limitations apply.** IP filters don't apply to managed endpoints, and the endpoints aren't available over private connections. Refer to [{{ech}} limitations](authentication-delivery-and-failure-handling.md#ech-limitations) for more information.
 
 ## Related pages [related-pages]
 
