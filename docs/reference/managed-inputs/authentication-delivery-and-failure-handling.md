@@ -99,7 +99,7 @@ Managed inputs buffer data before delivering it to {{es}}:
 - When capacity controls reject data, endpoints can respond with `429 Too Many Requests`, so clients should retry with backoff. Other temporary service failures can return `503 Service Unavailable`. Refer to [Managed inputs rate limiting](rate-limiting.md).
 
 :::{note}
-For the Managed {{es}} _bulk endpoint, documents with unsupported targets are rejected individually, and a `201` status on an item in the response means the document is enqueued, not indexed. For details, refer to [Delivery behavior](elasticsearch-bulk.md#delivery-behavior).
+For the Managed {{es}} _bulk endpoint, documents with disallowed targets are rejected individually, and a `201` status on an item in the response means the document is enqueued, not indexed. For details, refer to [Delivery behavior](elasticsearch-bulk.md#delivery-behavior).
 :::
 
 ## Indexing errors and the failure store [failure-store]

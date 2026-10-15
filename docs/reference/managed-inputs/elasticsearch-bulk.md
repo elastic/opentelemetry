@@ -22,27 +22,30 @@ The endpoint is {{es}}-compatible: it emulates a subset of the `_bulk` API, so m
 
 ## When to use the Managed {{es}} _bulk endpoint [when-to-use]
 
-The Managed {{es}} _bulk endpoint isn't a drop-in replacement for sending `_bulk` requests directly to {{es}}. It accepts only the `create` action. If a request includes any other action, such as `index`, `update`, or `delete`, the request fails with `400 Bad Request`. The endpoint also ignores the `require_data_stream` and `require_alias` parameters. Because data is buffered before it's indexed, the endpoint acknowledges data earlier, reports failures differently, and can add latency. Use the following comparison to decide which endpoint fits your workload.
+The Managed {{es}} _bulk endpoint isn't a drop-in replacement for sending `_bulk` requests directly to {{es}}. It supports only part of the `_bulk` API: It accepts only the `create` action, and requests that use `index`, `update`, or `delete` fail with `400 Bad Request`. Because the managed endpoint buffers data before indexing it, it also acknowledges data earlier, reports failures differently, and can add latency. Use the following sections to decide which endpoint fits your workload.
 
-The managed endpoint is a good fit when:
+### When to send data to the managed endpoint [when-managed]
 
-- You send log data from standalone {{product.elastic-agent}}, {{product.logstash}}, or another `_bulk` shipper that writes to log data streams, and want to use the same ingest endpoint and API key as your other [managed inputs](index.md).
-- Your ingest volume varies sharply, with spikes well above the usual rate, and you'd rather have the managed endpoint absorb them than tune the output settings of every shipper.
-- Your shippers have little or no local buffering, and a delay in indexing is acceptable.
+- **You already use other managed inputs.** Your `_bulk` shippers can send data to the same ingest host as the [Managed OTLP Endpoint](managed-otlp-endpoint.md) and the [Managed Prometheus Remote Write endpoint](prometheus-remote-write.md), using the same API key.
+- **Your ingest volume is spiky.** The managed endpoint absorbs short spikes well above the usual rate, so you don't need to size every shipper's output for peak load.
 
-Send data directly to {{es}} when:
+    On {{ech}}, volume that your cluster can't keep up with still results in `429` responses. Refer to [Managed inputs rate limiting](rate-limiting.md).
 
-- Your shipper must know that data was indexed before it marks the data as sent. The managed endpoint returns success when data is buffered, and delivery to {{es}} completes later, within limits. Refer to [Delivery behavior](#delivery-behavior).
-- You need data in {{es}} within a predictable time, for example for alerting. The managed endpoint can add latency, and the delay grows when {{es}} is slow or unavailable.
-- You rely on your shipper's own metrics for successful and failed events to monitor ingestion. With the managed endpoint, those metrics only tell you whether data was buffered, and managed inputs don't expose ingestion health or throughput metrics to you.
-- You ship metrics, traces, or any data other than logs.
-- You tune output settings such as batch size, flush interval, or worker count. You can't configure batching or retries on the managed side.
-- Your {{product.elastic-agent}}s are managed by {{product.fleet}}. {{product.fleet}}-managed outputs can't use the endpoint.
-- On {{ech}}, you use IP filters or private connectivity. Refer to [{{ech}} limitations](authentication-delivery-and-failure-handling.md#ech-limitations) for more information.
+- **You want to limit local buffering on your shippers.** The managed endpoint buffers data while {{es}} is slow or unavailable, so your shippers need less local buffering. They still need to retry `429` and `503` responses, and a delay in indexing must be acceptable.
+
+If you switch an existing shipper to the managed endpoint, compare document counts between what your shipper sends and the destination data stream for a period after the switch, and monitor the destination with [Data Set Quality](docs-content://solutions/observability/data-set-quality-monitoring.md).
+
+### When to send data directly to {{es}} [when-direct]
+
+- **You send data other than logs, or write logs to targets that don't start with `logs-`.** The managed endpoint supports only log data in `logs-*` data streams. Refer to [Limitations](#limitations).
+- **Your {{product.elastic-agent}}s are managed by {{product.fleet}}.** {{product.fleet}}-managed outputs can't use the managed endpoint.
+- **You need confirmation that data was indexed.** Your shipper must know that data was indexed before it marks the data as sent. The managed endpoint returns success when data is buffered. Delivery to {{es}} completes later, and data that can't be delivered before the buffer retention period ends is discarded. Refer to [Delivery behavior](#delivery-behavior).
+- **You need predictable latency**, for example for alerting. The managed endpoint can add latency, and the delay grows when {{es}} is slow or unavailable.
+- **You monitor ingestion with shipper metrics.** With the managed endpoint, those metrics tell you whether the endpoint accepted the data, not whether it was indexed. Managed inputs don't expose ingestion health or throughput metrics to you.
+- **You need control over how data is batched and retried into {{es}}.** Batch size, flush interval, retries, and worker count are fixed on the managed side.
+- **You use IP filters or private connectivity on {{ech}}.** IP filters don't apply to the managed endpoint, and it isn't available over private connections. Refer to [{{ech}} limitations](authentication-delivery-and-failure-handling.md#ech-limitations) for more information.
 
 For the full list of constraints, refer to [Limitations](#limitations).
-
-If you switch an existing shipper to the managed endpoint, compare document counts between the source and the destination data stream for a period after the switch, and monitor the destination with [Data Set Quality](docs-content://solutions/observability/data-set-quality-monitoring.md).
 
 ## Prerequisites [prerequisites]
 
@@ -106,7 +109,7 @@ output {
 ```
 
 :::{warning}
-By default, {{product.logstash}} indefinitely retries documents that the endpoint rejects with a `403` status, which can stall the pipeline. The endpoint rejects documents this way when their target isn't supported. Refer to [Delivery behavior](#delivery-behavior).
+By default, {{product.logstash}} indefinitely retries documents that the endpoint rejects with a `403` status, which can stall the pipeline. The endpoint rejects documents this way when their target isn't allowed. Refer to [Delivery behavior](#delivery-behavior).
 
 To drop these documents instead, add `security_exception` to the `drop_error_types` setting. If the dead letter queue is enabled, you can set `dlq_custom_codes` to `[403]` to send them there.
 :::
@@ -121,7 +124,7 @@ outputs:
     api_key: "<id>:<api_key>"
 ```
 
-If your shipper uses the `index`, `update`, or `delete` action, switch to `create` or target a data stream. Refer to [Limitations](#limitations) for more information.
+If your shipper uses the `index`, `update`, or `delete` action, switch to `create`. Refer to [Limitations](#limitations) for more information.
 
 To confirm your setup is working, check that your shipper reports successful (`2xx`) responses, with no authentication errors and no documents rejected with a `403` status. Then open **Discover** and verify that new documents are landing in your target data stream.
 
@@ -139,13 +142,13 @@ Each action in a `_bulk` request can specify its target through the `_index` fie
 
 The Managed {{es}} _bulk endpoint emulates the {{es}} `_bulk` API, but because it ingests through managed inputs, it behaves differently from indexing directly into {{es}}. Keep the following in mind:
 
-- **Documents with unsupported targets are rejected individually.** A document whose target isn't supported gets a `403` status with a `security_exception` error in its response item, and the response sets `errors: true`. The other documents in the request are still accepted. The response is `200 OK` even if every document is rejected, so check `errors` and the status of each item. For supported targets, refer to [Limitations](#limitations).
+- **Documents with disallowed targets are rejected individually.** A document whose target doesn't start with `logs-`, `metrics-`, or `traces-` gets a `403` status with a `security_exception` error in its response item, and the response sets `errors: true`. The other documents in the request are still accepted. The response is `200 OK` even if every document is rejected, so check `errors` and the status of each item. For allowed targets, refer to [Limitations](#limitations).
 - **Rejected documents are handled by your shipper.** {{product.elastic-agent}} drops a rejected document and logs a warning. {{product.logstash}} retries it indefinitely by default. To change this, refer to the [{{product.logstash}} configuration](#configure-your-shipper-and-send-data).
 - **Accepted documents are enqueued together.** The endpoint either enqueues all accepted documents in a request, or fails the entire request. If they can't be enqueued, the whole request fails with `503 Service Unavailable`, and no document is reported as successful. Malformed requests, unsupported actions, or missing targets fail with `400 Bad Request`, and nothing in the request is enqueued.
 - **A success response means the data is enqueued, not indexed.** A successful response returns an {{es}}-compatible body in which each accepted item reports a `201` status. This confirms the managed input accepted the document, not that {{es}} has indexed it. Errors that occur later during indexing, such as mapping conflicts, happen asynchronously and aren't reported in the bulk response. Your shipper counts these documents as sent.
 - **Undelivered data is discarded.** The endpoint retries delivery while {{es}} is briefly unavailable or rejecting requests. If {{es}} still can't accept the data when buffer retention ends, the endpoint discards it. The success response your shipper already received doesn't change.
 - **Delivery delay isn't visible to your shipper.** A direct `_bulk` request slows down or fails when {{es}} is under pressure, so your shipper can retry or back off. The managed endpoint returns success as soon as the batch is enqueued, even if delivery to {{es}} is delayed.
-- **`require_data_stream` and `require_alias` are ignored.** The endpoint doesn't enforce these query parameters, so they don't protect you from writing to an unintended target type the way they do with {{es}}.
+- **`require_data_stream` and `require_alias` are ignored.** The endpoint doesn't enforce these query parameters, so they don't protect you from writing to an unintended target the way they do with {{es}}, although targets outside the allowed prefixes are rejected anyway.
 - **Compressed requests are supported.** The endpoint accepts `Content-Encoding: gzip` request bodies.
 
 For how long undelivered data can stay in the buffer, and what happens to it after that, refer to [Buffering and delivery](authentication-delivery-and-failure-handling.md#delivery).
@@ -160,7 +163,7 @@ Under load, or when the service can't accept more data, the endpoint can respond
 
 The following limitations apply when using the Managed {{es}} _bulk endpoint:
 
-- **Only log data is supported.** It must target `logs-*` data streams, for example `logs-my_dataset-default`. The endpoint rejects documents for any target that doesn't start with `logs-`, `metrics-`, or `traces-`, including wired streams such as `logs.otel` and system indices, with a `403` status in the response item. Documents for `metrics-*` and `traces-*` targets are accepted, but sending metrics or traces through the endpoint isn't supported. To send metrics and traces, use the direct {{es}} endpoint. For OpenTelemetry data, use the [Managed OTLP Endpoint](managed-otlp-endpoint.md).
+- **Only log data is supported.** It must target `logs-*` data streams, for example `logs-my_dataset-default`. The endpoint accepts only targets that start with `logs-`, `metrics-`, or `traces-`, and rejects any other target, including wired streams such as `logs.otel` and system indices, with a `403` status in the response item. `metrics-*` and `traces-*` targets are accepted but not supported. To send metrics and traces, use the direct {{es}} endpoint. For OpenTelemetry data, use the [Managed OTLP Endpoint](managed-otlp-endpoint.md).
 - **{{product.beats}} aren't supported with their default settings.** They write to `<beat>-*` indices such as `filebeat-*` by default, which the endpoint rejects with a `403` status for each document.
 - **Only `create` actions are supported.** Requests that use `index`, `update`, or `delete` actions are rejected with `400 Bad Request`. Features that depend on other actions, such as scripted upserts, aren't supported.
 - **`require_data_stream` and `require_alias` aren't enforced.** Refer to [Delivery behavior](#delivery-behavior).
