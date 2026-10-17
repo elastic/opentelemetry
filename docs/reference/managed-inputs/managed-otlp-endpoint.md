@@ -95,12 +95,13 @@ Index-level privilege scoping is not supported for managed inputs.
 
 ## OTLP client configuration
 
-When using OpenTelemetry collectors to send data to the {{motlp}}, configure the OTLP exporter to leverage an in-memory queue and optimized batching defaults. This improves throughput, minimizes data loss, and maintains low end-to-end latency.
+When using OpenTelemetry collectors to send data to the {{motlp}}, configure the OTLP exporter with an explicit timeout, an in-memory queue, and batching. Use the following configuration as a starting point to improve throughput and allow requests to complete during temporary increases in ingestion latency.
 
 ```yaml
 exporters:
   otlp/elastic:
     endpoint: "${MOTLP_ENDPOINT}"
+    timeout: 30s
     headers:
       Authorization: "ApiKey <key>"
     sending_queue:
@@ -116,8 +117,13 @@ exporters:
 
 The key settings are:
 
-* **`sending_queue`**: Enables an in-memory queue with byte-based sizing (`sizer: bytes`) and a 50 MB capacity. `block_on_overflow: true` applies back-pressure instead of dropping data when the queue is full.
+* **`timeout`**: Sets the timeout for each export attempt to 30 seconds. The upstream Collector default of 5 seconds can cancel requests during temporary increases in ingestion latency. This timeout is separate from the batching flush timeout and the retry budget. It does not make successful requests wait for 30 seconds.
+* **`sending_queue`**: Enables an in-memory queue with byte-based sizing (`sizer: bytes`) and a 50 MB capacity. `block_on_overflow: true` applies backpressure by waiting for space when the queue is full. Enqueueing can still fail if the caller's request times out before space becomes available. Queued data does not survive a Collector crash or forced termination.
 * **`batch`**: Controls how queued data is batched before export. A `flush_timeout` of 1 second ensures low latency, while `min_size` (1 MB) and `max_size` (4 MB) keep payloads within the {{motlp}} limits. Refer to the [Payload too large](troubleshooting.md#error-payload-too-large) troubleshooting section for details on payload size limits.
+
+The upstream Collector enables retries for retryable export failures by default, with a retry budget (`retry_on_failure.max_elapsed_time`) of 5 minutes. These retries are separate from the timeout for each attempt. Increasing the attempt timeout allows slower requests to complete instead of repeatedly cancelling them at the same short deadline. For details, refer to the [OpenTelemetry Collector exporter helper configuration](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/exporterhelper#configuration).
+
+Tune the timeout and queue capacity for your workload. Monitor export failures and queue utilization during traffic spikes to check whether the configuration provides enough headroom.
 
 ## Reference architecture
 
