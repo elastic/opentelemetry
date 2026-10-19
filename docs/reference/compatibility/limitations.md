@@ -92,7 +92,10 @@ Make sure to export histogram metrics with `delta` temporality or use the [`cumu
 
 ### Exemplars
 
-Exemplars are discarded when ingesting metrics. Support for exemplars is planned for a future release.
+Support for [exemplars](https://opentelemetry.io/docs/specs/otel/metrics/data-model/#exemplars) depends on the ingestion path:
+
+* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` **Native {{es}} OTLP endpoint and {{motlp}}:** Exemplars are stored in `exemplars-*` data streams by default. On {{ech}}, the {{motlp}} requires Elastic Stack 9.6 or later. Refer to [Metric exemplars](docs-content://manage-data/ingest/otlp-endpoint.md#metric-exemplars) for details.
+* **Collector {{es}} exporter:** Exemplars are discarded when ingesting metrics.
 
 ## Limitations on managed Kubernetes environments
 
