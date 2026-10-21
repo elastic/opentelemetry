@@ -43,7 +43,7 @@ If you switch an existing shipper to the managed endpoint, compare document coun
 - **You need predictable latency**, for example for alerting. The managed endpoint can add latency, and the delay grows when {{es}} is slow or unavailable.
 - **You monitor ingestion with shipper metrics.** With the managed endpoint, those metrics tell you whether the endpoint accepted the data, not whether it was indexed. Managed inputs don't expose ingestion health or throughput metrics to you.
 - **You need control over how data is batched and retried into {{es}}.** Batch size, flush interval, retries, and worker count are fixed on the managed side.
-- **You use IP filters or private connectivity on {{ech}}.** IP filters don't apply to the managed endpoint, and it isn't available over private connections. Refer to [{{ech}} limitations](authentication-delivery-and-failure-handling.md#ech-limitations) for more information.
+- **You use IP filters or private connectivity on {{ech}}.** IP filters don't apply to the managed endpoint, and it isn't available over private connections. Refer to [Network security](authentication-delivery-and-failure-handling.md#network-security) for more information.
 
 For the full list of constraints, refer to [Limitations](#limitations).
 
@@ -172,7 +172,7 @@ The following limitations apply when using the Managed {{es}} _bulk endpoint:
 - **Delivery settings on the managed side aren't configurable.** Batching, flush intervals, retries, and worker counts are fixed, unlike the equivalent settings of a shipper's {{es}} output.
 - **{{product.fleet}}-managed {{product.elastic-agent}} outputs can't use the endpoint.** {{product.fleet}} issues its agents {{es}} API keys with index privileges, which the endpoint doesn't accept. Only shippers you configure yourself, such as standalone {{product.elastic-agent}} and {{product.logstash}}, can use an API key for managed inputs.
 - **Index templates, index lifecycle management (ILM) policies, and {{kib}} assets can't be installed through the endpoint.** It serves only the root (`/_es`), license (`/_es/_license`), and `_bulk` paths (`/_es/_bulk` and `/_es/<target>/_bulk`). {{product.elastic-agent}} and {{product.logstash}} setup steps that create index templates or load dashboards must run against {{es}} and {{kib}} directly before you send data.
-- **{{ech}} network limitations apply.** IP filters don't apply to managed endpoints, and the endpoints aren't available over private connections. Refer to [{{ech}} limitations](authentication-delivery-and-failure-handling.md#ech-limitations) for more information.
+- **IP filters and private connectivity depend on your deployment type.** For how they apply to all managed inputs, refer to [Network security](authentication-delivery-and-failure-handling.md#network-security).
 
 ## Related pages [related-pages]
 

@@ -1,6 +1,6 @@
 ---
 navigation_title: Authentication, delivery, and failure handling
-description: Learn how managed inputs share authentication, buffering and delivery, failure handling, and Elastic Cloud Hosted network limitations.
+description: Learn how managed inputs share authentication, buffering and delivery, failure handling, and how network security applies on Serverless and Elastic Cloud Hosted.
 type: overview
 applies_to:
   serverless: ga
@@ -15,7 +15,7 @@ products:
 
 # Authentication, delivery, and failure handling with managed inputs [authentication-delivery-and-failure-handling]
 
-This page covers what all managed inputs share: how you authenticate, how data is stored for a limited time, how it is delivered, what happens when indexing fails, and network limitations on {{ech}}. For protocol-specific setup, choose your endpoint in [Next steps](#next-steps).
+This page covers what all managed inputs share: how you authenticate, how data is stored for a limited time, how it is delivered, what happens when indexing fails, and how network security applies to your project or deployment. For protocol-specific setup, choose your endpoint in [Next steps](#next-steps).
 
 ## Authentication [authentication]
 
@@ -114,16 +114,27 @@ If the destination data stream has the [failure store](docs-content://manage-dat
 If a document fails indexing and the destination data stream doesn't have the failure store enabled, the document is dropped. Because indexing errors happen after the data is accepted, your shipper still reports success, so this data loss is silent.
 :::
 
-## {{ech}} limitations [ech-limitations]
+## Network security [network-security]
 
-```{applies_to}
-ech:
-```
+Support for IP filters and private connectivity on managed endpoints depends on whether you use a {{serverless-full}} project or an {{ech}} deployment.
 
+::::{applies-switch}
+
+:::{applies-item} serverless:
+In {{serverless-full}} projects, managed inputs follow the [network security policies](docs-content://deploy-manage/security/network-security-policies.md) applied to your project:
+
+- [IP filters](docs-content://deploy-manage/security/ip-filtering-cloud.md) apply to managed endpoints.
+- Managed endpoints are available over a private connection on supported cloud providers. For the current list, refer to [Private connectivity](docs-content://deploy-manage/security/private-connectivity.md).
+:::
+
+:::{applies-item} ech:
 In {{ech}} deployments, the following limitations apply to managed inputs:
 
 - [IP filters](docs-content://deploy-manage/security/ip-filtering-cloud.md) do not apply to managed endpoints.
 - Managed endpoints are not available over a [private connection](docs-content://deploy-manage/security/private-connectivity.md). When private connectivity is configured, the public managed endpoint is still available.
+:::
+
+::::
 
 ## Next steps [next-steps]
 
