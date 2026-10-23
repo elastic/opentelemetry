@@ -85,7 +85,7 @@ For information on the compatibility of each Collector component, refer to the [
 
 Non-{{edot}} distributions of the OTel Collector, such as custom Collector builds, contrib Collector distributions, and so on aren't officially supported through Elastic but are technically compatible ([Compatible]) if they contain the [required OTel Collector components](elastic-agent://reference/edot-collector/custom-collector.md) and are configured like {{agent}}.
 
-You can retrieve required components and configuration options from the [example configuration files](https://github.com/elastic/elastic-agent/tree/v<COLLECTOR_VERSION>/internal/pkg/otel/samples/linux) for {{agent}}.
+You can retrieve required components and configuration options from the [example configuration files](https://github.com/elastic/elastic-agent/tree/v{{version.edot_collector}}/internal/edot/samples/linux) for {{agent}}.
 
 For a comparison between {{edot}} and contrib OpenTelemetry components, refer to [{{edot}} compared to upstream](edot-vs-upstream.md).
 
