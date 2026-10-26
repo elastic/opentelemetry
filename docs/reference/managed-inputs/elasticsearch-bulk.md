@@ -110,7 +110,10 @@ To send data, configure your shipper's {{es}} output with the following:
    - If you have the key as `<id>:<api_key>`, use the `api_key` setting in {{product.logstash}} or standalone {{product.elastic-agent}}.
 - **Action**: Use `create`. Shippers that write to data streams already use this action.
 
-The following example configures a {{product.logstash}} `elasticsearch` output. Setting names and the exact way to pass credentials vary by shipper and version, so validate the configuration for your shipper:
+The following examples show the configuration for {{product.logstash}} and standalone {{product.elastic-agent}}. Setting names and the exact way to pass credentials vary by shipper and version, so validate the configuration for your shipper.
+
+::::{dropdown} {{product.logstash}} example
+Configure the `elasticsearch` output:
 
 ```ruby
 output {
@@ -126,7 +129,7 @@ output {
 
 When you create the API key on the {{kib}} **API keys** page, select **Logstash** from the format dropdown in the **Created API key** panel before you copy it, or join the `id` and `api_key` fields from the Create API key API response with a colon.
 
-If you only have the encoded key, for example if you generated it from the **Add data** page, replace the `api_key` setting in the `elasticsearch` output with `custom_headers` and pass the key in the `Authorization` header:
+If you only have the encoded key, for example if you generated it from the **Add data** page, replace the `api_key` setting with `custom_headers` and pass the key in the `Authorization` header:
 
 ```ruby
 custom_headers => {
@@ -139,8 +142,10 @@ By default, {{product.logstash}} indefinitely retries documents that the endpoin
 
 If the dead letter queue is enabled, add `403` to `dlq_custom_codes` to send these documents there. To drop them instead, add `security_exception` to `drop_error_types`.
 :::
+::::
 
-A standalone {{product.elastic-agent}} uses the same host format and `api_key` setting. {{product.elastic-agent}} encodes the `<id>:<api_key>` value itself, so the encoded value from the **Add data** page results in `401` errors. When you create the key on the {{kib}} **API keys** page, select **Beats** from the format dropdown in the **Created API key** panel before you copy it, or join the `id` and `api_key` fields from the Create API key API response with a colon:
+::::{dropdown} Standalone {{product.elastic-agent}} example
+Configure the `elasticsearch` output. {{product.elastic-agent}} encodes the `<id>:<api_key>` value itself, so the encoded value from the **Add data** page results in `401` errors. When you create the key on the {{kib}} **API keys** page, select **Beats** from the format dropdown in the **Created API key** panel before you copy it, or join the `id` and `api_key` fields from the Create API key API response with a colon:
 
 ```yaml
 outputs:
@@ -151,6 +156,7 @@ outputs:
 ```
 
 1. Add `:443` before `/_es`, for example `https://<host>:443/_es`.
+::::
 
 If your shipper uses the `index`, `update`, or `delete` action, switch to `create`. Refer to [Limitations](#limitations) for more information.
 
@@ -171,7 +177,7 @@ Each action in a `_bulk` request can specify its target through the `_index` fie
 The Managed {{es}} _bulk endpoint emulates the {{es}} `_bulk` API, but because it ingests through managed inputs, it behaves differently from indexing directly into {{es}}. Keep the following in mind:
 
 - **Documents with disallowed targets are rejected individually.** A document whose target doesn't start with `logs-`, `metrics-`, or `traces-` gets a `403` status with a `security_exception` error in its response item, and the response sets `errors: true`. The other documents in the request are still accepted. The response is `200 OK` even if every document is rejected, so check `errors` and the status of each item. For allowed targets, refer to [Limitations](#limitations).
-- **Rejected documents are handled by your shipper.** {{product.elastic-agent}} drops a rejected document and logs a warning. {{product.logstash}} retries it indefinitely by default. To change this, refer to the [{{product.logstash}} configuration](#configure-your-shipper-and-send-data).
+- **Rejected documents are handled by your shipper.** {{product.elastic-agent}} drops a rejected document and logs a warning. {{product.logstash}} retries it indefinitely by default. To change this, refer to the {{product.logstash}} example in [](#configure-your-shipper-and-send-data).
 - **Accepted documents are enqueued together.** The endpoint either enqueues all accepted documents in a request, or fails the entire request. If they can't be enqueued, the whole request fails with `503 Service Unavailable`, and no document is reported as successful. Malformed requests, unsupported actions, or missing targets fail with `400 Bad Request`, and nothing in the request is enqueued.
 - **A success response means the data is enqueued, not indexed.** A successful response returns an {{es}}-compatible body in which each accepted item reports a `201` status. This confirms the managed input accepted the document, not that {{es}} has indexed it. Errors that occur later during indexing, such as mapping conflicts, happen asynchronously and aren't reported in the bulk response. Your shipper counts these documents as sent.
 - **Undelivered data is discarded.** The endpoint retries delivery while {{es}} is briefly unavailable or rejecting requests. If {{es}} still can't accept the data when buffer retention ends, the endpoint discards it. The success response your shipper already received doesn't change.
