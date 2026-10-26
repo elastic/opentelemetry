@@ -84,7 +84,7 @@ Authorization: ApiKey <api-key>
 ```
 
 :::{note}
-Index-level privilege scoping is not supported for managed inputs.
+Index-level privilege scoping is not supported for managed inputs. The same API key works for every managed input, and it grants write access to all data streams the inputs can write to. For example, through the OTLP endpoint the key can write to any data stream with a `logs-`, `metrics-`, or `traces-` prefix, and any client that holds the key can route data to any of them. If you need write access scoped to specific indices or data streams, send data to {{es}} through a self-managed Collector, such as the [{{agent}} in Gateway mode](elastic-agent://reference/edot-collector/modes.md#edot-collector-as-gateway), using an API key with index-level privileges.
 :::
 
 ## Buffering and delivery [delivery]

@@ -72,7 +72,7 @@ The {{motlp}} follows the same stream selection logic as local {{edot}} deployme
 
 The main difference is that {{motlp}} is a managed cloud service that handles ingestion and storage, whereas local {{edot}} deployments require you to manage the Collector infrastructure yourself. Ingest and storage behavior remain consistent between both approaches.
 
-To customize which data streams your telemetry is routed to, you can use [data stream routing](docs-content://solutions/observability/apm/opentelemetry/data-stream-routing.md) with `data_stream.dataset` and `data_stream.namespace` attributes.
+To customize which data streams your telemetry is routed to, you can use [data stream routing](docs-content://solutions/observability/apm/opentelemetry/data-stream-routing.md) with `data_stream.dataset` and `data_stream.namespace` attributes. To route to a specific index instead, refer to [Routing telemetry to a specific index](./managed-inputs/managed-otlp-endpoint.md#routing-telemetry-to-a-specific-index).
 
 ## Field duplication
 
