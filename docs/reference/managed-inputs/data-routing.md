@@ -20,7 +20,7 @@ By default, the {{motlp}} routes each signal to a data stream based on its type 
 You can override the default routing by setting routing attributes in your OTLP payload, as described in the following sections.
 
 :::{note}
-Any client that holds the API key can use these attributes to write to any data stream with a `logs-`, `metrics-`, or `traces-` prefix. Refer to [Authentication](authentication-delivery-and-failure-handling.md#authentication).
+Any client that holds the API key can use these attributes to write to any data stream with a `logs-`, `metrics-`, or `traces-` prefix. For details on the key's write scope, refer to [Authentication](authentication-delivery-and-failure-handling.md#authentication).
 :::
 
 ## Routing telemetry to dedicated datasets or namespace [routing-telemetry-to-dedicated-datasets-or-namespace]
