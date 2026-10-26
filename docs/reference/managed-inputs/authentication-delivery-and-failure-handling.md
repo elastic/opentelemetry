@@ -27,7 +27,7 @@ Index-level privilege scoping is not supported for managed inputs.
 
 You can create this API key in one of the following ways:
 
-:::{dropdown} From the Add data flow
+:::{dropdown} From the Add data page in {{kib}}
 :applies_to: {"serverless": {"observability": "ga"}, "ech": "ga"}
 
 1. Select **Add data** in the navigation menu of your Serverless Observability project or {{ech}} deployment.
@@ -87,7 +87,7 @@ Send the encoded API key in the `Authorization` header of each request to the ma
 Authorization: ApiKey <api-key>
 ```
 
-{{product.elastic-agent}} is the exception: its `api_key` output setting takes the key as `<id>:<api_key>` and encodes it itself, so the encoded value results in `401` errors. The **Add data** flow provides only the encoded value. To get the key as `<id>:<api_key>`, create it on the {{kib}} **API keys** page and, in the **Created API key** panel, select **Beats** from the format dropdown before you copy the key. Alternatively, join the `id` and `api_key` fields from the Create API key API response with a colon.
+{{product.elastic-agent}} is the exception: its `api_key` output setting takes the key as `<id>:<api_key>` and encodes it itself, so the encoded value results in `401` errors. The **Add data** page provides only the encoded value. To get the key as `<id>:<api_key>`, create it on the {{kib}} **API keys** page and, in the **Created API key** panel, select **Beats** from the format dropdown before you copy the key. Alternatively, join the `id` and `api_key` fields from the Create API key API response with a colon.
 
 ## Buffering and delivery [delivery]
 

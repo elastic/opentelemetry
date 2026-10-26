@@ -64,11 +64,23 @@ The Managed {{es}} _bulk endpoint uses the same ingest host as the [Managed OTLP
 
 To find your Managed {{es}} _bulk endpoint:
 
+::::{applies-switch}
+
+:::{applies-item} serverless:
 1. Log in to the {{ecloud}} Console.
-2. Do one of the following:
-   - **{{serverless-full}}**: Find your project and select **Manage**.
-   - **{{ech}}**: Find your deployment in **Hosted deployments** and select **Manage**.
-3. In the **Application endpoints, cluster and component IDs** section, select **{{es}}**, then copy the **_bulk endpoint** value.
+2. Find your project and select **Manage**.
+3. In the **Application endpoints** section, select **{{es}}**. A flyout opens that lists the endpoints for each application as expandable sections, with **{{es}}** expanded.
+4. Copy the {{es}} **Endpoint** value. Don't use the **Direct endpoint** value, which is the endpoint for sending data directly to {{es}}.
+:::
+
+:::{applies-item} ech:
+1. Log in to the {{ecloud}} Console.
+2. Find your deployment in **Hosted deployments** and select **Manage**.
+3. In the **Application endpoints, cluster and component IDs** section, select **{{es}}**. A flyout opens that lists the endpoints for each application as expandable sections, with **{{es}}** expanded.
+4. Copy the {{es}} **Endpoint** value. Don't use the **Direct endpoint** value, which is the endpoint for sending data directly to {{es}}.
+:::
+
+::::
 
 This endpoint value is shown as `<managed-_bulk-endpoint>` in the examples that follow. Your shipper appends the `_bulk` path (and any target index path) itself, so requests are sent to `POST <managed-_bulk-endpoint>/_bulk`.
 
@@ -90,8 +102,12 @@ Shippers that call `GET /_es` or `GET /_es/_license` at startup can use the same
 
 To send data, configure your shipper's {{es}} output with the following:
 
-- **Endpoint**: Use your Managed {{es}} _bulk endpoint value (`<managed-_bulk-endpoint>`) in the host format for your deployment type. If your shipper has a separate path or URL-prefix setting, set it to `/_es` instead of including it in the host.
-- **Authentication**: The API key you created for the managed inputs, sent as the HTTP header `Authorization: ApiKey <api-key>`.
+- **Endpoint**: Use your Managed {{es}} _bulk endpoint value (`<managed-_bulk-endpoint>`) in the host format for your deployment type.
+   - If your shipper has a separate path or URL-prefix setting, set it to `/_es` instead of including it in the host.
+   - The {{product.logstash}} and {{product.elastic-agent}} `elasticsearch` outputs use port `9200` when the host URL omits a port, so add `:443` before the `/_es` path, for example `https://<host>:443/_es`.
+- **Authentication**: The API key you created for the managed inputs. How you pass it depends on the key format you have:
+   - If you have the encoded key, for example from the **Add data** page in {{kib}}, send it as the HTTP header `Authorization: ApiKey <api-key>`. This works with any shipper. Refer to [Authentication](authentication-delivery-and-failure-handling.md#authentication) for the ways to create a key.
+   - If you have the key as `<id>:<api_key>`, use the `api_key` setting in {{product.logstash}} or standalone {{product.elastic-agent}}.
 - **Action**: Use `create`. Shippers that write to data streams already use this action.
 
 The following example configures a {{product.logstash}} `elasticsearch` output. Setting names and the exact way to pass credentials vary by shipper and version, so validate the configuration for your shipper:
@@ -99,30 +115,42 @@ The following example configures a {{product.logstash}} `elasticsearch` output. 
 ```ruby
 output {
   elasticsearch {
-    hosts => ["<managed-_bulk-endpoint>"]
-    custom_headers => {
-      "Authorization" => "ApiKey <api-key>"
-    }
+    hosts => ["<managed-_bulk-endpoint>"] <1>
+    api_key => "<id>:<api_key>"
     action => "create"
   }
+}
+```
+
+1. Add `:443` before `/_es`, for example `https://<host>:443/_es`.
+
+When you create the API key on the {{kib}} **API keys** page, select **Logstash** from the format dropdown in the **Created API key** panel before you copy it, or join the `id` and `api_key` fields from the Create API key API response with a colon.
+
+If you only have the encoded key, for example if you generated it from the **Add data** page, replace the `api_key` setting in the `elasticsearch` output with `custom_headers` and pass the key in the `Authorization` header:
+
+```ruby
+custom_headers => {
+  "Authorization" => "ApiKey <api-key>"
 }
 ```
 
 :::{warning}
 By default, {{product.logstash}} indefinitely retries documents that the endpoint rejects with a `403` status, which can stall the pipeline. The endpoint rejects documents this way when their target isn't allowed. Refer to [Delivery behavior](#delivery-behavior).
 
-To drop these documents instead, add `security_exception` to the `drop_error_types` setting. If the dead letter queue is enabled, you can set `dlq_custom_codes` to `[403]` to send them there.
+If the dead letter queue is enabled, add `403` to `dlq_custom_codes` to send these documents there. To drop them instead, add `security_exception` to `drop_error_types`.
 :::
 
-A standalone {{product.elastic-agent}} configures its {{es}} output the same way, with one difference in how the API key is passed. The `api_key` setting takes the key as `<id>:<api_key>`, and {{product.elastic-agent}} encodes it itself. Don't use the encoded value from the **Add data** flow, as it results in `401` errors. Instead, when you create the key on the {{kib}} **API keys** page, select **Beats** from the format dropdown in the **Created API key** panel before you copy it, or join the `id` and `api_key` fields from the Create API key API response with a colon:
+A standalone {{product.elastic-agent}} uses the same host format and `api_key` setting. {{product.elastic-agent}} encodes the `<id>:<api_key>` value itself, so the encoded value from the **Add data** page results in `401` errors. When you create the key on the {{kib}} **API keys** page, select **Beats** from the format dropdown in the **Created API key** panel before you copy it, or join the `id` and `api_key` fields from the Create API key API response with a colon:
 
 ```yaml
 outputs:
   default:
     type: elasticsearch
-    hosts: ["<managed-_bulk-endpoint>"]
+    hosts: ["<managed-_bulk-endpoint>"] <1>
     api_key: "<id>:<api_key>"
 ```
+
+1. Add `:443` before `/_es`, for example `https://<host>:443/_es`.
 
 If your shipper uses the `index`, `update`, or `delete` action, switch to `create`. Refer to [Limitations](#limitations) for more information.
 
