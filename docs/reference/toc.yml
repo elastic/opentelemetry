@@ -3,22 +3,24 @@ toc:
   - file: index.md
   - title: Quickstarts
     crosslink: docs-content://solutions/observability/get-started/opentelemetry/quickstart/index.md
-  - file: architecture/index.md
+  - folder: architecture
     children:
-      - file: architecture/k8s.md
-      - file: architecture/hosts_vms.md
-      - file: architecture/kafka.md
+      - file: index.md
+      - file: k8s.md
+      - file: hosts_vms.md
+      - file: kafka.md
   - title: Use cases
     crosslink: docs-content://solutions/observability/get-started/opentelemetry/use-cases/index.md
-  - file: compatibility/index.md
+  - folder: compatibility
     children:
-      - file: compatibility/features.md
-      - file: compatibility/collectors.md
-      - file: compatibility/sdks.md
-      - file: compatibility/edot-vs-upstream.md
-      - file: compatibility/limitations.md
-      - file: compatibility/nomenclature.md
-      - file: compatibility/data-streams.md 
+      - file: index.md
+      - file: features.md
+      - file: collectors.md
+      - file: sdks.md
+      - file: edot-vs-upstream.md
+      - file: limitations.md
+      - file: nomenclature.md
+      - file: data-streams.md
   - toc: managed-inputs
   - file: data-streams.md
   - file: central-configuration.md
