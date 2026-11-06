@@ -33,13 +33,16 @@ redirects:
   # Authentication, delivery, and failure handling with managed inputs, and its heading was
   # renamed, so the old #failure-store anchor no longer resolves. Redirect that anchor to the
   # shared section. The #authentication anchor still exists as a stub on the OTLP page, so it
-  # needs no redirect.
+  # needs no redirect. The routing section moved to the dedicated Data routing page.
   'reference/managed-inputs/managed-otlp-endpoint.md':
     to: 'reference/managed-inputs/managed-otlp-endpoint.md'
     many:
       - to: 'reference/managed-inputs/authentication-delivery-and-failure-handling.md'
         anchors:
           'failure-store': 'failure-store'
+      - to: 'reference/managed-inputs/data-routing.md'
+        anchors:
+          'routing-telemetry-to-dedicated-datasets-or-namespace': 'routing-telemetry-to-dedicated-datasets-or-namespace'
 
   # Managed inputs: the ECH limitations section was renamed to Network security on the same page.
   'reference/managed-inputs/authentication-delivery-and-failure-handling.md':
