@@ -45,7 +45,7 @@ flowchart LR
 
 | Ingest path | Stored format | Where the data lands |
 |---|---|---|
-| [{{motlp}}](../managed-inputs/managed-otlp-endpoint.md) | OTel-native | `traces-generic.otel-default`, `metrics-generic.otel-default`, `logs-generic.otel-default` by default. Routing is configurable using `data_stream.dataset` and `data_stream.namespace` attributes. |
+| [{{motlp}}](docs-content://reference/managed-inputs/managed-otlp-endpoint.md) | OTel-native | `traces-generic.otel-default`, `metrics-generic.otel-default`, `logs-generic.otel-default` by default. Routing is configurable using `data_stream.dataset` and `data_stream.namespace` attributes. |
 | [{{agent}} configured as an OTel Collector (gateway)](elastic-agent://reference/edot-collector/modes.md) | OTel-native | `elasticsearch` exporter with `mapping_mode: otel` (the default). Writes to `traces-*.otel-*`, `metrics-*.otel-*`, and `logs-*.otel-*`. |
 | [{{es}} OTLP/HTTP endpoint](docs-content://manage-data/ingest/otlp-endpoint.md) (self-managed, ECE, and ECK only) | OTel-native | Pattern: `<type>-<dataset>.otel-<namespace>`. Default: `traces-generic.otel-default`, `metrics-generic.otel-default`, `logs-generic.otel-default`. |
 | {{product.apm-server}} or the managed intake service (`.apm` endpoint) | ECS | Legacy path that translates OTLP to ECS. Unmapped attributes land in `labels.*` with dots replaced by underscores. Not recommended for new users. {{edot}} SDKs are not supported with this path. |
