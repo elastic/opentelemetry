@@ -26,6 +26,9 @@ features:
     Browser:
       status: tech-preview
       min_version: 0.1.0
+    React Native:
+      status: tech-preview
+      min_version: 0.1.0
   - name: Service map
     link: docs-content://solutions/observability/apm/service-map.md
     is_sub_feature: true
@@ -52,6 +55,9 @@ features:
       status: ga
       min_version: v1.0
     Browser:
+      status: tech-preview
+      min_version: 0.1.0
+    React Native:
       status: tech-preview
       min_version: 0.1.0
   - name: Zero-code instrumentation
@@ -82,6 +88,9 @@ features:
     Browser:
       status: not-available
       min_version:
+    React Native:
+      status: not-available
+      min_version:
   - name: Head-based sampling
     link: https://opentelemetry.io/docs/concepts/sampling/#head-sampling
     min_stack_version:
@@ -108,6 +117,9 @@ features:
       status: ga
       min_version: v1.0
     Browser:
+      status: tech-preview
+      min_version: 0.1.0
+    React Native:
       status: tech-preview
       min_version: 0.1.0
   - name: Baggage
@@ -138,6 +150,9 @@ features:
     Browser:
       status: tech-preview
       min_version: 0.1.0
+    React Native:
+      status: not-available
+      min_version:
   - name: Inferred spans
     link:
     min_stack_version:
@@ -166,6 +181,9 @@ features:
     Browser:
       status: not-available
       min_version:
+    React Native:
+      status: not-available
+      min_version:
   - name: Logs collection
     link: https://opentelemetry.io/docs/specs/otel/logs/#opentelemetry-solution
     min_stack_version:
@@ -191,6 +209,9 @@ features:
       status: ga
       min_version: v1.0
     Browser:
+      status: tech-preview
+      min_version: 0.1.0
+    React Native:
       status: tech-preview
       min_version: 0.1.0
   - name: Logs correlation
@@ -221,6 +242,9 @@ features:
     Browser:
       status: tech-preview
       min_version: 0.1.0
+    React Native:
+      status: tech-preview
+      min_version: 0.1.0
   - name: Metrics collection
     link: https://opentelemetry.io/docs/concepts/signals/metrics/
     min_stack_version:
@@ -248,6 +272,9 @@ features:
     Browser:
       status: tech-preview
       min_version: 0.1.0
+    React Native:
+      status: not-available
+      min_version:
   - name: Custom metrics
     link:
     is_sub_feature: true
@@ -276,6 +303,9 @@ features:
     Browser:
       status: tech-preview
       min_version: 0.1.0
+    React Native:
+      status: not-available
+      min_version:
   - name: Agent health monitoring
     link:
     is_sub_feature: true
@@ -302,6 +332,9 @@ features:
       status: not-available
       min_version:
     Browser:
+      status: not-available
+      min_version:
+    React Native:
       status: not-available
       min_version:
   - name: Runtime metrics
@@ -335,6 +368,9 @@ features:
     Browser:
       status: not-applicable
       min_version:
+    React Native:
+      status: not-available
+      min_version:
   - name: Capturing errors / exceptions
     link:
     min_stack_version:
@@ -362,6 +398,10 @@ features:
     Browser:
       status: tech-preview
       min_version: 0.1.0
+    React Native:
+      status: tech-preview
+      min_version: 0.1.0
+      notes: Native exceptions only; JavaScript errors are not captured.
   - name: Crash reporting
     link:
     is_sub_feature: true
@@ -390,6 +430,9 @@ features:
     Browser:
       status: not-applicable
       min_version:
+    React Native:
+      status: tech-preview
+      min_version: 0.1.0
   - name: Central configuration
     link:
     min_stack_version:
@@ -417,6 +460,9 @@ features:
     Browser:
       status: not-available
       min_version:
+    React Native:
+      status: not-available
+      min_version:
   - name: Profiling integration
     link:
     min_stack_version:
@@ -442,6 +488,9 @@ features:
       status: not-available
       min_version:
     Browser:
+      status: not-available
+      min_version:
+    React Native:
       status: not-available
       min_version:
   - name: TLS for OTLP endpoint
@@ -473,6 +522,10 @@ features:
     Browser:
       status: tech-preview
       min_version: 0.1.0
+    React Native:
+      status: tech-preview
+      min_version: 0.1.0
+      notes: CA-signed certificates only
   - name: TLS for OpAMP endpoint
     link:
     is_sub_feature: true
@@ -502,5 +555,8 @@ features:
       min_version: v1.4.0
       notes: CA-signed certificates only
     Browser:
+      status: not-available
+      min_version:
+    React Native:
       status: not-available
       min_version:
