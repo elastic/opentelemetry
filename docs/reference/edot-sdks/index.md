@@ -72,7 +72,7 @@ This table provides an overview of the features available in the EDOT SDKs acros
 
 [^1]: Runtime metrics can be ingested but visualization in the APM Service > Metrics tab is currently limited.
 
-[^2]: Native exceptions only
+[^2]: Native exceptions only; JavaScript errors are not captured.
 
 [^3]: CA-signed certificates only
 

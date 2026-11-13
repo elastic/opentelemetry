@@ -401,7 +401,7 @@ features:
     React Native:
       status: tech-preview
       min_version: 0.1.0
-      notes: Native exceptions only
+      notes: Native exceptions only; JavaScript errors are not captured.
   - name: Crash reporting
     link:
     is_sub_feature: true
