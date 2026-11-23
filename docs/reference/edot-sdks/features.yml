@@ -24,8 +24,8 @@ features:
       status: ga
       min_version: 1.0
     Browser:
-      status: tech-preview
-      min_version: 0.1.0
+      status: ga
+      min_version: 1.0.0
     React Native:
       status: tech-preview
       min_version: 0.1.0
@@ -55,8 +55,8 @@ features:
       status: ga
       min_version: v1.0
     Browser:
-      status: tech-preview
-      min_version: 0.1.0
+      status: ga
+      min_version: 1.0.0
     React Native:
       status: tech-preview
       min_version: 0.1.0
@@ -117,8 +117,8 @@ features:
       status: ga
       min_version: v1.0
     Browser:
-      status: tech-preview
-      min_version: 0.1.0
+      status: ga
+      min_version: 1.0.0
     React Native:
       status: tech-preview
       min_version: 0.1.0
@@ -148,8 +148,8 @@ features:
       status: ga
       min_version: v1.0
     Browser:
-      status: tech-preview
-      min_version: 0.1.0
+      status: ga
+      min_version: 1.0.0
     React Native:
       status: not-available
       min_version:
@@ -209,8 +209,8 @@ features:
       status: ga
       min_version: v1.0
     Browser:
-      status: tech-preview
-      min_version: 0.1.0
+      status: ga
+      min_version: 1.0.0
     React Native:
       status: tech-preview
       min_version: 0.1.0
@@ -240,8 +240,8 @@ features:
       status: ga
       min_version: v1.0
     Browser:
-      status: tech-preview
-      min_version: 0.1.0
+      status: ga
+      min_version: 1.0.0
     React Native:
       status: tech-preview
       min_version: 0.1.0
@@ -270,8 +270,8 @@ features:
       status: tech-preview
       min_version: v0.7
     Browser:
-      status: tech-preview
-      min_version: 0.1.0
+      status: not-available
+      min_version:
     React Native:
       status: not-available
       min_version:
@@ -301,8 +301,8 @@ features:
       status: tech-preview
       min_version: v0.7
     Browser:
-      status: tech-preview
-      min_version: 0.1.0
+      status: not-available
+      min_version:
     React Native:
       status: not-available
       min_version:
@@ -396,8 +396,8 @@ features:
       status: ga
       min_version: v1.0
     Browser:
-      status: tech-preview
-      min_version: 0.1.0
+      status: ga
+      min_version: 1.0.0
     React Native:
       status: tech-preview
       min_version: 0.1.0
@@ -520,8 +520,8 @@ features:
       min_version: v1.0
       notes: CA-signed certificates only
     Browser:
-      status: tech-preview
-      min_version: 0.1.0
+      status: ga
+      min_version: 1.0.0
     React Native:
       status: tech-preview
       min_version: 0.1.0
