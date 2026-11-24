@@ -26,7 +26,7 @@ This page provides a detailed comparison of {{edot}} data streams with classic {
 
 The ingest destination you choose determines how your OpenTelemetry data is stored in {{es}}. This affects field names, which dashboards work out of the box, and how you write queries and alerts.
 
-{{motlp}}, {{agent}} configured as an OTel Collector, and the {{es}} OTLP/HTTP endpoint store **OTel-native** documents. {{product.apm-server}} and the managed intake service (the legacy `.apm` endpoint) store **ECS** documents.
+{{motlp}} and {{agent}} configured as an OTel Collector store **OTel-native** documents. {{product.apm-server}} and the managed intake service (the legacy `.apm` endpoint) store **ECS** documents.
 
 ```mermaid
 flowchart LR
@@ -34,21 +34,20 @@ flowchart LR
 
     SRC -->|OTLP| MOTLP["Elastic Cloud Managed OTLP Endpoint"]:::plain
     SRC -->|OTLP| GW["Elastic Agent configured as an OTel Collector<br/>(gateway)"]:::plain
-    SRC -->|"OTLP<br/>HTTP"| ESO["Elasticsearch OTLP/HTTP endpoint"]:::plain
     SRC -.->|"OTLP<br/>(legacy<br/>path)"| APM["APM Server or the<br/>managed intake service"]:::warning
 
     MOTLP --> OTEL["OTel-native documents<br/>OpenTelemetry semantic conventions<br/>resource.attributes.* / attributes.*"]:::success
-    GW --> OTEL
-    ESO --> OTEL
+    GW -->|"bulk API<br/>or /_otlp"| OTEL
     APM --> ECS["ECS documents<br/>Elastic Common Schema<br/>labels.* / numeric_labels.*"]:::note
 ```
 
 | Ingest path | Stored format | Where the data lands |
 |---|---|---|
 | [{{motlp}}](docs-content://reference/managed-inputs/managed-otlp-endpoint.md) | OTel-native | `traces-generic.otel-default`, `metrics-generic.otel-default`, `logs-generic.otel-default` by default. Routing is configurable using `data_stream.dataset` and `data_stream.namespace` attributes. |
-| [{{agent}} configured as an OTel Collector (gateway)](elastic-agent://reference/edot-collector/modes.md) | OTel-native | `elasticsearch` exporter with `mapping_mode: otel` (the default). Writes to `traces-*.otel-*`, `metrics-*.otel-*`, and `logs-*.otel-*`. |
-| [{{es}} OTLP/HTTP endpoint](docs-content://manage-data/ingest/otlp-endpoint.md) (self-managed, ECE, and ECK only) | OTel-native | Pattern: `<type>-<dataset>.otel-<namespace>`. Default: `traces-generic.otel-default`, `metrics-generic.otel-default`, `logs-generic.otel-default`. |
+| [{{agent}} configured as an OTel Collector (gateway)](elastic-agent://reference/edot-collector/modes.md) | OTel-native | Writes to `traces-*.otel-*`, `metrics-*.otel-*`, and `logs-*.otel-*`, through the `elasticsearch` exporter with `mapping_mode: otel` (the default), the OTLP/HTTP exporter to the {{es}} `/_otlp` endpoint, or both. |
 | {{product.apm-server}} or the managed intake service (`.apm` endpoint) | ECS | Legacy path that translates OTLP to ECS. Unmapped attributes land in `labels.*` with dots replaced by underscores. Not recommended for new users. {{edot}} SDKs are not supported with this path. |
+
+The [{{es}} OTLP/HTTP endpoint](docs-content://manage-data/ingest/otlp-endpoint.md) on the `/_otlp` path isn't another ingest path to choose from. It's a native {{es}} ingest API, like the bulk API, that a gateway writes to on self-managed, ECE, and ECK deployments. It stores records as it receives them, so traces that reach it without passing through the `elasticapm` processor and connector first are stored unenriched and produce no pre-aggregated {{product.apm}} metrics. On {{ech}} and {{serverless-full}}, send OTLP data to the {{motlp}}.
 
 :::{note}
 {{agent}} can also write ECS-formatted data in two specific cases: when using the `elasticapmintake` receiver (intended for migrating classic {{product.apm}} agents) or when the `ecs` mapping mode is explicitly configured. Beat receivers and ECS-based integrations are outside the OTLP paths shown in this section and always produce ECS-formatted data.
