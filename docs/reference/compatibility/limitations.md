@@ -65,28 +65,46 @@ When collecting host metrics through a distribution of the OTel Collector other 
 
 ### Histogram and counter temporality
 
-Temporality support for histogram and counter metrics depends on the ingestion path.
+Whether [`Histogram`](https://opentelemetry.io/docs/specs/otel/metrics/data-model/#histogram) and counter metrics support [`delta` and `cumulative` temporality](https://opentelemetry.io/docs/specs/otel/metrics/data-model/#temporality) depends on the ingestion path and the deployment it writes to. Refer to the section for your path to see which temporality it accepts:
 
-#### Managed OTLP endpoint
+* [Managed OTLP endpoint](#managed-otlp-endpoint)
+* [{{es}} OTLP endpoint](#es-otlp-endpoint)
+* [Collector {{es}} exporter](#collector-es-exporter)
+
+Regardless of the ingestion path, latency distributions based on histogram values have limited precision due to the fixed boundaries of explicit bucket histograms.
+
+#### Managed OTLP endpoint [managed-otlp-endpoint]
 
 ```{applies_to}
-stack: ga 9.5+
 serverless: ga
 deployment:
   ech: ga
 ```
 
-Support for [`delta` and `cumulative` temporality](https://opentelemetry.io/docs/specs/otel/metrics/data-model/#temporality) for [`Histogram`](https://opentelemetry.io/docs/specs/otel/metrics/data-model/#histogram) and counter metrics depends on the deployment:
+Temporality support through the [{{motlp}}](docs-content://reference/managed-inputs/managed-otlp-endpoint.md) depends on the deployment it writes to:
 
-* **{{stack}}:** The native {{es}} OTLP endpoint supports both `delta` and `cumulative` temporality starting in version 9.5.
-* **{{serverless-full}}:** The [{{motlp}}](docs-content://reference/managed-inputs/managed-otlp-endpoint.md) supports both `delta` and `cumulative` temporality.
-* **{{ech}}:** The {{motlp}} supports both `delta` and `cumulative` temporality for deployments running Elastic Stack 9.5.3 and later, where metrics use the native {{es}} OTLP endpoint. Deployments running Elastic Stack 9.0 through 9.5.2 use the {{es}} bulk API compatibility path, which supports only `delta` temporality.
+* **{{serverless-full}}:** Both `delta` and `cumulative` temporality are supported.
+* **{{ech}} deployments running {{stack}} 9.5.3 or later:** Both `delta` and `cumulative` temporality are supported. The {{motlp}} routes metrics to the native [{{es}} OTLP endpoint](#es-otlp-endpoint).
+* **{{ech}} deployments running {{stack}} 9.0 through 9.5.2:** Only `delta` temporality is supported. The {{motlp}} writes metrics through the {{es}} bulk API compatibility path, which has the same temporality support as the [Collector {{es}} exporter](#collector-es-exporter).
 
-Cumulative temporality for histograms additionally requires the `xpack.otel_data.histogram_field_type` cluster setting to be set to `exponential_histogram`, which is the default. Refer to [Metric temporality](docs-content://manage-data/ingest/otlp-endpoint.md#metric-temporality) for details.
+A gateway Collector that forwards metrics to the {{motlp}} using the OTLP exporter has the same temporality support as the deployment the {{motlp}} writes to.
 
-#### Collector {{es}} exporter
+#### {{es}} OTLP endpoint [es-otlp-endpoint]
 
-The collector {{es}} exporter does not yet support `cumulative` temporality for histograms and counters. Ingestion of OpenTelemetry metrics with the type [`Histogram`](https://opentelemetry.io/docs/specs/otel/metrics/data-model/#histogram) is only supported with `delta` temporality. Histograms with `cumulative` temporality are dropped before being ingested into {{es}}.
+```{applies_to}
+stack: ga 9.2+
+```
+
+Temporality support on the [{{es}} OTLP endpoint](docs-content://manage-data/ingest/otlp-endpoint.md) depends on the {{stack}} version:
+
+* {applies_to}`stack: ga 9.5+` The endpoint preserves the temporality of each metric. Both `delta` and `cumulative` temporality are supported for histograms and counters.
+* {applies_to}`stack: ga 9.2-9.4` The endpoint doesn't store temporality. Monotonic sums with `cumulative` temporality are stored as counters, and sums with `delta` temporality are stored as gauges. Histograms are supported only with `delta` temporality: the endpoint rejects histograms with `cumulative` temporality.
+
+Cumulative temporality for histograms additionally requires the `xpack.otel_data.histogram_field_type` cluster setting to be set to `exponential_histogram`, which is the default. Refer to [Metric temporality](docs-content://manage-data/ingest/otlp-endpoint.md#metric-temporality) for how the endpoint stores temporality and how queries and downsampling use it.
+
+#### Collector {{es}} exporter [collector-es-exporter]
+
+The collector {{es}} exporter, which writes to {{es}} through the bulk API, does not support `cumulative` temporality for histograms and counters. Ingestion of OpenTelemetry metrics with the type [`Histogram`](https://opentelemetry.io/docs/specs/otel/metrics/data-model/#histogram) is only supported with `delta` temporality. Histograms with `cumulative` temporality are dropped before being ingested into {{es}}.
 
 Make sure to export histogram metrics with `delta` temporality or use the [`cumulativetodelta processor`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/cumulativetodeltaprocessor) as a workaround to convert the temporality for histogram metrics when using the collector {{es}} exporter.
 
@@ -94,7 +112,7 @@ Make sure to export histogram metrics with `delta` temporality or use the [`cumu
 
 Support for [exemplars](https://opentelemetry.io/docs/specs/otel/metrics/data-model/#exemplars) depends on the ingestion path:
 
-* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` **Native {{es}} OTLP endpoint and {{motlp}}:** Exemplars are stored in `exemplars-*` data streams by default. On {{ech}}, the {{motlp}} requires Elastic Stack 9.6 or later. Refer to [Metric exemplars](docs-content://manage-data/ingest/otlp-endpoint.md#metric-exemplars) for details.
+* {applies_to}`stack: ga 9.6+` {applies_to}`serverless: ga` **Native {{es}} OTLP endpoint and {{motlp}}:** Exemplars are stored in `exemplars-*` data streams by default. On {{ech}}, the {{motlp}} requires {{stack}} 9.6 or later. Refer to [Metric exemplars](docs-content://manage-data/ingest/otlp-endpoint.md#metric-exemplars) for details.
 * **Collector {{es}} exporter:** Exemplars are discarded when ingesting metrics.
 
 ## Limitations on managed Kubernetes environments
