@@ -65,7 +65,11 @@ When collecting host metrics through a distribution of the OTel Collector other 
 
 ### Histogram and counter temporality
 
-Whether [`Histogram`](https://opentelemetry.io/docs/specs/otel/metrics/data-model/#histogram) and counter metrics support [`delta` and `cumulative` temporality](https://opentelemetry.io/docs/specs/otel/metrics/data-model/#temporality) depends on the ingestion path and the deployment it writes to.
+Whether [`Histogram`](https://opentelemetry.io/docs/specs/otel/metrics/data-model/#histogram) and counter metrics support [`delta` and `cumulative` temporality](https://opentelemetry.io/docs/specs/otel/metrics/data-model/#temporality) depends on the ingestion path and the deployment it writes to. Refer to the section for your path to see which temporality it accepts:
+
+* [Managed OTLP endpoint](#managed-otlp-endpoint)
+* [{{es}} OTLP endpoint](#es-otlp-endpoint)
+* [Collector {{es}} exporter](#collector-es-exporter)
 
 Regardless of the ingestion path, latency distributions based on histogram values have limited precision due to the fixed boundaries of explicit bucket histograms.
 
