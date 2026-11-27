@@ -50,30 +50,30 @@ The {{product.observability}} backend is the ingestion and storage layer where y
 - **{{es}}**: Stores and indexes your telemetry data.
 - **{{kib}}**: Provides visualization and analysis interfaces.
 - **Managed OTLP Endpoint** (for {{serverless-full}} and {{ech}}): A managed ingestion service that receives OTLP data.
-- **Gateway Collector** (for self-managed, ECE, and ECK): An {{agent}} running in gateway mode that serves as the ingestion layer.
+- **Gateway Collector** (for self-managed, ECE, and ECK): An {{agent}} deployed as a gateway that serves as the ingestion layer.
 
 :::{note}
-When a Collector in gateway mode is deployed, it is considered part of the {{product.observability}} backend, not part of the edge deployment. The Collector in gateway mode sits between your edge collectors and {{es}}, acting as a centralized ingestion and preprocessing layer.
+When a Collector is deployed as a gateway, it is considered part of the {{product.observability}} backend, not part of the edge deployment. The gateway sits between your edge collectors and {{es}}, acting as a centralized ingestion and preprocessing layer.
 :::
 
-### When gateway mode is required
+### When a gateway is required [when-gateway-mode-is-required]
 
-The need for an {{agent}} in gateway mode as part of your Elastic backend depends on your deployment type:
+The need for an {{agent}} deployed as a gateway as part of your Elastic backend depends on your deployment type:
 
-**{{serverless-full}} and {{ech}}**: Edge collectors can send OTLP data directly to the [Managed OTLP Endpoint](docs-content://reference/managed-inputs/managed-otlp-endpoint.md) without requiring a self-managed Gateway Collector. The Managed OTLP Endpoint provides a fully managed ingestion layer as part of the Elastic backend. You can optionally deploy an {{agent}} in gateway mode as part of your edge environment if you need additional processing before data reaches the Managed OTLP Endpoint.
+**{{serverless-full}} and {{ech}}**: Edge collectors can send OTLP data directly to the [Managed OTLP Endpoint](docs-content://reference/managed-inputs/managed-otlp-endpoint.md) without requiring a self-managed Gateway Collector. The Managed OTLP Endpoint provides a fully managed ingestion layer as part of the Elastic backend. You can optionally deploy an {{agent}} as a gateway in your edge environment if you need additional processing before data reaches the Managed OTLP Endpoint.
 
-**Self-managed, ECE, and ECK deployments**: An {{agent}} in gateway mode is **required as part of your {{product.observability}} backend**. This Gateway Collector exposes the OTLP endpoint that edge collectors send data to, and handles essential preprocessing, including:
+**Self-managed, ECE, and ECK deployments**: An {{agent}} deployed as a gateway is **required as part of your {{product.observability}} backend**. This Gateway Collector exposes the OTLP endpoint that edge collectors send data to, and handles essential preprocessing, including:
 
 - Metrics aggregation for traces and logs, which improves {{product.apm}} UI performance with lower latency.
 - Format conversion for optimal storage in {{es}}.
 
-For detailed information about Agent and Gateway modes and their specific requirements, refer to the [deployment mode documentation](elastic-agent://reference/edot-collector/modes.md).
+For detailed information about the edge collector and gateway deployment patterns and their specific requirements, refer to [Deployment patterns](elastic-agent://reference/edot-collector/modes.md).
 
 ## Limitations
 
 Sending telemetry from EDOT SDKs or edge collectors directly to {{product.apm-server}}'s OpenTelemetry intake endpoint is not supported. While some data may ingest, Elastic doesn't guarantee correctness of attributes, alignment with {{edot}} processing pipelines, enrichment, or troubleshooting coverage.
 
 For supported ingestion, use:
-- **{{agent}} (Gateway mode)** for self-managed, ECE, and ECK deployments
+- **{{agent}} deployed as a gateway** for self-managed, ECE, and ECK deployments
 - **Managed OTLP Endpoint** for {{serverless-full}} and {{ech}} deployments
 

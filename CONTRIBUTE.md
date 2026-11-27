@@ -20,7 +20,7 @@ docs
     ├── _snippets          # Reusable snippets
     ├── architecture       # Architecture section
     ├── compatibility      # Compatibility and support
-    ├── edot-collector     # Elastic Agent (OTel mode)
+    ├── edot-collector     # Elastic Agent configured as an OTel Collector
     ├── edot-sdks          # EDOT SDKs
     ├── images             # Images
     ├── quickstart         # Quickstarts
@@ -46,7 +46,7 @@ Use the following terms consistently and respect capitalization.
 | **Elastic OpenTelemetry** | Use to describe Elastic's OpenTelemetry brand collectively | Elastic OTel | Use Elastic OpenTelemetry to instrument your applications and infrastructure and send telemetry to Elastic Observability. |
 | **EDOT SDKs** | Use to describe the collection of Elastic language SDKs | EDOT {language} | With the EDOT SDKs you have access to all the features of the OpenTelemetry SDK that it customizes, plus... |
 | **EDOT {language}** | Use to refer to a specific language SDK | EDOT {language} | The EDOT Java SDK is a Java package that provides an easy way to instrument your application with OpenTelemetry and configuration defaults for best usage. |
-| **Elastic Agent** | Use to describe Elastic Agent running in OpenTelemetry mode (available from 9.5; formerly called the EDOT Collector). | — | Deploy Elastic Agent in OTel mode to collect and forward telemetry data to Elastic Observability. |
+| **Elastic Agent configured as an OTel Collector** | Use to describe Elastic Agent started with `elastic-agent otel` and an OTel Collector configuration file (from 9.5; formerly called the EDOT Collector). Don't use "OTel mode", "Agent mode", or "Gateway mode". Edge collector and gateway are deployment patterns, not modes. | Elastic Agent, when the page already makes the configuration clear | Deploy Elastic Agent configured as an OTel Collector to collect and forward telemetry data to Elastic Observability. |
 | **Elastic Cloud Forwarder** | Use to describe the cloud-native forwarder for AWS, GCP, and Azure. | — | Use the Elastic Cloud Forwarder to send telemetry from your cloud environment to Elastic Observability. |
 | **Upstream** | Use to describe the upstream OpenTelemetry solutions. Do not use "vanilla" or other terms. | — | The upstream OpenTelemetry Collector is maintained by the OpenTelemetry community. |
 | **Collector** | Use to refer to any Collector instance, either upstream or Elastic. Always capitalize Collector when referring to the technical solution. Use lowercase when referring to multiple collectors. | — | Deploy a Collector to receive and process telemetry data. Multiple collectors can be used for scaling. |

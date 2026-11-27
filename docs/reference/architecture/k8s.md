@@ -47,7 +47,7 @@ This instance of the collector helps with collecting cluster level metrics which
 The gateway Collector deployed in the Kubernetes cluster centralizes OTel data from the DaemonSet and Cluster collectors. This gateway collector runs as part of your edge environment, not as part of the Elastic backend. It can be any OpenTelemetry Collector distribution as long as it forwards data using OTLP to the appropriate backend endpoint:
 
 - For {{serverless-full}} and {{ech}}: Sends OTLP data to the Managed OTLP Endpoint.
-- For self-managed, ECE, and ECK: Sends OTLP data to an {{agent}} running in gateway mode on the backend side (refer to [backend architecture](index.md#understanding-the-elastic-observability-backend)).
+- For self-managed, ECE, and ECK: Sends OTLP data to an {{agent}} deployed as a gateway on the backend side (refer to [backend architecture](index.md#understanding-the-elastic-observability-backend)).
 
 ## Deployment scenarios
 
@@ -64,7 +64,7 @@ The following sections outline the recommended architectures for different Elast
 
 ![K8s-Serverless](../images/k8s-serverless.png)
 
-For a Kubernetes setup, the gateway Collector in your cluster sends OTLP data directly to the Managed OTLP Endpoint. There is no need for an {{agent}} in gateway mode on the backend side. You can optionally deploy an {{agent}} in gateway mode as part of your edge environment if you need additional processing before data reaches the Managed OTLP Endpoint.
+For a Kubernetes setup, the gateway Collector in your cluster sends OTLP data directly to the Managed OTLP Endpoint. There is no need for an {{agent}} deployed as a gateway on the backend side. You can optionally deploy an {{agent}} as a gateway in your edge environment if you need additional processing before data reaches the Managed OTLP Endpoint.
 ::::
 
 ::::{applies-item} ech:
@@ -75,13 +75,13 @@ You need an {{ech}} deployment version 9.0 or later.
 
 {{ech}} provides a [Managed OTLP Endpoint](docs-content://reference/managed-inputs/managed-otlp-endpoint.md) for ingestion of OpenTelemetry data.
 
-For a Kubernetes setup, the gateway Collector in your cluster sends OTLP data directly to the Managed OTLP Endpoint. There is no need for an {{agent}} in gateway mode on the backend side.
+For a Kubernetes setup, the gateway Collector in your cluster sends OTLP data directly to the Managed OTLP Endpoint. There is no need for an {{agent}} deployed as a gateway on the backend side.
 
 ![K8s-ech](../images/k8s-ech.png)
 ::::
 
 ::::{applies-item} { eck:, ece:, self: }
-With a self-managed deployment, you need an {{agent}} running in gateway mode as part of your {{product.observability}} backend (not in the Kubernetes cluster). This backend gateway collector receives OTLP data from the Kubernetes gateway collector and ingests it into {{es}}.
+With a self-managed deployment, you need an {{agent}} deployed as a gateway as part of your {{product.observability}} backend (not in the Kubernetes cluster). This backend gateway collector receives OTLP data from the Kubernetes gateway collector and ingests it into {{es}}.
 
 ![K8s-self-managed](../images/k8s-self-managed.png)
 
@@ -90,7 +90,7 @@ The backend gateway Collector processes {{product.apm}} data and logs to improve
 The Kubernetes cluster components (DaemonSet collectors, Cluster collectors, gateway collector, and OTel SDKs) can all use fully vendor-agnostic or upstream OpenTelemetry components. Only the backend gateway Collector needs to be either an {{agent}} or a [custom, {{edot}}-like Collector](elastic-agent://reference/edot-collector/custom-collector.md) containing the [required components and preprocessing pipelines](elastic-agent://reference/edot-collector/config/default-config-k8s.md#direct-ingestion-into-elasticsearch).
 
 :::{note}
-Compared to [Elastic's classic ingestion paths](docs-content://solutions/observability/apm/use-opentelemetry-with-apm.md) for OTel data, with the {{agent}} in gateway mode there is no need for {{product.apm-server}} anymore.
+Compared to [Elastic's classic ingestion paths](docs-content://solutions/observability/apm/use-opentelemetry-with-apm.md) for OTel data, with the {{agent}} deployed as a gateway there is no need for {{product.apm-server}} anymore.
 
 Refer to [{{edot}} data streams compared to classic {{product.apm}}](../compatibility/data-streams.md) for a detailed comparison of data streams, mappings, and storage models.
 :::
