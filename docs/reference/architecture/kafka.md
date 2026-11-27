@@ -184,4 +184,4 @@ service:
 
 Monitor backpressure and export failures on both the edge gateway collector and the backend collector. A Kafka buffer can mask downstream ingestion problems until retention is exhausted. To avoid it, size retention and partitions for peak ingest and expected outage windows. 
 
-For {{product.apm}} UI optimizations on self-managed backends, align the backend collector's mode and processors with the recommended {{edot}} gateway architecture for your deployment.
+For {{product.apm}} UI optimizations on self-managed backends, align the backend collector's deployment pattern and processors with the recommended {{edot}} gateway architecture for your deployment.

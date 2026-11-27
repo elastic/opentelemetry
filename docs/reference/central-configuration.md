@@ -25,7 +25,7 @@ The central configuration architecture lets you manage fleets of EDOT SDKs remot
 :alt: Diagram of Central config architecture
 :::
 
-The process starts within {{product.kibana}}, where administrators create and manage settings for the EDOT SDKs. Once defined, settings are written to and persisted in {{es}}, which acts as the single source of truth. The {{agent}}, when configured in Gateway mode, includes the Elastic {{product.apm}} Config Extension, which reads the SDK settings from {{product.elasticsearch}}, making them available for distribution.
+The process starts within {{product.kibana}}, where administrators create and manage settings for the EDOT SDKs. Once defined, settings are written to and persisted in {{es}}, which acts as the single source of truth. The {{agent}}, when deployed as a gateway, includes the Elastic {{product.apm}} Config Extension, which reads the SDK settings from {{product.elasticsearch}}, making them available for distribution.
 
 Each EDOT SDK contains an embedded OpAMP Client. Following the Open Agent Management Protocol (OpAMP), these clients periodically poll the OpAMP server, bundled with the Collector's {{product.apm}} Config Extension, over HTTP. This polling action allows the SDKs to retrieve the latest configuration updates, enabling dynamic and centralized control over their behavior without requiring manual intervention or redeployment.
 
@@ -34,7 +34,7 @@ Each EDOT SDK contains an embedded OpAMP Client. Following the Open Agent Manage
 To use {{product.apm-agent}} Central Configuration for EDOT SDKs, you need:
 
 * An Elastic self-managed or {{ecloud}} deployment, version 9.1 or later.
-* A standalone [{{agent}}](elastic-agent://reference/edot-collector/index.md), in either Agent or Collector mode.
+* A standalone [{{agent}}](elastic-agent://reference/edot-collector/index.md) configured as an OTel Collector, deployed as either an edge collector or a gateway.
 * EDOT SDKs instrumenting your application.
 
 The following versions of {{edot}} and {{stack}} support central configuration:
